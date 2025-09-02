@@ -31,8 +31,8 @@ interface TreeProps extends React.HTMLAttributes<HTMLDivElement> {
 
 function Tree({ indent = 20, tree, className, ...props }: TreeProps) {
   const containerProps =
-    tree && typeof tree.getContainerProps === "function"
-      ? tree.getContainerProps()
+    tree && typeof (tree as any).getContainerProps === "function"
+      ? (tree as any).getContainerProps()
       : {};
   const mergedProps = { ...props, ...containerProps };
 
@@ -88,7 +88,9 @@ function TreeItem<T = unknown>({
   const Comp = asChild ? Slot.Root : "button";
 
   return (
-    <TreeContext.Provider value={{ indent, currentItem: item }}>
+    <TreeContext.Provider
+      value={{ indent, currentItem: item as ItemInstance<unknown> }}
+    >
       <Comp
         data-slot="tree-item"
         style={mergedStyle}
@@ -171,19 +173,20 @@ function TreeDragLine({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const { tree } = useTreeContext();
+  const { tree } = useTreeContext() as {
+    tree?: { getDragLineStyle?: () => React.CSSProperties };
+  };
 
-  if (!tree || typeof tree.getDragLineStyle !== "function") {
+  if (!tree?.getDragLineStyle) {
     console.warn(
       "TreeDragLine: No tree provided via context or tree does not have getDragLineStyle method",
     );
     return null;
   }
-
-  const dragLine = tree.getDragLineStyle();
+  const dragLineStyle = tree.getDragLineStyle();
   return (
     <div
-      style={dragLine}
+      style={dragLineStyle}
       className={cn(
         "bg-primary before:bg-background before:border-primary absolute z-30 -mt-px h-0.5 w-[unset] before:absolute before:-top-[3px] before:left-0 before:size-2 before:rounded-full before:border-2",
         className,
