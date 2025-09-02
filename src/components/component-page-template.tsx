@@ -8,6 +8,7 @@ import {
   findRegistryItemMatch,
   getRegistryItemUrl,
 } from "@/lib/registry-utils";
+import { cn } from "@/lib/utils";
 
 import { FileTreeViewer } from "@/components/file-tree-viewer";
 import { Footer } from "@/components/footer";
@@ -462,6 +463,8 @@ function ComponentGrid({
   activeTreeViewer,
   setActiveTreeViewer,
   relevantRegistryItems,
+  category,
+  name,
 }: {
   components: Record<string, ReactNode | ComponentWithLayout>;
   layout: Layout;
@@ -549,17 +552,20 @@ function ComponentGrid({
         return (
           <div
             key={key}
-            className={`${customClassName} border-t border-l border-r border-b border-dotted transition-all duration-200 ${
-              isSelected ? "border-primary/50" : "border-border"
-            }`}
+            className={cn(
+              customClassName,
+              "border-t border-l border-r border-b border-dotted transition-all duration-200",
+              isSelected ? "border-primary/50" : "border-border",
+            )}
           >
             {/* Component Header - Outside bordered area */}
             <div
-              className={`px-4 sm:px-6 py-4 transition-all duration-200 ${
+              className={cn(
+                "px-4 sm:px-6 py-4 transition-all duration-200",
                 isSelected
                   ? "bg-primary/10"
-                  : "bg-background hover:bg-accent/50"
-              }`}
+                  : "bg-background hover:bg-accent/50",
+              )}
             >
               <div className="space-y-3">
                 {/* Desktop: Single Row Layout */}

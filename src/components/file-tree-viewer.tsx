@@ -46,7 +46,7 @@ interface RegistryFile {
 
 interface RegistryItem {
   name: string;
-  files: RegistryFile[];
+  files?: RegistryFile[];
   dependencies?: string[];
   registryDependencies?: string[];
 }
@@ -414,7 +414,9 @@ export function FileTreeViewer({
     ],
   });
 
-  const selectedFileNode = selectedFile && items[selectedFile];
+  const selectedFileNode: TreeNode | null = selectedFile
+    ? items[selectedFile]
+    : null;
 
   const copyFileContent = async () => {
     if (fileContent && selectedFile) {
@@ -446,7 +448,9 @@ export function FileTreeViewer({
   };
 
   const copyCommand = async (command: string, commandType: string) => {
-    const currentNode = selectedFile && items[selectedFile];
+    const currentNode: TreeNode | null = selectedFile
+      ? items[selectedFile]
+      : null;
 
     track("File Tree Command Copy", {
       command: command,
