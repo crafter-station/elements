@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { track } from "@vercel/analytics";
+
 import { Badge } from "@/components/ui/badge";
 
 interface ComponentCardProps {
@@ -12,6 +14,7 @@ interface ComponentCardProps {
   href?: string;
   elementsCount?: number;
   providerLink?: string;
+  trackingSource?: string;
 }
 
 export function ComponentCard({
@@ -23,7 +26,18 @@ export function ComponentCard({
   isEnabled = false,
   href,
   elementsCount,
+  trackingSource = "unknown",
 }: ComponentCardProps) {
+  const handleClick = () => {
+    track("Component Card Click", {
+      component_name: name,
+      category: category,
+      source: trackingSource,
+      is_enabled: isEnabled,
+      elements_count: elementsCount || 0,
+    });
+  };
+
   const patternStyle =
     brandColor && isEnabled
       ? {
@@ -96,7 +110,7 @@ export function ComponentCard({
 
   if (href && isEnabled) {
     return (
-      <Link className="w-full h-full" href={href}>
+      <Link className="w-full h-full" href={href} onClick={handleClick}>
         {CardContent}
       </Link>
     );

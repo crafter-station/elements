@@ -21,6 +21,7 @@ import {
   RiImageLine,
   RiReactjsLine,
 } from "@remixicon/react";
+import { track } from "@vercel/analytics";
 import type { BundledLanguage } from "shiki/bundle/web";
 import { toast } from "sonner";
 
@@ -63,6 +64,8 @@ interface FileTreeViewerProps {
   registryItem?: RegistryItem;
   onClose: () => void;
   className?: string;
+  componentKey?: string;
+  source?: string;
 }
 
 // Helper function to get icon based on file extension
@@ -272,6 +275,8 @@ export function FileTreeViewer({
   registryItem,
   onClose,
   className,
+  componentKey = "unknown",
+  source = "unknown",
 }: FileTreeViewerProps) {
   const [items] = useState(() =>
     buildFileStructureFromPaths(files, registryItem),
@@ -290,6 +295,15 @@ export function FileTreeViewer({
       node?.type === "dependency" ||
       node?.type === "registry-dependency"
     ) {
+      track("File Tree Node Selected", {
+        node_id: nodeId,
+        node_name: node.name,
+        node_type: node.type,
+        component_key: componentKey,
+        registry_item: registryItem?.name || "unknown",
+        source: source,
+        file_extension: node.fileExtension || null,
+      });
       // Clear previous timeout and copied state when switching nodes
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -403,13 +417,28 @@ export function FileTreeViewer({
   const selectedFileNode = selectedFile && items[selectedFile];
 
   const copyFileContent = async () => {
-    if (fileContent) {
+    if (fileContent && selectedFile) {
+      track("File Tree Content Copy", {
+        file_name: selectedFile,
+        component_key: componentKey,
+        registry_item: registryItem?.name || "unknown",
+        source: source,
+        content_length: fileContent.length,
+      });
+
       try {
         await navigator.clipboard.writeText(fileContent);
         setCopied(true);
         toast.success("File content copied to clipboard!");
         setTimeout(() => setCopied(false), 2000);
       } catch (err) {
+        track("File Tree Content Copy Error", {
+          file_name: selectedFile,
+          component_key: componentKey,
+          registry_item: registryItem?.name || "unknown",
+          source: source,
+          error: "clipboard_failed",
+        });
         console.error("Failed to copy file content:", err);
         toast.error("Failed to copy file content");
       }
@@ -417,6 +446,18 @@ export function FileTreeViewer({
   };
 
   const copyCommand = async (command: string, commandType: string) => {
+    const currentNode = selectedFile && items[selectedFile];
+
+    track("File Tree Command Copy", {
+      command: command,
+      package_manager: commandType,
+      dependency_name: currentNode?.name || "unknown",
+      dependency_type: currentNode?.type || "unknown",
+      component_key: componentKey,
+      registry_item: registryItem?.name || "unknown",
+      source: source,
+    });
+
     try {
       // Clear previous timeout if exists
       if (timeoutRef.current) {
@@ -433,6 +474,14 @@ export function FileTreeViewer({
         timeoutRef.current = null;
       }, 2000);
     } catch (err) {
+      track("File Tree Command Copy Error", {
+        command: command,
+        package_manager: commandType,
+        dependency_name: currentNode?.name || "unknown",
+        component_key: componentKey,
+        source: source,
+        error: "clipboard_failed",
+      });
       console.error("Failed to copy command:", err);
       toast.error("Failed to copy command");
     }
@@ -631,7 +680,15 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={onClose}
+                onClick={() => {
+                  track("File Tree Viewer Close", {
+                    component_key: componentKey,
+                    registry_item: registryItem?.name || "unknown",
+                    source: source,
+                    files_viewed: selectedFile ? 1 : 0,
+                  });
+                  onClose();
+                }}
                 className="h-6 w-6 p-0"
               >
                 <CloseIcon />
@@ -962,6 +1019,9 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
                               <InstallCommand
                                 url={selectedFileNode.name}
                                 className="!max-w-fit border-0 shadow-none bg-transparent"
+                                source="file_tree_viewer_registry_dependency"
+                                componentName={selectedFileNode.name}
+                                category="Registry Dependency"
                               />
                             </div>
                           </div>

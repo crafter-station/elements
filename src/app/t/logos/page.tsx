@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+import { track } from "@vercel/analytics";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -356,6 +358,7 @@ export default function TechLogosPage() {
   const [selectedLogos, setSelectedLogos] = useState<Set<string>>(new Set());
   const [packageManager, setPackageManager] = useState("bunx");
   const [copied, setCopied] = useState(false);
+  const searchTimeoutRef = useRef<NodeJS.Timeout>();
 
   const filteredLogos = useMemo(() => {
     return logos.filter(
@@ -365,7 +368,44 @@ export default function TechLogosPage() {
     );
   }, [searchTerm]);
 
+  // Track search with debounce
+  useEffect(() => {
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    if (searchTerm.trim()) {
+      searchTimeoutRef.current = setTimeout(() => {
+        track("Logo Search", {
+          search_term: searchTerm.trim(),
+          results_count: filteredLogos.length,
+          source: "logos_page_search",
+        });
+      }, 500);
+    }
+
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, [searchTerm, filteredLogos.length]);
+
   const handleLogoToggle = (logoId: string) => {
+    const logo = logos.find((l) => l.id === logoId);
+    const isCurrentlySelected = selectedLogos.has(logoId);
+
+    track("Logo Selection", {
+      logo_id: logoId,
+      logo_name: logo?.displayName || logoId,
+      logo_category: logo?.category || "unknown",
+      action: isCurrentlySelected ? "deselect" : "select",
+      total_selected_after: isCurrentlySelected
+        ? selectedLogos.size - 1
+        : selectedLogos.size + 1,
+      source: "logos_page_grid",
+    });
+
     const newSelected = new Set(selectedLogos);
     if (newSelected.has(logoId)) {
       newSelected.delete(logoId);
@@ -376,6 +416,15 @@ export default function TechLogosPage() {
   };
 
   const handleSelectAll = () => {
+    const isSelectingAll = selectedLogos.size !== filteredLogos.length;
+
+    track("Bulk Logo Selection", {
+      action: isSelectingAll ? "select_all" : "deselect_all",
+      logos_count: filteredLogos.length,
+      search_term: searchTerm || "none",
+      source: "logos_page_bulk_action",
+    });
+
     if (selectedLogos.size === filteredLogos.length) {
       setSelectedLogos(new Set());
     } else {
@@ -403,12 +452,28 @@ export default function TechLogosPage() {
   const copyCommand = async () => {
     if (selectedLogos.size === 0) return;
 
+    const selectedLogoNames = logos
+      .filter((logo) => selectedLogos.has(logo.id))
+      .map((logo) => logo.displayName);
+
+    track("Install Command Copy", {
+      package_manager: packageManager,
+      selected_count: selectedLogos.size,
+      selected_logos: selectedLogoNames.slice(0, 10), // Limit to first 10 for analytics
+      source: "logos_page_install_dock",
+    });
+
     const command = getCommand(packageManager);
     try {
       await navigator.clipboard.writeText(command);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
+      track("Install Command Copy Error", {
+        package_manager: packageManager,
+        selected_count: selectedLogos.size,
+        source: "logos_page_install_dock",
+      });
       console.error("Failed to copy command:", err);
     }
   };
@@ -447,7 +512,13 @@ export default function TechLogosPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <InstallCommand url="@elements/logos" className="max-w-xs" />
+                <InstallCommand
+                  url="@elements/logos"
+                  className="max-w-xs"
+                  source="logos_page_hero"
+                  componentName="Tech Logos"
+                  category="Brand"
+                />
               </div>
             </div>
           </div>
@@ -578,7 +649,18 @@ export default function TechLogosPage() {
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <div className="bg-card border rounded-lg shadow-lg max-w-lg w-full mx-4">
             <div className="flex rounded-md">
-              <Select value={packageManager} onValueChange={setPackageManager}>
+              <Select
+                value={packageManager}
+                onValueChange={(value) => {
+                  track("Package Manager Changed", {
+                    from: packageManager,
+                    to: value,
+                    selected_logos_count: selectedLogos.size,
+                    source: "logos_page_install_dock",
+                  });
+                  setPackageManager(value);
+                }}
+              >
                 <SelectTrigger className="text-muted-foreground hover:text-foreground w-20 sm:w-20 rounded-e-none border-0 border-r shadow-none text-xs sm:text-sm">
                   <SelectValue />
                 </SelectTrigger>

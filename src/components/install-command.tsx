@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { track } from "@vercel/analytics";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
 
@@ -19,12 +20,18 @@ interface InstallCommandProps {
   url?: string;
   className?: string;
   brandColor?: string;
+  source?: string;
+  componentName?: string;
+  category?: string;
 }
 
 export function InstallCommand({
   url = "@elements/clerk-waitlist",
   className,
   brandColor,
+  source = "unknown",
+  componentName = "unknown",
+  category = "unknown",
 }: InstallCommandProps) {
   const [packageManager, setPackageManager] = useState("bunx");
   const [copied, setCopied] = useState(false);
@@ -40,17 +47,50 @@ export function InstallCommand({
   };
 
   const copyCommand = async () => {
+    track("Install Command Standalone Copy", {
+      package_manager: packageManager,
+      install_url: url,
+      component_name: componentName,
+      category: category,
+      source: source,
+      action: "copy_install_command",
+    });
+
     const command = getCommand(packageManager);
-    await navigator.clipboard.writeText(command);
-    setCopied(true);
-    toast.success("Command copied to clipboard!");
-    setTimeout(() => setCopied(false), 1000);
+    try {
+      await navigator.clipboard.writeText(command);
+      setCopied(true);
+      toast.success("Command copied to clipboard!");
+      setTimeout(() => setCopied(false), 1000);
+    } catch (err) {
+      track("Install Command Copy Error", {
+        package_manager: packageManager,
+        install_url: url,
+        component_name: componentName,
+        source: source,
+        error: "clipboard_failed",
+      });
+      console.error("Failed to copy command:", err);
+    }
   };
 
   return (
     <div className={`w-full max-w-sm ${className || ""}`}>
       <div className="flex rounded-md shadow-xs border">
-        <Select value={packageManager} onValueChange={setPackageManager}>
+        <Select
+          value={packageManager}
+          onValueChange={(value) => {
+            track("Install Command Package Manager Changed", {
+              component_name: componentName,
+              category: category,
+              install_url: url,
+              from: packageManager,
+              to: value,
+              source: source,
+            });
+            setPackageManager(value);
+          }}
+        >
           <SelectTrigger className="text-muted-foreground hover:text-foreground w-20 sm:w-20 rounded-e-none border-0 border-r shadow-none text-xs sm:text-sm">
             <SelectValue />
           </SelectTrigger>

@@ -2,6 +2,8 @@
 
 import { type ReactNode, useState } from "react";
 
+import { track } from "@vercel/analytics";
+
 import {
   findRegistryItemMatch,
   getRegistryItemUrl,
@@ -140,6 +142,19 @@ export function ComponentPageTemplate({
   });
 
   const handleComponentToggle = (componentKey: string) => {
+    const isCurrentlySelected = selectedComponents.has(componentKey);
+
+    track("Component Selection", {
+      component_key: componentKey,
+      component_category: category,
+      page_name: name,
+      action: isCurrentlySelected ? "deselect" : "select",
+      total_selected_after: isCurrentlySelected
+        ? selectedComponents.size - 1
+        : selectedComponents.size + 1,
+      source: "component_page_template",
+    });
+
     const newSelected = new Set(selectedComponents);
     if (newSelected.has(componentKey)) {
       newSelected.delete(componentKey);
@@ -178,12 +193,28 @@ export function ComponentPageTemplate({
   const copyCommand = async () => {
     if (selectedComponents.size === 0) return;
 
+    track("Component Install Command Copy", {
+      component_category: category,
+      page_name: name,
+      package_manager: packageManager,
+      selected_components: Array.from(selectedComponents),
+      selected_count: selectedComponents.size,
+      source: "component_page_install_dock",
+    });
+
     const command = getInstallCommand(packageManager);
     try {
       await navigator.clipboard.writeText(command);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
+      track("Component Install Command Copy Error", {
+        component_category: category,
+        page_name: name,
+        package_manager: packageManager,
+        selected_count: selectedComponents.size,
+        source: "component_page_install_dock",
+      });
       console.error("Failed to copy command:", err);
     }
   };
@@ -230,6 +261,9 @@ export function ComponentPageTemplate({
                 <InstallCommand
                   url={installCommand.replace(/^bunx shadcn@latest add /, "")}
                   brandColor={brandColor}
+                  source="component_page_hero"
+                  componentName={name}
+                  category={category}
                 />
               </div>
             </div>
@@ -318,6 +352,9 @@ export function ComponentPageTemplate({
                 </p>
                 <InstallCommand
                   url={installCommand.replace(/^bunx shadcn@latest add /, "")}
+                  source="component_page_quickstart"
+                  componentName={name}
+                  category={category}
                 />
               </div>
             </div>
@@ -330,7 +367,20 @@ export function ComponentPageTemplate({
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <div className="bg-card border rounded-lg shadow-lg max-w-lg w-full mx-4">
             <div className="flex rounded-md">
-              <Select value={packageManager} onValueChange={setPackageManager}>
+              <Select
+                value={packageManager}
+                onValueChange={(value) => {
+                  track("Component Package Manager Changed", {
+                    component_category: category,
+                    page_name: name,
+                    from: packageManager,
+                    to: value,
+                    selected_components_count: selectedComponents.size,
+                    source: "component_page_install_dock",
+                  });
+                  setPackageManager(value);
+                }}
+              >
                 <SelectTrigger className="text-muted-foreground hover:text-foreground w-20 sm:w-20 rounded-e-none border-0 border-r shadow-none text-xs sm:text-sm">
                   <SelectValue />
                 </SelectTrigger>
@@ -542,6 +592,8 @@ function ComponentGrid({
                       return componentRegistryItem ? (
                         <OpenInV0Button
                           url={getRegistryItemUrl(componentRegistryItem.name)}
+                          componentKey={key}
+                          source="component_page_desktop"
                         />
                       ) : null;
                     })()}
@@ -556,6 +608,16 @@ function ComponentGrid({
                           relevantRegistryItems,
                         );
                         if (componentRegistryItem) {
+                          const isCurrentlyActive = activeTreeViewer === key;
+                          track("Component Tree Viewer", {
+                            component_key: key,
+                            component_category: category,
+                            page_name: name,
+                            action: isCurrentlyActive
+                              ? "hide_tree"
+                              : "show_tree",
+                            source: "component_page_tree_viewer",
+                          });
                           setActiveTreeViewer(
                             activeTreeViewer === key ? null : key,
                           );
@@ -586,6 +648,9 @@ function ComponentGrid({
                           installUrls[key] ||
                           (item as ComponentWithLayout).installUrl
                         }
+                        source="component_page_component_individual_desktop"
+                        componentName={key}
+                        category={category}
                       />
                     )}
                   </div>
@@ -632,6 +697,8 @@ function ComponentGrid({
                         return componentRegistryItem ? (
                           <OpenInV0Button
                             url={getRegistryItemUrl(componentRegistryItem.name)}
+                            componentKey={key}
+                            source="component_page_mobile"
                           />
                         ) : null;
                       })()}
@@ -679,6 +746,9 @@ function ComponentGrid({
                           installUrls[key] ||
                           (item as ComponentWithLayout).installUrl
                         }
+                        source="component_page_component_individual_mobile"
+                        componentName={key}
+                        category={category}
                       />
                     </div>
                   )}
@@ -702,6 +772,8 @@ function ComponentGrid({
                         registryItem={componentRegistryItem}
                         onClose={() => setActiveTreeViewer(null)}
                         className="relative h-full bg-transparent"
+                        componentKey={key}
+                        source="component_page_file_tree"
                       />
                     );
                   })()}

@@ -2,6 +2,8 @@
 
 import { useState, useTransition } from "react";
 
+import { track } from "@vercel/analytics";
+
 import { currentSponsors, sponsorTiers } from "@/lib/sponsors";
 
 import { Footer } from "@/components/footer";
@@ -27,6 +29,12 @@ export default function SponsorPage() {
   const [isPending, startTransition] = useTransition();
 
   const handleChooseYourTier = () => {
+    track("Sponsor Tier Navigation", {
+      source: "sponsor_page_cta",
+      action: "scroll_to_tiers",
+      default_tier: "Supporter",
+    });
+
     // Smooth scroll to sponsor tiers section
     const sponsorTiersSection = document.getElementById("sponsor-tiers");
     if (sponsorTiersSection) {
@@ -42,11 +50,22 @@ export default function SponsorPage() {
   const handleSponsor = () => {
     if (!selectedTier) return;
 
+    track("Sponsor Checkout Initiated", {
+      tier_selected: selectedTier,
+      source: "sponsor_page_checkout",
+      action: "checkout_start",
+    });
+
     startTransition(() => {
       try {
         const productId =
           POLAR_PRODUCT_IDS[selectedTier as keyof typeof POLAR_PRODUCT_IDS];
         if (!productId) {
+          track("Sponsor Checkout Error", {
+            tier_selected: selectedTier,
+            error: "unknown_tier",
+            source: "sponsor_page_checkout",
+          });
           throw new Error(`Unknown tier: ${selectedTier}`);
         }
 
@@ -54,6 +73,11 @@ export default function SponsorPage() {
         const checkoutUrl = `/api/checkout?products=${productId}`;
         window.location.href = checkoutUrl;
       } catch (error) {
+        track("Sponsor Checkout Error", {
+          tier_selected: selectedTier,
+          error: "checkout_failed",
+          source: "sponsor_page_checkout",
+        });
         console.error("Failed to create checkout:", error);
         alert("Failed to create checkout. Please try again.");
       }
@@ -114,7 +138,16 @@ export default function SponsorPage() {
                         ? "bg-red-500/5 border-red-500/20"
                         : "bg-card/30"
                   }`}
-                  onClick={() => setSelectedTier(tier.name)}
+                  onClick={() => {
+                    track("Sponsor Tier Selected", {
+                      tier_name: tier.name,
+                      tier_price: tier.price,
+                      is_popular: tier.popular || false,
+                      is_highlight: tier.isHighlight || false,
+                      source: "sponsor_page_tiers",
+                    });
+                    setSelectedTier(tier.name);
+                  }}
                   aria-label={`Select ${tier.name} sponsorship tier`}
                 >
                   {/* Corner decorations */}
@@ -207,6 +240,12 @@ export default function SponsorPage() {
                 Need a custom tier?{" "}
                 <a
                   href="mailto:railly@crafterstation.com?subject=Custom Elements Sponsorship"
+                  onClick={() =>
+                    track("Custom Tier Contact", {
+                      source: "sponsor_page_custom_tier",
+                      action: "email_click",
+                    })
+                  }
                   className="underline hover:text-foreground"
                 >
                   Contact us

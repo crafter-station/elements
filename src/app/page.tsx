@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { track } from "@vercel/analytics";
+
 import { currentSponsors } from "@/lib/sponsors";
 
 import { ClerkLogo } from "@/components/clerk-logo";
@@ -32,6 +34,11 @@ import { VercelIcon } from "@/components/ui/logos/vercel";
 
 export default function Home() {
   const scrollToGallery = () => {
+    track("Gallery Navigation", {
+      source: "hero_cta",
+      action: "scroll_to_gallery",
+    });
+
     const gallerySection = document.getElementById("gallery");
     if (gallerySection) {
       gallerySection.scrollIntoView({
@@ -87,6 +94,12 @@ export default function Home() {
                   href="https://github.com/crafter-station/elements"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    track("GitHub Star Click", {
+                      source: "hero_cta",
+                      action: "external_link_github",
+                    })
+                  }
                 >
                   Star us on GitHub <GitHubLogo />{" "}
                 </Link>
@@ -124,6 +137,7 @@ export default function Home() {
                 href="/t/clerk"
                 elementsCount={6}
                 providerLink="https://clerk.com"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Polar"
@@ -135,6 +149,7 @@ export default function Home() {
                 href="/t/polar"
                 elementsCount={1}
                 providerLink="https://polar.sh"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Tech Logos"
@@ -145,6 +160,7 @@ export default function Home() {
                 brandColor="#444444"
                 href="/t/logos"
                 elementsCount={34}
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Theme Switcher"
@@ -155,6 +171,7 @@ export default function Home() {
                 href="/t/theme-switcher"
                 brandColor="#444444"
                 elementsCount={6}
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Vercel AI SDK"
@@ -166,6 +183,7 @@ export default function Home() {
                 href="/t/vercel"
                 elementsCount={3}
                 providerLink="https://vercel.com/ai"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Trigger.dev"
@@ -177,6 +195,7 @@ export default function Home() {
                 href="/t/trigger"
                 elementsCount={4}
                 providerLink="https://trigger.dev"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Upstash"
@@ -188,6 +207,7 @@ export default function Home() {
                 href="/t/upstash"
                 elementsCount={3}
                 providerLink="https://upstash.com"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="UploadThing"
@@ -199,6 +219,7 @@ export default function Home() {
                 href="/t/uploadthing"
                 elementsCount={2}
                 providerLink="https://uploadthing.com"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Supabase"
@@ -208,6 +229,7 @@ export default function Home() {
                 brandColor="#3ECF8E"
                 elementsCount={5}
                 providerLink="https://supabase.com"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Better Auth"
@@ -217,6 +239,7 @@ export default function Home() {
                 brandColor="#000000"
                 elementsCount={3}
                 providerLink="https://better-auth.com"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Resend"
@@ -226,6 +249,7 @@ export default function Home() {
                 brandColor="#000000"
                 elementsCount={2}
                 providerLink="https://resend.com"
+                trackingSource="homepage_gallery"
               />
               <ComponentCard
                 name="Stripe"
@@ -235,6 +259,7 @@ export default function Home() {
                 brandColor="#635BFF"
                 elementsCount={4}
                 providerLink="https://stripe.com"
+                trackingSource="homepage_gallery"
               />
             </div>
           </div>
@@ -266,6 +291,14 @@ export default function Home() {
                   href={sponsor.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    track("Sponsor Click", {
+                      sponsor_name: sponsor.name,
+                      sponsor_tier: sponsor.tier,
+                      source: "homepage_sponsors",
+                      action: "external_link",
+                    })
+                  }
                   className={`flex items-center justify-center border-t ${
                     index === 0
                       ? "border-r md:border-r"
@@ -302,6 +335,12 @@ export default function Home() {
                       <p>Need custom components for your company?</p>
                       <Link
                         href="/sponsor"
+                        onClick={() =>
+                          track("Become Sponsor Click", {
+                            source: "homepage_sponsors",
+                            action: "cta_click",
+                          })
+                        }
                         className="inline-flex items-center px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 text-sm font-medium"
                       >
                         Become a Sponsor
