@@ -25,7 +25,7 @@ import { track } from "@vercel/analytics";
 import type { BundledLanguage } from "shiki/bundle/web";
 import { toast } from "sonner";
 
-import { findBestFileMatch, getRegistryItemUrl } from "@/lib/registry-utils";
+import { findBestFileMatch } from "@/lib/registry-utils";
 
 import { ElementsLogo } from "@/components/elements-logo";
 import { CopyIcon } from "@/components/icons/copy";

@@ -12,7 +12,6 @@ import { ElementSuggestionForm } from "@/components/element-suggestion-form";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ArrowRightIcon } from "@/components/icons/arrow-right";
-import { FileAltIcon } from "@/components/icons/file-alt";
 import { GroupIcon } from "@/components/icons/group";
 import { MoonIcon } from "@/components/icons/moon";
 import { TriggerIcon } from "@/components/icons/trigger";

@@ -197,7 +197,7 @@ export function ComponentPageTemplate({
       component_category: category,
       page_name: name,
       package_manager: packageManager,
-      selected_components: Array.from(selectedComponents),
+      selected_components: Array.from(selectedComponents).join(","),
       selected_count: selectedComponents.size,
       source: "component_page_install_dock",
     });

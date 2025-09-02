@@ -358,7 +358,7 @@ export default function TechLogosPage() {
   const [selectedLogos, setSelectedLogos] = useState<Set<string>>(new Set());
   const [packageManager, setPackageManager] = useState("bunx");
   const [copied, setCopied] = useState(false);
-  const searchTimeoutRef = useRef<NodeJS.Timeout>();
+  const searchTimeoutRef = useRef<NodeJS.Timeout>(null);
 
   const filteredLogos = useMemo(() => {
     return logos.filter(
@@ -459,7 +459,7 @@ export default function TechLogosPage() {
     track("Install Command Copy", {
       package_manager: packageManager,
       selected_count: selectedLogos.size,
-      selected_logos: selectedLogoNames.slice(0, 10), // Limit to first 10 for analytics
+      selected_logos: selectedLogoNames.slice(0, 10).join(", "), // Convert to string for analytics
       source: "logos_page_install_dock",
     });
 
