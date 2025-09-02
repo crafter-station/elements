@@ -93,13 +93,18 @@ export function findRegistryItemMatch(
 /**
  * Gets the registry JSON URL for a given registry item
  */
-export function getRegistryItemUrl(
-  registryItemName: string,
-  baseUrl?: string,
-): string {
+export function getRegistryItemUrl({
+  registryItemName,
+  baseUrl,
+  isV0,
+}: {
+  registryItemName: string;
+  baseUrl?: string;
+  isV0?: boolean;
+}): string {
   // Use the production domain for v0 integration
   const origin = baseUrl || "https://tryelements.dev";
-  return `${origin}/r/${registryItemName}.json`;
+  return `${origin}/r/${isV0 ? "v0/" : ""}${registryItemName}.json`;
 }
 
 /**

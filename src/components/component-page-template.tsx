@@ -606,7 +606,10 @@ function ComponentGrid({
                       );
                       return componentRegistryItem ? (
                         <OpenInV0Button
-                          url={getRegistryItemUrl(componentRegistryItem.name)}
+                          url={getRegistryItemUrl({
+                            registryItemName: componentRegistryItem.name,
+                            isV0: true,
+                          })}
                           componentKey={key}
                           source="component_page_desktop"
                         />
@@ -711,7 +714,10 @@ function ComponentGrid({
                         );
                         return componentRegistryItem ? (
                           <OpenInV0Button
-                            url={getRegistryItemUrl(componentRegistryItem.name)}
+                            url={getRegistryItemUrl({
+                              registryItemName: componentRegistryItem.name,
+                              isV0: true,
+                            })}
                             componentKey={key}
                             source="component_page_mobile"
                           />
