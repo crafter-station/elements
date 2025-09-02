@@ -1,0 +1,70 @@
+---
+title: Theme Switcher Switch
+description: Switch-based theme switcher with animated sun/moon icons
+---
+
+import { ThemeSwitcherSwitch } from "@/registry/default/elements/theme-switcher/switch"
+
+# Theme Switcher Switch
+
+Switch-based theme switcher with animated sun/moon icons. Requires ThemeProvider setup! Wrap your app with `<ThemeProvider>` and add `suppressHydrationWarning` to `<html>`.
+
+## Preview
+
+<div className="my-8 flex min-h-[200px] w-full items-center justify-center rounded-lg border bg-background p-8">
+  <ThemeSwitcherSwitch />
+</div>
+
+**Features:** Switch component with animated icons, smooth theme transitions, persistent theme selection, and accessible keyboard controls.
+
+## Installation
+
+```bash
+bunx shadcn@latest add https://tryelements.dev/r/theme-switcher-switch
+```
+
+## Dependencies
+
+```bash
+npm install next-themes
+```
+
+## Setup
+
+```tsx title="app/layout.tsx"
+import { ThemeProvider } from "next-themes"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcherSwitch } from "@/registry/default/elements/theme-switcher/switch"
+
+export function Settings() {
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <span>Dark Mode</span>
+        <ThemeSwitcherSwitch />
+      </div>
+    </div>
+  )
+}
+```

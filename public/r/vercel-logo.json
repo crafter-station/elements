@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/logos/vercel.tsx",
-      "content": "export function VercelIcon({ className }: { className?: string }) {\n  return (\n    <svg viewBox=\"0 0 256 222\" width=\"256\" height=\"222\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid\" className={className}>\n      <path fill=\"currentColor\" d=\"m128 0 128 221.705H0z\"/>\n    </svg>\n  );\n}",
+      "content": "export function VercelLogo({ className }: { className?: string }) {\n  return (\n    <svg\n      viewBox=\"0 0 256 222\"\n      width=\"256\"\n      height=\"222\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      preserveAspectRatio=\"xMidYMid\"\n      className={className}\n    >\n      <title>Vercel Logo</title>\n      <path fill=\"currentColor\" d=\"m128 0 128 221.705H0z\" />\n    </svg>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/ui/logos/vercel.tsx"
     }

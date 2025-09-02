@@ -85,7 +85,7 @@ export default function TriggerPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="border border-border rounded-lg p-6 bg-card/30 backdrop-blur-sm">
+            <div className="border border-border rounded-lg p-6 bg-card/30 ">
               <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4">
                 <ZapIcon className="w-6 h-6" />
               </div>
@@ -99,7 +99,7 @@ export default function TriggerPage() {
               </div>
             </div>
 
-            <div className="border border-border rounded-lg p-6 bg-card/30 backdrop-blur-sm">
+            <div className="border border-border rounded-lg p-6 bg-card/30 ">
               <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4">
                 <ServerIcon className="w-6 h-6" />
               </div>
@@ -113,7 +113,7 @@ export default function TriggerPage() {
               </div>
             </div>
 
-            <div className="border border-border rounded-lg p-6 bg-card/30 backdrop-blur-sm">
+            <div className="border border-border rounded-lg p-6 bg-card/30 ">
               <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4">
                 <BranchIcon className="w-6 h-6" />
               </div>

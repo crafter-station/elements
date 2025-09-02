@@ -1,0 +1,275 @@
+---
+title: Apple Logo
+description: Apple logo component with theme-adaptive colors
+---
+
+# Apple Logo
+
+A theme-adaptive Apple logo component that seamlessly integrates with your design system. Uses `currentColor` to automatically match your theme's foreground colors.
+
+## Features
+
+- **Theme Adaptive** - Automatically adapts to light and dark themes
+- **Scalable Vector** - Crisp at any size using SVG
+- **Design System Integration** - Uses `currentColor` for consistent styling
+- **Accessibility** - Includes proper accessibility attributes
+- **Customizable** - Easy to style with CSS classes and props
+
+## Preview
+
+<div className="my-8 flex min-h-[200px] w-full items-center justify-center space-x-8 rounded-lg border bg-background p-8">
+  <div className="flex flex-col items-center space-y-2">
+    <div className="text-4xl">🍎</div>
+    <span className="text-xs text-muted-foreground">Small (16px)</span>
+  </div>
+  <div className="flex flex-col items-center space-y-2">
+    <div className="text-6xl">🍎</div>
+    <span className="text-xs text-muted-foreground">Medium (24px)</span>
+  </div>
+  <div className="flex flex-col items-center space-y-2">
+    <div className="text-8xl">🍎</div>
+    <span className="text-xs text-muted-foreground">Large (32px)</span>
+  </div>
+</div>
+
+## Installation
+
+Install the Apple logo component:
+
+```bash
+bunx shadcn@latest add https://tryelements.dev/r/apple-logo
+```
+
+## Usage
+
+### Basic Usage
+
+```tsx title="components/oauth-buttons.tsx"
+import { AppleLogo } from "@/components/ui/logos/apple"
+
+export function OAuthButtons() {
+  return (
+    <div className="space-y-2">
+      <button className="flex w-full items-center justify-center gap-2 rounded-md border px-4 py-2">
+        <AppleLogo className="h-4 w-4" />
+        Continue with Apple
+      </button>
+    </div>
+  )
+}
+```
+
+### In Authentication Forms
+
+```tsx title="components/sign-in-form.tsx"
+import { AppleLogo } from "@/components/ui/logos/apple"
+
+export function SignInForm() {
+  return (
+    <form className="space-y-4">
+      <div className="grid grid-cols-2 gap-2">
+        <button className="flex items-center justify-center gap-2 rounded border px-3 py-2">
+          <AppleLogo className="h-4 w-4" />
+          Apple
+        </button>
+        {/* Other OAuth buttons */}
+      </div>
+    </form>
+  )
+}
+```
+
+### With Custom Styling
+
+```tsx title="components/branded-button.tsx"
+import { AppleLogo } from "@/components/ui/logos/apple"
+
+export function AppleSignInButton() {
+  return (
+    <button className="group relative w-full overflow-hidden rounded-lg bg-black px-6 py-3 text-white transition-all hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100">
+      <div className="flex items-center justify-center gap-3">
+        <AppleLogo className="h-5 w-5" />
+        <span className="font-semibold">Sign in with Apple</span>
+      </div>
+    </button>
+  )
+}
+```
+
+### In Navigation
+
+```tsx title="components/app-links.tsx"
+import { AppleLogo } from "@/components/ui/logos/apple"
+
+export function AppLinks() {
+  return (
+    <div className="flex items-center space-x-4">
+      <a
+        href="https://apps.apple.com/app/yourapp"
+        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+      >
+        <AppleLogo className="h-4 w-4" />
+        Download on App Store
+      </a>
+    </div>
+  )
+}
+```
+
+## Customization
+
+### Size Variants
+
+The logo scales proportionally with the provided dimensions:
+
+```tsx
+{/* Small */}
+<AppleLogo className="h-4 w-4" />
+
+{/* Medium */}  
+<AppleLogo className="h-6 w-6" />
+
+{/* Large */}
+<AppleLogo className="h-8 w-8" />
+
+{/* Extra Large */}
+<AppleLogo className="h-12 w-12" />
+```
+
+### Color Customization
+
+The logo uses `currentColor`, so it inherits the text color:
+
+```tsx
+{/* Inherits text color */}
+<div className="text-blue-600">
+  <AppleLogo className="h-6 w-6" />
+</div>
+
+{/* Custom color */}
+<AppleLogo className="h-6 w-6 text-gray-600" />
+
+{/* Theme-aware color */}
+<AppleLogo className="h-6 w-6 text-primary" />
+```
+
+### With Background
+
+```tsx title="components/app-icon.tsx"
+import { AppleLogo } from "@/components/ui/logos/apple"
+
+export function AppIcon() {
+  return (
+    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+      <AppleLogo className="h-6 w-6" />
+    </div>
+  )
+}
+```
+
+## Design Guidelines
+
+### Apple Brand Guidelines
+
+When using the Apple logo, follow Apple's brand guidelines:
+
+- **Minimum Size** - Don't use smaller than 16px in digital applications
+- **Clear Space** - Maintain adequate clear space around the logo
+- **Color** - Use black on light backgrounds, white on dark backgrounds
+- **Proportion** - Maintain the original aspect ratio
+
+### Accessibility
+
+The logo component includes proper accessibility attributes:
+
+- `role="img"` for screen readers
+- `aria-label` describing the logo
+- Proper color contrast when using custom colors
+
+## Theme Integration
+
+The logo automatically adapts to your theme:
+
+```css title="globals.css"
+/* Light theme */
+.apple-logo {
+  color: #000000; /* Black on light backgrounds */
+}
+
+/* Dark theme */
+.dark .apple-logo {
+  color: #ffffff; /* White on dark backgrounds */
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `""` | Additional CSS classes |
+| `...props` | `SVGProps<SVGSVGElement>` | - | Standard SVG props |
+
+## Examples
+
+### OAuth Provider Grid
+
+```tsx title="components/oauth-grid.tsx"
+import { AppleLogo } from "@/components/ui/logos/apple"
+import { GoogleLogo } from "@/components/ui/logos/google"
+import { GitHubLogo } from "@/components/ui/logos/github"
+
+const providers = [
+  { name: 'Apple', icon: AppleLogo },
+  { name: 'Google', icon: GoogleLogo },
+  { name: 'GitHub', icon: GitHubLogo },
+]
+
+export function OAuthGrid() {
+  return (
+    <div className="grid grid-cols-3 gap-2">
+      {providers.map((provider) => (
+        <button
+          key={provider.name}
+          className="flex flex-col items-center gap-2 rounded-lg border p-4 hover:bg-accent"
+        >
+          <provider.icon className="h-6 w-6" />
+          <span className="text-xs">{provider.name}</span>
+        </button>
+      ))}
+    </div>
+  )
+}
+```
+
+### Download Links
+
+```tsx title="components/download-section.tsx"
+import { AppleLogo } from "@/components/ui/logos/apple"
+
+export function DownloadSection() {
+  return (
+    <div className="text-center space-y-4">
+      <h3 className="text-lg font-semibold">Download Our App</h3>
+      <div className="flex justify-center gap-4">
+        <a
+          href="https://apps.apple.com"
+          className="flex items-center gap-2 rounded-lg bg-black px-4 py-2 text-white"
+        >
+          <AppleLogo className="h-5 w-5" />
+          <div className="text-left">
+            <div className="text-xs">Download on the</div>
+            <div className="text-sm font-semibold">App Store</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  )
+}
+```
+
+## Related Components
+
+- [Google Logo](/docs/components/logos/google) - Google logo component
+- [Microsoft Logo](/docs/components/logos/microsoft) - Microsoft logo component
+- [GitHub Logo](/docs/components/logos/github) - GitHub logo component
+- [Brand Logos Collection](/docs/components/logos) - Complete logo collection

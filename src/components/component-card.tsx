@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { track } from "@vercel/analytics";
+
 import { cn } from "@/lib/utils";
 
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +16,7 @@ interface ComponentCardProps {
   href?: string;
   elementsCount?: number;
   providerLink?: string;
+  trackingSource?: string;
 }
 
 export function ComponentCard({
@@ -26,7 +29,18 @@ export function ComponentCard({
   href,
   elementsCount,
   providerLink,
+  trackingSource = "unknown",
 }: ComponentCardProps) {
+  const handleClick = () => {
+    track("Component Card Click", {
+      component_name: name,
+      category: category,
+      source: trackingSource,
+      is_enabled: isEnabled,
+      elements_count: elementsCount || 0,
+    });
+  };
+
   const patternStyle =
     brandColor && isEnabled
       ? {
@@ -43,7 +57,7 @@ export function ComponentCard({
 
   const CardContent = (
     <figure
-      className={`relative flex h-full w-full flex-col justify-between border border-border p-4 sm:p-6 text-sm backdrop-blur-sm hover:border-foreground/20 transition-all duration-200 group ${
+      className={`relative flex h-full w-full flex-col justify-between border border-border p-4 sm:p-6 text-sm hover:border-foreground/20 transition-all duration-200 group ${
         isEnabled
           ? brandColor
             ? "cursor-pointer"
@@ -104,7 +118,13 @@ export function ComponentCard({
   return (
     <div className="relative isolate h-full w-full">
       {CardContent}
-      {href && <Link className="absolute inset-0 z-10" href={href}></Link>}
+      {href && (
+        <Link
+          className="absolute inset-0 z-10"
+          href={href}
+          onClick={handleClick}
+        ></Link>
+      )}
       {providerLink && (
         <a
           href={providerLink}

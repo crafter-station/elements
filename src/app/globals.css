@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "fumadocs-ui/css/shadcn.css";
+@import "fumadocs-ui/css/preset.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -121,10 +123,5 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-
-  /* Shiki themes override background */
-  .shiki {
-    background: transparent;
   }
 }

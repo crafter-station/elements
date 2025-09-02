@@ -1,14 +1,14 @@
-import { ThemeSwitcherButton } from "@registry/default/elements/theme-switcher/button";
-import { ThemeSwitcherDropdown } from "@registry/default/elements/theme-switcher/dropdown";
-import { ThemeSwitcherMultiButton } from "@registry/default/elements/theme-switcher/multi-button";
-import { ThemeSwitcherSwitch } from "@registry/default/elements/theme-switcher/switch";
-import { ThemeSwitcherToggle } from "@registry/default/elements/theme-switcher/toggle";
-
 import { ComponentPageTemplate } from "@/components/component-page-template";
 import { MoonIcon } from "@/components/icons/moon";
 import { ServerIcon } from "@/components/icons/server";
 import { ShieldIcon } from "@/components/icons/shield";
 import { ZapIcon } from "@/components/icons/zap";
+
+import { ThemeSwitcherButton } from "@/registry/default/elements/theme-switcher/button";
+import { ThemeSwitcherDropdown } from "@/registry/default/elements/theme-switcher/dropdown";
+import { ThemeSwitcherMultiButton } from "@/registry/default/elements/theme-switcher/multi-button";
+import { ThemeSwitcherSwitch } from "@/registry/default/elements/theme-switcher/switch";
+import { ThemeSwitcherToggle } from "@/registry/default/elements/theme-switcher/toggle";
 
 export default function ThemeSwitcherPage() {
   const features = [
@@ -52,24 +52,24 @@ export default function ThemeSwitcherPage() {
   const usageExample = `<span class="text-blue-400">import</span>
 <span class="text-foreground"> { ThemeSwitcherButton } </span>
 <span class="text-blue-400">from</span>
-<span class="text-green-400"> "@registry/theme-switcher-button"</span>
+<span class="text-green-400"> "@/registry/theme-switcher-button"</span>
 <br />
 <span class="text-gray-500">&lt;ThemeSwitcherButton /&gt;</span>`;
 
   const themeSwitcherComponents = {
-    switch: <ThemeSwitcherSwitch />,
-    button: <ThemeSwitcherButton />,
-    dropdown: <ThemeSwitcherDropdown />,
-    toggle: <ThemeSwitcherToggle />,
-    "multi-button": <ThemeSwitcherMultiButton />,
+    "theme-switcher-switch": <ThemeSwitcherSwitch />,
+    "theme-switcher-button": <ThemeSwitcherButton />,
+    "theme-switcher-dropdown": <ThemeSwitcherDropdown />,
+    "theme-switcher-toggle": <ThemeSwitcherToggle />,
+    "theme-switcher-multi-button": <ThemeSwitcherMultiButton />,
   };
 
   const componentInstallUrls = {
-    switch: "@elements/theme-switcher-switch",
-    button: "@elements/theme-switcher-button",
-    dropdown: "@elements/theme-switcher-dropdown",
-    toggle: "@elements/theme-switcher-toggle",
-    "multi-button": "@elements/theme-switcher-multi-button",
+    "theme-switcher-switch": "@elements/theme-switcher-switch",
+    "theme-switcher-button": "@elements/theme-switcher-button",
+    "theme-switcher-dropdown": "@elements/theme-switcher-dropdown",
+    "theme-switcher-toggle": "@elements/theme-switcher-toggle",
+    "theme-switcher-multi-button": "@elements/theme-switcher-multi-button",
   };
 
   return (

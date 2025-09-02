@@ -1,4 +1,4 @@
-export function ResendIcon({ className }: { className?: string }) {
+export function ResendLogo({ className }: { className?: string }) {
   return (
     <svg
       width="600"

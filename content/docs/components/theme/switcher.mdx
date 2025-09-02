@@ -1,0 +1,76 @@
+---
+title: Theme Switcher
+description: Switch-based theme switcher with animated sun/moon icons
+---
+
+import { ThemeSwitcher } from "@/registry/default/elements/theme-switcher/theme-switcher"
+
+# Theme Switcher
+
+Switch-based theme switcher with animated sun/moon icons. Requires ThemeProvider setup! Wrap your app with `<ThemeProvider>` and add `suppressHydrationWarning` to `<html>`.
+
+## Preview
+
+<div className="my-8 flex min-h-[200px] w-full items-center justify-center rounded-lg border bg-background p-8">
+  <ThemeSwitcher />
+</div>
+
+**Features:** Animated icons with smooth transitions, theme persistence across sessions, system theme preference support, and accessible keyboard navigation.
+
+## Installation
+
+```bash
+bunx shadcn@latest add https://tryelements.dev/r/theme-switcher
+```
+
+## Dependencies
+
+```bash
+npm install next-themes
+```
+
+## Setup
+
+```tsx title="app/layout.tsx"
+import { ThemeProvider } from "next-themes"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcher } from "@/registry/default/elements/theme-switcher/theme-switcher"
+
+export function Header() {
+  return (
+    <header className="flex items-center justify-between p-4">
+      <h1>My App</h1>
+      <ThemeSwitcher />
+    </header>
+  )
+}
+```
+
+## Variants
+
+- **[Theme Switcher Switch](/docs/components/theme/switcher-switch)** - Switch-based version
+- **[Theme Switcher Button](/docs/components/theme/switcher-button)** - Simple button version  
+- **[Theme Switcher Dropdown](/docs/components/theme/switcher-dropdown)** - Dropdown with options
+- **[Theme Switcher Toggle](/docs/components/theme/switcher-toggle)** - Custom toggle animation
+- **[Theme Switcher Multi Button](/docs/components/theme/switcher-multi-button)** - Multi-button variant

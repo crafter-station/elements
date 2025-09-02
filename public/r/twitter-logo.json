@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/logos/twitter.tsx",
-      "content": "export function TwitterLogo({ className }: { className?: string }) {\n  return (\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"1200\"\n      height=\"1227\"\n      fill=\"none\"\n      viewBox=\"0 0 1200 1227\"\n      className={className || \"w-8 h-8\"}\n    >\n      <path\n        fill=\"currentColor\"\n        d=\"M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z\"\n      />\n    </svg>\n  );\n}\n",
+      "content": "export function TwitterLogo({ className }: { className?: string }) {\n  return (\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"1200\"\n      height=\"1227\"\n      fill=\"none\"\n      viewBox=\"0 0 1200 1227\"\n      className={className || \"w-8 h-8\"}\n    >\n      <title>Twitter Logo</title>\n      <path\n        fill=\"currentColor\"\n        d=\"M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z\"\n      />\n    </svg>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/ui/logos/twitter.tsx"
     }

@@ -13,10 +13,13 @@ import {
 } from "@/components/ui/collapsible";
 
 interface DebugPanelProps {
+  // biome-ignore lint/suspicious/noExplicitAny: Clerk types are complex and change frequently
   signUp?: any;
+  // biome-ignore lint/suspicious/noExplicitAny: Clerk types are complex and change frequently
   signIn?: any;
   requiredFields?: string[];
   supportedIdentifiers?: string[];
+  // biome-ignore lint/suspicious/noExplicitAny: Social provider types are complex and vary
   socialProviders?: any[];
   step?: string;
   isWaitlistMode?: boolean;

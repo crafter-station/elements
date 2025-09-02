@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/logos/microsoft.tsx",
-      "content": "export function MicrosoftLogo({ className }: { className?: string }) {\n  return (\n    <svg\n      viewBox=\"0 0 256 256\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"256\"\n      height=\"256\"\n      preserveAspectRatio=\"xMidYMid\"\n      className={className || \"w-8 h-8\"}\n    >\n      <path fill=\"#F1511B\" d=\"M121.666 121.666H0V0h121.666z\" />\n      <path fill=\"#80CC28\" d=\"M256 121.666H134.335V0H256z\" />\n      <path fill=\"#00ADEF\" d=\"M121.663 256.002H0V134.336h121.663z\" />\n      <path fill=\"#FBBC09\" d=\"M256 256.002H134.335V134.336H256z\" />\n    </svg>\n  );\n}\n",
+      "content": "export function MicrosoftLogo({ className }: { className?: string }) {\n  return (\n    <svg\n      viewBox=\"0 0 256 256\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"256\"\n      height=\"256\"\n      preserveAspectRatio=\"xMidYMid\"\n      className={className || \"w-8 h-8\"}\n    >\n      <title>Microsoft Logo</title>\n      <path fill=\"#F1511B\" d=\"M121.666 121.666H0V0h121.666z\" />\n      <path fill=\"#80CC28\" d=\"M256 121.666H134.335V0H256z\" />\n      <path fill=\"#00ADEF\" d=\"M121.663 256.002H0V134.336h121.663z\" />\n      <path fill=\"#FBBC09\" d=\"M256 256.002H134.335V134.336H256z\" />\n    </svg>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/ui/logos/microsoft.tsx"
     }

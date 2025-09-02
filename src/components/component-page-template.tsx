@@ -2,10 +2,23 @@
 
 import { type ReactNode, useState } from "react";
 
+import { track } from "@vercel/analytics";
+
+import {
+  findRegistryItemMatch,
+  getRegistryItemUrl,
+} from "@/lib/registry-utils";
+import { cn } from "@/lib/utils";
+
+import { FileTreeViewer } from "@/components/file-tree-viewer";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { CopyIcon } from "@/components/icons/copy";
+import { EyeIcon } from "@/components/icons/eye";
+import { EyeClosedIcon } from "@/components/icons/eye-closed";
 import { InstallCommand } from "@/components/install-command";
+import { OpenInV0Button } from "@/components/open-in-v0-button";
+import { RegistryVisualizer } from "@/components/registry-visualizer";
 import { ScrambleText } from "@/components/scramble-text";
 import {
   ThemeAwareBrandText,
@@ -22,6 +35,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+// @ts-expect-error
+import registryData from "@/registry";
 
 interface Feature {
   icon: ReactNode;
@@ -70,6 +86,7 @@ interface ComponentPageTemplateProps {
   componentInstallUrls?: Record<string, string>;
   layout?: Layout;
   children?: ReactNode;
+  showRegistryVisualizer?: boolean;
 }
 
 export function ComponentPageTemplate({
@@ -85,14 +102,65 @@ export function ComponentPageTemplate({
   componentInstallUrls = {},
   layout = { type: "auto", columns: 4, gap: "lg" },
   children,
+  showRegistryVisualizer = false,
 }: ComponentPageTemplateProps) {
   const [selectedComponents, setSelectedComponents] = useState<Set<string>>(
     new Set(),
   );
   const [packageManager, setPackageManager] = useState("bunx");
   const [copied, setCopied] = useState(false);
+  const [activeTreeViewer, setActiveTreeViewer] = useState<string | null>(null);
+
+  // Get relevant registry items for this component
+  const relevantRegistryItems = registryData.items.filter(
+    (item: { name: string }) => {
+      const itemName = item.name.toLowerCase();
+      const searchName = name.toLowerCase().replace(/\s+/g, "-"); // Convert spaces to hyphens
+      const searchCategory = category.toLowerCase();
+
+      // Check if item name contains the search name (with space-to-hyphen conversion)
+      if (itemName.includes(searchName)) return true;
+
+      // Check if item name starts with the search name
+      if (itemName.startsWith(searchName)) return true;
+
+      // Check if category matches (less strict)
+      if (
+        searchCategory.includes(itemName) ||
+        itemName.includes(searchCategory)
+      )
+        return true;
+
+      // Check for common words/parts
+      const nameParts = searchName
+        .split("-")
+        .filter((part: string) => part.length > 2);
+      const itemParts = itemName
+        .split("-")
+        .filter((part: string) => part.length > 2);
+      const commonParts = nameParts.filter((part) => itemParts.includes(part));
+
+      // If at least one meaningful part matches
+      if (commonParts.length > 0) return true;
+
+      return false;
+    },
+  );
 
   const handleComponentToggle = (componentKey: string) => {
+    const isCurrentlySelected = selectedComponents.has(componentKey);
+
+    track("Component Selection", {
+      component_key: componentKey,
+      component_category: category,
+      page_name: name || "unknown",
+      action: isCurrentlySelected ? "deselect" : "select",
+      total_selected_after: isCurrentlySelected
+        ? selectedComponents.size - 1
+        : selectedComponents.size + 1,
+      source: "component_page_template",
+    });
+
     const newSelected = new Set(selectedComponents);
     if (newSelected.has(componentKey)) {
       newSelected.delete(componentKey);
@@ -131,12 +199,28 @@ export function ComponentPageTemplate({
   const copyCommand = async () => {
     if (selectedComponents.size === 0) return;
 
+    track("Component Install Command Copy", {
+      component_category: category,
+      page_name: name || "unknown",
+      package_manager: packageManager,
+      selected_components: Array.from(selectedComponents).join(","),
+      selected_count: selectedComponents.size,
+      source: "component_page_install_dock",
+    });
+
     const command = getInstallCommand(packageManager);
     try {
       await navigator.clipboard.writeText(command);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
+      track("Component Install Command Copy Error", {
+        component_category: category,
+        page_name: name || "unknown",
+        package_manager: packageManager,
+        selected_count: selectedComponents.size,
+        source: "component_page_install_dock",
+      });
       console.error("Failed to copy command:", err);
     }
   };
@@ -182,8 +266,10 @@ export function ComponentPageTemplate({
               <div className="flex justify-center">
                 <InstallCommand
                   url={installCommand.replace(/^bunx shadcn@latest add /, "")}
-                  className="w-full max-w-lg"
                   brandColor={brandColor}
+                  source="component_page_hero"
+                  componentName={name}
+                  category={category}
                 />
               </div>
             </div>
@@ -200,12 +286,41 @@ export function ComponentPageTemplate({
                 installUrls={componentInstallUrls}
                 selectedComponents={selectedComponents}
                 onComponentToggle={handleComponentToggle}
+                activeTreeViewer={activeTreeViewer}
+                setActiveTreeViewer={setActiveTreeViewer}
+                relevantRegistryItems={relevantRegistryItems}
+                category={category}
+                name={name}
               />
             </div>
           </div>
         )}
 
         {children}
+
+        {/* Registry Visualizer Section */}
+        {showRegistryVisualizer && relevantRegistryItems.length > 0 && (
+          <div className="border-t border-border border-dotted">
+            <div className="px-4 sm:px-6 md:px-8 lg:px-16 py-12">
+              <div className="max-w-6xl mx-auto">
+                <div className="space-y-6">
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold">Registry Structure</h3>
+                    <p className="text-muted-foreground mt-2">
+                      Explore the component structure, dependencies, and
+                      installation details
+                    </p>
+                  </div>
+                  <RegistryVisualizer
+                    registryItems={relevantRegistryItems}
+                    selectedItem={name}
+                    className="h-[600px]"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Features & Technical Details - Combined and simplified */}
         <div className="border-t border-border border-dotted px-4 sm:px-6 md:px-8 lg:px-16 py-12">
@@ -245,7 +360,9 @@ export function ComponentPageTemplate({
                 </p>
                 <InstallCommand
                   url={installCommand.replace(/^bunx shadcn@latest add /, "")}
-                  className="w-full max-w-lg"
+                  source="component_page_quickstart"
+                  componentName={name}
+                  category={category}
                 />
               </div>
             </div>
@@ -258,7 +375,20 @@ export function ComponentPageTemplate({
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <div className="bg-card border rounded-lg shadow-lg max-w-lg w-full mx-4">
             <div className="flex rounded-md">
-              <Select value={packageManager} onValueChange={setPackageManager}>
+              <Select
+                value={packageManager}
+                onValueChange={(value) => {
+                  track("Component Package Manager Changed", {
+                    component_category: category,
+                    page_name: name || "unknown",
+                    from: packageManager,
+                    to: value,
+                    selected_components_count: selectedComponents.size,
+                    source: "component_page_install_dock",
+                  });
+                  setPackageManager(value);
+                }}
+              >
                 <SelectTrigger className="text-muted-foreground hover:text-foreground w-20 sm:w-20 rounded-e-none border-0 border-r shadow-none text-xs sm:text-sm">
                   <SelectValue />
                 </SelectTrigger>
@@ -330,12 +460,22 @@ function ComponentGrid({
   installUrls = {},
   selectedComponents,
   onComponentToggle,
+  activeTreeViewer,
+  setActiveTreeViewer,
+  relevantRegistryItems,
+  category,
+  name,
 }: {
   components: Record<string, ReactNode | ComponentWithLayout>;
   layout: Layout;
   installUrls?: Record<string, string>;
   selectedComponents: Set<string>;
   onComponentToggle: (componentKey: string) => void;
+  activeTreeViewer: string | null;
+  setActiveTreeViewer: (key: string | null) => void;
+  relevantRegistryItems: Array<{ name: string; [key: string]: unknown }>;
+  category: string;
+  name: string;
 }) {
   // Determine grid layout
   const isCustomLayout = layout.type === "custom";
@@ -412,67 +552,255 @@ function ComponentGrid({
         return (
           <div
             key={key}
-            className={`${customClassName} border-t border-l border-r border-b border-dotted transition-all duration-200 ${
-              isSelected ? "border-primary/50" : "border-border"
-            }`}
+            className={cn(
+              customClassName,
+              "border-t border-l border-r border-b border-dotted transition-all duration-200",
+              isSelected ? "border-primary/50" : "border-border",
+            )}
           >
             {/* Component Header - Outside bordered area */}
             <div
-              className={`px-4 sm:px-6 py-4 transition-all duration-200 ${
+              className={cn(
+                "px-4 sm:px-6 py-4 transition-all duration-200",
                 isSelected
                   ? "bg-primary/10"
-                  : "bg-background hover:bg-accent/50"
-              }`}
+                  : "bg-background hover:bg-accent/50",
+              )}
             >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                {/* Component Label */}
-                <div className="flex items-center gap-3">
-                  <Checkbox
-                    checked={isSelected}
-                    onCheckedChange={() => onComponentToggle(key)}
-                    className="shrink-0"
-                  />
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      className="text-sm md:text-base font-medium text-foreground capitalize cursor-pointer hover:text-primary transition-colors"
-                      onClick={() => onComponentToggle(key)}
-                    >
-                      {key.replace("-", " ")}
-                    </button>
-                    {key.includes("shadcn") && (
-                      <Badge
-                        variant="outline"
-                        className="border-blue-500 text-blue-500 text-xs"
+              <div className="space-y-3">
+                {/* Desktop: Single Row Layout */}
+                <div className="hidden mb-0 sm:flex sm:items-center sm:justify-between">
+                  {/* Component Label */}
+                  <div className="flex items-center gap-3">
+                    <Checkbox
+                      checked={isSelected}
+                      onCheckedChange={() => onComponentToggle(key)}
+                      className="shrink-0"
+                    />
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        className="text-sm md:text-base font-medium text-foreground capitalize cursor-pointer hover:text-primary transition-colors"
+                        onClick={() => onComponentToggle(key)}
                       >
-                        BETA
-                      </Badge>
+                        {key.replace("-", " ")}
+                      </button>
+                      {key.includes("shadcn") && (
+                        <Badge
+                          variant="outline"
+                          className="border-blue-500 text-blue-500 text-xs"
+                        >
+                          BETA
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* All Actions - Desktop */}
+                  <div className="flex items-center gap-2">
+                    {/* Open in v0 Button */}
+                    {(() => {
+                      const componentRegistryItem = findRegistryItemMatch(
+                        key,
+                        relevantRegistryItems,
+                      );
+                      return componentRegistryItem ? (
+                        <OpenInV0Button
+                          url={getRegistryItemUrl(componentRegistryItem.name)}
+                          componentKey={key}
+                          source="component_page_desktop"
+                        />
+                      ) : null;
+                    })()}
+
+                    {/* Show Tree Button */}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const componentRegistryItem = findRegistryItemMatch(
+                          key,
+                          relevantRegistryItems,
+                        );
+                        if (componentRegistryItem) {
+                          const isCurrentlyActive = activeTreeViewer === key;
+                          track("Component Tree Viewer", {
+                            component_key: key,
+                            component_category: category,
+                            page_name: name || "unknown",
+                            action: isCurrentlyActive
+                              ? "hide_tree"
+                              : "show_tree",
+                            source: "component_page_tree_viewer",
+                          });
+                          setActiveTreeViewer(
+                            activeTreeViewer === key ? null : key,
+                          );
+                        }
+                      }}
+                      className="text-xs h-9 gap-2"
+                    >
+                      {activeTreeViewer === key ? (
+                        <>
+                          <EyeClosedIcon className="w-4 h-4" />
+                          Hide Tree
+                        </>
+                      ) : (
+                        <>
+                          <EyeIcon className="w-4 h-4" />
+                          Show Tree
+                        </>
+                      )}
+                    </Button>
+
+                    {/* Install Command - Desktop */}
+                    {(installUrls[key] ||
+                      (isComponentWithLayout &&
+                        (item as ComponentWithLayout).installUrl)) && (
+                      <InstallCommand
+                        className="!max-w-lg"
+                        url={
+                          installUrls[key] ||
+                          (item as ComponentWithLayout).installUrl
+                        }
+                        source="component_page_component_individual_desktop"
+                        componentName={key}
+                        category={category}
+                      />
                     )}
                   </div>
                 </div>
 
-                {/* Install Command - Header Right */}
-                {(installUrls[key] ||
-                  (isComponentWithLayout &&
-                    (item as ComponentWithLayout).installUrl)) && (
-                  <InstallCommand
-                    url={
-                      installUrls[key] ||
-                      (item as ComponentWithLayout).installUrl
-                    }
-                    className="w-full max-w-lg"
-                  />
-                )}
+                {/* Mobile: Two Row Layout */}
+                <div className="sm:hidden space-y-3">
+                  {/* First Row: Component Label + Action Buttons */}
+                  <div className="flex items-center justify-between">
+                    {/* Component Label */}
+                    <div className="flex items-center gap-3">
+                      <Checkbox
+                        checked={isSelected}
+                        onCheckedChange={() => onComponentToggle(key)}
+                        className="shrink-0"
+                      />
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          className="text-sm font-medium text-foreground capitalize cursor-pointer hover:text-primary transition-colors"
+                          onClick={() => onComponentToggle(key)}
+                        >
+                          {key.replace("-", " ")}
+                        </button>
+                        {key.includes("shadcn") && (
+                          <Badge
+                            variant="outline"
+                            className="border-blue-500 text-blue-500 text-xs"
+                          >
+                            BETA
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Action Buttons - Mobile */}
+                    <div className="flex items-center gap-2">
+                      {/* Open in v0 Button */}
+                      {(() => {
+                        const componentRegistryItem = findRegistryItemMatch(
+                          key,
+                          relevantRegistryItems,
+                        );
+                        return componentRegistryItem ? (
+                          <OpenInV0Button
+                            url={getRegistryItemUrl(componentRegistryItem.name)}
+                            componentKey={key}
+                            source="component_page_mobile"
+                          />
+                        ) : null;
+                      })()}
+
+                      {/* Show Tree Button - Hidden on Mobile */}
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          const componentRegistryItem = findRegistryItemMatch(
+                            key,
+                            relevantRegistryItems,
+                          );
+                          if (componentRegistryItem) {
+                            setActiveTreeViewer(
+                              activeTreeViewer === key ? null : key,
+                            );
+                          }
+                        }}
+                        className="text-xs h-9 gap-2 hidden sm:flex"
+                      >
+                        {activeTreeViewer === key ? (
+                          <>
+                            <EyeClosedIcon className="w-4 h-4" />
+                            Hide Tree
+                          </>
+                        ) : (
+                          <>
+                            <EyeIcon className="w-4 h-4" />
+                            Show Tree
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Second Row: Install Command - Mobile only */}
+                  {(installUrls[key] ||
+                    (isComponentWithLayout &&
+                      (item as ComponentWithLayout).installUrl)) && (
+                    <div className="w-full">
+                      <InstallCommand
+                        className="!max-w-full"
+                        url={
+                          installUrls[key] ||
+                          (item as ComponentWithLayout).installUrl
+                        }
+                        source="component_page_component_individual_mobile"
+                        componentName={key}
+                        category={category}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
             {/* Component Display Area - Bordered */}
-            <div className="bg-card/30 backdrop-blur-sm border-t border-dotted border-border">
-              <div className="flex items-center justify-center min-h-[350px] md:min-h-[400px] px-4 py-14">
-                <div className="flex justify-center w-full max-w-lg">
-                  {componentNode as ReactNode}
+            <div className="bg-card/30 border-t border-dotted border-border w-full">
+              {activeTreeViewer === key ? (
+                // Tree view mode - replaces component content
+                <div className="h-[600px]">
+                  {(() => {
+                    const componentRegistryItem = findRegistryItemMatch(
+                      key,
+                      relevantRegistryItems,
+                    );
+                    return (
+                      <FileTreeViewer
+                        files={(componentRegistryItem?.files as any) || []}
+                        registryItem={componentRegistryItem || undefined}
+                        onClose={() => setActiveTreeViewer(null)}
+                        className="relative h-full bg-transparent"
+                        componentKey={key}
+                        source="component_page_file_tree"
+                      />
+                    );
+                  })()}
                 </div>
-              </div>
+              ) : (
+                // Normal view mode
+                <div className="w-full min-h-[350px] md:min-h-[400px] flex items-center justify-center px-4 py-14">
+                  <div className="w-full max-w-none flex justify-center items-center">
+                    {componentNode as ReactNode}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         );

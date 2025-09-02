@@ -38,7 +38,6 @@ export function ThemeSwitcherSwitch() {
           className="data-[state=checked]:bg-secondary absolute inset-0"
         />
 
-        {/* Sun icon - positioned on the left side */}
         <div
           className={`absolute left-0 top-0 h-full w-4 flex items-center justify-center transition-opacity duration-200 pointer-events-none ${
             isDark ? "opacity-0" : "opacity-100"
@@ -47,7 +46,6 @@ export function ThemeSwitcherSwitch() {
           <SunIcon className="w-3 h-3 text-foreground" />
         </div>
 
-        {/* Moon icon - positioned on the right side */}
         <div
           className={`absolute right-0 top-0 h-full w-4 flex items-center justify-center transition-opacity duration-200 pointer-events-none ${
             isDark ? "opacity-100" : "opacity-0"

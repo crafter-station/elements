@@ -1,4 +1,4 @@
-export function UpstashIcon({ className }: { className?: string }) {
+export function UpstashLogo({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 256 341"

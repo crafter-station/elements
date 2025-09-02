@@ -1,0 +1,20 @@
+{
+  "title": "Elements Documentation",
+  "pages": [
+    "index",
+    "registry",
+    "components/index",
+    "components/clerk/sign-in-shadcn",
+    "components/clerk/sign-up-shadcn",
+    "components/clerk/waitlist-shadcn",
+    "components/clerk/middleware",
+    "components/theme/switcher",
+    "components/theme/switcher-switch",
+    "components/theme/switcher-button",
+    "components/theme/switcher-dropdown",
+    "components/theme/switcher-toggle",
+    "components/theme/switcher-multi-button",
+    "components/logos/index",
+    "components/polar/sponsorship"
+  ]
+}

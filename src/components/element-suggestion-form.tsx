@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 
+import { SignInButton, useUser } from "@clerk/nextjs";
 import { AnimatePresence, motion } from "motion/react";
 
 import { ChevronDownIcon } from "@/components/icons/chevron-down";
@@ -36,13 +37,17 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 
 export function ElementSuggestionForm() {
+  const { user } = useUser();
   const id = useId();
   const [open, setOpen] = useState<boolean>(false);
   const [selectedProvider, setSelectedProvider] = useState<string>("");
   const [customProvider, setCustomProvider] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [_elementName, setElementName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [showLoginPrompt, setShowLoginPrompt] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const providers = [
     {
@@ -108,31 +113,103 @@ export function ElementSuggestionForm() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validation
     if (!selectedProvider || !description.trim()) return;
 
-    // Simulate submission
-    setTimeout(() => {
-      setIsSubmitted(true);
-    }, 500);
+    // For anonymous users, require email
+    if (!user && !email.trim()) {
+      alert("Please provide your email address");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+    formData.append("provider", selectedProvider);
+    formData.append("customProvider", customProvider);
+    formData.append("description", description);
+    formData.append("email", user?.emailAddresses?.[0]?.emailAddress || email);
+    formData.append("userId", user?.id || "anonymous");
+    formData.append("isAuthenticated", user ? "true" : "false");
+
+    try {
+      const { submitElementSuggestion } = await import("@/actions/suggestions");
+      const result = await submitElementSuggestion(formData);
+
+      if (result.success) {
+        setIsSubmitted(true);
+      } else if (result.error === "ANONYMOUS_LIMIT_REACHED") {
+        setShowLoginPrompt(true);
+      } else {
+        console.error("Failed to submit suggestion");
+        alert("Failed to submit suggestion. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting suggestion:", error);
+      alert("Error submitting suggestion. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetForm = () => {
     setOpen(false);
     setSelectedProvider("");
     setCustomProvider("");
+    setEmail("");
     setElementName("");
     setDescription("");
     setIsSubmitted(false);
+    setShowLoginPrompt(false);
   };
+
+  // Show login prompt for anonymous users who already submitted
+  if (showLoginPrompt) {
+    return (
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-card/30 border border-border border-dotted p-6 space-y-4"
+      >
+        <div className="text-center space-y-4">
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-foreground">
+              Want to suggest more elements?
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              You've already submitted one anonymous suggestion. Sign in to
+              submit more ideas!
+            </p>
+          </div>
+          <div className="flex gap-2 justify-center">
+            <SignInButton mode="modal">
+              <Button size="sm" className="text-xs">
+                Sign In
+              </Button>
+            </SignInButton>
+            <Button
+              onClick={resetForm}
+              variant="outline"
+              size="sm"
+              className="text-xs"
+            >
+              Go Back
+            </Button>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
 
   if (isSubmitted) {
     return (
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-card/30 backdrop-blur-sm border border-border border-dotted p-6 space-y-4"
+        className="bg-card/30 border border-border border-dotted p-6 space-y-4"
       >
         <div className="text-center space-y-4">
           <motion.div
@@ -168,7 +245,7 @@ export function ElementSuggestionForm() {
     <motion.div
       initial={{ scale: 0.95, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="bg-card/30 backdrop-blur-sm border border-border border-dotted p-6"
+      className="bg-card/30 border border-border border-dotted p-6"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="text-center space-y-2 mb-6">
@@ -181,6 +258,30 @@ export function ElementSuggestionForm() {
         </div>
 
         <div className="space-y-4">
+          {/* Email field for anonymous users */}
+          {!user && (
+            <div>
+              <Label
+                htmlFor={`${id}-email`}
+                className="text-sm font-medium mb-2 block"
+              >
+                Email Address {!user && "*"}
+              </Label>
+              <Input
+                id={`${id}-email`}
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full"
+                required={!user}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                We'll use this to follow up on your suggestion
+              </p>
+            </div>
+          )}
+
           <div>
             <Label htmlFor={id} className="text-sm font-medium mb-2 block">
               Provider
@@ -298,11 +399,29 @@ export function ElementSuggestionForm() {
           <Button
             type="submit"
             className="w-full"
-            disabled={!selectedProvider || !description.trim()}
+            disabled={
+              !selectedProvider ||
+              !description.trim() ||
+              (!user && !email.trim()) ||
+              isSubmitting
+            }
             size="sm"
           >
-            Submit Suggestion
+            {isSubmitting ? "Submitting..." : "Submit Suggestion"}
           </Button>
+
+          {/* Anonymous user info */}
+          {!user && (
+            <p className="text-xs text-muted-foreground text-center">
+              Anonymous users can submit one suggestion per email.{" "}
+              <SignInButton mode="modal">
+                <span className="underline hover:text-foreground cursor-pointer">
+                  Sign in
+                </span>
+              </SignInButton>{" "}
+              for unlimited suggestions.
+            </p>
+          )}
         </div>
       </form>
     </motion.div>

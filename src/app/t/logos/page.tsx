@@ -1,47 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-import { AnthropicLogo } from "@registry/default/logos/anthropic";
-import { AppleLogo } from "@registry/default/logos/apple";
-import { AWSLogo } from "@registry/default/logos/aws";
-import { BetterAuthIcon } from "@registry/default/logos/better-auth";
-import { ClaudeLogo } from "@registry/default/logos/claude";
-import { CohereLogo } from "@registry/default/logos/cohere";
-import { CrafterStationLogo } from "@registry/default/logos/crafter-station";
-import { DeepSeekLogo } from "@registry/default/logos/deepseek";
-import { DiscordLogo } from "@registry/default/logos/discord";
-import { GeminiLogo } from "@registry/default/logos/gemini";
-import { GitHubLogo } from "@registry/default/logos/github";
-import { GitLabLogo } from "@registry/default/logos/gitlab";
-import { GoogleLogo } from "@registry/default/logos/google";
-import { GrokLogo } from "@registry/default/logos/grok";
-import { GroqLogo } from "@registry/default/logos/groq";
-import { HuggingFaceLogo } from "@registry/default/logos/hugging-face";
-import { KeboLogo } from "@registry/default/logos/kebo";
-import { KimiLogo } from "@registry/default/logos/kimi";
-import { LinearLogo } from "@registry/default/logos/linear";
-import { LovableLogo } from "@registry/default/logos/lovable";
-import { MetaLogo } from "@registry/default/logos/meta";
-import { MicrosoftLogo } from "@registry/default/logos/microsoft";
-import { MistralLogo } from "@registry/default/logos/mistral";
-import { MoonshotAILogo } from "@registry/default/logos/moonshot-ai";
-import { NotionLogo } from "@registry/default/logos/notion";
-import { OpenAILogo } from "@registry/default/logos/openai";
-import { PerplexityLogo } from "@registry/default/logos/perplexity";
-import { PolarIcon } from "@registry/default/logos/polar";
-import { QwenLogo } from "@registry/default/logos/qwen";
-import { ResendIcon } from "@registry/default/logos/resend";
-import { SlackLogo } from "@registry/default/logos/slack";
-import { SpotifyLogo } from "@registry/default/logos/spotify";
-import { StripeIcon } from "@registry/default/logos/stripe";
-import { SupabaseIcon } from "@registry/default/logos/supabase";
-import { TwitchLogo } from "@registry/default/logos/twitch";
-import { TwitterLogo } from "@registry/default/logos/twitter";
-import { UpstashIcon } from "@registry/default/logos/upstash";
-import { V0Logo } from "@registry/default/logos/v0";
-import { VercelIcon } from "@registry/default/logos/vercel";
-import { XAILogo } from "@registry/default/logos/xai";
+import { track } from "@vercel/analytics";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -59,6 +20,47 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+import { AnthropicLogo } from "@/registry/default/logos/anthropic";
+import { AppleLogo } from "@/registry/default/logos/apple";
+import { AWSLogo } from "@/registry/default/logos/aws";
+import { BetterAuthLogo } from "@/registry/default/logos/better-auth";
+import { ClaudeLogo } from "@/registry/default/logos/claude";
+import { CohereLogo } from "@/registry/default/logos/cohere";
+import { CrafterStationLogo } from "@/registry/default/logos/crafter-station";
+import { DeepSeekLogo } from "@/registry/default/logos/deepseek";
+import { DiscordLogo } from "@/registry/default/logos/discord";
+import { GeminiLogo } from "@/registry/default/logos/gemini";
+import { GitHubLogo } from "@/registry/default/logos/github";
+import { GitLabLogo } from "@/registry/default/logos/gitlab";
+import { GoogleLogo } from "@/registry/default/logos/google";
+import { GrokLogo } from "@/registry/default/logos/grok";
+import { GroqLogo } from "@/registry/default/logos/groq";
+import { HuggingFaceLogo } from "@/registry/default/logos/hugging-face";
+import { KeboLogo } from "@/registry/default/logos/kebo";
+import { KimiLogo } from "@/registry/default/logos/kimi";
+import { LinearLogo } from "@/registry/default/logos/linear";
+import { LovableLogo } from "@/registry/default/logos/lovable";
+import { MetaLogo } from "@/registry/default/logos/meta";
+import { MicrosoftLogo } from "@/registry/default/logos/microsoft";
+import { MistralLogo } from "@/registry/default/logos/mistral";
+import { MoonshotAILogo } from "@/registry/default/logos/moonshot-ai";
+import { NotionLogo } from "@/registry/default/logos/notion";
+import { OpenAILogo } from "@/registry/default/logos/openai";
+import { PerplexityLogo } from "@/registry/default/logos/perplexity";
+import { PolarLogo } from "@/registry/default/logos/polar";
+import { QwenLogo } from "@/registry/default/logos/qwen";
+import { ResendLogo } from "@/registry/default/logos/resend";
+import { SlackLogo } from "@/registry/default/logos/slack";
+import { SpotifyLogo } from "@/registry/default/logos/spotify";
+import { StripeLogo } from "@/registry/default/logos/stripe";
+import { SupabaseLogo } from "@/registry/default/logos/supabase";
+import { TwitchLogo } from "@/registry/default/logos/twitch";
+import { TwitterLogo } from "@/registry/default/logos/twitter";
+import { UpstashLogo } from "@/registry/default/logos/upstash";
+import { V0Logo } from "@/registry/default/logos/v0";
+import { VercelLogo } from "@/registry/default/logos/vercel";
+import { XAILogo } from "@/registry/default/logos/xai";
 
 interface Logo {
   id: string;
@@ -290,49 +292,49 @@ const logos: Logo[] = [
     id: "supabase",
     name: "supabase-logo",
     displayName: "Supabase",
-    component: SupabaseIcon,
+    component: SupabaseLogo,
     category: "Database",
   },
   {
     id: "stripe",
     name: "stripe-logo",
     displayName: "Stripe",
-    component: StripeIcon,
+    component: StripeLogo,
     category: "Payments",
   },
   {
     id: "resend",
     name: "resend-logo",
     displayName: "Resend",
-    component: ResendIcon,
+    component: ResendLogo,
     category: "Email",
   },
   {
     id: "better-auth",
     name: "better-auth-logo",
     displayName: "Better Auth",
-    component: BetterAuthIcon,
+    component: BetterAuthLogo,
     category: "Auth",
   },
   {
     id: "upstash",
     name: "upstash-logo",
     displayName: "Upstash",
-    component: UpstashIcon,
+    component: UpstashLogo,
     category: "Database",
   },
   {
     id: "vercel",
     name: "vercel-logo",
     displayName: "Vercel",
-    component: VercelIcon,
+    component: VercelLogo,
     category: "Cloud",
   },
   {
     id: "polar",
     name: "polar-logo",
     displayName: "Polar",
-    component: PolarIcon,
+    component: PolarLogo,
     category: "Monetization",
   },
   {
@@ -356,6 +358,7 @@ export default function TechLogosPage() {
   const [selectedLogos, setSelectedLogos] = useState<Set<string>>(new Set());
   const [packageManager, setPackageManager] = useState("bunx");
   const [copied, setCopied] = useState(false);
+  const searchTimeoutRef = useRef<NodeJS.Timeout>(null);
 
   const filteredLogos = useMemo(() => {
     return logos.filter(
@@ -365,7 +368,44 @@ export default function TechLogosPage() {
     );
   }, [searchTerm]);
 
+  // Track search with debounce
+  useEffect(() => {
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    if (searchTerm.trim()) {
+      searchTimeoutRef.current = setTimeout(() => {
+        track("Logo Search", {
+          search_term: searchTerm.trim(),
+          results_count: filteredLogos.length,
+          source: "logos_page_search",
+        });
+      }, 500);
+    }
+
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, [searchTerm, filteredLogos.length]);
+
   const handleLogoToggle = (logoId: string) => {
+    const logo = logos.find((l) => l.id === logoId);
+    const isCurrentlySelected = selectedLogos.has(logoId);
+
+    track("Logo Selection", {
+      logo_id: logoId,
+      logo_name: logo?.displayName || logoId,
+      logo_category: logo?.category || "unknown",
+      action: isCurrentlySelected ? "deselect" : "select",
+      total_selected_after: isCurrentlySelected
+        ? selectedLogos.size - 1
+        : selectedLogos.size + 1,
+      source: "logos_page_grid",
+    });
+
     const newSelected = new Set(selectedLogos);
     if (newSelected.has(logoId)) {
       newSelected.delete(logoId);
@@ -376,6 +416,15 @@ export default function TechLogosPage() {
   };
 
   const handleSelectAll = () => {
+    const isSelectingAll = selectedLogos.size !== filteredLogos.length;
+
+    track("Bulk Logo Selection", {
+      action: isSelectingAll ? "select_all" : "deselect_all",
+      logos_count: filteredLogos.length,
+      search_term: searchTerm || "none",
+      source: "logos_page_bulk_action",
+    });
+
     if (selectedLogos.size === filteredLogos.length) {
       setSelectedLogos(new Set());
     } else {
@@ -403,12 +452,28 @@ export default function TechLogosPage() {
   const copyCommand = async () => {
     if (selectedLogos.size === 0) return;
 
+    const selectedLogoNames = logos
+      .filter((logo) => selectedLogos.has(logo.id))
+      .map((logo) => logo.displayName);
+
+    track("Install Command Copy", {
+      package_manager: packageManager,
+      selected_count: selectedLogos.size,
+      selected_logos: selectedLogoNames.slice(0, 10).join(", "), // Convert to string for analytics
+      source: "logos_page_install_dock",
+    });
+
     const command = getCommand(packageManager);
     try {
       await navigator.clipboard.writeText(command);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
+      track("Install Command Copy Error", {
+        package_manager: packageManager,
+        selected_count: selectedLogos.size,
+        source: "logos_page_install_dock",
+      });
       console.error("Failed to copy command:", err);
     }
   };
@@ -449,7 +514,10 @@ export default function TechLogosPage() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <InstallCommand
                   url="@elements/logos"
-                  className="w-full max-w-md"
+                  className="max-w-xs"
+                  source="logos_page_hero"
+                  componentName="Tech Logos"
+                  category="Brand"
                 />
               </div>
             </div>
@@ -581,7 +649,18 @@ export default function TechLogosPage() {
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <div className="bg-card border rounded-lg shadow-lg max-w-lg w-full mx-4">
             <div className="flex rounded-md">
-              <Select value={packageManager} onValueChange={setPackageManager}>
+              <Select
+                value={packageManager}
+                onValueChange={(value) => {
+                  track("Package Manager Changed", {
+                    from: packageManager,
+                    to: value,
+                    selected_logos_count: selectedLogos.size,
+                    source: "logos_page_install_dock",
+                  });
+                  setPackageManager(value);
+                }}
+              >
                 <SelectTrigger className="text-muted-foreground hover:text-foreground w-20 sm:w-20 rounded-e-none border-0 border-r shadow-none text-xs sm:text-sm">
                   <SelectValue />
                 </SelectTrigger>

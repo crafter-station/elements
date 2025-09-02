@@ -1,4 +1,4 @@
-export function VercelIcon({ className }: { className?: string }) {
+export function VercelLogo({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 256 222"

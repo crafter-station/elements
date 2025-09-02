@@ -1,0 +1,61 @@
+---
+title: Clerk Sign In (ShadCN)
+description: Complete sign-in form with Clerk integration using custom ShadCN components
+---
+
+import { ClerkSignInElement } from "@/registry/default/elements/clerk/sign-in"
+
+# Clerk Sign In (ShadCN)
+
+Complete sign-in form with OAuth providers, MFA support, and error handling using custom ShadCN components. Requires ClerkProvider in root layout.
+
+## Preview
+
+<div className="my-8 flex min-h-[600px] w-full items-center justify-center rounded-lg border bg-background p-8">
+  <ClerkSignInElement />
+</div>
+
+**Features:** OAuth integration with 12 providers, multi-factor authentication (TOTP/SMS), comprehensive error handling with rate limiting protection, dynamic identifier support (email/username), password visibility toggle, and complete responsive design.
+
+## Installation
+
+```bash
+bunx shadcn@latest add https://tryelements.dev/r/clerk-sign-in-shadcn
+```
+
+## Environment Variables
+
+```txt
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_
+CLERK_SECRET_KEY=sk_test_
+```
+
+## Setup
+
+```tsx title="app/layout.tsx"
+import { ClerkProvider } from '@clerk/nextjs'
+
+export default function RootLayout({ children }) {
+  return (
+    <ClerkProvider>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </ClerkProvider>
+  )
+}
+```
+
+## Usage
+
+```tsx title="app/sign-in/page.tsx"
+import { ClerkSignInElement } from "@/registry/default/elements/clerk/sign-in"
+
+export default function SignInPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <ClerkSignInElement />
+    </div>
+  )
+}
+```

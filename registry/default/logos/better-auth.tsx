@@ -1,4 +1,4 @@
-export function BetterAuthIcon({ className }: { className?: string }) {
+export function BetterAuthLogo({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

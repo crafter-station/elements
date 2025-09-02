@@ -1,0 +1,65 @@
+---
+title: Polar Sponsorship
+description: Complete sponsorship integration with Polar.sh - sponsorship tiers, checkout flow, and API integration
+---
+
+import { SponsorshipPage } from "@/registry/default/elements/polar/sponsorship/sponsorship-page";
+
+## Preview
+
+<div className="my-8 rounded-lg border bg-background p-8">
+  <SponsorshipPage
+    title="Support Elements"
+    subtitle="Help us build the future of full-stack components"
+  />
+</div>
+
+**Features:** Multiple subscription tiers with custom benefits, secure Polar.sh checkout integration, sponsor management and display, API routes for webhooks, responsive tier cards, and complete success/error handling.
+
+## Installation
+
+```bash
+bunx shadcn@latest add https://tryelements.dev/r/polar-sponsorship
+```
+
+## Dependencies
+
+```bash
+npm install @polar-sh/nextjs
+```
+
+## Environment Variables
+
+```txt
+POLAR_ACCESS_TOKEN=polar_oat_...
+POLAR_SUCCESS_URL=https://yourdomain.com/success?checkout_id={CHECKOUT_ID}
+POLAR_BASE_URL=https://api.polar.sh
+```
+
+## Setup
+
+1. Create products in [Polar Dashboard](https://polar.sh/dashboard)
+2. Update `POLAR_PRODUCT_IDS` in `lib/polar.ts` with your product IDs
+3. Configure webhook endpoints for subscription events
+
+## Usage
+
+```tsx title="app/sponsor/page.tsx"
+import { PolarSponsorship } from "@/registry/default/elements/polar/sponsorship/sponsor-tiers";
+
+export default function SponsorPage() {
+  return (
+    <div className="container py-12">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold">Support Our Project</h1>
+        <p className="text-muted-foreground">Choose a sponsorship tier</p>
+      </div>
+      <PolarSponsorship />
+    </div>
+  );
+}
+```
+
+## API Integration
+
+The component includes complete API integration with checkout routes and webhook handling for subscription events (created, updated, canceled).

@@ -1,0 +1,346 @@
+---
+title: Components Overview
+description: Complete overview of all Elements components organized by provider and functionality
+---
+
+# Components Overview
+
+Elements provides a comprehensive collection of full-stack components organized by provider and functionality. Each component is designed for easy integration, customization, and theme compatibility.
+
+## Component Categories
+
+### Authentication Components
+
+Complete authentication solutions built with industry-leading providers.
+
+#### Clerk Integration
+
+Full-featured authentication components with OAuth, MFA, and user management.
+
+- **[Clerk Sign In (ShadCN)](/docs/components/clerk/sign-in-shadcn)** - Custom sign-in form with ShadCN UI components
+- **[Clerk Sign Up (ShadCN)](/docs/components/clerk/sign-up-shadcn)** - Custom sign-up form with ShadCN UI components
+- **[Clerk Waitlist (ShadCN)](/docs/components/clerk/waitlist-shadcn)** - Animated waitlist signup form
+- **[Clerk Middleware](/docs/components/clerk/middleware)** - Next.js middleware for route protection
+
+### Theme Components
+
+Theme management and switching components with smooth animations.
+
+- **[Theme Switcher](/docs/components/theme/switcher)** - Animated sun/moon theme switcher
+- **[Theme Switcher Switch](/docs/components/theme/switcher-switch)** - Switch-based theme toggle
+- **[Theme Switcher Button](/docs/components/theme/switcher-button)** - Simple button theme switcher
+- **[Theme Switcher Dropdown](/docs/components/theme/switcher-dropdown)** - Dropdown with light/dark/system options
+- **[Theme Switcher Toggle](/docs/components/theme/switcher-toggle)** - Custom toggle with sliding animation
+- **[Theme Switcher Multi Button](/docs/components/theme/switcher-multi-button)** - Separate buttons for each theme
+
+### Brand Logos
+
+Comprehensive collection of brand logos with theme adaptation and perfect scalability.
+
+#### Technology Companies
+
+- **[Apple Logo](/docs/components/logos/apple)** - Apple logo with theme adaptation
+- **[Microsoft Logo](/docs/components/logos/microsoft)** - Microsoft four-square logo
+- **[Google Logo](/docs/components/logos/google)** - Google multi-color logo
+- **[GitHub Logo](/docs/components/logos/github)** - GitHub logo with theme support
+- **[GitLab Logo](/docs/components/logos/gitlab)** - GitLab tanuki mascot logo
+
+#### AI & Machine Learning
+
+- **[OpenAI Logo](/docs/components/logos/openai)** - OpenAI brand logo
+- **[Anthropic Logo](/docs/components/logos/anthropic)** - Anthropic logo with theme adaptation
+- **[Claude Logo](/docs/components/logos/claude)** - Claude brand orange logo
+- **[Gemini Logo](/docs/components/logos/gemini)** - Google Gemini gradient logo
+- **[Hugging Face Logo](/docs/components/logos/hugging-face)** - Hugging Face colorful logo
+
+#### Communication & Social
+
+- **[Discord Logo](/docs/components/logos/discord)** - Discord blurple logo
+- **[Slack Logo](/docs/components/logos/slack)** - Slack multi-color logo
+- **[Twitter Logo](/docs/components/logos/twitter)** - Twitter/X logo with theme support
+- **[Spotify Logo](/docs/components/logos/spotify)** - Spotify brand green logo
+
+### Sponsorship Components
+
+Complete sponsorship and monetization solutions.
+
+#### Polar.sh Integration
+
+- **[Polar Sponsorship](/docs/components/polar/sponsorship)** - Complete sponsorship suite with tiers and checkout
+
+## Installation Methods
+
+### Individual Components
+
+Install any single component:
+
+```bash
+bunx shadcn@latest add https://tryelements.dev/r/{component-name}
+```
+
+### Component Suites
+
+Install related components together:
+
+```bash
+# All Clerk authentication components
+bunx shadcn@latest add https://tryelements.dev/r/clerk-auth-shadcn
+
+# All theme switcher variants
+bunx shadcn@latest add https://tryelements.dev/r/theme-switcher-collection
+
+# Complete logo collection
+bunx shadcn@latest add https://tryelements.dev/r/logos
+```
+
+### Provider Collections
+
+Install all components for a specific provider:
+
+```bash
+# All Clerk components
+bunx shadcn@latest add https://tryelements.dev/r/clerk-complete
+
+# All theme components
+bunx shadcn@latest add https://tryelements.dev/r/theme-complete
+```
+
+## Provider Setup Guides
+
+### Clerk Authentication
+
+Complete setup guide for Clerk components:
+
+1. **Install Dependencies**
+
+   ```bash
+   npm install @clerk/nextjs @clerk/types
+   ```
+
+2. **Environment Variables**
+
+   ```txt
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+   CLERK_SECRET_KEY=sk_test_...
+   ```
+
+3. **Provider Wrapper**
+
+   ```tsx title="app/layout.tsx"
+   import { ClerkProvider } from "@clerk/nextjs";
+
+   export default function RootLayout({ children }) {
+     return (
+       <ClerkProvider>
+         <html lang="en">
+           <body>{children}</body>
+         </html>
+       </ClerkProvider>
+     );
+   }
+   ```
+
+4. **Middleware Configuration**
+   The middleware is automatically installed with Clerk components.
+
+### Theme Provider
+
+Setup guide for theme components:
+
+1. **Install Dependencies**
+
+   ```bash
+   npm install next-themes
+   ```
+
+2. **Provider Configuration**
+
+   ```tsx title="app/layout.tsx"
+   import { ThemeProvider } from "next-themes";
+
+   export default function RootLayout({ children }) {
+     return (
+       <html lang="en" suppressHydrationWarning>
+         <body>
+           <ThemeProvider
+             attribute="class"
+             defaultTheme="system"
+             enableSystem
+             disableTransitionOnChange
+           >
+             {children}
+           </ThemeProvider>
+         </body>
+       </html>
+     );
+   }
+   ```
+
+3. **CSS Variables**
+   Ensure your CSS includes proper theme variables (automatically handled by shadcn/ui).
+
+### Polar Sponsorship
+
+Setup guide for sponsorship components:
+
+1. **Install Dependencies**
+
+   ```bash
+   npm install @polar-sh/sdk
+   ```
+
+2. **Environment Variables**
+
+   ```txt
+   POLAR_ACCESS_TOKEN=polar_oat_...
+   POLAR_ORGANIZATION_ID=your-org-id
+   POLAR_SUCCESS_URL=https://yourdomain.com/sponsor/success
+   ```
+
+3. **API Configuration**
+   Set up your sponsorship tiers in the Polar.sh dashboard.
+
+## Component Architecture
+
+### Design Principles
+
+All Elements components follow these principles:
+
+- **Theme Compatibility** - Dark/light theme support out of the box
+- **Mobile First** - Responsive design for all screen sizes
+- **Accessibility** - ARIA labels, keyboard navigation, screen reader support
+- **Customization** - Easy styling with CSS classes and custom properties
+- **Type Safety** - Full TypeScript support with proper type definitions
+
+### File Structure
+
+Components are organized with a consistent file structure:
+
+```
+components/elements/
+├── clerk/
+│   ├── sign-in.tsx          # Main component
+│   ├── sign-up.tsx          # Related components
+│   └── middleware.ts        # Supporting utilities
+├── theme/
+│   ├── switcher.tsx         # Core theme switcher
+│   └── variants/            # Theme switcher variants
+├── logos/
+│   ├── apple.tsx            # Individual logo components
+│   ├── google.tsx
+│   └── index.ts             # Barrel exports
+└── polar/
+    └── sponsorship.tsx      # Sponsorship components
+```
+
+### Dependencies
+
+Components are designed to have minimal dependencies:
+
+- **Core Dependencies** - Only essential packages for functionality
+- **Peer Dependencies** - shadcn/ui components and utilities
+- **Optional Dependencies** - Provider-specific SDKs (Clerk, Polar, etc.)
+
+## Usage Patterns
+
+### Component Composition
+
+Components are designed for easy composition:
+
+```tsx
+import { ClerkSignInElement } from "@/components/elements/clerk/sign-in";
+import { ThemeSwitcher } from "@/components/elements/theme/switcher";
+
+export function AuthLayout({ children }) {
+  return (
+    <div className="min-h-screen">
+      <header className="flex justify-between p-4">
+        <h1>My App</h1>
+        <ThemeSwitcher />
+      </header>
+
+      <main className="flex items-center justify-center p-8">{children}</main>
+    </div>
+  );
+}
+
+export function SignInPage() {
+  return (
+    <AuthLayout>
+      <ClerkSignInElement />
+    </AuthLayout>
+  );
+}
+```
+
+### Custom Styling
+
+All components support custom styling:
+
+```tsx
+<ClerkSignInElement className="w-full max-w-lg border-2 border-primary" />
+<ThemeSwitcher className="bg-accent hover:bg-accent/80" />
+<AppleLogo className="h-8 w-8 text-blue-600" />
+```
+
+### Provider Integration
+
+Components integrate seamlessly with their respective providers:
+
+```tsx
+// Clerk integration
+const { user, isSignedIn } = useUser();
+
+// Theme integration
+const { theme, setTheme } = useTheme();
+
+// Custom logic with provider data
+if (isSignedIn) {
+  return <Dashboard user={user} theme={theme} />;
+}
+```
+
+## Best Practices
+
+### Performance
+
+- **Lazy Loading** - Components support dynamic imports
+- **Tree Shaking** - Import only needed components
+- **Optimization** - Built with performance in mind
+
+### Security
+
+- **Input Validation** - All user inputs are validated
+- **CSRF Protection** - Built-in protection for forms
+- **Secure Defaults** - Secure configuration by default
+
+### Accessibility
+
+- **WCAG Compliance** - Meets WCAG 2.1 AA standards
+- **Keyboard Navigation** - Full keyboard support
+- **Screen Readers** - Optimized for assistive technology
+
+## Support and Contributing
+
+### Getting Help
+
+- **Documentation** - Comprehensive guides for each component
+- **Examples** - Working examples in the registry
+- **Community** - Join our community discussions
+
+### Contributing
+
+Elements is maintained by [Crafter Station](https://crafterstation.com). We welcome contributions:
+
+- **Bug Reports** - Report issues and bugs
+- **Feature Requests** - Suggest new components or features
+- **Pull Requests** - Contribute code improvements
+
+### Roadmap
+
+Upcoming component categories:
+
+- **Database Components** - Supabase, PlanetScale, Turso integrations
+- **Payment Components** - Stripe, PayPal, Lemonsqueezy integrations
+- **Analytics Components** - Analytics dashboard components
+- **Email Components** - Email template and service integrations

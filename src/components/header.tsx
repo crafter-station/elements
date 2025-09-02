@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SignInButton, useClerk, useUser } from "@clerk/nextjs";
 
 import { ElementsLogo } from "@/components/elements-logo";
+import { PixelatedHeartIcon } from "@/components/pixelated-heart-icon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +31,17 @@ export function Header() {
         </Link>
 
         <div className="flex items-center gap-3">
+          <Button
+            asChild
+            variant="outline"
+            className="rounded-md gap-2 text-sm sm:text-base"
+          >
+            <Link href="/sponsor">
+              <PixelatedHeartIcon className="size-4" />
+              <span className="hidden sm:inline">Sponsor</span>
+            </Link>
+          </Button>
+
           <Button
             asChild
             variant="outline"

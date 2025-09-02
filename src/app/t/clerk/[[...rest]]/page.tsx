@@ -3,9 +3,6 @@
 import { useRouter } from "next/navigation";
 
 import { SignIn, SignUp, useClerk, useUser, Waitlist } from "@clerk/nextjs";
-import { ClerkSignInElement } from "@registry/default/elements/clerk/sign-in";
-import { ClerkSignUpElement } from "@registry/default/elements/clerk/sign-up";
-import { WaitlistElement } from "@registry/default/elements/clerk/waitlist-shadcn/waitlist";
 
 import { ClerkLogo } from "@/components/clerk-logo";
 import { ComponentPageTemplate } from "@/components/component-page-template";
@@ -13,6 +10,10 @@ import { ServerIcon } from "@/components/icons/server";
 import { ShieldIcon } from "@/components/icons/shield";
 import { ZapIcon } from "@/components/icons/zap";
 import { Button } from "@/components/ui/button";
+
+import { ClerkSignInElement } from "@/registry/default/elements/clerk/sign-in";
+import { ClerkSignUpElement } from "@/registry/default/elements/clerk/sign-up";
+import { WaitlistElement } from "@/registry/default/elements/clerk/waitlist-shadcn/waitlist";
 
 export default function ClerkPage() {
   const { isSignedIn, isLoaded } = useUser();
@@ -65,7 +66,7 @@ export default function ClerkPage() {
 <span class="text-gray-500">{"<ClerkSignIn />"}</span>`;
 
   const clerkComponents = {
-    "sign-in":
+    "clerk-sign-in":
       isLoaded && isSignedIn ? (
         <div className="w-full max-w-sm mx-auto p-6 border border-border rounded-lg bg-card">
           <div className="space-y-4">
@@ -99,7 +100,7 @@ export default function ClerkPage() {
       ) : (
         <SignIn routing="hash" />
       ),
-    "sign-up":
+    "clerk-sign-up":
       isLoaded && isSignedIn ? (
         <div className="w-full max-w-sm mx-auto p-6 border border-border rounded-lg bg-card">
           <div className="space-y-4">
@@ -133,26 +134,26 @@ export default function ClerkPage() {
       ) : (
         <SignUp routing="hash" />
       ),
-    waitlist: <Waitlist />,
-    "sign-in-shadcn": <ClerkSignInElement />,
-    "sign-up-shadcn": <ClerkSignUpElement />,
-    "waitlist-shadcn": <WaitlistElement />,
+    "clerk-waitlist": <Waitlist />,
+    "clerk-sign-in-shadcn": <ClerkSignInElement />,
+    "clerk-sign-up-shadcn": <ClerkSignUpElement />,
+    "clerk-waitlist-shadcn": <WaitlistElement />,
   };
 
   const componentInstallUrls = {
-    "sign-in": "@elements/clerk-sign-in",
-    "sign-up": "@elements/clerk-sign-up",
-    waitlist: "@elements/clerk-waitlist",
-    "sign-in-shadcn": "@elements/clerk-sign-in-shadcn",
-    "sign-up-shadcn": "@elements/clerk-sign-up-shadcn",
-    "waitlist-shadcn": "@elements/clerk-waitlist-shadcn",
+    "clerk-sign-in": "@elements/clerk-sign-in",
+    "clerk-sign-up": "@elements/clerk-sign-up",
+    "clerk-waitlist": "@elements/clerk-waitlist",
+    "clerk-sign-in-shadcn": "@elements/clerk-sign-in-shadcn",
+    "clerk-sign-up-shadcn": "@elements/clerk-sign-up-shadcn",
+    "clerk-waitlist-shadcn": "@elements/clerk-waitlist-shadcn",
   };
 
   return (
     <ComponentPageTemplate
       brandColor="#654BF6"
       category="AUTHENTICATION"
-      name="Clerk Auth"
+      name="Clerk"
       description="Complete authentication flows with Clerk. Drop-in full-stack elements for sign-in, sign-up, and waitlists."
       icon={<ClerkLogo className="w-12 h-12" />}
       features={features}

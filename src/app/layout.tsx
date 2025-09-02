@@ -7,6 +7,9 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 import { Analytics } from "@vercel/analytics/next";
+import { RootProvider } from "fumadocs-ui/provider";
+
+import { Toaster } from "@/components/ui/sonner";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -36,9 +39,9 @@ export default function RootLayout({
   return (
     <ClerkProvider
       appearance={{
-        baseTheme: shadcn,
+        theme: shadcn,
         elements: {
-          modalBackdrop: "backdrop-blur-sm bg-black/50",
+          modalBackdrop: "bg-black/50",
           modalContent: "flex items-center justify-center !my-auto",
         },
       }}
@@ -53,9 +56,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <RootProvider>{children}</RootProvider>
           </ThemeProvider>
           <Analytics />
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

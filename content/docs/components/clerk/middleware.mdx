@@ -1,0 +1,60 @@
+---
+title: Clerk Middleware
+description: Clerk middleware for Next.js App Router with route protection
+---
+
+# Clerk Middleware
+
+Clerk middleware for Next.js App Router with route protection. Install in project root as middleware.ts.
+
+## Installation
+
+```bash
+bunx shadcn@latest add https://tryelements.dev/r/clerk-middleware
+```
+
+## Environment Variables
+
+```txt
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_
+CLERK_SECRET_KEY=sk_test_
+```
+
+## Usage
+
+The middleware is automatically installed as `middleware.ts` in your project root and provides:
+
+- **Route Protection** - Automatically protects authenticated routes
+- **Public Routes** - Configures public routes like sign-in/sign-up pages
+- **Redirect Handling** - Handles authentication redirects seamlessly
+
+## Configuration
+
+The middleware includes sensible defaults for route protection:
+
+```typescript
+// Automatically configured in middleware.ts
+export default clerkMiddleware((auth, req) => {
+  // Protect all routes except public ones
+  if (!auth().userId && !isPublicRoute(req)) {
+    return auth().redirectToSignIn()
+  }
+})
+
+export const config = {
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"]
+}
+```
+
+## Protected Routes
+
+By default, all routes are protected except:
+- `/sign-in`
+- `/sign-up` 
+- `/` (homepage)
+- API routes for authentication
+- Static assets and Next.js internals
+
+## Custom Configuration
+
+You can customize the middleware after installation to fit your specific route protection needs.

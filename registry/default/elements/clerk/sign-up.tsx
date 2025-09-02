@@ -667,7 +667,7 @@ export function ClerkSignUpElement() {
 
         {/* Waitlist Backdrop Overlay */}
         {isWaitlistMode() && (
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
+          <div className="absolute inset-0 bg-background/80 flex items-center justify-center rounded-lg">
             <div className="text-center px-4">
               <p className="font-medium text-foreground">
                 Waitlist mode is enabled
