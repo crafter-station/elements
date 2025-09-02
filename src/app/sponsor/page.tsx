@@ -189,7 +189,7 @@ export default function SponsorPage() {
                           </span>
                         </span>
                       </div>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
+                      <p className="text-xs w-full text-center text-muted-foreground leading-relaxed">
                         {tier.description}
                       </p>
                     </div>

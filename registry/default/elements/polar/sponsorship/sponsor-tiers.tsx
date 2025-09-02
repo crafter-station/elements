@@ -60,7 +60,7 @@ export function SponsorTiers({
                 </Badge>
               )}
 
-              <div className="space-y-4">
+              <div className="space-y-4 text-center">
                 <div className="text-center">
                   <h3 className="text-xl font-semibold">{tier.name}</h3>
                 </div>
@@ -75,7 +75,7 @@ export function SponsorTiers({
                       {tier.isOneTime ? "minimum/once" : "minimum/mo"}
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm w-full text-center text-muted-foreground leading-relaxed">
                     {tier.description}
                   </p>
                 </div>
