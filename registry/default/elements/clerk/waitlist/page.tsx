@@ -22,7 +22,7 @@ export default function WaitlistPage() {
 import { shadcn } from "@clerk/themes";
 
 <ClerkProvider
-  appearance={{ baseTheme: shadcn }}
+  appearance={{ theme: shadcn }}
   waitlistUrl="/waitlist"
 >
   {children}
