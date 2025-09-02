@@ -111,35 +111,40 @@ export function ComponentPageTemplate({
   const [activeTreeViewer, setActiveTreeViewer] = useState<string | null>(null);
 
   // Get relevant registry items for this component
-  const relevantRegistryItems = registryData.items.filter((item: any) => {
-    const itemName = item.name.toLowerCase();
-    const searchName = name.toLowerCase().replace(/\s+/g, "-"); // Convert spaces to hyphens
-    const searchCategory = category.toLowerCase();
+  const relevantRegistryItems = registryData.items.filter(
+    (item: { name: string }) => {
+      const itemName = item.name.toLowerCase();
+      const searchName = name.toLowerCase().replace(/\s+/g, "-"); // Convert spaces to hyphens
+      const searchCategory = category.toLowerCase();
 
-    // Check if item name contains the search name (with space-to-hyphen conversion)
-    if (itemName.includes(searchName)) return true;
+      // Check if item name contains the search name (with space-to-hyphen conversion)
+      if (itemName.includes(searchName)) return true;
 
-    // Check if item name starts with the search name
-    if (itemName.startsWith(searchName)) return true;
+      // Check if item name starts with the search name
+      if (itemName.startsWith(searchName)) return true;
 
-    // Check if category matches (less strict)
-    if (searchCategory.includes(itemName) || itemName.includes(searchCategory))
-      return true;
+      // Check if category matches (less strict)
+      if (
+        searchCategory.includes(itemName) ||
+        itemName.includes(searchCategory)
+      )
+        return true;
 
-    // Check for common words/parts
-    const nameParts = searchName
-      .split("-")
-      .filter((part: string) => part.length > 2);
-    const itemParts = itemName
-      .split("-")
-      .filter((part: string) => part.length > 2);
-    const commonParts = nameParts.filter((part) => itemParts.includes(part));
+      // Check for common words/parts
+      const nameParts = searchName
+        .split("-")
+        .filter((part: string) => part.length > 2);
+      const itemParts = itemName
+        .split("-")
+        .filter((part: string) => part.length > 2);
+      const commonParts = nameParts.filter((part) => itemParts.includes(part));
 
-    // If at least one meaningful part matches
-    if (commonParts.length > 0) return true;
+      // If at least one meaningful part matches
+      if (commonParts.length > 0) return true;
 
-    return false;
-  });
+      return false;
+    },
+  );
 
   const handleComponentToggle = (componentKey: string) => {
     const isCurrentlySelected = selectedComponents.has(componentKey);
@@ -147,7 +152,7 @@ export function ComponentPageTemplate({
     track("Component Selection", {
       component_key: componentKey,
       component_category: category,
-      page_name: name,
+      page_name: name || "unknown",
       action: isCurrentlySelected ? "deselect" : "select",
       total_selected_after: isCurrentlySelected
         ? selectedComponents.size - 1
@@ -195,7 +200,7 @@ export function ComponentPageTemplate({
 
     track("Component Install Command Copy", {
       component_category: category,
-      page_name: name,
+      page_name: name || "unknown",
       package_manager: packageManager,
       selected_components: Array.from(selectedComponents).join(","),
       selected_count: selectedComponents.size,
@@ -210,7 +215,7 @@ export function ComponentPageTemplate({
     } catch (err) {
       track("Component Install Command Copy Error", {
         component_category: category,
-        page_name: name,
+        page_name: name || "unknown",
         package_manager: packageManager,
         selected_count: selectedComponents.size,
         source: "component_page_install_dock",
@@ -283,6 +288,8 @@ export function ComponentPageTemplate({
                 activeTreeViewer={activeTreeViewer}
                 setActiveTreeViewer={setActiveTreeViewer}
                 relevantRegistryItems={relevantRegistryItems}
+                category={category}
+                name={name}
               />
             </div>
           </div>
@@ -372,7 +379,7 @@ export function ComponentPageTemplate({
                 onValueChange={(value) => {
                   track("Component Package Manager Changed", {
                     component_category: category,
-                    page_name: name,
+                    page_name: name || "unknown",
                     from: packageManager,
                     to: value,
                     selected_components_count: selectedComponents.size,
@@ -463,7 +470,9 @@ function ComponentGrid({
   onComponentToggle: (componentKey: string) => void;
   activeTreeViewer: string | null;
   setActiveTreeViewer: (key: string | null) => void;
-  relevantRegistryItems: any[];
+  relevantRegistryItems: Array<{ name: string; [key: string]: unknown }>;
+  category: string;
+  name: string;
 }) {
   // Determine grid layout
   const isCustomLayout = layout.type === "custom";
@@ -612,7 +621,7 @@ function ComponentGrid({
                           track("Component Tree Viewer", {
                             component_key: key,
                             component_category: category,
-                            page_name: name,
+                            page_name: name || "unknown",
                             action: isCurrentlyActive
                               ? "hide_tree"
                               : "show_tree",
@@ -768,8 +777,8 @@ function ComponentGrid({
                     );
                     return (
                       <FileTreeViewer
-                        files={componentRegistryItem?.files || []}
-                        registryItem={componentRegistryItem}
+                        files={(componentRegistryItem?.files as any) || []}
+                        registryItem={componentRegistryItem || undefined}
                         onClose={() => setActiveTreeViewer(null)}
                         className="relative h-full bg-transparent"
                         componentKey={key}

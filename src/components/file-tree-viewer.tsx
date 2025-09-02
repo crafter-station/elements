@@ -218,7 +218,7 @@ function buildFileStructureFromPaths(
     };
     tree.root.children?.push(depsPath);
 
-    registryItem.registryDependencies.forEach((dep, index) => {
+    registryItem.registryDependencies.forEach((dep) => {
       const depPath = `${depsPath}/${dep}`;
       tree[depPath] = {
         name: dep,
@@ -238,7 +238,7 @@ function buildFileStructureFromPaths(
     };
     tree.root.children?.push(depsPath);
 
-    registryItem.dependencies.forEach((dep, index) => {
+    registryItem.dependencies.forEach((dep) => {
       const depPath = `${depsPath}/${dep}`;
       tree[depPath] = {
         name: dep,

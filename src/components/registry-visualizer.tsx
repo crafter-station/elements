@@ -317,7 +317,7 @@ export function RegistryVisualizer({
   };
 
   // Get file content from registry path - this would normally be a fetch call
-  const getFileContent = async (filePath: string) => {
+  const _getFileContent = async (filePath: string) => {
     // For now, return placeholder code - in real implementation you'd fetch from the registry
     return `// File: ${filePath}\n// This is where the actual file content would be displayed\n// You would fetch this from your registry or file system\n\nexport default function Component() {\n  return (\n    <div>\n      {/* Component implementation */}\n    </div>\n  );\n}`;
   };
@@ -377,8 +377,9 @@ export function RegistryVisualizer({
                         <TreeItemLabel className="rounded-none py-1">
                           <span className="flex items-center gap-2">
                             {!item.isFolder() &&
+                              nodeData &&
                               getNodeIcon(
-                                nodeData!,
+                                nodeData,
                                 "text-muted-foreground pointer-events-none size-4",
                               )}
                             <span className="flex items-center gap-2">

@@ -3,10 +3,15 @@
  * Following NAMING_CONVENTIONS.md pattern: {service/category}-{component}-{variant}
  * Priority: exact match > suffix match > prefix match > partial match > fuzzy match
  */
+interface RegistryItem {
+  name: string;
+  [key: string]: unknown;
+}
+
 export function findRegistryItemMatch(
   componentKey: string,
-  registryItems: Array<{ name: string; [key: string]: any }>,
-): any | null {
+  registryItems: Array<RegistryItem>,
+): RegistryItem | null {
   const keyLower = componentKey.toLowerCase();
 
   // 1. Exact match (highest priority)
@@ -101,10 +106,16 @@ export function getRegistryItemUrl(
  * Finds the exact matching file from registry data for a given node file
  * Simple exact matching by path or target
  */
+interface RegistryFile {
+  path?: string;
+  target?: string;
+  content?: string;
+}
+
 export function findBestFileMatch(
   nodeFile: { path?: string; target?: string },
-  registryFiles: Array<{ path?: string; target?: string; content?: string }>,
-): any | null {
+  registryFiles: Array<RegistryFile>,
+): RegistryFile | null {
   if (!nodeFile || !registryFiles?.length) return null;
 
   // First try exact target match
