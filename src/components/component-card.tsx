@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { track } from "@vercel/analytics";
 
+import { cn } from "@/lib/utils";
+
 import { Badge } from "@/components/ui/badge";
 
 interface ComponentCardProps {
@@ -26,6 +28,7 @@ export function ComponentCard({
   isEnabled = false,
   href,
   elementsCount,
+  providerLink,
   trackingSource = "unknown",
 }: ComponentCardProps) {
   const handleClick = () => {
@@ -96,7 +99,11 @@ export function ComponentCard({
           <Badge variant="outline" className="text-xs">
             {category}
           </Badge>
-          <div className="flex items-center gap-2">
+          <div
+            className={cn("flex items-center gap-2", {
+              "pr-8": !!providerLink,
+            })}
+          >
             {isEnabled && elementsCount && (
               <span className="text-xs text-muted-foreground">
                 {elementsCount} elements
@@ -108,13 +115,42 @@ export function ComponentCard({
     </figure>
   );
 
-  if (href && isEnabled) {
-    return (
-      <Link className="w-full h-full" href={href} onClick={handleClick}>
-        {CardContent}
-      </Link>
-    );
-  }
-
-  return CardContent;
+  return (
+    <div className="relative isolate h-full w-full">
+      {CardContent}
+      {href && (
+        <Link
+          className="absolute inset-0 z-10"
+          href={href}
+          onClick={handleClick}
+        ></Link>
+      )}
+      {providerLink && (
+        <a
+          href={providerLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute bottom-4 right-4 sm:bottom-5 sm:right-6 text-muted-foreground hover:text-foreground z-20 p-2 rounded hover:bg-muted/20 transition-colors"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-arrow-up-right"
+          >
+            <title>Arrow Up Right</title>
+            <path d="M7 7h10v10" />
+            <path d="M7 17 17 7" />
+          </svg>
+        </a>
+      )}
+    </div>
+  );
 }

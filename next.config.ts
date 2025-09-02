@@ -6,12 +6,10 @@ import { createMDX } from "fumadocs-mdx/next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
+  turbopack: {
+    resolveAlias: {
       "@registry": path.resolve(__dirname, "./registry"),
-    };
-    return config;
+    },
   },
 };
 
