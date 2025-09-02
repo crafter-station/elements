@@ -23,7 +23,7 @@ const POLAR_PRODUCT_IDS = {
 };
 
 export default function SponsorPage() {
-  const [selectedTier, setSelectedTier] = useState<string | null>(null);
+  const [selectedTier, setSelectedTier] = useState<string | null>("Supporter");
   const [isPending, startTransition] = useTransition();
 
   const handleChooseYourTier = () => {
@@ -64,7 +64,7 @@ export default function SponsorPage() {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      <div className="flex-1 w-full max-w-screen-xl border-border border-dotted border-x mx-auto">
+      <div className="flex-1 w-full max-w-screen-xl border-border border-dotted border-x mx-auto pb-20 md:pb-0">
         {/* Hero Section - Basement Style */}
         <div className="relative overflow-hidden">
           <div className="w-full pt-12 px-8 lg:px-16">
@@ -134,7 +134,7 @@ export default function SponsorPage() {
                     </Badge>
                   )}
 
-                  <div className="space-y-4">
+                  <div className="space-y-4 text-center">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center justify-center w-10 h-10 bg-muted group-hover:bg-muted/80 transition-colors">
                         <PixelatedHeartIcon className="size-5" />
@@ -161,7 +161,7 @@ export default function SponsorPage() {
                       </p>
                     </div>
 
-                    <ul className="space-y-2 text-xs">
+                    <ul className="space-y-2 text-xs text-left">
                       {tier.perks.map((perk, index) => (
                         <li
                           key={`${tier.name}-perk-${index}`}
@@ -189,7 +189,7 @@ export default function SponsorPage() {
               ))}
             </div>
 
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-4 hidden md:block">
               <Button
                 size="lg"
                 className="h-14 px-8 text-lg gap-2"
@@ -327,6 +327,25 @@ export default function SponsorPage() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Fixed Mobile Button */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-background border-t border-border p-4">
+        <div className="max-w-screen-xl mx-auto">
+          <Button
+            size="lg"
+            className="w-full h-14 text-lg gap-2"
+            disabled={!selectedTier || isPending}
+            onClick={handleSponsor}
+          >
+            <PixelatedHeartIcon className="size-5" />
+            {isPending
+              ? "Creating checkout..."
+              : selectedTier
+                ? `Sponsor with ${selectedTier}`
+                : "Select a tier"}
+          </Button>
         </div>
       </div>
 
