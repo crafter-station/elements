@@ -21,7 +21,7 @@ export default function SignInPage() {
               <code className="block text-xs whitespace-pre-wrap break-words">{`import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 
-<ClerkProvider appearance={{ baseTheme: shadcn }}>
+<ClerkProvider appearance={{ theme: shadcn }}>
   {children}
 </ClerkProvider>`}</code>
             </pre>

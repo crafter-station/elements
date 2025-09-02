@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <ClerkProvider
       appearance={{
-        baseTheme: shadcn,
+        theme: shadcn,
         elements: {
           modalBackdrop: "bg-black/50",
           modalContent: "flex items-center justify-center !my-auto",
