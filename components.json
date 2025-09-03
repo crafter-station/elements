@@ -19,6 +19,6 @@
   },
   "iconLibrary": "lucide",
   "registries": {
-    "@elements": "https://tryelements.dev/r/{name}.json"
+    "@elements": "http://localhost:3000/r/{name}.json"
   }
 }

@@ -17,6 +17,13 @@ export function Footer() {
               className="font-medium underline underline-offset-4"
             >
               Crafter Station
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="/contributors"
+              className="font-medium underline underline-offset-4"
+            >
+              contributors
             </Link>
             . The source code is available on{" "}
             <Link
