@@ -3,11 +3,16 @@
 import { useState } from "react";
 
 import { track } from "@vercel/analytics";
-import { Check } from "lucide-react";
+import { Check, Eye } from "lucide-react";
 import { toast } from "sonner";
 
 import { ShadcnIcon } from "@/components/shadcn-icon";
 import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -25,6 +30,28 @@ interface InstallCommandProps {
   category?: string;
 }
 
+function summarizeUrls(urls: string[], maxVisible = 3) {
+  if (urls.length <= maxVisible) {
+    return {
+      display: urls.join(" "),
+      hasMore: false,
+      remaining: 0,
+      count: urls.length,
+    };
+  }
+
+  const visible = urls.slice(0, maxVisible);
+  const remaining = urls.length - maxVisible;
+
+  return {
+    display: `${visible.join(" ")} +${remaining}`,
+    hasMore: true,
+    remaining,
+    full: urls.join(" "),
+    count: urls.length,
+  };
+}
+
 export function InstallCommand({
   url = "@elements/clerk-waitlist",
   className,
@@ -35,6 +62,9 @@ export function InstallCommand({
 }: InstallCommandProps) {
   const [packageManager, setPackageManager] = useState("bunx");
   const [copied, setCopied] = useState(false);
+
+  const urls = url.split(" ");
+  const urlSummary = summarizeUrls(urls);
 
   const getCommand = (pm: string) => {
     const commands = {
@@ -101,31 +131,73 @@ export function InstallCommand({
             <SelectItem value="yarn">yarn</SelectItem>
           </SelectContent>
         </Select>
-        <Button
-          onClick={copyCommand}
-          variant="ghost"
-          className={`-ms-px flex-1 rounded-s-none border-0 shadow-none h-9 px-3 justify-start font-mono text-xs sm:text-sm ${
-            copied ? "bg-muted" : "hover:bg-muted"
-          } ${
-            brandColor
-              ? `hover:text-[${brandColor}]`
-              : "text-teal-600 hover:text-teal-500"
-          }`}
-          style={
-            brandColor
-              ? {
-                  color: brandColor,
-                }
-              : undefined
-          }
-        >
-          {copied ? (
-            <Check className="w-4 h-4 mr-2 flex-shrink-0" />
-          ) : (
-            <ShadcnIcon className="w-4 h-4 mr-2 flex-shrink-0" />
+        <div className="flex-1 flex items-center min-w-0">
+          <Button
+            onClick={copyCommand}
+            variant="ghost"
+            className={`-ms-px flex-1 rounded-none border-0 shadow-none h-9 px-3 justify-start font-mono text-xs sm:text-sm min-w-0 ${
+              copied ? "bg-muted" : "hover:bg-muted"
+            } ${
+              brandColor
+                ? `hover:text-[${brandColor}]`
+                : "text-teal-600 hover:text-teal-500"
+            }`}
+            style={
+              brandColor
+                ? {
+                    color: brandColor,
+                  }
+                : undefined
+            }
+          >
+            {copied ? (
+              <Check className="w-4 h-4 mr-2 flex-shrink-0" />
+            ) : (
+              <ShadcnIcon className="w-4 h-4 mr-2 flex-shrink-0" />
+            )}
+            <div className="flex-1 flex items-center min-w-0">
+              <span className="truncate min-w-0 overflow-hidden">
+                {urlSummary.display}
+              </span>
+              {urls.length > 1 && (
+                <span className="text-muted-foreground ml-1 flex-shrink-0">
+                  ({urlSummary.count})
+                </span>
+              )}
+            </div>
+          </Button>
+          {urlSummary.hasMore && (
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-9 w-9 p-0 rounded-l-none border-0 shadow-none hover:bg-muted/50"
+                >
+                  <Eye className="w-4 h-4" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent align="end" className="w-80">
+                <div className="space-y-2">
+                  <div className="text-sm font-medium">
+                    Full command ({urls.length} components)
+                  </div>
+                  <div className="p-2 bg-muted rounded text-xs font-mono break-all">
+                    {packageManager} shadcn@latest add {urlSummary.full}
+                  </div>
+                  <Button onClick={copyCommand} size="sm" className="w-full">
+                    {copied ? (
+                      <Check className="w-4 h-4 mr-2" />
+                    ) : (
+                      <ShadcnIcon className="w-4 h-4 mr-2" />
+                    )}
+                    Copy Full Command
+                  </Button>
+                </div>
+              </PopoverContent>
+            </Popover>
           )}
-          <span className="truncate">{url}</span>
-        </Button>
+        </div>
       </div>
     </div>
   );

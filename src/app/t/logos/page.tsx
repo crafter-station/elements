@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { track } from "@vercel/analytics";
+import { Filter } from "lucide-react";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -10,16 +11,17 @@ import { CopyIcon } from "@/components/icons/copy";
 import { GroupIcon } from "@/components/icons/group";
 import { SearchIcon } from "@/components/icons/search";
 import { InstallCommand } from "@/components/install-command";
+import { PixelatedCheckIcon } from "@/components/pixelated-check-icon";
 import { ScrambleText } from "@/components/scramble-text";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 import { AnthropicLogo } from "@/registry/default/logos/anthropic";
 import { AppleLogo } from "@/registry/default/logos/apple";
@@ -356,17 +358,49 @@ const logos: Logo[] = [
 export default function TechLogosPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLogos, setSelectedLogos] = useState<Set<string>>(new Set());
-  const [packageManager, setPackageManager] = useState("bunx");
-  const [copied, setCopied] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const searchTimeoutRef = useRef<NodeJS.Timeout>(null);
 
   const filteredLogos = useMemo(() => {
-    return logos.filter(
-      (logo) =>
+    return logos.filter((logo) => {
+      // Search filter
+      const matchesSearch =
         logo.displayName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        logo.category.toLowerCase().includes(searchTerm.toLowerCase()),
+        logo.category.toLowerCase().includes(searchTerm.toLowerCase());
+
+      // Category filter
+      const matchesCategory =
+        selectedCategories.length === 0 ||
+        selectedCategories.includes(logo.category);
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, selectedCategories]);
+
+  // Get unique categories and counts
+  const uniqueCategories = useMemo(() => {
+    return Array.from(new Set(logos.map((logo) => logo.category))).sort();
+  }, []);
+
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    logos.forEach((logo) => {
+      counts.set(logo.category, (counts.get(logo.category) || 0) + 1);
+    });
+    return counts;
+  }, []);
+
+  const handleCategoryChange = (checked: boolean, category: string) => {
+    setSelectedCategories((prev) =>
+      checked ? [...prev, category] : prev.filter((c) => c !== category),
     );
-  }, [searchTerm]);
+
+    track("Logo Category Filter", {
+      category: category,
+      action: checked ? "select" : "deselect",
+      source: "logos_page_filter",
+    });
+  };
 
   // Track search with debounce
   useEffect(() => {
@@ -432,52 +466,6 @@ export default function TechLogosPage() {
     }
   };
 
-  const getCommand = (pm: string) => {
-    if (selectedLogos.size === 0) return "";
-
-    const selectedNamesWithPrefix = logos
-      .filter((logo) => selectedLogos.has(logo.id))
-      .map((logo) => `@elements/${logo.name}`)
-      .join(" ");
-
-    const commands = {
-      bunx: `bunx shadcn@latest add ${selectedNamesWithPrefix}`,
-      npx: `npx shadcn@latest add ${selectedNamesWithPrefix}`,
-      pnpm: `pnpm dlx shadcn@latest add ${selectedNamesWithPrefix}`,
-      yarn: `yarn dlx shadcn@latest add ${selectedNamesWithPrefix}`,
-    };
-    return commands[pm as keyof typeof commands] || "";
-  };
-
-  const copyCommand = async () => {
-    if (selectedLogos.size === 0) return;
-
-    const selectedLogoNames = logos
-      .filter((logo) => selectedLogos.has(logo.id))
-      .map((logo) => logo.displayName);
-
-    track("Install Command Copy", {
-      package_manager: packageManager,
-      selected_count: selectedLogos.size,
-      selected_logos: selectedLogoNames.slice(0, 10).join(", "), // Convert to string for analytics
-      source: "logos_page_install_dock",
-    });
-
-    const command = getCommand(packageManager);
-    try {
-      await navigator.clipboard.writeText(command);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      track("Install Command Copy Error", {
-        package_manager: packageManager,
-        selected_count: selectedLogos.size,
-        source: "logos_page_install_dock",
-      });
-      console.error("Failed to copy command:", err);
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -527,18 +515,71 @@ export default function TechLogosPage() {
         {/* Controls Section */}
         <div className="border-t border-border border-dotted px-4 sm:px-6 md:px-8 py-6">
           <div className="w-full mx-auto">
-            <div className="flex flex-row gap-4 items-center justify-between">
-              <div className="relative flex-1 max-w-md">
-                <Input
-                  type="text"
-                  placeholder="Search logos..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pr-10"
-                />
-                <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                  <SearchIcon className="size-4" />
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center flex-1">
+                <div className="relative flex-1 max-w-md">
+                  <Input
+                    type="text"
+                    placeholder="Search logos..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pr-10"
+                  />
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                    <SearchIcon className="size-4" />
+                  </div>
                 </div>
+
+                {/* Category Filter */}
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline" size="sm">
+                      <Filter
+                        className="-ms-1 opacity-60"
+                        size={16}
+                        aria-hidden="true"
+                      />
+                      Categories
+                      {selectedCategories.length > 0 && (
+                        <span className="bg-background text-muted-foreground/70 -me-1 inline-flex h-5 max-h-full items-center rounded border px-1 font-[inherit] text-[0.625rem] font-medium">
+                          {selectedCategories.length}
+                        </span>
+                      )}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto min-w-36 p-3" align="start">
+                    <div className="space-y-3">
+                      <div className="text-muted-foreground text-xs font-medium">
+                        Filter by Category
+                      </div>
+                      <div className="space-y-3">
+                        {uniqueCategories.map((category, i) => (
+                          <div
+                            key={category}
+                            className="flex items-center gap-2"
+                          >
+                            <Checkbox
+                              id={`category-${i}`}
+                              checked={selectedCategories.includes(category)}
+                              onCheckedChange={(checked: boolean) =>
+                                handleCategoryChange(checked, category)
+                              }
+                            />
+                            <Label
+                              htmlFor={`category-${i}`}
+                              className="flex grow justify-between gap-2 font-normal"
+                            >
+                              {category}{" "}
+                              <span className="text-muted-foreground ms-2 text-xs">
+                                {categoryCounts.get(category)}
+                              </span>
+                            </Label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </PopoverContent>
+                </Popover>
               </div>
 
               <Button
@@ -587,14 +628,7 @@ export default function TechLogosPage() {
                       }`}
                     >
                       {isSelected && (
-                        <svg
-                          className="w-2 h-2 text-primary-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <title>Check Icon</title>
-                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                        </svg>
+                        <PixelatedCheckIcon className="w-2 h-2 text-primary-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                       )}
                     </div>
 
@@ -646,68 +680,18 @@ export default function TechLogosPage() {
 
       {/* Dock-style Install Command */}
       {selectedLogos.size > 0 && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-          <div className="bg-card border rounded-lg shadow-lg max-w-lg w-full mx-4">
-            <div className="flex rounded-md">
-              <Select
-                value={packageManager}
-                onValueChange={(value) => {
-                  track("Package Manager Changed", {
-                    from: packageManager,
-                    to: value,
-                    selected_logos_count: selectedLogos.size,
-                    source: "logos_page_install_dock",
-                  });
-                  setPackageManager(value);
-                }}
-              >
-                <SelectTrigger className="text-muted-foreground hover:text-foreground w-20 sm:w-20 rounded-e-none border-0 border-r shadow-none text-xs sm:text-sm">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="bunx">bunx</SelectItem>
-                  <SelectItem value="npx">npx</SelectItem>
-                  <SelectItem value="pnpm">pnpm</SelectItem>
-                  <SelectItem value="yarn">yarn</SelectItem>
-                </SelectContent>
-              </Select>
-              <Input
-                readOnly
-                value={`shadcn@latest add ${logos
-                  .filter((logo) => selectedLogos.has(logo.id))
-                  .map((logo) => `@elements/${logo.name}`)
-                  .join(" ")}`}
-                className="-ms-px flex-1 rounded-none border-0 shadow-none font-mono text-xs sm:text-sm focus-visible:ring-0"
-              />
-              <Button
-                onClick={copyCommand}
-                size="sm"
-                variant="outline"
-                className="-ms-px rounded-s-none border-0 border-l shadow-none text-teal-600 hover:text-teal-500 h-9 w-12 sm:w-auto px-0 sm:px-3"
-              >
-                {copied ? (
-                  <svg
-                    width="16"
-                    height="16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    className="w-4 h-4"
-                  >
-                    <title>Copy Icon</title>
-                    <path
-                      d="M18 6h2v2h-2V6zm-2 4V8h2v2h-2zm-2 2v-2h2v2h-2zm-2 2h2v-2h-2v2zm-2 2h2v-2h-2v2zm-2 0v2h2v-2H8zm-2-2h2v2H6v-2zm0 0H4v-2h2v2z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                ) : (
-                  <>
-                    <CopyIcon className="w-4 h-4 sm:hidden" />
-                    <span className="hidden sm:inline">Copy</span>
-                  </>
-                )}
-              </Button>
-            </div>
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
+          <div className="bg-card border rounded-lg shadow-lg w-full p-3 overflow-hidden">
+            <InstallCommand
+              url={logos
+                .filter((logo) => selectedLogos.has(logo.id))
+                .map((logo) => `@elements/${logo.name}`)
+                .join(" ")}
+              className="w-full max-w-none min-w-0"
+              source="logos_page_install_dock"
+              componentName={`${selectedLogos.size} Logos`}
+              category="Brand"
+            />
           </div>
         </div>
       )}
