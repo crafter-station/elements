@@ -47,6 +47,17 @@ export const providers: Provider[] = [
     providerLink: "https://polar.sh",
   },
   {
+    name: "UploadThing",
+    description: "Complete file upload solution with drag & drop interface",
+    icon: <UploadThingIcon className="w-6 h-6" />,
+    category: "Files",
+    brandColor: "#E91515",
+    isEnabled: true,
+    href: "/t/uploadthing",
+    elementsCount: 2,
+    providerLink: "https://uploadthing.com",
+  },
+  {
     name: "Tech Logos",
     description:
       "Collection of popular tech company logos with shopping cart selection",
@@ -100,17 +111,6 @@ export const providers: Provider[] = [
     href: "/t/upstash",
     elementsCount: 3,
     providerLink: "https://upstash.com",
-  },
-  {
-    name: "UploadThing",
-    description: "Complete file upload solution with drag & drop interface",
-    icon: <UploadThingIcon className="w-6 h-6" />,
-    category: "Files",
-    brandColor: "#E91515",
-    isEnabled: true,
-    href: "/t/uploadthing",
-    elementsCount: 2,
-    providerLink: "https://uploadthing.com",
   },
   {
     name: "Supabase",
