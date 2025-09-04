@@ -214,7 +214,7 @@ export default function Home() {
                 icon={<UploadThingIcon className="w-6 h-6" />}
                 category="Files"
                 brandColor="#E91515"
-                isEnabled={false}
+                isEnabled={true}
                 href="/t/uploadthing"
                 elementsCount={2}
                 providerLink="https://uploadthing.com"

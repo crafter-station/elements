@@ -7,7 +7,6 @@ import { Filter } from "lucide-react";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { CopyIcon } from "@/components/icons/copy";
 import { GroupIcon } from "@/components/icons/group";
 import { SearchIcon } from "@/components/icons/search";
 import { InstallCommand } from "@/components/install-command";
