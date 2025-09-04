@@ -32,10 +32,5 @@
       "target": "app/success/page.tsx"
     }
   ],
-  "envVars": {
-    "POLAR_ACCESS_TOKEN": "polar_oat_...",
-    "POLAR_SUCCESS_URL": "https://yourdomain.com/success?checkout_id={CHECKOUT_ID}",
-    "POLAR_BASE_URL": "https://api.polar.sh"
-  },
   "docs": "Complete Polar.sh sponsorship suite with tiers, checkout, and sponsor display. Set up products in Polar dashboard, update POLAR_PRODUCT_IDS in lib/polar.ts with your product IDs, and configure environment variables. Includes API routes, sponsor components, and checkout integration."
 }

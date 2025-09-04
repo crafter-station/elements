@@ -14,9 +14,5 @@
       "target": "app/waitlist/page.tsx"
     }
   ],
-  "envVars": {
-    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-    "CLERK_SECRET_KEY": "sk_test_"
-  },
   "docs": "Waitlist signup using Clerk's built-in components. Requires ClerkProvider in root layout and waitlist mode enabled in Clerk dashboard (Configure > Restrictions > Sign-up mode)."
 }
