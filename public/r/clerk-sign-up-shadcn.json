@@ -51,5 +51,9 @@
       "target": "app/0-sso-callback/page.tsx"
     }
   ],
+  "envVars": {
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+    "CLERK_SECRET_KEY": "sk_test_"
+  },
   "docs": "Complete sign-up form with OAuth providers, email verification, and CAPTCHA support using custom ShadCN components. Requires ClerkProvider in root layout."
 }

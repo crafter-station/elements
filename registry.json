@@ -1233,11 +1233,6 @@
           "path": "registry/default/elements/uploadthing/upload-dropzone.tsx",
           "type": "registry:component",
           "target": "components/elements/uploadthing/upload-dropzone.tsx"
-        },
-        {
-          "path": "registry/default/elements/uploadthing/utils.ts",
-          "type": "registry:lib",
-          "target": "lib/uploadthing.ts"
         }
       ],
       "envVars": {
@@ -1273,11 +1268,6 @@
           "path": "registry/default/elements/uploadthing/upload-button.tsx",
           "type": "registry:component",
           "target": "components/elements/uploadthing/upload-button.tsx"
-        },
-        {
-          "path": "registry/default/elements/uploadthing/utils.ts",
-          "type": "registry:lib",
-          "target": "lib/uploadthing.ts"
         }
       ],
       "envVars": {

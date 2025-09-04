@@ -25,5 +25,12 @@
       "target": "app/0-dashboard/page.tsx"
     }
   ],
+  "envVars": {
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+    "CLERK_SECRET_KEY": "sk_test_",
+    "NEXT_PUBLIC_CLERK_SIGN_UP_URL": "/sign-up",
+    "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/0-dashboard",
+    "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/0-dashboard"
+  },
   "docs": "Sign-up page using Clerk's built-in SignUp component. Requires ClerkProvider in root layout."
 }

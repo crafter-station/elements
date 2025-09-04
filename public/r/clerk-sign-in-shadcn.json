@@ -52,5 +52,9 @@
       "target": "app/elements/clerk/sso-callback/page.tsx"
     }
   ],
+  "envVars": {
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+    "CLERK_SECRET_KEY": "sk_test_"
+  },
   "docs": "Complete sign-in form with OAuth providers, MFA support, and error handling using custom ShadCN components. Requires ClerkProvider in root layout."
 }
