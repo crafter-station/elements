@@ -1241,8 +1241,7 @@
         }
       ],
       "envVars": {
-        "UPLOADTHING_TOKEN": "ut_...",
-        "UPLOADTHING_APP_ID": "your_app_id"
+        "UPLOADTHING_TOKEN": "ut_..."
       },
       "categories": ["upload", "file", "storage"],
       "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token."
