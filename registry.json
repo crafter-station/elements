@@ -1205,6 +1205,88 @@
         "POLAR_BASE_URL": "https://api.polar.sh"
       },
       "docs": "Complete Polar.sh sponsorship suite with tiers, checkout, and sponsor display. Set up products in Polar dashboard, update POLAR_PRODUCT_IDS in lib/polar.ts with your product IDs, and configure environment variables. Includes API routes, sponsor components, and checkout integration."
+    },
+    {
+      "name": "uploadthing-dropzone",
+      "type": "registry:block",
+      "title": "UploadThing Dropzone",
+      "description": "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
+      "registryDependencies": ["button", "card", "badge", "tabs"],
+      "dependencies": [
+        "uploadthing",
+        "@uploadthing/react",
+        "@vercel/analytics",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/default/elements/uploadthing/core.ts",
+          "type": "registry:lib",
+          "target": "app/api/uploadthing/core.ts"
+        },
+        {
+          "path": "registry/default/elements/uploadthing/route.ts",
+          "type": "registry:lib",
+          "target": "app/api/uploadthing/route.ts"
+        },
+        {
+          "path": "registry/default/elements/uploadthing/upload-dropzone.tsx",
+          "type": "registry:component",
+          "target": "components/elements/uploadthing/upload-dropzone.tsx"
+        },
+        {
+          "path": "registry/default/elements/uploadthing/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/uploadthing.ts"
+        }
+      ],
+      "envVars": {
+        "UPLOADTHING_TOKEN": "ut_...",
+        "UPLOADTHING_APP_ID": "your_app_id"
+      },
+      "categories": ["upload", "file", "storage"],
+      "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token."
+    },
+    {
+      "name": "uploadthing-button",
+      "type": "registry:ui",
+      "title": "UploadThing Button",
+      "description": "Simple upload button with UploadThing integration",
+      "registryDependencies": [],
+      "dependencies": [
+        "uploadthing",
+        "@uploadthing/react",
+        "@vercel/analytics",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/default/elements/uploadthing/core.ts",
+          "type": "registry:lib",
+          "target": "app/api/uploadthing/core.ts"
+        },
+        {
+          "path": "registry/default/elements/uploadthing/route.ts",
+          "type": "registry:lib",
+          "target": "app/api/uploadthing/route.ts"
+        },
+        {
+          "path": "registry/default/elements/uploadthing/upload-button.tsx",
+          "type": "registry:component",
+          "target": "components/elements/uploadthing/upload-button.tsx"
+        },
+        {
+          "path": "registry/default/elements/uploadthing/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/uploadthing.ts"
+        }
+      ],
+      "envVars": {
+        "UPLOADTHING_TOKEN": "ut_...",
+        "UPLOADTHING_APP_ID": "your_app_id"
+      },
+      "categories": ["upload", "file", "storage"],
+      "docs": "Simple upload button component using UploadThing for basic file uploads with analytics tracking and error handling. Requires UploadThing account and API token."
     }
   ]
 }
