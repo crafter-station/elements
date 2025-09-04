@@ -1,10 +1,8 @@
-import Link from "next/link";
-
-import { track } from "@vercel/analytics";
-
 import { cn } from "@/lib/utils";
 
 import { Badge } from "@/components/ui/badge";
+import { ExternalLink } from "@/components/ui/external-link";
+import { LinkWithAnalytics } from "@/components/ui/link-with-analytics";
 
 interface ComponentCardProps {
   name: string;
@@ -31,16 +29,6 @@ export function ComponentCard({
   providerLink,
   trackingSource = "unknown",
 }: ComponentCardProps) {
-  const handleClick = () => {
-    track("Component Card Click", {
-      component_name: name,
-      category: category,
-      source: trackingSource,
-      is_enabled: isEnabled,
-      elements_count: elementsCount || 0,
-    });
-  };
-
   const patternStyle =
     brandColor && isEnabled
       ? {
@@ -119,19 +107,26 @@ export function ComponentCard({
     <div className="relative isolate h-full w-full">
       {CardContent}
       {href && (
-        <Link
+        <LinkWithAnalytics
           className="absolute inset-0 z-10"
           href={href}
-          onClick={handleClick}
-        ></Link>
+          trackingEvent="Component Card Click"
+          trackingProperties={{
+            component_name: name,
+            category: category,
+            source: trackingSource,
+            is_enabled: isEnabled,
+            elements_count: elementsCount || 0,
+          }}
+        >
+          <span className="sr-only">View {name} elements</span>
+        </LinkWithAnalytics>
       )}
       {providerLink && (
-        <a
+        <ExternalLink
           href={providerLink}
-          target="_blank"
-          rel="noopener noreferrer"
           className="absolute bottom-4 right-4 sm:bottom-5 sm:right-6 text-muted-foreground hover:text-foreground z-20 p-2 rounded hover:bg-muted/20 transition-colors"
-          onClick={(e) => e.stopPropagation()}
+          stopPropagation={true}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +144,7 @@ export function ComponentCard({
             <path d="M7 7h10v10" />
             <path d="M7 17 17 7" />
           </svg>
-        </a>
+        </ExternalLink>
       )}
     </div>
   );

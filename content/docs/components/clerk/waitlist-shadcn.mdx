@@ -3,7 +3,7 @@ title: Clerk Waitlist (ShadCN)
 description: An animated waitlist signup form with Clerk integration using custom ShadCN components
 ---
 
-import { WaitlistElement } from "@/registry/default/elements/clerk/waitlist-shadcn/waitlist";
+import { WaitlistShadcn } from "@/registry/default/elements/clerk/waitlist-shadcn/waitlist";
 
 # Clerk Waitlist (ShadCN)
 
@@ -12,7 +12,7 @@ Animated waitlist signup form with Clerk integration using custom ShadCN compone
 ## Preview
 
 <div className="my-8 flex min-h-[400px] w-full items-center justify-center rounded-lg border bg-background p-8">
-  <WaitlistElement />
+  <WaitlistShadcn />
 </div>
 
 **Features:** Smooth animations with motion effects, email validation and collection, waitlist position tracking, customizable success states, and seamless Clerk integration.
@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
 ## Usage
 
 ```tsx title="app/waitlist/page.tsx"
-import { WaitlistElement } from "@/registry/default/elements/clerk/waitlist-shadcn/waitlist";
+import { Waitlist } from "@/registry/default/elements/clerk/waitlist-shadcn/waitlist";
 
 export default function WaitlistPage() {
   return (
@@ -73,7 +73,7 @@ export default function WaitlistPage() {
             Be the first to know when we launch
           </p>
         </div>
-        <WaitlistElement />
+        <Waitlist />
       </div>
     </div>
   );

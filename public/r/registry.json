@@ -19,12 +19,12 @@
         {
           "path": "registry/default/elements/clerk/waitlist-shadcn/waitlist.tsx",
           "type": "registry:component",
-          "target": "components/elements/clerk/waitlist/waitlist.tsx"
+          "target": "app/elements/clerk/waitlist/waitlist.tsx"
         },
         {
           "path": "registry/default/elements/clerk/waitlist-shadcn/actions.ts",
           "type": "registry:lib",
-          "target": "components/elements/clerk/waitlist/actions.ts"
+          "target": "app/elements/clerk/waitlist/actions.ts"
         },
         {
           "path": "registry/default/elements/clerk/waitlist-shadcn/page.tsx",
@@ -65,7 +65,7 @@
         {
           "path": "registry/default/elements/clerk/sign-in-shadcn/sign-in.tsx",
           "type": "registry:component",
-          "target": "components/elements/clerk/sign-in.tsx"
+          "target": "app/elements/clerk/sign-in/sign-in.tsx"
         },
         {
           "path": "registry/default/elements/clerk/sign-in-shadcn/page.tsx",
@@ -75,7 +75,7 @@
         {
           "path": "registry/default/elements/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
-          "target": "app/0-dashboard/page.tsx"
+          "target": "app/elements/clerk/dashboard/page.tsx"
         },
         {
           "path": "registry/default/elements/clerk/shared/sso-callback/page.tsx",
@@ -119,7 +119,7 @@
         {
           "path": "registry/default/elements/clerk/sign-up-shadcn/sign-up.tsx",
           "type": "registry:component",
-          "target": "components/elements/clerk/sign-up.tsx"
+          "target": "app/elements/clerk/sign-up/sign-up.tsx"
         },
         {
           "path": "registry/default/elements/clerk/sign-up-shadcn/page.tsx",
@@ -129,12 +129,12 @@
         {
           "path": "registry/default/elements/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
-          "target": "app/0-dashboard/page.tsx"
+          "target": "app/elements/clerk/dashboard/page.tsx"
         },
         {
           "path": "registry/default/elements/clerk/shared/sso-callback/page.tsx",
           "type": "registry:page",
-          "target": "app/0-sso-callback/page.tsx"
+          "target": "app/elements/clerk/sso-callback/page.tsx"
         }
       ],
       "envVars": {
@@ -154,7 +154,7 @@
         {
           "path": "registry/default/elements/clerk/waitlist/page.tsx",
           "type": "registry:page",
-          "target": "app/waitlist/page.tsx"
+          "target": "app/elements/clerk/waitlist/page.tsx"
         }
       ],
       "envVars": {
@@ -179,20 +179,20 @@
         {
           "path": "registry/default/elements/clerk/sign-in/page.tsx",
           "type": "registry:page",
-          "target": "app/sign-in/[[...sign-in]]/page.tsx"
+          "target": "app/elements/clerk/sign-in/[[...sign-in]]/page.tsx"
         },
         {
           "path": "registry/default/elements/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
-          "target": "app/0-dashboard/page.tsx"
+          "target": "app/elements/clerk/dashboard/page.tsx"
         }
       ],
       "envVars": {
         "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
         "CLERK_SECRET_KEY": "sk_test_",
         "NEXT_PUBLIC_CLERK_SIGN_IN_URL": "/sign-in",
-        "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/0-dashboard",
-        "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/0-dashboard"
+        "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/dashboard",
+        "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/dashboard"
       },
       "docs": "Sign-in page using Clerk's built-in SignIn component. Requires ClerkProvider in root layout."
     },
@@ -212,20 +212,20 @@
         {
           "path": "registry/default/elements/clerk/sign-up/page.tsx",
           "type": "registry:page",
-          "target": "app/sign-up/[[...sign-up]]/page.tsx"
+          "target": "app/elements/clerk/sign-up/[[...sign-up]]/page.tsx"
         },
         {
           "path": "registry/default/elements/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
-          "target": "app/0-dashboard/page.tsx"
+          "target": "app/elements/clerk/dashboard/page.tsx"
         }
       ],
       "envVars": {
         "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
         "CLERK_SECRET_KEY": "sk_test_",
         "NEXT_PUBLIC_CLERK_SIGN_UP_URL": "/sign-up",
-        "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/0-dashboard",
-        "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/0-dashboard"
+        "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/elements/clerk/dashboard",
+        "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/elements/clerk/dashboard"
       },
       "docs": "Sign-up page using Clerk's built-in SignUp component. Requires ClerkProvider in root layout."
     },

@@ -1,7 +1,7 @@
 "use server";
 
 import { createClerkClient } from "@clerk/backend";
-import { ClerkAPIResponseError } from "@clerk/shared/error";
+import { ClerkAPIResponseError } from "@clerk/shared";
 
 if (!process.env.CLERK_SECRET_KEY) {
   throw new Error("CLERK_SECRET_KEY is not set");
@@ -37,14 +37,18 @@ export async function addToWaitlist(
   } catch (error) {
     console.error("Failed to add to waitlist:", error);
 
-    if (error instanceof ClerkAPIResponseError) {
-      if (error.errors[0].code === "form_identifier_exists") {
-        return { error: "You're already on the waitlist!" };
-      }
+    if (
+      error instanceof ClerkAPIResponseError &&
+      error.errors[0].code === "form_identifier_exists"
+    ) {
+      return { error: "You're already on the waitlist!" };
+    }
 
-      if (error.errors[0].code === "form_invalid_email_address") {
-        return { error: "Please enter a valid email address" };
-      }
+    if (
+      error instanceof ClerkAPIResponseError &&
+      error.errors[0].code === "form_invalid_email_address"
+    ) {
+      return { error: "Please enter a valid email address" };
     }
 
     return { error: "Failed to join waitlist. Please try again." };

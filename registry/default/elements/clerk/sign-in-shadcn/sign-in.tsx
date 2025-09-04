@@ -31,7 +31,7 @@ interface SignInState {
   mfaFactors?: { strategy: "phone_code" | "totp" | "backup_code" }[];
 }
 
-export function ClerkSignInElement() {
+export function ClerkSignInShadcn() {
   const { isLoaded, signIn, setActive } = useSignIn();
   const { isSignedIn } = useUser();
   const clerk = useClerk();
@@ -143,7 +143,7 @@ export function ClerkSignInElement() {
 
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        router.push("/0-dashboard");
+        router.push("/elements/clerk/dashboard");
       } else {
         setError(`MFA verification incomplete: ${result.status}`);
       }
@@ -179,7 +179,7 @@ export function ClerkSignInElement() {
 
         // Note: Session tasks should be checked after setActive completes
         // For now, we redirect to dashboard and let the app handle session tasks
-        router.push("/0-dashboard");
+        router.push("/elements/clerk/dashboard");
       } else if (result.status === "needs_second_factor") {
         setState({
           step: "mfa",
@@ -235,8 +235,8 @@ export function ClerkSignInElement() {
     try {
       await signIn.authenticateWithRedirect({
         strategy: provider as OAuthStrategy,
-        redirectUrl: "/0-sso-callback",
-        redirectUrlComplete: "/0-dashboard",
+        redirectUrl: "/elements/clerk/sso-callback",
+        redirectUrlComplete: "/elements/clerk/dashboard",
       });
     } catch (err) {
       let errorMessage = `Failed to sign in with ${provider.replace("oauth_", "")}`;
@@ -307,7 +307,7 @@ export function ClerkSignInElement() {
           </div>
           <div className="flex space-x-2">
             <Button
-              onClick={() => router.push("/0-dashboard")}
+              onClick={() => router.push("/elements/clerk/dashboard")}
               className="flex-1"
             >
               Go to Dashboard

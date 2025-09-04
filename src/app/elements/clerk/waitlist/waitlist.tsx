@@ -57,7 +57,7 @@ function PixelatedCheckIcon({ className }: { className?: string }) {
   );
 }
 
-export function WaitlistElement() {
+export function WaitlistShadcn() {
   const [state, formAction, isPending] = useActionState(addToWaitlist, {
     success: false,
   } as WaitlistState);

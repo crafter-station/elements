@@ -248,7 +248,7 @@ Components are designed to have minimal dependencies:
 Components are designed for easy composition:
 
 ```tsx
-import { ClerkSignInElement } from "@/components/elements/clerk/sign-in";
+import { ClerkSignInShadcn } from "@/components/elements/clerk/sign-in";
 import { ThemeSwitcher } from "@/components/elements/theme/switcher";
 
 export function AuthLayout({ children }) {
@@ -267,7 +267,7 @@ export function AuthLayout({ children }) {
 export function SignInPage() {
   return (
     <AuthLayout>
-      <ClerkSignInElement />
+      <ClerkSignInShadcn />
     </AuthLayout>
   );
 }
@@ -278,7 +278,7 @@ export function SignInPage() {
 All components support custom styling:
 
 ```tsx
-<ClerkSignInElement className="w-full max-w-lg border-2 border-primary" />
+<ClerkSignInShadcn className="w-full max-w-lg border-2 border-primary" />
 <ThemeSwitcher className="bg-accent hover:bg-accent/80" />
 <AppleLogo className="h-8 w-8 text-blue-600" />
 ```

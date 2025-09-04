@@ -32,7 +32,7 @@ interface SignUpState {
   step?: "form" | "verify";
 }
 
-export function ClerkSignUpElement() {
+export function ClerkSignUpShadcn() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const { signIn } = useSignIn();
   const { isSignedIn } = useUser();
@@ -252,8 +252,9 @@ export function ClerkSignUpElement() {
         await setActive({ session: result.createdSessionId });
 
         // Note: Session tasks should be checked after setActive completes
+        // For now, redirect to dashboard and handle session tasks there
 
-        router.push("/0-dashboard");
+        router.push("/elements/clerk/dashboard");
       } else {
         setState((prev) => ({
           ...prev,
@@ -295,8 +296,8 @@ export function ClerkSignUpElement() {
     try {
       await signUp.authenticateWithRedirect({
         strategy: provider as OAuthStrategy,
-        redirectUrl: "_sso-callback",
-        redirectUrlComplete: "0-dashboard",
+        redirectUrl: "/elements/clerk/sso-callback",
+        redirectUrlComplete: "/elements/clerk/dashboard",
       });
     } catch (err) {
       let errorMessage = `Failed to sign up with ${provider.replace("oauth_", "")}`;
@@ -306,7 +307,7 @@ export function ClerkSignUpElement() {
         errorMessage =
           clerkError.longMessage || clerkError.message || errorMessage;
       } else {
-        errorMessage = err instanceof Error ? err.message : "Failed to sign up";
+        errorMessage = err instanceof Error ? err.message : errorMessage;
       }
 
       setState((prev) => ({
@@ -370,7 +371,7 @@ export function ClerkSignUpElement() {
           </div>
           <div className="flex space-x-2">
             <Button
-              onClick={() => router.push("/0-dashboard")}
+              onClick={() => router.push("/elements/clerk/sso-callback")}
               className="flex-1"
             >
               Go to Dashboard

@@ -11,9 +11,9 @@ import { ShieldIcon } from "@/components/icons/shield";
 import { ZapIcon } from "@/components/icons/zap";
 import { Button } from "@/components/ui/button";
 
-import { ClerkSignInElement } from "@/registry/default/elements/clerk/sign-in";
-import { ClerkSignUpElement } from "@/registry/default/elements/clerk/sign-up";
-import { WaitlistElement } from "@/registry/default/elements/clerk/waitlist-shadcn/waitlist";
+import { ClerkSignInShadcn } from "@/registry/default/elements/clerk/sign-in-shadcn/sign-in";
+import { ClerkSignUpShadcn } from "@/registry/default/elements/clerk/sign-up-shadcn/sign-up";
+import { WaitlistShadcn } from "@/registry/default/elements/clerk/waitlist-shadcn/waitlist";
 
 export default function ClerkPage() {
   const { isSignedIn, isLoaded } = useUser();
@@ -79,7 +79,7 @@ export default function ClerkPage() {
             </div>
             <div className="flex space-x-2">
               <Button
-                onClick={() => router.push("/0-dashboard")}
+                onClick={() => router.push("/elements/clerk/dashboard")}
                 className="flex-1"
               >
                 Go to Dashboard
@@ -113,7 +113,7 @@ export default function ClerkPage() {
             </div>
             <div className="flex space-x-2">
               <Button
-                onClick={() => router.push("/0-dashboard")}
+                onClick={() => router.push("/elements/clerk/dashboard")}
                 className="flex-1"
               >
                 Go to Dashboard
@@ -135,9 +135,9 @@ export default function ClerkPage() {
         <SignUp routing="hash" />
       ),
     "clerk-waitlist": <Waitlist />,
-    "clerk-sign-in-shadcn": <ClerkSignInElement />,
-    "clerk-sign-up-shadcn": <ClerkSignUpElement />,
-    "clerk-waitlist-shadcn": <WaitlistElement />,
+    "clerk-sign-in-shadcn": <ClerkSignInShadcn />,
+    "clerk-sign-up-shadcn": <ClerkSignUpShadcn />,
+    "clerk-waitlist-shadcn": <WaitlistShadcn />,
   };
 
   const componentInstallUrls = {
