@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@clerk/backend": "^2.12.0",
-    "@clerk/nextjs": "^6.31.8",
+    "@clerk/clerk-react": "^5.46.1",
+    "@clerk/nextjs": "^6.31.9",
     "@clerk/themes": "^2.4.16",
     "@clerk/types": "^4.84.0",
     "@headless-tree/core": "^1.4.0",

@@ -1,4 +1,4 @@
-export function UploadThingIcon({ className }: { className?: string }) {
+export function UploadThingLogo({ className }: { className?: string }) {
   return (
     <svg
       version="1.0"

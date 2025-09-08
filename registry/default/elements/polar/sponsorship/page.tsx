@@ -81,7 +81,7 @@ export function SponsorshipPage({
         }
 
         // Use the Polar NextJS adapter checkout route
-        const checkoutUrl = `/api/checkout?products=${productId}`;
+        const checkoutUrl = `/elements/polar/api/checkout?products=${productId}`;
         window.location.href = checkoutUrl;
       } catch (error) {
         console.error("Failed to create checkout:", error);

@@ -2,14 +2,14 @@ import { ClerkLogo } from "@/components/clerk-logo";
 import { GroupIcon } from "@/components/icons/group";
 import { MoonIcon } from "@/components/icons/moon";
 import { TriggerIcon } from "@/components/icons/trigger";
-import { UploadThingIcon } from "@/components/icons/upload-thing";
-import { BetterAuthIcon } from "@/components/ui/logos/better-auth";
-import { PolarIcon } from "@/components/ui/logos/polar";
-import { ResendIcon } from "@/components/ui/logos/resend";
-import { StripeIcon } from "@/components/ui/logos/stripe";
-import { SupabaseIcon } from "@/components/ui/logos/supabase";
-import { UpstashIcon } from "@/components/ui/logos/upstash";
-import { VercelIcon } from "@/components/ui/logos/vercel";
+import { UploadThingLogo } from "@/components/icons/upload-thing";
+import { BetterAuthLogo } from "@/components/ui/logos/better-auth";
+import { PolarLogo } from "@/components/ui/logos/polar";
+import { ResendLogo } from "@/components/ui/logos/resend";
+import { StripeLogo } from "@/components/ui/logos/stripe";
+import { SupabaseLogo } from "@/components/ui/logos/supabase";
+import { UpstashLogo } from "@/components/ui/logos/upstash";
+import { VercelLogo } from "@/components/ui/logos/vercel";
 
 export interface Provider {
   name: string;
@@ -38,7 +38,7 @@ export const providers: Provider[] = [
   {
     name: "Polar",
     description: "Monetization platform for open source creators",
-    icon: <PolarIcon className="w-6 h-6" />,
+    icon: <PolarLogo className="w-6 h-6" />,
     category: "Monetization",
     brandColor: "#0062FF",
     isEnabled: true,
@@ -49,7 +49,7 @@ export const providers: Provider[] = [
   {
     name: "UploadThing",
     description: "Complete file upload solution with drag & drop interface",
-    icon: <UploadThingIcon className="w-6 h-6" />,
+    icon: <UploadThingLogo className="w-6 h-6" />,
     category: "Files",
     brandColor: "#E91515",
     isEnabled: true,
@@ -82,7 +82,7 @@ export const providers: Provider[] = [
     name: "Vercel AI SDK",
     description:
       "AI-powered chat and streaming components with model providers",
-    icon: <VercelIcon className="w-6 h-6" />,
+    icon: <VercelLogo className="w-6 h-6" />,
     category: "AI",
     brandColor: "#000000",
     isEnabled: false,
@@ -104,7 +104,7 @@ export const providers: Provider[] = [
   {
     name: "Upstash",
     description: "Redis and Kafka database components with edge computing",
-    icon: <UpstashIcon className="w-6 h-6" />,
+    icon: <UpstashLogo className="w-6 h-6" />,
     category: "Database",
     brandColor: "#00C98D",
     isEnabled: false,
@@ -115,7 +115,7 @@ export const providers: Provider[] = [
   {
     name: "Supabase",
     description: "Database connection and CRUD operation components",
-    icon: <SupabaseIcon className="w-6 h-6" />,
+    icon: <SupabaseLogo className="w-6 h-6" />,
     category: "Database",
     brandColor: "#3ECF8E",
     elementsCount: 5,
@@ -126,7 +126,7 @@ export const providers: Provider[] = [
   {
     name: "Better Auth",
     description: "Route protection and role-based access control",
-    icon: <BetterAuthIcon className="w-6 h-6" />,
+    icon: <BetterAuthLogo className="w-6 h-6" />,
     category: "Auth",
     brandColor: "#000000",
     elementsCount: 3,
@@ -137,7 +137,7 @@ export const providers: Provider[] = [
   {
     name: "Resend",
     description: "Responsive email templates with React Email",
-    icon: <ResendIcon className="w-6 h-6" />,
+    icon: <ResendLogo className="w-6 h-6" />,
     category: "Email",
     brandColor: "#000000",
     elementsCount: 2,
@@ -148,7 +148,7 @@ export const providers: Provider[] = [
   {
     name: "Stripe",
     description: "Stripe integration with checkout and subscription flows",
-    icon: <StripeIcon className="w-6 h-6" />,
+    icon: <StripeLogo className="w-6 h-6" />,
     category: "Payments",
     brandColor: "#635BFF",
     elementsCount: 4,

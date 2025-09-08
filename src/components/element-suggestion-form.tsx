@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { ChevronDownIcon } from "@/components/icons/chevron-down";
 import { GroupIcon } from "@/components/icons/group";
 import { TriggerIcon } from "@/components/icons/trigger";
-import { UploadThingIcon } from "@/components/icons/upload-thing";
+import { UploadThingLogo } from "@/components/icons/upload-thing";
 import { PixelatedCheckIcon } from "@/components/pixelated-check-icon";
 import { PixelatedSharpCornerIcon } from "@/components/pixelated-sharp-corner-icon";
 import { Button } from "@/components/ui/button";
@@ -22,13 +22,13 @@ import {
 } from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { BetterAuthIcon } from "@/components/ui/logos/better-auth";
-import { PolarIcon } from "@/components/ui/logos/polar";
-import { ResendIcon } from "@/components/ui/logos/resend";
-import { StripeIcon } from "@/components/ui/logos/stripe";
-import { SupabaseIcon } from "@/components/ui/logos/supabase";
-import { UpstashIcon } from "@/components/ui/logos/upstash";
-import { VercelIcon } from "@/components/ui/logos/vercel";
+import { BetterAuthLogo } from "@/components/ui/logos/better-auth";
+import { PolarLogo } from "@/components/ui/logos/polar";
+import { ResendLogo } from "@/components/ui/logos/resend";
+import { StripeLogo } from "@/components/ui/logos/stripe";
+import { SupabaseLogo } from "@/components/ui/logos/supabase";
+import { UpstashLogo } from "@/components/ui/logos/upstash";
+import { VercelLogo } from "@/components/ui/logos/vercel";
 import {
   Popover,
   PopoverContent,
@@ -53,7 +53,7 @@ export function ElementSuggestionForm() {
     {
       value: "vercel",
       label: "Vercel AI SDK",
-      icon: VercelIcon,
+      icon: VercelLogo,
       category: "AI",
     },
     {
@@ -65,38 +65,38 @@ export function ElementSuggestionForm() {
     {
       value: "upstash",
       label: "Upstash",
-      icon: UpstashIcon,
+      icon: UpstashLogo,
       category: "Database",
     },
     {
       value: "uploadthing",
       label: "UploadThing",
-      icon: UploadThingIcon,
+      icon: UploadThingLogo,
       category: "Files",
     },
     {
       value: "supabase",
       label: "Supabase",
-      icon: SupabaseIcon,
+      icon: SupabaseLogo,
       category: "Database",
     },
     {
       value: "polar",
       label: "Polar",
-      icon: PolarIcon,
+      icon: PolarLogo,
       category: "Monetization",
     },
     {
       value: "better-auth",
       label: "Better Auth",
-      icon: BetterAuthIcon,
+      icon: BetterAuthLogo,
       category: "Auth",
     },
-    { value: "resend", label: "Resend", icon: ResendIcon, category: "Email" },
+    { value: "resend", label: "Resend", icon: ResendLogo, category: "Email" },
     {
       value: "stripe",
       label: "Stripe",
-      icon: StripeIcon,
+      icon: StripeLogo,
       category: "Payments",
     },
     {

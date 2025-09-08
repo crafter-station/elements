@@ -4,10 +4,8 @@
 
 We would like to thank our sponsors who make this project possible:
 
-### 🌟 Cristian Correa
-**Sponsor**
-
-Thank you for your generous support and belief in this project! Your contribution helps us continue developing and maintaining high-quality components for the community.
+- 🌟 [camilocbarrera](https://github.com/camilocbarrera)
+- 🌟 [carlosdtn](https://github.com/carlosdtn)
 
 ---
 
@@ -25,4 +23,4 @@ This project is maintained by the Crafter Station team and made possible by cont
 
 ---
 
-*Want to become a sponsor? [Get in touch](mailto:hello@crafterstation.com) or support us through our sponsorship programs.*
+_Want to become a sponsor? [Get in touch](mailto:hello@crafterstation.com) or support us through our sponsorship programs._

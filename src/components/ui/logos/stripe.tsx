@@ -1,4 +1,4 @@
-export function StripeIcon({ className }: { className?: string }) {
+export function StripeLogo({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
