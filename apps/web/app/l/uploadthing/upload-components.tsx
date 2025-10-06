@@ -1,9 +1,8 @@
 "use client";
 
+import { UploadThingButton } from "@registry/uploadthing/upload-button";
+import { UploadThingDropzone } from "@registry/uploadthing/upload-dropzone";
 import { toast } from "sonner";
-
-import { UploadThingButton } from "../../../../registry/default/elements/uploadthing/upload-button";
-import { UploadThingDropzone } from "../../../../registry/default/elements/uploadthing/upload-dropzone";
 
 export function UploadThingDropzoneDemo() {
   return (

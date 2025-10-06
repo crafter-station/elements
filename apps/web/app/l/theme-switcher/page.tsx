@@ -1,14 +1,14 @@
+import { ThemeSwitcherButton } from "@registry/theme/button";
+import { ThemeSwitcherDropdown } from "@registry/theme/dropdown";
+import { ThemeSwitcherMultiButton } from "@registry/theme/multi-button";
+import { ThemeSwitcherSwitch } from "@registry/theme/switch";
+import { ThemeSwitcherToggle } from "@registry/theme/toggle";
+
 import { ComponentPageTemplate } from "@/components/component-page-template";
 import { MoonIcon } from "@/components/icons/moon";
 import { ServerIcon } from "@/components/icons/server";
 import { ShieldIcon } from "@/components/icons/shield";
 import { ZapIcon } from "@/components/icons/zap";
-
-import { ThemeSwitcherButton } from "@/registry/default/elements/theme-switcher/button";
-import { ThemeSwitcherDropdown } from "@/registry/default/elements/theme-switcher/dropdown";
-import { ThemeSwitcherMultiButton } from "@/registry/default/elements/theme-switcher/multi-button";
-import { ThemeSwitcherSwitch } from "@/registry/default/elements/theme-switcher/switch";
-import { ThemeSwitcherToggle } from "@/registry/default/elements/theme-switcher/toggle";
 
 export default function ThemeSwitcherPage() {
   const features = [

@@ -3,6 +3,9 @@
 import { useRouter } from "next/navigation";
 
 import { SignIn, SignUp, useClerk, useUser, Waitlist } from "@clerk/nextjs";
+import { ClerkSignInShadcn } from "@registry/clerk/sign-in-shadcn/sign-in";
+import { ClerkSignUpShadcn } from "@registry/clerk/sign-up-shadcn/sign-up";
+import { WaitlistShadcn } from "@registry/clerk/waitlist-shadcn/waitlist";
 
 import { ClerkLogo } from "@/components/clerk-logo";
 import { ComponentPageTemplate } from "@/components/component-page-template";
@@ -10,10 +13,6 @@ import { ServerIcon } from "@/components/icons/server";
 import { ShieldIcon } from "@/components/icons/shield";
 import { ZapIcon } from "@/components/icons/zap";
 import { Button } from "@/components/ui/button";
-
-import { ClerkSignInShadcn } from "@/registry/default/elements/clerk/sign-in-shadcn/sign-in";
-import { ClerkSignUpShadcn } from "@/registry/default/elements/clerk/sign-up-shadcn/sign-up";
-import { WaitlistShadcn } from "@/registry/default/elements/clerk/waitlist-shadcn/waitlist";
 
 export default function ClerkPage() {
   const { isSignedIn, isLoaded } = useUser();

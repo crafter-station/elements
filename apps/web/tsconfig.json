@@ -15,7 +15,14 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@registry/clerk/*": ["../../packages/clerk/registry/clerk/*"],
+      "@registry/uploadthing/*": [
+        "../../packages/uploadthing/registry/uploadthing/*"
+      ],
+      "@registry/polar/*": ["../../packages/polar/registry/polar/*"],
+      "@registry/theme/*": ["../../packages/theme/registry/theme-switcher/*"],
+      "@registry/logos/*": ["../../packages/logos/registry/logos/*"]
     },
     "plugins": [
       {
