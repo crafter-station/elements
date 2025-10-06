@@ -1,0 +1,1 @@
+export { SponsorshipPage } from "./page";

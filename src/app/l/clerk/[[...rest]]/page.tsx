@@ -138,6 +138,7 @@ export default function ClerkPage() {
     "clerk-sign-in-shadcn": <ClerkSignInShadcn />,
     "clerk-sign-up-shadcn": <ClerkSignUpShadcn />,
     "clerk-waitlist-shadcn": <WaitlistShadcn />,
+    "clerk-waitlist-": <WaitlistShadcn />,
   };
 
   const componentInstallUrls = {

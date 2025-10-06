@@ -3,7 +3,9 @@
 import Link from "next/link";
 
 import { SignInButton, useClerk, useUser } from "@clerk/nextjs";
+import { SearchIcon } from "lucide-react";
 
+import { CommandSearch, useCommandSearch } from "@/components/command-search";
 import { ElementsLogo } from "@/components/elements-logo";
 import { PixelatedHeartIcon } from "@/components/pixelated-heart-icon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -18,6 +20,7 @@ import {
 export function Header() {
   const { isSignedIn, user } = useUser();
   const { signOut } = useClerk();
+  const { open, setOpen } = useCommandSearch();
 
   return (
     <div className="w-full border-border border-dotted border-b-1">
@@ -31,6 +34,19 @@ export function Header() {
         </Link>
 
         <div className="flex items-center gap-3">
+          {/* Search Button */}
+          <Button
+            variant="outline"
+            onClick={() => setOpen(true)}
+            className="rounded-md gap-2 text-sm sm:text-base relative"
+          >
+            <SearchIcon className="size-4" />
+            <span className="hidden sm:inline">Search</span>
+            <kbd className="hidden lg:inline-flex pointer-events-none h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground">
+              <span className="text-xs">⌘</span>K
+            </kbd>
+          </Button>
+
           <Button
             asChild
             variant="outline"
@@ -105,6 +121,9 @@ export function Header() {
           )}
         </div>
       </div>
+
+      {/* Command Search Dialog */}
+      <CommandSearch open={open} onOpenChange={setOpen} />
     </div>
   );
 }

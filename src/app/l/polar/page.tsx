@@ -4,9 +4,9 @@ import { ComponentPageTemplate } from "@/components/component-page-template";
 import { ServerIcon } from "@/components/icons/server";
 import { ShieldIcon } from "@/components/icons/shield";
 import { ZapIcon } from "@/components/icons/zap";
-import { PolarIcon } from "@/components/ui/logos/polar";
+import { PolarLogo } from "@/components/ui/logos/polar";
 
-import { SponsorshipPage } from "@/registry/default/elements/polar/sponsorship/sponsorship-page";
+import { SponsorshipPage } from "@/registry/default/elements/polar/sponsorship/page";
 
 export default function PolarPage() {
   const features = [
@@ -76,7 +76,7 @@ export default function PolarPage() {
       category="MONETIZATION"
       name="Polar"
       description="Monetization platform components for open source creators. Complete sponsorship flows with tier management and sponsor showcase."
-      icon={<PolarIcon className="w-12 h-12" />}
+      icon={<PolarLogo className="w-12 h-12" />}
       features={features}
       technicalDetails={technicalDetails}
       installCommand="bunx shadcn@latest add @elements/polar-sponsorship"

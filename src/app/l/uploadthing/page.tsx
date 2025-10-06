@@ -1,7 +1,7 @@
 import { ComponentPageTemplate } from "@/components/component-page-template";
 import { ServerIcon } from "@/components/icons/server";
 import { ShieldIcon } from "@/components/icons/shield";
-import { UploadThingIcon } from "@/components/icons/upload-thing";
+import { UploadThingLogo } from "@/components/icons/upload-thing";
 import { ZapIcon } from "@/components/icons/zap";
 
 import {
@@ -86,7 +86,7 @@ export default function UploadThingPage() {
       category="FILES"
       name="UploadThing"
       description="Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration. Built-in validation and error handling."
-      icon={<UploadThingIcon className="w-12 h-12" />}
+      icon={<UploadThingLogo className="w-12 h-12" />}
       features={features}
       technicalDetails={technicalDetails}
       installCommand="bunx shadcn@latest add @elements/uploadthing-dropzone"
