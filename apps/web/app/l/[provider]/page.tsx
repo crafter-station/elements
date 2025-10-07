@@ -4,6 +4,7 @@ import {
   getComponentsByProvider,
   getProviderMetadata,
   getProviders,
+  type RegistryItem,
 } from "@/lib/registry-loader";
 
 import { ComponentPageTemplate } from "@/components/component-page-template";

@@ -106,7 +106,7 @@ export function ComponentCard({
   return (
     <div className="relative isolate h-full w-full">
       {CardContent}
-      {href && (
+      {href && isEnabled && (
         <LinkWithAnalytics
           className="absolute inset-0 z-10"
           href={href}

@@ -19,7 +19,6 @@
     "registry:merge": "bun run scripts/merge-registry.ts",
     "move-component": "bun run scripts/move-component.ts"
   },
-
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
     "@tailwindcss/postcss": "^4",
@@ -32,5 +31,8 @@
     "turbo": "^2.5.8",
     "tw-animate-css": "^1.3.7",
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@radix-ui/react-context-menu": "^2.2.16"
   }
 }

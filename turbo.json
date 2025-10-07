@@ -28,7 +28,8 @@
       "dependsOn": ["^lint"]
     },
     "//#registry:merge": {
-      "cache": false
+      "cache": false,
+      "outputs": ["apps/web/registry.json"]
     }
   }
 }

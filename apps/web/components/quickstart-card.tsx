@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { ElementWrapper } from "@/components/element-wrapper";
 import { CopyIcon } from "@/components/icons/copy";

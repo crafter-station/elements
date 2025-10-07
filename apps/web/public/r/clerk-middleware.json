@@ -8,8 +8,8 @@
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/default/elements/clerk/shared/middleware.ts",
-      "content": "import { clerkMiddleware, createRouteMatcher } from \"@clerk/nextjs/server\";\n\nconst isPublicRoute = createRouteMatcher([\"/sign-in(.*)\", \"/sign-up(.*)\"]);\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (!isPublicRoute(req)) {\n    await auth.protect();\n  }\n});\n\nexport const config = {\n  matcher: [\n    // Skip Next.js internals and all static files, unless found in search params\n    \"/((?!_next|[^?]*\\\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)\",\n    // Always run for API routes\n    \"/(api|trpc)(.*)\",\n  ],\n};\n",
+      "path": "../../packages/clerk/registry/clerk/shared/middleware.ts",
+      "content": "import { clerkMiddleware, createRouteMatcher } from \"@clerk/nextjs/server\";\n\nconst isPublicRoute = createRouteMatcher([\"/elements(.*)\"]);\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (!isPublicRoute(req)) {\n    await auth.protect();\n  }\n});\n\nexport const config = {\n  matcher: [\n    // Skip Next.js internals and all static files, unless found in search params\n    \"/((?!_next|[^?]*\\\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)\",\n    // Always run for API routes\n    \"/(api|trpc)(.*)\",\n  ],\n};\n",
       "type": "registry:lib",
       "target": "middleware.ts"
     }

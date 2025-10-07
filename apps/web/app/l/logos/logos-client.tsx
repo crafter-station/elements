@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 import { Filter } from "lucide-react";
 
+import { getBrandUrl } from "@/lib/brand-urls";
 import { loadLogoComponent } from "@/lib/component-loader";
 
 import { Footer } from "@/components/footer";
@@ -23,6 +24,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+
+import { LogoContextMenu } from "./logo-context-menu";
 
 interface Logo {
   id: string;
@@ -324,52 +327,76 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
               {filteredLogos.map((logo) => {
                 const LogoComponent = logo.component;
                 const isSelected = selectedLogos.has(logo.id);
+                const brandUrl = getBrandUrl(logo.name);
 
                 if (!LogoComponent) return null;
 
                 return (
-                  <button
-                    type="button"
+                  <LogoContextMenu
                     key={logo.id}
-                    onClick={() => handleLogoToggle(logo.id)}
-                    className={`
-                      group relative p-4 md:p-6 rounded-lg border cursor-pointer transition-all duration-200
-                      hover:shadow-md hover:scale-105
-                      ${
-                        isSelected
-                          ? "bg-primary/10 border-primary ring-2 ring-primary/20"
-                          : "bg-card hover:bg-accent/50"
-                      }
-                    `}
+                    logoName={logo.name}
+                    displayName={logo.displayName}
+                    category={logo.category}
+                    component={LogoComponent}
+                    brandUrl={brandUrl}
                   >
-                    {/* Selection indicator */}
-                    <div
-                      className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 transition-all duration-200 ${
-                        isSelected
-                          ? "bg-primary border-primary"
-                          : "border-muted-foreground/30 group-hover:border-primary/50"
-                      }`}
+                    <button
+                      type="button"
+                      onClick={() => handleLogoToggle(logo.id)}
+                      className={`
+                        group relative p-4 md:p-6 rounded-lg border cursor-context-menu transition-all duration-200
+                        hover:shadow-md hover:scale-105
+                        ${
+                          isSelected
+                            ? "bg-primary/10 border-primary ring-2 ring-primary/20"
+                            : "bg-card hover:bg-accent/50"
+                        }
+                      `}
+                      title="Right-click for options"
                     >
-                      {isSelected && (
-                        <PixelatedCheckIcon className="w-2 h-2 text-primary-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                      )}
-                    </div>
-
-                    <div className="flex flex-col items-center space-y-3">
-                      <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                        <LogoComponent className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 group-hover:scale-110" />
+                      {/* Selection indicator */}
+                      <div
+                        className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 transition-all duration-200 ${
+                          isSelected
+                            ? "bg-primary border-primary"
+                            : "border-muted-foreground/30 group-hover:border-primary/50"
+                        }`}
+                      >
+                        {isSelected && (
+                          <PixelatedCheckIcon className="w-2 h-2 text-primary-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                        )}
                       </div>
 
-                      <div className="text-center space-y-1">
-                        <h3 className="font-medium text-xs md:text-sm">
-                          {logo.displayName}
-                        </h3>
-                        <p className="text-xs text-muted-foreground">
-                          {logo.category}
-                        </p>
+                      {/* Context menu indicator */}
+                      <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-70 transition-opacity duration-200">
+                        <svg
+                          className="w-3 h-3 text-muted-foreground"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                        >
+                          <title>Right-click for more options</title>
+                          <circle cx="2" cy="8" r="1.5" />
+                          <circle cx="8" cy="8" r="1.5" />
+                          <circle cx="14" cy="8" r="1.5" />
+                        </svg>
                       </div>
-                    </div>
-                  </button>
+
+                      <div className="flex flex-col items-center space-y-3">
+                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+                          <LogoComponent className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 group-hover:scale-110" />
+                        </div>
+
+                        <div className="text-center space-y-1">
+                          <h3 className="font-medium text-xs md:text-sm">
+                            {logo.displayName}
+                          </h3>
+                          <p className="text-xs text-muted-foreground">
+                            {logo.category}
+                          </p>
+                        </div>
+                      </div>
+                    </button>
+                  </LogoContextMenu>
                 );
               })}
             </div>

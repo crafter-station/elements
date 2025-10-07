@@ -28,17 +28,17 @@ interface Registry {
 }
 
 const PACKAGES_DIR = join(process.cwd(), "packages");
-const OUTPUT_FILE = join(process.cwd(), "registry.json");
+const OUTPUT_FILE = join(process.cwd(), "apps/web/registry.json");
 
 function fixFilePaths(item: RegistryItem, pkg: string): RegistryItem {
   if (!item.files) return item;
 
   const updatedFiles = item.files.map((file) => {
-    // Simply replace registry/default/ with packages/{pkg}/registry/
-    // The rest of the path structure is preserved
+    // Replace registry/default/ with ../../packages/{pkg}/registry/
+    // This makes the path relative to apps/web/ where shadcn build runs
     const newPath = file.path.replace(
       /^registry\/default\//,
-      `packages/${pkg}/registry/`,
+      `../../packages/${pkg}/registry/`,
     );
 
     return {
