@@ -23,73 +23,47 @@ interface SearchItem {
   category?: string;
 }
 
-// Mock search data - in production this would come from a search index
+// Provider search data
 const SEARCH_DATA: SearchItem[] = [
-  // New MDX-based documentation
-  {
-    id: "ai-sdk",
-    title: "AI SDK",
-    description: "AI-powered components with Vercel's AI SDK",
-    url: "/t/ai-sdk",
-    type: "provider",
-    category: "AI & Machine Learning",
-  },
-  {
-    id: "stripe",
-    title: "Stripe",
-    description: "Complete payment components with Stripe",
-    url: "/t/stripe",
-    type: "provider",
-    category: "Payments & Billing",
-  },
-  // Legacy routes (still accessible)
   {
     id: "clerk",
-    title: "Clerk Authentication",
+    title: "Clerk",
     description: "Complete authentication flows with Clerk",
-    url: "/t/clerk",
+    url: "/l/clerk",
     type: "provider",
     category: "Authentication",
+  },
+  {
+    id: "polar",
+    title: "Polar",
+    description: "Sponsorship integration with Polar.sh",
+    url: "/l/polar",
+    type: "provider",
+    category: "Sponsorship",
   },
   {
     id: "uploadthing",
     title: "UploadThing",
     description: "File upload components with UploadThing",
-    url: "/t/uploadthing",
+    url: "/l/uploadthing",
     type: "provider",
     category: "File Upload",
   },
   {
-    id: "theme-switcher",
-    title: "Theme Switcher",
-    description: "Dark/light mode toggle component",
-    url: "/t/theme-switcher",
-    type: "component",
+    id: "theme",
+    title: "Theme",
+    description: "Dark/light mode toggle components",
+    url: "/l/theme",
+    type: "provider",
     category: "UI",
   },
   {
     id: "logos",
-    title: "Logos",
-    description: "Company and product logos collection",
-    url: "/t/logos",
-    type: "component",
+    title: "Brand Logos",
+    description: "Tech company logos collection",
+    url: "/l/logos",
+    type: "provider",
     category: "Branding",
-  },
-  {
-    id: "trigger",
-    title: "Trigger",
-    description: "Trigger integration components",
-    url: "/t/trigger",
-    type: "provider",
-    category: "Automation",
-  },
-  {
-    id: "polar",
-    title: "Polar",
-    description: "Polar integration for subscriptions",
-    url: "/t/polar",
-    type: "provider",
-    category: "Payments",
   },
 ];
 

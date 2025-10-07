@@ -33,7 +33,7 @@ export function HeroSection() {
           <div className="text-lg uppercase tracking-[0.2em] font-mono text-primary/70">
             [ELEMENTS]
           </div>
-          <h1 className="font-dotted font-black text-5xl lg:text-7xl leading-tight tracking-tight">
+          <h1 className="font-dotted font-black text-5xl lg:text-6xl leading-tight tracking-tight">
             Full-Stack
             <br />
             <ShadcnIcon className="size-8 md:size-12 lg:size-16 inline-block" />{" "}
