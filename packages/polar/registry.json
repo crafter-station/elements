@@ -4,23 +4,6 @@
   "homepage": "https://tryelements.dev",
   "items": [
     {
-      "name": "polar-logo",
-      "type": "registry:ui",
-      "title": "Polar Logo",
-      "description": "Polar logo component with brand blue",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/logos/polar.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/polar.tsx"
-        }
-      ],
-      "categories": ["logo", "brand"],
-      "docs": "Polar logo component with official brand blue color."
-    },
-    {
       "name": "polar-sponsorship",
       "type": "registry:block",
       "title": "Polar Sponsorship Suite",
@@ -34,22 +17,22 @@
       "dependencies": ["@polar-sh/nextjs"],
       "files": [
         {
-          "path": "registry/default/elements/polar/sponsorship/sponsor-tiers.tsx",
+          "path": "registry/default/polar/sponsorship/sponsor-tiers.tsx",
           "type": "registry:component",
           "target": "app/elements/polar/sponsor-tiers.tsx"
         },
         {
-          "path": "registry/default/elements/polar/sponsorship/checkout-route.ts",
+          "path": "registry/default/polar/sponsorship/checkout-route.ts",
           "type": "registry:lib",
           "target": "app/elements/polar/api/checkout/route.ts"
         },
         {
-          "path": "registry/default/elements/polar/sponsorship/page.tsx",
+          "path": "registry/default/polar/sponsorship/page.tsx",
           "type": "registry:page",
           "target": "app/elements/polar/sponsor/page.tsx"
         },
         {
-          "path": "registry/default/elements/polar/sponsorship/success-page.tsx",
+          "path": "registry/default/polar/sponsorship/success-page.tsx",
           "type": "registry:page",
           "target": "app/elements/polar/success/page.tsx"
         }

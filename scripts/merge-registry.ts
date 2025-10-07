@@ -30,6 +30,29 @@ interface Registry {
 const PACKAGES_DIR = join(process.cwd(), "packages");
 const OUTPUT_FILE = join(process.cwd(), "registry.json");
 
+function fixFilePaths(item: RegistryItem, pkg: string): RegistryItem {
+  if (!item.files) return item;
+
+  const updatedFiles = item.files.map((file) => {
+    // Simply replace registry/default/ with packages/{pkg}/registry/
+    // The rest of the path structure is preserved
+    const newPath = file.path.replace(
+      /^registry\/default\//,
+      `packages/${pkg}/registry/`,
+    );
+
+    return {
+      ...file,
+      path: newPath,
+    };
+  });
+
+  return {
+    ...item,
+    files: updatedFiles,
+  };
+}
+
 function main() {
   console.log("🔍 Scanning packages for registry files...\n");
 
@@ -47,7 +70,11 @@ function main() {
 
       if (registry.items && Array.isArray(registry.items)) {
         console.log(`   ✓ ${registry.items.length} items`);
-        allItems.push(...registry.items);
+        // Fix file paths for each item
+        const itemsWithFixedPaths = registry.items.map((item) =>
+          fixFilePaths(item, pkg),
+        );
+        allItems.push(...itemsWithFixedPaths);
       }
     }
   }

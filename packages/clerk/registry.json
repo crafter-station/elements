@@ -17,17 +17,17 @@
       "dependencies": ["motion", "@clerk/backend", "@clerk/nextjs"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/waitlist-shadcn/waitlist.tsx",
+          "path": "registry/default/clerk/waitlist-shadcn/waitlist.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/waitlist/waitlist.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/waitlist-shadcn/actions.ts",
+          "path": "registry/default/clerk/waitlist-shadcn/actions.ts",
           "type": "registry:lib",
           "target": "app/elements/clerk/waitlist/actions.ts"
         },
         {
-          "path": "registry/default/elements/clerk/waitlist-shadcn/page.tsx",
+          "path": "registry/default/clerk/waitlist-shadcn/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/waitlist/page.tsx"
         }
@@ -63,22 +63,22 @@
       "dependencies": ["@clerk/nextjs", "@clerk/types"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/sign-in-shadcn/sign-in.tsx",
+          "path": "registry/default/clerk/sign-in-shadcn/sign-in.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/sign-in/sign-in.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/sign-in-shadcn/page.tsx",
+          "path": "registry/default/clerk/sign-in-shadcn/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-in/page.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/shared/dashboard/page.tsx",
+          "path": "registry/default/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/dashboard/page.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/shared/sso-callback/page.tsx",
+          "path": "registry/default/clerk/shared/sso-callback/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sso-callback/page.tsx"
         }
@@ -117,22 +117,22 @@
       "dependencies": ["@clerk/nextjs", "@clerk/types"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/sign-up-shadcn/sign-up.tsx",
+          "path": "registry/default/clerk/sign-up-shadcn/sign-up.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/sign-up/sign-up.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/sign-up-shadcn/page.tsx",
+          "path": "registry/default/clerk/sign-up-shadcn/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-up/page.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/shared/dashboard/page.tsx",
+          "path": "registry/default/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/dashboard/page.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/shared/sso-callback/page.tsx",
+          "path": "registry/default/clerk/shared/sso-callback/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sso-callback/page.tsx"
         }
@@ -152,7 +152,7 @@
       "dependencies": ["@clerk/nextjs", "@clerk/themes"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/waitlist/page.tsx",
+          "path": "registry/default/clerk/waitlist/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/waitlist/page.tsx"
         }
@@ -177,12 +177,12 @@
       "dependencies": ["@clerk/nextjs", "@clerk/themes"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/sign-in/page.tsx",
+          "path": "registry/default/clerk/sign-in/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-in/[[...sign-in]]/page.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/shared/dashboard/page.tsx",
+          "path": "registry/default/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/dashboard/page.tsx"
         }
@@ -210,12 +210,12 @@
       "dependencies": ["@clerk/nextjs", "@clerk/themes"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/sign-up/page.tsx",
+          "path": "registry/default/clerk/sign-up/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-up/[[...sign-up]]/page.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/shared/dashboard/page.tsx",
+          "path": "registry/default/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/dashboard/page.tsx"
         }
@@ -238,17 +238,17 @@
       "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/sign-in-signals/sign-in-signals.tsx",
+          "path": "registry/default/clerk/sign-in-signals/sign-in-signals.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/sign-in-signals/sign-in-signals.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/sign-in-signals/page.tsx",
+          "path": "registry/default/clerk/sign-in-signals/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-in-signals/page.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/shared/layout.tsx",
+          "path": "registry/default/clerk/shared/layout.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/layout.tsx"
         }
@@ -268,17 +268,17 @@
       "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/sign-up-signals/sign-up-signals.tsx",
+          "path": "registry/default/clerk/sign-up-signals/sign-up-signals.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/sign-up-signals/sign-up-signals.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/sign-up-signals/page.tsx",
+          "path": "registry/default/clerk/sign-up-signals/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-up-signals/page.tsx"
         },
         {
-          "path": "registry/default/elements/clerk/shared/layout.tsx",
+          "path": "registry/default/clerk/shared/layout.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/layout.tsx"
         }
@@ -340,7 +340,7 @@
       "dependencies": ["@clerk/nextjs"],
       "files": [
         {
-          "path": "registry/default/elements/clerk/shared/middleware.ts",
+          "path": "registry/default/clerk/shared/middleware.ts",
           "type": "registry:lib",
           "target": "middleware.ts"
         }

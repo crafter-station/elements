@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "better-auth-logo",
+  "type": "registry:ui",
+  "title": "Better Auth Logo",
+  "description": "Better Auth logo component with theme-adaptive colors",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "packages/logos/registry/logos/better-auth.tsx",
+      "content": "export function BetterAuthLogo({ className }: { className?: string }) {\n  return (\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      fill=\"none\"\n      viewBox=\"0 0 500 500\"\n      className={className}\n    >\n      <title>BetterAuth Logo</title>\n      <path fill=\"var(--color-foreground)\" d=\"M0 0h500v500H0z\" />\n      <path\n        fill=\"var(--color-background)\"\n        d=\"M69 121h86.988v259H69zM337.575 121H430v259h-92.425z\"\n      />\n      <path\n        fill=\"var(--color-background)\"\n        d=\"M427.282 121v83.456h-174.52V121zM430 296.544V380H252.762v-83.456z\"\n      />\n      <path fill=\"white\" d=\"M252.762 204.455v92.089h-96.774v-92.089z\" />\n    </svg>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/logos/better-auth.tsx"
+    }
+  ],
+  "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system.",
+  "categories": ["logo", "brand"]
+}

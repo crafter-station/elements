@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "cd ../.. && bunx shadcn@latest build",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check"

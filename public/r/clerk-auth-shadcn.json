@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-auth-shadcn",
+  "type": "registry:block",
+  "title": "Clerk Auth Suite (ShadCN)",
+  "description": "Complete Clerk authentication suite with sign-in, sign-up, waitlist, and middleware using custom ShadCN components",
+  "dependencies": [],
+  "registryDependencies": [
+    "@elements/clerk-sign-in-shadcn",
+    "@elements/clerk-sign-up-shadcn",
+    "@elements/clerk-waitlist-shadcn"
+  ],
+  "files": [],
+  "docs": "Complete Clerk authentication bundle with custom ShadCN components: sign-in, sign-up, waitlist components, and middleware. Requires ClerkProvider in root layout."
+}

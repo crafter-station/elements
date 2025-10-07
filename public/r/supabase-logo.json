@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "supabase-logo",
+  "type": "registry:ui",
+  "title": "Supabase Logo",
+  "description": "Supabase logo component with brand colors",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "packages/logos/registry/logos/supabase.tsx",
+      "content": "export function SupabaseLogo({ className }: { className?: string }) {\n  return (\n    <svg\n      viewBox=\"0 0 109 113\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Supabase Logo</title>\n      <path\n        d=\"M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z\"\n        fill=\"url(#supabase-paint0_linear)\"\n      />\n      <path\n        d=\"M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z\"\n        fill=\"url(#supabase-paint1_linear)\"\n        fillOpacity=\"0.2\"\n      />\n      <path\n        d=\"M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z\"\n        fill=\"#3ECF8E\"\n      />\n      <defs>\n        <linearGradient\n          id=\"supabase-paint0_linear\"\n          x1=\"53.9738\"\n          y1=\"54.974\"\n          x2=\"94.1635\"\n          y2=\"71.8295\"\n          gradientUnits=\"userSpaceOnUse\"\n        >\n          <stop stopColor=\"#249361\" />\n          <stop offset=\"1\" stopColor=\"#3ECF8E\" />\n        </linearGradient>\n        <linearGradient\n          id=\"supabase-paint1_linear\"\n          x1=\"36.1558\"\n          y1=\"30.578\"\n          x2=\"54.4844\"\n          y2=\"65.0806\"\n          gradientUnits=\"userSpaceOnUse\"\n        >\n          <stop />\n          <stop offset=\"1\" stopOpacity=\"0\" />\n        </linearGradient>\n      </defs>\n    </svg>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/logos/supabase.tsx"
+    }
+  ],
+  "docs": "Supabase logo component with official brand green gradient colors.",
+  "categories": ["logo", "brand"]
+}
