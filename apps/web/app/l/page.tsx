@@ -70,7 +70,7 @@ export default function ProvidersIndexPage() {
                         variant="outline"
                         className="text-xs font-mono"
                         style={{
-                          borderColor: brandColor + "40",
+                          borderColor: `${brandColor}40`,
                           color: brandColor,
                         }}
                       >

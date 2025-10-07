@@ -109,7 +109,7 @@ export default async function ProviderPage(props: ProviderPageProps) {
 }
 
 // Helper: Generate features from components
-function generateFeatures(provider: string, components: any[]): any[] {
+function generateFeatures(_provider: string, components: RegistryItem[]) {
   const icons = {
     zap: (
       <svg
@@ -169,7 +169,10 @@ function generateFeatures(provider: string, components: any[]): any[] {
 }
 
 // Helper: Generate usage example
-function generateUsageExample(provider: string, firstComponent: any): string {
+function generateUsageExample(
+  provider: string,
+  firstComponent: RegistryItem | undefined,
+): string {
   if (!firstComponent) return "";
 
   const componentName = firstComponent.name
