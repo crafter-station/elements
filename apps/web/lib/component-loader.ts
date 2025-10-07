@@ -1,62 +1,46 @@
 /**
- * Component Loader - Dynamically imports components for preview
+ * Component Loader - Server-side component loader
  * Maps registry item names to actual component imports
  */
 
 import type { ComponentType } from "react";
 
 /**
- * Dynamically import a component based on registry item name
- * Maps: clerk-sign-in -> @registry/clerk/sign-in
+ * Get component import path from registry item name
+ * Returns the path to import the component from
  */
-export async function loadComponent(
-  itemName: string,
-): Promise<ComponentType<{ className?: string }> | null> {
-  try {
-    // Extract provider and component name
-    const provider = getProviderFromItemName(itemName);
-    const componentPath = getComponentPath(itemName, provider);
+export function getComponentImportPath(itemName: string): string | null {
+  const provider = getProviderFromItemName(itemName);
+  const componentPath = getComponentPath(itemName, provider);
 
-    // Dynamic import based on provider
-    switch (provider) {
-      case "logos": {
-        // Logo components: apple-logo -> @registry/logos/apple
-        const logoName = itemName.replace("-logo", "");
-        const module = await import(`@registry/logos/${logoName}`);
-        return module[getExportName(logoName)] || module.default || null;
-      }
-
-      case "clerk": {
-        // Clerk components are in their own structure
-        const module = await import(`@registry/clerk/${componentPath}`);
-        return module.default || null;
-      }
-
-      case "theme": {
-        // Theme switcher components
-        const module = await import(`@registry/theme/${componentPath}`);
-        return module.default || null;
-      }
-
-      case "polar": {
-        // Polar components
-        const module = await import(`@registry/polar/${componentPath}`);
-        return module.default || null;
-      }
-
-      case "uploadthing": {
-        // UploadThing components
-        const module = await import(`@registry/uploadthing/${componentPath}`);
-        return module.default || null;
-      }
-
-      default:
-        console.warn(`Unknown provider for component: ${itemName}`);
-        return null;
+  switch (provider) {
+    case "logos": {
+      // Logo components: apple-logo -> @registry/logos/apple
+      const logoName = itemName.replace("-logo", "");
+      return `@registry/logos/${logoName}`;
     }
-  } catch (error) {
-    console.error(`Failed to load component: ${itemName}`, error);
-    return null;
+
+    case "clerk":
+      // Skip layouts and other non-component files
+      if (itemName.includes("middleware")) return null;
+      return `@registry/clerk/${componentPath}`;
+
+    case "theme":
+      // Theme components - skip layouts
+      if (componentPath.includes("layout")) return null;
+      return `@registry/theme/${componentPath}`;
+
+    case "polar":
+      return `@registry/polar/${componentPath}`;
+
+    case "uploadthing":
+      // Skip core and route files
+      if (componentPath.includes("core") || componentPath.includes("route"))
+        return null;
+      return `@registry/uploadthing/${componentPath}`;
+
+    default:
+      return null;
   }
 }
 
@@ -77,8 +61,6 @@ function getProviderFromItemName(name: string): string {
 
 /**
  * Get component path from item name
- * clerk-sign-in -> sign-in
- * theme-switcher-dropdown -> switcher-dropdown
  */
 function getComponentPath(name: string, provider: string): string {
   // Remove provider prefix
@@ -93,13 +75,12 @@ function getComponentPath(name: string, provider: string): string {
 }
 
 /**
- * Get export name from component name
- * apple -> AppleLogo
- * github -> GitHubLogo
+ * Get export name from component name (for logos)
  */
-function getExportName(name: string): string {
+export function getLogoExportName(name: string): string {
   // Convert kebab-case to PascalCase
-  const pascalCase = name
+  const logoName = name.replace("-logo", "");
+  const pascalCase = logoName
     .split("-")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join("");
@@ -108,32 +89,7 @@ function getExportName(name: string): string {
 }
 
 /**
- * Load multiple components in parallel
- */
-export async function loadComponents(
-  itemNames: string[],
-): Promise<Map<string, ComponentType<{ className?: string }>>> {
-  const componentMap = new Map<string, ComponentType<{ className?: string }>>();
-
-  const results = await Promise.allSettled(
-    itemNames.map(async (name) => {
-      const component = await loadComponent(name);
-      return { name, component };
-    }),
-  );
-
-  for (const result of results) {
-    if (result.status === "fulfilled" && result.value.component) {
-      componentMap.set(result.value.name, result.value.component);
-    }
-  }
-
-  return componentMap;
-}
-
-/**
  * Check if a component can be previewed
- * Some components (like middleware) don't have visual previews
  */
 export function canPreviewComponent(itemName: string): boolean {
   // Components that can't be previewed
@@ -144,4 +100,20 @@ export function canPreviewComponent(itemName: string): boolean {
   ];
 
   return !nonPreviewable.includes(itemName);
+}
+
+/**
+ * Dynamically load a logo component (client-side only)
+ */
+export async function loadLogoComponent(
+  itemName: string,
+): Promise<ComponentType<{ className?: string }> | null> {
+  try {
+    const logoName = itemName.replace("-logo", "");
+    const module = await import(`@registry/logos/${logoName}`);
+    return module[getLogoExportName(itemName)] || module.default || null;
+  } catch (error) {
+    console.error(`Failed to load logo: ${itemName}`, error);
+    return null;
+  }
 }

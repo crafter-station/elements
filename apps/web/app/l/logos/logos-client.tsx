@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 import { Filter } from "lucide-react";
 
-import { loadComponent } from "@/lib/component-loader";
+import { loadLogoComponent } from "@/lib/component-loader";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -52,7 +52,7 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
     async function loadLogos() {
       const loadedLogos = await Promise.all(
         initialLogos.map(async (logo) => {
-          const component = await loadComponent(logo.name);
+          const component = await loadLogoComponent(logo.name);
           return {
             ...logo,
             component,
