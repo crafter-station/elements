@@ -61,7 +61,8 @@ for (const provider of providers) {
       continue;
     }
 
-    // Find the component file
+    // Find the component file to load
+    // Only use component type - page/layout files have app-specific imports
     const componentFile = item.files?.find(
       (f) => f.type === "registry:component",
     );

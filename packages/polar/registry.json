@@ -17,8 +17,13 @@
       "dependencies": ["@polar-sh/nextjs"],
       "files": [
         {
-          "path": "registry/default/polar/sponsorship/sponsor-tiers.tsx",
+          "path": "registry/default/polar/sponsorship/sponsor-tiers-preview.tsx",
           "type": "registry:component",
+          "target": "app/elements/polar/sponsor-tiers-preview.tsx"
+        },
+        {
+          "path": "registry/default/polar/sponsorship/sponsor-tiers.tsx",
+          "type": "registry:lib",
           "target": "app/elements/polar/sponsor-tiers.tsx"
         },
         {

@@ -56,7 +56,7 @@ import * as UpstashLogoModule from "@registry/logos/upstash";
 import * as V0LogoModule from "@registry/logos/v0";
 import * as VercelLogoModule from "@registry/logos/vercel";
 import * as XaiLogoModule from "@registry/logos/xai";
-import * as PolarSponsorshipModule from "@registry/polar/sponsorship/sponsor-tiers";
+import * as PolarSponsorshipModule from "@registry/polar/sponsorship/sponsor-tiers-preview";
 import * as ThemeSwitcherButtonModule from "@registry/theme/button";
 import * as ThemeSwitcherDropdownModule from "@registry/theme/dropdown";
 import * as ThemeSwitcherMultiButtonModule from "@registry/theme/multi-button";
