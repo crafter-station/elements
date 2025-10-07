@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { getPreviewComponent } from "@/lib/component-preview-map.generated";
 import { ProviderIcon } from "@/lib/providers";
 import {
   getComponentsByProvider,
@@ -71,23 +72,29 @@ export default async function ProviderPage(props: ProviderPageProps) {
     // Store install URL
     componentInstallUrls[key] = `@elements/${component.name}`;
 
-    // For now, we'll show a placeholder
-    // TODO: Dynamic component loading will be added
-    componentMap[key] = (
-      <div className="flex flex-col items-center justify-center min-h-[300px] space-y-4">
-        <div className="text-center space-y-2">
-          <h3 className="text-lg font-semibold">{component.title}</h3>
-          <p className="text-sm text-muted-foreground max-w-md">
-            {component.description}
-          </p>
-        </div>
-        {component.docs && (
-          <div className="bg-muted/50 rounded-lg p-4 max-w-lg">
-            <p className="text-xs text-muted-foreground">{component.docs}</p>
+    // Automatically get component preview from generated map
+    const PreviewComponent = getPreviewComponent(component.name);
+
+    if (PreviewComponent) {
+      componentMap[key] = <PreviewComponent />;
+    } else {
+      // Fallback for components without previews (lib, hooks, etc.)
+      componentMap[key] = (
+        <div className="flex flex-col items-center justify-center min-h-[300px] space-y-4">
+          <div className="text-center space-y-2">
+            <h3 className="text-lg font-semibold">{component.title}</h3>
+            <p className="text-sm text-muted-foreground max-w-md">
+              {component.description}
+            </p>
           </div>
-        )}
-      </div>
-    );
+          {component.docs && (
+            <div className="bg-muted/50 rounded-lg p-4 max-w-lg">
+              <p className="text-xs text-muted-foreground">{component.docs}</p>
+            </div>
+          )}
+        </div>
+      );
+    }
   }
 
   return (

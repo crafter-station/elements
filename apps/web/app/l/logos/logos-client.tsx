@@ -199,27 +199,42 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
         <div className="relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-30">
-            <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-background via-background to-[]"
+              style={{
+                backgroundColor: "#10B98105",
+                backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 8px,
+              #10B98115 8px,
+              #10B98115 9px
+            )`,
+              }}
+            />
           </div>
 
           <div className="relative z-10 w-full py-8 md:py-12 px-4 sm:px-6 md:px-8">
             {/* Centered Hero */}
             <div className="text-center max-w-3xl mx-auto space-y-4 md:space-y-6">
               <div className="space-y-3 md:space-y-4">
-                <span className="font-mono text-xs sm:text-sm text-primary">
-                  [ BRAND LOGOS ]
+                <span
+                  className="font-mono text-xs sm:text-sm"
+                  style={{ color: "#10B981" }}
+                >
+                  [ BRAND ]
                 </span>
                 <div className="flex items-center justify-center gap-3 md:gap-4 mb-3 md:mb-4">
                   <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0">
                     <GroupIcon className="w-6 h-6 sm:w-8 sm:h-8" />
                   </div>
                   <h1 className="font-dotted font-black text-2xl sm:text-3xl md:text-4xl leading-tight">
-                    <ScrambleText text="Tech Logos" />
+                    <ScrambleText text="Brand Logos" />
                   </h1>
                 </div>
                 <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  Popular tech company logos for your projects. Select the ones
-                  you need or Install all {logos.length} logos at once
+                  Tech company logos for popular services and platforms. Select
+                  the ones you need or Install all {logos.length} logos at once
                 </p>
               </div>
 
