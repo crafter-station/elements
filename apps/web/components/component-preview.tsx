@@ -28,7 +28,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// @ts-expect-error
 import registryData from "@/registry";
 
 interface ComponentWithLayout {
