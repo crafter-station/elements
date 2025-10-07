@@ -228,7 +228,7 @@ export function ComponentPageTemplate({
       <Header />
 
       {/* Hero Section */}
-      <div className="flex-1 w-full max-w-screen-xl border-border border-dotted sm:border-x mx-auto">
+      <div className="flex-1 w-full border-border border-dotted sm:border-x mx-auto">
         <div className="relative overflow-hidden">
           {/* Background Pattern */}
           <ThemeAwarePattern
