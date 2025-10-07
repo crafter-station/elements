@@ -15,5 +15,5 @@
     }
   ],
   "docs": "Resend logo component that adapts to your theme. Uses currentColor to match your design system.",
-  "categories": ["logo", "brand"]
+  "categories": ["Email", "logo", "brand"]
 }

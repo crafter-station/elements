@@ -15,5 +15,5 @@
     }
   ],
   "docs": "Anthropic logo component that adapts to your theme. Uses currentColor to match your design system.",
-  "categories": ["logo", "brand"]
+  "categories": ["AI", "logo", "brand"]
 }
