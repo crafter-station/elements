@@ -15,7 +15,7 @@ export function GallerySection() {
         <h2 className="w-full flex justify-center mb-16">
           <ScrambleText
             text="Beta Elements Gallery"
-            className="font-dotted font-black text-4xl lg:text-6xl"
+            className="font-dotted font-black text-3xl lg:text-4xl"
           />
         </h2>
 

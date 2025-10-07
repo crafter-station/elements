@@ -26,7 +26,7 @@ export function OpenInV0Button({
   return (
     <Button
       aria-label="Open in v0"
-      className="h-9 gap-1 rounded-[6px] bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black"
+      className="h-9 gap-1 bg-black px-3 text-xs text-white hover:bg-black hover:text-white dark:bg-white dark:text-black"
       asChild
     >
       <a

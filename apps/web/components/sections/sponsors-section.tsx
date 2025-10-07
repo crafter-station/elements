@@ -30,12 +30,12 @@ export function SponsorsSection() {
   return (
     <div className="w-full border-t border-border border-dotted">
       <div className="space-y-0">
-        <div className="px-8 py-16 text-center space-y-8">
+        <div className="px-8 py-12 text-center space-y-8">
           <div className="space-y-2">
             <h2>
               <ScrambleText
                 text="Sponsors"
-                className="font-dotted font-black text-4xl lg:text-6xl"
+                className="font-dotted font-black text-4xl lg:text-5xl"
               />
             </h2>
             <p className="text-muted-foreground text-lg">
