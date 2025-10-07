@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { ProviderIcon } from "@/lib/providers";
 import {
   getComponentsByProvider,
   getProviderMetadata,
@@ -185,90 +186,4 @@ function generateUsageExample(
 <span class="text-foreground"> { ${componentName} } </span>
 <span class="text-blue-400">from</span>
 <span class="text-green-400"> "@/components/${provider}/${firstComponent.name}"</span>`;
-}
-
-// Helper: Provider icon component
-function ProviderIcon({ provider }: { provider: string }) {
-  // Map providers to their icon components
-  const icons: Record<string, React.ReactNode> = {
-    clerk: (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
-        <title>Clerk Icon</title>
-        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
-      </svg>
-    ),
-    polar: (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
-        <title>Polar Icon</title>
-        <circle cx="12" cy="12" r="10" />
-      </svg>
-    ),
-    theme: (
-      <svg
-        className="w-12 h-12"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <title>Theme Icon</title>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-        />
-      </svg>
-    ),
-    uploadthing: (
-      <svg
-        className="w-12 h-12"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <title>UploadThing Icon</title>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-        />
-      </svg>
-    ),
-    trigger: (
-      <svg
-        className="w-12 h-12"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <title>Trigger Icon</title>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-      </svg>
-    ),
-  };
-
-  return (
-    icons[provider] || (
-      <svg
-        className="w-12 h-12"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <title>Default Icon</title>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-        />
-      </svg>
-    )
-  );
 }

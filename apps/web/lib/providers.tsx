@@ -170,7 +170,7 @@ export const providers = getProvidersData();
  * Provider icon component
  * Uses real logo components from the registry
  */
-function ProviderIcon({ provider }: { provider: string }) {
+export function ProviderIcon({ provider }: { provider: string }) {
   const icons: Record<string, React.ReactNode> = {
     // Real logos from registry
     clerk: <ClerkLogo className="w-6 h-6" />,
