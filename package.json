@@ -9,12 +9,15 @@
   ],
   "scripts": {
     "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=@elements/web",
+    "dev:playground": "turbo run dev --filter=@elements/playground",
     "build": "turbo run build",
     "start": "cd apps/web && next start",
     "lint": "biome check .",
     "format": "biome format --write",
     "prepare": "husky",
-    "registry:merge": "bun run scripts/merge-registry.ts"
+    "registry:merge": "bun run scripts/merge-registry.ts",
+    "move-component": "bun run scripts/move-component.ts"
   },
 
   "devDependencies": {

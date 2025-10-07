@@ -17,6 +17,21 @@
         "typescript": "^5",
       },
     },
+    "apps/playground": {
+      "name": "@elements/playground",
+      "version": "0.1.0",
+      "dependencies": {
+        "next": "15.5.0",
+        "react": "19.1.0",
+        "react-dom": "19.1.0",
+      },
+      "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "typescript": "^5",
+      },
+    },
     "apps/web": {
       "name": "@elements/web",
       "version": "0.1.0",
@@ -213,6 +228,8 @@
     "@elements/clerk": ["@elements/clerk@workspace:packages/clerk"],
 
     "@elements/logos": ["@elements/logos@workspace:packages/logos"],
+
+    "@elements/playground": ["@elements/playground@workspace:apps/playground"],
 
     "@elements/polar": ["@elements/polar@workspace:packages/polar"],
 

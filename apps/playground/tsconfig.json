@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@registry/clerk/*": ["../../packages/clerk/registry/clerk/*"],
+      "@registry/uploadthing/*": [
+        "../../packages/uploadthing/registry/uploadthing/*"
+      ],
+      "@registry/polar/*": ["../../packages/polar/registry/polar/*"],
+      "@registry/theme/*": ["../../packages/theme/registry/theme-switcher/*"],
+      "@registry/logos/*": ["../../packages/logos/registry/logos/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
