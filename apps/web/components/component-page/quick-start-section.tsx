@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 import { InstallCommand } from "@/components/install-command";
 
 import type { Feature } from "./types";
