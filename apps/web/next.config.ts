@@ -8,12 +8,6 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       "@registry": path.resolve(__dirname, "./registry"),
     },
-    rules: {
-      "*.mdx": {
-        loaders: ["fumadocs-mdx/loader"],
-        as: "*.js",
-      },
-    },
   },
 };
 
