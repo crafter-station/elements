@@ -7,6 +7,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 import { Analytics } from "@vercel/analytics/next";
+import { RootProvider } from "fumadocs-ui/provider";
 
 import { Toaster } from "@/components/ui/sonner";
 
@@ -55,7 +56,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <RootProvider>{children}</RootProvider>
           </ThemeProvider>
           <Analytics />
           <Toaster />
