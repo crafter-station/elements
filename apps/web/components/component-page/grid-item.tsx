@@ -63,7 +63,7 @@ export function ComponentGridItem({
 
   const registryItem = findRegistryItemMatch(
     componentKey,
-    relevantRegistryItems as any,
+    relevantRegistryItems,
   );
   const showTree = activeTreeViewer === componentKey;
 

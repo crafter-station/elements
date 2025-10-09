@@ -106,7 +106,9 @@ export default async function ProviderPage(props: ProviderPageProps) {
       description={metadata.description}
       icon={<ProviderIcon provider={provider} />}
       features={features}
+      technicalDetails={features} // Reuse features for now
       installCommand={installCommand}
+      usageExample={generateUsageExample(provider, components[0])}
       components={componentMap}
       componentInstallUrls={componentInstallUrls}
       layout={{ type: "auto", columns: 1, gap: "lg" }}
@@ -176,7 +178,7 @@ function generateFeatures(_provider: string, components: RegistryItem[]) {
 }
 
 // Helper: Generate usage example
-function _generateUsageExample(
+function generateUsageExample(
   provider: string,
   firstComponent: RegistryItem | undefined,
 ): string {
