@@ -7,6 +7,10 @@ export const docs = defineDocs({
   dir: "content/docs",
 });
 
+export const providers = defineDocs({
+  dir: "content/providers",
+});
+
 const generator = createGenerator();
 
 export default defineConfig({

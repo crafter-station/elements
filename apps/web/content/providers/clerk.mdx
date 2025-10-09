@@ -1,0 +1,90 @@
+---
+title: Clerk
+description: Complete authentication suite with sign-in, sign-up, and user management
+category: Authentication
+brandColor: "#6C47FF"
+---
+
+## Overview
+
+Clerk provides a complete authentication solution with beautiful, customizable components for sign-in, sign-up, and user management. Built for modern web applications with a focus on developer experience.
+
+## Components
+
+### Clerk Sign In
+
+A fully-featured sign-in component with support for:
+- Email and password authentication
+- Social OAuth providers
+- Magic link authentication
+- Two-factor authentication
+
+```bash
+bunx shadcn@latest add @elements/clerk-sign-in
+```
+
+### Clerk Sign Up
+
+User registration component with:
+- Custom field validation
+- Email verification
+- Password strength indicators
+- Terms of service acceptance
+
+```bash
+bunx shadcn@latest add @elements/clerk-sign-up
+```
+
+### Clerk Waitlist
+
+Collect user emails for your waitlist or beta program:
+- Email collection and validation
+- Custom success messages
+- Integration with Clerk's user management
+
+```bash
+bunx shadcn@latest add @elements/clerk-waitlist
+```
+
+## Installation
+
+Install all Clerk components at once:
+
+```bash
+bunx shadcn@latest add @elements/clerk-auth
+```
+
+Or install individual components using the commands above.
+
+## Usage
+
+Import and use the components in your application:
+
+```tsx
+import { ClerkSignIn } from "@/components/clerk/clerk-sign-in";
+
+export default function SignInPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <ClerkSignIn />
+    </div>
+  );
+}
+```
+
+## Configuration
+
+Make sure to set up your Clerk environment variables:
+
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+```
+
+## Features
+
+- **Multiple Auth Methods** - Email, social, magic links, and more
+- **Customizable UI** - Fully styled and themeable components
+- **Type Safe** - Built with TypeScript for better DX
+- **Accessible** - WCAG compliant components
+- **Production Ready** - Battle-tested in production apps

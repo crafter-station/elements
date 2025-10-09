@@ -1,13 +1,16 @@
 import { notFound } from "next/navigation";
 
 import { ProviderIcon } from "@/lib/providers";
+import { providersSource } from "@/lib/providers-source";
 import {
   getComponentsByProvider,
   getProviderMetadata,
   getProviders,
 } from "@/lib/registry-loader";
 
-import { Badge } from "@/components/ui/badge";
+import { ComponentPageHero } from "@/components/component-page/hero";
+
+import { getMDXComponents } from "@/mdx-components";
 
 // Generate static params for all providers
 export async function generateStaticParams() {
@@ -42,86 +45,69 @@ export default async function ProviderPage(props: ProviderPageProps) {
     notFound();
   }
 
+  // Try to get MDX content
+  const mdxPage = providersSource.getPage([provider]);
+
+  // Generate install command for the full suite
+  const bundleComponent = components.find(
+    (c) => c.type === "registry:block" && c.files?.length === 0,
+  );
+
+  const installCommand = bundleComponent
+    ? `@elements/${bundleComponent.name}`
+    : `@elements/${components[0]?.name || provider}`;
+
   return (
-    <div className="w-full max-w-screen-xl mx-auto">
-      {/* Hero Section */}
-      <div className="border-b border-border py-12 px-8">
-        <div className="flex items-start gap-6">
-          <div
-            className="flex items-center justify-center w-16 h-16 rounded-lg"
-            style={{
-              backgroundColor: `${metadata.brandColor}20`,
-            }}
-          >
-            <ProviderIcon provider={provider} />
-          </div>
+    <div className="flex-1 w-full">
+      <ComponentPageHero
+        brandColor={metadata.brandColor}
+        darkBrandColor={metadata.darkBrandColor}
+        category={metadata.category}
+        name={metadata.displayName}
+        description={metadata.description}
+        icon={<ProviderIcon provider={provider} />}
+        installCommand={installCommand}
+      />
 
-          <div className="flex-1 space-y-4">
-            <div className="space-y-2">
-              <div className="flex items-center gap-3">
-                <h1 className="text-4xl font-bold">{metadata.displayName}</h1>
-                <Badge variant="secondary">{metadata.category}</Badge>
-              </div>
-              <p className="text-lg text-muted-foreground">
-                {metadata.description}
-              </p>
-            </div>
-
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <span>{components.length} components</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Markdown Content */}
-      <article className="prose prose-gray dark:prose-invert max-w-none px-8 py-12">
-        <h2>Components</h2>
-        <div className="grid gap-6 not-prose">
-          {components.map((component) => (
-            <div
-              key={component.name}
-              className="border border-border rounded-lg p-6 space-y-3"
-            >
-              <div className="flex items-start justify-between">
-                <div className="space-y-1">
-                  <h3 className="text-lg font-semibold">{component.title}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {component.description}
-                  </p>
+      {mdxPage ? (
+        <article className="prose prose-gray dark:prose-invert max-w-4xl mx-auto px-8 py-12">
+          {(() => {
+            const MDX = mdxPage.data.body;
+            return <MDX components={getMDXComponents()} />;
+          })()}
+        </article>
+      ) : (
+        <article className="prose prose-gray dark:prose-invert max-w-4xl mx-auto px-8 py-12">
+          <h2>Components</h2>
+          <p>
+            This provider includes {components.length} component
+            {components.length !== 1 ? "s" : ""}.
+          </p>
+          <div className="grid gap-6 not-prose">
+            {components.map((component) => (
+              <div
+                key={component.name}
+                className="border border-border rounded-lg p-6 space-y-3"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-semibold">{component.title}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {component.description}
+                    </p>
+                  </div>
                 </div>
-                <Badge variant="outline" className="shrink-0">
-                  {component.type.replace("registry:", "")}
-                </Badge>
-              </div>
 
-              <div className="flex items-center gap-2">
-                <code className="text-xs bg-muted px-2 py-1 rounded">
-                  @elements/{component.name}
-                </code>
-              </div>
-
-              {component.docs && (
-                <div className="text-sm text-muted-foreground border-l-2 border-muted pl-4">
-                  {component.docs}
+                <div className="flex items-center gap-2">
+                  <code className="text-xs bg-muted px-2 py-1 rounded">
+                    @elements/{component.name}
+                  </code>
                 </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <h2>Installation</h2>
-        <p>Install any component using the Elements CLI:</p>
-        <pre>
-          <code>bunx shadcn@latest add @elements/[component-name]</code>
-        </pre>
-
-        <h2>Usage</h2>
-        <p>
-          Import and use the components in your React application. Check each
-          component's documentation for specific usage examples.
-        </p>
-      </article>
+              </div>
+            ))}
+          </div>
+        </article>
+      )}
     </div>
   );
 }
