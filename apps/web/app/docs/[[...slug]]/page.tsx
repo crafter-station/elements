@@ -22,7 +22,7 @@ export default async function Page(props: {
     notFound();
   }
 
-  const MDX = page.data.body;
+  const MDX = page.data.body as any;
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
