@@ -62,7 +62,7 @@ export function ComponentCard({
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center justify-center w-10 h-10 rounded-none bg-muted group-hover:bg-muted/80 transition-colors">
+          <div className="flex items-center justify-center w-10 h-10 rounded-none">
             {icon}
           </div>
           <Badge
