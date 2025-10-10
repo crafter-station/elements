@@ -10,16 +10,12 @@ import {
 } from "react";
 
 import { cva } from "class-variance-authority";
-import {
-  Check,
-  ChevronDown,
-  Copy,
-  ExternalLink,
-  MessageCircle,
-} from "lucide-react";
+import { Check, ChevronDown, MessageCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+import { CopyIcon } from "@/components/icons/copy";
+import { ExternalLinkIcon } from "@/components/icons/external-link";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Popover,
@@ -71,12 +67,12 @@ export function LLMCopyButton({ mdxContent }: { mdxContent: string }) {
         buttonVariants({
           variant: "secondary",
           size: "sm",
-          className: "gap-2 [&_svg]:size-3.5 [&_svg]:text-fd-muted-foreground",
+          className: "gap-2 [&_svg]:size-3.5 [&_svg]:text-muted-foreground",
         }),
       )}
       onClick={onClick}
     >
-      {checked ? <Check /> : <Copy />}
+      {checked ? <Check /> : <CopyIcon />}
       Copy Markdown
     </button>
   );
@@ -115,7 +111,7 @@ export function ViewOptions(props: { markdownUrl: string; githubUrl: string }) {
         Open in
         <ChevronDown className="size-3.5 text-muted-foreground" />
       </PopoverTrigger>
-      <PopoverContent className="flex flex-col overflow-auto">
+      <PopoverContent className="flex flex-col overflow-auto p-1">
         {[
           {
             title: "Open in GitHub",
@@ -172,7 +168,7 @@ export function ViewOptions(props: { markdownUrl: string; githubUrl: string }) {
           >
             {item.icon}
             {item.title}
-            <ExternalLink className="text-muted-foreground size-3.5 ms-auto" />
+            <ExternalLinkIcon className="text-muted-foreground size-3.5 ms-auto" />
           </a>
         ))}
       </PopoverContent>
