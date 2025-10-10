@@ -390,6 +390,14 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                             <div className="grid gap-3 sm:grid-cols-2">
                               {groupTokens.map((token) => (
                                 <div key={token} className="space-y-1.5">
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                                      {token.replace(/-/g, " ")}
+                                    </span>
+                                    <span className="text-xs text-muted-foreground font-mono">
+                                      {detectColorFormat(theme[mode][token])}
+                                    </span>
+                                  </div>
                                   <ColorInput
                                     value={theme[mode][token]}
                                     onChange={(color) =>
