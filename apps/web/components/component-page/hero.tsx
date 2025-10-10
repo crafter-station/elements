@@ -75,7 +75,7 @@ export function ComponentPageHero({
               <div className="flex items-center gap-2">
                 <LLMCopyButton mdxContent={mdxContent} />
                 <ViewOptions
-                  markdownUrl={`/l/${provider}`}
+                  markdownUrl={`/docs/${provider}`}
                   githubUrl={`https://github.com/crafter-station/elements/blob/main/apps/web/content/providers/${provider}.mdx`}
                 />
               </div>

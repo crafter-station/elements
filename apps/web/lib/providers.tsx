@@ -156,7 +156,7 @@ export function getProvidersData(): Provider[] {
       category: metadata.category,
       brandColor: metadata.brandColor,
       isEnabled: config.isEnabled,
-      href: `/l/${providerName}`,
+      href: `/docs/${providerName}`,
       elementsCount: metadata.componentCount,
       providerLink: config.providerLink,
     };

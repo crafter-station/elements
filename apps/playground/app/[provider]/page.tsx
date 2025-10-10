@@ -77,7 +77,7 @@ export default function Page() {
               <li>
                 Test in the main app at{" "}
                 <code className="bg-gray-800 px-1 rounded">
-                  localhost:3000/l/{provider}
+                  localhost:3000/docs/{provider}
                 </code>
               </li>
             </ol>

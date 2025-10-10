@@ -51,18 +51,47 @@ export async function generateMetadata(
   }
 
   return {
-    title: `${metadata.displayName} Components`,
+    title: `${metadata.displayName} Components - Elements`,
     description: metadata.description,
+    keywords: [
+      metadata.displayName,
+      "components",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "shadcn/ui",
+      metadata.category,
+    ],
+    authors: [{ name: "Railly Hugo", url: "https://github.com/Railly" }],
+    creator: "Railly Hugo",
+    publisher: "Railly Hugo",
+    alternates: {
+      canonical: `https://tryelements.dev/docs/${provider}`,
+    },
     openGraph: {
       title: `${metadata.displayName} Components - Elements`,
       description: metadata.description,
       type: "website",
-      url: `https://tryelements.dev/l/${provider}`,
+      url: `https://tryelements.dev/docs/${provider}`,
+      siteName: "Elements",
+      locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
       title: `${metadata.displayName} Components - Elements`,
       description: metadata.description,
+      creator: "@raillyhugo",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   };
 }

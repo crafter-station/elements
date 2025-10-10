@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { providers } from "@/lib/providers";
 
 import { ComponentCard } from "@/components/component-card";
@@ -6,6 +8,54 @@ import { Header } from "@/components/header";
 import { ScrambleText } from "@/components/scramble-text";
 
 const trackingSource = "providers_overview" as const;
+
+export const metadata: Metadata = {
+  title: "Browse Components - Elements",
+  description:
+    "Explore our collection of production-ready React components organized by provider. Built with Next.js, TypeScript, and shadcn/ui.",
+  keywords: [
+    "React components",
+    "Next.js",
+    "TypeScript",
+    "shadcn/ui",
+    "UI components",
+    "component library",
+    "design system",
+  ],
+  authors: [{ name: "Railly Hugo", url: "https://github.com/Railly" }],
+  creator: "Railly Hugo",
+  publisher: "Railly Hugo",
+  alternates: {
+    canonical: "https://tryelements.dev/docs",
+  },
+  openGraph: {
+    title: "Browse Components - Elements",
+    description:
+      "Explore our collection of production-ready React components organized by provider. Built with Next.js, TypeScript, and shadcn/ui.",
+    type: "website",
+    url: "https://tryelements.dev/docs",
+    siteName: "Elements",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Browse Components - Elements",
+    description:
+      "Explore our collection of production-ready React components organized by provider.",
+    creator: "@raillyhugo",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 export default function ProvidersIndexPage() {
   return (
