@@ -38,10 +38,10 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
       <nav className="flex flex-col -space-y-px">
         {/* Overview Link */}
         <Link
-          href="/l"
+          href="/docs"
           className={cn(
             "group flex items-center border border-dotted border-border border-x-0 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
-            pathname === "/l"
+            pathname === "/docs"
               ? "bg-muted text-foreground font-medium z-10"
               : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10",
           )}
@@ -51,7 +51,7 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
           <div
             className={cn(
               "flex items-center justify-center w-5 h-5 shrink-0",
-              pathname === "/l" && "text-foreground",
+              pathname === "/docs" && "text-foreground",
             )}
           >
             <OverviewIcon className="w-5 h-5" />
