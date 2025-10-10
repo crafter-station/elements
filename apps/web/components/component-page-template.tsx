@@ -33,6 +33,12 @@ interface ComponentPageTemplateProps {
   layout?: Layout;
   children?: ReactNode;
   showRegistryVisualizer?: boolean;
+  technicalDetails?: Array<{
+    icon: ReactNode;
+    title: string;
+    description: string;
+  }>;
+  usageExample?: string;
 }
 
 export function ComponentPageTemplate({

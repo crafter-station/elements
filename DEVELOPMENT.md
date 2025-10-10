@@ -368,7 +368,7 @@ Show the generated entry and ask:
 ✅ Added to packages/{provider}/registry.json
 ✅ Regenerated preview map
 
-Test the preview at: /l/{provider}
+Test the preview at: /docs/{provider}
 ```
 
 ---

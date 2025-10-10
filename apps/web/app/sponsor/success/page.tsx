@@ -99,7 +99,7 @@ function SponsorSuccessContent() {
                   size="lg"
                   className="h-14 px-8 text-lg"
                 >
-                  <Link href="/docs">Explore Docs</Link>
+                  <Link href="/l">Explore Components</Link>
                 </Button>
               </div>
             </div>

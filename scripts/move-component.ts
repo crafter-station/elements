@@ -114,7 +114,7 @@ async function main() {
     console.log(
       `   1. Tell Claude: "add ${componentName} to ${provider} registry"`,
     );
-    console.log(`   2. Test at: http://localhost:3000/l/${provider}`);
+    console.log(`   2. Test at: http://localhost:3000/docs/${provider}`);
     console.log("   3. Commit and push when ready\n");
   } finally {
     rl.close();

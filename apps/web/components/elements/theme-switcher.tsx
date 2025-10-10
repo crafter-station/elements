@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 
 import { Switch } from "@/components/ui/switch";
 
-export function ThemeSwitcherElement() {
+export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 

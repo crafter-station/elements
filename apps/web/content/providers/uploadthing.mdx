@@ -1,0 +1,147 @@
+---
+title: UploadThing
+description: File upload components with drag-and-drop and progress tracking
+category: File Upload
+brandColor: "#F97316"
+---
+
+## Overview
+
+File upload with button and dropzone variants. Progress tracking and analytics built-in.
+
+## Components
+
+### Upload Button
+
+Simple upload button.
+
+<ComponentPreviewItem
+  componentKey="uploadthing-upload-button"
+  installUrl="@elements/uploadthing-button"
+  category="File Upload"
+  name="UploadThing"
+>
+  <UploadButtonPreview />
+</ComponentPreviewItem>
+
+```tsx
+import { UploadThingButton } from "@/components/elements/uploadthing/upload-button";
+
+export function MyUploader() {
+  return (
+    <UploadThingButton
+      endpoint="imageUploader"
+      onUploadComplete={(files) => console.log(files)}
+      onUploadError={(error) => console.error(error)}
+    />
+  );
+}
+```
+
+### Upload Dropzone
+
+Drag-and-drop with progress.
+
+<ComponentPreviewItem
+  componentKey="uploadthing-upload-dropzone"
+  installUrl="@elements/uploadthing-dropzone"
+  category="File Upload"
+  name="UploadThing"
+>
+  <UploadDropzonePreview />
+</ComponentPreviewItem>
+
+```tsx
+import { UploadThingDropzone } from "@/components/elements/uploadthing/upload-dropzone";
+
+export function FileUploader() {
+  return (
+    <UploadThingDropzone
+      endpoint="imageUploader"
+      maxFiles={4}
+      onUploadComplete={(files) => console.log(files)}
+    />
+  );
+}
+```
+
+## Setup
+
+### 1. Install
+
+```bash
+npm install uploadthing @uploadthing/react
+```
+
+### 2. Get API Keys
+
+From [uploadthing.com](https://uploadthing.com) dashboard.
+
+### 3. Environment Variables
+
+```bash
+UPLOADTHING_SECRET=sk_live_...
+UPLOADTHING_APP_ID=your-app-id
+```
+
+### 4. File Router
+
+```tsx
+// app/elements/uploadthing/core.ts
+import { createUploadthing, type FileRouter } from "uploadthing/next";
+
+const f = createUploadthing();
+
+export const ourFileRouter = {
+  imageUploader: f({ image: { maxFileSize: "4MB" } })
+    .onUploadComplete(({ file }) => {
+      console.log(file.url);
+    }),
+} satisfies FileRouter;
+
+export type OurFileRouter = typeof ourFileRouter;
+```
+
+### 5. API Route
+
+```tsx
+// app/api/uploadthing/route.ts
+import { createRouteHandler } from "uploadthing/next";
+import { ourFileRouter } from "@/app/elements/uploadthing/core";
+
+export const { GET, POST } = createRouteHandler({
+  router: ourFileRouter,
+});
+```
+
+## File Types
+
+```tsx
+f({ image: { maxFileSize: "4MB" } })
+f({ pdf: { maxFileSize: "8MB" } })
+f({ video: { maxFileSize: "16MB" } })
+f({ blob: { maxFileSize: "32MB" } })
+```
+
+## Callbacks
+
+```tsx
+onUploadComplete={(files) => {
+  files.forEach(f => console.log(f.ufsUrl));
+}}
+
+onUploadError={(error) => {
+  console.error(error.message);
+}}
+```
+
+## Troubleshooting
+
+**Upload fails:** Check API keys and route at `/api/uploadthing`
+
+**File rejected:** Verify type in core.ts
+
+## Resources
+
+- [Docs](https://docs.uploadthing.com)
+- [Dashboard](https://uploadthing.com/dashboard)

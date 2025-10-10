@@ -21,6 +21,18 @@ export interface Layout {
 
 export interface RegistryItem {
   name: string;
-  files?: unknown[];
+  type: string;
+  title: string;
+  description: string;
+  files: Array<{
+    path: string;
+    type: string;
+    target: string;
+  }>;
+  registryDependencies?: string[];
+  dependencies?: string[];
+  envVars?: Record<string, string>;
+  docs?: string;
+  categories?: string[];
   [key: string]: unknown;
 }

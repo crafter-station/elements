@@ -26,8 +26,70 @@ const doto = Doto({
 });
 
 export const metadata: Metadata = {
-  title: "Elements",
-  description: "Full Stack Components by Crafter Station",
+  metadataBase: new URL("https://tryelements.dev"),
+  title: {
+    default: "Elements - Full Stack Components by Crafter Station",
+    template: "%s | Elements",
+  },
+  description:
+    "Production-ready full stack components for modern web applications. Built with React, TypeScript, and Tailwind CSS. Easy to install, customize, and integrate.",
+  keywords: [
+    "react components",
+    "full stack components",
+    "tailwind css",
+    "typescript",
+    "shadcn",
+    "ui components",
+    "authentication",
+    "clerk",
+    "stripe",
+    "next.js components",
+  ],
+  authors: [
+    {
+      name: "Railly Hugo",
+      url: "https://github.com/Railly",
+    },
+  ],
+  creator: "Railly Hugo",
+  publisher: "Railly Hugo",
+  applicationName: "Elements",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://tryelements.dev",
+    title: "Elements - Full Stack Components by Railly Hugo",
+    description:
+      "Production-ready full stack components for modern web applications. Built with React, TypeScript, and Tailwind CSS.",
+    siteName: "Elements",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Elements - Full Stack Components by Railly Hugo",
+    description:
+      "Production-ready full stack components for modern web applications. Built with React, TypeScript, and Tailwind CSS.",
+    creator: "@raillyhugo",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/icon.svg",
+  },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({

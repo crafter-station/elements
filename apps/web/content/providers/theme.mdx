@@ -1,0 +1,212 @@
+---
+title: Theme
+description: Theme switching components with multiple styles and animations
+category: Theme
+brandColor: "#000000"
+---
+
+## Overview
+
+Six theme switcher variants for toggling between light and dark modes. Built with `next-themes` for hydration-safe rendering and smooth animations.
+
+## Components
+
+### Theme Switcher
+
+Classic switch with fading sun/moon icons.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher"
+  installUrl="@elements/theme-switcher"
+  category="Theme"
+  name="Theme Switcher"
+>
+  <ThemeSwitcher />
+</ComponentPreviewItem>
+
+### Theme Switcher Switch
+
+Centered switch variant with smaller icons.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-switch"
+  installUrl="@elements/theme-switcher-switch"
+  category="Theme"
+  name="Theme Switcher Switch"
+>
+  <ThemeSwitcherSwitch />
+</ComponentPreviewItem>
+
+### Theme Switcher Button
+
+Icon button with rotating animation
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-button"
+  installUrl="@elements/theme-switcher-button"
+  category="Theme"
+  name="Theme Switcher Button"
+>
+  <ThemeSwitcherButton />
+</ComponentPreviewItem>
+
+### Theme Switcher Dropdown
+
+Menu with Light, Dark, and System options.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-dropdown"
+  installUrl="@elements/theme-switcher-dropdown"
+  category="Theme"
+  name="Theme Switcher Dropdown"
+>
+  <ThemeSwitcherDropdown />
+</ComponentPreviewItem>
+
+### Theme Switcher Toggle
+
+Custom toggle with sliding icon.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-toggle"
+  installUrl="@elements/theme-switcher-toggle"
+  category="Theme"
+  name="Theme Switcher Toggle"
+>
+  <ThemeSwitcherToggle />
+</ComponentPreviewItem>
+
+### Theme Switcher Multi Button
+
+Segmented control showing all options at once.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-multi-button"
+  installUrl="@elements/theme-switcher-multi-button"
+  category="Theme"
+  name="Theme Switcher Multi Button"
+>
+  <ThemeSwitcherMultiButton />
+</ComponentPreviewItem>
+
+## Installation
+
+Install any variant:
+
+```bash
+bunx shadcn@latest add @elements/theme-switcher
+```
+
+Install all variants:
+
+```bash
+bunx shadcn@latest add @elements/theme-switcher @elements/theme-switcher-switch @elements/theme-switcher-button @elements/theme-switcher-dropdown @elements/theme-switcher-toggle @elements/theme-switcher-multi-button
+```
+
+## Setup
+
+### 1. Install next-themes
+
+```bash
+npm install next-themes
+```
+
+### 2. Configure ThemeProvider
+
+```tsx
+import { ThemeProvider } from "next-themes";
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+### 3. Configure Tailwind
+
+```js
+module.exports = {
+  darkMode: ["class"],
+}
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcher } from "@/components/elements/theme-switcher";
+
+export default function Header() {
+  return (
+    <header>
+      <ThemeSwitcher />
+    </header>
+  );
+}
+```
+
+## Which Variant to Use?
+
+| Variant | System Support | Best For |
+|---------|----------------|----------|
+| Switcher | No | Headers, navbars |
+| Switch | No | Compact spaces |
+| Button | No | Toolbars |
+| **Dropdown** | **Yes** | Settings pages |
+| Toggle | No | Mobile UIs |
+| **Multi Button** | **Yes** | Dashboards |
+
+**Note:** Only Dropdown and Multi Button support system theme preference.
+
+## Advanced
+
+### Programmatic Control
+
+```tsx
+"use client";
+import { useTheme } from "next-themes";
+
+export function ThemeControl() {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+      Toggle Theme
+    </button>
+  );
+}
+```
+
+### Responsive Usage
+
+```tsx
+import { ThemeSwitcherButton } from "@/components/elements/theme-switcher-button";
+import { ThemeSwitcherDropdown } from "@/components/elements/theme-switcher-dropdown";
+
+export default function Nav() {
+  return (
+    <>
+      <div className="md:hidden">
+        <ThemeSwitcherButton />
+      </div>
+      <div className="hidden md:block">
+        <ThemeSwitcherDropdown />
+      </div>
+    </>
+  );
+}
+```
+
+## Troubleshooting
+
+**Theme not changing?** Verify `ThemeProvider` wraps your app and `attribute="class"` is set.
+
+**Hydration warnings?** Add `suppressHydrationWarning` to `<html>` tag.
+
+**System theme not working?** Use Dropdown or Multi Button variants (others don't support system preference).

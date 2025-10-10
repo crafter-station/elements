@@ -1,7 +1,5 @@
 "use client";
 
-import { track } from "@vercel/analytics";
-
 import { ArrowRightIcon } from "@/components/icons/arrow-right";
 import { QuickstartCard } from "@/components/quickstart-card";
 import { ShadcnIcon } from "@/components/shadcn-icon";
@@ -10,21 +8,6 @@ import { LinkWithAnalytics } from "@/components/ui/link-with-analytics";
 import { GitHubLogo } from "@/components/ui/logos/github";
 
 export function HeroSection() {
-  const scrollToGallery = () => {
-    track("Gallery Navigation", {
-      source: "hero_cta",
-      action: "scroll_to_gallery",
-    });
-
-    const gallerySection = document.getElementById("gallery");
-    if (gallerySection) {
-      gallerySection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
   return (
     <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 lg:gap-16 items-center w-full min-h-[90vh] py-16 px-8 lg:px-16">
       <div className="lg:col-span-4 space-y-8">
@@ -49,8 +32,17 @@ export function HeroSection() {
 
         {/* CTAs */}
         <div className="flex items-center gap-4">
-          <Button size="lg" className="font-medium" onClick={scrollToGallery}>
-            Explore Gallery <ArrowRightIcon />
+          <Button size="lg" className="font-medium" asChild>
+            <LinkWithAnalytics
+              href="/l"
+              trackingEvent="Explore Gallery Click"
+              trackingProperties={{
+                source: "hero_cta",
+                action: "navigate_to_overview",
+              }}
+            >
+              Explore Gallery <ArrowRightIcon />
+            </LinkWithAnalytics>
           </Button>
           <Button
             size="lg"

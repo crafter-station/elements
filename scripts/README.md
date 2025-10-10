@@ -91,9 +91,10 @@ To add a new previewable component:
 ```
 
 This will automatically:
+
 - Be detected as previewable
 - Generate import: `import * as MyButtonModule from "@registry/my-provider/my-button/button"`
-- Be available on provider pages at `/l/my-provider`
+- Be available on provider pages at `/docs/my-provider`
 
 ### Generated File
 
@@ -114,7 +115,7 @@ The script respects TypeScript path aliases defined in `apps/web/tsconfig.json`:
   "paths": {
     "@registry/clerk/*": ["../../packages/clerk/registry/clerk/*"],
     "@registry/theme/*": ["../../packages/theme/registry/theme-switcher/*"],
-    "@registry/polar/*": ["../../packages/polar/registry/polar/*"],
+    "@registry/polar/*": ["../../packages/polar/registry/polar/*"]
     // etc.
   }
 }
@@ -133,5 +134,5 @@ If components aren't appearing:
 
 - **Script**: `scripts/generate-preview-map.ts`
 - **Generated**: `apps/web/lib/component-preview-map.generated.tsx`
-- **Consumer**: `apps/web/app/l/[provider]/page.tsx`
+- **Consumer**: `apps/web/app/docs/[provider]/page.tsx`
 - **Config**: `turbo.json`, `package.json`

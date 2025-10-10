@@ -22,18 +22,20 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@shikijs/rehype": "^3.13.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "husky": "^9.1.7",
-    "shiki": "^3.12.0",
+    "shiki": "^3.13.0",
     "tailwindcss": "^4",
     "turbo": "^2.5.8",
     "tw-animate-css": "^1.3.7",
     "typescript": "^5"
   },
   "dependencies": {
-    "@radix-ui/react-context-menu": "^2.2.16"
+    "@radix-ui/react-context-menu": "^2.2.16",
+    "remark-gfm": "^4.0.1"
   }
 }
