@@ -55,29 +55,11 @@ export function useCopyButton(
   return [checked, onClick];
 }
 
-const cache = new Map<string, string>();
-
-export function LLMCopyButton() {
+export function LLMCopyButton({ mdxContent }: { mdxContent: string }) {
   const [isLoading, startTransition] = useTransition();
   const [checked, onClick] = useCopyButton(async () => {
     startTransition(async () => {
-      const url = window.location.pathname + ".mdx";
-      const cached = cache.get(url);
-
-      if (cached) {
-        await navigator.clipboard.writeText(cached);
-      } else {
-        await navigator.clipboard.write([
-          new ClipboardItem({
-            "text/plain": fetch(url).then(async (res) => {
-              const content = await res.text();
-              cache.set(url, content);
-
-              return content;
-            }),
-          }),
-        ]);
-      }
+      await navigator.clipboard.writeText(mdxContent);
     });
   });
 

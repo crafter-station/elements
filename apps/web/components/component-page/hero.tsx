@@ -17,6 +17,7 @@ interface ComponentPageHeroProps {
   icon: ReactNode;
   installCommand: string;
   provider?: string;
+  mdxContent?: string;
 }
 
 export function ComponentPageHero({
@@ -28,6 +29,7 @@ export function ComponentPageHero({
   icon,
   installCommand,
   provider,
+  mdxContent,
 }: ComponentPageHeroProps) {
   return (
     <div className="relative overflow-hidden">
@@ -69,11 +71,11 @@ export function ComponentPageHero({
               category={category}
             />
 
-            {provider && (
+            {provider && mdxContent && (
               <div className="flex items-center gap-2">
-                <LLMCopyButton />
+                <LLMCopyButton mdxContent={mdxContent} />
                 <ViewOptions
-                  markdownUrl={`/l/${provider}.mdx`}
+                  markdownUrl={`/l/${provider}`}
                   githubUrl={`https://github.com/crafter-station/elements/blob/main/apps/web/content/providers/${provider}.mdx`}
                 />
               </div>

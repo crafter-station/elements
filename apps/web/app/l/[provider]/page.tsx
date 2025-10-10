@@ -107,6 +107,7 @@ export default async function ProviderPage(props: ProviderPageProps) {
         icon={<ProviderIcon provider={provider} />}
         installCommand={installCommand}
         provider={provider}
+        mdxContent={mdxPage?.data.body}
       />
 
       {mdxPage ? (
