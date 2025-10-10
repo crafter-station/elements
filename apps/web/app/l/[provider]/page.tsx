@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -30,6 +31,40 @@ interface ProviderPageProps {
   params: Promise<{ provider: string }>;
 }
 
+export async function generateMetadata(
+  props: ProviderPageProps,
+): Promise<Metadata> {
+  const params = await props.params;
+  const { provider } = params;
+
+  if (provider === "logos") {
+    return {};
+  }
+
+  const metadata = getProviderMetadata(provider);
+  const components = getComponentsByProvider(provider);
+
+  if (components.length === 0) {
+    return {};
+  }
+
+  return {
+    title: `${metadata.displayName} Components`,
+    description: metadata.description,
+    openGraph: {
+      title: `${metadata.displayName} Components - Elements`,
+      description: metadata.description,
+      type: "website",
+      url: `https://tryelements.dev/l/${provider}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${metadata.displayName} Components - Elements`,
+      description: metadata.description,
+    },
+  };
+}
+
 export default async function ProviderPage(props: ProviderPageProps) {
   const params = await props.params;
   const { provider } = params;
@@ -60,7 +95,7 @@ export default async function ProviderPage(props: ProviderPageProps) {
     : `@elements/${components[0]?.name || provider}`;
 
   return (
-    <div className="flex-1 w-full">
+    <div className="flex-1 w-full border-border border-dotted border-x">
       <ComponentPageHero
         brandColor={metadata.brandColor}
         darkBrandColor={metadata.darkBrandColor}

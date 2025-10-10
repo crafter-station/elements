@@ -1,6 +1,27 @@
+import type { Metadata } from "next";
+
 import { getLogoComponents } from "@/lib/registry-loader";
 
 import { LogosClient } from "./logos-client";
+
+export const metadata: Metadata = {
+  title: "Brand Logos",
+  description:
+    "Tech company logos for popular services and platforms. Easy to install, customize, and integrate into your projects. Includes logos for authentication, payments, AI, and more.",
+  openGraph: {
+    title: "Brand Logos - Elements",
+    description:
+      "Tech company logos for popular services and platforms. Easy to install and customize.",
+    type: "website",
+    url: "https://tryelements.dev/l/logos",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brand Logos - Elements",
+    description:
+      "Tech company logos for popular services and platforms. Easy to install and customize.",
+  },
+};
 
 export default function TechLogosPage() {
   // Server-side data loading - no useEffect needed!

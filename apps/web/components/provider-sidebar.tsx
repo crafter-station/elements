@@ -43,7 +43,7 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
               key={provider.href}
               href={provider.isEnabled ? provider.href : "#"}
               className={cn(
-                "group flex items-center border border-border gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
+                "group flex items-center border border-dotted border-border border-x-0 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
                 isActive
                   ? "bg-muted text-foreground font-medium z-10"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10",
@@ -75,7 +75,11 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
                 provider.elementsCount > 0 && (
                   <Badge
                     variant="secondary"
-                    className="h-5 px-1.5 text-xs font-normal"
+                    className={cn(
+                      "h-5 px-1.5 text-xs font-normal",
+                      isActive &&
+                        "bg-primary/20 text-primary border-primary/30",
+                    )}
                   >
                     {provider.elementsCount}
                   </Badge>
@@ -124,7 +128,7 @@ export function ProviderSidebar() {
       </div>
 
       {/* Desktop Sidebar */}
-      <aside className="md:transition-all border-r border-border top-[55px] md:flex hidden md:w-[268px] lg:w-[286px] overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
+      <aside className="md:transition-all border-r border-border border-dotted top-[55px] md:flex hidden md:w-[268px] lg:w-[286px] overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
         <ProviderList />
       </aside>
     </>
