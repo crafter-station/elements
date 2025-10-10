@@ -2,58 +2,57 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import { RotateCw, Save, X } from "lucide-react";
-import { toast } from "sonner";
+import { formatHex, oklch } from "culori";
+import { ChevronDown, RefreshCw, X } from "lucide-react";
 
-import ColorInput from "./color-input";
+import { ColorInput } from "./color-input";
 import Logo from "./logo";
 
-interface ThemeVariable {
-  name: string;
-  value: string;
+type ShadcnTokens = Record<string, string>;
+
+interface ShadcnTheme {
+  light: ShadcnTokens;
+  dark: ShadcnTokens;
 }
 
-interface ThemeGroup {
-  title: string;
-  variables: ThemeVariable[];
-}
-
-export default function ThemeEditor() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [groups, setGroups] = useState<ThemeGroup[]>([]);
-  const [originalCss, setOriginalCss] = useState("");
-
-  const tokenGroups = {
-    "Background & Text": [
-      "background",
-      "foreground",
-      "card",
-      "card-foreground",
-      "popover",
-      "popover-foreground",
-    ],
-    "Cards & Surfaces": [
-      "muted",
-      "muted-foreground",
-      "accent",
-      "accent-foreground",
-    ],
-    "Interactive Elements": [
+// Token groups for organized UI
+const TOKEN_GROUPS = [
+  {
+    label: "Background & Text",
+    tokens: ["background", "foreground", "muted", "muted-foreground"],
+  },
+  {
+    label: "Cards & Surfaces",
+    tokens: ["card", "card-foreground", "popover", "popover-foreground"],
+  },
+  {
+    label: "Interactive Elements",
+    tokens: [
       "primary",
       "primary-foreground",
       "secondary",
       "secondary-foreground",
+      "accent",
+      "accent-foreground",
     ],
-    "Forms & States": [
-      "destructive",
-      "destructive-foreground",
+  },
+  {
+    label: "Forms & States",
+    tokens: [
+      "border",
       "input",
       "ring",
-      "border",
+      "destructive",
+      "destructive-foreground",
     ],
-    Charts: ["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"],
-    Sidebar: [
+  },
+  {
+    label: "Charts",
+    tokens: ["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"],
+  },
+  {
+    label: "Sidebar",
+    tokens: [
       "sidebar-background",
       "sidebar-foreground",
       "sidebar-primary",
@@ -63,252 +62,373 @@ export default function ThemeEditor() {
       "sidebar-border",
       "sidebar-ring",
     ],
-  };
+  },
+] as const;
 
-  const extractCSSVariables = useCallback((css: string, selector: string) => {
-    const vars = new Map<string, string>();
-    const regex = new RegExp(`${selector}\\s*\\{([^}]+)\\}`, "s");
-    const match = css.match(regex);
+interface ThemeEditorProps {
+  onChange?: (theme: ShadcnTheme) => void;
+}
 
-    if (match?.[1]) {
-      const lines = match[1].split(";");
-      for (const line of lines) {
-        const [key, value] = line.split(":").map((s) => s.trim());
-        if (key?.startsWith("--") && value) {
-          vars.set(key, value);
-        }
+export default function ThemeEditor({ onChange }: ThemeEditorProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState<ShadcnTheme>({ light: {}, dark: {} });
+  const [_originalFormats, setOriginalFormats] = useState<
+    Record<string, Record<string, string>>
+  >({ light: {}, dark: {} });
+  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [loading, setLoading] = useState(false);
+  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
+    "Background & Text": true,
+    "Cards & Surfaces": false,
+    "Interactive Elements": false,
+    "Forms & States": false,
+    Charts: false,
+    Sidebar: false,
+  });
+
+  // Detect color format
+  const detectColorFormat = useCallback(
+    (colorValue: string): "hex" | "oklch" | "rgb" | "hsl" | "unknown" => {
+      const trimmed = colorValue.trim();
+      if (trimmed.startsWith("#")) return "hex";
+      if (trimmed.startsWith("oklch(")) return "oklch";
+      if (trimmed.startsWith("rgb(")) return "rgb";
+      if (trimmed.startsWith("hsl(")) return "hsl";
+      return "unknown";
+    },
+    [],
+  );
+
+  // Convert any color to hex for color picker
+  const _convertToHex = useCallback((colorValue: string): string => {
+    try {
+      const trimmed = colorValue.trim();
+
+      // If it's already hex, return it
+      if (trimmed.startsWith("#")) {
+        return trimmed;
       }
-    }
 
-    return vars;
+      // For oklch, rgb, hsl - use culori to convert
+      const colorObj = oklch(trimmed);
+      if (colorObj) {
+        const hex = formatHex(colorObj);
+        return hex || "#000000";
+      }
+
+      return "#000000";
+    } catch {
+      return "#000000";
+    }
   }, []);
 
-  const loadThemeVariables = useCallback(async () => {
+  // Convert hex back to original format
+  const _convertFromHex = useCallback(
+    (hexColor: string, originalValue: string): string => {
+      try {
+        const format = detectColorFormat(originalValue);
+
+        switch (format) {
+          case "hex":
+            return hexColor;
+
+          case "oklch": {
+            const oklchColor = oklch(hexColor);
+            if (oklchColor) {
+              const l = oklchColor.l || 0;
+              const c = oklchColor.c || 0;
+              const h = oklchColor.h || 0;
+
+              // Match the original format style
+              if (originalValue.includes(" / ")) {
+                // Handle alpha values like "oklch(1 0 0 / 10%)"
+                const alphaMatch = originalValue.match(/\/\s*([\d.]+%?)/);
+                const alpha = alphaMatch ? ` / ${alphaMatch[1]}` : "";
+                return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(3)}${alpha})`;
+              }
+              return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(3)})`;
+            }
+            return originalValue;
+          }
+
+          default:
+            return hexColor;
+        }
+      } catch {
+        return originalValue;
+      }
+    },
+    [detectColorFormat],
+  );
+
+  // Load theme from globals.css
+  const loadTheme = useCallback(async () => {
+    setLoading(true);
     try {
       const response = await fetch("/api/tinte/read-globals");
-      const data = await response.json();
+      if (response.ok) {
+        const data = await response.json();
+        setTheme(data.theme);
 
-      if (!data.success) {
-        toast.error("Failed to load theme variables");
-        return;
+        // Store original formats for each token
+        const lightFormats: Record<string, string> = {};
+        const darkFormats: Record<string, string> = {};
+
+        Object.entries(data.theme.light).forEach(([key, value]) => {
+          lightFormats[key] = value as string;
+        });
+
+        Object.entries(data.theme.dark).forEach(([key, value]) => {
+          darkFormats[key] = value as string;
+        });
+
+        setOriginalFormats({ light: lightFormats, dark: darkFormats });
+      } else {
+        console.error("Failed to load theme from globals.css");
       }
-
-      setOriginalCss(data.content);
-
-      const rootVars = extractCSSVariables(data.content, ":root");
-      const darkVars = extractCSSVariables(data.content, ".dark");
-
-      const currentVars = theme === "light" ? rootVars : darkVars;
-
-      const newGroups: ThemeGroup[] = Object.entries(tokenGroups).map(
-        ([title, varNames]) => ({
-          title,
-          variables: varNames
-            .map((name) => {
-              const cssVar = `--${name}`;
-              const value = currentVars.get(cssVar) || "";
-              return { name, value };
-            })
-            .filter((v) => v.value),
-        }),
-      );
-
-      setGroups(newGroups);
     } catch (error) {
-      toast.error("Error loading theme variables");
-      console.error(error);
+      console.error("Error loading theme:", error);
     }
-  }, [theme, extractCSSVariables]);
+    setLoading(false);
+  }, []);
 
+  // Initialize theme
   useEffect(() => {
-    if (isOpen) {
-      loadThemeVariables();
-    }
-  }, [isOpen, loadThemeVariables]);
+    const root = document.documentElement;
+    const isDark = root.classList.contains("dark");
+    setMode(isDark ? "dark" : "light");
+    loadTheme();
+  }, [loadTheme]);
 
-  const handleColorChange = (
-    groupIndex: number,
-    varIndex: number,
-    newValue: string,
-  ) => {
-    setGroups((prev) => {
-      const updated = [...prev];
-      updated[groupIndex].variables[varIndex].value = newValue;
-      return updated;
+  const handleTokenEdit = useCallback(
+    (token: string, newValue: string) => {
+      setTheme((prev) => {
+        const updated = {
+          ...prev,
+          [mode]: {
+            ...prev[mode],
+            [token]: newValue,
+          },
+        };
+
+        onChange?.(updated);
+        return updated;
+      });
+
+      // Update original formats with new value
+      setOriginalFormats((prev) => ({
+        ...prev,
+        [mode]: {
+          ...prev[mode],
+          [token]: newValue,
+        },
+      }));
+    },
+    [mode, onChange],
+  );
+
+  // Sync mode with DOM changes (controlled by next-themes)
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setMode(isDark ? "dark" : "light");
     });
 
-    const cssVar = `--${groups[groupIndex].variables[varIndex].name}`;
-    const root =
-      theme === "light" ? document.documentElement : document.documentElement;
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
 
-    if (theme === "dark") {
-      root.classList.add("dark");
-    }
+    return () => observer.disconnect();
+  }, []);
 
-    root.style.setProperty(cssVar, newValue);
-  };
+  const toggleGroup = useCallback((groupName: string) => {
+    setOpenGroups((prev) => ({
+      ...prev,
+      [groupName]: !prev[groupName],
+    }));
+  }, []);
 
-  const handleSave = async () => {
+  // Write to globals.css file
+  const writeToGlobals = useCallback(async () => {
     try {
-      let updatedCss = originalCss;
+      const lightTokens = Object.entries(theme.light)
+        .map(([key, value]) => `  --${key}: ${value};`)
+        .join("\n");
 
-      const rootVars = new Map<string, string>();
-      const darkVars = new Map<string, string>();
+      const darkTokens = Object.entries(theme.dark)
+        .map(([key, value]) => `  --${key}: ${value};`)
+        .join("\n");
 
-      for (const group of groups) {
-        for (const variable of group.variables) {
-          const cssVar = `--${variable.name}`;
-          if (theme === "light") {
-            rootVars.set(cssVar, variable.value);
-          } else {
-            darkVars.set(cssVar, variable.value);
-          }
-        }
-      }
-
-      if (theme === "light") {
-        updatedCss = updateCSSBlock(updatedCss, ":root", rootVars);
-      } else {
-        updatedCss = updateCSSBlock(updatedCss, ".dark", darkVars);
-      }
+      const cssContent = `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
 
       const response = await fetch("/api/tinte/write-globals", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: updatedCss }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ css: cssContent }),
       });
 
-      const data = await response.json();
-
-      if (data.success) {
-        toast.success("Theme saved successfully!");
-        setOriginalCss(updatedCss);
+      if (response.ok) {
+        const result = await response.json();
+        alert(`✅ ${result.message}`);
       } else {
-        toast.error("Failed to save theme");
+        const error = await response.json();
+        throw new Error(error.error || "Failed to write globals.css");
       }
     } catch (error) {
-      toast.error("Error saving theme");
-      console.error(error);
+      console.error("Failed to write globals.css:", error);
+      alert(
+        "❌ Failed to write globals.css: " +
+          (error instanceof Error ? error.message : "Unknown error"),
+      );
     }
-  };
+  }, [theme]);
 
-  const updateCSSBlock = (
-    css: string,
-    selector: string,
-    vars: Map<string, string>,
-  ) => {
-    const regex = new RegExp(`(${selector}\\s*\\{)([^}]+)(\\})`, "s");
-    const match = css.match(regex);
-
-    if (!match) return css;
-
-    const existingVars = new Map<string, string>();
-    const lines = match[2].split(";");
-
-    for (const line of lines) {
-      const [key, value] = line.split(":").map((s) => s.trim());
-      if (key?.startsWith("--") && value) {
-        existingVars.set(key, value);
-      }
-    }
-
-    for (const [key, value] of vars) {
-      existingVars.set(key, value);
-    }
-
-    const newBlock = Array.from(existingVars.entries())
-      .map(([key, value]) => `    ${key}: ${value};`)
-      .join("\n");
-
-    return css.replace(regex, `${match[1]}\n${newBlock}\n  ${match[3]}`);
-  };
+  const availableTokens = TOKEN_GROUPS.flatMap((group) =>
+    group.tokens.filter((token) => theme[mode][token] !== undefined),
+  );
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 shadow-lg transition-transform hover:scale-110 active:scale-95"
-        aria-label="Open theme editor"
-      >
-        <Logo size={28} className="text-white" />
-      </button>
+      {/* Floating Ball */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="w-14 h-14 bg-card border-2 border-border rounded-full shadow-lg hover:scale-110 transition-all duration-200 flex items-center justify-center hover:shadow-xl"
+          title="Open Theme Editor"
+        >
+          <Logo size={28} className="drop-shadow-sm" />
+        </button>
+      </div>
 
+      {/* Expanded Panel */}
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-lg border bg-background shadow-2xl">
-            <div className="sticky top-0 z-10 flex items-center justify-between border-b bg-background px-6 py-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/20 backdrop-blur-sm">
+          <div className="bg-card border border-border rounded-lg shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b border-border">
               <div className="flex items-center gap-3">
-                <Logo size={32} />
-                <h2 className="text-xl font-semibold">Theme Editor</h2>
+                <Logo size={24} />
+                <div>
+                  <h3 className="text-lg font-semibold">Theme Editor</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Live editing • {availableTokens.length} tokens • {mode} mode
+                  </p>
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                  className="rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-accent"
+                  onClick={loadTheme}
+                  disabled={loading}
+                  className="p-1.5 hover:bg-accent rounded-md transition-colors disabled:opacity-50"
+                  title="Reload from globals.css"
                 >
-                  {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+                  <RefreshCw
+                    size={16}
+                    className={loading ? "animate-spin" : ""}
+                  />
                 </button>
+                <span className="px-3 py-1.5 text-sm text-muted-foreground border border-border rounded-md">
+                  Editing: {mode === "light" ? "☀️ Light" : "🌙 Dark"}
+                </span>
                 <button
                   type="button"
-                  onClick={loadThemeVariables}
-                  className="rounded-md border p-2 transition-colors hover:bg-accent"
-                  aria-label="Reload theme"
+                  onClick={writeToGlobals}
+                  className="px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
                 >
-                  <RotateCw className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={handleSave}
-                  className="rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  <Save className="h-4 w-4" />
+                  Save CSS
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="rounded-md border p-2 transition-colors hover:bg-accent"
-                  aria-label="Close theme editor"
+                  className="p-1.5 hover:bg-accent rounded-md transition-colors"
                 >
-                  <X className="h-4 w-4" />
+                  <X size={16} />
                 </button>
               </div>
             </div>
 
-            <div
-              className="overflow-y-auto p-6"
-              style={{ maxHeight: "calc(90vh - 80px)" }}
-            >
-              {groups.map((group, groupIndex) => (
-                <div key={group.title} className="mb-6">
-                  <h3 className="mb-3 text-sm font-semibold text-muted-foreground">
-                    {group.title}
-                  </h3>
-                  <div className="space-y-3">
-                    {group.variables.map((variable, varIndex) => (
-                      <div
-                        key={variable.name}
-                        className="flex items-center gap-3"
-                      >
-                        <label
-                          htmlFor={`var-${groupIndex}-${varIndex}`}
-                          className="min-w-[200px] text-sm font-mono"
-                        >
-                          --{variable.name}
-                        </label>
-                        <ColorInput
-                          id={`var-${groupIndex}-${varIndex}`}
-                          value={variable.value}
-                          onChange={(newValue) =>
-                            handleColorChange(groupIndex, varIndex, newValue)
-                          }
-                        />
-                      </div>
-                    ))}
-                  </div>
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-4">
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <RefreshCw className="animate-spin mr-2" size={20} />
+                  <span>Loading theme...</span>
                 </div>
-              ))}
+              ) : (
+                <div className="space-y-3">
+                  {TOKEN_GROUPS.map((group) => {
+                    const groupTokens = group.tokens.filter(
+                      (token) => theme[mode][token] !== undefined,
+                    );
+                    if (groupTokens.length === 0) return null;
+
+                    return (
+                      <div
+                        key={group.label}
+                        className="border border-border rounded-md overflow-hidden"
+                      >
+                        <button
+                          type="button"
+                          onClick={() => toggleGroup(group.label)}
+                          className="flex w-full items-center justify-between px-3 py-2.5 text-sm font-medium hover:bg-accent/50 transition-colors"
+                        >
+                          <span className="uppercase tracking-wide">
+                            {group.label} ({groupTokens.length})
+                          </span>
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform ${openGroups[group.label] ? "rotate-180" : ""}`}
+                          />
+                        </button>
+
+                        {openGroups[group.label] && (
+                          <div className="border-t border-border bg-muted/20 p-3">
+                            <div className="grid gap-3 sm:grid-cols-2">
+                              {groupTokens.map((token) => (
+                                <div key={token} className="space-y-1.5">
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                                      {token.replace(/_/g, "-")}
+                                    </span>
+                                    <span className="text-xs text-muted-foreground font-mono">
+                                      {detectColorFormat(theme[mode][token])}
+                                    </span>
+                                  </div>
+                                  <ColorInput
+                                    value={theme[mode][token]}
+                                    onChange={(color) =>
+                                      handleTokenEdit(token, color)
+                                    }
+                                    label={token}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="p-4 border-t border-border bg-muted/50">
+              <div className="text-xs text-muted-foreground space-y-1">
+                <p>
+                  • Changes apply instantly • Original formats preserved
+                  (oklch→oklch, hex→hex)
+                </p>
+                <p>
+                  • Use reload button to refresh from globals.css • Save writes
+                  to file
+                </p>
+              </div>
             </div>
           </div>
         </div>

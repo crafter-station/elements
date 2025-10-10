@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { formatHex, oklch } from "culori";
 import { ChevronDown, RefreshCw, X } from "lucide-react";
 
-import { ColorInput } from "./color-input";
+import { ColorPickerInput } from "./color-picker-input";
 import Logo from "./logo";
 
 type ShadcnTokens = Record<string, string>;
@@ -53,7 +53,7 @@ const TOKEN_GROUPS = [
   {
     label: "Sidebar",
     tokens: [
-      "sidebar-background",
+      "sidebar",
       "sidebar-foreground",
       "sidebar-primary",
       "sidebar-primary-foreground",
@@ -65,14 +65,14 @@ const TOKEN_GROUPS = [
   },
 ] as const;
 
-interface ThemeEditorProps {
+interface FloatingThemeEditorProps {
   onChange?: (theme: ShadcnTheme) => void;
 }
 
-export default function ThemeEditor({ onChange }: ThemeEditorProps) {
+export function FloatingThemeEditor({ onChange }: FloatingThemeEditorProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<ShadcnTheme>({ light: {}, dark: {} });
-  const [_originalFormats, setOriginalFormats] = useState<
+  const [originalFormats, setOriginalFormats] = useState<
     Record<string, Record<string, string>>
   >({ light: {}, dark: {} });
   const [mode, setMode] = useState<"light" | "dark">("light");
@@ -100,7 +100,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   );
 
   // Convert any color to hex for color picker
-  const _convertToHex = useCallback((colorValue: string): string => {
+  const convertToHex = useCallback((colorValue: string): string => {
     try {
       const trimmed = colorValue.trim();
 
@@ -123,7 +123,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   }, []);
 
   // Convert hex back to original format
-  const _convertFromHex = useCallback(
+  const convertFromHex = useCallback(
     (hexColor: string, originalValue: string): string => {
       try {
         const format = detectColorFormat(originalValue);
@@ -145,8 +145,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                 const alphaMatch = originalValue.match(/\/\s*([\d.]+%?)/);
                 const alpha = alphaMatch ? ` / ${alphaMatch[1]}` : "";
                 return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(3)}${alpha})`;
+              } else {
+                return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(3)})`;
               }
-              return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(3)})`;
             }
             return originalValue;
           }
@@ -159,6 +160,27 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
       }
     },
     [detectColorFormat],
+  );
+
+  // Apply theme to DOM
+  const applyThemeToDom = useCallback(
+    (currentTheme: ShadcnTheme, currentMode: "light" | "dark") => {
+      const root = document.documentElement;
+
+      // Set mode class
+      if (currentMode === "dark") {
+        root.classList.add("dark");
+      } else {
+        root.classList.remove("dark");
+      }
+
+      // Apply CSS custom properties
+      const tokens = currentTheme[currentMode];
+      Object.entries(tokens).forEach(([key, value]) => {
+        root.style.setProperty(`--${key}`, value);
+      });
+    },
+    [],
   );
 
   // Load theme from globals.css
@@ -183,6 +205,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
         });
 
         setOriginalFormats({ light: lightFormats, dark: darkFormats });
+
+        // Apply to DOM
+        applyThemeToDom(data.theme, mode);
       } else {
         console.error("Failed to load theme from globals.css");
       }
@@ -190,7 +215,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
       console.error("Error loading theme:", error);
     }
     setLoading(false);
-  }, []);
+  }, [mode, applyThemeToDom]);
 
   // Initialize theme
   useEffect(() => {
@@ -201,7 +226,10 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   }, [loadTheme]);
 
   const handleTokenEdit = useCallback(
-    (token: string, newValue: string) => {
+    (token: string, hexColor: string) => {
+      const originalValue = originalFormats[mode][token] || hexColor;
+      const newValue = convertFromHex(hexColor, originalValue);
+
       setTheme((prev) => {
         const updated = {
           ...prev,
@@ -211,7 +239,10 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
           },
         };
 
+        // Apply immediately to DOM
+        applyThemeToDom(updated, mode);
         onChange?.(updated);
+
         return updated;
       });
 
@@ -224,23 +255,14 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
         },
       }));
     },
-    [mode, onChange],
+    [mode, originalFormats, convertFromHex, applyThemeToDom, onChange],
   );
 
-  // Sync mode with DOM changes (controlled by next-themes)
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      setMode(isDark ? "dark" : "light");
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const handleModeToggle = useCallback(() => {
+    const newMode = mode === "light" ? "dark" : "light";
+    setMode(newMode);
+    applyThemeToDom(theme, newMode);
+  }, [mode, theme, applyThemeToDom]);
 
   const toggleGroup = useCallback((groupName: string) => {
     setOpenGroups((prev) => ({
@@ -332,9 +354,13 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                     className={loading ? "animate-spin" : ""}
                   />
                 </button>
-                <span className="px-3 py-1.5 text-sm text-muted-foreground border border-border rounded-md">
-                  Editing: {mode === "light" ? "☀️ Light" : "🌙 Dark"}
-                </span>
+                <button
+                  type="button"
+                  onClick={handleModeToggle}
+                  className="px-3 py-1.5 text-sm border border-border rounded-md hover:bg-accent transition-colors"
+                >
+                  {mode === "light" ? "☀️ Light" : "🌙 Dark"}
+                </button>
                 <button
                   type="button"
                   onClick={writeToGlobals}
@@ -390,12 +416,19 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                             <div className="grid gap-3 sm:grid-cols-2">
                               {groupTokens.map((token) => (
                                 <div key={token} className="space-y-1.5">
-                                  <ColorInput
-                                    value={theme[mode][token]}
-                                    onChange={(color) =>
-                                      handleTokenEdit(token, color)
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                                      {token.replace(/_/g, "-")}
+                                    </span>
+                                    <span className="text-xs text-muted-foreground font-mono">
+                                      {detectColorFormat(theme[mode][token])}
+                                    </span>
+                                  </div>
+                                  <ColorPickerInput
+                                    color={convertToHex(theme[mode][token])}
+                                    onChange={(hexColor) =>
+                                      handleTokenEdit(token, hexColor)
                                     }
-                                    label={token}
                                   />
                                 </div>
                               ))}

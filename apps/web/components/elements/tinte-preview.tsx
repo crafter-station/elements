@@ -14,7 +14,8 @@ export function TintePreview() {
 
         <p className="text-sm text-muted-foreground">
           Click the floating purple ball in the bottom-right corner to open the
-          AI-powered theme editor
+          AI-powered theme editor with color format cycling (HEX → RGB → HSL →
+          OKLCH → LCH)
         </p>
 
         {/* Color tokens showcase */}
@@ -38,7 +39,7 @@ export function TintePreview() {
         </div>
       </div>
 
-      {/* Real ThemeEditor component */}
+      {/* Real ThemeEditor component with original design */}
       <ThemeEditor />
     </div>
   );
