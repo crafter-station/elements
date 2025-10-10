@@ -84,11 +84,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/icon.svg",
-  },
   manifest: "/manifest.json",
 };
 
