@@ -992,6 +992,48 @@
       "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Multi-button with system/light/dark options."
     },
     {
+      "name": "tinte",
+      "type": "registry:ui",
+      "title": "Tinte Theme Editor",
+      "description": "Live theme editor for shadcn/ui design tokens with real-time color preview and format preservation",
+      "registryDependencies": ["button"],
+      "dependencies": [
+        "culori",
+        "@uiw/react-color",
+        "@uiw/color-convert",
+        "lucide-react",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "../../packages/tinte/registry/tinte/theme-editor.tsx",
+          "type": "registry:component",
+          "target": "components/tinte/theme-editor.tsx"
+        },
+        {
+          "path": "../../packages/tinte/registry/tinte/color-input.tsx",
+          "type": "registry:component",
+          "target": "components/tinte/color-input.tsx"
+        },
+        {
+          "path": "../../packages/tinte/registry/tinte/logo.tsx",
+          "type": "registry:component",
+          "target": "components/tinte/logo.tsx"
+        },
+        {
+          "path": "../../packages/tinte/registry/tinte/api/read-globals/route.ts",
+          "type": "registry:lib",
+          "target": "app/api/tinte/read-globals/route.ts"
+        },
+        {
+          "path": "../../packages/tinte/registry/tinte/api/write-globals/route.ts",
+          "type": "registry:lib",
+          "target": "app/api/tinte/write-globals/route.ts"
+        }
+      ],
+      "docs": "Live theme editor with floating ball UI that allows editing shadcn/ui design tokens in real-time. Supports HEX, RGB, HSL, OKLCH, and LCH color formats with automatic format preservation. Features organized token groups, light/dark mode switching, and live CSS updates. Requires app/globals.css to be writable."
+    },
+    {
       "name": "clerk-waitlist-shadcn",
       "type": "registry:block",
       "title": "Clerk Waitlist (ShadCN)",

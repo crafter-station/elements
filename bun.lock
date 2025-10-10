@@ -131,6 +131,21 @@
         "@biomejs/biome": "2.2.0",
       },
     },
+    "packages/tinte": {
+      "name": "@elements/tinte",
+      "version": "0.1.0",
+      "dependencies": {
+        "@uiw/color-convert": "^2.3.0",
+        "@uiw/react-color": "^2.3.0",
+        "culori": "^4.0.1",
+        "lucide-react": "latest",
+        "sonner": "latest",
+      },
+      "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0",
+      },
+    },
     "packages/uploadthing": {
       "name": "@elements/uploadthing",
       "version": "0.1.0",
@@ -190,6 +205,8 @@
 
     "@babel/plugin-transform-typescript": ["@babel/plugin-transform-typescript@7.28.0", "", { "dependencies": { "@babel/helper-annotate-as-pure": "^7.27.3", "@babel/helper-create-class-features-plugin": "^7.27.1", "@babel/helper-plugin-utils": "^7.27.1", "@babel/helper-skip-transparent-expression-wrappers": "^7.27.1", "@babel/plugin-syntax-typescript": "^7.27.1" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-4AEiDEBPIZvLQaWlc9liCavE0xRM0dNca41WtBeM3jgFptfUOSG9z0uteLhq6+3rq+WB6jIvUwKDTpXEHPJ2Vg=="],
 
+    "@babel/runtime": ["@babel/runtime@7.28.4", "", {}, "sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ=="],
+
     "@babel/template": ["@babel/template@7.27.2", "", { "dependencies": { "@babel/code-frame": "^7.27.1", "@babel/parser": "^7.27.2", "@babel/types": "^7.27.1" } }, "sha512-LPDZ85aEJyYSd18/DkjNh4/y1ntkE5KwUHWTiqgRxruuZL2F1yuHligVHLvcHY2vMHXttKFpJn6LwfI7cw7ODw=="],
 
     "@babel/traverse": ["@babel/traverse@7.28.3", "", { "dependencies": { "@babel/code-frame": "^7.27.1", "@babel/generator": "^7.28.3", "@babel/helper-globals": "^7.28.0", "@babel/parser": "^7.28.3", "@babel/template": "^7.27.2", "@babel/types": "^7.28.2", "debug": "^4.3.1" } }, "sha512-7w4kZYHneL3A6NP2nxzHvT3HCZ7puDZZjFMqDpBPECub79sTtSO5CGXDkKrTQq8ksAwfD/XI2MRFX23njdDaIQ=="],
@@ -243,6 +260,8 @@
     "@elements/polar": ["@elements/polar@workspace:packages/polar"],
 
     "@elements/theme": ["@elements/theme@workspace:packages/theme"],
+
+    "@elements/tinte": ["@elements/tinte@workspace:packages/tinte"],
 
     "@elements/uploadthing": ["@elements/uploadthing@workspace:packages/uploadthing"],
 
@@ -590,6 +609,50 @@
 
     "@types/unist": ["@types/unist@3.0.3", "", {}, "sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q=="],
 
+    "@uiw/color-convert": ["@uiw/color-convert@2.9.0", "", { "peerDependencies": { "@babel/runtime": ">=7.19.0" } }, "sha512-tFm6iac8iN3VL9IIAXKAVpBX6ZQH7ucCvb+EgZNM5y8prRWlk53cERnP4RycE3wnYb/HUKW0lrngoygQnEWAHg=="],
+
+    "@uiw/react-color": ["@uiw/react-color@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-alpha": "2.9.0", "@uiw/react-color-block": "2.9.0", "@uiw/react-color-chrome": "2.9.0", "@uiw/react-color-circle": "2.9.0", "@uiw/react-color-colorful": "2.9.0", "@uiw/react-color-compact": "2.9.0", "@uiw/react-color-editable-input": "2.9.0", "@uiw/react-color-editable-input-hsla": "2.9.0", "@uiw/react-color-editable-input-rgba": "2.9.0", "@uiw/react-color-github": "2.9.0", "@uiw/react-color-hue": "2.9.0", "@uiw/react-color-material": "2.9.0", "@uiw/react-color-name": "2.9.0", "@uiw/react-color-saturation": "2.9.0", "@uiw/react-color-shade-slider": "2.9.0", "@uiw/react-color-sketch": "2.9.0", "@uiw/react-color-slider": "2.9.0", "@uiw/react-color-swatch": "2.9.0", "@uiw/react-color-wheel": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-lXay6JDzat/+klzNk4NQpYJYcGfIBhGLIEGWpzQvp+fOh69sV/rF5XyB1boXFfgopx8JZtb3yurKySuIR4EuDA=="],
+
+    "@uiw/react-color-alpha": ["@uiw/react-color-alpha@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-drag-event-interactive": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-tP9zs2KUPzIGvdtTBTNlDEdwHWcNJ3Ju/nnpPTsKERRJF2vzucb3v18JzihX0ACiOXU9+JVqgpAVgvoZXMeITA=="],
+
+    "@uiw/react-color-block": ["@uiw/react-color-block@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-editable-input": "2.9.0", "@uiw/react-color-swatch": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-RP5W0xglRxPjH9Fw4m/QlPGb3aczzEoan3lKXxI+q6zVRckxl5kXadPqPCbLS+j1PLozzb2gI/dDG7ZdPYxZyA=="],
+
+    "@uiw/react-color-chrome": ["@uiw/react-color-chrome@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-alpha": "2.9.0", "@uiw/react-color-editable-input": "2.9.0", "@uiw/react-color-editable-input-hsla": "2.9.0", "@uiw/react-color-editable-input-rgba": "2.9.0", "@uiw/react-color-github": "2.9.0", "@uiw/react-color-hue": "2.9.0", "@uiw/react-color-saturation": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-cQCeNE0K/+/nP/GCQhMq1tfvxIlmFeFXIP+AkF73F6awl1q9oNEnNiJnJ8k8EjeduES43V2IkNFmQdxC+Wy05g=="],
+
+    "@uiw/react-color-circle": ["@uiw/react-color-circle@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-swatch": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-0jJJpdPJC7l9++RKJZ1MWkQSatVk5zPfCqR21pUrDK18E7UmSpwx7/zvMqX3avumcu4wt3RUXhVT80kHKHq+yQ=="],
+
+    "@uiw/react-color-colorful": ["@uiw/react-color-colorful@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-alpha": "2.9.0", "@uiw/react-color-hue": "2.9.0", "@uiw/react-color-saturation": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-qw7zhgX9J4aydK0hKKLroXMYp0tw3ASNuZM1fQNwXXIpOkEW4zO+PHTkzUBpbII68wGS8tAxsZessTWNpAVi0w=="],
+
+    "@uiw/react-color-compact": ["@uiw/react-color-compact@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-editable-input": "2.9.0", "@uiw/react-color-editable-input-rgba": "2.9.0", "@uiw/react-color-swatch": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-PB3YMi8DP+Qh3EXabxI67j+RBvOlNEMzWyqsXX4TdBe/0gHujk0GCMTrm0Sk+kcZd+AzCTF01vdGqrgF2uh5cQ=="],
+
+    "@uiw/react-color-editable-input": ["@uiw/react-color-editable-input@2.9.0", "", { "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-y4/U8tVcF/F27ziTb0iAgvuibYNwF5rrDIAqyTqCdsNJYk8esIgnazAUD5x8Qn8oWWSqMC8gnzOxH9XTcECckg=="],
+
+    "@uiw/react-color-editable-input-hsla": ["@uiw/react-color-editable-input-hsla@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-editable-input-rgba": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-/RniQBTjR5II4AZkFmtjkzUgwPEMis5yv4Tb4PWTwUlWiRRgSjtiSgeGS3Jv25lnz6sK9U0JJQgcCQK3KJEBqw=="],
+
+    "@uiw/react-color-editable-input-rgba": ["@uiw/react-color-editable-input-rgba@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-editable-input": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-vLg0QV4FN9Emfz/ulGbXnYV/Gj00GnKrlqxJewOeiSoK9cuG3AZUmLUDAUexAoYtAgnRr3WF2EvzUPufteMuqA=="],
+
+    "@uiw/react-color-github": ["@uiw/react-color-github@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-swatch": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-gTs21kGLBUbscnAktjtGXkZf4nY5mFQyBkL6eK7ewWgQyefMRqnIpIYDHjiZQoPUcOgEV2mD5DXzXIVMzssoVg=="],
+
+    "@uiw/react-color-hue": ["@uiw/react-color-hue@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-alpha": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-2Ix027ref3ppiVq+OQkbyKr6O8fLTH+n0wEW4xhHfa3kV8mBa2bEu8jAjrkSwO6uElaE6OJcuqYe2llyKRlIFg=="],
+
+    "@uiw/react-color-material": ["@uiw/react-color-material@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-editable-input": "2.9.0", "@uiw/react-color-editable-input-rgba": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-rhAQcGJFa0/W26FqjVmy45YeIJEDwxZ6/loOlLgTLhBRvh7ZkTEzryHeOOnIoP/LYOFCsFI/xCfIPRXpk8vxAQ=="],
+
+    "@uiw/react-color-name": ["@uiw/react-color-name@2.9.0", "", { "dependencies": { "colors-named": "^1.0.1", "colors-named-hex": "^1.0.1" }, "peerDependencies": { "@babel/runtime": ">=7.19.0" } }, "sha512-zxMUiXVC5hikQl5UCFpE1ALrvIDhVmQUh5NfMMDmT61DyUS9CXob8DGqyCgv4sVEuIEzM5Py8QrY1j0oMNczeA=="],
+
+    "@uiw/react-color-saturation": ["@uiw/react-color-saturation@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-drag-event-interactive": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-tBARqsW0ap+gwByGKSid1nYaGJd6dw2MTMwCABF9rebPQHtYbN/YgBjl9dNnp6XDGd+VBhH4RbpM38WV7J1F4g=="],
+
+    "@uiw/react-color-shade-slider": ["@uiw/react-color-shade-slider@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-alpha": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-+WDHiwzxqOJ7ECVu+jeDoVeAzKnaMGUZe4bdlqFarvhzZMLHUyAKlQf8fcniMB89jl+81z2g/aDeq1kPhv1/QA=="],
+
+    "@uiw/react-color-sketch": ["@uiw/react-color-sketch@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-alpha": "2.9.0", "@uiw/react-color-editable-input": "2.9.0", "@uiw/react-color-editable-input-rgba": "2.9.0", "@uiw/react-color-hue": "2.9.0", "@uiw/react-color-saturation": "2.9.0", "@uiw/react-color-swatch": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-0Bu8FjF6xj+RvKY3aS1yqyo8067BmV33BIZ1GzCnbz0cpSzPcDXUt1axE/mG2SD4J/b8zVcfyKj0K50Y9yE0Gg=="],
+
+    "@uiw/react-color-slider": ["@uiw/react-color-slider@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-color-alpha": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-TfMumLhXqWtZwtJyF3v/bcWJv2ZZ/NESd5bUya7/SNW66ukmfiiUG0LFYy1db+flwl4Tj9yL7nYKYf6Xp90ieA=="],
+
+    "@uiw/react-color-swatch": ["@uiw/react-color-swatch@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-kA4Yg2sXkw2ji7BxG34TjfhQOnk5mmxTjTjzX70gX7bj4dS2DcGbr5lq3JunssCPUJD5OykU9hhhDlZnFLmHcg=="],
+
+    "@uiw/react-color-wheel": ["@uiw/react-color-wheel@2.9.0", "", { "dependencies": { "@uiw/color-convert": "2.9.0", "@uiw/react-drag-event-interactive": "2.9.0" }, "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-/YYlqqppYtZbet2NLU5Pk1eR4WZ71O8YCwxFGYtJEIXLkyDjsBuznnobYr5MM4YHsJBPNrml3PCoSVoYVki4KQ=="],
+
+    "@uiw/react-drag-event-interactive": ["@uiw/react-drag-event-interactive@2.9.0", "", { "peerDependencies": { "@babel/runtime": ">=7.19.0", "react": ">=16.9.0", "react-dom": ">=16.9.0" } }, "sha512-oBqrClsSuYA3IjkSHp4uHOBLgPkR98KeKeheqCRltF8w/a1CPaFCl43pyKyxwXaTV6qM6cb3VkT3JRCHMNqTzA=="],
+
     "@ungap/structured-clone": ["@ungap/structured-clone@1.3.0", "", {}, "sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g=="],
 
     "@uploadthing/mime-types": ["@uploadthing/mime-types@0.3.6", "", {}, "sha512-t3tTzgwFV9+1D7lNDYc7Lr7kBwotHaX0ZsvoCGe7xGnXKo9z0jG2Sjl/msll12FeoLj77nyhsxevXyGpQDBvLg=="],
@@ -700,6 +763,10 @@
 
     "color-string": ["color-string@1.9.1", "", { "dependencies": { "color-name": "^1.0.0", "simple-swizzle": "^0.2.2" } }, "sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg=="],
 
+    "colors-named": ["colors-named@1.0.2", "", {}, "sha512-2ANq2r393PV9njYUD66UdfBcxR1slMqRA3QRTWgCx49JoCJ+kOhyfbQYxKJbPZQIhZUcNjVOs5AlyY1WwXec3w=="],
+
+    "colors-named-hex": ["colors-named-hex@1.0.2", "", {}, "sha512-k6kq1e1pUCQvSVwIaGFq2l0LrkAPQZWyeuZn1Z8nOiYSEZiKoFj4qx690h2Kd34DFl9Me0gKS6MUwAMBJj8nuA=="],
+
     "comma-separated-tokens": ["comma-separated-tokens@2.0.3", "", {}, "sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg=="],
 
     "commander": ["commander@10.0.1", "", {}, "sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug=="],
@@ -721,6 +788,8 @@
     "cross-spawn": ["cross-spawn@7.0.6", "", { "dependencies": { "path-key": "^3.1.0", "shebang-command": "^2.0.0", "which": "^2.0.1" } }, "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA=="],
 
     "csstype": ["csstype@3.1.3", "", {}, "sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw=="],
+
+    "culori": ["culori@4.0.2", "", {}, "sha512-1+BhOB8ahCn4O0cep0Sh2l9KCOfOdY+BXJnKMHFFzDEouSr/el18QwXEMRlOj9UY5nCeA8UN3a/82rUWRBeyBw=="],
 
     "data-uri-to-buffer": ["data-uri-to-buffer@4.0.1", "", {}, "sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A=="],
 

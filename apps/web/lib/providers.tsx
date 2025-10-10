@@ -11,6 +11,7 @@ import { GroupIcon } from "@/components/icons/group";
 import { MoonIcon } from "@/components/icons/moon";
 import { TriggerIcon } from "@/components/icons/trigger";
 import { UploadThingLogo } from "@/components/icons/upload-thing";
+import TinteLogo from "@/components/tinte-logo";
 // Import logo components from registry
 import { BetterAuthLogo } from "@/components/ui/logos/better-auth";
 import { PolarLogo } from "@/components/ui/logos/polar";
@@ -67,6 +68,9 @@ export function getProvidersData(): Provider[] {
       isEnabled: true,
     },
     theme: {
+      isEnabled: true,
+    },
+    tinte: {
       isEnabled: true,
     },
     vercel: {
@@ -187,6 +191,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     // Pixelart icons for special categories
     logos: <GroupIcon className="w-6 h-6" />,
     theme: <MoonIcon className="w-6 h-6" />,
+    tinte: <TinteLogo size={24} />,
   };
 
   return (

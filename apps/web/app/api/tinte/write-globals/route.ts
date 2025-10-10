@@ -1,0 +1,28 @@
+import { writeFile } from "node:fs/promises";
+import { join } from "node:path";
+
+import { NextResponse } from "next/server";
+
+export async function POST(request: Request) {
+  try {
+    const { content } = await request.json();
+
+    if (typeof content !== "string") {
+      return NextResponse.json(
+        { success: false, error: "Invalid content" },
+        { status: 400 },
+      );
+    }
+
+    const globalsPath = join(process.cwd(), "app", "globals.css");
+    await writeFile(globalsPath, content, "utf-8");
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Error writing globals.css:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to write globals.css" },
+      { status: 500 },
+    );
+  }
+}

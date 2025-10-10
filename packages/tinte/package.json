@@ -1,0 +1,24 @@
+{
+  "name": "@elements/tinte",
+  "version": "0.1.0",
+  "description": "Live theme editor for shadcn/ui design tokens",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./theme-editor": "./src/components/theme-editor.tsx",
+    "./color-input": "./src/components/color-input.tsx",
+    "./logo": "./src/components/logo.tsx"
+  },
+  "dependencies": {
+    "culori": "^4.0.1",
+    "@uiw/react-color": "^2.3.0",
+    "@uiw/color-convert": "^2.3.0",
+    "lucide-react": "latest",
+    "sonner": "latest"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  }
+}
