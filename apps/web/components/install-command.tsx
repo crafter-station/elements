@@ -105,7 +105,7 @@ export function InstallCommand({
   };
 
   return (
-    <div className={`w-full max-w-sm ${className || ""}`}>
+    <div className={`w-fit ${className || ""}`}>
       <div className="flex rounded-md shadow-xs border">
         <Select
           value={packageManager}
@@ -131,11 +131,11 @@ export function InstallCommand({
             <SelectItem value="yarn">yarn</SelectItem>
           </SelectContent>
         </Select>
-        <div className="flex-1 flex items-center min-w-0">
+        <div className="flex items-center">
           <Button
             onClick={copyCommand}
             variant="ghost"
-            className={`-ms-px flex-1 rounded-none border-0 shadow-none h-9 px-3 justify-start font-mono text-xs sm:text-sm min-w-0 ${
+            className={`-ms-px rounded-none border-0 shadow-none h-9 px-3 justify-start font-mono text-xs sm:text-sm ${
               copied ? "bg-muted" : "hover:bg-muted"
             } ${
               brandColor
@@ -155,12 +155,10 @@ export function InstallCommand({
             ) : (
               <ShadcnIcon className="w-4 h-4 mr-2 flex-shrink-0" />
             )}
-            <div className="flex-1 flex items-center min-w-0">
-              <span className="truncate min-w-0 overflow-hidden">
-                {urlSummary.display}
-              </span>
+            <div className="flex items-center gap-1">
+              <span className="whitespace-nowrap">{urlSummary.display}</span>
               {urls.length > 1 && (
-                <span className="text-muted-foreground ml-1 flex-shrink-0">
+                <span className="text-muted-foreground whitespace-nowrap">
                   ({urlSummary.count})
                 </span>
               )}
