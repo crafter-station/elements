@@ -151,9 +151,9 @@ export function InstallCommand({
             }
           >
             {copied ? (
-              <Check className="w-4 h-4 mr-2 flex-shrink-0" />
+              <Check className="size-4 flex-shrink-0" />
             ) : (
-              <ShadcnIcon className="w-4 h-4 mr-2 flex-shrink-0" />
+              <ShadcnIcon className="size-4 flex-shrink-0" />
             )}
             <div className="flex items-center gap-1">
               <span className="whitespace-nowrap">{urlSummary.display}</span>

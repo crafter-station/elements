@@ -80,8 +80,8 @@ From [uploadthing.com](https://uploadthing.com) dashboard.
 ### 3. Environment Variables
 
 ```bash
-UPLOADTHING_SECRET=sk_live_...
-UPLOADTHING_APP_ID=your-app-id
+UPLOADTHING_SECRET=sk_live_... # [!code highlight]
+UPLOADTHING_APP_ID=your-app-id # [!code highlight]
 ```
 
 ### 4. File Router
@@ -93,7 +93,7 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 const f = createUploadthing();
 
 export const ourFileRouter = {
-  imageUploader: f({ image: { maxFileSize: "4MB" } })
+  imageUploader: f({ image: { maxFileSize: "4MB" } }) // [!code highlight]
     .onUploadComplete(({ file }) => {
       console.log(file.url);
     }),
@@ -109,7 +109,7 @@ export type OurFileRouter = typeof ourFileRouter;
 import { createRouteHandler } from "uploadthing/next";
 import { ourFileRouter } from "@/app/elements/uploadthing/core";
 
-export const { GET, POST } = createRouteHandler({
+export const { GET, POST } = createRouteHandler({ // [!code highlight]
   router: ourFileRouter,
 });
 ```

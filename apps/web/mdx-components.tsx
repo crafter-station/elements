@@ -17,6 +17,7 @@ import { ThemeSwitcherToggle } from "@/components/elements/theme-switcher-toggle
 import { TintePreview } from "@/components/elements/tinte-preview";
 import { UploadButtonPreview } from "@/components/elements/uploadthing-button-preview";
 import { UploadDropzonePreview } from "@/components/elements/uploadthing-dropzone-preview";
+import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -38,13 +39,28 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 
+      // Extract raw code from children for copy functionality
+      const extractCode = (node: any): string => {
+        if (typeof node === "string") return node;
+        if (Array.isArray(node)) return node.map(extractCode).join("");
+        if (node?.props?.children) return extractCode(node.props.children);
+        return "";
+      };
+
+      const rawCode = extractCode(children);
+
       if (isShikiBlock) {
         return (
-          <div className="my-4 max-w-full overflow-hidden rounded-lg border border-border">
+          <div className="my-4 max-w-full overflow-hidden rounded-lg border border-border relative group bg-muted/50">
+            <CodeBlockCopyButton code={rawCode} />
             <pre
               {...props}
               className={`${props.className || ""} p-4 overflow-x-auto leading-relaxed`}
-              style={{ ...props.style, fontSize: "13px" }}
+              style={{
+                ...props.style,
+                fontSize: "13px",
+                backgroundColor: "transparent",
+              }}
             >
               {children}
             </pre>
@@ -53,7 +69,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       }
 
       return (
-        <div className="my-4 max-w-full overflow-hidden">
+        <div className="my-4 max-w-full overflow-hidden relative group">
+          <CodeBlockCopyButton code={rawCode} />
           <pre
             className="min-w-full w-max bg-muted p-4 rounded-lg overflow-x-auto border border-border text-sm"
             {...props}

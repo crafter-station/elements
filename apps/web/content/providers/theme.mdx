@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem> // [!code highlight]
           {children}
         </ThemeProvider>
       </body>
@@ -176,7 +176,7 @@ export function ThemeControl() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}> // [!code focus]
       Toggle Theme
     </button>
   );

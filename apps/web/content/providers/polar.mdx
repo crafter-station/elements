@@ -84,7 +84,7 @@ POLAR_ACCESS_TOKEN=polar_at_...
 import { polar } from "@polar-sh/nextjs";
 
 const client = new polar.Polar({
-  accessToken: process.env.POLAR_ACCESS_TOKEN || "",
+  accessToken: process.env.POLAR_ACCESS_TOKEN || "", // [!code highlight]
   server: "sandbox",
 });
 
@@ -92,10 +92,10 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const products = searchParams.get("products")?.split(",") || [];
 
-  const checkout = await client.checkouts.custom.create({
-    productPriceIds: products,
-    successUrl: `${request.url.split("/api")[0]}/success`,
-  });
+  const checkout = await client.checkouts.custom.create({ // [!code focus]
+    productPriceIds: products, // [!code focus]
+    successUrl: `${request.url.split("/api")[0]}/success`, // [!code focus]
+  }); // [!code focus]
 
   return Response.redirect(checkout.url);
 }

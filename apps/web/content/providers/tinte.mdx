@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
-        <ThemeEditor />
+        <ThemeEditor /> // [!code highlight]
       </body>
     </html>
   );
@@ -131,7 +131,7 @@ export default function CustomForm() {
   const [color, setColor] = useState("oklch(0.7 0.15 180)");
 
   return (
-    <ColorInput
+    <ColorInput // [!code highlight]
       value={color}
       onChange={setColor}
     />

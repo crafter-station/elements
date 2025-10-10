@@ -121,4 +121,132 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Shiki Dual Themes - Class-based Dark Mode */
+  .shiki span {
+    color: var(--shiki-light);
+  }
+
+  .dark .shiki span {
+    color: var(--shiki-dark);
+  }
+
+  /* Only apply background to pre, not to individual spans */
+  .shiki {
+    background-color: transparent !important;
+  }
+
+  /* Shiki Transformers - Diff highlighting */
+  .shiki .line.diff.add {
+    background-color: oklch(0.8 0.1 145 / 0.15) !important;
+    border-left: 3px solid oklch(0.7 0.15 145);
+    padding-left: 0.5rem;
+    display: block;
+    width: 100%;
+  }
+
+  .shiki .line.diff.remove {
+    background-color: oklch(0.7 0.15 27 / 0.15) !important;
+    border-left: 3px solid oklch(0.6 0.2 27);
+    padding-left: 0.5rem;
+    display: block;
+    width: 100%;
+  }
+
+  .dark .shiki .line.diff.add {
+    background-color: oklch(0.4 0.08 145 / 0.2) !important;
+    border-left: 3px solid oklch(0.6 0.12 145);
+  }
+
+  .dark .shiki .line.diff.remove {
+    background-color: oklch(0.4 0.08 27 / 0.2) !important;
+    border-left: 3px solid oklch(0.65 0.15 27);
+  }
+
+  /* Shiki Transformers - Highlighted lines */
+  .shiki .line.highlighted {
+    background-color: rgb(136 192 208 / 0.2) !important;
+    border-left: 3px solid #88c0d0;
+    padding-left: 0.5rem;
+    display: block;
+    width: 100%;
+  }
+
+  .dark .shiki .line.highlighted {
+    background-color: rgb(136 192 208 / 0.25) !important;
+    border-left: 3px solid #88c0d0;
+  }
+
+  /* Shiki Transformers - Focused lines */
+  .shiki.has-focused .line:not(.focused) {
+    opacity: 0.4;
+    filter: blur(0.5px);
+    transition:
+      opacity 0.3s,
+      filter 0.3s;
+  }
+
+  .shiki.has-focused:hover .line:not(.focused) {
+    opacity: 0.6;
+  }
+
+  .shiki .line.focused {
+    opacity: 1;
+    filter: none;
+    background-color: rgb(129 161 193 / 0.15) !important;
+    border-left: 3px solid #81a1c1;
+    padding-left: 0.5rem;
+    display: block;
+    width: 100%;
+  }
+
+  .dark .shiki .line.focused {
+    background-color: rgb(129 161 193 / 0.25) !important;
+    border-left: 3px solid #81a1c1;
+  }
+
+  /* When a line is both focused and highlighted, focus takes precedence */
+  .shiki.has-focused .line.focused.highlighted {
+    background-color: rgb(129 161 193 / 0.2) !important;
+  }
+
+  .dark .shiki.has-focused .line.focused.highlighted {
+    background-color: rgb(129 161 193 / 0.3) !important;
+  }
+
+  /* Shiki Transformers - Error and Warning levels */
+  .shiki .line.highlighted.error {
+    background-color: oklch(0.7 0.15 27 / 0.15);
+    border-left: 3px solid oklch(0.6 0.2 27);
+    padding-left: 0.5rem;
+  }
+
+  .shiki .line.highlighted.warning {
+    background-color: oklch(0.8 0.15 85 / 0.15);
+    border-left: 3px solid oklch(0.7 0.18 85);
+    padding-left: 0.5rem;
+  }
+
+  .dark .shiki .line.highlighted.error {
+    background-color: oklch(0.4 0.08 27 / 0.2);
+    border-left: 3px solid oklch(0.65 0.15 27);
+  }
+
+  .dark .shiki .line.highlighted.warning {
+    background-color: oklch(0.5 0.1 85 / 0.2);
+    border-left: 3px solid oklch(0.7 0.15 85);
+  }
+
+  /* Shiki Transformers - Word highlighting */
+  .shiki .highlighted-word {
+    background-color: oklch(0.85 0.08 240 / 0.3);
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.25rem;
+    border: 1px solid oklch(0.6 0.15 240 / 0.3);
+  }
+
+  .dark .shiki .highlighted-word {
+    background-color: oklch(0.35 0.08 240 / 0.4);
+    border: 1px solid oklch(0.55 0.15 240 / 0.4);
+  }
 }

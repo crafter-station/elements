@@ -2,6 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+import {
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+} from "@shikijs/transformers";
 import { useTheme } from "next-themes";
 import type {
   BundledLanguage,
@@ -52,14 +58,28 @@ export function CodeBlock({ code, lang, className = "" }: CodeBlockProps) {
           theme: themeToUse,
           transformers: [
             {
+              name: "remove-inline-styles",
               code(node) {
                 node.properties.style = "";
               },
               pre(node) {
                 node.properties.style = "";
-                node.properties.class = `shiki language-${lang} ${className}`;
+                // Preserve existing classes and add custom ones
+                const existingClasses = (node.properties.class as string) || "";
+                node.properties.class =
+                  `${existingClasses} language-${lang} ${className}`.trim();
               },
             },
+            transformerNotationDiff({
+              matchAlgorithm: "v3",
+            }),
+            transformerNotationHighlight({
+              matchAlgorithm: "v3",
+            }),
+            transformerNotationFocus({
+              matchAlgorithm: "v3",
+            }),
+            transformerNotationErrorLevel(),
           ],
         });
 

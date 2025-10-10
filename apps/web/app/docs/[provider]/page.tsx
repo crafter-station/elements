@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import rehypeShiki from "@shikijs/rehype";
+import {
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+} from "@shikijs/transformers";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 
@@ -16,6 +22,8 @@ import {
 import { ComponentPageHero } from "@/components/component-page/hero";
 
 import { getMDXComponents } from "@/mdx-components";
+import vesperDark from "@/public/vesper-dark.json";
+import vesperLight from "@/public/vesper-light.json";
 
 // Generate static params for all providers
 export async function generateStaticParams() {
@@ -147,7 +155,30 @@ export default async function ProviderPage(props: ProviderPageProps) {
             options={{
               mdxOptions: {
                 remarkPlugins: [remarkGfm],
-                rehypePlugins: [[rehypeShiki, { theme: "vesper" }]],
+                rehypePlugins: [
+                  [
+                    rehypeShiki,
+                    {
+                      themes: {
+                        light: vesperLight,
+                        dark: vesperDark,
+                      },
+                      defaultColor: false,
+                      transformers: [
+                        transformerNotationDiff({
+                          matchAlgorithm: "v3",
+                        }),
+                        transformerNotationHighlight({
+                          matchAlgorithm: "v3",
+                        }),
+                        transformerNotationFocus({
+                          matchAlgorithm: "v3",
+                        }),
+                        transformerNotationErrorLevel(),
+                      ],
+                    },
+                  ],
+                ],
               },
             }}
           />
