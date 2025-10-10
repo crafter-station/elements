@@ -34,7 +34,7 @@ export function HeroSection() {
         <div className="flex items-center gap-4">
           <Button size="lg" className="font-medium" asChild>
             <LinkWithAnalytics
-              href="/l"
+              href="/docs"
               trackingEvent="Explore Gallery Click"
               trackingProperties={{
                 source: "hero_cta",
