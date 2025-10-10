@@ -245,7 +245,9 @@ Or in components:
 
 ```tsx
 router.push("/dashboard"); // After successful auth
-```## Troubleshooting
+````
+
+## Troubleshooting
 
 **Hydration errors:** Add `suppressHydrationWarning` to `<html>`
 
@@ -254,6 +256,7 @@ router.push("/dashboard"); // After successful auth
 **Waitlist not working:** Verify waitlist mode enabled, `CLERK_SECRET_KEY` set
 
 **OAuth redirect issues:** Configure callback URL in component:
+
 
 ```tsx
 redirectUrl: "/elements/clerk/sso-callback"
