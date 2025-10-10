@@ -8,7 +8,6 @@ import { Filter } from "lucide-react";
 import { getBrandUrl } from "@/lib/brand-urls";
 import { loadLogoComponent } from "@/lib/component-loader";
 
-import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { GroupIcon } from "@/components/icons/group";
 import { SearchIcon } from "@/components/icons/search";
@@ -52,6 +51,8 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
 
   // Load logo components on mount
   useEffect(() => {
+    let isMounted = true;
+
     async function loadLogos() {
       const loadedLogos = await Promise.all(
         initialLogos.map(async (logo) => {
@@ -63,11 +64,17 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
         }),
       );
 
-      setLogos(loadedLogos.filter((logo) => logo.component !== null));
-      setIsLoading(false);
+      if (isMounted) {
+        setLogos(loadedLogos.filter((logo) => logo.component !== null));
+        setIsLoading(false);
+      }
     }
 
     loadLogos();
+
+    return () => {
+      isMounted = false;
+    };
   }, [initialLogos]);
 
   const filteredLogos = useMemo(() => {
@@ -185,7 +192,6 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
             <p className="text-muted-foreground">Loading logos...</p>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -460,8 +466,6 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
           </div>
         </div>
       )}
-
-      <Footer />
     </div>
   );
 }

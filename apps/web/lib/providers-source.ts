@@ -1,8 +1,27 @@
-import { loader } from "fumadocs-core/source";
+import fs from "node:fs";
+import path from "node:path";
 
-import { providers } from "@/.source";
+import matter from "gray-matter";
 
-export const providersSource = loader({
-  baseUrl: "/l",
-  source: providers.toFumadocsSource(),
-});
+const providersDir = path.join(process.cwd(), "content/providers");
+
+export const providersSource = {
+  getPage: (slug: string[]) => {
+    const providerSlug = slug[0];
+    const filePath = path.join(providersDir, `${providerSlug}.mdx`);
+
+    if (!fs.existsSync(filePath)) {
+      return null;
+    }
+
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const { data, content } = matter(fileContent);
+
+    return {
+      data: {
+        ...data,
+        body: content,
+      },
+    };
+  },
+};

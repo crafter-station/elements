@@ -1,13 +1,15 @@
-import { Pre } from "fumadocs-ui/components/codeblock";
-import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
-    ...defaultMdxComponents,
     pre: ({ children, ...props }) => (
       <div className="my-4 max-w-full overflow-hidden">
-        <Pre {...props}>{children}</Pre>
+        <pre
+          className="min-w-full w-max bg-muted p-4 rounded-lg overflow-x-auto border border-border"
+          {...props}
+        >
+          {children}
+        </pre>
       </div>
     ),
     code: ({ className, children, ...props }: any) => {

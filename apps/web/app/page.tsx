@@ -8,7 +8,7 @@ import { TinteBanner } from "@/components/tinte-banner";
 
 export default async function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col pt-13">
       <Header />
       <TinteBanner />
       <div className="flex-1 w-full max-w-screen-xl border-border border-dotted border-x mx-auto">

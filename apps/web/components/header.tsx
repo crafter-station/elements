@@ -23,8 +23,8 @@ export function Header() {
   const { open, setOpen } = useCommandSearch();
 
   return (
-    <div className="w-full border-border border-dotted border-b-1">
-      <div className="flex items-center justify-between px-4 sm:px-8 mx-auto border-border border-dotted border-r-1 border-l-1">
+    <div className="w-full border-border border-dotted border-b-1 fixed top-0 left-0 right-0 z-50 bg-background">
+      <div className="flex items-center justify-between px-4 mx-auto border-border border-dotted border-r-1 border-l-1">
         <Link className="flex space-x-1.5 py-2.5 sm:py-3 items-center" href="/">
           <ElementsLogo className="size-5" />
           <h1 className="text-base sm:text-lg font-semibold">Elements</h1>
@@ -121,7 +121,7 @@ export function Header() {
             </DropdownMenu>
           ) : (
             <SignInButton mode="modal">
-              <Button variant="default" size="sm">
+              <Button variant="default" size="sm" className="h-7 sm:h-8">
                 Sign In
               </Button>
             </SignInButton>

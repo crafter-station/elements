@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 
+import { MDXRemote } from "next-mdx-remote/rsc";
+
 import { ProviderIcon } from "@/lib/providers";
 import { providersSource } from "@/lib/providers-source";
 import {
@@ -70,14 +72,14 @@ export default async function ProviderPage(props: ProviderPageProps) {
       />
 
       {mdxPage ? (
-        <article className="prose prose-gray dark:prose-invert max-w-4xl mx-auto px-8 py-12">
-          {(() => {
-            const MDX = mdxPage.data.body;
-            return <MDX components={getMDXComponents()} />;
-          })()}
+        <article className="prose prose-gray dark:prose-invert max-w-5xl mx-auto px-8 py-12">
+          <MDXRemote
+            source={mdxPage.data.body}
+            components={getMDXComponents()}
+          />
         </article>
       ) : (
-        <article className="prose prose-gray dark:prose-invert max-w-4xl mx-auto px-8 py-12">
+        <article className="prose prose-gray dark:prose-invert max-w-5xl mx-auto px-8 py-12">
           <h2>Components</h2>
           <p>
             This provider includes {components.length} component

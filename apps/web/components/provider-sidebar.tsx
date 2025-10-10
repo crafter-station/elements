@@ -12,7 +12,12 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
   const pathname = usePathname();
@@ -26,10 +31,10 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
   });
 
   return (
-    <div className="p-6 space-y-1">
-      <h2 className="font-dotted font-black text-lg mb-6">Providers</h2>
+    <div className="py-2 md:py-0">
+      <h2 className="font-dotted font-black text-lg mb-2 px-4">Providers</h2>
 
-      <nav className="space-y-1">
+      <nav className="flex flex-col -space-y-px">
         {sortedProviders.map((provider) => {
           const isActive = pathname === provider.href;
 
@@ -38,10 +43,10 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
               key={provider.href}
               href={provider.isEnabled ? provider.href : "#"}
               className={cn(
-                "group flex items-center gap-3 px-3 py-2.5 text-sm rounded-sm transition-all",
+                "group flex items-center border border-border gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
                 isActive
-                  ? "bg-muted text-foreground font-medium"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
+                  ? "bg-muted text-foreground font-medium z-10"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10",
                 !provider.isEnabled && "opacity-50 cursor-not-allowed",
               )}
               onClick={(e) => {
@@ -97,7 +102,7 @@ export function ProviderSidebar() {
   return (
     <>
       {/* Mobile Toggle */}
-      <div className="md:hidden fixed top-20 left-4 z-50">
+      <div className="md:hidden fixed top-16 left-4 z-40">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button
@@ -110,6 +115,7 @@ export function ProviderSidebar() {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-72 p-0">
+            <SheetTitle className="sr-only">Providers Menu</SheetTitle>
             <ScrollArea className="h-full">
               <ProviderList onLinkClick={() => setOpen(false)} />
             </ScrollArea>
@@ -118,10 +124,8 @@ export function ProviderSidebar() {
       </div>
 
       {/* Desktop Sidebar */}
-      <aside className="w-64 border-r border-border bg-card sticky top-0 h-screen hidden md:block">
-        <ScrollArea className="h-full">
-          <ProviderList />
-        </ScrollArea>
+      <aside className="md:transition-all border-r border-border top-[55px] md:flex hidden md:w-[268px] lg:w-[286px] overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
+        <ProviderList />
       </aside>
     </>
   );
