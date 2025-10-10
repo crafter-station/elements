@@ -7,12 +7,15 @@ import { ComponentPreviewItem } from "@/components/component-preview-item";
 import { ClerkSignInPreview } from "@/components/elements/clerk-sign-in-preview";
 import { ClerkSignUpPreview } from "@/components/elements/clerk-sign-up-preview";
 import { ClerkWaitlistPreview } from "@/components/elements/clerk-waitlist-preview";
+import { SponsorTiersPreview } from "@/components/elements/polar-sponsor-tiers-preview";
 import { ThemeSwitcher } from "@/components/elements/theme-switcher";
 import { ThemeSwitcherButton } from "@/components/elements/theme-switcher-button";
 import { ThemeSwitcherDropdown } from "@/components/elements/theme-switcher-dropdown";
 import { ThemeSwitcherMultiButton } from "@/components/elements/theme-switcher-multi-button";
 import { ThemeSwitcherSwitch } from "@/components/elements/theme-switcher-switch";
 import { ThemeSwitcherToggle } from "@/components/elements/theme-switcher-toggle";
+import { UploadButtonPreview } from "@/components/elements/uploadthing-button-preview";
+import { UploadDropzonePreview } from "@/components/elements/uploadthing-dropzone-preview";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -27,6 +30,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ClerkSignInPreview,
     ClerkSignUpPreview,
     ClerkWaitlistPreview,
+    SponsorTiersPreview,
+    UploadButtonPreview,
+    UploadDropzonePreview,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

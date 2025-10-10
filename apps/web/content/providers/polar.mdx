@@ -1,0 +1,158 @@
+---
+title: Polar
+description: Sponsorship and monetization components for creators
+category: Monetization
+brandColor: "#3B82F6"
+---
+
+## Overview
+
+SponsorshipSponsorship system with tier selection and Polar checkout integration.
+
+## Components
+
+### Sponsor Tiers
+
+TierTier gridgrid with selection and checkout.
+
+<ComponentPreviewItem
+  componentKey="polar-sponsor-tiers"
+  installUrl="@elements/polar-sponsor-tiers"
+  category="Monetization"
+  name="Polar"
+>
+  <SponsorTiersPreview />
+</ComponentPreviewItem>
+
+```tsx
+import { SponsorTiers } from "@/components/elements/polar/sponsor-tiers";
+
+const tiers = [
+  {
+    name: "Supporter",
+    price: 10,
+    description: "Help keep the project alive",
+    perks: ["Early access", "Discord access"],
+  },
+  {
+    name: "Sponsor",
+    price: 50,
+    description: "Help shape the roadmap",
+    perks: ["Feature voting", "Priority support", "Logo in README"],
+    popular: true,
+  },
+];
+
+export function Tiers() {
+  const [selected, setSelected] = useState(null);
+
+  return (
+    <SponsorTiers
+      tiers={tiers}
+      selectedTier={selected}
+      onTierSelect={setSelected}
+      onSponsor={(tier) => {
+        // Handle checkout
+      }}
+    />
+  );
+}
+```
+
+## Setup
+
+### 1. Install
+
+```bash
+npm install @polar-sh/nextjs
+```
+
+### 2. Get API Keys
+
+GetGet AccessAccess Token from polar.sh dashboard.
+
+### 3. Environment Variables
+
+```bash
+POLAR_ACCESS_TOKEN=polar_at_...
+```
+
+### 4. Create API Route
+
+```tsx
+// app/elements/polar/api/checkout/route.ts
+import { polar } from "@polar-sh/nextjs";
+
+const client = new polar.Polar({
+  accessToken: process.env.POLAR_ACCESS_TOKEN || "",
+  server: "sandbox",
+});
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const products = searchParams.get("products")?.split(",") || [];
+
+  const checkout = await client.checkouts.custom.create({
+    productPriceIds: products,
+    successUrl: `${request.url.split("/api")[0]}/success`,
+  });
+
+  return Response.redirect(checkout.url);
+}
+```
+
+### 5. Success Page
+
+```tsx
+// app/elements/polar/success/page.tsx
+export default function SuccessPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold">Thank you!</h1>
+        <p className="text-muted-foreground">Your sponsorship is processing</p>
+      </div>
+    </div>
+  );
+}
+```
+
+## Configuration
+
+### Product IDs
+
+Get from Polar Dashboard Products section:
+
+```tsx
+const PRODUCT_IDS = {
+  "Tier Name": "prod_xxxxx",
+};
+```
+
+### Tier Options
+
+```tsx
+interface SponsorTier {
+  name: string;
+  price: number;
+  description: string;
+  perks: string[];
+  popular?: boolean;
+  isHighlight?: boolean;
+  isOneTime?: boolean;
+}
+```
+
+## Troubleshooting
+
+**Checkout not working?** CheckCheck POLAR_ACCESS_TOKEN is set and API route exists.
+
+**Product ID not found?** Verify exact ID from Dashboard.
+
+**Redirects failing?** Ensure success URL is absolute.
+
+## Resources
+
+- [Polar Docs](https://docs.polar.sh)
+- [Dashboard](https://polar.sh/dashboard)
+- [Next.js SDK](https://docs.polar.sh/developers/sdk/nextjs)

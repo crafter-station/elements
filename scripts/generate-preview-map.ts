@@ -6,8 +6,8 @@
  * that Next.js can analyze at build time.
  */
 
-import { existsSync, readFileSync, writeFileSync } from "fs";
-import { join } from "path";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 
 interface RegistryFile {
   path: string;
