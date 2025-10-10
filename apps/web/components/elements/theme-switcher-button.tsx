@@ -7,7 +7,15 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 
-export function ThemeSwitcherButton() {
+interface ThemeSwitcherButtonProps {
+  size?: "default" | "sm" | "lg" | "icon";
+  className?: string;
+}
+
+export function ThemeSwitcherButton({
+  size = "icon",
+  className = "",
+}: ThemeSwitcherButtonProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -17,7 +25,7 @@ export function ThemeSwitcherButton() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" disabled>
+      <Button variant="outline" size={size} disabled className={className}>
         <div className="w-4 h-4 bg-input rounded animate-pulse" />
       </Button>
     );
@@ -32,9 +40,9 @@ export function ThemeSwitcherButton() {
   return (
     <Button
       variant="outline"
-      size="icon"
+      size={size}
       onClick={toggleTheme}
-      className="relative overflow-hidden"
+      className={`relative overflow-hidden ${className}`}
     >
       <SunIcon
         className={`w-4 h-4 transition-all duration-300 ${
