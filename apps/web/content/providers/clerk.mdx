@@ -7,34 +7,14 @@ brandColor: "#6C47FF"
 
 ## Overview
 
-Clerk provides a complete authentication solution with beautiful, customizable components for sign-in, sign-up, and user management. Built for modern web applications with a focus on developer experience and security.
-`hello`
-
-### Available Implementations
-
-**Three implementation approaches** to fit your needs:
-
-1. **ShadCN Custom** - Fully customizable components using shadcn/ui primitives
-2. **Signals (Experimental)** - Advanced components using Clerk's experimental Signals API
-3. **Built-in** - Clerk's pre-built components with minimal customization
-
+Complete auth solution with 3 implementation styles: **ShadCN Custom** (full control), **Signals** (experimental real-time validation), and **Built-in** (fastest setup).
 ## ShadCN Custom Components
 
-Fully-featured authentication components built with custom shadcn/ui primitives. Complete control over styling and behavior.
+Fully customizable using shadcn/ui primitives.
 
-### Sign In (ShadCN)
+### Sign In
 
-A complete sign-in form with extensive features:
-
-**Features:**
-- Email/password and username authentication
-- OAuth providers (Google, GitHub, Apple, Linear, Microsoft, Spotify, Slack, Twitch, Twitter, GitLab, Discord, Notion)
-- Multi-factor authentication (MFA) support
-- Password visibility toggle
-- Forgot password flow
-- Error handling with user-friendly messages
-- Account lockout protection
-- Loading states
+Complete sign-in with OAuth, MFA, password reset, and error handling.
 
 <ComponentPreviewItem
   componentKey="clerk-sign-in-shadcn"
@@ -45,13 +25,7 @@ A complete sign-in form with extensive features:
   <ClerkSignInPreview />
 </ComponentPreviewItem>
 
-**Installation:**
-
-```bash
-bunx shadcn@latest add @elements/clerk-sign-in-shadcn
-```
-
-**Usage:**
+**Features:** Email/password, 12 OAuth providers, MFA, password reset, account lockout
 
 ```tsx
 import { ClerkSignInShadcn } from "@/app/elements/clerk/sign-in/sign-in";
@@ -65,20 +39,9 @@ export default function SignInPage() {
 }
 ```
 
-### Sign Up (ShadCN)
+### Sign Up
 
-Complete registration form with advanced validation:
-
-**Features:**
-- Dynamic field requirements based on Clerk configuration
-- First name, last name, email, username, password fields
-- OAuth social sign-up
-- Email verification with 6-digit code
-- Smart CAPTCHA support
-- Password strength validation (min 8 characters)
-- Waitlist mode detection
-- Error handling with detailed messages
-- Resend verification code option
+Registration with dynamic fields, email verification, and CAPTCHA.
 
 <ComponentPreviewItem
   componentKey="clerk-sign-up-shadcn"
@@ -89,13 +52,7 @@ Complete registration form with advanced validation:
   <ClerkSignUpPreview />
 </ComponentPreviewItem>
 
-**Installation:**
-
-```bash
-bunx shadcn@latest add @elements/clerk-sign-up-shadcn
-```
-
-**Usage:**
+**Features:** Dynamic fields, OAuth, 6-digit verification, password strength, waitlist detection
 
 ```tsx
 import { ClerkSignUpShadcn } from "@/app/elements/clerk/sign-up/sign-up";
@@ -109,18 +66,9 @@ export default function SignUpPage() {
 }
 ```
 
-### Waitlist (ShadCN)
+### Waitlist
 
-Animated waitlist signup with smooth UX:
-
-**Features:**
-- Email collection and validation
-- Server-side integration with Clerk's Waitlist API
-- Animated success state with custom pixelated check icon
-- Duplicate email detection
-- Motion animations using Framer Motion
-- Form state management with React's useActionState
-- Error handling
+Animated waitlist signup with server-side integration.
 
 <ComponentPreviewItem
   componentKey="clerk-waitlist-shadcn"
@@ -131,19 +79,9 @@ Animated waitlist signup with smooth UX:
   <ClerkWaitlistPreview />
 </ComponentPreviewItem>
 
-**Installation:**
+**Features:** Email validation, animated success, duplicate detection, Framer Motion
 
-```bash
-bunx shadcn@latest add @elements/clerk-waitlist-shadcn
-```
-
-**Setup:**
-
-Enable waitlist mode in your Clerk Dashboard:
-1. Go to **Configure > Restrictions**
-2. Set **Sign-up mode** to "Waitlist"
-
-**Usage:**
+**Setup:** Enable in Clerk Dashboard → **Configure** → **Restrictions** → **Sign-up mode** → "Waitlist"
 
 ```tsx
 import { WaitlistShadcn } from "@/app/elements/clerk/waitlist/waitlist";
@@ -161,40 +99,19 @@ export default function WaitlistPage() {
 
 ## Signals Components (Experimental)
 
-⚠️ **Experimental**: These components use Clerk's experimental Signals API (`@clerk/clerk-react@5.44.0+`). API may change in future releases.
-
-Advanced components with real-time validation and enhanced state management.
+⚠️ **Experimental**: Uses Clerk's Signals API (`@clerk/clerk-react@5.44.0+`). May change.
 
 ### Sign In (Signals)
 
-Advanced sign-in with experimental Signals API:
-
-**Features:**
-- Real-time field validation
-- Password reset flow with email code verification
-- New password setup after reset
-- Enhanced error handling with field-specific errors
-- Global error messages
-- Loading states with visual feedback
-- Back navigation between reset steps
-
-**Installation:**
+Real-time validation with built-in password reset flow.
 
 ```bash
 bunx shadcn@latest add @elements/clerk-sign-in-signals
 ```
 
-**Key Differences from ShadCN:**
-- Uses `useSignInSignal()` hook for reactive state
-- Built-in password reset flow (sendCode → verifyCode → submitPassword)
-- Field-level error tracking via `errors.fields`
-- Global error handling via `errors.global`
+**Key Differences:** `useSignInSignal()` hook, field-level errors, built-in reset flow### Sign Up (Signals)
 
-### Sign Up (Signals)
-
-Advanced registration with Signals API validation.
-
-**Installation:**
+Registration with Signals API validation.
 
 ```bash
 bunx shadcn@latest add @elements/clerk-sign-up-signals
@@ -202,33 +119,21 @@ bunx shadcn@latest add @elements/clerk-sign-up-signals
 
 ## Built-in Components
 
-Clerk's pre-built components with minimal customization. Fastest way to get started.
-
-### Sign In (Built-in)
-
-Clerk's `<SignIn />` component with theme customization:
-
-**Installation:**
+Clerk's pre-built components. Fastest setup, limited customization.
 
 ```bash
 bunx shadcn@latest add @elements/clerk-sign-in
 ```
 
-**Usage:**
-
 ```tsx
 import { SignIn } from "@clerk/nextjs";
 
 export default function SignInPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <SignIn />
-    </div>
-  );
+  return <SignIn />;
 }
 ```
 
-**Theme Customization:**
+**Theme customization:**
 
 ```tsx
 import { ClerkProvider } from "@clerk/nextjs";
@@ -239,45 +144,7 @@ import { shadcn } from "@clerk/themes";
 </ClerkProvider>
 ```
 
-
-## Complete Auth Suites
-
-Install all authentication components at once.
-
-### ShadCN Auth Suite
-
-All custom ShadCN components in one command:
-
-```bash
-bunx shadcn@latest add @elements/clerk-auth-shadcn
-```
-
-**Includes:**
-- clerk-sign-in-shadcn
-- clerk-sign-up-shadcn
-- clerk-waitlist-shadcn
-
-### Signals Auth Suite
-
-All experimental Signals components:
-
-```bash
-bunx shadcn@latest add @elements/clerk-auth-signals
-```
-
-**Includes:**
-- clerk-sign-in-signals
-- clerk-sign-up-signals
-
-### Built-in Auth Suite
-
-All Clerk built-in components:
-
-```bash
-bunx shadcn@latest add @elements/clerk-auth
-```
-
-## Required Setup
+## Quick Start
 
 ### 1. Install Clerk
 
@@ -285,25 +152,23 @@ bunx shadcn@latest add @elements/clerk-auth
 npm install @clerk/nextjs
 ```
 
-### 2. Environment Variables
-
-Add to `.env.local`:
+### 2. Add Environment Variables
 
 ```bash
+# .env.local
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
 CLERK_SECRET_KEY=sk_test_...
 ```
 
-Get your keys from [Clerk Dashboard](https://dashboard.clerk.com).
+Get keys from [Clerk Dashboard](https://dashboard.clerk.com).
 
-### 3. Wrap Your App with ClerkProvider
-
-Update your root layout:
+### 3. Wrap App with ClerkProvider
 
 ```tsx
+// app/layout.tsx
 import { ClerkProvider } from "@clerk/nextjs";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
@@ -314,112 +179,87 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-### 4. Add Middleware (Recommended)
-
-Protect routes with Clerk middleware:
+### 4. Add Middleware (Optional)
 
 ```bash
 bunx shadcn@latest add @elements/clerk-middleware
 ```
 
-This creates `middleware.ts` in your project root with route protection.
+Protects routes automatically.
 
-## Component Comparison
+## Install Suites### All ShadCN Components
 
-| Feature | ShadCN Custom | Signals (Exp) | Built-in |
-|---------|---------------|---------------|----------|
-| **Full Customization** | ✅ Complete | ✅ Complete | ⚠️ Limited |
-| **OAuth Providers** | ✅ All supported | ✅ All supported | ✅ All supported |
-| **MFA Support** | ✅ Yes | ✅ Yes | ✅ Yes |
-| **Password Reset** | ✅ Manual flow | ✅ Built-in | ✅ Built-in |
-| **Real-time Validation** | ❌ No | ✅ Yes | ✅ Yes |
-| **Email Verification** | ✅ Yes | ✅ Yes | ✅ Yes |
-| **CAPTCHA** | ✅ Smart CAPTCHA | ✅ Smart CAPTCHA | ✅ Smart CAPTCHA |
-| **Waitlist Mode** | ✅ Detection | ✅ Detection | ✅ Automatic |
-| **Setup Complexity** | Medium | Medium | Low |
+```bash
+bunx shadcn@latest add @elements/clerk-auth-shadcn
+```
+
+### All Signals Components
+
+```bash
+bunx shadcn@latest add @elements/clerk-auth-signals
+```
+
+### All Built-in Components
+
+```bash
+bunx shadcn@latest add @elements/clerk-auth
+```
+
+## Comparison
+
+| Feature | ShadCN Custom | Signals | Built-in |
+|---------|---------------|---------|----------|
+| **Customization** | ✅ Full | ✅ Full | ⚠️ Limited |
+| **OAuth** | ✅ 12 providers | ✅ 12 providers | ✅ 12 providers |
+| **MFA** | ✅ | ✅ | ✅ |
+| **Real-time Validation** | ❌ | ✅ | ✅ |
+| **Password Reset** | ✅ Manual | ✅ Built-in | ✅ Built-in |
+| **Setup** | Medium | Medium | Easy |
 | **Bundle Size** | ~8KB | ~9KB | ~12KB |
-| **TypeScript** | ✅ Full | ✅ Full | ✅ Full |
-| **Production Ready** | ✅ Yes | ⚠️ Experimental | ✅ Yes |
+| **Production Ready** | ✅ | ⚠️ Experimental | ✅ |
 
-## Advanced Configuration
+## Configuration
 
 ### OAuth Providers
 
-Configure in Clerk Dashboard → **User & Authentication** → **Social Connections**
+Configure in **Clerk Dashboard** → **User & Authentication** → **Social Connections**
 
-Supported providers:
-- Google, GitHub, Apple
-- Microsoft, Linear, Notion
-- Slack, Discord, GitLab
-- Spotify, Twitch, Twitter/X
+**Supported:** Google, GitHub, Apple, Microsoft, Linear, Notion, Slack, Discord, GitLab, Spotify, Twitch, Twitter/X
 
-### Multi-Factor Authentication (MFA)
+### MFA
 
-Enable in Clerk Dashboard → **User & Authentication** → **Multi-factor**
+Enable in **Dashboard** → **User & Authentication** → **Multi-factor**
 
-Supports:
-- TOTP (Authenticator apps)
-- SMS codes
-- Backup codes
-
-### Waitlist Mode
-
-Enable in Clerk Dashboard → **Configure** → **Restrictions** → **Sign-up mode** → "Waitlist"
-
-Requires waitlist-shadcn component with server actions.
+**Options:** TOTP, SMS codes, Backup codes
 
 ### Custom Redirects
 
-Update redirect URLs in your components:
-
-```tsx
-// After successful sign-in/sign-up
-router.push("/dashboard"); // Change to your route
-```
-
-Or set environment variables:
+Set environment variables:
 
 ```bash
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/dashboard
 NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/dashboard
 ```
 
-## Troubleshooting
-
-### Hydration Errors
-
-Add `suppressHydrationWarning` to your HTML tag:
+Or in components:
 
 ```tsx
-<html lang="en" suppressHydrationWarning>
-```
+router.push("/dashboard"); // After successful auth
+```## Troubleshooting
 
-### Already Signed In State
+**Hydration errors:** Add `suppressHydrationWarning` to `<html>`
 
-Components show "Already Signed In" message when a user is authenticated. Sign out to test:
+**Already signed in:** Components show message when authenticated. Sign out to test.
 
-```tsx
-await clerk.signOut();
-```
+**Waitlist not working:** Verify waitlist mode enabled, `CLERK_SECRET_KEY` set
 
-### Waitlist Not Working
-
-1. Verify waitlist mode is enabled in Clerk Dashboard
-2. Check `CLERK_SECRET_KEY` is set (required for server actions)
-3. Ensure server actions are enabled in Next.js config
-
-### OAuth Redirect Issues
-
-Make sure your OAuth callback URL is configured:
+**OAuth redirect issues:** Configure callback URL in component:
 
 ```tsx
 redirectUrl: "/elements/clerk/sso-callback"
-redirectUrlComplete: "/dashboard"
 ```
 
-And create the callback page:
+Create callback page:
 
 ```tsx
 // app/elements/clerk/sso-callback/page.tsx
@@ -432,25 +272,14 @@ export default function SSOCallbackPage() {
 
 ## Security Best Practices
 
-1. **Never expose `CLERK_SECRET_KEY`** - Keep it server-side only
-2. **Enable MFA** - Require for admin/sensitive accounts
-3. **Configure rate limiting** - Use Clerk's built-in protection
-4. **Use HTTPS** - Always in production
-5. **Validate redirects** - Prevent open redirect vulnerabilities
-6. **Enable bot protection** - Smart CAPTCHA is enabled by default
-7. **Monitor suspicious activity** - Use Clerk's security dashboard
-
+1. Never expose `CLERK_SECRET_KEY` (server-side only)
+2. Enable MFA for admin accounts
+3. Use HTTPS in production
+4. Validate redirects to prevent open redirect attacks
+5. Monitor suspicious activity in Clerk dashboard
 ## Resources
 
-- [Clerk Documentation](https://clerk.com/docs)
+- [Clerk Docs](https://clerk.com/docs)
 - [Clerk Dashboard](https://dashboard.clerk.com)
-- [Signals API Docs](https://clerk.com/docs/references/react/use-sign-in#use-sign-in-signal)
-- [OAuth Provider Setup](https://clerk.com/docs/authentication/social-connections/oauth)
-- [Middleware Configuration](https://clerk.com/docs/references/nextjs/clerk-middleware)
-
-## Support
-
-For issues or questions:
-- [GitHub Issues](https://github.com/anthropics/claude-code/issues)
-- [Clerk Community](https://clerk.com/discord)
-- [Clerk Support](https://clerk.com/support)
+- [Signals API](https://clerk.com/docs/references/react/use-sign-in#use-sign-in-signal)
+- [OAuth Setup](https://clerk.com/docs/authentication/social-connections/oauth)

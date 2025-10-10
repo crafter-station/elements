@@ -15,18 +15,14 @@ All components are built on top of `next-themes` and feature:
 - **Screen reader support** with ARIA labels
 - **TypeScript** for type safety
 - **Zero configuration** - works out of the box
-
+6variantssmoothanimations and accessibility built-in. All use `next-themes` with hydration-safe rendering and TypeScript
 ## Components
 
 ### Theme Switcher
 
-Classic switch-based theme toggle with overlaid sun/moon icons. Icons fade in and out as the switch toggles, creating a polished interaction.
-
-**Features:**
-- Switch UI component with animated thumb
-- Icon overlay transitions (opacity-based)
-- Compact size perfect for headers
-- Loading skeleton during hydration
+ClassicSwitch with overlaid thumb
+- Icon overlaythat fade transitions (opacity-based)
+-toggle
 
 <ComponentPreviewItem
   componentKey="theme-switcher"
@@ -37,17 +33,13 @@ Classic switch-based theme toggle with overlaid sun/moon icons. Icons fade in an
   <ThemeSwitcher />
 </ComponentPreviewItem>
 
-**Technical Details:**
-- Uses `Switch` component from shadcn/ui
-- Icons positioned absolutely with pointer-events-none
-- 200ms transition duration for smooth fades
-- Custom loading state with dashed border
+**Best for:** Headers, compact spaces
 
 ---
 
 ### Theme Switcher Switch
 
-Switch-based variant with centered layout and smaller icon sizing for a more subtle appearance.
+Centered variantvariant with centeredsmaller and.
 
 **Features:**
 - Centered flexbox layout
@@ -64,16 +56,13 @@ Switch-based variant with centered layout and smaller icon sizing for a more sub
   <ThemeSwitcherSwitch />
 </ComponentPreviewItem>
 
-**Technical Details:**
-- Identical to Theme Switcher but with flex centering
-- Reduced icon dimensions for tighter spacing
-- Same hydration-safe pattern
+**Best for:** Minimalist UIs
 
 ---
 
 ### Theme Switcher Button
 
-Button-based theme toggle with rotating icon animations. Sun rotates 90° while scaling down, moon rotates in from -90° while scaling up.
+Icon button with 90° icon animations. Sun rotates 90° while scaling down, rotation rotatesanimation.
 
 **Features:**
 - Icon button with outline variant
@@ -90,17 +79,13 @@ Button-based theme toggle with rotating icon animations. Sun rotates 90° while 
   <ThemeSwitcherButton />
 </ComponentPreviewItem>
 
-**Technical Details:**
-- 300ms transition with rotation + scale + opacity
-- `overflow-hidden` on button for clean animations
-- Moon positioned absolutely for overlay effect
-- Loading state shows disabled button with pulsing placeholder
+**Best for:** Toolbars, navigation bars
 
 ---
 
 ### Theme Switcher Dropdown
 
-Dropdown menu with three theme options: Light, Dark, and System. Icons animate in the trigger button, menu shows all options with icons.
+Menu with three theme options: LightLight, DarkDark, and System.System Icons animate shows all options with icons.
 
 **Features:**
 - Three-option menu (Light/Dark/System)
@@ -117,19 +102,13 @@ Dropdown menu with three theme options: Light, Dark, and System. Icons animate i
   <ThemeSwitcherDropdown />
 </ComponentPreviewItem>
 
-**Technical Details:**
-- Uses `DropdownMenu` from shadcn/ui
-- Trigger shows sun/moon animation (dark: -rotate-90)
-- Menu aligned to end for RTL support
-- System option uses MonitorIcon
-
-**Best for:** Applications where users want explicit control over system preference
+**Best for:** Settings pages, explicit system preference control
 
 ---
 
 ### Theme Switcher Toggle
 
-Custom toggle switch with sliding circle that contains the current theme's icon. More tactile feel with transform-based sliding animation.
+Custom toggle switchwith sliding circleiconanimation. More tactile feel with transform-based sliding animation.
 
 **Features:**
 - Custom toggle implementation (no Switch component)
@@ -146,20 +125,13 @@ Custom toggle switch with sliding circle that contains the current theme's icon.
   <ThemeSwitcherToggle />
 </ComponentPreviewItem>
 
-**Technical Details:**
-- Custom button with rounded-full styling
-- Slide animation: `translate-x-1` → `translate-x-6`
-- Background changes: `bg-muted` → `bg-primary`
-- Focus ring: `focus:ring-2 focus:ring-primary`
-- Icon size reduced (h-3 w-3) for circle fit
-
-**Best for:** Applications wanting a native toggle feel without Switch component
+**Best for:** Mobile UIs, native feel
 
 ---
 
 ### Theme Switcher Multi Button
 
-Segmented button group showing all three options (System, Light, Dark) simultaneously. Active selection has background highlight.
+SegmentedSegmented button group showing all 3 options (System/Light/Dark). Active selection has background highlight.
 
 **Features:**
 - Three visible buttons in one group
@@ -176,34 +148,19 @@ Segmented button group showing all three options (System, Light, Dark) simultane
   <ThemeSwitcherMultiButton />
 </ComponentPreviewItem>
 
-**Technical Details:**
-- Dotted border container with px-1 padding
-- Each button is size-6 rounded-full
-- Active state: absolute inset background with `-z-1`
-- Icon sizing: size-3.5 for balance
-- Color states:
-  - Active: `text-foreground`
-  - Inactive: `text-secondary-foreground`
-  - Hover: `group-hover:text-foreground`
-
-**Best for:** Dashboards or settings pages where theme choice should be always visible
+**Best for:** Dashboards, always-visible theme choice
 
 ---
 
-## Installation
+## Quick Start
 
-Install any theme switcher variant individually:
+### 1. Install Component
 
 ```bash
 bunx shadcn@latest add @elements/theme-switcher
-bunx shadcn@latest add @elements/theme-switcher-switch
-bunx shadcn@latest add @elements/theme-switcher-button
-bunx shadcn@latest add @elements/theme-switcher-dropdown
-bunx shadcn@latest add @elements/theme-switcher-toggle
-bunx shadcn@latest add @elements/theme-switcher-multi-button
 ```
 
-Or install all variants at once:
+Or### install2. all variants at once:Install next-themes
 
 ```bash
 bunx shadcn@latest add @elements/theme-switcher @elements/theme-switcher-switch @elements/theme-switcher-button @elements/theme-switcher-dropdown @elements/theme-switcher-toggle @elements/theme-switcher-multi-button
@@ -220,25 +177,22 @@ npm install next-themes
 ```
 
 ### 2. Configure ThemeProvider
+```bash
+npminstall
+```
 
+### 3. Setup
 ```tsx
 // app/layout.tsx
 import { ThemeProvider } from "next-themes";
 
 export default function RootLayout({
   children
-}: {
-  children: React.ReactNode
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
       </body>
@@ -247,14 +201,20 @@ export default function RootLayout({
 }
 ```
 
-**Important Configuration Notes:**
-- **`suppressHydrationWarning`** on `<html>` - Prevents hydration warnings from theme class
+###
+- **4 from theme class
 - **`attribute="class"`** - Adds `dark` class to html element
 - **`defaultTheme="system"`** - Respects OS preference by default
 - **`enableSystem`** - Allows system preference detection
-- **`disableTransitionOnChange`** - Prevents flash during theme change (optional)
+- **`disableTransitionOnChange`** - Prevents flash during theme change (optional) Configure Tailwind
 
-### 3. Configure Tailwind CSS
+###```js
+// 3. Configure Tailwind CSStailwind.config.js
+module.exports = {
+  darkMode: ["class"],
+  // ...
+}
+```
 
 Ensure your `tailwind.config.js` has dark mode configured:
 
@@ -268,13 +228,13 @@ module.exports = {
 ## Usage Examples
 
 ### Basic Usage
-
+###5.UseComponent
 ```tsx
 import { ThemeSwitcher } from "@/components/elements/theme-switcher";
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between p-4">
+    <header>
       <h1>My App</h1>
       <ThemeSwitcher />
     </header>
@@ -282,7 +242,7 @@ export default function Header() {
 }
 ```
 
-### With Multiple Variants
+### With Multiple VariantsComparison
 
 ```tsx
 import { ThemeSwitcherButton } from "@/components/elements/theme-switcher-button";
@@ -477,3 +437,74 @@ Support both class and data attributes:
 - [next-themes Documentation](https://github.com/pacocoursey/next-themes)
 - [shadcn/ui Components](https://ui.shadcn.com)
 - [WCAG Accessibility Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+| Variant | System Support | Animation | Size | Dependencies |
+|---------|----------------|-----------|------|--------------|
+| Switcher | ❌ | Fade | Compact | Switch |
+| Switch | ❌ | Fade | Compact | Switch |
+| Button | ❌ | Rotate | Medium | Button |
+| **Dropdown** | ✅ | Rotate | Medium | Dropdown |
+| Toggle | ❌ | Slide | Medium | None |
+| **Multi Button** | ✅ | Background | Wide | None |
+
+**Note:** Only Dropdown and Multi Button support system preference.
+
+## Usage Examples
+
+### Responsive Design
+
+```tsx
+import { ThemeSwitcherButton } from "@/components/elements/theme-switcher-button";
+import { ThemeSwitcherDropdown } from "@/components/elements/theme-switcher-dropdown";
+
+export default function Nav() {
+  return (
+    <nav>
+      <div className="md:hidden"><ThemeSwitcherButton /></div>
+      <div className="hidden md:block"><ThemeSwitcherDropdown /></div>
+    </nav>
+  );
+}
+```
+
+### Settings Page
+
+```tsx
+import { ThemeSwitcherMultiButton } from "@/components/elements/theme-switcher-multi-button";
+
+export default function Settings() {
+  return (
+    <div className="flex items-center justify-between">
+      <div>
+        <h3>Theme</h3>
+        <p className="text-sm text-muted-foreground">Select your theme</p>
+      </div>
+      <ThemeSwitcherMultiButton />
+    </div>
+  );
+}
+```
+
+### Programmatic Control
+
+```tsx
+"use client";
+import { useTheme } from "next-themes";
+
+export function CustomControl() {
+  const { theme, setTheme } = useTheme();
+  return <button onClick={() => setTheme("dark")}>Dark Mode</button>;
+}
+```
+
+## Troubleshooting
+
+**Hydration warnings:** Add `suppressHydrationWarning` to `<html>` tag
+
+**Theme not changing:** Verify ThemeProvider wraps app and `attribute="class"` is set
+
+**System theme not working:** Use Dropdown or Multi Button variants
+
+## Resources
+
+- [next-themes docs](https://github.com/pacocoursey/next-themes)
+- [shadcn/ui](https://ui.shadcn.com)
