@@ -293,11 +293,7 @@ export function ColorInput({
   );
 
   return (
-    <div className="grid grid-cols-[140px_1fr_auto] items-center gap-3 py-2">
-      <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
-        {label.replace(/-/g, " ")}
-      </div>
-
+    <div className="flex items-center gap-3 py-2">
       <Popover
         open={isOpen && !disabled}
         onOpenChange={(open) => !disabled && setIsOpen(open)}
