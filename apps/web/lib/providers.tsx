@@ -177,21 +177,21 @@ export const providers = getProvidersData();
 export function ProviderIcon({ provider }: { provider: string }) {
   const icons: Record<string, React.ReactNode> = {
     // Real logos from registry
-    clerk: <ClerkLogo className="w-6 h-6" />,
-    polar: <PolarLogo className="w-6 h-6" />,
-    uploadthing: <UploadThingLogo className="w-6 h-6" />,
-    vercel: <VercelLogo className="w-6 h-6" />,
-    trigger: <TriggerIcon className="w-6 h-6" />,
-    upstash: <UpstashLogo className="w-6 h-6" />,
-    supabase: <SupabaseLogo className="w-6 h-6" />,
-    stripe: <StripeLogo className="w-6 h-6" />,
-    resend: <ResendLogo className="w-6 h-6" />,
-    "better-auth": <BetterAuthLogo className="w-6 h-6" />,
+    clerk: <ClerkLogo className="w-10 h-10" />,
+    polar: <PolarLogo className="w-10 h-10" />,
+    uploadthing: <UploadThingLogo className="w-10 h-10" />,
+    vercel: <VercelLogo className="w-10 h-10" />,
+    trigger: <TriggerIcon className="w-10 h-10" />,
+    upstash: <UpstashLogo className="w-10 h-10" />,
+    supabase: <SupabaseLogo className="w-10 h-10" />,
+    stripe: <StripeLogo className="w-10 h-10" />,
+    resend: <ResendLogo className="w-10 h-10" />,
+    "better-auth": <BetterAuthLogo className="w-10 h-10" />,
 
     // Pixelart icons for special categories
-    logos: <GroupIcon className="w-6 h-6" />,
-    theme: <MoonIcon className="w-6 h-6" />,
-    tinte: <TinteLogo size={24} />,
+    logos: <GroupIcon className="w-10 h-10" />,
+    theme: <MoonIcon className="w-10 h-10" />,
+    tinte: <TinteLogo size={40} />,
   };
 
   return (

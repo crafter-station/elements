@@ -14,6 +14,7 @@ import { ThemeSwitcherDropdown } from "@/components/elements/theme-switcher-drop
 import { ThemeSwitcherMultiButton } from "@/components/elements/theme-switcher-multi-button";
 import { ThemeSwitcherSwitch } from "@/components/elements/theme-switcher-switch";
 import { ThemeSwitcherToggle } from "@/components/elements/theme-switcher-toggle";
+import { TintePreview } from "@/components/elements/tinte-preview";
 import { UploadButtonPreview } from "@/components/elements/uploadthing-button-preview";
 import { UploadDropzonePreview } from "@/components/elements/uploadthing-dropzone-preview";
 
@@ -31,6 +32,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ClerkSignUpPreview,
     ClerkWaitlistPreview,
     SponsorTiersPreview,
+    TintePreview,
     UploadButtonPreview,
     UploadDropzonePreview,
     pre: ({ children, ...props }: any) => {

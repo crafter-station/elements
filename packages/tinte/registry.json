@@ -6,8 +6,8 @@
     {
       "name": "tinte",
       "type": "registry:ui",
-      "title": "Tinte Theme Editor",
-      "description": "Live theme editor for shadcn/ui design tokens with real-time color preview and format preservation",
+      "title": "Tinte",
+      "description": "AI-powered theme editor for shadcn/ui with semantic color palettes in OKLCH color space",
       "registryDependencies": ["button"],
       "dependencies": [
         "culori",
