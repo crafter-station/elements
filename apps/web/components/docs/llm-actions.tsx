@@ -2,6 +2,7 @@
 
 import {
   type MouseEventHandler,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -9,7 +10,6 @@ import {
 } from "react";
 
 import { cva } from "class-variance-authority";
-import { useEffectEvent } from "fumadocs-core/utils/use-effect-event";
 import {
   Check,
   ChevronDown,
@@ -33,7 +33,7 @@ export function useCopyButton(
   const [checked, setChecked] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
-  const onClick: MouseEventHandler = useEffectEvent(() => {
+  const onClick: MouseEventHandler = useCallback(() => {
     if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
     const res = Promise.resolve(onCopy());
 
@@ -43,7 +43,7 @@ export function useCopyButton(
         setChecked(false);
       }, 1500);
     });
-  });
+  }, [onCopy]);
 
   // Avoid updates after being unmounted
   useEffect(() => {
