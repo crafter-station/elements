@@ -1,33 +1,80 @@
+import { Children, isValidElement } from "react";
+
 import type { MDXComponents } from "mdx/types";
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentPreviewItem } from "@/components/component-preview-item";
+import { ClerkSignInPreview } from "@/components/elements/clerk-sign-in-preview";
+import { ClerkSignUpPreview } from "@/components/elements/clerk-sign-up-preview";
+import { ClerkWaitlistPreview } from "@/components/elements/clerk-waitlist-preview";
+import { ThemeSwitcher } from "@/components/elements/theme-switcher";
+import { ThemeSwitcherButton } from "@/components/elements/theme-switcher-button";
+import { ThemeSwitcherDropdown } from "@/components/elements/theme-switcher-dropdown";
+import { ThemeSwitcherMultiButton } from "@/components/elements/theme-switcher-multi-button";
+import { ThemeSwitcherSwitch } from "@/components/elements/theme-switcher-switch";
+import { ThemeSwitcherToggle } from "@/components/elements/theme-switcher-toggle";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
-    pre: ({ children, ...props }) => (
-      <div className="my-4 max-w-full overflow-hidden">
-        <pre
-          className="min-w-full w-max bg-muted p-4 rounded-lg overflow-x-auto border border-border"
-          {...props}
-        >
-          {children}
-        </pre>
-      </div>
-    ),
-    code: ({ className, children, ...props }: any) => {
-      const isInline = !className?.includes("language-");
+    ComponentPreview,
+    ComponentPreviewItem,
+    ThemeSwitcher,
+    ThemeSwitcherSwitch,
+    ThemeSwitcherButton,
+    ThemeSwitcherDropdown,
+    ThemeSwitcherToggle,
+    ThemeSwitcherMultiButton,
+    ClerkSignInPreview,
+    ClerkSignUpPreview,
+    ClerkWaitlistPreview,
+    pre: ({ children, ...props }: any) => {
+      const isShikiBlock = props.className?.includes("shiki") || props.style;
 
-      if (isInline) {
+      if (isShikiBlock) {
         return (
-          <code
-            className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono border border-border"
+          <div className="my-4 max-w-full overflow-hidden rounded-lg border border-border">
+            <pre
+              {...props}
+              className={`${props.className || ""} p-4 overflow-x-auto leading-relaxed`}
+              style={{ ...props.style, fontSize: "13px" }}
+            >
+              {children}
+            </pre>
+          </div>
+        );
+      }
+
+      return (
+        <div className="my-4 max-w-full overflow-hidden">
+          <pre
+            className="min-w-full w-max bg-muted p-4 rounded-lg overflow-x-auto border border-border text-sm"
             {...props}
           >
+            {children}
+          </pre>
+        </div>
+      );
+    },
+    code: ({ className, children, ...props }: any) => {
+      const childArray = Children.toArray(children);
+      const hasReactElements = childArray.some((child) =>
+        isValidElement(child),
+      );
+
+      if (hasReactElements || className || props.style) {
+        return (
+          <code className={className} {...props}>
             {children}
           </code>
         );
       }
 
+      // Otherwise, it's inline code - apply custom styling
       return (
-        <code className={className} {...props}>
+        <code
+          className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono border border-border"
+          {...props}
+        >
           {children}
         </code>
       );
@@ -65,6 +112,30 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       <blockquote className="border-l-4 border-primary/30 pl-4 my-4 italic text-muted-foreground">
         {children}
       </blockquote>
+    ),
+    table: ({ children }) => (
+      <div className="my-6 w-full overflow-x-auto">
+        <table className="w-full border-collapse border border-border">
+          {children}
+        </table>
+      </div>
+    ),
+    thead: ({ children }) => <thead className="bg-muted/50">{children}</thead>,
+    tbody: ({ children }) => <tbody>{children}</tbody>,
+    tr: ({ children }) => (
+      <tr className="border-b border-border hover:bg-muted/30 transition-colors">
+        {children}
+      </tr>
+    ),
+    th: ({ children }) => (
+      <th className="px-4 py-3 text-left font-semibold text-sm border-r border-border last:border-r-0">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => (
+      <td className="px-4 py-3 text-sm border-r border-border last:border-r-0">
+        {children}
+      </td>
     ),
     ...components,
   };

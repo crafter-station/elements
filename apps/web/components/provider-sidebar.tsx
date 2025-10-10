@@ -9,6 +9,7 @@ import { Menu } from "lucide-react";
 import { providers } from "@/lib/providers";
 import { cn } from "@/lib/utils";
 
+import { OverviewIcon } from "@/components/icons/overview";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -35,6 +36,31 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
       <h2 className="font-dotted font-black text-lg mb-2 px-4">Providers</h2>
 
       <nav className="flex flex-col -space-y-px">
+        {/* Overview Link */}
+        <Link
+          href="/l"
+          className={cn(
+            "group flex items-center border border-dotted border-border border-x-0 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
+            pathname === "/l"
+              ? "bg-muted text-foreground font-medium z-10"
+              : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10",
+          )}
+          onClick={() => onLinkClick?.()}
+        >
+          {/* Icon */}
+          <div
+            className={cn(
+              "flex items-center justify-center w-5 h-5 shrink-0",
+              pathname === "/l" && "text-foreground",
+            )}
+          >
+            <OverviewIcon className="w-5 h-5" />
+          </div>
+
+          {/* Name */}
+          <span className="flex-1 truncate">Overview</span>
+        </Link>
+
         {sortedProviders.map((provider) => {
           const isActive = pathname === provider.href;
 

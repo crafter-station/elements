@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 import { ElementWrapper } from "@/components/element-wrapper";
-import { ThemeSwitcherElement } from "@/components/elements/theme-switcher";
+
+import { ThemeSwitcherElement } from "./theme-switcher-element";
 
 export function Footer() {
   return (

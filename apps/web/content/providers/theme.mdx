@@ -1,0 +1,160 @@
+---
+title: Theme
+description: Theme switching components with multiple styles and animations
+category: Theme
+brandColor: "#000000"
+---
+
+## Overview
+
+A collection of theme switcher components that allow users to toggle between light and dark modes. Each variant offers different UI patterns and interactions, from simple switches to multi-button controls with system preference support.
+
+## Components
+
+### Theme Switcher
+
+A classic theme switcher component with animated sun/moon icons overlaid on a switch.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher"
+  installUrl="@elements/theme-switcher"
+  category="Theme"
+  name="Theme"
+>
+  <ThemeSwitcher />
+</ComponentPreviewItem>
+
+### Theme Switcher Switch
+
+Switch-based theme switcher with animated sun/moon icons that slide smoothly.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-switch"
+  installUrl="@elements/theme-switcher-switch"
+  category="Theme"
+  name="Theme"
+>
+  <ThemeSwitcherSwitch />
+</ComponentPreviewItem>
+
+### Theme Switcher Button
+
+Button-based theme switcher with rotating sun/moon icons and smooth transitions.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-button"
+  installUrl="@elements/theme-switcher-button"
+  category="Theme"
+  name="Theme"
+>
+  <ThemeSwitcherButton />
+</ComponentPreviewItem>
+
+### Theme Switcher Dropdown
+
+Dropdown theme switcher with system, light, and dark options in a menu.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-dropdown"
+  installUrl="@elements/theme-switcher-dropdown"
+  category="Theme"
+  name="Theme"
+>
+  <ThemeSwitcherDropdown />
+</ComponentPreviewItem>
+
+### Theme Switcher Toggle
+
+Custom toggle theme switcher with sliding animation and icon transitions.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-toggle"
+  installUrl="@elements/theme-switcher-toggle"
+  category="Theme"
+  name="Theme"
+>
+  <ThemeSwitcherToggle />
+</ComponentPreviewItem>
+
+### Theme Switcher Multi Button
+
+Multi-button theme switcher with system, light, and dark options in a button group.
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-multi-button"
+  installUrl="@elements/theme-switcher-multi-button"
+  category="Theme"
+  name="Theme"
+>
+  <ThemeSwitcherMultiButton />
+</ComponentPreviewItem>
+
+
+## Installation
+
+Install any theme switcher variant individually using the commands shown above, or install all variants:
+
+```bash
+bunx shadcn@latest add @elements/theme-switcher
+bunx shadcn@latest add @elements/theme-switcher-switch
+bunx shadcn@latest add @elements/theme-switcher-button
+bunx shadcn@latest add @elements/theme-switcher-dropdown
+bunx shadcn@latest add @elements/theme-switcher-toggle
+bunx shadcn@latest add @elements/theme-switcher-multi-button
+```
+
+## Setup Required
+
+All theme switcher components require the `next-themes` ThemeProvider to be set up in your root layout:
+
+```tsx
+import { ThemeProvider } from "next-themes";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+**Important:** Add `suppressHydrationWarning` to your `<html>` tag to prevent hydration warnings.
+
+## Usage
+
+Import and use any theme switcher variant in your application:
+
+```tsx
+import { ThemeSwitcher } from "@/components/elements/theme-switcher";
+import { ThemeSwitcherButton } from "@/components/elements/theme-switcher-button";
+import { ThemeSwitcherDropdown } from "@/components/elements/theme-switcher-dropdown";
+
+export default function Header() {
+  return (
+    <header className="flex items-center justify-between p-4">
+      <h1>My App</h1>
+      {/* Use any variant */}
+      <ThemeSwitcher />
+    </header>
+  );
+}
+```
+
+## Features
+
+- **Multiple Variants** - Choose from 6 different theme switcher styles
+- **Smooth Animations** - All variants include polished transitions
+- **System Preference** - Dropdown and Multi Button support system theme
+- **Type Safe** - Built with TypeScript for better DX
+- **Accessible** - WCAG compliant with screen reader support
+- **Loading States** - Built-in skeleton states during hydration

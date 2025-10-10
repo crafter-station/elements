@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import rehypeShiki from "@shikijs/rehype";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 
 import { ProviderIcon } from "@/lib/providers";
 import { providersSource } from "@/lib/providers-source";
@@ -111,6 +113,12 @@ export default async function ProviderPage(props: ProviderPageProps) {
           <MDXRemote
             source={mdxPage.data.body}
             components={getMDXComponents()}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+                rehypePlugins: [[rehypeShiki, { theme: "vesper" }]],
+              },
+            }}
           />
         </article>
       ) : (
