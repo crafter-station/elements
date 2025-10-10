@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { LLMCopyButton, ViewOptions } from "@/components/docs/llm-actions";
 import { InstallCommand } from "@/components/install-command";
 import { ScrambleText } from "@/components/scramble-text";
 import {
@@ -15,6 +16,7 @@ interface ComponentPageHeroProps {
   description: string;
   icon: ReactNode;
   installCommand: string;
+  provider?: string;
 }
 
 export function ComponentPageHero({
@@ -25,6 +27,7 @@ export function ComponentPageHero({
   description,
   icon,
   installCommand,
+  provider,
 }: ComponentPageHeroProps) {
   return (
     <div className="relative overflow-hidden">
@@ -57,7 +60,7 @@ export function ComponentPageHero({
             </p>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex flex-col items-center gap-4">
             <InstallCommand
               url={installCommand.replace(/^bunx shadcn@latest add /, "")}
               brandColor={brandColor}
@@ -65,6 +68,16 @@ export function ComponentPageHero({
               componentName={name}
               category={category}
             />
+
+            {provider && (
+              <div className="flex items-center gap-2">
+                <LLMCopyButton />
+                <ViewOptions
+                  markdownUrl={`/l/${provider}.mdx`}
+                  githubUrl={`https://github.com/crafter-station/elements/blob/main/apps/web/content/providers/${provider}.mdx`}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
