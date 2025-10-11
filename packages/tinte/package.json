@@ -11,11 +11,22 @@
     "./logo": "./src/components/logo.tsx"
   },
   "dependencies": {
-    "culori": "^4.0.1",
-    "@uiw/react-color": "^2.3.0",
+    "@ai-sdk/openai": "^2.0.48",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-tabs": "^1.1.13",
     "@uiw/color-convert": "^2.3.0",
+    "@uiw/react-color": "^2.3.0",
+    "ai": "^5.0.68",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "culori": "^4.0.1",
     "lucide-react": "latest",
-    "sonner": "latest"
+    "nanoid": "^5.1.6",
+    "sonner": "latest",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.1.12"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

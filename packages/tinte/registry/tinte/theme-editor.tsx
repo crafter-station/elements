@@ -2,11 +2,31 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 import { formatHex, oklch } from "culori";
-import { ChevronDown, RefreshCw, X } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 
+import { ChatInput } from "./chat/chat-input";
+import { Message } from "./chat/message";
 import { ColorInput } from "./color-input";
 import Logo from "./logo";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
+import { Button } from "./ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { Textarea } from "./ui/textarea";
 
 type ShadcnTokens = Record<string, string>;
 
@@ -77,14 +97,34 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   >({ light: {}, dark: {} });
   const [mode, setMode] = useState<"light" | "dark">("light");
   const [loading, setLoading] = useState(false);
-  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
-    "Background & Text": true,
-    "Cards & Surfaces": false,
-    "Interactive Elements": false,
-    "Forms & States": false,
-    Charts: false,
-    Sidebar: false,
+  const [rawCss, setRawCss] = useState("");
+
+  // Chat functionality
+  const { messages, sendMessage, status } = useChat({
+    transport: new DefaultChatTransport({
+      api: "/api/tinte/chat",
+    }),
+    onError: (error) => {
+      console.error("Chat error:", error);
+    },
   });
+
+  // Handle theme application from the Message component
+  const handleApplyTheme = useCallback(
+    (newTheme: { light: ShadcnTokens; dark: ShadcnTokens }) => {
+      console.log("Applying theme:", newTheme);
+
+      setTheme(newTheme);
+      onChange?.(newTheme);
+
+      // Update original formats
+      setOriginalFormats({
+        light: { ...newTheme.light },
+        dark: { ...newTheme.dark },
+      });
+    },
+    [onChange],
+  );
 
   // Detect color format
   const detectColorFormat = useCallback(
@@ -242,15 +282,77 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
     return () => observer.disconnect();
   }, []);
 
-  const toggleGroup = useCallback((groupName: string) => {
-    setOpenGroups((prev) => ({
-      ...prev,
-      [groupName]: !prev[groupName],
-    }));
-  }, []);
+  // Generate raw CSS from theme
+  const generateRawCss = useCallback(() => {
+    const lightTokens = Object.entries(theme.light)
+      .map(([key, value]) => `  --${key}: ${value};`)
+      .join("\n");
+
+    const darkTokens = Object.entries(theme.dark)
+      .map(([key, value]) => `  --${key}: ${value};`)
+      .join("\n");
+
+    if (!lightTokens && !darkTokens) return "";
+
+    return `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
+  }, [theme]);
+
+  // Parse raw CSS and update theme
+  const parseRawCss = useCallback(
+    (css: string) => {
+      try {
+        const light: ShadcnTokens = {};
+        const dark: ShadcnTokens = {};
+
+        // Match :root block
+        const rootMatch = css.match(/:root\s*\{([^}]+)\}/);
+        if (rootMatch) {
+          const rootContent = rootMatch[1];
+          const variableMatches = rootContent.matchAll(
+            /--([^:]+):\s*([^;]+);/g,
+          );
+          for (const match of variableMatches) {
+            const key = match[1].trim();
+            const value = match[2].trim();
+            light[key] = value;
+          }
+        }
+
+        // Match .dark block
+        const darkMatch = css.match(/\.dark\s*\{([^}]+)\}/);
+        if (darkMatch) {
+          const darkContent = darkMatch[1];
+          const variableMatches = darkContent.matchAll(
+            /--([^:]+):\s*([^;]+);/g,
+          );
+          for (const match of variableMatches) {
+            const key = match[1].trim();
+            const value = match[2].trim();
+            dark[key] = value;
+          }
+        }
+
+        setTheme({ light, dark });
+        onChange?.({ light, dark });
+      } catch (error) {
+        console.error("Failed to parse CSS:", error);
+      }
+    },
+    [onChange],
+  );
+
+  // Update raw CSS when theme changes
+  useEffect(() => {
+    setRawCss(generateRawCss());
+  }, [theme, generateRawCss]);
 
   // Write to globals.css file
+  const [saveStatus, setSaveStatus] = useState<
+    "idle" | "saving" | "success" | "error"
+  >("idle");
+
   const writeToGlobals = useCallback(async () => {
+    setSaveStatus("saving");
     try {
       const lightTokens = Object.entries(theme.light)
         .map(([key, value]) => `  --${key}: ${value};`)
@@ -271,18 +373,16 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
       });
 
       if (response.ok) {
-        const result = await response.json();
-        alert(`✅ ${result.message}`);
+        setSaveStatus("success");
+        setTimeout(() => setSaveStatus("idle"), 2000);
       } else {
         const error = await response.json();
         throw new Error(error.error || "Failed to write globals.css");
       }
     } catch (error) {
       console.error("Failed to write globals.css:", error);
-      alert(
-        "❌ Failed to write globals.css: " +
-          (error instanceof Error ? error.message : "Unknown error"),
-      );
+      setSaveStatus("error");
+      setTimeout(() => setSaveStatus("idle"), 3000);
     }
   }, [theme]);
 
@@ -291,108 +391,113 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   );
 
   return (
-    <>
-      {/* Floating Ball */}
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      {/* Floating Ball Trigger */}
       <div className="fixed bottom-4 right-4 z-50">
-        <button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          className="w-14 h-14 bg-card border-2 border-border rounded-full shadow-lg hover:scale-110 transition-all duration-200 flex items-center justify-center hover:shadow-xl"
-          title="Open Theme Editor"
-        >
-          <Logo size={28} className="drop-shadow-sm" />
-        </button>
+        <DialogTrigger asChild>
+          <button
+            type="button"
+            className="w-14 h-14 bg-card border-2 border-border rounded-full shadow-lg hover:scale-110 transition-all duration-200 flex items-center justify-center hover:shadow-xl"
+            title="Open Theme Editor"
+          >
+            <Logo size={28} className="drop-shadow-sm" />
+          </button>
+        </DialogTrigger>
       </div>
 
-      {/* Expanded Panel */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/20 backdrop-blur-sm">
-          <div className="bg-card border border-border rounded-lg shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col">
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-border">
-              <div className="flex items-center gap-3">
-                <Logo size={24} />
-                <div>
-                  <h3 className="text-lg font-semibold">Theme Editor</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Live editing • {availableTokens.length} tokens • {mode} mode
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={loadTheme}
-                  disabled={loading}
-                  className="p-1.5 hover:bg-accent rounded-md transition-colors disabled:opacity-50"
-                  title="Reload from globals.css"
-                >
-                  <RefreshCw
-                    size={16}
-                    className={loading ? "animate-spin" : ""}
-                  />
-                </button>
-                <span className="px-3 py-1.5 text-sm text-muted-foreground border border-border rounded-md">
-                  Editing: {mode === "light" ? "☀️ Light" : "🌙 Dark"}
-                </span>
-                <button
-                  type="button"
-                  onClick={writeToGlobals}
-                  className="px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
-                >
-                  Save CSS
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsOpen(false)}
-                  className="p-1.5 hover:bg-accent rounded-md transition-colors"
-                >
-                  <X size={16} />
-                </button>
-              </div>
+      {/* Dialog Content */}
+      <DialogContent showCloseButton={false}>
+        {/* Header */}
+        <DialogHeader>
+          <div className="flex items-center gap-3">
+            <Logo size={24} />
+            <div>
+              <DialogTitle>Theme Editor</DialogTitle>
+              <p className="text-sm text-muted-foreground">
+                Live editing • {availableTokens.length} tokens • {mode} mode
+              </p>
             </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={loadTheme}
+              disabled={loading}
+              className="p-1.5 hover:bg-accent rounded-md transition-colors disabled:opacity-50"
+              title="Reload from globals.css"
+            >
+              <RefreshCw size={16} className={loading ? "animate-spin" : ""} />
+            </button>
+            <span className="px-3 py-1.5 text-sm text-muted-foreground border border-border rounded-md">
+              Editing: {mode === "light" ? "☀️ Light" : "🌙 Dark"}
+            </span>
+            <button
+              type="button"
+              onClick={writeToGlobals}
+              disabled={saveStatus === "saving"}
+              className="px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {saveStatus === "saving" && "Saving..."}
+              {saveStatus === "success" && "✅ Saved!"}
+              {saveStatus === "error" && "❌ Error"}
+              {saveStatus === "idle" && "Save CSS"}
+            </button>
+          </div>
+        </DialogHeader>
 
-            {/* Content */}
-            <div className="flex-1 overflow-y-auto p-4">
-              {loading ? (
-                <div className="flex items-center justify-center py-8">
-                  <RefreshCw className="animate-spin mr-2" size={20} />
-                  <span>Loading theme...</span>
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  {TOKEN_GROUPS.map((group) => {
-                    const groupTokens = group.tokens.filter(
-                      (token) => theme[mode][token] !== undefined,
-                    );
-                    if (groupTokens.length === 0) return null;
+        {/* Content */}
+        <div className="flex-1 overflow-hidden flex flex-col">
+          {loading ? (
+            <div className="flex items-center justify-center py-8">
+              <RefreshCw className="animate-spin mr-2" size={20} />
+              <span>Loading theme...</span>
+            </div>
+          ) : (
+            <Tabs
+              defaultValue="editor"
+              className="flex-1 flex flex-col overflow-hidden"
+            >
+              <TabsList className="mx-4 mt-4 mb-4">
+                <TabsTrigger value="editor">Editor</TabsTrigger>
+                <TabsTrigger value="raw">Raw CSS</TabsTrigger>
+                <TabsTrigger value="agent">Agent</TabsTrigger>
+              </TabsList>
 
-                    return (
-                      <div
-                        key={group.label}
-                        className="border border-border rounded-md overflow-hidden"
-                      >
-                        <button
-                          type="button"
-                          onClick={() => toggleGroup(group.label)}
-                          className="flex w-full items-center justify-between px-3 py-2.5 text-sm font-medium hover:bg-accent/50 transition-colors"
+              <TabsContent
+                value="editor"
+                className="flex-1 h-0 flex flex-col overflow-hidden px-4 pb-4"
+              >
+                <div className="flex-1 border rounded-md bg-muted/20 overflow-y-auto p-4">
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="w-full space-y-2"
+                    defaultValue="Background & Text"
+                  >
+                    {TOKEN_GROUPS.map((group) => {
+                      const groupTokens = group.tokens.filter(
+                        (token) => theme[mode][token] !== undefined,
+                      );
+                      if (groupTokens.length === 0) return null;
+
+                      return (
+                        <AccordionItem
+                          value={group.label}
+                          key={group.label}
+                          className="rounded-md border bg-background px-4 py-1 outline-none last:border-b has-focus-visible:border-ring has-focus-visible:ring-[3px] has-focus-visible:ring-ring/50"
                         >
-                          <span className="uppercase tracking-wide">
-                            {group.label} ({groupTokens.length})
-                          </span>
-                          <ChevronDown
-                            className={`h-4 w-4 transition-transform ${openGroups[group.label] ? "rotate-180" : ""}`}
-                          />
-                        </button>
-
-                        {openGroups[group.label] && (
-                          <div className="border-t border-border bg-muted/20 p-3">
+                          <AccordionTrigger className="py-2 text-[15px] leading-6 hover:no-underline focus-visible:ring-0">
+                            <span className="uppercase tracking-wide">
+                              {group.label} ({groupTokens.length})
+                            </span>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-2">
                             <div className="grid gap-3 sm:grid-cols-2">
                               {groupTokens.map((token) => (
                                 <div key={token} className="space-y-1.5">
                                   <div className="flex items-center justify-between">
                                     <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                                      {token.replace(/_/g, "-")}
+                                      {token.replace(/-/g, " ")}
                                     </span>
                                     <span className="text-xs text-muted-foreground font-mono">
                                       {detectColorFormat(theme[mode][token])}
@@ -408,31 +513,118 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                                 </div>
                               ))}
                             </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                          </AccordionContent>
+                        </AccordionItem>
+                      );
+                    })}
+                  </Accordion>
                 </div>
-              )}
-            </div>
+              </TabsContent>
 
-            {/* Footer */}
-            <div className="p-4 border-t border-border bg-muted/50">
-              <div className="text-xs text-muted-foreground space-y-1">
-                <p>
-                  • Changes apply instantly • Original formats preserved
-                  (oklch→oklch, hex→hex)
-                </p>
-                <p>
-                  • Use reload button to refresh from globals.css • Save writes
-                  to file
-                </p>
-              </div>
-            </div>
-          </div>
+              <TabsContent
+                value="raw"
+                className="flex-1 h-0 flex flex-col overflow-hidden px-4 pb-4"
+              >
+                <Textarea
+                  value={rawCss}
+                  onChange={(e) => {
+                    setRawCss(e.target.value);
+                    parseRawCss(e.target.value);
+                  }}
+                  className="w-full bg-muted/40 font-mono text-xs resize-none border border-border focus-visible:ring-0 p-4"
+                  placeholder="Paste your CSS here..."
+                  spellCheck={false}
+                  rows={25}
+                />
+              </TabsContent>
+
+              <TabsContent
+                value="agent"
+                className="flex-1 h-0 flex flex-col gap-3 overflow-hidden px-4 pb-4"
+              >
+                <div className="flex-1 border rounded-md bg-muted/20 overflow-y-auto p-4 space-y-2">
+                  {messages.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center min-h-[380px] gap-6">
+                      <div className="text-center space-y-2">
+                        <h3 className="font-semibold text-lg">
+                          AI Theme Generator
+                        </h3>
+                        <p className="text-muted-foreground text-sm max-w-md">
+                          Describe your ideal theme and let AI generate a
+                          complete color palette for you
+                        </p>
+                      </div>
+                      <div className="grid gap-2 w-full max-w-md px-4">
+                        <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">
+                          Suggested prompts:
+                        </p>
+                        <Button
+                          variant="outline"
+                          onClick={() =>
+                            sendMessage({
+                              text: "Create a purple theme with high contrast for accessibility",
+                            })
+                          }
+                          className="justify-start h-auto py-3 whitespace-normal text-left"
+                        >
+                          Create a purple theme with high contrast
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() =>
+                            sendMessage({
+                              text: "Generate a warm autumn theme with orange and brown tones",
+                            })
+                          }
+                          className="justify-start h-auto py-3 whitespace-normal text-left"
+                        >
+                          Generate a warm autumn theme
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() =>
+                            sendMessage({
+                              text: "Create a modern dark theme with blue accents",
+                            })
+                          }
+                          className="justify-start h-auto py-3 whitespace-normal text-left"
+                        >
+                          Create a modern dark theme with blue accents
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() =>
+                            sendMessage({
+                              text: "Design a soft pastel theme perfect for a wellness app",
+                            })
+                          }
+                          className="justify-start h-auto py-3 whitespace-normal text-left"
+                        >
+                          Design a soft pastel wellness theme
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    messages.map((message) => (
+                      <Message
+                        key={message.id}
+                        message={message}
+                        onApplyTheme={handleApplyTheme}
+                      />
+                    ))
+                  )}
+                </div>
+                <ChatInput
+                  onSubmit={(msg) => {
+                    sendMessage({ text: msg });
+                  }}
+                  disabled={status === "submitted" || status === "streaming"}
+                />
+              </TabsContent>
+            </Tabs>
+          )}
         </div>
-      )}
-    </>
+      </DialogContent>
+    </Dialog>
   );
 }

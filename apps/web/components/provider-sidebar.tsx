@@ -40,10 +40,10 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
         <Link
           href="/docs"
           className={cn(
-            "group flex items-center border border-dotted border-border border-x-0 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
+            "group flex items-center border border-dotted border-border border-x-0 border-l-2 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
             pathname === "/docs"
-              ? "bg-muted text-foreground font-medium z-10"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10",
+              ? "bg-muted text-foreground font-medium z-10 border-l-primary"
+              : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10 border-l-transparent hover:border-l-primary/30",
           )}
           onClick={() => onLinkClick?.()}
         >
@@ -69,10 +69,10 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
               key={provider.href}
               href={provider.isEnabled ? provider.href : "#"}
               className={cn(
-                "group flex items-center border border-dotted border-border border-x-0 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
+                "group flex items-center border border-dotted border-border border-x-0 border-l-2 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
                 isActive
-                  ? "bg-muted text-foreground font-medium z-10"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10",
+                  ? "bg-muted text-foreground font-medium z-10 border-l-primary"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10 border-l-transparent hover:border-l-primary/30",
                 !provider.isEnabled && "opacity-50 cursor-not-allowed",
               )}
               onClick={(e) => {
