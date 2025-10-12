@@ -37,7 +37,7 @@ export const Message = ({
             return (
               <Streamdown
                 key={index}
-                className="prose prose-sm max-w-none dark:prose-invert [&>ul>li]:!pl-4"
+                className="prose prose-sm max-w-none dark:prose-invert [&_ul]:!list-outside [&_ol]:!list-outside [&_li]:!pl-6 [&_li]:!my-0"
               >
                 {part.text}
               </Streamdown>
