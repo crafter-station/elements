@@ -373,6 +373,8 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
 
   // Generate raw CSS from theme
   const generateRawCss = useCallback(() => {
+    if (!theme.light || !theme.dark) return "";
+
     const lightTokens = Object.entries(theme.light)
       .map(([key, value]) => `  --${key}: ${value};`)
       .join("\n");
