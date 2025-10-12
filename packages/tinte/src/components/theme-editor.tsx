@@ -371,6 +371,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
           [token]: newValue,
         },
       }));
+
+      // Mark as unsaved
+      setHasUnsavedChanges(true);
     },
     [mode, onChange],
   );
