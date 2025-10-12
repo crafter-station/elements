@@ -673,32 +673,41 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                     ) : (
                       <div className="space-y-3">
                         <div className="space-y-3 mb-4">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <h3 className="font-semibold">
-                                Tinte Community Themes
-                              </h3>
-                              <p className="text-xs text-muted-foreground">
-                                {tinteThemes.length} themes from tinte.dev
-                              </p>
+                          <div className="flex items-center gap-2">
+                            <div className="relative flex-1">
+                              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
+                              <Input
+                                type="text"
+                                placeholder="Search themes..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="pl-9 h-9"
+                              />
                             </div>
                             <Button
-                              variant="ghost"
-                              size="sm"
+                              variant="outline"
+                              size="icon"
                               onClick={() => fetchTinteThemes(currentPage)}
+                              title="Refresh themes"
+                              className="h-9 w-9"
                             >
-                              <RefreshCw size={14} />
+                              <RefreshCw className="h-3.5 w-3.5" />
                             </Button>
                           </div>
-                          <div className="relative">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-                            <Input
-                              type="text"
-                              placeholder="Search themes..."
-                              value={searchQuery}
-                              onChange={(e) => setSearchQuery(e.target.value)}
-                              className="pl-9"
-                            />
+                          <div className="flex items-center justify-between">
+                            <p className="text-xs text-muted-foreground">
+                              {
+                                tinteThemes.filter((theme) => {
+                                  if (!searchQuery) return true;
+                                  const query = searchQuery.toLowerCase();
+                                  return (
+                                    theme.name.toLowerCase().includes(query) ||
+                                    theme.concept?.toLowerCase().includes(query)
+                                  );
+                                }).length
+                              }{" "}
+                              of {tinteThemes.length} themes
+                            </p>
                           </div>
                         </div>
                         <div className="grid gap-3">
