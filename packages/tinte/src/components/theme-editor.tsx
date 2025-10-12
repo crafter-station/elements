@@ -300,15 +300,19 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   // Apply Tinte theme
   const applyTinteTheme = useCallback(
     (tinteTheme: TinteThemePreview) => {
-      if (tinteTheme.overrides?.shadcn) {
-        // Use shadcn override if available
-        setTheme(tinteTheme.overrides.shadcn);
-        onChange?.(tinteTheme.overrides.shadcn);
-      } else if (tinteTheme.rawTheme) {
+      if (tinteTheme.rawTheme) {
         // Convert Tinte format to shadcn format
         const shadcnTheme = convertTinteToShadcn(tinteTheme.rawTheme);
         setTheme(shadcnTheme);
         onChange?.(shadcnTheme);
+      } else if (
+        tinteTheme.overrides?.shadcn &&
+        tinteTheme.overrides.shadcn.light &&
+        tinteTheme.overrides.shadcn.dark
+      ) {
+        // Use shadcn override only if it has light and dark color objects
+        setTheme(tinteTheme.overrides.shadcn);
+        onChange?.(tinteTheme.overrides.shadcn);
       }
     },
     [onChange],
@@ -443,6 +447,11 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   >("idle");
 
   const writeToGlobals = useCallback(async () => {
+    if (!theme.light || !theme.dark) {
+      console.error("Theme is not fully loaded");
+      return;
+    }
+
     setSaveStatus("saving");
     try {
       const lightTokens = Object.entries(theme.light)
