@@ -567,7 +567,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                 value="editor"
                 className="flex-1 h-0 flex flex-col overflow-hidden px-4 pb-4"
               >
-                <div className="flex-1 border rounded-md bg-muted/20 overflow-y-auto p-4">
+                <div className="h-[500px] border rounded-md bg-muted/20 overflow-y-auto p-4">
                   <Accordion
                     type="single"
                     collapsible
@@ -770,10 +770,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                     setRawCss(e.target.value);
                     parseRawCss(e.target.value);
                   }}
-                  className="w-full bg-muted/40 font-mono text-xs resize-none border border-border focus-visible:ring-0 p-4"
+                  className="h-[500px] w-full bg-muted/40 font-mono text-xs resize-none border border-border focus-visible:ring-0 p-4"
                   placeholder="Paste your CSS here..."
                   spellCheck={false}
-                  rows={25}
                 />
               </TabsContent>
 
