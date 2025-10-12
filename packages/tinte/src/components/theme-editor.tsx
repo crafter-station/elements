@@ -128,6 +128,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   const [tinteThemes, setTinteThemes] = useState<TinteThemePreview[]>([]);
   const [loadingTinteThemes, setLoadingTinteThemes] = useState(false);
   const [tinteError, setTinteError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
 
   // Chat functionality
   const [apiKeyError, setApiKeyError] = useState(false);
@@ -268,18 +271,21 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   }, []);
 
   // Fetch Tinte themes
-  const fetchTinteThemes = useCallback(async () => {
+  const fetchTinteThemes = useCallback(async (page = 1) => {
     setLoadingTinteThemes(true);
     setTinteError(null);
     try {
       const response = await fetch(
-        "https://www.tinte.dev/api/themes/public?limit=20&page=1",
+        `https://www.tinte.dev/api/themes/public?limit=20&page=${page}`,
       );
       if (!response.ok) {
         throw new Error("Failed to fetch themes from Tinte");
       }
       const data = await response.json();
       setTinteThemes(data.themes || []);
+      setCurrentPage(data.pagination.page);
+      setHasMore(data.pagination.hasMore);
+      setTotalPages(Math.ceil(data.pagination.total / data.pagination.limit));
     } catch (error) {
       console.error("Error fetching Tinte themes:", error);
       setTinteError(
@@ -611,108 +617,138 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                 value="browse"
                 className="flex-1 h-0 flex flex-col overflow-hidden px-4 pb-4"
               >
-                <div className="flex-1 border rounded-md bg-muted/20 overflow-y-auto p-4">
-                  {loadingTinteThemes ? (
-                    <div className="flex flex-col items-center justify-center h-full gap-3">
-                      <Loader2 className="animate-spin" size={32} />
-                      <p className="text-sm text-muted-foreground">
-                        Loading themes from tinte.dev...
-                      </p>
-                    </div>
-                  ) : tinteError ? (
-                    <div className="flex flex-col items-center justify-center h-full gap-4">
-                      <div className="text-4xl">⚠️</div>
-                      <div className="text-center space-y-2 max-w-md">
-                        <h3 className="font-semibold text-lg">
-                          Failed to Load Themes
-                        </h3>
+                <div className="flex flex-col gap-4 h-[500px]">
+                  <div className="flex-1 border rounded-md bg-muted/20 overflow-y-auto p-4">
+                    {loadingTinteThemes ? (
+                      <div className="flex flex-col items-center justify-center h-full gap-3">
+                        <Loader2 className="animate-spin" size={32} />
                         <p className="text-sm text-muted-foreground">
-                          {tinteError}
+                          Loading themes from tinte.dev...
+                        </p>
+                      </div>
+                    ) : tinteError ? (
+                      <div className="flex flex-col items-center justify-center h-full gap-4">
+                        <div className="text-4xl">⚠️</div>
+                        <div className="text-center space-y-2 max-w-md">
+                          <h3 className="font-semibold text-lg">
+                            Failed to Load Themes
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            {tinteError}
+                          </p>
+                          <Button
+                            variant="outline"
+                            onClick={fetchTinteThemes}
+                            className="mt-2"
+                          >
+                            <RefreshCw size={16} className="mr-2" />
+                            Try Again
+                          </Button>
+                        </div>
+                      </div>
+                    ) : tinteThemes.length === 0 ? (
+                      <div className="flex flex-col items-center justify-center h-full gap-3">
+                        <p className="text-sm text-muted-foreground">
+                          No themes available
                         </p>
                         <Button
                           variant="outline"
                           onClick={fetchTinteThemes}
-                          className="mt-2"
+                          size="sm"
                         >
                           <RefreshCw size={16} className="mr-2" />
-                          Try Again
+                          Refresh
                         </Button>
                       </div>
-                    </div>
-                  ) : tinteThemes.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center h-full gap-3">
-                      <p className="text-sm text-muted-foreground">
-                        No themes available
-                      </p>
-                      <Button
-                        variant="outline"
-                        onClick={fetchTinteThemes}
-                        size="sm"
-                      >
-                        <RefreshCw size={16} className="mr-2" />
-                        Refresh
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between mb-4">
-                        <div>
-                          <h3 className="font-semibold">
-                            Tinte Community Themes
-                          </h3>
-                          <p className="text-xs text-muted-foreground">
-                            {tinteThemes.length} themes from tinte.dev
-                          </p>
-                        </div>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={fetchTinteThemes}
-                        >
-                          <RefreshCw size={14} />
-                        </Button>
-                      </div>
-                      <div className="grid gap-3">
-                        {tinteThemes.map((tinteTheme) => (
-                          <button
-                            key={tinteTheme.id}
-                            type="button"
-                            onClick={() => applyTinteTheme(tinteTheme)}
-                            className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
+                    ) : (
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <h3 className="font-semibold">
+                              Tinte Community Themes
+                            </h3>
+                            <p className="text-xs text-muted-foreground">
+                              {tinteThemes.length} themes from tinte.dev
+                            </p>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={fetchTinteThemes}
                           >
-                            <div className="flex items-start justify-between gap-3">
-                              <div className="flex-1 space-y-1.5">
-                                <h4 className="font-medium group-hover:text-primary transition-colors">
-                                  {tinteTheme.name}
-                                </h4>
-                                {tinteTheme.concept && (
-                                  <p className="text-xs text-muted-foreground line-clamp-2">
-                                    {tinteTheme.concept}
-                                  </p>
-                                )}
+                            <RefreshCw size={14} />
+                          </Button>
+                        </div>
+                        <div className="grid gap-3">
+                          {tinteThemes.map((tinteTheme) => (
+                            <button
+                              key={tinteTheme.id}
+                              type="button"
+                              onClick={() => applyTinteTheme(tinteTheme)}
+                              className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
+                            >
+                              <div className="flex items-start justify-between gap-3">
+                                <div className="flex-1 space-y-1.5">
+                                  <h4 className="font-medium group-hover:text-primary transition-colors">
+                                    {tinteTheme.name}
+                                  </h4>
+                                  {tinteTheme.concept && (
+                                    <p className="text-xs text-muted-foreground line-clamp-2">
+                                      {tinteTheme.concept}
+                                    </p>
+                                  )}
+                                </div>
+                                <div className="flex gap-1.5 shrink-0">
+                                  {[
+                                    tinteTheme.colors.background,
+                                    tinteTheme.colors.primary,
+                                    tinteTheme.colors.secondary,
+                                    tinteTheme.colors.accent,
+                                    tinteTheme.colors.foreground,
+                                  ].map((color) => (
+                                    <div
+                                      key={color}
+                                      className="w-6 h-6 rounded border border-border/50"
+                                      style={{ backgroundColor: color }}
+                                      title={color}
+                                    />
+                                  ))}
+                                </div>
                               </div>
-                              <div className="flex gap-1.5 shrink-0">
-                                {[
-                                  tinteTheme.colors.background,
-                                  tinteTheme.colors.primary,
-                                  tinteTheme.colors.secondary,
-                                  tinteTheme.colors.accent,
-                                  tinteTheme.colors.foreground,
-                                ].map((color) => (
-                                  <div
-                                    key={color}
-                                    className="w-6 h-6 rounded border border-border/50"
-                                    style={{ backgroundColor: color }}
-                                    title={color}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                          </button>
-                        ))}
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
+                  {/* Pagination Controls */}
+                  {!loadingTinteThemes &&
+                    !tinteError &&
+                    tinteThemes.length > 0 && (
+                      <div className="flex items-center justify-between px-2 py-3 border-t">
+                        <div className="text-xs text-muted-foreground">
+                          Page {currentPage} of {totalPages}
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => fetchTinteThemes(currentPage - 1)}
+                            disabled={currentPage === 1 || loadingTinteThemes}
+                          >
+                            Previous
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => fetchTinteThemes(currentPage + 1)}
+                            disabled={!hasMore || loadingTinteThemes}
+                          >
+                            Next
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                 </div>
               </TabsContent>
 
