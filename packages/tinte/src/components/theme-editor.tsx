@@ -496,6 +496,38 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
       if (response.ok) {
         setSaveStatus("success");
         setHasUnsavedChanges(false);
+
+        // Apply CSS variables immediately to DOM
+        const root = document.documentElement;
+        const isDark = root.classList.contains("dark");
+        const activeTheme = isDark ? currentTheme.dark : currentTheme.light;
+
+        // Apply all CSS variables to the root element
+        Object.entries(activeTheme).forEach(([key, value]) => {
+          root.style.setProperty(`--${key}`, value);
+        });
+
+        // Also update the opposite mode by temporarily adding the style
+        // This ensures switching themes works without reload
+        const styleId = "tinte-dynamic-theme";
+        let styleElement = document.getElementById(styleId) as HTMLStyleElement;
+
+        if (!styleElement) {
+          styleElement = document.createElement("style");
+          styleElement.id = styleId;
+          document.head.appendChild(styleElement);
+        }
+
+        const lightTokens = Object.entries(currentTheme.light)
+          .map(([key, value]) => `  --${key}: ${value};`)
+          .join("\n");
+
+        const darkTokens = Object.entries(currentTheme.dark)
+          .map(([key, value]) => `  --${key}: ${value};`)
+          .join("\n");
+
+        styleElement.textContent = `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
+
         setTimeout(() => setSaveStatus("idle"), 2000);
       } else {
         const error = await response.json();
