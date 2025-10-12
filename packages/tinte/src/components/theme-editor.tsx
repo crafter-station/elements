@@ -173,8 +173,41 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
         dark: { ...newTheme.dark },
       });
 
-      // Mark as unsaved to trigger the pulsing save button
+      // Mark as unsaved and let user save manually
+      // Setting to true will trigger the pulsing save button
       setHasUnsavedChanges(true);
+
+      // Apply theme to DOM immediately for instant preview
+      setTimeout(() => {
+        const root = document.documentElement;
+        const isDark = root.classList.contains("dark");
+        const activeTheme = isDark ? newTheme.dark : newTheme.light;
+
+        // Apply all CSS variables to the root element
+        Object.entries(activeTheme).forEach(([key, value]) => {
+          root.style.setProperty(`--${key}`, value);
+        });
+
+        // Also inject style for both modes
+        const styleId = "tinte-dynamic-theme";
+        let styleElement = document.getElementById(styleId) as HTMLStyleElement;
+
+        if (!styleElement) {
+          styleElement = document.createElement("style");
+          styleElement.id = styleId;
+          document.head.appendChild(styleElement);
+        }
+
+        const lightTokens = Object.entries(newTheme.light)
+          .map(([key, value]) => `  --${key}: ${value};`)
+          .join("\n");
+
+        const darkTokens = Object.entries(newTheme.dark)
+          .map(([key, value]) => `  --${key}: ${value};`)
+          .join("\n");
+
+        styleElement.textContent = `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
+      }, 100);
     },
     [onChange],
   );
