@@ -17,7 +17,8 @@
         "RESEND_API_KEY",
         "GOOGLE_SHEETS_PRIVATE_KEY",
         "GOOGLE_SHEETS_CLIENT_EMAIL",
-        "GOOGLE_SHEETS_SPREADSHEET_ID"
+        "GOOGLE_SHEETS_SPREADSHEET_ID",
+        "OPENAI_API_KEY"
       ]
     },
     "dev": {
