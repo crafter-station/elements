@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
@@ -119,6 +119,7 @@ interface ThemeEditorProps {
 export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<ShadcnTheme>({ light: {}, dark: {} });
+  const themeRef = useRef<ShadcnTheme>({ light: {}, dark: {} });
   const [_originalFormats, setOriginalFormats] = useState<
     Record<string, Record<string, string>>
   >({ light: {}, dark: {} });
@@ -137,6 +138,11 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   const [activeSearch, setActiveSearch] = useState("");
   const [selectedThemeId, setSelectedThemeId] = useState<string | null>(null);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+
+  // Keep ref in sync with theme state
+  useEffect(() => {
+    themeRef.current = theme;
+  }, [theme]);
 
   // Chat functionality
   const [apiKeyError, setApiKeyError] = useState(false);
@@ -456,18 +462,21 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   >("idle");
 
   const writeToGlobals = useCallback(async () => {
-    if (!theme.light || !theme.dark) {
+    // Use ref to get the latest theme state
+    const currentTheme = themeRef.current;
+
+    if (!currentTheme.light || !currentTheme.dark) {
       console.error("Theme is not fully loaded");
       return;
     }
 
     setSaveStatus("saving");
     try {
-      const lightTokens = Object.entries(theme.light)
+      const lightTokens = Object.entries(currentTheme.light)
         .map(([key, value]) => `  --${key}: ${value};`)
         .join("\n");
 
-      const darkTokens = Object.entries(theme.dark)
+      const darkTokens = Object.entries(currentTheme.dark)
         .map(([key, value]) => `  --${key}: ${value};`)
         .join("\n");
 
@@ -494,7 +503,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
       setSaveStatus("error");
       setTimeout(() => setSaveStatus("idle"), 3000);
     }
-  }, [theme]);
+  }, []);
 
   const availableTokens = TOKEN_GROUPS.flatMap((group) =>
     group.tokens.filter((token) => theme[mode]?.[token] !== undefined),
