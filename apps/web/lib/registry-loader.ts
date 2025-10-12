@@ -56,6 +56,11 @@ export function getProviderFromName(name: string): string {
     return "theme";
   }
 
+  // Special case: theme-editor is tinte
+  if (name === "theme-editor") {
+    return "tinte";
+  }
+
   // Special case: clerk-middleware should be under clerk
   if (name === "clerk-middleware") {
     return "clerk";
