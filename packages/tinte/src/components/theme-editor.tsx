@@ -544,6 +544,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
             >
               <TabsList className="mx-4 mt-4 mb-4">
                 <TabsTrigger value="editor">Editor</TabsTrigger>
+                <TabsTrigger value="browse">Browse</TabsTrigger>
                 <TabsTrigger value="raw">Raw CSS</TabsTrigger>
                 <TabsTrigger value="agent">Agent</TabsTrigger>
               </TabsList>
