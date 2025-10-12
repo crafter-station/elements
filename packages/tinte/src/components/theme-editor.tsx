@@ -272,7 +272,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
     setLoadingTinteThemes(true);
     setTinteError(null);
     try {
-      const response = await fetch("/api/tinte/themes?limit=20&page=1");
+      const response = await fetch(
+        "https://tinte.dev/api/themes/public?limit=20&page=1",
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch themes from Tinte");
       }
@@ -674,6 +676,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                         {tinteThemes.map((tinteTheme) => (
                           <button
                             key={tinteTheme.id}
+                            type="button"
                             onClick={() => applyTinteTheme(tinteTheme)}
                             className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
                           >
@@ -695,9 +698,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                                   tinteTheme.colors.secondary,
                                   tinteTheme.colors.accent,
                                   tinteTheme.colors.foreground,
-                                ].map((color, idx) => (
+                                ].map((color) => (
                                   <div
-                                    key={idx}
+                                    key={color}
                                     className="w-6 h-6 rounded border border-border/50"
                                     style={{ backgroundColor: color }}
                                     title={color}
