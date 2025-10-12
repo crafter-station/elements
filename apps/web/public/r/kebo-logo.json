@@ -15,5 +15,9 @@
     }
   ],
   "docs": "Kebo logo component with official brand purple color.",
-  "categories": ["Development", "logo", "brand"]
+  "categories": [
+    "Development",
+    "logo",
+    "brand"
+  ]
 }

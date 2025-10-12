@@ -15,5 +15,9 @@
     }
   ],
   "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system.",
-  "categories": ["Social", "logo", "brand"]
+  "categories": [
+    "Social",
+    "logo",
+    "brand"
+  ]
 }

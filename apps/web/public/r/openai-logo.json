@@ -15,5 +15,9 @@
     }
   ],
   "docs": "OpenAI logo component with official brand colors.",
-  "categories": ["AI", "logo", "brand"]
+  "categories": [
+    "AI",
+    "logo",
+    "brand"
+  ]
 }
