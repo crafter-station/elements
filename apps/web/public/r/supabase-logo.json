@@ -15,9 +15,5 @@
     }
   ],
   "docs": "Supabase logo component with official brand green gradient colors.",
-  "categories": [
-    "Database",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Database", "logo", "brand"]
 }

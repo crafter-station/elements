@@ -15,9 +15,5 @@
     }
   ],
   "docs": "Meta logo component with official brand gradient blue design.",
-  "categories": [
-    "Social",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Social", "logo", "brand"]
 }

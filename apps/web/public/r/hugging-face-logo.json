@@ -15,9 +15,5 @@
     }
   ],
   "docs": "Hugging Face logo component with official multi-color brand design.",
-  "categories": [
-    "AI",
-    "logo",
-    "brand"
-  ]
+  "categories": ["AI", "logo", "brand"]
 }

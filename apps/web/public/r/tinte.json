@@ -11,9 +11,7 @@
     "lucide-react",
     "sonner"
   ],
-  "registryDependencies": [
-    "button"
-  ],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "../../packages/tinte/registry/tinte/theme-editor.tsx",

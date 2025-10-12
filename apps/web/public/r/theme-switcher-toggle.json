@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Theme Switcher Toggle",
   "description": "Custom toggle theme switcher with sliding animation",
-  "dependencies": [
-    "next-themes"
-  ],
+  "dependencies": ["next-themes"],
   "registryDependencies": [],
   "files": [
     {

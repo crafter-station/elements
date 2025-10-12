@@ -4,10 +4,7 @@
   "type": "registry:ui",
   "title": "Clerk Sign Up (ShadCN)",
   "description": "Complete sign-up form with Clerk integration and CAPTCHA support using custom ShadCN components",
-  "dependencies": [
-    "@clerk/nextjs",
-    "@clerk/types"
-  ],
+  "dependencies": ["@clerk/nextjs", "@clerk/types"],
   "registryDependencies": [
     "button",
     "card",

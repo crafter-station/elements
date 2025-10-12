@@ -4,15 +4,8 @@
   "type": "registry:block",
   "title": "Polar Sponsorship Suite",
   "description": "Complete sponsorship integration with Polar.sh - sponsorship tiers, checkout flow, and API integration",
-  "dependencies": [
-    "@polar-sh/nextjs"
-  ],
-  "registryDependencies": [
-    "button",
-    "badge",
-    "card",
-    "@elements/polar-logo"
-  ],
+  "dependencies": ["@polar-sh/nextjs"],
+  "registryDependencies": ["button", "badge", "card", "@elements/polar-logo"],
   "files": [
     {
       "path": "../../packages/polar/registry/polar/sponsorship/sponsor-tiers-preview.tsx",

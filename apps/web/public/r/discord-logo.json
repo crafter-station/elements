@@ -15,9 +15,5 @@
     }
   ],
   "docs": "Discord logo component with official brand blurple color.",
-  "categories": [
-    "Communication",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Communication", "logo", "brand"]
 }
