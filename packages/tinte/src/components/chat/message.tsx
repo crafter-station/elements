@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from "react";
 
 import type { UIMessage } from "ai";
+import { Streamdown } from "streamdown";
 
 import { cn } from "@/lib/utils";
 
@@ -37,13 +38,15 @@ export const Message = ({
               <div
                 key={index}
                 className={cn(
-                  "rounded-lg px-3 py-2 text-sm whitespace-pre-wrap",
+                  "rounded-lg px-3 py-2 text-sm",
                   message.role === "user"
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-foreground",
                 )}
               >
-                {part.text}
+                <Streamdown className="prose prose-sm max-w-none dark:prose-invert">
+                  {part.text}
+                </Streamdown>
               </div>
             );
           }

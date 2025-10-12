@@ -542,9 +542,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                 value="agent"
                 className="flex-1 h-0 flex flex-col gap-3 overflow-hidden px-4 pb-4"
               >
-                <div className="flex-1 border rounded-md bg-muted/20 overflow-y-auto p-4 space-y-2">
+                <div className="h-[500px] border rounded-md bg-muted/20 overflow-y-auto p-4 space-y-2">
                   {messages.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center min-h-[380px] gap-6">
+                    <div className="flex flex-col items-center justify-center gap-6">
                       <div className="text-center space-y-2">
                         <h3 className="font-semibold text-lg">
                           AI Theme Generator
