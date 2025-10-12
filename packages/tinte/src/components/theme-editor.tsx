@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { formatHex, oklch } from "culori";
-import { Loader2, RefreshCw } from "lucide-react";
+import { Loader2, RefreshCw, Search } from "lucide-react";
 
 import { convertTinteToShadcn } from "../lib/tinte-to-shadcn";
 import { ChatInput } from "./chat/chat-input";
@@ -132,6 +132,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [hasMore, setHasMore] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Chat functionality
   const [apiKeyError, setApiKeyError] = useState(false);
@@ -670,61 +671,84 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                       </div>
                     ) : (
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between mb-4">
-                          <div>
-                            <h3 className="font-semibold">
-                              Tinte Community Themes
-                            </h3>
-                            <p className="text-xs text-muted-foreground">
-                              {tinteThemes.length} themes from tinte.dev
-                            </p>
+                        <div className="space-y-3 mb-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h3 className="font-semibold">
+                                Tinte Community Themes
+                              </h3>
+                              <p className="text-xs text-muted-foreground">
+                                {tinteThemes.length} themes from tinte.dev
+                              </p>
+                            </div>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => fetchTinteThemes(currentPage)}
+                            >
+                              <RefreshCw size={14} />
+                            </Button>
                           </div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={fetchTinteThemes}
-                          >
-                            <RefreshCw size={14} />
-                          </Button>
+                          <div className="relative">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                            <input
+                              type="text"
+                              placeholder="Search themes..."
+                              value={searchQuery}
+                              onChange={(e) => setSearchQuery(e.target.value)}
+                              className="w-full pl-9 pr-3 py-2 text-sm rounded-md border border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            />
+                          </div>
                         </div>
                         <div className="grid gap-3">
-                          {tinteThemes.map((tinteTheme) => (
-                            <button
-                              key={tinteTheme.id}
-                              type="button"
-                              onClick={() => applyTinteTheme(tinteTheme)}
-                              className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
-                            >
-                              <div className="flex items-start justify-between gap-3">
-                                <div className="flex-1 space-y-1.5">
-                                  <h4 className="font-medium group-hover:text-primary transition-colors">
-                                    {tinteTheme.name}
-                                  </h4>
-                                  {tinteTheme.concept && (
-                                    <p className="text-xs text-muted-foreground line-clamp-2">
-                                      {tinteTheme.concept}
-                                    </p>
-                                  )}
+                          {tinteThemes
+                            .filter((tinteTheme) => {
+                              if (!searchQuery) return true;
+                              const query = searchQuery.toLowerCase();
+                              return (
+                                tinteTheme.name.toLowerCase().includes(query) ||
+                                tinteTheme.concept
+                                  ?.toLowerCase()
+                                  .includes(query)
+                              );
+                            })
+                            .map((tinteTheme) => (
+                              <button
+                                key={tinteTheme.id}
+                                type="button"
+                                onClick={() => applyTinteTheme(tinteTheme)}
+                                className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
+                              >
+                                <div className="flex items-start justify-between gap-3">
+                                  <div className="flex-1 space-y-1.5">
+                                    <h4 className="font-medium group-hover:text-primary transition-colors">
+                                      {tinteTheme.name}
+                                    </h4>
+                                    {tinteTheme.concept && (
+                                      <p className="text-xs text-muted-foreground line-clamp-2">
+                                        {tinteTheme.concept}
+                                      </p>
+                                    )}
+                                  </div>
+                                  <div className="flex gap-1.5 shrink-0">
+                                    {[
+                                      tinteTheme.colors.background,
+                                      tinteTheme.colors.primary,
+                                      tinteTheme.colors.secondary,
+                                      tinteTheme.colors.accent,
+                                      tinteTheme.colors.foreground,
+                                    ].map((color, idx) => (
+                                      <div
+                                        key={`${tinteTheme.id}-color-${idx}`}
+                                        className="w-6 h-6 rounded border border-border/50"
+                                        style={{ backgroundColor: color }}
+                                        title={color}
+                                      />
+                                    ))}
+                                  </div>
                                 </div>
-                                <div className="flex gap-1.5 shrink-0">
-                                  {[
-                                    tinteTheme.colors.background,
-                                    tinteTheme.colors.primary,
-                                    tinteTheme.colors.secondary,
-                                    tinteTheme.colors.accent,
-                                    tinteTheme.colors.foreground,
-                                  ].map((color, idx) => (
-                                    <div
-                                      key={`${tinteTheme.id}-color-${idx}`}
-                                      className="w-6 h-6 rounded border border-border/50"
-                                      style={{ backgroundColor: color }}
-                                      title={color}
-                                    />
-                                  ))}
-                                </div>
-                              </div>
-                            </button>
-                          ))}
+                              </button>
+                            ))}
                         </div>
                       </div>
                     )}
