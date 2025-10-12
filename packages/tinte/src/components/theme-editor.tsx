@@ -275,12 +275,13 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   }, []);
 
   // Fetch Tinte themes
-  const fetchTinteThemes = useCallback(async (page = 1) => {
+  const fetchTinteThemes = useCallback(async (page = 1, search?: string) => {
     setLoadingTinteThemes(true);
     setTinteError(null);
     try {
+      const searchParam = search ? `&search=${encodeURIComponent(search)}` : "";
       const response = await fetch(
-        `https://www.tinte.dev/api/themes/public?limit=20&page=${page}`,
+        `https://www.tinte.dev/api/themes/public?limit=20&page=${page}${searchParam}`,
       );
       if (!response.ok) {
         throw new Error("Failed to fetch themes from Tinte");
@@ -683,6 +684,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                               onKeyDown={(e) => {
                                 if (e.key === "Enter") {
                                   setActiveSearch(searchQuery);
+                                  fetchTinteThemes(1, searchQuery);
                                 }
                               }}
                               className="h-9 flex-1"
@@ -694,8 +696,10 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                                 if (activeSearch) {
                                   setSearchQuery("");
                                   setActiveSearch("");
+                                  fetchTinteThemes(1);
                                 } else {
                                   setActiveSearch(searchQuery);
+                                  fetchTinteThemes(1, searchQuery);
                                 }
                               }}
                               className="h-9"
@@ -712,7 +716,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                             <Button
                               variant="outline"
                               size="icon"
-                              onClick={() => fetchTinteThemes(currentPage)}
+                              onClick={() =>
+                                fetchTinteThemes(currentPage, activeSearch)
+                              }
                               title="Refresh themes"
                               className="h-9 w-9"
                             >
@@ -721,69 +727,51 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                           </div>
                           <div className="flex items-center justify-between">
                             <p className="text-xs text-muted-foreground">
-                              {
-                                tinteThemes.filter((theme) => {
-                                  if (!activeSearch) return true;
-                                  const query = activeSearch.toLowerCase();
-                                  return (
-                                    theme.name.toLowerCase().includes(query) ||
-                                    theme.concept?.toLowerCase().includes(query)
-                                  );
-                                }).length
-                              }{" "}
-                              of {tinteThemes.length} themes
+                              {tinteThemes.length} themes
+                              {activeSearch
+                                ? ` matching "${activeSearch}"`
+                                : ""}
                             </p>
                           </div>
                         </div>
                         <div className="grid gap-3">
-                          {tinteThemes
-                            .filter((tinteTheme) => {
-                              if (!activeSearch) return true;
-                              const query = activeSearch.toLowerCase();
-                              return (
-                                tinteTheme.name.toLowerCase().includes(query) ||
-                                tinteTheme.concept
-                                  ?.toLowerCase()
-                                  .includes(query)
-                              );
-                            })
-                            .map((tinteTheme) => (
-                              <button
-                                key={tinteTheme.id}
-                                type="button"
-                                onClick={() => applyTinteTheme(tinteTheme)}
-                                className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
-                              >
-                                <div className="flex items-start justify-between gap-3">
-                                  <div className="flex-1 space-y-1.5">
-                                    <h4 className="font-medium group-hover:text-primary transition-colors">
-                                      {tinteTheme.name}
-                                    </h4>
-                                    {tinteTheme.concept && (
-                                      <p className="text-xs text-muted-foreground line-clamp-2">
-                                        {tinteTheme.concept}
-                                      </p>
-                                    )}
-                                  </div>
-                                  <div className="flex gap-1.5 shrink-0">
-                                    {[
-                                      tinteTheme.colors.background,
-                                      tinteTheme.colors.primary,
-                                      tinteTheme.colors.secondary,
-                                      tinteTheme.colors.accent,
-                                      tinteTheme.colors.foreground,
-                                    ].map((color, idx) => (
-                                      <div
-                                        key={`${tinteTheme.id}-color-${idx}`}
-                                        className="w-6 h-6 rounded border border-border/50"
-                                        style={{ backgroundColor: color }}
-                                        title={color}
-                                      />
-                                    ))}
-                                  </div>
+                          {tinteThemes.map((tinteTheme) => (
+                            <button
+                              key={tinteTheme.id}
+                              type="button"
+                              onClick={() => applyTinteTheme(tinteTheme)}
+                              className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
+                            >
+                              <div className="flex items-start justify-between gap-3">
+                                <div className="flex-1 space-y-1.5">
+                                  <h4 className="font-medium group-hover:text-primary transition-colors">
+                                    {tinteTheme.name}
+                                  </h4>
+                                  {tinteTheme.concept && (
+                                    <p className="text-xs text-muted-foreground line-clamp-2">
+                                      {tinteTheme.concept}
+                                    </p>
+                                  )}
                                 </div>
-                              </button>
-                            ))}
+                                <div className="flex gap-1.5 shrink-0">
+                                  {[
+                                    tinteTheme.colors.background,
+                                    tinteTheme.colors.primary,
+                                    tinteTheme.colors.secondary,
+                                    tinteTheme.colors.accent,
+                                    tinteTheme.colors.foreground,
+                                  ].map((color, idx) => (
+                                    <div
+                                      key={`${tinteTheme.id}-color-${idx}`}
+                                      className="w-6 h-6 rounded border border-border/50"
+                                      style={{ backgroundColor: color }}
+                                      title={color}
+                                    />
+                                  ))}
+                                </div>
+                              </div>
+                            </button>
+                          ))}
                         </div>
                       </div>
                     )}
@@ -800,7 +788,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => fetchTinteThemes(currentPage - 1)}
+                            onClick={() =>
+                              fetchTinteThemes(currentPage - 1, activeSearch)
+                            }
                             disabled={currentPage === 1 || loadingTinteThemes}
                           >
                             Previous
@@ -808,7 +798,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => fetchTinteThemes(currentPage + 1)}
+                            onClick={() =>
+                              fetchTinteThemes(currentPage + 1, activeSearch)
+                            }
                             disabled={!hasMore || loadingTinteThemes}
                           >
                             Next
