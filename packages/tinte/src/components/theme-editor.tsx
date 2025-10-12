@@ -135,6 +135,8 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   const [hasMore, setHasMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeSearch, setActiveSearch] = useState("");
+  const [selectedThemeId, setSelectedThemeId] = useState<string | null>(null);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
   // Chat functionality
   const [apiKeyError, setApiKeyError] = useState(false);
@@ -309,6 +311,8 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
         const shadcnTheme = convertTinteToShadcn(tinteTheme.rawTheme);
         setTheme(shadcnTheme);
         onChange?.(shadcnTheme);
+        setSelectedThemeId(tinteTheme.id);
+        setHasUnsavedChanges(true);
       } else if (
         tinteTheme.overrides?.shadcn?.light &&
         tinteTheme.overrides?.shadcn?.dark
@@ -316,6 +320,8 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
         // Use shadcn override only if it has light and dark color objects
         setTheme(tinteTheme.overrides.shadcn);
         onChange?.(tinteTheme.overrides.shadcn);
+        setSelectedThemeId(tinteTheme.id);
+        setHasUnsavedChanges(true);
       }
     },
     [onChange],
@@ -477,6 +483,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
 
       if (response.ok) {
         setSaveStatus("success");
+        setHasUnsavedChanges(false);
         setTimeout(() => setSaveStatus("idle"), 2000);
       } else {
         const error = await response.json();
@@ -538,12 +545,23 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
               type="button"
               onClick={writeToGlobals}
               disabled={saveStatus === "saving"}
-              className="px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className={`relative px-3 py-1.5 text-sm rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                hasUnsavedChanges
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90 animate-pulse"
+                  : "bg-primary/80 text-primary-foreground hover:bg-primary/90"
+              }`}
             >
+              {hasUnsavedChanges && saveStatus === "idle" && (
+                <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-destructive" />
+                </span>
+              )}
               {saveStatus === "saving" && "Saving..."}
               {saveStatus === "success" && "✅ Saved!"}
               {saveStatus === "error" && "❌ Error"}
-              {saveStatus === "idle" && "Save CSS"}
+              {saveStatus === "idle" &&
+                (hasUnsavedChanges ? "💾 Save Changes" : "Save CSS")}
             </button>
           </div>
         </DialogHeader>
@@ -739,43 +757,62 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                           </div>
                         </div>
                         <div className="grid gap-3">
-                          {tinteThemes.map((tinteTheme) => (
-                            <button
-                              key={tinteTheme.id}
-                              type="button"
-                              onClick={() => applyTinteTheme(tinteTheme)}
-                              className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
-                            >
-                              <div className="flex items-start justify-between gap-3">
-                                <div className="flex-1 space-y-1.5">
-                                  <h4 className="font-medium group-hover:text-primary transition-colors">
-                                    {tinteTheme.name}
-                                  </h4>
-                                  {tinteTheme.concept && (
-                                    <p className="text-xs text-muted-foreground line-clamp-2">
-                                      {tinteTheme.concept}
-                                    </p>
-                                  )}
+                          {tinteThemes.map((tinteTheme) => {
+                            const isSelected =
+                              selectedThemeId === tinteTheme.id;
+                            return (
+                              <button
+                                key={tinteTheme.id}
+                                type="button"
+                                onClick={() => applyTinteTheme(tinteTheme)}
+                                className={`group text-left p-4 border-2 rounded-lg transition-all relative ${
+                                  isSelected
+                                    ? "border-primary bg-primary/10 shadow-md"
+                                    : "border-border hover:border-primary hover:bg-accent/50"
+                                }`}
+                              >
+                                {isSelected && (
+                                  <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded-full font-medium">
+                                    Selected
+                                  </div>
+                                )}
+                                <div className="flex items-start justify-between gap-3">
+                                  <div className="flex-1 space-y-1.5">
+                                    <h4
+                                      className={`font-medium transition-colors ${
+                                        isSelected
+                                          ? "text-primary"
+                                          : "group-hover:text-primary"
+                                      }`}
+                                    >
+                                      {tinteTheme.name}
+                                    </h4>
+                                    {tinteTheme.concept && (
+                                      <p className="text-xs text-muted-foreground line-clamp-2">
+                                        {tinteTheme.concept}
+                                      </p>
+                                    )}
+                                  </div>
+                                  <div className="flex gap-1.5 shrink-0">
+                                    {[
+                                      tinteTheme.colors.background,
+                                      tinteTheme.colors.primary,
+                                      tinteTheme.colors.secondary,
+                                      tinteTheme.colors.accent,
+                                      tinteTheme.colors.foreground,
+                                    ].map((color, idx) => (
+                                      <div
+                                        key={`${tinteTheme.id}-color-${idx}`}
+                                        className="w-6 h-6 rounded border border-border/50"
+                                        style={{ backgroundColor: color }}
+                                        title={color}
+                                      />
+                                    ))}
+                                  </div>
                                 </div>
-                                <div className="flex gap-1.5 shrink-0">
-                                  {[
-                                    tinteTheme.colors.background,
-                                    tinteTheme.colors.primary,
-                                    tinteTheme.colors.secondary,
-                                    tinteTheme.colors.accent,
-                                    tinteTheme.colors.foreground,
-                                  ].map((color, idx) => (
-                                    <div
-                                      key={`${tinteTheme.id}-color-${idx}`}
-                                      className="w-6 h-6 rounded border border-border/50"
-                                      style={{ backgroundColor: color }}
-                                      title={color}
-                                    />
-                                  ))}
-                                </div>
-                              </div>
-                            </button>
-                          ))}
+                              </button>
+                            );
+                          })}
                         </div>
                       </div>
                     )}
