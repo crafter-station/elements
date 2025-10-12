@@ -273,7 +273,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
     setTinteError(null);
     try {
       const response = await fetch(
-        "https://tinte.dev/api/themes/public?limit=20&page=1",
+        "https://www.tinte.dev/api/themes/public?limit=20&page=1",
       );
       if (!response.ok) {
         throw new Error("Failed to fetch themes from Tinte");
@@ -544,7 +544,6 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
             >
               <TabsList className="mx-4 mt-4 mb-4">
                 <TabsTrigger value="editor">Editor</TabsTrigger>
-                <TabsTrigger value="browse">Browse</TabsTrigger>
                 <TabsTrigger value="raw">Raw CSS</TabsTrigger>
                 <TabsTrigger value="agent">Agent</TabsTrigger>
               </TabsList>
