@@ -7,6 +7,7 @@ import { DefaultChatTransport } from "ai";
 import { formatHex, oklch } from "culori";
 import { Loader2, RefreshCw } from "lucide-react";
 
+import { convertTinteToShadcn } from "../lib/tinte-to-shadcn";
 import { ChatInput } from "./chat/chat-input";
 import { Message } from "./chat/message";
 import { ColorInput } from "./color-input";
@@ -304,11 +305,8 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
         setTheme(tinteTheme.overrides.shadcn);
         onChange?.(tinteTheme.overrides.shadcn);
       } else if (tinteTheme.rawTheme) {
-        // Use raw theme data
-        const shadcnTheme: ShadcnTheme = {
-          light: tinteTheme.rawTheme.light,
-          dark: tinteTheme.rawTheme.dark,
-        };
+        // Convert Tinte format to shadcn format
+        const shadcnTheme = convertTinteToShadcn(tinteTheme.rawTheme);
         setTheme(shadcnTheme);
         onChange?.(shadcnTheme);
       }
@@ -478,7 +476,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   }, [theme]);
 
   const availableTokens = TOKEN_GROUPS.flatMap((group) =>
-    group.tokens.filter((token) => theme[mode][token] !== undefined),
+    group.tokens.filter((token) => theme[mode]?.[token] !== undefined),
   );
 
   return (
@@ -705,9 +703,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                                     tinteTheme.colors.secondary,
                                     tinteTheme.colors.accent,
                                     tinteTheme.colors.foreground,
-                                  ].map((color) => (
+                                  ].map((color, idx) => (
                                     <div
-                                      key={color}
+                                      key={`${tinteTheme.id}-color-${idx}`}
                                       className="w-6 h-6 rounded border border-border/50"
                                       style={{ backgroundColor: color }}
                                       title={color}
