@@ -35,19 +35,12 @@ export const Message = ({
           // Handle text parts
           if (part.type === "text") {
             return (
-              <div
+              <Streamdown
                 key={index}
-                className={cn(
-                  "rounded-lg px-3 py-2 text-sm",
-                  message.role === "user"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground",
-                )}
+                className="prose prose-sm max-w-none dark:prose-invert [&>ul>li]:!pl-4"
               >
-                <Streamdown className="prose prose-sm max-w-none dark:prose-invert prose-ul:pl-4 prose-ol:pl-4 prose-li:my-0">
-                  {part.text}
-                </Streamdown>
-              </div>
+                {part.text}
+              </Streamdown>
             );
           }
 

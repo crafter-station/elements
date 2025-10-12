@@ -100,12 +100,17 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   const [rawCss, setRawCss] = useState("");
 
   // Chat functionality
+  const [apiKeyError, setApiKeyError] = useState(false);
   const { messages, sendMessage, status } = useChat({
     transport: new DefaultChatTransport({
       api: "/api/tinte/chat",
     }),
     onError: (error) => {
       console.error("Chat error:", error);
+      // Check if it's an API key error
+      if (error.message?.includes("OpenAI API key")) {
+        setApiKeyError(true);
+      }
     },
   });
 
@@ -543,7 +548,53 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                 className="flex-1 h-0 flex flex-col gap-3 overflow-hidden px-4 pb-4"
               >
                 <div className="h-[500px] border rounded-md bg-muted/20 overflow-y-auto p-4 space-y-2">
-                  {messages.length === 0 ? (
+                  {apiKeyError ? (
+                    <div className="flex flex-col items-center justify-center h-full gap-4">
+                      <div className="text-center space-y-3 max-w-md">
+                        <div className="text-4xl">🔑</div>
+                        <h3 className="font-semibold text-lg">
+                          OpenAI API Key Required
+                        </h3>
+                        <p className="text-muted-foreground text-sm">
+                          To use the AI Theme Generator, you need to configure
+                          your OpenAI API key.
+                        </p>
+                        <div className="bg-muted rounded-lg p-4 text-left space-y-2">
+                          <p className="text-xs font-medium">
+                            Add to your{" "}
+                            <code className="bg-background px-1.5 py-0.5 rounded">
+                              .env.local
+                            </code>{" "}
+                            file:
+                          </p>
+                          <pre className="bg-background p-2 rounded text-xs overflow-x-auto">
+                            <code>OPENAI_API_KEY=your-api-key-here</code>
+                          </pre>
+                          <p className="text-xs text-muted-foreground">
+                            Get your API key from{" "}
+                            <a
+                              href="https://platform.openai.com/api-keys"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary hover:underline"
+                            >
+                              platform.openai.com/api-keys
+                            </a>
+                          </p>
+                        </div>
+                        <Button
+                          variant="outline"
+                          onClick={() => {
+                            setApiKeyError(false);
+                            window.location.reload();
+                          }}
+                          className="mt-2"
+                        >
+                          I've added the API key, reload
+                        </Button>
+                      </div>
+                    </div>
+                  ) : messages.length === 0 ? (
                     <div className="flex flex-col items-center justify-center gap-6">
                       <div className="text-center space-y-2">
                         <h3 className="font-semibold text-lg">
