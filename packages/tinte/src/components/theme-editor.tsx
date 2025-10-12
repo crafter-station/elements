@@ -134,6 +134,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   const [totalPages, setTotalPages] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeSearch, setActiveSearch] = useState("");
 
   // Chat functionality
   const [apiKeyError, setApiKeyError] = useState(false);
@@ -674,16 +675,40 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                       <div className="space-y-3">
                         <div className="space-y-3 mb-4">
                           <div className="flex items-center gap-2">
-                            <div className="relative flex-1">
-                              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
-                              <Input
-                                type="text"
-                                placeholder="Search themes..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="pl-9 h-9"
-                              />
-                            </div>
+                            <Input
+                              type="text"
+                              placeholder="Search themes..."
+                              value={searchQuery}
+                              onChange={(e) => setSearchQuery(e.target.value)}
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  setActiveSearch(searchQuery);
+                                }
+                              }}
+                              className="h-9 flex-1"
+                            />
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => {
+                                if (activeSearch) {
+                                  setSearchQuery("");
+                                  setActiveSearch("");
+                                } else {
+                                  setActiveSearch(searchQuery);
+                                }
+                              }}
+                              className="h-9"
+                            >
+                              {activeSearch ? (
+                                <>Clear</>
+                              ) : (
+                                <>
+                                  <Search className="h-3.5 w-3.5 mr-1.5" />
+                                  Search
+                                </>
+                              )}
+                            </Button>
                             <Button
                               variant="outline"
                               size="icon"
@@ -698,8 +723,8 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                             <p className="text-xs text-muted-foreground">
                               {
                                 tinteThemes.filter((theme) => {
-                                  if (!searchQuery) return true;
-                                  const query = searchQuery.toLowerCase();
+                                  if (!activeSearch) return true;
+                                  const query = activeSearch.toLowerCase();
                                   return (
                                     theme.name.toLowerCase().includes(query) ||
                                     theme.concept?.toLowerCase().includes(query)
@@ -713,8 +738,8 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                         <div className="grid gap-3">
                           {tinteThemes
                             .filter((tinteTheme) => {
-                              if (!searchQuery) return true;
-                              const query = searchQuery.toLowerCase();
+                              if (!activeSearch) return true;
+                              const query = activeSearch.toLowerCase();
                               return (
                                 tinteTheme.name.toLowerCase().includes(query) ||
                                 tinteTheme.concept
