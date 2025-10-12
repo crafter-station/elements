@@ -44,7 +44,7 @@ export const Message = ({
                     : "bg-muted text-foreground",
                 )}
               >
-                <Streamdown className="prose prose-sm max-w-none dark:prose-invert">
+                <Streamdown className="prose prose-sm max-w-none dark:prose-invert prose-ul:pl-4 prose-ol:pl-4 prose-li:my-0">
                   {part.text}
                 </Streamdown>
               </div>
