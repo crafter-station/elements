@@ -172,6 +172,9 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
         light: { ...newTheme.light },
         dark: { ...newTheme.dark },
       });
+
+      // Mark as unsaved to trigger the pulsing save button
+      setHasUnsavedChanges(true);
     },
     [onChange],
   );
