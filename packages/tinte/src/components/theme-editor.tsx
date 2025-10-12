@@ -306,9 +306,8 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
         setTheme(shadcnTheme);
         onChange?.(shadcnTheme);
       } else if (
-        tinteTheme.overrides?.shadcn &&
-        tinteTheme.overrides.shadcn.light &&
-        tinteTheme.overrides.shadcn.dark
+        tinteTheme.overrides?.shadcn?.light &&
+        tinteTheme.overrides?.shadcn?.dark
       ) {
         // Use shadcn override only if it has light and dark color objects
         setTheme(tinteTheme.overrides.shadcn);
