@@ -26,6 +26,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import { Input } from "./ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Textarea } from "./ui/textarea";
 
@@ -690,13 +691,13 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                             </Button>
                           </div>
                           <div className="relative">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            <input
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                            <Input
                               type="text"
                               placeholder="Search themes..."
                               value={searchQuery}
                               onChange={(e) => setSearchQuery(e.target.value)}
-                              className="w-full pl-9 pr-3 py-2 text-sm rounded-md border border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                              className="pl-9"
                             />
                           </div>
                         </div>
