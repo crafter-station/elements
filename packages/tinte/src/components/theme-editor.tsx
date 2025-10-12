@@ -563,50 +563,55 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
       <DialogContent showCloseButton={false}>
         {/* Header */}
         <DialogHeader>
-          <div className="flex items-center gap-3">
-            <Logo size={24} />
-            <div>
-              <DialogTitle>Theme Editor</DialogTitle>
-              <p className="text-sm text-muted-foreground">
-                Live editing • {availableTokens.length} tokens • {mode} mode
-              </p>
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center gap-2">
+              <Logo size={20} />
+              <DialogTitle className="text-base">Theme Editor</DialogTitle>
+              <a
+                href="https://tinte.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors ml-1"
+              >
+                tinte.dev ↗
+              </a>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={loadTheme}
-              disabled={loading}
-              className="p-1.5 hover:bg-accent rounded-md transition-colors disabled:opacity-50"
-              title="Reload from globals.css"
-            >
-              <RefreshCw size={16} className={loading ? "animate-spin" : ""} />
-            </button>
-            <span className="px-3 py-1.5 text-sm text-muted-foreground border border-border rounded-md">
-              Editing: {mode === "light" ? "☀️ Light" : "🌙 Dark"}
-            </span>
-            <button
-              type="button"
-              onClick={writeToGlobals}
-              disabled={saveStatus === "saving"}
-              className={`relative px-3 py-1.5 text-sm rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
-                hasUnsavedChanges
-                  ? "bg-primary text-primary-foreground hover:bg-primary/90 animate-pulse"
-                  : "bg-primary/80 text-primary-foreground hover:bg-primary/90"
-              }`}
-            >
-              {hasUnsavedChanges && saveStatus === "idle" && (
-                <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-destructive" />
-                </span>
-              )}
-              {saveStatus === "saving" && "Saving..."}
-              {saveStatus === "success" && "✅ Saved!"}
-              {saveStatus === "error" && "❌ Error"}
-              {saveStatus === "idle" &&
-                (hasUnsavedChanges ? "💾 Save Changes" : "Save CSS")}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={loadTheme}
+                disabled={loading}
+                className="p-1.5 hover:bg-accent rounded-md transition-colors disabled:opacity-50"
+                title="Reload from globals.css"
+              >
+                <RefreshCw
+                  size={14}
+                  className={loading ? "animate-spin" : ""}
+                />
+              </button>
+              <button
+                type="button"
+                onClick={writeToGlobals}
+                disabled={saveStatus === "saving"}
+                className={`relative px-3 py-1.5 text-xs rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                  hasUnsavedChanges
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90 animate-pulse"
+                    : "bg-primary/80 text-primary-foreground hover:bg-primary/90"
+                }`}
+              >
+                {hasUnsavedChanges && saveStatus === "idle" && (
+                  <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-destructive" />
+                  </span>
+                )}
+                {saveStatus === "saving" && "Saving..."}
+                {saveStatus === "success" && "✅ Saved!"}
+                {saveStatus === "error" && "❌ Error"}
+                {saveStatus === "idle" &&
+                  (hasUnsavedChanges ? "💾 Save" : "Save")}
+              </button>
+            </div>
           </div>
         </DialogHeader>
 
