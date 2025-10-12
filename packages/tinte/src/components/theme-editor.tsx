@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { formatHex, oklch } from "culori";
-import { RefreshCw } from "lucide-react";
+import { Loader2, RefreshCw } from "lucide-react";
 
 import { ChatInput } from "./chat/chat-input";
 import { Message } from "./chat/message";
@@ -33,6 +33,31 @@ type ShadcnTokens = Record<string, string>;
 interface ShadcnTheme {
   light: ShadcnTokens;
   dark: ShadcnTokens;
+}
+
+interface TinteThemePreview {
+  id: string;
+  slug: string;
+  name: string;
+  concept?: string;
+  is_public: boolean;
+  colors: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    foreground: string;
+    background: string;
+  };
+  rawTheme?: {
+    light: Record<string, string>;
+    dark: Record<string, string>;
+  };
+  overrides?: {
+    shadcn?: {
+      light: ShadcnTokens;
+      dark: ShadcnTokens;
+    };
+  };
 }
 
 // Token groups for organized UI
@@ -98,6 +123,11 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   const [mode, setMode] = useState<"light" | "dark">("light");
   const [loading, setLoading] = useState(false);
   const [rawCss, setRawCss] = useState("");
+
+  // Tinte themes state
+  const [tinteThemes, setTinteThemes] = useState<TinteThemePreview[]>([]);
+  const [loadingTinteThemes, setLoadingTinteThemes] = useState(false);
+  const [tinteError, setTinteError] = useState<string | null>(null);
 
   // Chat functionality
   const [apiKeyError, setApiKeyError] = useState(false);
@@ -237,6 +267,47 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
     setLoading(false);
   }, []);
 
+  // Fetch Tinte themes
+  const fetchTinteThemes = useCallback(async () => {
+    setLoadingTinteThemes(true);
+    setTinteError(null);
+    try {
+      const response = await fetch("/api/tinte/themes?limit=20&page=1");
+      if (!response.ok) {
+        throw new Error("Failed to fetch themes from Tinte");
+      }
+      const data = await response.json();
+      setTinteThemes(data.themes || []);
+    } catch (error) {
+      console.error("Error fetching Tinte themes:", error);
+      setTinteError(
+        error instanceof Error ? error.message : "Failed to load themes",
+      );
+    } finally {
+      setLoadingTinteThemes(false);
+    }
+  }, []);
+
+  // Apply Tinte theme
+  const applyTinteTheme = useCallback(
+    (tinteTheme: TinteThemePreview) => {
+      if (tinteTheme.overrides?.shadcn) {
+        // Use shadcn override if available
+        setTheme(tinteTheme.overrides.shadcn);
+        onChange?.(tinteTheme.overrides.shadcn);
+      } else if (tinteTheme.rawTheme) {
+        // Use raw theme data
+        const shadcnTheme: ShadcnTheme = {
+          light: tinteTheme.rawTheme.light,
+          dark: tinteTheme.rawTheme.dark,
+        };
+        setTheme(shadcnTheme);
+        onChange?.(shadcnTheme);
+      }
+    },
+    [onChange],
+  );
+
   // Initialize theme
   useEffect(() => {
     const root = document.documentElement;
@@ -244,6 +315,13 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
     setMode(isDark ? "dark" : "light");
     loadTheme();
   }, [loadTheme]);
+
+  // Fetch Tinte themes when dialog opens
+  useEffect(() => {
+    if (isOpen && tinteThemes.length === 0) {
+      fetchTinteThemes();
+    }
+  }, [isOpen, tinteThemes.length, fetchTinteThemes]);
 
   const handleTokenEdit = useCallback(
     (token: string, newValue: string) => {
@@ -349,7 +427,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
   // Update raw CSS when theme changes
   useEffect(() => {
     setRawCss(generateRawCss());
-  }, [theme, generateRawCss]);
+  }, [generateRawCss]);
 
   // Write to globals.css file
   const [saveStatus, setSaveStatus] = useState<
@@ -464,6 +542,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
             >
               <TabsList className="mx-4 mt-4 mb-4">
                 <TabsTrigger value="editor">Editor</TabsTrigger>
+                <TabsTrigger value="browse">Browse</TabsTrigger>
                 <TabsTrigger value="raw">Raw CSS</TabsTrigger>
                 <TabsTrigger value="agent">Agent</TabsTrigger>
               </TabsList>
@@ -527,6 +606,114 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
               </TabsContent>
 
               <TabsContent
+                value="browse"
+                className="flex-1 h-0 flex flex-col overflow-hidden px-4 pb-4"
+              >
+                <div className="flex-1 border rounded-md bg-muted/20 overflow-y-auto p-4">
+                  {loadingTinteThemes ? (
+                    <div className="flex flex-col items-center justify-center h-full gap-3">
+                      <Loader2 className="animate-spin" size={32} />
+                      <p className="text-sm text-muted-foreground">
+                        Loading themes from tinte.dev...
+                      </p>
+                    </div>
+                  ) : tinteError ? (
+                    <div className="flex flex-col items-center justify-center h-full gap-4">
+                      <div className="text-4xl">⚠️</div>
+                      <div className="text-center space-y-2 max-w-md">
+                        <h3 className="font-semibold text-lg">
+                          Failed to Load Themes
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {tinteError}
+                        </p>
+                        <Button
+                          variant="outline"
+                          onClick={fetchTinteThemes}
+                          className="mt-2"
+                        >
+                          <RefreshCw size={16} className="mr-2" />
+                          Try Again
+                        </Button>
+                      </div>
+                    </div>
+                  ) : tinteThemes.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center h-full gap-3">
+                      <p className="text-sm text-muted-foreground">
+                        No themes available
+                      </p>
+                      <Button
+                        variant="outline"
+                        onClick={fetchTinteThemes}
+                        size="sm"
+                      >
+                        <RefreshCw size={16} className="mr-2" />
+                        Refresh
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <h3 className="font-semibold">
+                            Tinte Community Themes
+                          </h3>
+                          <p className="text-xs text-muted-foreground">
+                            {tinteThemes.length} themes from tinte.dev
+                          </p>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={fetchTinteThemes}
+                        >
+                          <RefreshCw size={14} />
+                        </Button>
+                      </div>
+                      <div className="grid gap-3">
+                        {tinteThemes.map((tinteTheme) => (
+                          <button
+                            key={tinteTheme.id}
+                            onClick={() => applyTinteTheme(tinteTheme)}
+                            className="group text-left p-4 border rounded-lg hover:border-primary hover:bg-accent/50 transition-all"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div className="flex-1 space-y-1.5">
+                                <h4 className="font-medium group-hover:text-primary transition-colors">
+                                  {tinteTheme.name}
+                                </h4>
+                                {tinteTheme.concept && (
+                                  <p className="text-xs text-muted-foreground line-clamp-2">
+                                    {tinteTheme.concept}
+                                  </p>
+                                )}
+                              </div>
+                              <div className="flex gap-1.5 shrink-0">
+                                {[
+                                  tinteTheme.colors.background,
+                                  tinteTheme.colors.primary,
+                                  tinteTheme.colors.secondary,
+                                  tinteTheme.colors.accent,
+                                  tinteTheme.colors.foreground,
+                                ].map((color, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="w-6 h-6 rounded border border-border/50"
+                                    style={{ backgroundColor: color }}
+                                    title={color}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </TabsContent>
+
+              <TabsContent
                 value="raw"
                 className="flex-1 h-0 flex flex-col overflow-hidden px-4 pb-4"
               >
@@ -586,11 +773,10 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                           variant="outline"
                           onClick={() => {
                             setApiKeyError(false);
-                            window.location.reload();
                           }}
                           className="mt-2"
                         >
-                          I've added the API key, reload
+                          I've added the API key
                         </Button>
                       </div>
                     </div>

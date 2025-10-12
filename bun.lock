@@ -3,11 +3,6 @@
   "workspaces": {
     "": {
       "name": "elements",
-      "dependencies": {
-        "@radix-ui/react-context-menu": "^2.2.16",
-        "remark-gfm": "^4.0.1",
-        "streamdown": "^1.4.0",
-      },
       "devDependencies": {
         "@biomejs/biome": "2.2.0",
         "@shikijs/rehype": "^3.13.0",
@@ -89,6 +84,7 @@
         "remark-math": "^6.0.0",
         "shadcn": "^2.9.3-canary.0",
         "sonner": "^2.0.7",
+        "streamdown": "^1.4.0",
         "tailwind-merge": "^3.3.1",
         "uploadthing": "^7.7.4",
         "zod": "^4.1.5",

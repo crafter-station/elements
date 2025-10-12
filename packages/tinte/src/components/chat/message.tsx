@@ -35,10 +35,7 @@ export const Message = ({
           // Handle text parts
           if (part.type === "text") {
             return (
-              <Streamdown
-                key={index}
-                className="prose prose-sm max-w-none dark:prose-invert [&_ul]:!list-outside [&_ol]:!list-outside [&_li]:!pl-6 [&_li]:!my-0"
-              >
+              <Streamdown className="not-prose" key={index}>
                 {part.text}
               </Streamdown>
             );

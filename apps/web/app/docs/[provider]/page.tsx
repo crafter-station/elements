@@ -135,6 +135,11 @@ export default async function ProviderPage(props: ProviderPageProps) {
 
   return (
     <div className="flex-1 w-full border-border border-dotted border-x">
+      <ul className="hidden ml-4 list-outside list-disc whitespace-normal">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
       <ComponentPageHero
         brandColor={metadata.brandColor}
         darkBrandColor={metadata.darkBrandColor}
