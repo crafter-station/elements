@@ -566,7 +566,7 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                   >
                     {TOKEN_GROUPS.map((group) => {
                       const groupTokens = group.tokens.filter(
-                        (token) => theme[mode][token] !== undefined,
+                        (token) => theme[mode]?.[token] !== undefined,
                       );
                       if (groupTokens.length === 0) return null;
 
