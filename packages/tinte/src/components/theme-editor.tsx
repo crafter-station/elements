@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { formatHex, oklch } from "culori";
-import { Loader2, RefreshCw, Search } from "lucide-react";
+import { Loader2, RefreshCw, Search, X } from "lucide-react";
 
 import { convertTinteToShadcn } from "../lib/tinte-to-shadcn";
 import { ChatInput } from "./chat/chat-input";
@@ -676,42 +676,46 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
                       <div className="space-y-3">
                         <div className="space-y-3 mb-4">
                           <div className="flex items-center gap-2">
-                            <Input
-                              type="text"
-                              placeholder="Search themes..."
-                              value={searchQuery}
-                              onChange={(e) => setSearchQuery(e.target.value)}
-                              onKeyDown={(e) => {
-                                if (e.key === "Enter") {
-                                  setActiveSearch(searchQuery);
-                                  fetchTinteThemes(1, searchQuery);
-                                }
-                              }}
-                              className="h-9 flex-1"
-                            />
+                            <div className="relative flex-1">
+                              <Input
+                                type="text"
+                                placeholder="Search themes..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onKeyDown={(e) => {
+                                  if (e.key === "Enter") {
+                                    setActiveSearch(searchQuery);
+                                    fetchTinteThemes(1, searchQuery);
+                                  }
+                                }}
+                                className="h-9 pr-8"
+                              />
+                              {searchQuery && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setSearchQuery("");
+                                    setActiveSearch("");
+                                    fetchTinteThemes(1);
+                                  }}
+                                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 hover:bg-muted rounded-sm transition-colors"
+                                >
+                                  <X className="h-3 w-3 text-muted-foreground" />
+                                </button>
+                              )}
+                            </div>
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => {
-                                if (activeSearch) {
-                                  setSearchQuery("");
-                                  setActiveSearch("");
-                                  fetchTinteThemes(1);
-                                } else {
-                                  setActiveSearch(searchQuery);
-                                  fetchTinteThemes(1, searchQuery);
-                                }
+                                setActiveSearch(searchQuery);
+                                fetchTinteThemes(1, searchQuery);
                               }}
+                              disabled={!searchQuery}
                               className="h-9"
                             >
-                              {activeSearch ? (
-                                <>Clear</>
-                              ) : (
-                                <>
-                                  <Search className="h-3.5 w-3.5 mr-1.5" />
-                                  Search
-                                </>
-                              )}
+                              <Search className="h-3.5 w-3.5 mr-1.5" />
+                              Search
                             </Button>
                             <Button
                               variant="outline"
