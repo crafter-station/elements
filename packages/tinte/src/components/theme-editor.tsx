@@ -778,131 +778,133 @@ export default function ThemeEditor({ onChange }: ThemeEditorProps) {
 
               <TabsContent
                 value="agent"
-                className="flex-1 h-0 flex flex-col gap-3 overflow-hidden px-4 pb-4"
+                className="flex-1 h-0 flex flex-col overflow-hidden px-4 pb-4"
               >
-                <div className="h-[500px] border rounded-md bg-muted/20 overflow-y-auto p-4 space-y-2">
-                  {apiKeyError ? (
-                    <div className="flex flex-col items-center justify-center h-full gap-4">
-                      <div className="text-center space-y-3 max-w-md">
-                        <div className="text-4xl">🔑</div>
-                        <h3 className="font-semibold text-lg">
-                          OpenAI API Key Required
-                        </h3>
-                        <p className="text-muted-foreground text-sm">
-                          To use the AI Theme Generator, you need to configure
-                          your OpenAI API key.
-                        </p>
-                        <div className="bg-muted rounded-lg p-4 text-left space-y-2">
-                          <p className="text-xs font-medium">
-                            Add to your{" "}
-                            <code className="bg-background px-1.5 py-0.5 rounded">
-                              .env.local
-                            </code>{" "}
-                            file:
+                <div className="h-[500px] flex flex-col gap-3">
+                  <div className="flex-1 border rounded-md bg-muted/20 overflow-y-auto p-4 space-y-2">
+                    {apiKeyError ? (
+                      <div className="flex flex-col items-center justify-center h-full gap-4">
+                        <div className="text-center space-y-3 max-w-md">
+                          <div className="text-4xl">🔑</div>
+                          <h3 className="font-semibold text-lg">
+                            OpenAI API Key Required
+                          </h3>
+                          <p className="text-muted-foreground text-sm">
+                            To use the AI Theme Generator, you need to configure
+                            your OpenAI API key.
                           </p>
-                          <pre className="bg-background p-2 rounded text-xs overflow-x-auto">
-                            <code>OPENAI_API_KEY=your-api-key-here</code>
-                          </pre>
-                          <p className="text-xs text-muted-foreground">
-                            Get your API key from{" "}
-                            <a
-                              href="https://platform.openai.com/api-keys"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-primary hover:underline"
-                            >
-                              platform.openai.com/api-keys
-                            </a>
+                          <div className="bg-muted rounded-lg p-4 text-left space-y-2">
+                            <p className="text-xs font-medium">
+                              Add to your{" "}
+                              <code className="bg-background px-1.5 py-0.5 rounded">
+                                .env.local
+                              </code>{" "}
+                              file:
+                            </p>
+                            <pre className="bg-background p-2 rounded text-xs overflow-x-auto">
+                              <code>OPENAI_API_KEY=your-api-key-here</code>
+                            </pre>
+                            <p className="text-xs text-muted-foreground">
+                              Get your API key from{" "}
+                              <a
+                                href="https://platform.openai.com/api-keys"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:underline"
+                              >
+                                platform.openai.com/api-keys
+                              </a>
+                            </p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            onClick={() => {
+                              setApiKeyError(false);
+                            }}
+                            className="mt-2"
+                          >
+                            I've added the API key
+                          </Button>
+                        </div>
+                      </div>
+                    ) : messages.length === 0 ? (
+                      <div className="flex flex-col items-center justify-center gap-6">
+                        <div className="text-center space-y-2">
+                          <h3 className="font-semibold text-lg">
+                            AI Theme Generator
+                          </h3>
+                          <p className="text-muted-foreground text-sm max-w-md">
+                            Describe your ideal theme and let AI generate a
+                            complete color palette for you
                           </p>
                         </div>
-                        <Button
-                          variant="outline"
-                          onClick={() => {
-                            setApiKeyError(false);
-                          }}
-                          className="mt-2"
-                        >
-                          I've added the API key
-                        </Button>
+                        <div className="grid gap-2 w-full max-w-md px-4">
+                          <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">
+                            Suggested prompts:
+                          </p>
+                          <Button
+                            variant="outline"
+                            onClick={() =>
+                              sendMessage({
+                                text: "Create a purple theme with high contrast for accessibility",
+                              })
+                            }
+                            className="justify-start h-auto py-3 whitespace-normal text-left"
+                          >
+                            Create a purple theme with high contrast
+                          </Button>
+                          <Button
+                            variant="outline"
+                            onClick={() =>
+                              sendMessage({
+                                text: "Generate a warm autumn theme with orange and brown tones",
+                              })
+                            }
+                            className="justify-start h-auto py-3 whitespace-normal text-left"
+                          >
+                            Generate a warm autumn theme
+                          </Button>
+                          <Button
+                            variant="outline"
+                            onClick={() =>
+                              sendMessage({
+                                text: "Create a modern dark theme with blue accents",
+                              })
+                            }
+                            className="justify-start h-auto py-3 whitespace-normal text-left"
+                          >
+                            Create a modern dark theme with blue accents
+                          </Button>
+                          <Button
+                            variant="outline"
+                            onClick={() =>
+                              sendMessage({
+                                text: "Design a soft pastel theme perfect for a wellness app",
+                              })
+                            }
+                            className="justify-start h-auto py-3 whitespace-normal text-left"
+                          >
+                            Design a soft pastel wellness theme
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  ) : messages.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center gap-6">
-                      <div className="text-center space-y-2">
-                        <h3 className="font-semibold text-lg">
-                          AI Theme Generator
-                        </h3>
-                        <p className="text-muted-foreground text-sm max-w-md">
-                          Describe your ideal theme and let AI generate a
-                          complete color palette for you
-                        </p>
-                      </div>
-                      <div className="grid gap-2 w-full max-w-md px-4">
-                        <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">
-                          Suggested prompts:
-                        </p>
-                        <Button
-                          variant="outline"
-                          onClick={() =>
-                            sendMessage({
-                              text: "Create a purple theme with high contrast for accessibility",
-                            })
-                          }
-                          className="justify-start h-auto py-3 whitespace-normal text-left"
-                        >
-                          Create a purple theme with high contrast
-                        </Button>
-                        <Button
-                          variant="outline"
-                          onClick={() =>
-                            sendMessage({
-                              text: "Generate a warm autumn theme with orange and brown tones",
-                            })
-                          }
-                          className="justify-start h-auto py-3 whitespace-normal text-left"
-                        >
-                          Generate a warm autumn theme
-                        </Button>
-                        <Button
-                          variant="outline"
-                          onClick={() =>
-                            sendMessage({
-                              text: "Create a modern dark theme with blue accents",
-                            })
-                          }
-                          className="justify-start h-auto py-3 whitespace-normal text-left"
-                        >
-                          Create a modern dark theme with blue accents
-                        </Button>
-                        <Button
-                          variant="outline"
-                          onClick={() =>
-                            sendMessage({
-                              text: "Design a soft pastel theme perfect for a wellness app",
-                            })
-                          }
-                          className="justify-start h-auto py-3 whitespace-normal text-left"
-                        >
-                          Design a soft pastel wellness theme
-                        </Button>
-                      </div>
-                    </div>
-                  ) : (
-                    messages.map((message) => (
-                      <Message
-                        key={message.id}
-                        message={message}
-                        onApplyTheme={handleApplyTheme}
-                      />
-                    ))
-                  )}
+                    ) : (
+                      messages.map((message) => (
+                        <Message
+                          key={message.id}
+                          message={message}
+                          onApplyTheme={handleApplyTheme}
+                        />
+                      ))
+                    )}
+                  </div>
+                  <ChatInput
+                    onSubmit={(msg) => {
+                      sendMessage({ text: msg });
+                    }}
+                    disabled={status === "submitted" || status === "streaming"}
+                  />
                 </div>
-                <ChatInput
-                  onSubmit={(msg) => {
-                    sendMessage({ text: msg });
-                  }}
-                  disabled={status === "submitted" || status === "streaming"}
-                />
               </TabsContent>
             </Tabs>
           )}
