@@ -1,1 +1,1 @@
-export { TinteEditor } from "./registry/tinte-editor/components/tinte-editor";
+export { TinteEditor } from "./registry/tinte/tinte-editor/components/tinte-editor";

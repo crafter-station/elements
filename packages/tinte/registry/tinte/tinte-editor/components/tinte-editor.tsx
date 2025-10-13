@@ -8,15 +8,6 @@ import { formatHex, oklch } from "culori";
 import { Loader2, RefreshCw, Search, X } from "lucide-react";
 
 import {
-  convertTinteToShadcn,
-  type TinteTheme,
-} from "@/lib/elements/tinte/tinte-to-shadcn";
-
-import { TinteLogo } from "@/components/elements/logos/tinte";
-import { ChatInput } from "@/components/elements/tinte/chat-input";
-import { ChatMessage } from "@/components/elements/tinte/chat-message";
-import { ColorInput } from "@/components/elements/tinte/color-input";
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -33,6 +24,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+
+import { TinteLogo } from "../../../../../logos/registry/logos/tinte";
+import { convertTinteToShadcn, type TinteTheme } from "../lib/tinte-to-shadcn";
+import { ChatInput } from "./chat/chat-input";
+import { Message as ChatMessage } from "./chat/chat-message";
+import { ColorInput } from "./color-input";
 
 type ShadcnTokens = Record<string, string>;
 
@@ -608,7 +605,7 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
             className="w-14 h-14 bg-card border-2 border-border rounded-full shadow-lg hover:scale-110 transition-all duration-200 flex items-center justify-center hover:shadow-xl"
             title="Open Theme Editor"
           >
-            <TinteLogo size={28} className="drop-shadow-sm" />
+            <TinteLogo className="w-7 h-7 drop-shadow-sm" />
           </button>
         </DialogTrigger>
       </div>
@@ -619,7 +616,7 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
         <DialogHeader>
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
-              <Logo size={20} />
+              <TinteLogo className="w-5 h-5" />
               <DialogTitle className="text-base">Theme Editor</DialogTitle>
               <a
                 href="https://tinte.dev"

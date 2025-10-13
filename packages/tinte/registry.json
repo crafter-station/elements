@@ -34,47 +34,47 @@
       ],
       "files": [
         {
-          "path": "registry/default/tinte-editor/api/write-globals/route.ts",
+          "path": "registry/default/tinte/tinte-editor/api/write-globals/route.ts",
           "type": "registry:page",
           "target": "app/api/elements/tinte//write-globals/route.ts"
         },
         {
-          "path": "registry/default/tinte-editor/api/read-globals/route.ts",
+          "path": "registry/default/tinte/tinte-editor/api/read-globals/route.ts",
           "type": "registry:page",
           "target": "app/api/elements/tinte/read-globals/route.ts"
         },
         {
-          "path": "registry/default/tinte-editor/components/tinte-editor.tsx",
+          "path": "registry/default/tinte/tinte-editor/components/tinte-editor.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/tinte-editor.tsx"
         },
         {
-          "path": "registry/default/tinte-editor/components/color-input.tsx",
+          "path": "registry/default/tinte/tinte-editor/components/color-input.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/color-input.tsx"
         },
         {
-          "path": "registry/default/tinte-editor/components/chat/chat-container.tsx",
+          "path": "registry/default/tinte/tinte-editor/components/chat/chat-container.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-container.tsx"
         },
         {
-          "path": "registry/default/tinte-editor/components/chat/chat-input.tsx",
+          "path": "registry/default/tinte/tinte-editor/components/chat/chat-input.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-input.tsx"
         },
         {
-          "path": "registry/default/tinte-editor/components/chat/chat-message.tsx",
+          "path": "registry/default/tinte/tinte-editor/components/chat/chat-message.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-message.tsx"
         },
         {
-          "path": "registry/default/tinte-editor/lib/tinte-to-shadcn.ts",
+          "path": "registry/default/tinte/tinte-editor/lib/tinte-to-shadcn.ts",
           "type": "registry:lib",
           "target": "lib/elements/tinte/tinte-to-shadcn.ts"
         },
         {
-          "path": "registry/default/tinte-editor/lib/get-css-path.ts",
+          "path": "registry/default/tinte/tinte-editor/lib/get-css-path.ts",
           "type": "registry:lib",
           "target": "lib/elements/tinte/get-css-path.ts"
         }

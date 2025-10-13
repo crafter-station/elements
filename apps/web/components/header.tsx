@@ -62,7 +62,9 @@ export function Header() {
             </Link>
           </Button>
 
-          <ThemeSwitcherButton size="sm" className="h-7 sm:h-8 w-7 sm:w-8" />
+          <div className="h-7 sm:h-8 w-7 sm:w-8">
+            <ThemeSwitcherButton />
+          </div>
 
           <Button
             asChild
