@@ -3,27 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useChat } from "@ai-sdk/react";
-import { TinteLogo } from "@components/elements/logos/tinte";
-import { ChatInput } from "@components/elements/tinte/chat-input";
-import { ChatMessage } from "@components/elements/tinte/chat-message";
-import { ColorInput } from "@components/elements/tinte/color-input";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@components/ui/accordion";
-import { Button } from "@components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@components/ui/dialog";
-import { Input } from "@components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs";
-import { Textarea } from "@components/ui/textarea";
 import { DefaultChatTransport } from "ai";
 import { formatHex, oklch } from "culori";
 import { Loader2, RefreshCw, Search, X } from "lucide-react";
@@ -31,7 +10,29 @@ import { Loader2, RefreshCw, Search, X } from "lucide-react";
 import {
   convertTinteToShadcn,
   type TinteTheme,
-} from "@/lib/tinte/tinte-to-shadcn";
+} from "@/lib/elements/tinte/tinte-to-shadcn";
+
+import { TinteLogo } from "@/components/elements/logos/tinte";
+import { ChatInput } from "@/components/elements/tinte/chat-input";
+import { ChatMessage } from "@/components/elements/tinte/chat-message";
+import { ColorInput } from "@/components/elements/tinte/color-input";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 
 type ShadcnTokens = Record<string, string>;
 

@@ -44,9 +44,9 @@
           "target": "app/api/elements/tinte/read-globals/route.ts"
         },
         {
-          "path": "registry/default/tinte-editor/components/theme-editor.tsx",
+          "path": "registry/default/tinte-editor/components/tinte-editor.tsx",
           "type": "registry:component",
-          "target": "components/elements/tinte/theme-editor.tsx"
+          "target": "components/elements/tinte/tinte-editor.tsx"
         },
         {
           "path": "registry/default/tinte-editor/components/color-input.tsx",
