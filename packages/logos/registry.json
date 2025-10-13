@@ -667,6 +667,40 @@
       "docs": "Kebo logo component with official brand purple color."
     },
     {
+      "name": "polar-logo",
+      "type": "registry:ui",
+      "title": "Polar Logo",
+      "description": "Polar logo component with brand blue",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/logos/polar.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/polar.tsx"
+        }
+      ],
+      "categories": ["Funding", "logo", "brand"],
+      "docs": "Polar logo component with official brand blue color."
+    },
+    {
+      "name": "tinte-logo",
+      "type": "registry:ui",
+      "title": "Tinte Logo",
+      "description": "Tinte logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/logos/tinte.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/tinte.tsx"
+        }
+      ],
+      "categories": ["Theme", "logo", "brand"],
+      "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system."
+    },
+    {
       "name": "logos",
       "type": "registry:block",
       "title": "Brand Logos Collection",

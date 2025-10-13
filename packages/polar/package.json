@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "description": "Polar sponsorship components and registry",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
   "scripts": {
     "dev": "echo 'No dev script for polar package'",
     "build": "echo 'No build script for polar package'",

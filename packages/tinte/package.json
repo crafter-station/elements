@@ -6,9 +6,7 @@
   "types": "index.ts",
   "exports": {
     ".": "./index.ts",
-    "./theme-editor": "./src/components/theme-editor.tsx",
-    "./color-input": "./src/components/color-input.tsx",
-    "./logo": "./src/components/logo.tsx"
+    "./tinte-editor": "./registry/tinte-editor/components/theme-editor.tsx"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.48",
@@ -24,7 +22,6 @@
     "clsx": "^2.1.1",
     "culori": "^4.0.1",
     "lucide-react": "latest",
-    "nanoid": "^5.1.6",
     "sonner": "latest",
     "tailwind-merge": "^3.3.1",
     "zod": "^4.1.12"

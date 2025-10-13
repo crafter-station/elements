@@ -17,6 +17,7 @@ import {
   getComponentsByProvider,
   getProviderMetadata,
   getProviders,
+  getRegistryItems,
 } from "@/lib/registry-loader";
 
 import { ComponentPageHero } from "@/components/component-page/hero";
@@ -125,13 +126,34 @@ export default async function ProviderPage(props: ProviderPageProps) {
   const mdxPage = providersSource.getPage([provider]);
 
   // Generate install command for the full suite
-  const bundleComponent = components.find(
-    (c) => c.type === "registry:block" && c.files?.length === 0,
-  );
+  // Search in ALL registry items (not filtered) to find bundle components
+  const allItems = getRegistryItems();
+  const bundleComponent =
+    allItems.find(
+      (c) =>
+        c.type === "registry:block" &&
+        c.files?.length === 0 &&
+        c.name.startsWith(provider) &&
+        c.name.includes("shadcn"), // Prioritize shadcn bundles
+    ) ||
+    allItems.find(
+      (c) =>
+        c.type === "registry:block" &&
+        c.files?.length === 0 &&
+        c.name.startsWith(provider),
+    );
+
+  // Find the primary component - prioritize sign-in or first shadcn component
+  const primaryComponent =
+    components.find(
+      (c) => c.name.includes("sign-in") && c.name.includes("shadcn"),
+    ) ||
+    components.find((c) => c.name.includes("shadcn")) ||
+    components[0];
 
   const installCommand = bundleComponent
     ? `@elements/${bundleComponent.name}`
-    : `@elements/${components[0]?.name || provider}`;
+    : `@elements/${primaryComponent?.name || provider}`;
 
   return (
     <div className="flex-1 w-full border-border border-dotted border-x">
@@ -170,10 +192,10 @@ export default async function ProviderPage(props: ProviderPageProps) {
                       },
                       defaultColor: false,
                       transformers: [
-                        transformerNotationDiff({
+                        transformerNotationHighlight({
                           matchAlgorithm: "v3",
                         }),
-                        transformerNotationHighlight({
+                        transformerNotationDiff({
                           matchAlgorithm: "v3",
                         }),
                         transformerNotationFocus({

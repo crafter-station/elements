@@ -57,7 +57,7 @@ export function getProviderFromName(name: string): string {
   }
 
   // Special case: theme-editor is tinte
-  if (name === "theme-editor") {
+  if (name === "tinte-editor") {
     return "tinte";
   }
 

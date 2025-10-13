@@ -45,9 +45,14 @@
     "@elements/vercel-logo",
     "@elements/polar-logo",
     "@elements/crafter-station-logo",
-    "@elements/kebo-logo"
+    "@elements/kebo-logo",
+    "@elements/polar-logo",
+    "@elements/tinte-logo"
   ],
   "files": [],
   "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use.",
-  "categories": ["logo", "brand"]
+  "categories": [
+    "logo",
+    "brand"
+  ]
 }

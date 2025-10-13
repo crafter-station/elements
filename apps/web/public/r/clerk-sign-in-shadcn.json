@@ -4,7 +4,10 @@
   "type": "registry:ui",
   "title": "Clerk Sign In (ShadCN)",
   "description": "Complete sign-in form with Clerk integration using custom ShadCN components",
-  "dependencies": ["@clerk/nextjs", "@clerk/types"],
+  "dependencies": [
+    "@clerk/nextjs",
+    "@clerk/types"
+  ],
   "registryDependencies": [
     "button",
     "input",

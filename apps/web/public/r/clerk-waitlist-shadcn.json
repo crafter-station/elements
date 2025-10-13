@@ -4,7 +4,11 @@
   "type": "registry:block",
   "title": "Clerk Waitlist (ShadCN)",
   "description": "An animated waitlist signup form with Clerk integration using custom ShadCN components",
-  "dependencies": ["motion", "@clerk/backend", "@clerk/nextjs"],
+  "dependencies": [
+    "motion",
+    "@clerk/backend",
+    "@clerk/nextjs"
+  ],
   "registryDependencies": [
     "button",
     "input",

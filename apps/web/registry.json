@@ -784,6 +784,40 @@
       "docs": "Kebo logo component with official brand purple color."
     },
     {
+      "name": "polar-logo",
+      "type": "registry:ui",
+      "title": "Polar Logo",
+      "description": "Polar logo component with brand blue",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "../../packages/logos/registry/logos/polar.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/polar.tsx"
+        }
+      ],
+      "categories": ["Funding", "logo", "brand"],
+      "docs": "Polar logo component with official brand blue color."
+    },
+    {
+      "name": "tinte-logo",
+      "type": "registry:ui",
+      "title": "Tinte Logo",
+      "description": "Tinte logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "../../packages/logos/registry/logos/tinte.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/tinte.tsx"
+        }
+      ],
+      "categories": ["Theme", "logo", "brand"],
+      "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system."
+    },
+    {
       "name": "logos",
       "type": "registry:block",
       "title": "Brand Logos Collection",
@@ -828,7 +862,9 @@
         "@elements/vercel-logo",
         "@elements/polar-logo",
         "@elements/crafter-station-logo",
-        "@elements/kebo-logo"
+        "@elements/kebo-logo",
+        "@elements/polar-logo",
+        "@elements/tinte-logo"
       ],
       "dependencies": [],
       "files": [],
@@ -992,7 +1028,7 @@
       "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Multi-button with system/light/dark options."
     },
     {
-      "name": "theme-editor",
+      "name": "tinte-editor",
       "type": "registry:block",
       "title": "Tinte Theme Editor",
       "description": "Live theme editor with AI-powered theme generation, Browse tab for tinte.dev themes, and manual color editing. Complete shadcn/ui theme customization tool.",
@@ -1015,78 +1051,76 @@
         "@uiw/react-color",
         "ai",
         "culori",
-        "lucide-react",
-        "nanoid",
-        "zod"
+        "lucide-react"
       ],
       "files": [
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/theme-editor.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/tinte-editor.tsx",
           "type": "registry:component",
-          "target": "@/components/theme-editor.tsx"
+          "target": "@/components/tinte-editor.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/color-input.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/color-input.tsx",
           "type": "registry:component",
           "target": "@/components/color-input.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/logo.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/logo.tsx",
           "type": "registry:component",
           "target": "@/components/tinte-logo.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/chat/chat-input.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/chat/chat-input.tsx",
           "type": "registry:component",
           "target": "@/components/chat/chat-input.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/chat/message.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/chat/message.tsx",
           "type": "registry:component",
           "target": "@/components/chat/message.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/lib/tinte-to-shadcn.ts",
+          "path": "../../packages/tinte/registry/tinte-editor/lib/tinte-to-shadcn.ts",
           "type": "registry:lib",
           "target": "@/lib/tinte-to-shadcn.ts"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/lib/utils.ts",
+          "path": "../../packages/tinte/registry/tinte-editor/lib/utils.ts",
           "type": "registry:lib",
           "target": "@/lib/utils.ts"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/ui/accordion.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/ui/accordion.tsx",
           "type": "registry:ui",
           "target": "@/components/ui/accordion.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/ui/button.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/ui/button.tsx",
           "type": "registry:ui",
           "target": "@/components/ui/button.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/ui/dialog.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/ui/dialog.tsx",
           "type": "registry:ui",
           "target": "@/components/ui/dialog.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/ui/input.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/ui/input.tsx",
           "type": "registry:ui",
           "target": "@/components/ui/input.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/ui/scroll-area.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/ui/scroll-area.tsx",
           "type": "registry:ui",
           "target": "@/components/ui/scroll-area.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/ui/tabs.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/ui/tabs.tsx",
           "type": "registry:ui",
           "target": "@/components/ui/tabs.tsx"
         },
         {
-          "path": "../../packages/tinte/registry/theme-editor/components/ui/textarea.tsx",
+          "path": "../../packages/tinte/registry/tinte-editor/components/ui/textarea.tsx",
           "type": "registry:ui",
           "target": "@/components/ui/textarea.tsx"
         }

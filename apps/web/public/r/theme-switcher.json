@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Theme Switcher",
   "description": "A theme switcher component with animated sun/moon icons",
-  "dependencies": ["next-themes"],
-  "registryDependencies": ["switch"],
+  "dependencies": [
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "switch"
+  ],
   "files": [
     {
       "path": "../../packages/theme/registry/theme-switcher/theme-switcher.tsx",

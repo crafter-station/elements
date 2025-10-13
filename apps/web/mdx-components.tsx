@@ -1,39 +1,55 @@
 import { Children, isValidElement } from "react";
 
+// Import from @elements packages
+import {
+  SignInShadcn,
+  SignInSignals,
+  SignUpShadcn,
+  SignUpSignals,
+  WaitlistShadcn,
+} from "@elements/clerk";
+import { SponsorTiersPreview } from "@elements/polar";
+import {
+  ThemeSwitcher,
+  ThemeSwitcherButton,
+  ThemeSwitcherDropdown,
+  ThemeSwitcherMultiButton,
+  ThemeSwitcherSwitch,
+  ThemeSwitcherToggle,
+} from "@elements/theme";
+import { TinteEditor } from "@elements/tinte";
+import {
+  UploadButtonPreview,
+  UploadDropzonePreview,
+} from "@elements/uploadthing";
 import type { MDXComponents } from "mdx/types";
 
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentPreviewItem } from "@/components/component-preview-item";
-import { ClerkSignInPreview } from "@/components/elements/clerk-sign-in-preview";
-import { ClerkSignUpPreview } from "@/components/elements/clerk-sign-up-preview";
-import { ClerkWaitlistPreview } from "@/components/elements/clerk-waitlist-preview";
-import { SponsorTiersPreview } from "@/components/elements/polar-sponsor-tiers-preview";
-import { ThemeSwitcher } from "@/components/elements/theme-switcher";
-import { ThemeSwitcherButton } from "@/components/elements/theme-switcher-button";
-import { ThemeSwitcherDropdown } from "@/components/elements/theme-switcher-dropdown";
-import { ThemeSwitcherMultiButton } from "@/components/elements/theme-switcher-multi-button";
-import { ThemeSwitcherSwitch } from "@/components/elements/theme-switcher-switch";
-import { ThemeSwitcherToggle } from "@/components/elements/theme-switcher-toggle";
-import { TintePreview } from "@/components/elements/tinte-preview";
-import { UploadButtonPreview } from "@/components/elements/uploadthing-button-preview";
-import { UploadDropzonePreview } from "@/components/elements/uploadthing-dropzone-preview";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ComponentPreview,
     ComponentPreviewItem,
+    // Clerk Components
+    SignInShadcn,
+    SignInSignals,
+    SignUpShadcn,
+    SignUpSignals,
+    WaitlistShadcn,
+    // Polar Components
+    SponsorTiersPreview,
+    // Theme Components
     ThemeSwitcher,
-    ThemeSwitcherSwitch,
     ThemeSwitcherButton,
     ThemeSwitcherDropdown,
-    ThemeSwitcherToggle,
     ThemeSwitcherMultiButton,
-    ClerkSignInPreview,
-    ClerkSignUpPreview,
-    ClerkWaitlistPreview,
-    SponsorTiersPreview,
-    TintePreview,
+    ThemeSwitcherSwitch,
+    ThemeSwitcherToggle,
+    // Tinte Components
+    TinteEditor,
+    // UploadThing Components
     UploadButtonPreview,
     UploadDropzonePreview,
     pre: ({ children, ...props }: any) => {

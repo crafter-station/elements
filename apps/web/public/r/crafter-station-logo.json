@@ -15,5 +15,9 @@
     }
   ],
   "docs": "Crafter Station logo component with official brand yellow color.",
-  "categories": ["Development", "logo", "brand"]
+  "categories": [
+    "Development",
+    "logo",
+    "brand"
+  ]
 }

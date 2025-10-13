@@ -22,18 +22,18 @@ Complete sign-in with OAuth, MFA, password reset, and error handling.
   category="Authentication"
   name="Clerk"
 >
-  <ClerkSignInPreview />
+  <SignInShadcn />
 </ComponentPreviewItem>
 
 **Features:** Email/password, 12 OAuth providers, MFA, password reset, account lockout
 
 ```tsx
-import { ClerkSignInShadcn } from "@/app/elements/clerk/sign-in/sign-in";
+import { SignInShadcn } from "@elements/clerk";
 
 export default function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <ClerkSignInShadcn />
+      <SignInShadcn />
     </div>
   );
 }
@@ -49,18 +49,18 @@ Registration with dynamic fields, email verification, and CAPTCHA.
   category="Authentication"
   name="Clerk"
 >
-  <ClerkSignUpPreview />
+  <SignUpShadcn />
 </ComponentPreviewItem>
 
 **Features:** Dynamic fields, OAuth, 6-digit verification, password strength, waitlist detection
 
 ```tsx
-import { ClerkSignUpShadcn } from "@/app/elements/clerk/sign-up/sign-up";
+import { SignUpShadcn } from "@elements/clerk";
 
 export default function SignUpPage() {
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <ClerkSignUpShadcn />
+      <SignUpShadcn />
     </div>
   );
 }
@@ -76,7 +76,7 @@ Animated waitlist signup with server-side integration.
   category="Authentication"
   name="Clerk"
 >
-  <ClerkWaitlistPreview />
+  <WaitlistShadcn />
 </ComponentPreviewItem>
 
 **Features:** Email validation, animated success, duplicate detection, Framer Motion
@@ -84,7 +84,7 @@ Animated waitlist signup with server-side integration.
 **Setup:** Enable in Clerk Dashboard → **Configure** → **Restrictions** → **Sign-up mode** → "Waitlist"
 
 ```tsx
-import { WaitlistShadcn } from "@/app/elements/clerk/waitlist/waitlist";
+import { WaitlistShadcn } from "@elements/clerk";
 
 export default function WaitlistPage() {
   return (
@@ -105,16 +105,52 @@ export default function WaitlistPage() {
 
 Real-time validation with built-in password reset flow.
 
-```bash
-bunx shadcn@latest add @elements/clerk-sign-in-signals
+<ComponentPreviewItem
+  componentKey="clerk-sign-in-signals"
+  installUrl="@elements/clerk-sign-in-signals"
+  category="Authentication"
+  name="Clerk"
+>
+  <SignInSignals />
+</ComponentPreviewItem>
+
+**Key Differences:** `useSignInSignal()` hook, field-level errors, built-in reset flow
+
+```tsx
+import { SignInSignals } from "@elements/clerk";
+
+export default function SignInPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <SignInSignals />
+    </div>
+  );
+}
 ```
 
-**Key Differences:** `useSignInSignal()` hook, field-level errors, built-in reset flow### Sign Up (Signals)
+### Sign Up (Signals)
 
 Registration with Signals API validation.
 
-```bash
-bunx shadcn@latest add @elements/clerk-sign-up-signals
+<ComponentPreviewItem
+  componentKey="clerk-sign-up-signals"
+  installUrl="@elements/clerk-sign-up-signals"
+  category="Authentication"
+  name="Clerk"
+>
+  <SignUpSignals />
+</ComponentPreviewItem>
+
+```tsx
+import { SignUpSignals } from "@elements/clerk";
+
+export default function SignUpPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <SignUpSignals />
+    </div>
+  );
+}
 ```
 
 ## Built-in Components

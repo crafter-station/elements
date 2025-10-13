@@ -4,7 +4,10 @@
   "type": "registry:ui",
   "title": "Clerk Sign In",
   "description": "Sign-in page using Clerk's built-in SignIn component",
-  "dependencies": ["@clerk/nextjs", "@clerk/themes"],
+  "dependencies": [
+    "@clerk/nextjs",
+    "@clerk/themes"
+  ],
   "registryDependencies": [
     "button",
     "card",

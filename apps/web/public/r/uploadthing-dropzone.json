@@ -10,7 +10,12 @@
     "@vercel/analytics",
     "sonner"
   ],
-  "registryDependencies": ["button", "card", "badge", "tabs"],
+  "registryDependencies": [
+    "button",
+    "card",
+    "badge",
+    "tabs"
+  ],
   "files": [
     {
       "path": "../../packages/uploadthing/registry/uploadthing/core.ts",
@@ -35,5 +40,9 @@
     "UPLOADTHING_TOKEN": "ut_..."
   },
   "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token.",
-  "categories": ["upload", "file", "storage"]
+  "categories": [
+    "upload",
+    "file",
+    "storage"
+  ]
 }

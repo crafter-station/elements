@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Doto, Figtree, JetBrains_Mono } from "next/font/google";
 
 import { ThemeProvider } from "next-themes";
+
 import "./globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";

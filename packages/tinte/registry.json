@@ -4,18 +4,19 @@
   "homepage": "https://www.tryelements.dev",
   "items": [
     {
-      "name": "theme-editor",
+      "name": "tinte-editor",
       "type": "registry:block",
       "title": "Tinte Theme Editor",
       "description": "Live theme editor with AI-powered theme generation, Browse tab for tinte.dev themes, and manual color editing. Complete shadcn/ui theme customization tool.",
       "registryDependencies": [
         "button",
+        "input",
+        "label",
+        "popover",
         "dialog",
         "tabs",
         "textarea",
-        "accordion",
-        "scroll-area",
-        "input"
+        "accordion"
       ],
       "dependencies": [
         "@ai-sdk/openai",
@@ -25,82 +26,57 @@
         "@radix-ui/react-tabs",
         "@uiw/color-convert",
         "@uiw/react-color",
+        "@elements/tinte-logo",
+        "streamdown",
         "ai",
         "culori",
-        "lucide-react",
-        "nanoid",
-        "zod"
+        "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/default/theme-editor/components/theme-editor.tsx",
-          "type": "registry:component",
-          "target": "@/components/theme-editor.tsx"
+          "path": "registry/default/tinte-editor/api/write-globals/route.ts",
+          "type": "registry:page",
+          "target": "app/api/elements/tinte//write-globals/route.ts"
         },
         {
-          "path": "registry/default/theme-editor/components/color-input.tsx",
-          "type": "registry:component",
-          "target": "@/components/color-input.tsx"
+          "path": "registry/default/tinte-editor/api/read-globals/route.ts",
+          "type": "registry:page",
+          "target": "app/api/elements/tinte/read-globals/route.ts"
         },
         {
-          "path": "registry/default/theme-editor/components/logo.tsx",
+          "path": "registry/default/tinte-editor/components/theme-editor.tsx",
           "type": "registry:component",
-          "target": "@/components/tinte-logo.tsx"
+          "target": "components/elements/tinte/theme-editor.tsx"
         },
         {
-          "path": "registry/default/theme-editor/components/chat/chat-input.tsx",
+          "path": "registry/default/tinte-editor/components/color-input.tsx",
           "type": "registry:component",
-          "target": "@/components/chat/chat-input.tsx"
+          "target": "components/elements/tinte/color-input.tsx"
         },
         {
-          "path": "registry/default/theme-editor/components/chat/message.tsx",
+          "path": "registry/default/tinte-editor/components/chat/chat-container.tsx",
           "type": "registry:component",
-          "target": "@/components/chat/message.tsx"
+          "target": "components/elements/tinte/chat-container.tsx"
         },
         {
-          "path": "registry/default/theme-editor/lib/tinte-to-shadcn.ts",
+          "path": "registry/default/tinte-editor/components/chat/chat-input.tsx",
+          "type": "registry:component",
+          "target": "components/elements/tinte/chat-input.tsx"
+        },
+        {
+          "path": "registry/default/tinte-editor/components/chat/chat-message.tsx",
+          "type": "registry:component",
+          "target": "components/elements/tinte/chat-message.tsx"
+        },
+        {
+          "path": "registry/default/tinte-editor/lib/tinte-to-shadcn.ts",
           "type": "registry:lib",
-          "target": "@/lib/tinte-to-shadcn.ts"
+          "target": "lib/elements/tinte/tinte-to-shadcn.ts"
         },
         {
-          "path": "registry/default/theme-editor/lib/utils.ts",
+          "path": "registry/default/tinte-editor/lib/get-css-path.ts",
           "type": "registry:lib",
-          "target": "@/lib/utils.ts"
-        },
-        {
-          "path": "registry/default/theme-editor/components/ui/accordion.tsx",
-          "type": "registry:ui",
-          "target": "@/components/ui/accordion.tsx"
-        },
-        {
-          "path": "registry/default/theme-editor/components/ui/button.tsx",
-          "type": "registry:ui",
-          "target": "@/components/ui/button.tsx"
-        },
-        {
-          "path": "registry/default/theme-editor/components/ui/dialog.tsx",
-          "type": "registry:ui",
-          "target": "@/components/ui/dialog.tsx"
-        },
-        {
-          "path": "registry/default/theme-editor/components/ui/input.tsx",
-          "type": "registry:ui",
-          "target": "@/components/ui/input.tsx"
-        },
-        {
-          "path": "registry/default/theme-editor/components/ui/scroll-area.tsx",
-          "type": "registry:ui",
-          "target": "@/components/ui/scroll-area.tsx"
-        },
-        {
-          "path": "registry/default/theme-editor/components/ui/tabs.tsx",
-          "type": "registry:ui",
-          "target": "@/components/ui/tabs.tsx"
-        },
-        {
-          "path": "registry/default/theme-editor/components/ui/textarea.tsx",
-          "type": "registry:ui",
-          "target": "@/components/ui/textarea.tsx"
+          "target": "lib/elements/tinte/get-css-path.ts"
         }
       ],
       "envVars": {

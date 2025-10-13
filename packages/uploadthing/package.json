@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "description": "UploadThing file upload components and registry",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
   "scripts": {
     "dev": "echo 'No dev script for uploadthing package'",
     "build": "echo 'No build script for uploadthing package'",

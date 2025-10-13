@@ -3,10 +3,10 @@
 import Link from "next/link";
 
 import { SignInButton, useClerk, useUser } from "@clerk/nextjs";
+import { ThemeSwitcherButton } from "@elements/theme";
 import { SearchIcon } from "lucide-react";
 
 import { CommandSearch, useCommandSearch } from "@/components/command-search";
-import { ThemeSwitcherButton } from "@/components/elements/theme-switcher-button";
 import { ElementsLogo } from "@/components/elements-logo";
 import { GitHubStars } from "@/components/github-stars";
 import { PixelatedHeartIcon } from "@/components/pixelated-heart-icon";
