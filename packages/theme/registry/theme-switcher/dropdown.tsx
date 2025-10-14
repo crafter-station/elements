@@ -1,9 +1,12 @@
 "use client";
 
+import type React from "react";
 import { useEffect, useState } from "react";
 
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
+
+import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,7 +16,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export function ThemeSwitcherDropdown() {
+interface ThemeSwitcherDropdownProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
+}
+
+export function ThemeSwitcherDropdown({
+  className,
+  ...props
+}: ThemeSwitcherDropdownProps) {
   const { setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -23,7 +34,7 @@ export function ThemeSwitcherDropdown() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" disabled>
+      <Button variant="outline" size="icon" disabled className={className}>
         <div className="w-4 h-4 bg-input rounded animate-pulse" />
       </Button>
     );
@@ -32,7 +43,7 @@ export function ThemeSwitcherDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" className={className} {...props}>
           <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>

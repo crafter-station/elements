@@ -16,7 +16,8 @@
         "dialog",
         "tabs",
         "textarea",
-        "accordion"
+        "accordion",
+        "@elements/tinte-logo"
       ],
       "dependencies": [
         "@ai-sdk/openai",
@@ -26,7 +27,6 @@
         "@radix-ui/react-tabs",
         "@uiw/color-convert",
         "@uiw/react-color",
-        "@elements/tinte-logo",
         "streamdown",
         "ai",
         "culori",

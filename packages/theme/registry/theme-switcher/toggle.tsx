@@ -1,11 +1,22 @@
 "use client";
 
+import type React from "react";
 import { useEffect, useState } from "react";
 
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export function ThemeSwitcherToggle() {
+import { cn } from "@/lib/utils";
+
+interface ThemeSwitcherToggleProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
+
+export function ThemeSwitcherToggle({
+  className,
+  ...props
+}: ThemeSwitcherToggleProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -15,7 +26,7 @@ export function ThemeSwitcherToggle() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center space-x-2">
+      <div className={cn("flex items-center space-x-2", className)} {...props}>
         <div className="w-10 h-6 bg-input rounded-full animate-pulse" />
       </div>
     );
@@ -28,7 +39,7 @@ export function ThemeSwitcherToggle() {
   const isDark = theme === "dark";
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className={cn("flex items-center space-x-2", className)} {...props}>
       <button
         type="button"
         onClick={toggleTheme}

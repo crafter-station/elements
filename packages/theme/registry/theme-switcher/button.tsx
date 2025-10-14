@@ -1,13 +1,24 @@
 "use client";
 
+import type React from "react";
 import { useEffect, useState } from "react";
 
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
+import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 
-export function ThemeSwitcherButton() {
+interface ThemeSwitcherButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
+}
+
+export function ThemeSwitcherButton({
+  className,
+  ...props
+}: ThemeSwitcherButtonProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -17,7 +28,7 @@ export function ThemeSwitcherButton() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" disabled>
+      <Button variant="outline" size="icon" disabled className={className}>
         <div className="w-4 h-4 bg-input rounded animate-pulse" />
       </Button>
     );
@@ -34,7 +45,8 @@ export function ThemeSwitcherButton() {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="relative overflow-hidden"
+      className={cn("relative overflow-hidden", className)}
+      {...props}
     >
       <SunIcon
         className={`w-4 h-4 transition-all duration-300 ${

@@ -187,6 +187,24 @@ export function ColorInput({
     };
   }, [hexColor]);
 
+  // Compute display value based on active tab
+  const displayValue = useMemo(() => {
+    switch (activeTab) {
+      case "hex":
+        return colorValues.hex;
+      case "rgb":
+        return `rgb(${colorValues.rgb.r} ${colorValues.rgb.g} ${colorValues.rgb.b})`;
+      case "hsl":
+        return `hsl(${colorValues.hsl.h} ${colorValues.hsl.s}% ${colorValues.hsl.l}%)`;
+      case "oklch":
+        return `oklch(${(colorValues.oklch.l / 100).toFixed(3)} ${(colorValues.oklch.c / 100).toFixed(3)} ${colorValues.oklch.h})`;
+      case "lch":
+        return `lch(${colorValues.lch.l} ${colorValues.lch.c} ${colorValues.lch.h})`;
+      default:
+        return colorValues.hex;
+    }
+  }, [activeTab, colorValues]);
+
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
@@ -308,7 +326,7 @@ export function ColorInput({
             disabled={disabled}
             style={{ backgroundColor: hexColor, color: contrastColor }}
           >
-            <span className="truncate">{inputValue}</span>
+            <span className="truncate">{displayValue}</span>
             <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-70" />
           </Button>
         </PopoverTrigger>

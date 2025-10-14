@@ -289,7 +289,7 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
   const loadTheme = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/tinte/read-globals");
+      const response = await fetch("/api/elements/tinte/read-globals");
       if (response.ok) {
         const data = await response.json();
         setTheme(data.theme);
@@ -554,7 +554,7 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
       const cssContent = `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
 
       // Try to write to file (will only work in development)
-      const response = await fetch("/api/tinte/write-globals", {
+      const response = await fetch("/api/elements/tinte/write-globals", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

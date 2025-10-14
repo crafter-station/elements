@@ -1,13 +1,24 @@
 "use client";
 
+import type React from "react";
 import { useEffect, useState } from "react";
 
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
+import { cn } from "@/lib/utils";
+
 import { Switch } from "@/components/ui/switch";
 
-export function ThemeSwitcherSwitch() {
+interface ThemeSwitcherSwitchProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
+
+export function ThemeSwitcherSwitch({
+  className,
+  ...props
+}: ThemeSwitcherSwitchProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -17,7 +28,10 @@ export function ThemeSwitcherSwitch() {
 
   if (!mounted) {
     return (
-      <div className="flex justify-center items-center">
+      <div
+        className={cn("flex justify-center items-center", className)}
+        {...props}
+      >
         <div className="h-[1.15rem] w-8 bg-input rounded-full border shadow-xs animate-pulse" />
       </div>
     );
@@ -30,7 +44,10 @@ export function ThemeSwitcherSwitch() {
   const isDark = theme === "dark";
 
   return (
-    <div className="flex justify-center items-center">
+    <div
+      className={cn("flex justify-center items-center", className)}
+      {...props}
+    >
       <div className="relative h-[1.15rem] w-8">
         <Switch
           checked={isDark}

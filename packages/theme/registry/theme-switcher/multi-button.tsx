@@ -1,11 +1,22 @@
 "use client";
 
+import type React from "react";
 import { useEffect, useState } from "react";
 
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export function ThemeSwitcherMultiButton() {
+import { cn } from "@/lib/utils";
+
+interface ThemeSwitcherMultiButtonProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
+
+export function ThemeSwitcherMultiButton({
+  className,
+  ...props
+}: ThemeSwitcherMultiButtonProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -15,7 +26,13 @@ export function ThemeSwitcherMultiButton() {
 
   if (!mounted) {
     return (
-      <div className="relative isolate inline-flex h-8 items-center rounded-full border border-dotted px-1">
+      <div
+        className={cn(
+          "relative isolate inline-flex h-8 items-center rounded-full border border-dotted px-1",
+          className,
+        )}
+        {...props}
+      >
         <div className="flex space-x-0">
           <div className="size-6 rounded-full bg-input animate-pulse" />
           <div className="size-6 rounded-full bg-input animate-pulse" />
@@ -32,7 +49,13 @@ export function ThemeSwitcherMultiButton() {
   ];
 
   return (
-    <div className="relative isolate inline-flex h-8 items-center rounded-full border border-dotted px-1">
+    <div
+      className={cn(
+        "relative isolate inline-flex h-8 items-center rounded-full border border-dotted px-1",
+        className,
+      )}
+      {...props}
+    >
       {themes.map(({ value, icon: Icon, label }) => (
         <button
           key={value}
