@@ -92,10 +92,11 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const products = searchParams.get("products")?.split(",") || [];
 
-  const checkout = await client.checkouts.custom.create({ // [!code focus]
-    productPriceIds: products, // [!code focus]
-    successUrl: `${request.url.split("/api")[0]}/success`, // [!code focus]
-  }); // [!code focus]
+  const checkout = await client.checkouts.custom.create({
+    // [!code focus:2]
+    productPriceIds: products,
+    successUrl: `${request.url.split("/api")[0]}/success`,
+  });
 
   return Response.redirect(checkout.url);
 }

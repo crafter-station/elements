@@ -145,7 +145,6 @@
     background-color: oklch(0.8 0.1 145 / 0.15);
     border-left: 3px solid oklch(0.7 0.15 145);
     padding-left: 0.5rem;
-    display: block;
     width: 100%;
   }
 
@@ -153,7 +152,6 @@
     background-color: oklch(0.7 0.15 27 / 0.15);
     border-left: 3px solid oklch(0.6 0.2 27);
     padding-left: 0.5rem;
-    display: block;
     width: 100%;
   }
 
@@ -199,7 +197,6 @@
     background-color: rgb(129 161 193 / 0.15);
     border-left: 3px solid #81a1c1;
     padding-left: 0.5rem;
-    display: block;
     width: 100%;
   }
 
