@@ -4,16 +4,12 @@
   "type": "registry:ui",
   "title": "Theme Switcher Button",
   "description": "Button-based theme switcher with rotating icons",
-  "dependencies": [
-    "next-themes"
-  ],
-  "registryDependencies": [
-    "button"
-  ],
+  "dependencies": ["next-themes"],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "../../packages/theme/registry/theme-switcher/button.tsx",
-      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nimport { MoonIcon, SunIcon } from \"lucide-react\";\nimport { useTheme } from \"next-themes\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport function ThemeSwitcherButton() {\n  const { theme, setTheme } = useTheme();\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  if (!mounted) {\n    return (\n      <Button variant=\"outline\" size=\"icon\" disabled>\n        <div className=\"w-4 h-4 bg-input rounded animate-pulse\" />\n      </Button>\n    );\n  }\n\n  const toggleTheme = () => {\n    setTheme(theme === \"dark\" ? \"light\" : \"dark\");\n  };\n\n  const isDark = theme === \"dark\";\n\n  return (\n    <Button\n      variant=\"outline\"\n      size=\"icon\"\n      onClick={toggleTheme}\n      className=\"relative overflow-hidden\"\n    >\n      <SunIcon\n        className={`w-4 h-4 transition-all duration-300 ${\n          isDark\n            ? \"rotate-90 scale-0 opacity-0\"\n            : \"rotate-0 scale-100 opacity-100\"\n        }`}\n      />\n      <MoonIcon\n        className={`absolute w-4 h-4 transition-all duration-300 ${\n          isDark\n            ? \"rotate-0 scale-100 opacity-100\"\n            : \"-rotate-90 scale-0 opacity-0\"\n        }`}\n      />\n      <span className=\"sr-only\">Toggle theme</span>\n    </Button>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport type React from \"react\";\nimport { useEffect, useState } from \"react\";\n\nimport { MoonIcon, SunIcon } from \"lucide-react\";\nimport { useTheme } from \"next-themes\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface ThemeSwitcherButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  className?: string;\n}\n\nexport function ThemeSwitcherButton({\n  className,\n  ...props\n}: ThemeSwitcherButtonProps) {\n  const { theme, setTheme } = useTheme();\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  if (!mounted) {\n    return (\n      <Button variant=\"outline\" size=\"icon\" disabled className={className}>\n        <div className=\"w-4 h-4 bg-input rounded animate-pulse\" />\n      </Button>\n    );\n  }\n\n  const toggleTheme = () => {\n    setTheme(theme === \"dark\" ? \"light\" : \"dark\");\n  };\n\n  const isDark = theme === \"dark\";\n\n  return (\n    <Button\n      variant=\"outline\"\n      size=\"icon\"\n      onClick={toggleTheme}\n      className={cn(\"relative overflow-hidden\", className)}\n      {...props}\n    >\n      <SunIcon\n        className={`w-4 h-4 transition-all duration-300 ${\n          isDark\n            ? \"rotate-90 scale-0 opacity-0\"\n            : \"rotate-0 scale-100 opacity-100\"\n        }`}\n      />\n      <MoonIcon\n        className={`absolute w-4 h-4 transition-all duration-300 ${\n          isDark\n            ? \"rotate-0 scale-100 opacity-100\"\n            : \"-rotate-90 scale-0 opacity-0\"\n        }`}\n      />\n      <span className=\"sr-only\">Toggle theme</span>\n    </Button>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/elements/theme-switcher-button.tsx"
     },
