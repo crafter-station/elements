@@ -611,7 +611,7 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
       </div>
 
       {/* Dialog Content */}
-      <DialogContent showCloseButton={false}>
+      <DialogContent showCloseButton={false} className="sm:max-w-2xl">
         {/* Header */}
         <DialogHeader>
           <div className="flex items-center justify-between w-full">

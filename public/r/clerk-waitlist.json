@@ -4,13 +4,8 @@
   "type": "registry:block",
   "title": "Clerk Waitlist",
   "description": "Waitlist signup using Clerk's built-in components",
-  "dependencies": [
-    "@clerk/nextjs",
-    "@clerk/themes"
-  ],
-  "registryDependencies": [
-    "@elements/clerk-sign-in"
-  ],
+  "dependencies": ["@clerk/nextjs", "@clerk/themes"],
+  "registryDependencies": ["@elements/clerk-sign-in"],
   "files": [
     {
       "path": "src/registry/clerk/waitlist/page.tsx",

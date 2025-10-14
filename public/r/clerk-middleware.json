@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Clerk Middleware",
   "description": "Clerk middleware for Next.js App Router with route protection",
-  "dependencies": [
-    "@clerk/nextjs"
-  ],
+  "dependencies": ["@clerk/nextjs"],
   "registryDependencies": [],
   "files": [
     {

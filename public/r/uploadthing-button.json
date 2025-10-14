@@ -36,9 +36,5 @@
     "UPLOADTHING_APP_ID": "your_app_id"
   },
   "docs": "Simple upload button component using UploadThing for basic file uploads with analytics tracking and error handling. Requires UploadThing account and API token.",
-  "categories": [
-    "upload",
-    "file",
-    "storage"
-  ]
+  "categories": ["upload", "file", "storage"]
 }

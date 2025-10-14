@@ -15,9 +15,5 @@
     }
   ],
   "docs": "Perplexity logo component with official brand teal color.",
-  "categories": [
-    "AI",
-    "logo",
-    "brand"
-  ]
+  "categories": ["AI", "logo", "brand"]
 }

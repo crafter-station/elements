@@ -15,9 +15,5 @@
     }
   ],
   "docs": "Linear logo component with official brand colors and gradient.",
-  "categories": [
-    "Project Management",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Project Management", "logo", "brand"]
 }
