@@ -16,7 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@/registry/*": ["./registry/*"]
+      "@/registry/*": ["./registry/*"],
+      "@elements/clerk": ["./registry/clerk"],
+      "@elements/polar": ["./registry/polar"],
+      "@elements/theme": ["./registry/theme"],
+      "@elements/tinte": ["./registry/tinte"],
+      "@elements/uploadthing": ["./registry/uploadthing"]
     },
     "plugins": [
       {

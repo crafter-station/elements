@@ -25,7 +25,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 
-import { TinteLogo } from "../../../../../logos/registry/logos/tinte";
+import { TinteLogo } from "@/registry/logos/tinte";
 import { convertTinteToShadcn, type TinteTheme } from "../lib/tinte-to-shadcn";
 import { ChatInput } from "./chat/chat-input";
 import { Message as ChatMessage } from "./chat/chat-message";

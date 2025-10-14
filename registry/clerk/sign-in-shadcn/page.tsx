@@ -1,4 +1,4 @@
-import { ClerkSignInShadcn } from "@/app/elements/clerk/sign-in/sign-in";
+import { ClerkSignInShadcn } from "./sign-in";
 
 export default function SignInTestPage() {
   return (

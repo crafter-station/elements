@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 
-import { SponsorTiers } from "@/components/elements/polar/sponsor-tiers";
+import { SponsorTiers } from "./sponsor-tiers";
 
 // Example Polar Product IDs - Replace with your own product IDs
 const EXAMPLE_POLAR_PRODUCT_IDS = {

@@ -1,4 +1,4 @@
-import { WaitlistShadcn } from "@/app/elements/clerk/waitlist/waitlist";
+import { WaitlistShadcn } from "./waitlist";
 
 export default function WaitlistTestPage() {
   return (

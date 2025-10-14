@@ -14,7 +14,9 @@
         "card",
         "@elements/polar-logo"
       ],
-      "dependencies": ["@polar-sh/nextjs"],
+      "dependencies": [
+        "@polar-sh/nextjs"
+      ],
       "files": [
         {
           "path": "registry/polar/sponsorship/sponsor-tiers-preview.tsx",
@@ -54,7 +56,12 @@
       "type": "registry:block",
       "title": "UploadThing Dropzone",
       "description": "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
-      "registryDependencies": ["button", "card", "badge", "tabs"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "badge",
+        "tabs"
+      ],
       "dependencies": [
         "uploadthing",
         "@uploadthing/react",
@@ -81,7 +88,11 @@
       "envVars": {
         "UPLOADTHING_TOKEN": "ut_..."
       },
-      "categories": ["upload", "file", "storage"],
+      "categories": [
+        "upload",
+        "file",
+        "storage"
+      ],
       "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token."
     },
     {
@@ -117,7 +128,11 @@
         "UPLOADTHING_TOKEN": "ut_...",
         "UPLOADTHING_APP_ID": "your_app_id"
       },
-      "categories": ["upload", "file", "storage"],
+      "categories": [
+        "upload",
+        "file",
+        "storage"
+      ],
       "docs": "Simple upload button component using UploadThing for basic file uploads with analytics tracking and error handling. Requires UploadThing account and API token."
     },
     {
@@ -134,7 +149,11 @@
           "target": "components/ui/logos/apple.tsx"
         }
       ],
-      "categories": ["Hardware", "logo", "brand"],
+      "categories": [
+        "Hardware",
+        "logo",
+        "brand"
+      ],
       "docs": "Apple logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -151,7 +170,11 @@
           "target": "components/ui/logos/linear.tsx"
         }
       ],
-      "categories": ["Project Management", "logo", "brand"],
+      "categories": [
+        "Project Management",
+        "logo",
+        "brand"
+      ],
       "docs": "Linear logo component with official brand colors and gradient."
     },
     {
@@ -168,7 +191,11 @@
           "target": "components/ui/logos/microsoft.tsx"
         }
       ],
-      "categories": ["Software", "logo", "brand"],
+      "categories": [
+        "Software",
+        "logo",
+        "brand"
+      ],
       "docs": "Microsoft logo component with official four-square brand colors."
     },
     {
@@ -185,7 +212,11 @@
           "target": "components/ui/logos/github.tsx"
         }
       ],
-      "categories": ["Development", "logo", "brand"],
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ],
       "docs": "GitHub logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -202,7 +233,11 @@
           "target": "components/ui/logos/spotify.tsx"
         }
       ],
-      "categories": ["Entertainment", "logo", "brand"],
+      "categories": [
+        "Entertainment",
+        "logo",
+        "brand"
+      ],
       "docs": "Spotify logo component with official brand green color."
     },
     {
@@ -219,7 +254,11 @@
           "target": "components/ui/logos/slack.tsx"
         }
       ],
-      "categories": ["Communication", "logo", "brand"],
+      "categories": [
+        "Communication",
+        "logo",
+        "brand"
+      ],
       "docs": "Slack logo component with official multi-color brand design."
     },
     {
@@ -236,7 +275,11 @@
           "target": "components/ui/logos/twitch.tsx"
         }
       ],
-      "categories": ["Entertainment", "logo", "brand"],
+      "categories": [
+        "Entertainment",
+        "logo",
+        "brand"
+      ],
       "docs": "Twitch logo component with official brand purple and white colors."
     },
     {
@@ -253,7 +296,11 @@
           "target": "components/ui/logos/twitter.tsx"
         }
       ],
-      "categories": ["Social", "logo", "brand"],
+      "categories": [
+        "Social",
+        "logo",
+        "brand"
+      ],
       "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -270,7 +317,11 @@
           "target": "components/ui/logos/gitlab.tsx"
         }
       ],
-      "categories": ["Development", "logo", "brand"],
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ],
       "docs": "GitLab logo component with official tanuki mascot brand colors."
     },
     {
@@ -287,7 +338,11 @@
           "target": "components/ui/logos/discord.tsx"
         }
       ],
-      "categories": ["Communication", "logo", "brand"],
+      "categories": [
+        "Communication",
+        "logo",
+        "brand"
+      ],
       "docs": "Discord logo component with official brand blurple color."
     },
     {
@@ -304,7 +359,11 @@
           "target": "components/ui/logos/notion.tsx"
         }
       ],
-      "categories": ["Productivity", "logo", "brand"],
+      "categories": [
+        "Productivity",
+        "logo",
+        "brand"
+      ],
       "docs": "Notion logo component with white background and theme-adaptive foreground."
     },
     {
@@ -321,7 +380,11 @@
           "target": "components/ui/logos/google.tsx"
         }
       ],
-      "categories": ["Search", "logo", "brand"],
+      "categories": [
+        "Search",
+        "logo",
+        "brand"
+      ],
       "docs": "Google logo component with official four-color brand design."
     },
     {
@@ -338,7 +401,11 @@
           "target": "components/ui/logos/qwen.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Qwen logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -355,7 +422,11 @@
           "target": "components/ui/logos/moonshot-ai.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "MoonshotAI logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -372,7 +443,11 @@
           "target": "components/ui/logos/cohere.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Cohere logo component with official brand colors."
     },
     {
@@ -389,7 +464,11 @@
           "target": "components/ui/logos/openai.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "OpenAI logo component with official brand colors."
     },
     {
@@ -406,7 +485,11 @@
           "target": "components/ui/logos/anthropic.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Anthropic logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -423,7 +506,11 @@
           "target": "components/ui/logos/deepseek.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "DeepSeek logo component with official brand purple color."
     },
     {
@@ -440,7 +527,11 @@
           "target": "components/ui/logos/hugging-face.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Hugging Face logo component with official multi-color brand design."
     },
     {
@@ -457,7 +548,11 @@
           "target": "components/ui/logos/groq.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Groq logo component with official brand orange and white colors."
     },
     {
@@ -474,7 +569,11 @@
           "target": "components/ui/logos/grok.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Grok logo component that adapts to your theme. Uses white colors."
     },
     {
@@ -491,7 +590,11 @@
           "target": "components/ui/logos/gemini.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Gemini logo component with official multi-color gradient brand design."
     },
     {
@@ -508,7 +611,11 @@
           "target": "components/ui/logos/lovable.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Lovable logo component with official multi-color gradient brand design."
     },
     {
@@ -525,7 +632,11 @@
           "target": "components/ui/logos/perplexity.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Perplexity logo component with official brand teal color."
     },
     {
@@ -542,7 +653,11 @@
           "target": "components/ui/logos/xai.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -559,7 +674,11 @@
           "target": "components/ui/logos/v0.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "v0 logo component that adapts to your theme. Uses white colors."
     },
     {
@@ -576,7 +695,11 @@
           "target": "components/ui/logos/claude.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Claude logo component with official brand orange color."
     },
     {
@@ -593,7 +716,11 @@
           "target": "components/ui/logos/mistral.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Mistral logo component with official multi-color mosaic brand design."
     },
     {
@@ -610,7 +737,11 @@
           "target": "components/ui/logos/meta.tsx"
         }
       ],
-      "categories": ["Social", "logo", "brand"],
+      "categories": [
+        "Social",
+        "logo",
+        "brand"
+      ],
       "docs": "Meta logo component with official brand gradient blue design."
     },
     {
@@ -627,7 +758,11 @@
           "target": "components/ui/logos/aws.tsx"
         }
       ],
-      "categories": ["Cloud", "logo", "brand"],
+      "categories": [
+        "Cloud",
+        "logo",
+        "brand"
+      ],
       "docs": "AWS logo component with official brand orange and white colors."
     },
     {
@@ -644,7 +779,11 @@
           "target": "components/ui/logos/kimi.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ],
       "docs": "Kimi logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -661,7 +800,11 @@
           "target": "components/ui/logos/supabase.tsx"
         }
       ],
-      "categories": ["Database", "logo", "brand"],
+      "categories": [
+        "Database",
+        "logo",
+        "brand"
+      ],
       "docs": "Supabase logo component with official brand green gradient colors."
     },
     {
@@ -678,7 +821,11 @@
           "target": "components/ui/logos/stripe.tsx"
         }
       ],
-      "categories": ["Payments", "logo", "brand"],
+      "categories": [
+        "Payments",
+        "logo",
+        "brand"
+      ],
       "docs": "Stripe logo component with official brand purple color."
     },
     {
@@ -695,7 +842,11 @@
           "target": "components/ui/logos/resend.tsx"
         }
       ],
-      "categories": ["Email", "logo", "brand"],
+      "categories": [
+        "Email",
+        "logo",
+        "brand"
+      ],
       "docs": "Resend logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -712,7 +863,11 @@
           "target": "components/ui/logos/better-auth.tsx"
         }
       ],
-      "categories": ["Auth", "logo", "brand"],
+      "categories": [
+        "Auth",
+        "logo",
+        "brand"
+      ],
       "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -729,7 +884,11 @@
           "target": "components/ui/logos/upstash.tsx"
         }
       ],
-      "categories": ["Database", "logo", "brand"],
+      "categories": [
+        "Database",
+        "logo",
+        "brand"
+      ],
       "docs": "Upstash logo component with official brand green color."
     },
     {
@@ -746,7 +905,11 @@
           "target": "components/ui/logos/vercel.tsx"
         }
       ],
-      "categories": ["Cloud", "logo", "brand"],
+      "categories": [
+        "Cloud",
+        "logo",
+        "brand"
+      ],
       "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -763,7 +926,11 @@
           "target": "components/ui/logos/crafter-station.tsx"
         }
       ],
-      "categories": ["Development", "logo", "brand"],
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ],
       "docs": "Crafter Station logo component with official brand yellow color."
     },
     {
@@ -780,7 +947,11 @@
           "target": "components/ui/logos/kebo.tsx"
         }
       ],
-      "categories": ["Development", "logo", "brand"],
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ],
       "docs": "Kebo logo component with official brand purple color."
     },
     {
@@ -797,7 +968,11 @@
           "target": "components/ui/logos/polar.tsx"
         }
       ],
-      "categories": ["Funding", "logo", "brand"],
+      "categories": [
+        "Funding",
+        "logo",
+        "brand"
+      ],
       "docs": "Polar logo component with official brand blue color."
     },
     {
@@ -814,7 +989,11 @@
           "target": "components/ui/logos/tinte.tsx"
         }
       ],
-      "categories": ["Theme", "logo", "brand"],
+      "categories": [
+        "Theme",
+        "logo",
+        "brand"
+      ],
       "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system."
     },
     {
@@ -866,7 +1045,10 @@
       ],
       "dependencies": [],
       "files": [],
-      "categories": ["logo", "brand"],
+      "categories": [
+        "logo",
+        "brand"
+      ],
       "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use."
     },
     {
@@ -874,21 +1056,25 @@
       "type": "registry:ui",
       "title": "Theme Switcher",
       "description": "A theme switcher component with animated sun/moon icons",
-      "registryDependencies": ["switch"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "switch"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "registry/theme-switcher/theme-switcher.tsx",
+          "path": "registry/theme/theme-switcher.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher.tsx"
         },
         {
-          "path": "registry/theme-switcher/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "registry/theme-switcher/theme-switcher-page.tsx",
+          "path": "registry/theme/theme-switcher-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher/page.tsx"
         }
@@ -900,21 +1086,25 @@
       "type": "registry:ui",
       "title": "Theme Switcher Switch",
       "description": "Switch-based theme switcher with animated sun/moon icons",
-      "registryDependencies": ["switch"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "switch"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "registry/theme-switcher/switch.tsx",
+          "path": "registry/theme/switch.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-switch.tsx"
         },
         {
-          "path": "registry/theme-switcher/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "registry/theme-switcher/switch-page.tsx",
+          "path": "registry/theme/switch-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-switch/page.tsx"
         }
@@ -926,21 +1116,25 @@
       "type": "registry:ui",
       "title": "Theme Switcher Button",
       "description": "Button-based theme switcher with rotating icons",
-      "registryDependencies": ["button"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "registry/theme-switcher/button.tsx",
+          "path": "registry/theme/button.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-button.tsx"
         },
         {
-          "path": "registry/theme-switcher/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "registry/theme-switcher/button-page.tsx",
+          "path": "registry/theme/button-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-button/page.tsx"
         }
@@ -952,21 +1146,26 @@
       "type": "registry:ui",
       "title": "Theme Switcher Dropdown",
       "description": "Dropdown theme switcher with system/light/dark options",
-      "registryDependencies": ["button", "dropdown-menu"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "registry/theme-switcher/dropdown.tsx",
+          "path": "registry/theme/dropdown.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-dropdown.tsx"
         },
         {
-          "path": "registry/theme-switcher/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "registry/theme-switcher/dropdown-page.tsx",
+          "path": "registry/theme/dropdown-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-dropdown/page.tsx"
         }
@@ -979,20 +1178,22 @@
       "title": "Theme Switcher Toggle",
       "description": "Custom toggle theme switcher with sliding animation",
       "registryDependencies": [],
-      "dependencies": ["next-themes"],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "registry/theme-switcher/toggle.tsx",
+          "path": "registry/theme/toggle.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-toggle.tsx"
         },
         {
-          "path": "registry/theme-switcher/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "registry/theme-switcher/toggle-page.tsx",
+          "path": "registry/theme/toggle-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-toggle/page.tsx"
         }
@@ -1005,20 +1206,22 @@
       "title": "Theme Switcher Multi Button",
       "description": "Multi-button theme switcher with system/light/dark options",
       "registryDependencies": [],
-      "dependencies": ["next-themes"],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "registry/theme-switcher/multi-button.tsx",
+          "path": "registry/theme/multi-button.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-multi-button.tsx"
         },
         {
-          "path": "registry/theme-switcher/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "registry/theme-switcher/multi-button-page.tsx",
+          "path": "registry/theme/multi-button-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-multi-button/page.tsx"
         }
@@ -1117,7 +1320,11 @@
         "label",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["motion", "@clerk/backend", "@clerk/nextjs"],
+      "dependencies": [
+        "motion",
+        "@clerk/backend",
+        "@clerk/nextjs"
+      ],
       "files": [
         {
           "path": "registry/clerk/waitlist-shadcn/waitlist.tsx",
@@ -1163,7 +1370,10 @@
         "@elements/google-logo",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["@clerk/nextjs", "@clerk/types"],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types"
+      ],
       "files": [
         {
           "path": "registry/clerk/sign-in-shadcn/sign-in.tsx",
@@ -1217,7 +1427,10 @@
         "@elements/google-logo",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["@clerk/nextjs", "@clerk/types"],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types"
+      ],
       "files": [
         {
           "path": "registry/clerk/sign-up-shadcn/sign-up.tsx",
@@ -1251,8 +1464,13 @@
       "type": "registry:block",
       "title": "Clerk Waitlist",
       "description": "Waitlist signup using Clerk's built-in components",
-      "registryDependencies": ["@elements/clerk-sign-in"],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
+      "registryDependencies": [
+        "@elements/clerk-sign-in"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
       "files": [
         {
           "path": "registry/clerk/waitlist/page.tsx",
@@ -1277,7 +1495,10 @@
         "avatar",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
       "files": [
         {
           "path": "registry/clerk/sign-in/page.tsx",
@@ -1310,7 +1531,10 @@
         "avatar",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
       "files": [
         {
           "path": "registry/clerk/sign-up/page.tsx",
@@ -1337,8 +1561,18 @@
       "type": "registry:ui",
       "title": "Clerk Sign In (Signals)",
       "description": "Advanced sign-in form using Clerk's experimental Signals API with password reset functionality",
-      "registryDependencies": ["button", "input", "label", "alert", "card"],
-      "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "alert",
+        "card"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/clerk/sign-in-signals/sign-in-signals.tsx",
@@ -1367,8 +1601,18 @@
       "type": "registry:ui",
       "title": "Clerk Sign Up (Signals)",
       "description": "Advanced sign-up form using Clerk's experimental Signals API with email verification",
-      "registryDependencies": ["button", "card", "input", "label", "alert"],
-      "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "alert"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/clerk/sign-up-signals/sign-up-signals.tsx",
@@ -1440,7 +1684,9 @@
       "title": "Clerk Middleware",
       "description": "Clerk middleware for Next.js App Router with route protection",
       "registryDependencies": [],
-      "dependencies": ["@clerk/nextjs"],
+      "dependencies": [
+        "@clerk/nextjs"
+      ],
       "files": [
         {
           "path": "registry/clerk/shared/middleware.ts",
