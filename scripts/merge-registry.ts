@@ -27,54 +27,27 @@ interface Registry {
   items: RegistryItem[];
 }
 
-const PACKAGES_DIR = join(process.cwd(), "packages");
-const OUTPUT_FILE = join(process.cwd(), "apps/web/registry.json");
-
-function fixFilePaths(item: RegistryItem, pkg: string): RegistryItem {
-  if (!item.files) return item;
-
-  const updatedFiles = item.files.map((file) => {
-    // Replace registry/default/ with ../../packages/{pkg}/registry/
-    // This makes the path relative to apps/web/ where shadcn build runs
-    const newPath = file.path.replace(
-      /^registry\/default\//,
-      `../../packages/${pkg}/registry/`,
-    );
-
-    return {
-      ...file,
-      path: newPath,
-    };
-  });
-
-  return {
-    ...item,
-    files: updatedFiles,
-  };
-}
+const REGISTRY_DIR = join(process.cwd(), "registry");
+const OUTPUT_FILE = join(process.cwd(), "registry.json");
 
 function main() {
-  console.log("🔍 Scanning packages for registry files...\n");
+  console.log("🔍 Scanning registry for provider files...\n");
 
   const allItems: RegistryItem[] = [];
-  const packages = readdirSync(PACKAGES_DIR);
+  const providers = readdirSync(REGISTRY_DIR);
 
-  for (const pkg of packages) {
-    const registryPath = join(PACKAGES_DIR, pkg, "registry.json");
+  for (const provider of providers) {
+    const registryPath = join(REGISTRY_DIR, provider, "registry.json");
 
     if (existsSync(registryPath)) {
-      console.log(`📦 Found registry in: @elements/${pkg}`);
+      console.log(`📦 Found registry in: ${provider}`);
       const registry: Registry = JSON.parse(
         readFileSync(registryPath, "utf-8"),
       );
 
       if (registry.items && Array.isArray(registry.items)) {
         console.log(`   ✓ ${registry.items.length} items`);
-        // Fix file paths for each item
-        const itemsWithFixedPaths = registry.items.map((item) =>
-          fixFilePaths(item, pkg),
-        );
-        allItems.push(...itemsWithFixedPaths);
+        allItems.push(...registry.items);
       }
     }
   }

@@ -6,7 +6,7 @@
  * that Next.js can analyze at build time.
  */
 
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 interface RegistryFile {
@@ -24,21 +24,20 @@ interface Registry {
   items: RegistryItem[];
 }
 
-const PACKAGES_DIR = join(process.cwd(), "packages");
+const REGISTRY_DIR = join(process.cwd(), "registry");
 const OUTPUT_FILE = join(
   process.cwd(),
-  "apps/web/lib/component-preview-map.generated.tsx",
+  "lib/component-preview-map.generated.tsx",
 );
-
-const providers = ["clerk", "polar", "theme", "uploadthing", "logos"];
 
 console.log("🔍 Scanning registries for previewable components...\n");
 
 const imports: string[] = [];
 const mappings: string[] = [];
+const providers = readdirSync(REGISTRY_DIR);
 
 for (const provider of providers) {
-  const registryPath = join(PACKAGES_DIR, provider, "registry.json");
+  const registryPath = join(REGISTRY_DIR, provider, "registry.json");
 
   if (!existsSync(registryPath)) {
     console.log(`⚠️  No registry found for ${provider}`);
@@ -73,48 +72,19 @@ for (const provider of providers) {
     }
 
     // Extract module path from registry path
-    // e.g., "registry/default/clerk/sign-in-shadcn/sign-in.tsx" -> "clerk/sign-in-shadcn/sign-in"
+    // e.g., "registry/clerk/sign-in-shadcn/sign-in.tsx" -> "clerk/sign-in-shadcn/sign-in"
     const pathParts = componentFile.path.split("/");
-    const registryIndex = pathParts.indexOf("default");
+    const registryIndex = pathParts.indexOf("registry");
 
-    let modulePath: string;
-    if (registryIndex !== -1) {
-      // Has "default" in path (e.g., clerk, polar, logos, uploadthing)
-      modulePath = pathParts
-        .slice(registryIndex + 1)
-        .join("/")
-        .replace(/\.(tsx?|jsx?)$/, "");
-    } else {
-      // No "default" in path (e.g., theme-switcher)
-      // Extract from "registry/theme-switcher/..." -> "theme-switcher/..."
-      const regIndex = pathParts.indexOf("registry");
-      if (regIndex === -1) {
-        console.log(`   ⚠️  Invalid path format for ${item.name}`);
-        continue;
-      }
-      modulePath = pathParts
-        .slice(regIndex + 1)
-        .join("/")
-        .replace(/\.(tsx?|jsx?)$/, "");
+    if (registryIndex === -1) {
+      console.log(`   ⚠️  Invalid path format for ${item.name}`);
+      continue;
     }
 
-    // Now adjust the module path based on the provider to match tsconfig paths
-    // The tsconfig paths already point to the correct base directory:
-    // @registry/clerk/* -> ../../packages/clerk/registry/clerk/*
-    // @registry/theme/* -> ../../packages/theme/registry/theme-switcher/*
-    // So we just need the path after that base directory
-
-    let importPath: string;
-    if (provider === "theme") {
-      // Theme special case: registry/theme-switcher/button.tsx -> button
-      importPath = modulePath.replace("theme-switcher/", "");
-    } else {
-      // Other providers: clerk/sign-in-shadcn/sign-in -> sign-in-shadcn/sign-in
-      const providerPrefix = `${provider}/`;
-      importPath = modulePath.startsWith(providerPrefix)
-        ? modulePath.slice(providerPrefix.length)
-        : modulePath;
-    }
+    const modulePath = pathParts
+      .slice(registryIndex + 1)
+      .join("/")
+      .replace(/\.(tsx?|jsx?)$/, "");
 
     // Generate unique import name
     const importName = item.name
@@ -122,15 +92,15 @@ for (const provider of providers) {
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
       .join("");
 
-    // Add import statement
+    // Add import statement using @/registry path alias
     imports.push(
-      `import * as ${importName}Module from "@registry/${provider}/${importPath}";`,
+      `import * as ${importName}Module from "@/registry/${modulePath}";`,
     );
 
     // Add to mapping
     mappings.push(`  "${item.name}": ${importName}Module,`);
 
-    console.log(`   ✅ ${item.name} -> @registry/${provider}/${importPath}`);
+    console.log(`   ✅ ${item.name} -> @/registry/${modulePath}`);
   }
 
   console.log();
