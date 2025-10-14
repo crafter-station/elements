@@ -157,18 +157,50 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
     },
   });
 
+  // Convert color to hex if it's in another format
+  const convertToHex = useCallback((colorValue: string): string => {
+    try {
+      const trimmed = colorValue.trim();
+      if (trimmed.startsWith("#")) {
+        return trimmed; // Already hex
+      }
+      // Use culori to convert any color format to hex
+      const colorObj = oklch(trimmed);
+      if (colorObj) {
+        return formatHex(colorObj);
+      }
+      return colorValue; // Return original if conversion fails
+    } catch {
+      return colorValue;
+    }
+  }, []);
+
   // Handle theme application from the Message component
   const handleApplyTheme = useCallback(
     (newTheme: { light: ShadcnTokens; dark: ShadcnTokens }) => {
       console.log("Applying theme:", newTheme);
 
-      setTheme(newTheme);
-      onChange?.(newTheme);
+      // Convert all colors to hex format
+      const lightHex: ShadcnTokens = {};
+      const darkHex: ShadcnTokens = {};
 
-      // Update original formats
+      Object.entries(newTheme.light).forEach(([key, value]) => {
+        lightHex[key] = convertToHex(value);
+      });
+
+      Object.entries(newTheme.dark).forEach(([key, value]) => {
+        darkHex[key] = convertToHex(value);
+      });
+
+      const hexTheme = { light: lightHex, dark: darkHex };
+
+      setTheme(hexTheme);
+      onChange?.(hexTheme);
+
+      // Update original formats with hex
       setOriginalFormats({
-        light: { ...newTheme.light },
-        dark: { ...newTheme.dark },
+        light: { ...lightHex },
+        dark: { ...darkHex },
       });
 
       // Mark as unsaved and let user save manually
@@ -179,7 +211,7 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
       setTimeout(() => {
         const root = document.documentElement;
         const isDark = root.classList.contains("dark");
-        const activeTheme = isDark ? newTheme.dark : newTheme.light;
+        const activeTheme = isDark ? hexTheme.dark : hexTheme.light;
 
         // Apply all CSS variables to the root element
         Object.entries(activeTheme).forEach(([key, value]) => {
@@ -196,18 +228,18 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
           document.head.appendChild(styleElement);
         }
 
-        const lightTokens = Object.entries(newTheme.light)
+        const lightTokens = Object.entries(hexTheme.light)
           .map(([key, value]) => `  --${key}: ${value};`)
           .join("\n");
 
-        const darkTokens = Object.entries(newTheme.dark)
+        const darkTokens = Object.entries(hexTheme.dark)
           .map(([key, value]) => `  --${key}: ${value};`)
           .join("\n");
 
         styleElement.textContent = `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
       }, 100);
     },
-    [onChange],
+    [onChange, convertToHex],
   );
 
   // Detect color format
@@ -223,68 +255,6 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
     [],
   );
 
-  // Convert any color to hex for color picker
-  const _convertToHex = useCallback((colorValue: string): string => {
-    try {
-      const trimmed = colorValue.trim();
-
-      // If it's already hex, return it
-      if (trimmed.startsWith("#")) {
-        return trimmed;
-      }
-
-      // For oklch, rgb, hsl - use culori to convert
-      const colorObj = oklch(trimmed);
-      if (colorObj) {
-        const hex = formatHex(colorObj);
-        return hex || "#000000";
-      }
-
-      return "#000000";
-    } catch {
-      return "#000000";
-    }
-  }, []);
-
-  // Convert hex back to original format
-  const _convertFromHex = useCallback(
-    (hexColor: string, originalValue: string): string => {
-      try {
-        const format = detectColorFormat(originalValue);
-
-        switch (format) {
-          case "hex":
-            return hexColor;
-
-          case "oklch": {
-            const oklchColor = oklch(hexColor);
-            if (oklchColor) {
-              const l = oklchColor.l || 0;
-              const c = oklchColor.c || 0;
-              const h = oklchColor.h || 0;
-
-              // Match the original format style
-              if (originalValue.includes(" / ")) {
-                // Handle alpha values like "oklch(1 0 0 / 10%)"
-                const alphaMatch = originalValue.match(/\/\s*([\d.]+%?)/);
-                const alpha = alphaMatch ? ` / ${alphaMatch[1]}` : "";
-                return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(3)}${alpha})`;
-              }
-              return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(3)})`;
-            }
-            return originalValue;
-          }
-
-          default:
-            return hexColor;
-        }
-      } catch {
-        return originalValue;
-      }
-    },
-    [detectColorFormat],
-  );
-
   // Load theme from globals.css
   const loadTheme = useCallback(async () => {
     setLoading(true);
@@ -292,21 +262,23 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
       const response = await fetch("/api/elements/tinte/read-globals");
       if (response.ok) {
         const data = await response.json();
-        setTheme(data.theme);
 
-        // Store original formats for each token
-        const lightFormats: Record<string, string> = {};
-        const darkFormats: Record<string, string> = {};
+        // Convert all colors to hex format by default
+        const lightHex: ShadcnTokens = {};
+        const darkHex: ShadcnTokens = {};
 
         Object.entries(data.theme.light).forEach(([key, value]) => {
-          lightFormats[key] = value as string;
+          lightHex[key] = convertToHex(value as string);
         });
 
         Object.entries(data.theme.dark).forEach(([key, value]) => {
-          darkFormats[key] = value as string;
+          darkHex[key] = convertToHex(value as string);
         });
 
-        setOriginalFormats({ light: lightFormats, dark: darkFormats });
+        setTheme({ light: lightHex, dark: darkHex });
+
+        // Store hex formats as original formats
+        setOriginalFormats({ light: lightHex, dark: darkHex });
       } else {
         console.error("Failed to load theme from globals.css");
       }
@@ -314,7 +286,7 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
       console.error("Error loading theme:", error);
     }
     setLoading(false);
-  }, []);
+  }, [convertToHex]);
 
   // Fetch Tinte themes
   const fetchTinteThemes = useCallback(async (page = 1, search?: string) => {
@@ -346,25 +318,42 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
   // Apply Tinte theme
   const applyTinteTheme = useCallback(
     (tinteTheme: TinteThemePreview) => {
+      let shadcnTheme: { light: ShadcnTokens; dark: ShadcnTokens } | null =
+        null;
+
       if (tinteTheme.rawTheme) {
         // Convert Tinte format to shadcn format
-        const shadcnTheme = convertTinteToShadcn(tinteTheme.rawTheme);
-        setTheme(shadcnTheme);
-        onChange?.(shadcnTheme);
-        setSelectedThemeId(tinteTheme.id);
-        setHasUnsavedChanges(true);
+        shadcnTheme = convertTinteToShadcn(tinteTheme.rawTheme);
       } else if (
         tinteTheme.overrides?.shadcn?.light &&
         tinteTheme.overrides?.shadcn?.dark
       ) {
         // Use shadcn override only if it has light and dark color objects
-        setTheme(tinteTheme.overrides.shadcn);
-        onChange?.(tinteTheme.overrides.shadcn);
+        shadcnTheme = tinteTheme.overrides.shadcn;
+      }
+
+      if (shadcnTheme) {
+        // Convert all colors to hex format
+        const lightHex: ShadcnTokens = {};
+        const darkHex: ShadcnTokens = {};
+
+        Object.entries(shadcnTheme.light).forEach(([key, value]) => {
+          lightHex[key] = convertToHex(value);
+        });
+
+        Object.entries(shadcnTheme.dark).forEach(([key, value]) => {
+          darkHex[key] = convertToHex(value);
+        });
+
+        const hexTheme = { light: lightHex, dark: darkHex };
+
+        setTheme(hexTheme);
+        onChange?.(hexTheme);
         setSelectedThemeId(tinteTheme.id);
         setHasUnsavedChanges(true);
       }
     },
-    [onChange],
+    [onChange, convertToHex],
   );
 
   // Initialize theme
@@ -543,11 +532,23 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
     };
 
     try {
-      const lightTokens = Object.entries(currentTheme.light)
+      // Ensure all colors are in hex format before saving
+      const lightHex: ShadcnTokens = {};
+      const darkHex: ShadcnTokens = {};
+
+      Object.entries(currentTheme.light).forEach(([key, value]) => {
+        lightHex[key] = convertToHex(value);
+      });
+
+      Object.entries(currentTheme.dark).forEach(([key, value]) => {
+        darkHex[key] = convertToHex(value);
+      });
+
+      const lightTokens = Object.entries(lightHex)
         .map(([key, value]) => `  --${key}: ${value};`)
         .join("\n");
 
-      const darkTokens = Object.entries(currentTheme.dark)
+      const darkTokens = Object.entries(darkHex)
         .map(([key, value]) => `  --${key}: ${value};`)
         .join("\n");
 
@@ -589,7 +590,7 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
       setHasUnsavedChanges(false);
       setTimeout(() => setSaveStatus("idle"), 2000);
     }
-  }, []);
+  }, [convertToHex]);
 
   const _availableTokens = TOKEN_GROUPS.flatMap((group) =>
     group.tokens.filter((token) => theme[mode]?.[token] !== undefined),
