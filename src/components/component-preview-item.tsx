@@ -20,7 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
-import registryData from "@/registry";
+import registryData from "@/data/registry.json";
 
 interface ComponentWithLayout {
   component: ReactNode;

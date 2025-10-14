@@ -24,10 +24,10 @@ interface Registry {
   items: RegistryItem[];
 }
 
-const REGISTRY_DIR = join(process.cwd(), "registry");
+const REGISTRY_DIR = join(process.cwd(), "src/registry");
 const OUTPUT_FILE = join(
   process.cwd(),
-  "lib/component-preview-map.generated.tsx",
+  "src/lib/component-preview-map.generated.tsx",
 );
 
 console.log("🔍 Scanning registries for previewable components...\n");

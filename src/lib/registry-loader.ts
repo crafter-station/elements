@@ -3,7 +3,7 @@
  * Source of truth: /public/r/registry.json
  */
 
-import registryData from "@/public/r/registry.json";
+import registryData from "@/data/registry.json";
 
 export interface RegistryItem {
   name: string;

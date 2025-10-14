@@ -16,8 +16,8 @@ import type {
 } from "shiki/bundle/web";
 import { createHighlighter } from "shiki/bundle/web";
 
-import vesperDark from "@/public/vesper-dark.json";
-import vesperLight from "@/public/vesper-light.json";
+import vesperDark from "@/data/vesper-dark.json";
+import vesperLight from "@/data/vesper-light.json";
 
 interface CodeBlockProps {
   code: string;

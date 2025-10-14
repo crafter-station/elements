@@ -8,7 +8,7 @@
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/logos/vercel.tsx",
+      "path": "src/registry/logos/vercel.tsx",
       "content": "export function VercelLogo({ className }: { className?: string }) {\n  return (\n    <svg\n      viewBox=\"0 0 256 222\"\n      width=\"256\"\n      height=\"222\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      preserveAspectRatio=\"xMidYMid\"\n      className={className}\n    >\n      <title>Vercel Logo</title>\n      <path fill=\"currentColor\" d=\"m128 0 128 221.705H0z\" />\n    </svg>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/ui/logos/vercel.tsx"

@@ -23,8 +23,8 @@ import {
 import { ComponentPageHero } from "@/components/component-page/hero";
 
 import { getMDXComponents } from "@/mdx-components";
-import vesperDark from "@/public/vesper-dark.json";
-import vesperLight from "@/public/vesper-light.json";
+import vesperDark from "@/data/vesper-dark.json";
+import vesperLight from "@/data/vesper-light.json";
 
 // Generate static params for all providers
 export async function generateStaticParams() {

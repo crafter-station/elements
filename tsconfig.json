@@ -15,13 +15,13 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@/registry/*": ["./registry/*"],
-      "@elements/clerk": ["./registry/clerk"],
-      "@elements/polar": ["./registry/polar"],
-      "@elements/theme": ["./registry/theme"],
-      "@elements/tinte": ["./registry/tinte"],
-      "@elements/uploadthing": ["./registry/uploadthing"]
+      "@/*": ["./src/*"],
+      "@/registry/*": ["./src/registry/*"],
+      "@elements/clerk": ["./src/registry/clerk"],
+      "@elements/polar": ["./src/registry/polar"],
+      "@elements/theme": ["./src/registry/theme"],
+      "@elements/tinte": ["./src/registry/tinte"],
+      "@elements/uploadthing": ["./src/registry/uploadthing"]
     },
     "plugins": [
       {

@@ -3,7 +3,7 @@ import path from "node:path";
 
 import matter from "gray-matter";
 
-const providersDir = path.join(process.cwd(), "content/providers");
+const providersDir = path.join(process.cwd(), "src/content/providers");
 
 export const providersSource = {
   getPage: (slug: string[]) => {

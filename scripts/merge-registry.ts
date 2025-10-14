@@ -27,8 +27,8 @@ interface Registry {
   items: RegistryItem[];
 }
 
-const REGISTRY_DIR = join(process.cwd(), "registry");
-const OUTPUT_FILE = join(process.cwd(), "registry.json");
+const REGISTRY_DIR = join(process.cwd(), "src/registry");
+const OUTPUT_FILE = join(process.cwd(), "src/registry.json");
 
 function main() {
   console.log("🔍 Scanning registry for provider files...\n");

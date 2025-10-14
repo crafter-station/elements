@@ -19,27 +19,27 @@
       ],
       "files": [
         {
-          "path": "src/registry/polar/sponsorship/sponsor-tiers-preview.tsx",
+          "path": "registry/polar/sponsorship/sponsor-tiers-preview.tsx",
           "type": "registry:component",
           "target": "app/elements/polar/sponsor-tiers-preview.tsx"
         },
         {
-          "path": "src/registry/polar/sponsorship/sponsor-tiers.tsx",
+          "path": "registry/polar/sponsorship/sponsor-tiers.tsx",
           "type": "registry:lib",
           "target": "app/elements/polar/sponsor-tiers.tsx"
         },
         {
-          "path": "src/registry/polar/sponsorship/checkout-route.ts",
+          "path": "registry/polar/sponsorship/checkout-route.ts",
           "type": "registry:lib",
           "target": "app/elements/polar/api/checkout/route.ts"
         },
         {
-          "path": "src/registry/polar/sponsorship/page.tsx",
+          "path": "registry/polar/sponsorship/page.tsx",
           "type": "registry:page",
           "target": "app/elements/polar/sponsor/page.tsx"
         },
         {
-          "path": "src/registry/polar/sponsorship/success-page.tsx",
+          "path": "registry/polar/sponsorship/success-page.tsx",
           "type": "registry:page",
           "target": "app/elements/polar/success/page.tsx"
         }
@@ -70,17 +70,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/uploadthing/core.ts",
+          "path": "registry/uploadthing/core.ts",
           "type": "registry:lib",
           "target": "app/api/uploadthing/core.ts"
         },
         {
-          "path": "src/registry/uploadthing/route.ts",
+          "path": "registry/uploadthing/route.ts",
           "type": "registry:lib",
           "target": "app/api/uploadthing/route.ts"
         },
         {
-          "path": "src/registry/uploadthing/upload-dropzone.tsx",
+          "path": "registry/uploadthing/upload-dropzone.tsx",
           "type": "registry:component",
           "target": "components/elements/uploadthing/upload-dropzone.tsx"
         }
@@ -109,17 +109,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/uploadthing/core.ts",
+          "path": "registry/uploadthing/core.ts",
           "type": "registry:lib",
           "target": "app/api/uploadthing/core.ts"
         },
         {
-          "path": "src/registry/uploadthing/route.ts",
+          "path": "registry/uploadthing/route.ts",
           "type": "registry:lib",
           "target": "app/api/uploadthing/route.ts"
         },
         {
-          "path": "src/registry/uploadthing/upload-button.tsx",
+          "path": "registry/uploadthing/upload-button.tsx",
           "type": "registry:component",
           "target": "components/elements/uploadthing/upload-button.tsx"
         }
@@ -144,7 +144,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/apple.tsx",
+          "path": "registry/logos/apple.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/apple.tsx"
         }
@@ -165,7 +165,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/linear.tsx",
+          "path": "registry/logos/linear.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/linear.tsx"
         }
@@ -186,7 +186,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/microsoft.tsx",
+          "path": "registry/logos/microsoft.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/microsoft.tsx"
         }
@@ -207,7 +207,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/github.tsx",
+          "path": "registry/logos/github.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/github.tsx"
         }
@@ -228,7 +228,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/spotify.tsx",
+          "path": "registry/logos/spotify.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/spotify.tsx"
         }
@@ -249,7 +249,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/slack.tsx",
+          "path": "registry/logos/slack.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/slack.tsx"
         }
@@ -270,7 +270,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/twitch.tsx",
+          "path": "registry/logos/twitch.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/twitch.tsx"
         }
@@ -291,7 +291,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/twitter.tsx",
+          "path": "registry/logos/twitter.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/twitter.tsx"
         }
@@ -312,7 +312,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/gitlab.tsx",
+          "path": "registry/logos/gitlab.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/gitlab.tsx"
         }
@@ -333,7 +333,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/discord.tsx",
+          "path": "registry/logos/discord.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/discord.tsx"
         }
@@ -354,7 +354,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/notion.tsx",
+          "path": "registry/logos/notion.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/notion.tsx"
         }
@@ -375,7 +375,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/google.tsx",
+          "path": "registry/logos/google.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/google.tsx"
         }
@@ -396,7 +396,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/qwen.tsx",
+          "path": "registry/logos/qwen.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/qwen.tsx"
         }
@@ -417,7 +417,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/moonshot-ai.tsx",
+          "path": "registry/logos/moonshot-ai.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/moonshot-ai.tsx"
         }
@@ -438,7 +438,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/cohere.tsx",
+          "path": "registry/logos/cohere.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/cohere.tsx"
         }
@@ -459,7 +459,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/openai.tsx",
+          "path": "registry/logos/openai.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/openai.tsx"
         }
@@ -480,7 +480,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/anthropic.tsx",
+          "path": "registry/logos/anthropic.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/anthropic.tsx"
         }
@@ -501,7 +501,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/deepseek.tsx",
+          "path": "registry/logos/deepseek.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/deepseek.tsx"
         }
@@ -522,7 +522,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/hugging-face.tsx",
+          "path": "registry/logos/hugging-face.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/hugging-face.tsx"
         }
@@ -543,7 +543,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/groq.tsx",
+          "path": "registry/logos/groq.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/groq.tsx"
         }
@@ -564,7 +564,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/grok.tsx",
+          "path": "registry/logos/grok.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/grok.tsx"
         }
@@ -585,7 +585,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/gemini.tsx",
+          "path": "registry/logos/gemini.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/gemini.tsx"
         }
@@ -606,7 +606,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/lovable.tsx",
+          "path": "registry/logos/lovable.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/lovable.tsx"
         }
@@ -627,7 +627,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/perplexity.tsx",
+          "path": "registry/logos/perplexity.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/perplexity.tsx"
         }
@@ -648,7 +648,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/xai.tsx",
+          "path": "registry/logos/xai.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/xai.tsx"
         }
@@ -669,7 +669,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/v0.tsx",
+          "path": "registry/logos/v0.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/v0.tsx"
         }
@@ -690,7 +690,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/claude.tsx",
+          "path": "registry/logos/claude.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/claude.tsx"
         }
@@ -711,7 +711,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/mistral.tsx",
+          "path": "registry/logos/mistral.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/mistral.tsx"
         }
@@ -732,7 +732,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/meta.tsx",
+          "path": "registry/logos/meta.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/meta.tsx"
         }
@@ -753,7 +753,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/aws.tsx",
+          "path": "registry/logos/aws.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/aws.tsx"
         }
@@ -774,7 +774,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/kimi.tsx",
+          "path": "registry/logos/kimi.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/kimi.tsx"
         }
@@ -795,7 +795,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/supabase.tsx",
+          "path": "registry/logos/supabase.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/supabase.tsx"
         }
@@ -816,7 +816,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/stripe.tsx",
+          "path": "registry/logos/stripe.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/stripe.tsx"
         }
@@ -837,7 +837,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/resend.tsx",
+          "path": "registry/logos/resend.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/resend.tsx"
         }
@@ -858,7 +858,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/better-auth.tsx",
+          "path": "registry/logos/better-auth.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/better-auth.tsx"
         }
@@ -879,7 +879,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/upstash.tsx",
+          "path": "registry/logos/upstash.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/upstash.tsx"
         }
@@ -900,7 +900,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/vercel.tsx",
+          "path": "registry/logos/vercel.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/vercel.tsx"
         }
@@ -921,7 +921,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/crafter-station.tsx",
+          "path": "registry/logos/crafter-station.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/crafter-station.tsx"
         }
@@ -942,7 +942,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/kebo.tsx",
+          "path": "registry/logos/kebo.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/kebo.tsx"
         }
@@ -963,7 +963,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/polar.tsx",
+          "path": "registry/logos/polar.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/polar.tsx"
         }
@@ -984,7 +984,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/tinte.tsx",
+          "path": "registry/logos/tinte.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/tinte.tsx"
         }
@@ -1064,17 +1064,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/theme/theme-switcher.tsx",
+          "path": "registry/theme/theme-switcher.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/theme-switcher-page.tsx",
+          "path": "registry/theme/theme-switcher-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher/page.tsx"
         }
@@ -1094,17 +1094,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/theme/switch.tsx",
+          "path": "registry/theme/switch.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-switch.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/switch-page.tsx",
+          "path": "registry/theme/switch-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-switch/page.tsx"
         }
@@ -1124,17 +1124,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/theme/button.tsx",
+          "path": "registry/theme/button.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-button.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/button-page.tsx",
+          "path": "registry/theme/button-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-button/page.tsx"
         }
@@ -1155,17 +1155,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/theme/dropdown.tsx",
+          "path": "registry/theme/dropdown.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-dropdown.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/dropdown-page.tsx",
+          "path": "registry/theme/dropdown-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-dropdown/page.tsx"
         }
@@ -1183,17 +1183,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/theme/toggle.tsx",
+          "path": "registry/theme/toggle.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-toggle.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/toggle-page.tsx",
+          "path": "registry/theme/toggle-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-toggle/page.tsx"
         }
@@ -1211,17 +1211,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/theme/multi-button.tsx",
+          "path": "registry/theme/multi-button.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-multi-button.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/theme/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/multi-button-page.tsx",
+          "path": "registry/theme/multi-button-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-multi-button/page.tsx"
         }
@@ -1259,47 +1259,47 @@
       ],
       "files": [
         {
-          "path": "src/registry/tinte/tinte-editor/api/write-globals/route.ts",
+          "path": "registry/tinte/tinte-editor/api/write-globals/route.ts",
           "type": "registry:page",
           "target": "app/api/elements/tinte//write-globals/route.ts"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/api/read-globals/route.ts",
+          "path": "registry/tinte/tinte-editor/api/read-globals/route.ts",
           "type": "registry:page",
           "target": "app/api/elements/tinte/read-globals/route.ts"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/tinte-editor.tsx",
+          "path": "registry/tinte/tinte-editor/components/tinte-editor.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/tinte-editor.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/color-input.tsx",
+          "path": "registry/tinte/tinte-editor/components/color-input.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/color-input.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/chat/chat-container.tsx",
+          "path": "registry/tinte/tinte-editor/components/chat/chat-container.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-container.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/chat/chat-input.tsx",
+          "path": "registry/tinte/tinte-editor/components/chat/chat-input.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-input.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/chat/chat-message.tsx",
+          "path": "registry/tinte/tinte-editor/components/chat/chat-message.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-message.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/lib/tinte-to-shadcn.ts",
+          "path": "registry/tinte/tinte-editor/lib/tinte-to-shadcn.ts",
           "type": "registry:lib",
           "target": "lib/elements/tinte/tinte-to-shadcn.ts"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/lib/get-css-path.ts",
+          "path": "registry/tinte/tinte-editor/lib/get-css-path.ts",
           "type": "registry:lib",
           "target": "lib/elements/tinte/get-css-path.ts"
         }
@@ -1327,17 +1327,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/waitlist-shadcn/waitlist.tsx",
+          "path": "registry/clerk/waitlist-shadcn/waitlist.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/waitlist/waitlist.tsx"
         },
         {
-          "path": "src/registry/clerk/waitlist-shadcn/actions.ts",
+          "path": "registry/clerk/waitlist-shadcn/actions.ts",
           "type": "registry:lib",
           "target": "app/elements/clerk/waitlist/actions.ts"
         },
         {
-          "path": "src/registry/clerk/waitlist-shadcn/page.tsx",
+          "path": "registry/clerk/waitlist-shadcn/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/waitlist/page.tsx"
         }
@@ -1376,22 +1376,22 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/sign-in-shadcn/sign-in.tsx",
+          "path": "registry/clerk/sign-in-shadcn/sign-in.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/sign-in/sign-in.tsx"
         },
         {
-          "path": "src/registry/clerk/sign-in-shadcn/page.tsx",
+          "path": "registry/clerk/sign-in-shadcn/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-in/page.tsx"
         },
         {
-          "path": "src/registry/clerk/shared/dashboard/page.tsx",
+          "path": "registry/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/dashboard/page.tsx"
         },
         {
-          "path": "src/registry/clerk/shared/sso-callback/page.tsx",
+          "path": "registry/clerk/shared/sso-callback/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sso-callback/page.tsx"
         }
@@ -1433,22 +1433,22 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/sign-up-shadcn/sign-up.tsx",
+          "path": "registry/clerk/sign-up-shadcn/sign-up.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/sign-up/sign-up.tsx"
         },
         {
-          "path": "src/registry/clerk/sign-up-shadcn/page.tsx",
+          "path": "registry/clerk/sign-up-shadcn/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-up/page.tsx"
         },
         {
-          "path": "src/registry/clerk/shared/dashboard/page.tsx",
+          "path": "registry/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/dashboard/page.tsx"
         },
         {
-          "path": "src/registry/clerk/shared/sso-callback/page.tsx",
+          "path": "registry/clerk/shared/sso-callback/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sso-callback/page.tsx"
         }
@@ -1473,7 +1473,7 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/waitlist/page.tsx",
+          "path": "registry/clerk/waitlist/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/waitlist/page.tsx"
         }
@@ -1501,12 +1501,12 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/sign-in/page.tsx",
+          "path": "registry/clerk/sign-in/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-in/[[...sign-in]]/page.tsx"
         },
         {
-          "path": "src/registry/clerk/shared/dashboard/page.tsx",
+          "path": "registry/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/dashboard/page.tsx"
         }
@@ -1537,12 +1537,12 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/sign-up/page.tsx",
+          "path": "registry/clerk/sign-up/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-up/[[...sign-up]]/page.tsx"
         },
         {
-          "path": "src/registry/clerk/shared/dashboard/page.tsx",
+          "path": "registry/clerk/shared/dashboard/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/dashboard/page.tsx"
         }
@@ -1575,17 +1575,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/sign-in-signals/sign-in-signals.tsx",
+          "path": "registry/clerk/sign-in-signals/sign-in-signals.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/sign-in-signals/sign-in-signals.tsx"
         },
         {
-          "path": "src/registry/clerk/sign-in-signals/page.tsx",
+          "path": "registry/clerk/sign-in-signals/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-in-signals/page.tsx"
         },
         {
-          "path": "src/registry/clerk/shared/layout.tsx",
+          "path": "registry/clerk/shared/layout.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/layout.tsx"
         }
@@ -1615,17 +1615,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/sign-up-signals/sign-up-signals.tsx",
+          "path": "registry/clerk/sign-up-signals/sign-up-signals.tsx",
           "type": "registry:component",
           "target": "app/elements/clerk/sign-up-signals/sign-up-signals.tsx"
         },
         {
-          "path": "src/registry/clerk/sign-up-signals/page.tsx",
+          "path": "registry/clerk/sign-up-signals/page.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/sign-up-signals/page.tsx"
         },
         {
-          "path": "src/registry/clerk/shared/layout.tsx",
+          "path": "registry/clerk/shared/layout.tsx",
           "type": "registry:page",
           "target": "app/elements/clerk/layout.tsx"
         }
@@ -1689,7 +1689,7 @@
       ],
       "files": [
         {
-          "path": "src/registry/clerk/shared/middleware.ts",
+          "path": "registry/clerk/shared/middleware.ts",
           "type": "registry:lib",
           "target": "middleware.ts"
         }
