@@ -17,17 +17,17 @@
       ],
       "files": [
         {
-          "path": "registry/uploadthing/core.ts",
+          "path": "src/registry/uploadthing/core.ts",
           "type": "registry:lib",
           "target": "app/api/uploadthing/core.ts"
         },
         {
-          "path": "registry/uploadthing/route.ts",
+          "path": "src/registry/uploadthing/route.ts",
           "type": "registry:lib",
           "target": "app/api/uploadthing/route.ts"
         },
         {
-          "path": "registry/uploadthing/upload-dropzone.tsx",
+          "path": "src/registry/uploadthing/upload-dropzone.tsx",
           "type": "registry:component",
           "target": "components/elements/uploadthing/upload-dropzone.tsx"
         }
@@ -52,17 +52,17 @@
       ],
       "files": [
         {
-          "path": "registry/uploadthing/core.ts",
+          "path": "src/registry/uploadthing/core.ts",
           "type": "registry:lib",
           "target": "app/api/uploadthing/core.ts"
         },
         {
-          "path": "registry/uploadthing/route.ts",
+          "path": "src/registry/uploadthing/route.ts",
           "type": "registry:lib",
           "target": "app/api/uploadthing/route.ts"
         },
         {
-          "path": "registry/uploadthing/upload-button.tsx",
+          "path": "src/registry/uploadthing/upload-button.tsx",
           "type": "registry:component",
           "target": "components/elements/uploadthing/upload-button.tsx"
         }

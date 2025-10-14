@@ -17,27 +17,27 @@
       "dependencies": ["@polar-sh/nextjs"],
       "files": [
         {
-          "path": "registry/polar/sponsorship/sponsor-tiers-preview.tsx",
+          "path": "src/registry/polar/sponsorship/sponsor-tiers-preview.tsx",
           "type": "registry:component",
           "target": "app/elements/polar/sponsor-tiers-preview.tsx"
         },
         {
-          "path": "registry/polar/sponsorship/sponsor-tiers.tsx",
+          "path": "src/registry/polar/sponsorship/sponsor-tiers.tsx",
           "type": "registry:lib",
           "target": "app/elements/polar/sponsor-tiers.tsx"
         },
         {
-          "path": "registry/polar/sponsorship/checkout-route.ts",
+          "path": "src/registry/polar/sponsorship/checkout-route.ts",
           "type": "registry:lib",
           "target": "app/elements/polar/api/checkout/route.ts"
         },
         {
-          "path": "registry/polar/sponsorship/page.tsx",
+          "path": "src/registry/polar/sponsorship/page.tsx",
           "type": "registry:page",
           "target": "app/elements/polar/sponsor/page.tsx"
         },
         {
-          "path": "registry/polar/sponsorship/success-page.tsx",
+          "path": "src/registry/polar/sponsorship/success-page.tsx",
           "type": "registry:page",
           "target": "app/elements/polar/success/page.tsx"
         }

@@ -12,7 +12,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/apple.tsx",
+          "path": "src/registry/logos/apple.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/apple.tsx"
         }
@@ -29,7 +29,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/linear.tsx",
+          "path": "src/registry/logos/linear.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/linear.tsx"
         }
@@ -46,7 +46,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/microsoft.tsx",
+          "path": "src/registry/logos/microsoft.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/microsoft.tsx"
         }
@@ -63,7 +63,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/github.tsx",
+          "path": "src/registry/logos/github.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/github.tsx"
         }
@@ -80,7 +80,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/spotify.tsx",
+          "path": "src/registry/logos/spotify.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/spotify.tsx"
         }
@@ -97,7 +97,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/slack.tsx",
+          "path": "src/registry/logos/slack.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/slack.tsx"
         }
@@ -114,7 +114,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/twitch.tsx",
+          "path": "src/registry/logos/twitch.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/twitch.tsx"
         }
@@ -131,7 +131,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/twitter.tsx",
+          "path": "src/registry/logos/twitter.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/twitter.tsx"
         }
@@ -148,7 +148,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/gitlab.tsx",
+          "path": "src/registry/logos/gitlab.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/gitlab.tsx"
         }
@@ -165,7 +165,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/discord.tsx",
+          "path": "src/registry/logos/discord.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/discord.tsx"
         }
@@ -182,7 +182,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/notion.tsx",
+          "path": "src/registry/logos/notion.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/notion.tsx"
         }
@@ -199,7 +199,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/google.tsx",
+          "path": "src/registry/logos/google.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/google.tsx"
         }
@@ -216,7 +216,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/qwen.tsx",
+          "path": "src/registry/logos/qwen.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/qwen.tsx"
         }
@@ -233,7 +233,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/moonshot-ai.tsx",
+          "path": "src/registry/logos/moonshot-ai.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/moonshot-ai.tsx"
         }
@@ -250,7 +250,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/cohere.tsx",
+          "path": "src/registry/logos/cohere.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/cohere.tsx"
         }
@@ -267,7 +267,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/openai.tsx",
+          "path": "src/registry/logos/openai.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/openai.tsx"
         }
@@ -284,7 +284,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/anthropic.tsx",
+          "path": "src/registry/logos/anthropic.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/anthropic.tsx"
         }
@@ -301,7 +301,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/deepseek.tsx",
+          "path": "src/registry/logos/deepseek.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/deepseek.tsx"
         }
@@ -318,7 +318,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/hugging-face.tsx",
+          "path": "src/registry/logos/hugging-face.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/hugging-face.tsx"
         }
@@ -335,7 +335,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/groq.tsx",
+          "path": "src/registry/logos/groq.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/groq.tsx"
         }
@@ -352,7 +352,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/grok.tsx",
+          "path": "src/registry/logos/grok.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/grok.tsx"
         }
@@ -369,7 +369,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/gemini.tsx",
+          "path": "src/registry/logos/gemini.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/gemini.tsx"
         }
@@ -386,7 +386,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/lovable.tsx",
+          "path": "src/registry/logos/lovable.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/lovable.tsx"
         }
@@ -403,7 +403,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/perplexity.tsx",
+          "path": "src/registry/logos/perplexity.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/perplexity.tsx"
         }
@@ -420,7 +420,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/xai.tsx",
+          "path": "src/registry/logos/xai.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/xai.tsx"
         }
@@ -437,7 +437,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/v0.tsx",
+          "path": "src/registry/logos/v0.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/v0.tsx"
         }
@@ -454,7 +454,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/claude.tsx",
+          "path": "src/registry/logos/claude.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/claude.tsx"
         }
@@ -471,7 +471,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/mistral.tsx",
+          "path": "src/registry/logos/mistral.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/mistral.tsx"
         }
@@ -488,7 +488,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/meta.tsx",
+          "path": "src/registry/logos/meta.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/meta.tsx"
         }
@@ -505,7 +505,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/aws.tsx",
+          "path": "src/registry/logos/aws.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/aws.tsx"
         }
@@ -522,7 +522,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/kimi.tsx",
+          "path": "src/registry/logos/kimi.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/kimi.tsx"
         }
@@ -539,7 +539,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/supabase.tsx",
+          "path": "src/registry/logos/supabase.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/supabase.tsx"
         }
@@ -556,7 +556,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/stripe.tsx",
+          "path": "src/registry/logos/stripe.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/stripe.tsx"
         }
@@ -573,7 +573,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/resend.tsx",
+          "path": "src/registry/logos/resend.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/resend.tsx"
         }
@@ -590,7 +590,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/better-auth.tsx",
+          "path": "src/registry/logos/better-auth.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/better-auth.tsx"
         }
@@ -607,7 +607,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/upstash.tsx",
+          "path": "src/registry/logos/upstash.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/upstash.tsx"
         }
@@ -624,7 +624,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/vercel.tsx",
+          "path": "src/registry/logos/vercel.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/vercel.tsx"
         }
@@ -641,7 +641,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/crafter-station.tsx",
+          "path": "src/registry/logos/crafter-station.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/crafter-station.tsx"
         }
@@ -658,7 +658,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/kebo.tsx",
+          "path": "src/registry/logos/kebo.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/kebo.tsx"
         }
@@ -675,7 +675,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/polar.tsx",
+          "path": "src/registry/logos/polar.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/polar.tsx"
         }
@@ -692,7 +692,7 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/logos/tinte.tsx",
+          "path": "src/registry/logos/tinte.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/tinte.tsx"
         }
