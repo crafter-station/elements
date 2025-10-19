@@ -175,7 +175,7 @@ export default async function ProviderPage(props: ProviderPageProps) {
       />
 
       {mdxPage ? (
-        <article className="prose prose-gray dark:prose-invert max-w-5xl mx-auto px-8 py-12">
+        <article className="max-w-5xl mx-auto px-8 py-12">
           <MDXRemote
             source={mdxPage.data.body}
             components={getMDXComponents()}
@@ -191,6 +191,7 @@ export default async function ProviderPage(props: ProviderPageProps) {
                         dark: vesperDark,
                       },
                       defaultColor: false,
+                      cssVariablePrefix: "--shiki-",
                       transformers: [
                         transformerNotationHighlight({
                           matchAlgorithm: "v3",

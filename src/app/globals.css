@@ -11,8 +11,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-figtree);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --font-dotted: var(--font-doto);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -127,11 +127,13 @@
   }
 
   /* Shiki Dual Themes - Class-based Dark Mode */
-  .shiki span {
+  html:not(.dark) .shiki,
+  html:not(.dark) .shiki span {
     color: var(--shiki-light);
   }
 
-  .dark .shiki span {
+  html.dark .shiki,
+  html.dark .shiki span {
     color: var(--shiki-dark);
   }
 

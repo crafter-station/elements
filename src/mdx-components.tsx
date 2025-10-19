@@ -131,7 +131,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     h3: ({ children }) => (
       <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>
     ),
-    p: ({ children }) => <p className="text-base leading-7 mb-4">{children}</p>,
+    p: ({ children }) => (
+      <p className="font-light text-base leading-7 mb-4">{children}</p>
+    ),
     a: ({ href, children }) => (
       <a
         href={href}

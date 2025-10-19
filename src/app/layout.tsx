@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Doto, Figtree, JetBrains_Mono } from "next/font/google";
+import { Doto } from "next/font/google";
 
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 
 import "./globals.css";
@@ -10,16 +12,6 @@ import { shadcn } from "@clerk/themes";
 import { Analytics } from "@vercel/analytics/next";
 
 import { Toaster } from "@/components/ui/sonner";
-
-const figtree = Figtree({
-  variable: "--font-figtree",
-  subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-});
 
 const doto = Doto({
   variable: "--font-doto",
@@ -105,7 +97,7 @@ export default function RootLayout({
     >
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${figtree.variable} ${jetbrainsMono.variable} ${doto.variable} font-sans antialiased selection:bg-[#FFF4ED] selection:text-[#D97535] dark:selection:bg-[#2B1A0F] dark:selection:text-[#FFC79A]`}
+          className={`${GeistSans.variable} ${GeistMono.variable} ${doto.variable} font-sans antialiased selection:bg-[#FFF4ED] selection:text-[#D97535] dark:selection:bg-[#2B1A0F] dark:selection:text-[#FFC79A]`}
         >
           <ThemeProvider
             attribute="class"
