@@ -67,7 +67,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
 
       if (isShikiBlock) {
         return (
-          <div className="my-4 max-w-full overflow-hidden rounded-lg border border-border relative group bg-muted/50">
+          <div className="my-6 max-w-full overflow-hidden rounded-lg border border-border relative group bg-muted/30">
             <CodeBlockCopyButton code={rawCode} />
             <pre
               {...props}
@@ -85,7 +85,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       }
 
       return (
-        <div className="my-4 max-w-full overflow-hidden relative group">
+        <div className="my-6 max-w-full overflow-hidden relative group">
           <CodeBlockCopyButton code={rawCode} />
           <pre
             className="min-w-full w-max bg-muted p-4 rounded-lg overflow-x-auto border border-border text-sm"
@@ -113,7 +113,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       // Otherwise, it's inline code - apply custom styling
       return (
         <code
-          className="bg-muted px-1.5 py-0.5 rounded text-xs font-mono border border-border"
+          className="bg-muted/50 px-1.5 py-0.5 rounded text-xs font-mono border border-border/50"
           {...props}
         >
           {children}
@@ -121,65 +121,101 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       );
     },
     h1: ({ children }) => (
-      <h1 className="text-3xl font-bold mt-8 mb-4 first:mt-0">{children}</h1>
+      <h1 className="scroll-mt-16 text-3xl font-medium tracking-tight first:mt-0 mt-12 mb-6">
+        {children}
+      </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b border-border pb-2">
+      <h2 className="scroll-mt-16 text-2xl font-medium tracking-tight mt-12 mb-6 pb-3 border-b border-border/60">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>
+      <h3 className="scroll-mt-16 text-lg font-medium tracking-tight mt-8 mb-4">
+        {children}
+      </h3>
     ),
     p: ({ children }) => (
-      <p className="font-light text-base leading-7 mb-4">{children}</p>
-    ),
-    a: ({ href, children }) => (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-primary underline hover:text-primary/80 transition-colors"
-      >
+      <p className="text-muted-foreground text-base leading-7 mb-6 text-pretty">
         {children}
-      </a>
+      </p>
     ),
+    a: ({ href, children }) => {
+      const isExternal = href?.startsWith("http");
+      return (
+        <a
+          href={href}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          className="decoration-underline relative inline-flex items-baseline gap-1 underline decoration-[0.09375rem] underline-offset-2 hover:text-primary transition-colors"
+        >
+          {children}
+          {isExternal && (
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+              className="text-muted-foreground inline-block h-[0.85lh] w-4 shrink-0"
+              aria-hidden="true"
+              fill="none"
+            >
+              <path
+                d="M7 17L17 7M17 7H7M17 7V17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+        </a>
+      );
+    },
     ul: ({ children }) => (
-      <ul className="list-disc list-inside space-y-2 mb-4">{children}</ul>
+      <ul className="list-disc list-outside ml-6 space-y-2 mb-6 text-muted-foreground">
+        {children}
+      </ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal list-inside space-y-2 mb-4">{children}</ol>
+      <ol className="list-decimal list-outside ml-6 space-y-2 mb-6 text-muted-foreground">
+        {children}
+      </ol>
     ),
-    li: ({ children }) => <li className="text-base leading-7">{children}</li>,
+    li: ({ children }) => <li className="leading-7 pl-1">{children}</li>,
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-primary/30 pl-4 my-4 italic text-muted-foreground">
+      <blockquote className="border-l-[3px] border-muted-foreground/30 pl-6 my-6 italic text-muted-foreground">
         {children}
       </blockquote>
     ),
     table: ({ children }) => (
-      <div className="my-6 w-full overflow-x-auto">
+      <div className="my-8 w-full overflow-x-auto">
         <table className="w-full border-collapse border border-border">
           {children}
         </table>
       </div>
     ),
-    thead: ({ children }) => <thead className="bg-muted/50">{children}</thead>,
+    thead: ({ children }) => (
+      <thead className="bg-muted/30 border-b-2 border-border">{children}</thead>
+    ),
     tbody: ({ children }) => <tbody>{children}</tbody>,
     tr: ({ children }) => (
-      <tr className="border-b border-border hover:bg-muted/30 transition-colors">
+      <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
         {children}
       </tr>
     ),
     th: ({ children }) => (
-      <th className="px-4 py-3 text-left font-semibold text-sm border-r border-border last:border-r-0">
+      <th className="px-4 py-3 text-left font-medium text-sm text-muted-foreground">
         {children}
       </th>
     ),
     td: ({ children }) => (
-      <td className="px-4 py-3 text-sm border-r border-border last:border-r-0">
-        {children}
-      </td>
+      <td className="px-4 py-3 text-sm text-muted-foreground">{children}</td>
     ),
+    hr: () => <hr className="my-8 border-t border-border/60" />,
+    strong: ({ children }) => (
+      <strong className="font-semibold text-foreground">{children}</strong>
+    ),
+    em: ({ children }) => <em className="italic">{children}</em>,
     ...components,
   };
 }
