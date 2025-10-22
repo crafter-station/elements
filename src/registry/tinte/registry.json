@@ -30,7 +30,8 @@
         "streamdown",
         "ai",
         "culori",
-        "lucide-react"
+        "lucide-react",
+        "server-only"
       ],
       "files": [
         {

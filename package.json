@@ -69,6 +69,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
+    "server-only": "^0.0.1",
     "shadcn": "^2.9.3-canary.0",
     "sonner": "^2.0.7",
     "streamdown": "^1.4.0",

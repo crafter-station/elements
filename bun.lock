@@ -40,6 +40,7 @@
         "cmdk": "^1.1.1",
         "culori": "^4.0.2",
         "embla-carousel-react": "^8.6.0",
+        "geist": "^1.5.1",
         "googleapis": "^159.0.0",
         "gray-matter": "^4.0.3",
         "lucide-react": "^0.545.0",
@@ -56,6 +57,7 @@
         "rehype-slug": "^6.0.0",
         "remark-gfm": "^4.0.1",
         "remark-math": "^6.0.0",
+        "server-only": "^0.0.1",
         "shadcn": "^2.9.3-canary.0",
         "sonner": "^2.0.7",
         "streamdown": "^1.4.0",
@@ -1027,6 +1029,8 @@
     "gaxios": ["gaxios@7.1.1", "", { "dependencies": { "extend": "^3.0.2", "https-proxy-agent": "^7.0.1", "node-fetch": "^3.3.2" } }, "sha512-Odju3uBUJyVCkW64nLD4wKLhbh93bh6vIg/ZIXkWiLPBrdgtc65+tls/qml+un3pr6JqYVFDZbbmLDQT68rTOQ=="],
 
     "gcp-metadata": ["gcp-metadata@7.0.1", "", { "dependencies": { "gaxios": "^7.0.0", "google-logging-utils": "^1.0.0", "json-bigint": "^1.0.0" } }, "sha512-UcO3kefx6dCcZkgcTGgVOTFb7b1LlQ02hY1omMjjrrBzkajRMCFgYOjs7J71WqnuG1k2b+9ppGL7FsOfhZMQKQ=="],
+
+    "geist": ["geist@1.5.1", "", { "peerDependencies": { "next": ">=13.2.0" } }, "sha512-mAHZxIsL2o3ZITFaBVFBnwyDOw+zNLYum6A6nIjpzCGIO8QtC3V76XF2RnZTyLx1wlDTmMDy8jg3Ib52MIjGvQ=="],
 
     "gensync": ["gensync@1.0.0-beta.2", "", {}, "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg=="],
 
