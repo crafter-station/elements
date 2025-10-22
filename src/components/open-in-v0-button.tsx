@@ -31,7 +31,7 @@ export function OpenInV0Button({
       asChild
     >
       <a
-        href={`https://v0.dev/chat/api/open?url=${url}`}
+        href={`https://v0.dev/chat/api/open?url=${url}&via=hugo-railly`}
         target="_blank"
         rel="noreferrer"
         onClick={handleClick}
