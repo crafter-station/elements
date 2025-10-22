@@ -3,7 +3,7 @@
   "name": "tinte-editor",
   "type": "registry:block",
   "title": "Tinte Theme Editor",
-  "description": "Live theme editor with AI-powered theme generation, Browse tab for tinte.dev themes, and manual color editing. Complete shadcn/ui theme customization tool.",
+  "description": "Live theme editor with AI-powered theme generation, Browse tab for tinte.dev themes, and manual color editing. Complete shadcn/ui theme customization tool",
   "dependencies": [
     "@ai-sdk/openai",
     "@radix-ui/react-accordion",
