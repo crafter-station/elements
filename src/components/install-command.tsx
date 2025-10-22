@@ -121,81 +121,91 @@ export function InstallCommand({
             setPackageManager(value);
           }}
         >
-          <SelectTrigger className="text-muted-foreground hover:text-foreground w-20 sm:w-20 rounded-e-none border-0 border-r shadow-none text-xs sm:text-sm">
+          <SelectTrigger
+            size="sm"
+            className="text-muted-foreground hover:text-foreground w-[10ch] rounded-e-none border-0 border-r shadow-none text-xs h-7"
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="bunx">bunx</SelectItem>
-            <SelectItem value="npx">npx</SelectItem>
-            <SelectItem value="pnpm">pnpm</SelectItem>
-            <SelectItem value="yarn">yarn</SelectItem>
+            <SelectItem value="bunx" className="text-xs">
+              bunx
+            </SelectItem>
+            <SelectItem value="npx" className="text-xs">
+              npx
+            </SelectItem>
+            <SelectItem value="pnpm" className="text-xs">
+              pnpm
+            </SelectItem>
+            <SelectItem value="yarn" className="text-xs">
+              yarn
+            </SelectItem>
           </SelectContent>
         </Select>
-        <div className="flex items-center">
-          <Button
-            onClick={copyCommand}
-            variant="ghost"
-            className={`-ms-px rounded-none border-0 shadow-none h-9 px-3 justify-start font-mono text-xs sm:text-sm ${
-              copied ? "bg-muted" : "hover:bg-muted"
-            } ${
-              brandColor
-                ? `hover:text-[${brandColor}]`
-                : "text-teal-600 hover:text-teal-500"
-            }`}
-            style={
-              brandColor
-                ? {
-                    color: brandColor,
-                  }
-                : undefined
-            }
-          >
-            {copied ? (
-              <Check className="size-4 flex-shrink-0" />
-            ) : (
-              <ShadcnIcon className="size-4 flex-shrink-0" />
-            )}
-            <div className="flex items-center gap-1">
-              <span className="whitespace-nowrap">{urlSummary.display}</span>
-              {urls.length > 1 && (
-                <span className="text-muted-foreground whitespace-nowrap">
-                  ({urlSummary.count})
-                </span>
-              )}
-            </div>
-          </Button>
-          {urlSummary.hasMore && (
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-9 w-9 p-0 rounded-l-none border-0 shadow-none hover:bg-muted/50"
-                >
-                  <Eye className="w-4 h-4" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent align="end" className="w-80">
-                <div className="space-y-2">
-                  <div className="text-sm font-medium">
-                    Full command ({urls.length} components)
-                  </div>
-                  <div className="p-2 bg-muted rounded text-xs font-mono break-all">
-                    {packageManager} shadcn@latest add {urlSummary.full}
-                  </div>
-                  <Button onClick={copyCommand} size="sm" className="w-full">
-                    {copied ? (
-                      <Check className="w-4 h-4 mr-2" />
-                    ) : (
-                      <ShadcnIcon className="w-4 h-4 mr-2" />
-                    )}
-                    Copy Full Command
-                  </Button>
-                </div>
-              </PopoverContent>
-            </Popover>
+        <Button
+          onClick={copyCommand}
+          variant="ghost"
+          size="sm"
+          className={`-ms-px rounded-none border-0 shadow-none h-8 px-2.5 justify-start font-mono text-xs ${
+            copied ? "bg-muted" : "hover:bg-muted"
+          } ${
+            brandColor
+              ? `hover:text-[${brandColor}]`
+              : "text-teal-600 hover:text-teal-500"
+          }`}
+          style={
+            brandColor
+              ? {
+                  color: brandColor,
+                }
+              : undefined
+          }
+        >
+          {copied ? (
+            <Check className="size-3.5 flex-shrink-0" />
+          ) : (
+            <ShadcnIcon className="size-3.5 flex-shrink-0" />
           )}
-        </div>
+          <div className="flex items-center gap-1">
+            <span className="whitespace-nowrap">{urlSummary.display}</span>
+            {urls.length > 1 && (
+              <span className="text-muted-foreground whitespace-nowrap text-[10px]">
+                ({urlSummary.count})
+              </span>
+            )}
+          </div>
+        </Button>
+        {urlSummary.hasMore && (
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-8 w-8 p-0 rounded-l-none border-0 shadow-none hover:bg-muted/50"
+              >
+                <Eye className="w-3.5 h-3.5" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent align="end" className="w-80">
+              <div className="space-y-2">
+                <div className="text-sm font-medium">
+                  Full command ({urls.length} components)
+                </div>
+                <div className="p-2 bg-muted rounded text-xs font-mono break-all">
+                  {packageManager} shadcn@latest add {urlSummary.full}
+                </div>
+                <Button onClick={copyCommand} size="sm" className="w-full">
+                  {copied ? (
+                    <Check className="w-4 h-4 mr-2" />
+                  ) : (
+                    <ShadcnIcon className="w-4 h-4 mr-2" />
+                  )}
+                  Copy Full Command
+                </Button>
+              </div>
+            </PopoverContent>
+          </Popover>
+        )}
       </div>
     </div>
   );

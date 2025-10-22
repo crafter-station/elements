@@ -121,12 +121,12 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       );
     },
     h1: ({ children }) => (
-      <h1 className="scroll-mt-16 text-3xl font-medium tracking-tight first:mt-0 mt-12 mb-6">
+      <h1 className="scroll-mt-16 text-2xl font-medium tracking-tight first:mt-0 mt-12 mb-6">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="scroll-mt-16 text-2xl font-medium tracking-tight mt-12 mb-6 pb-3 border-b border-border/60">
+      <h2 className="scroll-mt-16 text-xl font-medium tracking-tight mt-12 mb-6 pb-3 border-b border-border/60">
         {children}
       </h2>
     ),
@@ -136,7 +136,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       </h3>
     ),
     p: ({ children }) => (
-      <p className="text-muted-foreground text-base leading-7 mb-6 text-pretty">
+      <p className="text-foreground/70 text-base leading-7 mb-6 text-pretty">
         {children}
       </p>
     ),

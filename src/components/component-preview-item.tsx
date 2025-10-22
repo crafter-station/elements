@@ -18,7 +18,6 @@ import { InstallCommand } from "@/components/install-command";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 
 import registryData from "@/data/registry.json";
 
@@ -54,7 +53,6 @@ export function ComponentPreviewItem({
   relevantRegistryItems,
   className,
 }: ComponentPreviewItemProps) {
-  const [isSelected, setIsSelected] = useState(false);
   const [showTree, setShowTree] = useState(false);
 
   // Get relevant registry items if not provided
@@ -90,19 +88,6 @@ export function ComponentPreviewItem({
 
   const registryItem = findRegistryItemMatch(componentKey, registryItems);
 
-  const handleToggle = () => {
-    const newState = !isSelected;
-    setIsSelected(newState);
-
-    track("Component Selection", {
-      component_key: componentKey,
-      component_category: category,
-      page_name: name,
-      action: newState ? "select" : "deselect",
-      source: "component_preview_item",
-    });
-  };
-
   const handleTreeToggle = () => {
     if (registryItem) {
       const newState = !showTree;
@@ -122,148 +107,75 @@ export function ComponentPreviewItem({
     <div
       className={cn(
         customClassName,
-        "border border-dotted transition-all duration-200 my-6",
-        isSelected ? "border-primary/50" : "border-border",
+        "border border-border rounded-lg overflow-hidden transition-all duration-200 my-6 bg-card/30",
         className,
       )}
     >
-      <div
-        className={cn(
-          "px-4 sm:px-6 py-4 transition-all duration-200",
-          isSelected ? "bg-primary/10" : "bg-background hover:bg-accent/50",
-        )}
-      >
-        <div className="space-y-3">
-          {/* Desktop Layout */}
-          <div className="hidden mb-0 sm:flex sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <Checkbox
-                checked={isSelected}
-                onCheckedChange={handleToggle}
-                className="shrink-0"
+      {/* Compact Header */}
+      <div className="px-4 py-2.5 border-b border-border bg-muted/30 flex items-center justify-between gap-3">
+        {/* Title Section */}
+        <div className="flex items-center gap-2 min-w-0">
+          <h3 className="text-sm font-medium text-foreground capitalize truncate">
+            {componentKey.replace(/-/g, " ")}
+          </h3>
+          {componentKey.includes("shadcn") && (
+            <Badge
+              variant="outline"
+              className="border-blue-500 text-blue-500 text-xs shrink-0"
+            >
+              BETA
+            </Badge>
+          )}
+        </div>
+
+        {/* Actions Section */}
+        <div className="flex items-center gap-2 shrink-0">
+          {finalInstallUrl && (
+            <InstallCommand
+              className="!max-w-full"
+              url={finalInstallUrl}
+              source="component_preview_item"
+              componentName={componentKey}
+              category={category}
+            />
+          )}
+          {registryItem && (
+            <>
+              <OpenInV0Button
+                url={getRegistryItemUrl({
+                  registryItemName: registryItem.name,
+                  isV0: true,
+                })}
+                componentKey={componentKey}
+                source="component_preview_item"
               />
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  className="text-sm md:text-base font-medium text-foreground capitalize cursor-pointer hover:text-primary transition-colors"
-                  onClick={handleToggle}
-                >
-                  {componentKey.replace(/-/g, " ")}
-                </button>
-                {componentKey.includes("shadcn") && (
-                  <Badge
-                    variant="outline"
-                    className="border-blue-500 text-blue-500 text-xs"
-                  >
-                    BETA
-                  </Badge>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleTreeToggle}
+                className="text-xs h-8 gap-1.5 px-2.5"
+              >
+                {showTree ? (
+                  <>
+                    <EyeClosedIcon className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Hide</span>
+                  </>
+                ) : (
+                  <>
+                    <EyeIcon className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Tree</span>
+                  </>
                 )}
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              {registryItem && (
-                <OpenInV0Button
-                  url={getRegistryItemUrl({
-                    registryItemName: registryItem.name,
-                    isV0: true,
-                  })}
-                  componentKey={componentKey}
-                  source="component_preview_item_desktop"
-                />
-              )}
-
-              {registryItem && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleTreeToggle}
-                  className="text-xs h-9 gap-2"
-                >
-                  {showTree ? (
-                    <>
-                      <EyeClosedIcon className="w-4 h-4" />
-                      Hide Tree
-                    </>
-                  ) : (
-                    <>
-                      <EyeIcon className="w-4 h-4" />
-                      Show Tree
-                    </>
-                  )}
-                </Button>
-              )}
-
-              {finalInstallUrl && (
-                <InstallCommand
-                  className="!max-w-lg"
-                  url={finalInstallUrl}
-                  source="component_preview_item_desktop"
-                  componentName={componentKey}
-                  category={category}
-                />
-              )}
-            </div>
-          </div>
-
-          {/* Mobile Layout */}
-          <div className="sm:hidden space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Checkbox
-                  checked={isSelected}
-                  onCheckedChange={handleToggle}
-                  className="shrink-0"
-                />
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    className="text-sm font-medium text-foreground capitalize cursor-pointer hover:text-primary transition-colors"
-                    onClick={handleToggle}
-                  >
-                    {componentKey.replace(/-/g, " ")}
-                  </button>
-                  {componentKey.includes("shadcn") && (
-                    <Badge
-                      variant="outline"
-                      className="border-blue-500 text-blue-500 text-xs"
-                    >
-                      BETA
-                    </Badge>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                {registryItem && (
-                  <OpenInV0Button
-                    url={getRegistryItemUrl({
-                      registryItemName: registryItem.name,
-                      isV0: true,
-                    })}
-                    componentKey={componentKey}
-                    source="component_preview_item_mobile"
-                  />
-                )}
-              </div>
-            </div>
-
-            {finalInstallUrl && (
-              <InstallCommand
-                className="!max-w-full"
-                url={finalInstallUrl}
-                source="component_preview_item_mobile"
-                componentName={componentKey}
-                category={category}
-              />
-            )}
-          </div>
+              </Button>
+            </>
+          )}
         </div>
       </div>
 
-      <div className="bg-card/30 border-t border-dotted border-border w-full">
+      {/* Content Area */}
+      <div className="bg-background/50 h-[400px] md:h-[600px]">
         {showTree ? (
-          <div className="h-[600px]">
+          <div className="h-full">
             <FileTreeViewer
               files={(registryItem?.files as any) || []}
               registryItem={registryItem || undefined}
@@ -274,7 +186,7 @@ export function ComponentPreviewItem({
             />
           </div>
         ) : (
-          <div className="w-full min-h-[350px] md:min-h-[400px] flex items-center justify-center px-4 py-14">
+          <div className="w-full h-full flex items-center justify-center px-4">
             <div className="w-full max-w-none flex justify-center items-center">
               {componentNode as ReactNode}
             </div>

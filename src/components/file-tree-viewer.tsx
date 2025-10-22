@@ -12,12 +12,9 @@ import {
 } from "@headless-tree/core";
 import { AssistiveTreeDescription, useTree } from "@headless-tree/react";
 import {
-  RiAtLine,
   RiBracesLine,
-  RiCodeSSlashLine,
   RiFileLine,
   RiFileTextLine,
-  RiFolderLine,
   RiImageLine,
   RiReactjsLine,
 } from "@remixicon/react";
@@ -28,7 +25,10 @@ import { toast } from "sonner";
 import { findBestFileMatch } from "@/lib/registry-utils";
 
 import { ElementsLogo } from "@/components/elements-logo";
+import { AtIcon } from "@/components/icons/at";
+import { CodeIcon } from "@/components/icons/code";
 import { CopyIcon } from "@/components/icons/copy";
+import { FolderIcon } from "@/components/icons/folder";
 import { InstallCommand } from "@/components/install-command";
 import { PixelatedCheckIcon } from "@/components/pixelated-check-icon";
 import { ShadcnIcon } from "@/components/shadcn-icon";
@@ -37,6 +37,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ScrollArea } from "@/components/ui/scroll-area";
+
+import { FileIcon } from "./icons/file";
 
 interface RegistryFile {
   path: string;
@@ -70,9 +72,9 @@ interface FileTreeViewerProps {
 
 // Helper function to get icon based on file extension
 function getFileIcon(node: TreeNode, className: string) {
-  // Individual dependencies get RiCodeSSlashLine icon
+  // Individual dependencies get CodeIcon
   if (node.type === "dependency") {
-    return <RiCodeSSlashLine className={className} />;
+    return <CodeIcon className={className} />;
   }
 
   // Registry dependencies get ShadcnIcon or ElementsLogo based on name
@@ -88,12 +90,12 @@ function getFileIcon(node: TreeNode, className: string) {
     node.type === "folder" &&
     (node.name === "Dependencies" || node.name === "Registry Dependencies")
   ) {
-    return <RiAtLine className={className} />;
+    return <AtIcon className={className} />;
   }
 
   // Regular folders get folder icon
   if (node.type === "folder" || node.children) {
-    return <RiFolderLine className={className} />;
+    return <FolderIcon className={className} />;
   }
 
   const extension = node.fileExtension;
@@ -104,7 +106,7 @@ function getFileIcon(node: TreeNode, className: string) {
     case "ts":
     case "js":
     case "mjs":
-      return <RiCodeSSlashLine className={className} />;
+      return <CodeIcon className={className} />;
     case "json":
       return <RiBracesLine className={className} />;
     case "svg":
@@ -283,6 +285,7 @@ export function FileTreeViewer({
   );
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [fileContent, setFileContent] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -310,13 +313,16 @@ export function FileTreeViewer({
         timeoutRef.current = null;
       }
       setCopiedCommand(null);
+      setCopied(false);
 
-      // Clear content immediately to show we're switching
+      // Set loading state and clear content
+      setIsLoading(true);
       setFileContent(null);
       setSelectedFile(nodeId);
 
       // For dependencies, we don't generate content - we'll show InstallCommand instead
       if (node.type === "dependency" || node.type === "registry-dependency") {
+        setIsLoading(false);
         // Don't set file content for dependencies
         return;
       }
@@ -328,6 +334,8 @@ export function FileTreeViewer({
       } catch (error) {
         console.error("❌ Error loading file content:", error);
         setFileContent("// Error loading file content");
+      } finally {
+        setIsLoading(false);
       }
     } else {
     }
@@ -678,8 +686,11 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
       <div className="h-full flex w-full">
         {/* Sidebar - File Tree */}
         <div className="w-80 border-r border-border border-dotted bg-card/30">
-          <div className="p-4 border-b border-border border-dotted flex items-center justify-between">
-            <h3 className="font-semibold text-sm">File Explorer</h3>
+          <div className="p-3 border-b border-border border-dotted flex items-center justify-between">
+            <div className="flex items-center gap-2 w-full">
+              <FileIcon className="text-muted-foreground size-3.5 shrink-0" />
+              <h3 className="font-semibold text-xs">File Explorer</h3>
+            </div>
             {!isEmbedded && (
               <Button
                 variant="ghost"
@@ -744,7 +755,7 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
 
         {/* Main Content - Code View */}
         <div className="flex-1 flex flex-col">
-          <div className="p-4 border-b border-border border-dotted">
+          <div className="px-3 py-2 border-b border-border border-dotted">
             {(() => {
               if (
                 selectedFileNode &&
@@ -754,13 +765,13 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
               ) {
                 return (
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                      <div className="flex items-center gap-2 min-w-0">
                         {getFileIcon(
                           selectedFileNode,
-                          "text-muted-foreground size-4",
+                          "text-muted-foreground size-3.5 shrink-0",
                         )}
-                        <span className="font-mono text-sm">
+                        <span className="font-mono text-xs truncate">
                           {selectedFileNode.name}
                         </span>
                       </div>
@@ -772,35 +783,38 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      {selectedFileNode.type === "file" &&
-                        selectedFileNode.registryFile && (
-                          <Badge
-                            variant="secondary"
-                            className="text-xs h-5 px-2"
-                          >
-                            {selectedFileNode.registryFile.type}
-                          </Badge>
-                        )}
-                      {selectedFileNode.type === "dependency" && (
-                        <Badge variant="outline" className="text-xs h-5 px-2">
-                          NPM
-                        </Badge>
-                      )}
-                      {selectedFileNode.type === "registry-dependency" && (
-                        <Badge variant="outline" className="text-xs h-5 px-2">
-                          Registry
-                        </Badge>
-                      )}
-
-                      {/* Copy button */}
-                      {fileContent && (
+                      {/* Copy button - always visible for files */}
+                      {selectedFileNode.type === "file" && (
                         <Button
                           onClick={copyFileContent}
                           size="sm"
                           variant="outline"
                           className="h-6 w-6 p-0"
+                          disabled={isLoading || !fileContent}
                         >
-                          {copied ? (
+                          {isLoading ? (
+                            <svg
+                              className="w-3.5 h-3.5 animate-spin"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <title>Loading</title>
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              />
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              />
+                            </svg>
+                          ) : copied ? (
                             <svg
                               width="14"
                               height="14"
@@ -820,6 +834,26 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
                           )}
                         </Button>
                       )}
+
+                      {selectedFileNode.type === "file" &&
+                        selectedFileNode.registryFile && (
+                          <Badge
+                            variant="secondary"
+                            className="text-xs h-6 px-2"
+                          >
+                            {selectedFileNode.registryFile.type}
+                          </Badge>
+                        )}
+                      {selectedFileNode.type === "dependency" && (
+                        <Badge variant="outline" className="text-xs h-5 px-2">
+                          NPM
+                        </Badge>
+                      )}
+                      {selectedFileNode.type === "registry-dependency" && (
+                        <Badge variant="outline" className="text-xs h-5 px-2">
+                          Registry
+                        </Badge>
+                      )}
                     </div>
                   </div>
                 );
@@ -828,7 +862,7 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
             })()}
           </div>
 
-          <ScrollArea className="h-full flex-1 bg-[#F6F6F6] dark:bg-[#252525]">
+          <ScrollArea className="h-full flex-1 bg-[#FFF] dark:bg-[#101010]">
             <div className="min-h-full p-0">
               {(() => {
                 if (
@@ -845,7 +879,7 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
                           {/* Header Section */}
                           <div className="space-y-4">
                             <div className="flex items-center justify-center gap-2 mb-4">
-                              <RiCodeSSlashLine className="w-8 h-8 text-primary" />
+                              <CodeIcon className="w-8 h-8 text-primary" />
                             </div>
                             <div className="space-y-2">
                               <div className="text-xs uppercase tracking-[0.2em] font-mono text-primary/70">
@@ -1057,7 +1091,7 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
                     }
 
                     return (
-                      <div className="max-h-[calc(100vh_-_375px)] h-full overflow-auto">
+                      <div className="h-full overflow-auto">
                         <CodeBlock
                           code={fileContent}
                           lang={lang as BundledLanguage}

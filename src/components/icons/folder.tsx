@@ -1,0 +1,18 @@
+import type { SVGProps } from "react";
+
+export function FolderIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <title>Folder Icon</title>
+      <path
+        d="M4 4h8v2h10v14H2V4h2zm16 4H10V6H4v12h16V8z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}

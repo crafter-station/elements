@@ -27,49 +27,42 @@ interface CodeBlockProps {
 
 // Global highlighter instance with pre-loaded themes
 let highlighter: Highlighter | null = null;
+let highlighterPromise: Promise<Highlighter> | null = null;
+
+// Pre-initialize highlighter
+if (typeof window !== "undefined" && !highlighterPromise) {
+  highlighterPromise = createHighlighter({
+    themes: [
+      { ...vesperLight, name: "vesper-light" } as ThemeInput,
+      { ...vesperDark, name: "vesper-dark" } as ThemeInput,
+    ],
+    langs: ["javascript", "typescript", "json", "bash", "shell"],
+  }).then((h) => {
+    highlighter = h;
+    return h;
+  });
+}
 
 export function CodeBlock({ code, lang, className = "" }: CodeBlockProps) {
   const [html, setHtml] = useState<string>("");
-  const [isLoading, setIsLoading] = useState(true);
-  const { theme, systemTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const highlight = async () => {
       try {
-        // Create highlighter only once with pre-loaded themes
-        if (!highlighter) {
-          highlighter = await createHighlighter({
-            themes: [
-              { ...vesperLight, name: "vesper-light" } as ThemeInput,
-              { ...vesperDark, name: "vesper-dark" } as ThemeInput,
-            ],
-            langs: ["javascript", "typescript", "json", "bash", "shell"],
-          });
-        }
+        // Wait for highlighter to be ready
+        const h = highlighter || (await highlighterPromise);
+        if (!h) return;
 
-        // Determine current theme
-        const currentTheme = theme === "system" ? systemTheme : theme;
+        // Use resolved theme directly
         const themeToUse =
-          currentTheme === "dark" ? "vesper-dark" : "vesper-light";
+          resolvedTheme === "dark" ? "vesper-dark" : "vesper-light";
 
-        // Highlight with current theme
-        const highlightedCode = highlighter.codeToHtml(code, {
+        // Highlight - keep inline styles for colors, we'll override background
+        const highlightedCode = h.codeToHtml(code, {
           lang,
           theme: themeToUse,
           transformers: [
-            {
-              name: "remove-inline-styles",
-              code(node) {
-                node.properties.style = "";
-              },
-              pre(node) {
-                node.properties.style = "";
-                // Preserve existing classes and add custom ones
-                const existingClasses = (node.properties.class as string) || "";
-                node.properties.class =
-                  `${existingClasses} language-${lang} ${className}`.trim();
-              },
-            },
             transformerNotationDiff({
               matchAlgorithm: "v3",
             }),
@@ -86,30 +79,33 @@ export function CodeBlock({ code, lang, className = "" }: CodeBlockProps) {
         setHtml(highlightedCode);
       } catch (error) {
         console.error("Failed to highlight code:", error);
-        setHtml(`<pre><code>${code}</code></pre>`);
-      } finally {
-        setIsLoading(false);
+        setHtml(
+          `<pre class="bg-muted/30 p-4 rounded border border-border/50"><code>${code}</code></pre>`,
+        );
       }
     };
 
     highlight();
-  }, [code, lang, className, theme, systemTheme]);
+  }, [code, lang, resolvedTheme]);
 
-  if (isLoading) {
+  // Show themed skeleton while loading - matches Vesper theme colors
+  if (!html) {
     return (
       <pre
-        className={`bg-muted/50 rounded border border-border/50 p-4 font-mono text-sm whitespace-pre-wrap break-words overflow-hidden ${className}`}
+        className={`shiki vesper-light dark:vesper-dark bg-muted/30 rounded border border-border/50 p-4 font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words ${className}`}
+        style={{
+          color: resolvedTheme === "dark" ? "#DBD7CA" : "#393A34",
+        }}
       >
-        <code className="text-muted-foreground whitespace-pre-wrap break-words">
-          {code}
-        </code>
+        <code className="whitespace-pre-wrap break-words">{code}</code>
       </pre>
     );
   }
 
+  // Override Shiki's background with our bg-muted, but keep syntax colors
   return (
     <div
-      className={`[&_pre]:bg-muted/50 [&_pre]:rounded [&_pre]:border [&_pre]:border-border/50 [&_pre]:p-4 [&_pre]:font-mono [&_pre]:text-sm [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:overflow-hidden ${className}`}
+      className={`[&_pre]:p-4 [&_pre]:font-mono [&_pre]:text-[13px] [&_pre]:leading-relaxed [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:overflow-hidden [&_code]:whitespace-pre-wrap [&_code]:break-words ${className}`}
       // biome-ignore lint/security/noDangerouslySetInnerHtml: html is safe
       dangerouslySetInnerHTML={{ __html: html }}
     />
