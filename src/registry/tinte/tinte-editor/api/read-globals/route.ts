@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile } from "fs/promises";
 
 import { NextResponse } from "next/server";
 

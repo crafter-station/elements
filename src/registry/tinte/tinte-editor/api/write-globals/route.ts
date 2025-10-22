@@ -1,4 +1,4 @@
-import { writeFile } from "node:fs/promises";
+import { writeFile } from "fs/promises";
 
 import { NextResponse } from "next/server";
 
