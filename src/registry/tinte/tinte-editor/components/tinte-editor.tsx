@@ -8,6 +8,11 @@ import { formatHex, oklch } from "culori";
 import { Loader2, RefreshCw, Search, X } from "lucide-react";
 
 import {
+  convertTinteToShadcn,
+  type TinteTheme,
+} from "@/lib/elements/tinte/tinte-to-shadcn";
+
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -26,10 +31,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 
 import { TinteLogo } from "@/registry/logos/tinte";
-import {
-  convertTinteToShadcn,
-  type TinteTheme,
-} from "@/registry/tinte/tinte-editor/lib/tinte-to-shadcn";
 import { ChatInput } from "./chat/chat-input";
 import { Message as ChatMessage } from "./chat/chat-message";
 import { ColorInput } from "./color-input";
