@@ -36,7 +36,7 @@
         {
           "path": "src/registry/tinte/tinte-editor/api/write-globals/route.ts",
           "type": "registry:page",
-          "target": "app/api/elements/tinte//write-globals/route.ts"
+          "target": "app/api/elements/tinte/write-globals/route.ts"
         },
         {
           "path": "src/registry/tinte/tinte-editor/api/read-globals/route.ts",
