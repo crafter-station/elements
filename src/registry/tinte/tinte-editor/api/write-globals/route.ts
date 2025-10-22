@@ -2,7 +2,7 @@ import { writeFile } from "node:fs/promises";
 
 import { NextResponse } from "next/server";
 
-import { getCssPath } from "@/registry/tinte/tinte-editor/lib/get-css-path";
+import { getCssPath } from "../../../../../lib/elements/tinte/get-css-path";
 
 export async function POST(request: Request) {
   try {
