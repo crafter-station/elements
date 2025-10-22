@@ -1,7 +1,7 @@
 import "server-only";
 
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { readFile } from "fs/promises";
+import { join } from "path";
 
 /**
  * Gets the CSS file path from components.json
