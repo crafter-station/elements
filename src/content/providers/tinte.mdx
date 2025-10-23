@@ -182,42 +182,14 @@ export default function CustomForm() {
 - Format toggle button
 - Click-outside to close
 
-## API Routes
+## Client-Side Architecture
 
-The theme editor requires two API endpoints to read and write `globals.css`:
+The theme editor works entirely in the browser without requiring server-side API routes:
 
-### Read Endpoint
-
-```ts
-// app/api/tinte/read-globals/route.ts
-import { NextResponse } from "next/server";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
-
-export async function GET() {
-  const globalsPath = join(process.cwd(), "app", "globals.css");
-  const content = await readFile(globalsPath, "utf-8");
-  return NextResponse.json({ success: true, content });
-}
-```
-
-### Write Endpoint
-
-```ts
-// app/api/tinte/write-globals/route.ts
-import { NextResponse } from "next/server";
-import { writeFile } from "node:fs/promises";
-import { join } from "node:path";
-
-export async function POST(request: Request) {
-  const { content } = await request.json();
-  const globalsPath = join(process.cwd(), "app", "globals.css");
-  await writeFile(globalsPath, content, "utf-8");
-  return NextResponse.json({ success: true });
-}
-```
-
-Both routes are automatically installed with the component.
+- **Read Theme**: Reads CSS variables directly from `document.documentElement` using `getComputedStyle()`
+- **Write Theme**: Applies theme changes by injecting a `<style>` element into the DOM
+- **Live Preview**: Changes are instantly visible across both light and dark modes
+- **No Server Required**: Perfect for static sites, v0, and serverless deployments
 
 ## Token Reference
 
@@ -281,10 +253,10 @@ Both routes are automatically installed with the component.
 
 ## How It Works
 
-1. **Read globals.css** - Fetches current theme variables via API
-2. **Parse CSS** - Extracts `:root` and `.dark` variables
+1. **Read Theme** - Reads CSS variables from DOM using `getComputedStyle()`
+2. **Parse Variables** - Extracts all `--*` CSS custom properties
 3. **Live Updates** - Changes apply to `document.documentElement.style`
-4. **Save** - Writes updated CSS back to `globals.css`
+4. **Save** - Injects updated theme as `<style>` element in DOM
 
 ## Color Format Details
 
@@ -330,42 +302,25 @@ Both routes are automatically installed with the component.
 
 ## Best Practices
 
-1. **Development Only** - Use conditional rendering (see Configuration above)
-2. **Version Control** - Commit `globals.css` changes carefully
-3. **Test Both Modes** - Always verify light and dark mode
-4. **Use OKLCH** - For consistent color manipulation across modes
-5. **Semantic Tokens** - Edit tokens, not component colors directly
+1. **Test Both Modes** - Always verify light and dark mode
+2. **Use OKLCH** - For consistent color manipulation across modes
+3. **Semantic Tokens** - Edit tokens, not component colors directly
+4. **Export Themes** - Copy CSS from Raw CSS tab to save themes
+5. **Browser DevTools** - Use inspector to verify applied variables
 
 ## Troubleshooting
 
-**API routes return 500:** Verify `app/globals.css` exists and is writable
-
-**Colors not updating:** Check browser console for CORS or API errors
+**Colors not updating:** Hard refresh the page (Cmd/Ctrl + Shift + R)
 
 **Format not preserved:** Ensure color value is valid CSS
 
 **Floating ball hidden:** Check `z-index` conflicts (ball uses `z-50`)
 
-**Save fails:** Verify file permissions on `app/globals.css`
+**Theme resets on reload:** Changes are DOM-only, copy CSS to persist
 
-## Security Considerations
+## Production Safe
 
-⚠️ **Production Warning:** The write API endpoint allows modifying `globals.css`. **Never expose in production**.
-
-### Disable in Production
-
-```ts
-// app/api/tinte/write-globals/route.ts
-export async function POST(request: Request) {
-  if (process.env.NODE_ENV === "production") {
-    return NextResponse.json(
-      { success: false, error: "Disabled in production" },
-      { status: 403 }
-    );
-  }
-  // ... rest of implementation
-}
-```
+✅ **No Security Concerns:** Works entirely in the browser without server access. Safe for production, v0, and static sites.
 
 ## Keyboard Shortcuts
 
