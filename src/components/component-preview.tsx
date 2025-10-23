@@ -28,7 +28,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import registryData from "@/data/registry.json";
+import registryData from "@/../public/r/registry.json";
 
 interface ComponentWithLayout {
   component: ReactNode;

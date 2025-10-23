@@ -19,7 +19,7 @@ import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import registryData from "@/data/registry.json";
+import registryData from "@/../public/r/registry.json";
 
 interface ComponentWithLayout {
   component: ReactNode;

@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { RegistryVisualizer } from "@/components/registry-visualizer";
 
-import registryData from "@/data/registry.json";
+import registryData from "@/../public/r/registry.json";
 import { ComponentGrid } from "./component-page/component-grid";
 import { ComponentPageHero } from "./component-page/hero";
 import { ComponentInstallDock } from "./component-page/install-dock";
