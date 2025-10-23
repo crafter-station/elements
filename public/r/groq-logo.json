@@ -15,5 +15,9 @@
     }
   ],
   "docs": "Groq logo component with official brand orange and white colors.",
-  "categories": ["AI", "logo", "brand"]
+  "categories": [
+    "AI",
+    "logo",
+    "brand"
+  ]
 }

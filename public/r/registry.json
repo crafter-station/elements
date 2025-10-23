@@ -19,7 +19,11 @@
         }
       ],
       "docs": "Anthropic logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -37,7 +41,11 @@
         }
       ],
       "docs": "Apple logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Hardware", "logo", "brand"]
+      "categories": [
+        "Hardware",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -55,7 +63,11 @@
         }
       ],
       "docs": "AWS logo component with official brand orange and white colors.",
-      "categories": ["Cloud", "logo", "brand"]
+      "categories": [
+        "Cloud",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -73,7 +85,11 @@
         }
       ],
       "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Auth", "logo", "brand"]
+      "categories": [
+        "Auth",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -91,7 +107,11 @@
         }
       ],
       "docs": "Claude logo component with official brand orange color.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -145,7 +165,9 @@
       "title": "Clerk Middleware",
       "description": "Clerk middleware for Next.js App Router with route protection",
       "registryDependencies": [],
-      "dependencies": ["@clerk/nextjs"],
+      "dependencies": [
+        "@clerk/nextjs"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-middleware/lib/middleware.ts",
@@ -171,7 +193,10 @@
         "avatar",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-sign-in/page.tsx",
@@ -220,7 +245,10 @@
         "@elements/google-logo",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["@clerk/nextjs", "@clerk/types"],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-sign-in-shadcn/components/sign-in.tsx",
@@ -255,8 +283,18 @@
       "type": "registry:ui",
       "title": "Clerk Sign In (Signals)",
       "description": "Advanced sign-in form using Clerk's experimental Signals API with password reset functionality",
-      "registryDependencies": ["button", "input", "label", "alert", "card"],
-      "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "alert",
+        "card"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-sign-in-signals/components/sign-in-signals.tsx",
@@ -292,7 +330,10 @@
         "avatar",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-sign-up/page.tsx",
@@ -340,7 +381,10 @@
         "@elements/google-logo",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["@clerk/nextjs", "@clerk/types"],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-sign-up-shadcn/components/sign-up.tsx",
@@ -375,8 +419,18 @@
       "type": "registry:ui",
       "title": "Clerk Sign Up (Signals)",
       "description": "Advanced sign-up form using Clerk's experimental Signals API with email verification",
-      "registryDependencies": ["button", "card", "input", "label", "alert"],
-      "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "alert"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-sign-up-signals/components/sign-up-signals.tsx",
@@ -406,8 +460,13 @@
       "type": "registry:block",
       "title": "Clerk Waitlist",
       "description": "Waitlist signup using Clerk's built-in components",
-      "registryDependencies": ["@elements/clerk-sign-in"],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
+      "registryDependencies": [
+        "@elements/clerk-sign-in"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-waitlist/page.tsx",
@@ -433,7 +492,11 @@
         "label",
         "@elements/clerk-middleware"
       ],
-      "dependencies": ["motion", "@clerk/backend", "@clerk/nextjs"],
+      "dependencies": [
+        "motion",
+        "@clerk/backend",
+        "@clerk/nextjs"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/clerk-waitlist-shadcn/components/waitlist.tsx",
@@ -469,7 +532,11 @@
         }
       ],
       "docs": "Cohere logo component with official brand colors.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -487,7 +554,11 @@
         }
       ],
       "docs": "Crafter Station logo component with official brand yellow color.",
-      "categories": ["Development", "logo", "brand"]
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -505,7 +576,11 @@
         }
       ],
       "docs": "DeepSeek logo component with official brand purple color.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -523,7 +598,11 @@
         }
       ],
       "docs": "Discord logo component with official brand blurple color.",
-      "categories": ["Communication", "logo", "brand"]
+      "categories": [
+        "Communication",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -541,7 +620,11 @@
         }
       ],
       "docs": "Gemini logo component with official multi-color gradient brand design.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -559,7 +642,11 @@
         }
       ],
       "docs": "GitHub logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Development", "logo", "brand"]
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -577,7 +664,11 @@
         }
       ],
       "docs": "GitLab logo component with official tanuki mascot brand colors.",
-      "categories": ["Development", "logo", "brand"]
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -595,7 +686,11 @@
         }
       ],
       "docs": "Google logo component with official four-color brand design.",
-      "categories": ["Search", "logo", "brand"]
+      "categories": [
+        "Search",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -613,7 +708,11 @@
         }
       ],
       "docs": "Grok logo component that adapts to your theme. Uses white colors.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -631,7 +730,11 @@
         }
       ],
       "docs": "Groq logo component with official brand orange and white colors.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -649,7 +752,11 @@
         }
       ],
       "docs": "Hugging Face logo component with official multi-color brand design.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -667,7 +774,11 @@
         }
       ],
       "docs": "Kebo logo component with official brand purple color.",
-      "categories": ["Development", "logo", "brand"]
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -685,7 +796,11 @@
         }
       ],
       "docs": "Kimi logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -703,7 +818,11 @@
         }
       ],
       "docs": "Linear logo component with official brand colors and gradient.",
-      "categories": ["Project Management", "logo", "brand"]
+      "categories": [
+        "Project Management",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -756,7 +875,10 @@
       "dependencies": [],
       "files": [],
       "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use.",
-      "categories": ["logo", "brand"]
+      "categories": [
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -774,7 +896,11 @@
         }
       ],
       "docs": "Lovable logo component with official multi-color gradient brand design.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -792,7 +918,11 @@
         }
       ],
       "docs": "Meta logo component with official brand gradient blue design.",
-      "categories": ["Social", "logo", "brand"]
+      "categories": [
+        "Social",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -810,7 +940,11 @@
         }
       ],
       "docs": "Microsoft logo component with official four-square brand colors.",
-      "categories": ["Software", "logo", "brand"]
+      "categories": [
+        "Software",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -828,7 +962,11 @@
         }
       ],
       "docs": "Mistral logo component with official multi-color mosaic brand design.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -846,7 +984,11 @@
         }
       ],
       "docs": "MoonshotAI logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -864,7 +1006,11 @@
         }
       ],
       "docs": "Notion logo component with white background and theme-adaptive foreground.",
-      "categories": ["Productivity", "logo", "brand"]
+      "categories": [
+        "Productivity",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -882,7 +1028,11 @@
         }
       ],
       "docs": "OpenAI logo component with official brand colors.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -900,7 +1050,11 @@
         }
       ],
       "docs": "Perplexity logo component with official brand teal color.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -918,7 +1072,11 @@
         }
       ],
       "docs": "Polar logo component with official brand blue color.",
-      "categories": ["Funding", "logo", "brand"]
+      "categories": [
+        "Funding",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -932,7 +1090,9 @@
         "card",
         "@elements/polar-logo"
       ],
-      "dependencies": ["@polar-sh/nextjs"],
+      "dependencies": [
+        "@polar-sh/nextjs"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/polar-sponsorship/components/sponsor-tiers-preview.tsx",
@@ -983,7 +1143,11 @@
         }
       ],
       "docs": "Qwen logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1001,7 +1165,11 @@
         }
       ],
       "docs": "Resend logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Email", "logo", "brand"]
+      "categories": [
+        "Email",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1019,7 +1187,11 @@
         }
       ],
       "docs": "Slack logo component with official multi-color brand design.",
-      "categories": ["Communication", "logo", "brand"]
+      "categories": [
+        "Communication",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1037,7 +1209,11 @@
         }
       ],
       "docs": "Spotify logo component with official brand green color.",
-      "categories": ["Entertainment", "logo", "brand"]
+      "categories": [
+        "Entertainment",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1055,7 +1231,11 @@
         }
       ],
       "docs": "Stripe logo component with official brand purple color.",
-      "categories": ["Payments", "logo", "brand"]
+      "categories": [
+        "Payments",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1073,7 +1253,11 @@
         }
       ],
       "docs": "Supabase logo component with official brand green gradient colors.",
-      "categories": ["Database", "logo", "brand"]
+      "categories": [
+        "Database",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1081,8 +1265,12 @@
       "type": "registry:ui",
       "title": "Theme Switcher",
       "description": "A theme switcher component with animated sun/moon icons",
-      "registryDependencies": ["switch"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "switch"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher/components/theme-switcher.tsx",
@@ -1108,8 +1296,12 @@
       "type": "registry:ui",
       "title": "Theme Switcher Button",
       "description": "Button-based theme switcher with rotating icons",
-      "registryDependencies": ["button"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher-button/components/button.tsx",
@@ -1135,8 +1327,13 @@
       "type": "registry:ui",
       "title": "Theme Switcher Dropdown",
       "description": "Dropdown theme switcher with system/light/dark options",
-      "registryDependencies": ["button", "dropdown-menu"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher-dropdown/components/dropdown.tsx",
@@ -1163,7 +1360,9 @@
       "title": "Theme Switcher Multi Button",
       "description": "Multi-button theme switcher with system/light/dark options",
       "registryDependencies": [],
-      "dependencies": ["next-themes"],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher-multi-button/components/multi-button.tsx",
@@ -1189,8 +1388,12 @@
       "type": "registry:ui",
       "title": "Theme Switcher Switch",
       "description": "Switch-based theme switcher with animated sun/moon icons",
-      "registryDependencies": ["switch"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "switch"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher-switch/components/switch.tsx",
@@ -1217,7 +1420,9 @@
       "title": "Theme Switcher Toggle",
       "description": "Custom toggle theme switcher with sliding animation",
       "registryDependencies": [],
-      "dependencies": ["next-themes"],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher-toggle/components/toggle.tsx",
@@ -1334,7 +1539,11 @@
         }
       ],
       "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Theme", "logo", "brand"]
+      "categories": [
+        "Theme",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1352,7 +1561,11 @@
         }
       ],
       "docs": "Twitch logo component with official brand purple and white colors.",
-      "categories": ["Entertainment", "logo", "brand"]
+      "categories": [
+        "Entertainment",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1370,7 +1583,11 @@
         }
       ],
       "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Social", "logo", "brand"]
+      "categories": [
+        "Social",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1407,7 +1624,11 @@
         "UPLOADTHING_APP_ID": "your_app_id"
       },
       "docs": "Simple upload button component using UploadThing for basic file uploads with analytics tracking and error handling. Requires UploadThing account and API token.",
-      "categories": ["upload", "file", "storage"]
+      "categories": [
+        "upload",
+        "file",
+        "storage"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1415,7 +1636,12 @@
       "type": "registry:block",
       "title": "UploadThing Dropzone",
       "description": "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
-      "registryDependencies": ["button", "card", "badge", "tabs"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "badge",
+        "tabs"
+      ],
       "dependencies": [
         "uploadthing",
         "@uploadthing/react",
@@ -1443,7 +1669,11 @@
         "UPLOADTHING_TOKEN": "ut_..."
       },
       "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token.",
-      "categories": ["upload", "file", "storage"]
+      "categories": [
+        "upload",
+        "file",
+        "storage"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1461,7 +1691,11 @@
         }
       ],
       "docs": "Upstash logo component with official brand green color.",
-      "categories": ["Database", "logo", "brand"]
+      "categories": [
+        "Database",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1479,7 +1713,11 @@
         }
       ],
       "docs": "v0 logo component that adapts to your theme. Uses white colors.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1497,7 +1735,11 @@
         }
       ],
       "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Cloud", "logo", "brand"]
+      "categories": [
+        "Cloud",
+        "logo",
+        "brand"
+      ]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1515,7 +1757,11 @@
         }
       ],
       "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["AI", "logo", "brand"]
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     }
   ]
 }

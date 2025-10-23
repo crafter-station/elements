@@ -15,5 +15,9 @@
     }
   ],
   "docs": "Microsoft logo component with official four-square brand colors.",
-  "categories": ["Software", "logo", "brand"]
+  "categories": [
+    "Software",
+    "logo",
+    "brand"
+  ]
 }

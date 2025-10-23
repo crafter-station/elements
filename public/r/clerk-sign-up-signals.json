@@ -4,8 +4,18 @@
   "type": "registry:ui",
   "title": "Clerk Sign Up (Signals)",
   "description": "Advanced sign-up form using Clerk's experimental Signals API with email verification",
-  "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
-  "registryDependencies": ["button", "card", "input", "label", "alert"],
+  "dependencies": [
+    "@clerk/nextjs",
+    "@clerk/types",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label",
+    "alert"
+  ],
   "files": [
     {
       "path": "registry/default/blocks/clerk-sign-up-signals/components/sign-up-signals.tsx",
