@@ -25,16 +25,6 @@ Live theme editor with AI generation, format preservation, and real-time preview
   category="AI & Design"
   name="Tinte"
 >
-  <div className="flex items-center justify-center min-h-[400px] relative">
-    <div className="flex flex-col items-center gap-4">
-      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary">
-        <span className="text-sm font-medium">Check the bottom right corner</span>
-        <svg className="w-4 h-4 -rotate-45 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
-    </div>
-  </div>
   <TinteEditor />
 </ComponentPreviewItem>
 
@@ -53,7 +43,6 @@ export default function App() {
 }
 ```
 
-
 ## Quick Start
 
 ### 1. Install
@@ -63,6 +52,7 @@ bunx shadcn@latest add @elements/tinte-editor
 ```
 
 This installs:
+
 - **TinteEditor** - Main floating theme editor component
 - **ColorInput** - Color picker with format switching
 - **TinteLogo** - Tinte logo component
@@ -99,6 +89,7 @@ Edit any shadcn/ui design token with instant visual feedback. Changes apply imme
 ### 🌈 Color Format Preservation
 
 Automatically preserves your original color format:
+
 - **OKLCH** → stays OKLCH
 - **HEX** → stays HEX
 - **RGB** → stays RGB
@@ -120,6 +111,7 @@ Switch between light and dark mode to edit theme variables for each mode indepen
 ### 📦 Organized Token Groups
 
 Tokens are organized into semantic groups:
+
 - **Background & Text** - Core surface colors
 - **Cards & Surfaces** - Muted and accent colors
 - **Interactive Elements** - Primary and secondary colors
@@ -150,7 +142,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
-        {process.env.NODE_ENV === "development" && <TinteEditor />} // [!code highlight]
+        {process.env.NODE_ENV === "development" && <TinteEditor />} // [!code
+        highlight]
       </body>
     </html>
   );
@@ -177,6 +170,7 @@ export default function CustomForm() {
 ```
 
 **Features:**
+
 - Color wheel picker
 - Text input with validation
 - Format toggle button
@@ -195,61 +189,61 @@ The theme editor works entirely in the browser without requiring server-side API
 
 ### Background & Text
 
-| Token | Description |
-|-------|-------------|
-| `--background` | Main background color |
-| `--foreground` | Main text color |
-| `--card` | Card background |
-| `--card-foreground` | Card text |
-| `--popover` | Popover background |
-| `--popover-foreground` | Popover text |
+| Token                  | Description           |
+| ---------------------- | --------------------- |
+| `--background`         | Main background color |
+| `--foreground`         | Main text color       |
+| `--card`               | Card background       |
+| `--card-foreground`    | Card text             |
+| `--popover`            | Popover background    |
+| `--popover-foreground` | Popover text          |
 
 ### Cards & Surfaces
 
-| Token | Description |
-|-------|-------------|
-| `--muted` | Muted background |
-| `--muted-foreground` | Muted text |
-| `--accent` | Accent background |
-| `--accent-foreground` | Accent text |
+| Token                 | Description       |
+| --------------------- | ----------------- |
+| `--muted`             | Muted background  |
+| `--muted-foreground`  | Muted text        |
+| `--accent`            | Accent background |
+| `--accent-foreground` | Accent text       |
 
 ### Interactive Elements
 
-| Token | Description |
-|-------|-------------|
-| `--primary` | Primary button background |
-| `--primary-foreground` | Primary button text |
-| `--secondary` | Secondary button background |
-| `--secondary-foreground` | Secondary button text |
+| Token                    | Description                 |
+| ------------------------ | --------------------------- |
+| `--primary`              | Primary button background   |
+| `--primary-foreground`   | Primary button text         |
+| `--secondary`            | Secondary button background |
+| `--secondary-foreground` | Secondary button text       |
 
 ### Forms & States
 
-| Token | Description |
-|-------|-------------|
-| `--destructive` | Destructive action background |
-| `--destructive-foreground` | Destructive action text |
-| `--input` | Input border |
-| `--ring` | Focus ring |
-| `--border` | Border color |
+| Token                      | Description                   |
+| -------------------------- | ----------------------------- |
+| `--destructive`            | Destructive action background |
+| `--destructive-foreground` | Destructive action text       |
+| `--input`                  | Input border                  |
+| `--ring`                   | Focus ring                    |
+| `--border`                 | Border color                  |
 
 ### Charts
 
-| Token | Description |
-|-------|-------------|
+| Token                           | Description       |
+| ------------------------------- | ----------------- |
 | `--chart-1` through `--chart-5` | Chart data colors |
 
 ### Sidebar
 
-| Token | Description |
-|-------|-------------|
-| `--sidebar-background` | Sidebar background |
-| `--sidebar-foreground` | Sidebar text |
-| `--sidebar-primary` | Sidebar primary background |
-| `--sidebar-primary-foreground` | Sidebar primary text |
-| `--sidebar-accent` | Sidebar accent background |
-| `--sidebar-accent-foreground` | Sidebar accent text |
-| `--sidebar-border` | Sidebar border |
-| `--sidebar-ring` | Sidebar focus ring |
+| Token                          | Description                |
+| ------------------------------ | -------------------------- |
+| `--sidebar-background`         | Sidebar background         |
+| `--sidebar-foreground`         | Sidebar text               |
+| `--sidebar-primary`            | Sidebar primary background |
+| `--sidebar-primary-foreground` | Sidebar primary text       |
+| `--sidebar-accent`             | Sidebar accent background  |
+| `--sidebar-accent-foreground`  | Sidebar accent text        |
+| `--sidebar-border`             | Sidebar border             |
+| `--sidebar-ring`               | Sidebar focus ring         |
 
 ## How It Works
 
@@ -324,10 +318,10 @@ The theme editor works entirely in the browser without requiring server-side API
 
 ## Keyboard Shortcuts
 
-| Key | Action |
-|-----|--------|
-| `Esc` | Close theme editor |
-| `Tab` | Navigate between inputs |
+| Key     | Action                     |
+| ------- | -------------------------- |
+| `Esc`   | Close theme editor         |
+| `Tab`   | Navigate between inputs    |
 | `Enter` | Apply color in input field |
 
 ## Dependencies
