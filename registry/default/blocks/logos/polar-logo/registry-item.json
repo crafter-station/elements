@@ -8,7 +8,7 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/polar/polar-logo/components/logos/polar.tsx",
+      "path": "registry/default/blocks/logos/polar-logo/components/logos/polar.tsx",
       "type": "registry:component"
     }
   ],

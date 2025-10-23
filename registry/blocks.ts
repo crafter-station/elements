@@ -121,6 +121,9 @@ import logos_openai_logo from "./default/blocks/logos/openai-logo/registry-item.
 import logos_perplexity_logo from "./default/blocks/logos/perplexity-logo/registry-item.json" with {
   type: "json",
 };
+import logos_polar_logo from "./default/blocks/logos/polar-logo/registry-item.json" with {
+  type: "json",
+};
 import logos_qwen_logo from "./default/blocks/logos/qwen-logo/registry-item.json" with {
   type: "json",
 };
@@ -139,6 +142,9 @@ import logos_stripe_logo from "./default/blocks/logos/stripe-logo/registry-item.
 import logos_supabase_logo from "./default/blocks/logos/supabase-logo/registry-item.json" with {
   type: "json",
 };
+import logos_tinte_logo from "./default/blocks/logos/tinte-logo/registry-item.json" with {
+  type: "json",
+};
 import logos_twitch_logo from "./default/blocks/logos/twitch-logo/registry-item.json" with {
   type: "json",
 };
@@ -155,9 +161,6 @@ import logos_vercel_logo from "./default/blocks/logos/vercel-logo/registry-item.
   type: "json",
 };
 import logos_xai_logo from "./default/blocks/logos/xai-logo/registry-item.json" with {
-  type: "json",
-};
-import polar_polar_logo from "./default/blocks/polar/polar-logo/registry-item.json" with {
   type: "json",
 };
 import polar_polar_sponsorship from "./default/blocks/polar/polar-sponsorship/registry-item.json" with {
@@ -182,9 +185,6 @@ import theme_switcher_theme_switcher_toggle from "./default/blocks/theme-switche
   type: "json",
 };
 import tinte_tinte_editor from "./default/blocks/tinte/tinte-editor/registry-item.json" with {
-  type: "json",
-};
-import tinte_tinte_logo from "./default/blocks/tinte/tinte-logo/registry-item.json" with {
   type: "json",
 };
 import uploadthing_uploadthing_button from "./default/blocks/uploadthing/uploadthing-button/registry-item.json" with {
@@ -235,19 +235,20 @@ export const blocks = [
   logos_notion_logo as RegistryItem,
   logos_openai_logo as RegistryItem,
   logos_perplexity_logo as RegistryItem,
+  logos_polar_logo as RegistryItem,
   logos_qwen_logo as RegistryItem,
   logos_resend_logo as RegistryItem,
   logos_slack_logo as RegistryItem,
   logos_spotify_logo as RegistryItem,
   logos_stripe_logo as RegistryItem,
   logos_supabase_logo as RegistryItem,
+  logos_tinte_logo as RegistryItem,
   logos_twitch_logo as RegistryItem,
   logos_twitter_logo as RegistryItem,
   logos_upstash_logo as RegistryItem,
   logos_v0_logo as RegistryItem,
   logos_vercel_logo as RegistryItem,
   logos_xai_logo as RegistryItem,
-  polar_polar_logo as RegistryItem,
   polar_polar_sponsorship as RegistryItem,
   theme_switcher_theme_switcher_button as RegistryItem,
   theme_switcher_theme_switcher_classic as RegistryItem,
@@ -256,7 +257,6 @@ export const blocks = [
   theme_switcher_theme_switcher_switch as RegistryItem,
   theme_switcher_theme_switcher_toggle as RegistryItem,
   tinte_tinte_editor as RegistryItem,
-  tinte_tinte_logo as RegistryItem,
   uploadthing_uploadthing_button as RegistryItem,
   uploadthing_uploadthing_dropzone as RegistryItem,
 ] as RegistryItem[];

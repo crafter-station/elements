@@ -48,6 +48,7 @@
         "@elements/upstash-logo",
         "@elements/vercel-logo",
         "@elements/polar-logo",
+        "@elements/tinte-logo",
         "@elements/crafter-station-logo",
         "@elements/kebo-logo"
       ],
@@ -877,6 +878,23 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "polar-logo",
+      "type": "registry:ui",
+      "title": "Polar Logo",
+      "description": "Polar logo component with brand blue",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/polar-logo/components/logos/polar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Polar logo component with official brand blue color.",
+      "categories": ["Funding", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "qwen-logo",
       "type": "registry:ui",
       "title": "Qwen Logo",
@@ -979,6 +997,23 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "tinte-logo",
+      "type": "registry:ui",
+      "title": "Tinte Logo",
+      "description": "Tinte logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/tinte-logo/components/logos/tinte.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": ["Theme", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "twitch-logo",
       "type": "registry:ui",
       "title": "Twitch Logo",
@@ -1078,23 +1113,6 @@
       ],
       "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system.",
       "categories": ["AI", "logo", "brand"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "polar-logo",
-      "type": "registry:ui",
-      "title": "Polar Logo",
-      "description": "Polar logo component with brand blue",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/polar/polar-logo/components/logos/polar.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "Polar logo component with official brand blue color.",
-      "categories": ["Funding", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1370,23 +1388,6 @@
         "OPENAI_API_KEY": "sk-..."
       },
       "docs": "https://www.tryelements.dev/docs/tinte"
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "tinte-logo",
-      "type": "registry:ui",
-      "title": "Tinte Logo",
-      "description": "Tinte logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/tinte/tinte-logo/components/logos/tinte.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Theme", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",

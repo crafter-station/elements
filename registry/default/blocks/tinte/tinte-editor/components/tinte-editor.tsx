@@ -25,11 +25,11 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 
+import { TinteLogo } from "@/registry/default/blocks/logos/tinte-logo/components/logos/tinte";
 import {
   convertTinteToShadcn,
   type TinteTheme,
 } from "@/registry/default/blocks/tinte/tinte-editor/lib/tinte-to-shadcn";
-import { TinteLogo } from "@/registry/default/blocks/tinte/tinte-logo/components/logos/tinte";
 import { ChatInput } from "./chat-input";
 import { Message as ChatMessage } from "./chat-message";
 import { ColorInput } from "./color-input";

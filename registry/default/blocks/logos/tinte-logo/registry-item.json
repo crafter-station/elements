@@ -8,7 +8,7 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/tinte/tinte-logo/components/logos/tinte.tsx",
+      "path": "registry/default/blocks/logos/tinte-logo/components/logos/tinte.tsx",
       "type": "registry:component"
     }
   ],
