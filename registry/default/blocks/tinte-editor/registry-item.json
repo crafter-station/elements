@@ -36,7 +36,7 @@
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/tinte-editor.tsx",
-      "type": "registry:component",
+      "type": "registry:file",
       "target": "components/elements/tinte/tinte-editor.tsx"
     },
     {
