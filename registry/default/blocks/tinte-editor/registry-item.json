@@ -44,8 +44,7 @@
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/chat-container.tsx",
-      "type": "registry:component",
-      "target": "components/elements/tinte/chat-container.tsx"
+      "type": "registry:component"
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/chat-input.tsx",

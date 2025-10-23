@@ -48,8 +48,7 @@
     {
       "path": "registry/default/blocks/tinte-editor/components/chat-container.tsx",
       "content": "import type { HTMLAttributes } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport type ChatContainerProps = HTMLAttributes<HTMLDivElement>;\n\nexport const ChatContainer = ({\n  className,\n  children,\n  ...props\n}: ChatContainerProps) => (\n  <div\n    className={cn(\n      \"flex-1 overflow-y-auto p-4 space-y-2 bg-muted/20 rounded-md border\",\n      className,\n    )}\n    {...props}\n  >\n    {children}\n  </div>\n);\n",
-      "type": "registry:component",
-      "target": "components/elements/tinte/chat-container.tsx"
+      "type": "registry:component"
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/chat-input.tsx",
