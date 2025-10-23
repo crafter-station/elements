@@ -1,6 +1,6 @@
 "use client";
 
-import { TinteEditor } from "@/registry/default/blocks/tinte-editor/components/tinte-editor";
+import { TinteEditor } from "@/registry/default/blocks/tinte/tinte-editor/components/tinte-editor";
 
 export default function TinteEditorDemo() {
   return (

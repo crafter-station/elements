@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cohere-logo",
+  "type": "registry:ui",
+  "title": "Cohere Logo",
+  "description": "Cohere logo component with brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/cohere-logo/components/logos/cohere.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Cohere logo component with official brand colors.",
+  "categories": ["AI", "logo", "brand"]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hugging-face-logo",
+  "type": "registry:ui",
+  "title": "Hugging Face Logo",
+  "description": "Hugging Face logo component with brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/hugging-face-logo/components/logos/hugging-face.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Hugging Face logo component with official multi-color brand design.",
+  "categories": ["AI", "logo", "brand"]
+}

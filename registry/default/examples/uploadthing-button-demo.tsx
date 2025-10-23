@@ -1,6 +1,6 @@
 "use client";
 
-import { UploadThingButton } from "@/registry/default/blocks/uploadthing-button/components/upload-button";
+import { UploadThingButton } from "@/registry/default/blocks/uploadthing/uploadthing-button/components/upload-button";
 
 export default function UploadthingButtonDemo() {
   return (

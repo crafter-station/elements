@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uploadthing-dropzone",
+  "type": "registry:block",
+  "title": "UploadThing Dropzone",
+  "description": "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
+  "registryDependencies": ["button", "card", "badge", "tabs"],
+  "dependencies": [
+    "uploadthing",
+    "@uploadthing/react",
+    "@vercel/analytics",
+    "sonner"
+  ],
+  "files": [
+    {
+      "path": "registry/default/blocks/uploadthing/uploadthing-dropzone/lib/core.ts",
+      "type": "registry:lib",
+      "target": "app/api/uploadthing/core.ts"
+    },
+    {
+      "path": "registry/default/blocks/uploadthing/uploadthing-dropzone/route.ts",
+      "type": "registry:lib",
+      "target": "app/api/uploadthing/route.ts"
+    },
+    {
+      "path": "registry/default/blocks/uploadthing/uploadthing-dropzone/components/upload-dropzone.tsx",
+      "type": "registry:component",
+      "target": "components/elements/uploadthing/upload-dropzone.tsx"
+    }
+  ],
+  "envVars": {
+    "UPLOADTHING_TOKEN": "ut_..."
+  },
+  "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token.",
+  "categories": ["upload", "file", "storage"]
+}

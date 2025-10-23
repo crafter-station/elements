@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mistral-logo",
+  "type": "registry:ui",
+  "title": "Mistral Logo",
+  "description": "Mistral logo component with brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/mistral-logo/components/logos/mistral.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Mistral logo component with official multi-color mosaic brand design.",
+  "categories": ["AI", "logo", "brand"]
+}

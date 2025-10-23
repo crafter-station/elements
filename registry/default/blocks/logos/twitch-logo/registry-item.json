@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "twitch-logo",
+  "type": "registry:ui",
+  "title": "Twitch Logo",
+  "description": "Twitch logo component with brand purple",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/twitch-logo/components/logos/twitch.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Twitch logo component with official brand purple and white colors.",
+  "categories": ["Entertainment", "logo", "brand"]
+}

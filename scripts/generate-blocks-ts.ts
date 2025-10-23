@@ -2,10 +2,10 @@
 
 /**
  * Generate registry/blocks.ts from all registry-item.json files
- * Following Supabase UI Library pattern
+ * Supports nested directory structure organized by provider
  */
 
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const BLOCKS_DIR = join(process.cwd(), "registry/default/blocks");
@@ -17,43 +17,78 @@ interface RegistryItem {
   [key: string]: any;
 }
 
+/**
+ * Recursively find all registry-item.json files
+ */
+function findRegistryItems(
+  dir: string,
+  basePath = "",
+): Array<{ path: string; relativePath: string }> {
+  const results: Array<{ path: string; relativePath: string }> = [];
+  const entries = readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    const relativePath = basePath ? `${basePath}/${entry.name}` : entry.name;
+
+    if (entry.isDirectory()) {
+      // Check if this directory has a registry-item.json
+      const registryItemPath = join(fullPath, "registry-item.json");
+      try {
+        statSync(registryItemPath);
+        results.push({ path: fullPath, relativePath });
+      } catch {
+        // No registry-item.json in this directory, recurse into subdirectories
+        results.push(...findRegistryItems(fullPath, relativePath));
+      }
+    }
+  }
+
+  return results;
+}
+
 function main() {
   console.log("📝 Generating registry/blocks.ts...\n");
 
-  // Get all component directories
-  const components = readdirSync(BLOCKS_DIR, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name)
-    .sort();
+  // Find all registry-item.json files recursively
+  const componentPaths = findRegistryItems(BLOCKS_DIR).sort((a, b) =>
+    a.relativePath.localeCompare(b.relativePath),
+  );
 
-  console.log(`Found ${components.length} components\n`);
+  console.log(`Found ${componentPaths.length} components\n`);
 
-  // Read all registry-item.json files to categorize
+  // Read all registry-item.json files
   const componentData: Array<{
     name: string;
     varName: string;
+    relativePath: string;
     item: RegistryItem;
   }> = [];
 
-  for (const component of components) {
-    const registryItemPath = join(BLOCKS_DIR, component, "registry-item.json");
+  for (const { path: fullPath, relativePath } of componentPaths) {
+    const registryItemPath = join(fullPath, "registry-item.json");
     try {
       const content = readFileSync(registryItemPath, "utf-8");
       const item = JSON.parse(content) as RegistryItem;
 
       // Convert component name to valid variable name
-      const varName = component.replace(/-/g, "_");
+      const varName = relativePath.replace(/[/-]/g, "_");
 
-      componentData.push({ name: component, varName, item });
+      componentData.push({
+        name: item.name,
+        varName,
+        relativePath,
+        item,
+      });
     } catch (_error) {
-      console.warn(`⚠ Skipping ${component}: No registry-item.json`);
+      console.warn(`⚠ Skipping ${relativePath}: Invalid registry-item.json`);
     }
   }
 
   // Generate imports
   const imports = componentData
-    .map(({ varName, name }) => {
-      return `import ${varName} from './default/blocks/${name}/registry-item.json' with { type: 'json' }`;
+    .map(({ varName, relativePath }) => {
+      return `import ${varName} from './default/blocks/${relativePath}/registry-item.json' with { type: 'json' }`;
     })
     .join("\n");
 
@@ -65,9 +100,9 @@ function main() {
     .join("\n");
 
   // Generate the file content
-  const fileContent = `import { type RegistryItem } from 'shadcn/schema'
+  const fileContent = `import type { RegistryItem } from "shadcn/registry";
 
-// Auto-generated imports from registry/default/blocks
+// Auto-generated imports from registry/default/blocks (supports nested structure)
 ${imports}
 
 export const blocks = [
@@ -79,7 +114,18 @@ ${exports}
 
   console.log(`✅ Generated ${OUTPUT_FILE}`);
   console.log(`   ${componentData.length} components exported`);
-  console.log("\nGenerated blocks.ts with all component imports");
+
+  // Log provider breakdown
+  const providerCounts = new Map<string, number>();
+  for (const { relativePath } of componentData) {
+    const provider = relativePath.split("/")[0];
+    providerCounts.set(provider, (providerCounts.get(provider) || 0) + 1);
+  }
+
+  console.log("\n📊 Components by provider:");
+  for (const [provider, count] of Array.from(providerCounts.entries()).sort()) {
+    console.log(`   ${provider}: ${count} components`);
+  }
 }
 
 main();

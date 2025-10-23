@@ -1,6 +1,6 @@
 "use client";
 
-import SignInSignals from "@/registry/default/blocks/clerk-sign-in-signals/components/sign-in-signals";
+import SignInSignals from "@/registry/default/blocks/clerk/clerk-sign-in-signals/components/sign-in-signals";
 
 export default function ClerkSignInSignalsDemo() {
   return (

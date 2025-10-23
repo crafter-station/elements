@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-switcher-classic",
+  "type": "registry:ui",
+  "title": "Theme Switcher Classic",
+  "description": "A classic theme switcher component with animated sun/moon icons",
+  "dependencies": ["next-themes"],
+  "registryDependencies": ["switch"],
+  "files": [
+    {
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/components/theme-switcher.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nimport { MoonIcon, SunIcon } from \"lucide-react\";\nimport { useTheme } from \"next-themes\";\n\nimport { Switch } from \"@/components/ui/switch\";\n\nexport function ThemeSwitcher() {\n  const { theme, setTheme } = useTheme();\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  if (!mounted) {\n    return (\n      <div className=\"border-2 border-dashed border-foreground/50 p-3 rounded-md\">\n        <div className=\"h-[1.15rem] w-8 bg-input rounded-full border shadow-xs animate-pulse\" />\n      </div>\n    );\n  }\n\n  const toggleTheme = () => {\n    setTheme(theme === \"dark\" ? \"light\" : \"dark\");\n  };\n\n  const isDark = theme === \"dark\";\n\n  return (\n    <div className=\"relative h-[1.15rem] w-8\">\n      <Switch\n        checked={isDark}\n        onCheckedChange={toggleTheme}\n        className=\"data-[state=checked]:bg-secondary absolute inset-0\"\n      />\n\n      <div\n        className={`absolute left-0 top-0 h-full w-4 flex items-center justify-center transition-opacity duration-200 pointer-events-none ${\n          isDark ? \"opacity-0\" : \"opacity-100\"\n        }`}\n      >\n        <SunIcon className=\"text-foreground\" />\n      </div>\n\n      <div\n        className={`absolute right-0 top-0 h-full w-4 flex items-center justify-center transition-opacity duration-200 pointer-events-none ${\n          isDark ? \"opacity-100\" : \"opacity-0\"\n        }`}\n      >\n        <MoonIcon className=\"text-foreground\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/elements/theme-switcher.tsx"
+    },
+    {
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/components/layout.tsx",
+      "content": "import { Geist, Geist_Mono } from \"next/font/google\";\n\nimport { ThemeProvider } from \"next-themes\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\" suppressHydrationWarning>\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        <ThemeProvider\n          attribute=\"class\"\n          defaultTheme=\"system\"\n          enableSystem\n          disableTransitionOnChange\n        >\n          {children}\n        </ThemeProvider>\n      </body>\n    </html>\n  );\n}\n",
+      "type": "registry:page",
+      "target": "app/layout.tsx"
+    },
+    {
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/theme-switcher-page.tsx",
+      "content": "\"use client\";\n\nimport { ThemeSwitcher } from \"./theme-switcher\";\n\nexport default function ThemeSwitcherPage() {\n  return (\n    <div className=\"min-h-screen bg-background text-foreground\">\n      <div className=\"container mx-auto px-4 py-16\">\n        <div className=\"max-w-2xl mx-auto text-center space-y-8\">\n          <div className=\"space-y-4\">\n            <h1 className=\"text-3xl font-bold\">Theme Switcher</h1>\n            <p className=\"text-muted-foreground\">\n              A classic theme switcher component with animated sun/moon icons.\n            </p>\n          </div>\n\n          <div className=\"flex justify-center\">\n            <ThemeSwitcher />\n          </div>\n\n          <div className=\"bg-card border rounded-lg p-6 text-left space-y-4\">\n            <h2 className=\"text-lg font-semibold\">Features</h2>\n            <ul className=\"space-y-2 text-sm text-muted-foreground\">\n              <li>• ShadCN switch component base</li>\n              <li>• Animated sun/moon icon transitions</li>\n              <li>• Smooth theme switching</li>\n              <li>• Loading state with skeleton</li>\n              <li>• Clean and minimal design</li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:page",
+      "target": "app/theme-switcher/page.tsx"
+    }
+  ],
+  "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."
+}

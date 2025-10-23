@@ -1,6 +1,6 @@
 "use client";
 
-import { SponsorTiersPreview } from "@/registry/default/blocks/polar-sponsorship/components/sponsor-tiers-preview";
+import { SponsorTiersPreview } from "@/registry/default/blocks/polar/polar-sponsorship/components/sponsor-tiers-preview";
 
 export default function PolarSponsorshipDemo() {
   return (

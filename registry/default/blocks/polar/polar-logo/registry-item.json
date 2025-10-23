@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "polar-logo",
+  "type": "registry:ui",
+  "title": "Polar Logo",
+  "description": "Polar logo component with brand blue",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/polar/polar-logo/components/logos/polar.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Polar logo component with official brand blue color.",
+  "categories": ["Funding", "logo", "brand"]
+}

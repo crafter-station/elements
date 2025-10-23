@@ -1,6 +1,6 @@
 "use client";
 
-import { UploadThingDropzone } from "@/registry/default/blocks/uploadthing-dropzone/components/upload-dropzone";
+import { UploadThingDropzone } from "@/registry/default/blocks/uploadthing/uploadthing-dropzone/components/upload-dropzone";
 
 export default function UploadthingDropzoneDemo() {
   return (

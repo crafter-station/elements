@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitcher } from "@/registry/default/blocks/theme-switcher/components/theme-switcher";
+import { ThemeSwitcher } from "@/registry/default/blocks/theme-switcher/theme-switcher-classic/components/theme-switcher";
 
 export default function ThemeSwitcherDemo() {
   return (

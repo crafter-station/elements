@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-logo",
+  "type": "registry:ui",
+  "title": "AWS Logo",
+  "description": "AWS logo component with brand orange and white",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-logo/components/logos/aws.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS logo component with official brand orange and white colors.",
+  "categories": ["Cloud", "logo", "brand"]
+}

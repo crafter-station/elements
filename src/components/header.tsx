@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { ThemeSwitcherButton } from "@/registry/default/blocks/theme-switcher-button/components/button";
+import { ThemeSwitcherButton } from "@/registry/default/blocks/theme-switcher/theme-switcher-button/components/button";
 
 export function Header() {
   const { isSignedIn, user } = useUser();

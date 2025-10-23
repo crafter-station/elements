@@ -1,6 +1,6 @@
 "use client";
 
-import { ClerkSignUpShadcn } from "@/registry/default/blocks/clerk-sign-up-shadcn/components/sign-up";
+import { ClerkSignUpShadcn } from "@/registry/default/blocks/clerk/clerk-sign-up-shadcn/components/sign-up";
 
 export default function ClerkSignUpShadcnDemo() {
   return (

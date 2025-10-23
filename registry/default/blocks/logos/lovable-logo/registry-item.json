@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lovable-logo",
+  "type": "registry:ui",
+  "title": "Lovable Logo",
+  "description": "Lovable logo component with brand gradient colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/lovable-logo/components/logos/lovable.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Lovable logo component with official multi-color gradient brand design.",
+  "categories": ["AI", "logo", "brand"]
+}

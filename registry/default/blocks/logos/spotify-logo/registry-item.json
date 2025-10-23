@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotify-logo",
+  "type": "registry:ui",
+  "title": "Spotify Logo",
+  "description": "Spotify logo component with brand green",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/spotify-logo/components/logos/spotify.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Spotify logo component with official brand green color.",
+  "categories": ["Entertainment", "logo", "brand"]
+}

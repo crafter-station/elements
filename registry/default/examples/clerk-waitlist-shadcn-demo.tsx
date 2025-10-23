@@ -1,6 +1,6 @@
 "use client";
 
-import { WaitlistShadcn } from "@/registry/default/blocks/clerk-waitlist-shadcn/components/waitlist";
+import { WaitlistShadcn } from "@/registry/default/blocks/clerk/clerk-waitlist-shadcn/components/waitlist";
 
 export default function ClerkWaitlistShadcnDemo() {
   return (

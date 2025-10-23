@@ -16,7 +16,7 @@
     "move-component": "bun run scripts/move-component.ts"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^2.0.49",
+    "@ai-sdk/openai": "^2.0.53",
     "@ai-sdk/react": "^2.0.68",
     "@clerk/backend": "^2.12.0",
     "@clerk/clerk-react": "^5.46.1",
@@ -46,7 +46,7 @@
     "@uiw/react-color": "^2.9.0",
     "@uploadthing/react": "^7.3.3",
     "@vercel/analytics": "^1.5.0",
-    "ai": "^5.0.68",
+    "ai": "^5.0.76",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -55,7 +55,7 @@
     "geist": "^1.5.1",
     "googleapis": "^159.0.0",
     "gray-matter": "^4.0.3",
-    "lucide-react": "^0.545.0",
+    "lucide-react": "^0.546.0",
     "motion": "^12.23.12",
     "nanoid": "^5.1.6",
     "next": "15.5.0",

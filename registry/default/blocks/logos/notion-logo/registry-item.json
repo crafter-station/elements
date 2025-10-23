@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notion-logo",
+  "type": "registry:ui",
+  "title": "Notion Logo",
+  "description": "Notion logo component with theme-adaptive colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/notion-logo/components/logos/notion.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Notion logo component with white background and theme-adaptive foreground.",
+  "categories": ["Productivity", "logo", "brand"]
+}

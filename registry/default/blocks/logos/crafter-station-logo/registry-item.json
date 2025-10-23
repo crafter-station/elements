@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "crafter-station-logo",
+  "type": "registry:ui",
+  "title": "Crafter Station Logo",
+  "description": "Crafter Station logo component with brand yellow",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/crafter-station-logo/components/logos/crafter-station.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Crafter Station logo component with official brand yellow color.",
+  "categories": ["Development", "logo", "brand"]
+}
