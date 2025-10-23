@@ -71,13 +71,11 @@
         },
         {
           "path": "src/registry/tinte/tinte-editor/lib/tinte-to-shadcn.ts",
-          "type": "registry:file",
-          "target": "lib/elements/tinte/tinte-to-shadcn.ts"
+          "type": "registry:lib"
         },
         {
           "path": "src/registry/tinte/tinte-editor/lib/get-css-path.ts",
-          "type": "registry:file",
-          "target": "lib/elements/tinte/get-css-path.ts"
+          "type": "registry:lib"
         }
       ],
       "envVars": {
