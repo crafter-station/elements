@@ -258,35 +258,50 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
     [],
   );
 
-  // Load theme from globals.css
+  // Load theme from DOM CSS variables
   const loadTheme = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/elements/tinte/read-globals");
-      if (response.ok) {
-        const data = await response.json();
+      const root = document.documentElement;
+      const computedStyle = getComputedStyle(root);
 
-        // Convert all colors to hex format by default
-        const lightHex: ShadcnTokens = {};
-        const darkHex: ShadcnTokens = {};
+      // Get all CSS variable names that are theme-related
+      const allTokens = TOKEN_GROUPS.flatMap((group) => group.tokens);
 
-        Object.entries(data.theme.light).forEach(([key, value]) => {
-          lightHex[key] = convertToHex(value as string);
-        });
+      const lightHex: ShadcnTokens = {};
+      const darkHex: ShadcnTokens = {};
 
-        Object.entries(data.theme.dark).forEach(([key, value]) => {
-          darkHex[key] = convertToHex(value as string);
-        });
+      // Read light mode variables
+      allTokens.forEach((token) => {
+        const value = computedStyle.getPropertyValue(`--${token}`).trim();
+        if (value) {
+          lightHex[token] = convertToHex(value);
+        }
+      });
 
-        setTheme({ light: lightHex, dark: darkHex });
-
-        // Store hex formats as original formats
-        setOriginalFormats({ light: lightHex, dark: darkHex });
-      } else {
-        console.error("Failed to load theme from globals.css");
+      // Temporarily switch to dark mode to read dark variables
+      const wasDark = root.classList.contains("dark");
+      if (!wasDark) {
+        root.classList.add("dark");
       }
+
+      const darkComputedStyle = getComputedStyle(root);
+      allTokens.forEach((token) => {
+        const value = darkComputedStyle.getPropertyValue(`--${token}`).trim();
+        if (value) {
+          darkHex[token] = convertToHex(value);
+        }
+      });
+
+      // Restore original theme
+      if (!wasDark) {
+        root.classList.remove("dark");
+      }
+
+      setTheme({ light: lightHex, dark: darkHex });
+      setOriginalFormats({ light: lightHex, dark: darkHex });
     } catch (error) {
-      console.error("Error loading theme:", error);
+      console.error("Error loading theme from DOM:", error);
     }
     setLoading(false);
   }, [convertToHex]);
@@ -501,41 +516,8 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
 
     setSaveStatus("saving");
 
-    // Helper function to apply CSS variables to DOM
-    const applyThemeToDOM = () => {
-      const root = document.documentElement;
-      const isDark = root.classList.contains("dark");
-      const activeTheme = isDark ? currentTheme.dark : currentTheme.light;
-
-      // Apply all CSS variables to the root element
-      Object.entries(activeTheme).forEach(([key, value]) => {
-        root.style.setProperty(`--${key}`, value);
-      });
-
-      // Also update the opposite mode by injecting a style element
-      // This ensures switching themes works without reload
-      const styleId = "tinte-dynamic-theme";
-      let styleElement = document.getElementById(styleId) as HTMLStyleElement;
-
-      if (!styleElement) {
-        styleElement = document.createElement("style");
-        styleElement.id = styleId;
-        document.head.appendChild(styleElement);
-      }
-
-      const lightTokens = Object.entries(currentTheme.light)
-        .map(([key, value]) => `  --${key}: ${value};`)
-        .join("\n");
-
-      const darkTokens = Object.entries(currentTheme.dark)
-        .map(([key, value]) => `  --${key}: ${value};`)
-        .join("\n");
-
-      styleElement.textContent = `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
-    };
-
     try {
-      // Ensure all colors are in hex format before saving
+      // Ensure all colors are in hex format before applying
       const lightHex: ShadcnTokens = {};
       const darkHex: ShadcnTokens = {};
 
@@ -547,6 +529,27 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
         darkHex[key] = convertToHex(value);
       });
 
+      // Apply CSS variables to DOM
+      const root = document.documentElement;
+      const isDark = root.classList.contains("dark");
+      const activeTheme = isDark ? darkHex : lightHex;
+
+      // Apply all CSS variables to the root element
+      Object.entries(activeTheme).forEach(([key, value]) => {
+        root.style.setProperty(`--${key}`, value);
+      });
+
+      // Also update both modes by injecting a style element
+      // This ensures switching themes works without reload
+      const styleId = "tinte-dynamic-theme";
+      let styleElement = document.getElementById(styleId) as HTMLStyleElement;
+
+      if (!styleElement) {
+        styleElement = document.createElement("style");
+        styleElement.id = styleId;
+        document.head.appendChild(styleElement);
+      }
+
       const lightTokens = Object.entries(lightHex)
         .map(([key, value]) => `  --${key}: ${value};`)
         .join("\n");
@@ -555,42 +558,14 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
         .map(([key, value]) => `  --${key}: ${value};`)
         .join("\n");
 
-      const cssContent = `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
+      styleElement.textContent = `:root {\n${lightTokens}\n}\n\n.dark {\n${darkTokens}\n}`;
 
-      // Try to write to file (will only work in development)
-      const response = await fetch("/api/elements/tinte/write-globals", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ css: cssContent }),
-      });
-
-      if (response.ok) {
-        // Development: File write succeeded
-        setSaveStatus("success");
-        setHasUnsavedChanges(false);
-        applyThemeToDOM();
-        setTimeout(() => setSaveStatus("idle"), 2000);
-      } else {
-        // Production or file write failed: Just apply to DOM
-        console.warn(
-          "File write failed (expected in production), applying theme to DOM only",
-        );
-        applyThemeToDOM();
-        setSaveStatus("success");
-        setHasUnsavedChanges(false);
-        setTimeout(() => setSaveStatus("idle"), 2000);
-      }
-    } catch (error) {
-      // Network error or production environment: Apply to DOM only
-      console.warn(
-        "Could not write to file (expected in production), applying theme to DOM only:",
-        error,
-      );
-      applyThemeToDOM();
       setSaveStatus("success");
       setHasUnsavedChanges(false);
+      setTimeout(() => setSaveStatus("idle"), 2000);
+    } catch (error) {
+      console.error("Error applying theme to DOM:", error);
+      setSaveStatus("error");
       setTimeout(() => setSaveStatus("idle"), 2000);
     }
   }, [convertToHex]);

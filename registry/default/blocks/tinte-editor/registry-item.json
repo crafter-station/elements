@@ -3,7 +3,7 @@
   "name": "tinte-editor",
   "type": "registry:block",
   "title": "Tinte Theme Editor",
-  "description": "Live theme editor with AI-powered theme generation, Browse tab for tinte.dev themes, and manual color editing. Complete shadcn/ui theme customization tool.",
+  "description": "Live theme editor with AI-powered theme generation, Browse tab for tinte.dev themes, and manual color editing. Complete shadcn/ui theme customization tool. Works entirely client-side with DOM-based CSS variable management.",
   "registryDependencies": [
     "button",
     "input",
@@ -26,20 +26,9 @@
     "streamdown",
     "ai",
     "culori",
-    "lucide-react",
-    "server-only"
+    "lucide-react"
   ],
   "files": [
-    {
-      "path": "registry/default/blocks/tinte-editor/api/write-globals/route.ts",
-      "type": "registry:page",
-      "target": "app/api/elements/tinte/write-globals/route.ts"
-    },
-    {
-      "path": "registry/default/blocks/tinte-editor/api/read-globals/route.ts",
-      "type": "registry:page",
-      "target": "app/api/elements/tinte/read-globals/route.ts"
-    },
     {
       "path": "registry/default/blocks/tinte-editor/components/tinte-editor.tsx",
       "type": "registry:component",
@@ -67,10 +56,6 @@
     },
     {
       "path": "registry/default/blocks/tinte-editor/lib/tinte-to-shadcn.ts",
-      "type": "registry:lib"
-    },
-    {
-      "path": "registry/default/blocks/tinte-editor/lib/get-css-path.ts",
       "type": "registry:lib"
     }
   ],
