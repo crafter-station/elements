@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/groq-logo/components/groq.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/groq.tsx"
+      "path": "registry/default/blocks/groq-logo/components/logos/groq.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Groq logo component with official brand orange and white colors.",

@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/meta-logo/components/meta.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/meta.tsx"
+      "path": "registry/default/blocks/meta-logo/components/logos/meta.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Meta logo component with official brand gradient blue design.",

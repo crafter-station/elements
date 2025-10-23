@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/qwen-logo/components/qwen.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/qwen.tsx"
+      "path": "registry/default/blocks/qwen-logo/components/logos/qwen.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Qwen logo component that adapts to your theme. Uses currentColor to match your design system.",

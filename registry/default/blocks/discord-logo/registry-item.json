@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/discord-logo/components/discord.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/discord.tsx"
+      "path": "registry/default/blocks/discord-logo/components/logos/discord.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Discord logo component with official brand blurple color.",

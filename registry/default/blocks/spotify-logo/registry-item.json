@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/spotify-logo/components/spotify.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/spotify.tsx"
+      "path": "registry/default/blocks/spotify-logo/components/logos/spotify.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Spotify logo component with official brand green color.",

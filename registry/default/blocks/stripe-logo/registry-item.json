@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/stripe-logo/components/stripe.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/stripe.tsx"
+      "path": "registry/default/blocks/stripe-logo/components/logos/stripe.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Stripe logo component with official brand purple color.",

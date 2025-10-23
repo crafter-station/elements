@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/linear-logo/components/linear.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/linear.tsx"
+      "path": "registry/default/blocks/linear-logo/components/logos/linear.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Linear logo component with official brand colors and gradient.",

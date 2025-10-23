@@ -13,9 +13,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/anthropic-logo/components/anthropic.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/anthropic.tsx"
+          "path": "registry/default/blocks/anthropic-logo/components/logos/anthropic.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Anthropic logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -31,9 +30,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/apple-logo/components/apple.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/apple.tsx"
+          "path": "registry/default/blocks/apple-logo/components/logos/apple.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Apple logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -49,9 +47,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/aws-logo/components/aws.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/aws.tsx"
+          "path": "registry/default/blocks/aws-logo/components/logos/aws.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "AWS logo component with official brand orange and white colors.",
@@ -67,9 +64,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/better-auth-logo/components/better-auth.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/better-auth.tsx"
+          "path": "registry/default/blocks/better-auth-logo/components/logos/better-auth.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -85,9 +81,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/claude-logo/components/claude.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/claude.tsx"
+          "path": "registry/default/blocks/claude-logo/components/logos/claude.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Claude logo component with official brand orange color.",
@@ -463,9 +458,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/cohere-logo/components/cohere.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/cohere.tsx"
+          "path": "registry/default/blocks/cohere-logo/components/logos/cohere.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Cohere logo component with official brand colors.",
@@ -481,9 +475,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/crafter-station-logo/components/crafter-station.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/crafter-station.tsx"
+          "path": "registry/default/blocks/crafter-station-logo/components/logos/crafter-station.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Crafter Station logo component with official brand yellow color.",
@@ -499,9 +492,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/deepseek-logo/components/deepseek.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/deepseek.tsx"
+          "path": "registry/default/blocks/deepseek-logo/components/logos/deepseek.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "DeepSeek logo component with official brand purple color.",
@@ -517,9 +509,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/discord-logo/components/discord.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/discord.tsx"
+          "path": "registry/default/blocks/discord-logo/components/logos/discord.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Discord logo component with official brand blurple color.",
@@ -535,9 +526,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/gemini-logo/components/gemini.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/gemini.tsx"
+          "path": "registry/default/blocks/gemini-logo/components/logos/gemini.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Gemini logo component with official multi-color gradient brand design.",
@@ -553,9 +543,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/github-logo/components/github.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/github.tsx"
+          "path": "registry/default/blocks/github-logo/components/logos/github.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "GitHub logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -571,9 +560,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/gitlab-logo/components/gitlab.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/gitlab.tsx"
+          "path": "registry/default/blocks/gitlab-logo/components/logos/gitlab.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "GitLab logo component with official tanuki mascot brand colors.",
@@ -589,9 +577,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/google-logo/components/google.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/google.tsx"
+          "path": "registry/default/blocks/google-logo/components/logos/google.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Google logo component with official four-color brand design.",
@@ -607,9 +594,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/grok-logo/components/grok.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/grok.tsx"
+          "path": "registry/default/blocks/grok-logo/components/logos/grok.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Grok logo component that adapts to your theme. Uses white colors.",
@@ -625,9 +611,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/groq-logo/components/groq.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/groq.tsx"
+          "path": "registry/default/blocks/groq-logo/components/logos/groq.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Groq logo component with official brand orange and white colors.",
@@ -643,9 +628,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/hugging-face-logo/components/hugging-face.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/hugging-face.tsx"
+          "path": "registry/default/blocks/hugging-face-logo/components/logos/hugging-face.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Hugging Face logo component with official multi-color brand design.",
@@ -661,9 +645,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/kebo-logo/components/kebo.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/kebo.tsx"
+          "path": "registry/default/blocks/kebo-logo/components/logos/kebo.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Kebo logo component with official brand purple color.",
@@ -679,9 +662,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/kimi-logo/components/kimi.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/kimi.tsx"
+          "path": "registry/default/blocks/kimi-logo/components/logos/kimi.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Kimi logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -697,9 +679,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/linear-logo/components/linear.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/linear.tsx"
+          "path": "registry/default/blocks/linear-logo/components/logos/linear.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Linear logo component with official brand colors and gradient.",
@@ -768,9 +749,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/lovable-logo/components/lovable.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/lovable.tsx"
+          "path": "registry/default/blocks/lovable-logo/components/logos/lovable.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Lovable logo component with official multi-color gradient brand design.",
@@ -786,9 +766,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/meta-logo/components/meta.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/meta.tsx"
+          "path": "registry/default/blocks/meta-logo/components/logos/meta.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Meta logo component with official brand gradient blue design.",
@@ -804,9 +783,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/microsoft-logo/components/microsoft.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/microsoft.tsx"
+          "path": "registry/default/blocks/microsoft-logo/components/logos/microsoft.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Microsoft logo component with official four-square brand colors.",
@@ -822,9 +800,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/mistral-logo/components/mistral.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/mistral.tsx"
+          "path": "registry/default/blocks/mistral-logo/components/logos/mistral.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Mistral logo component with official multi-color mosaic brand design.",
@@ -840,9 +817,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/moonshot-ai-logo/components/moonshot-ai.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/moonshot-ai.tsx"
+          "path": "registry/default/blocks/moonshot-ai-logo/components/logos/moonshot-ai.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "MoonshotAI logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -858,9 +834,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/notion-logo/components/notion.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/notion.tsx"
+          "path": "registry/default/blocks/notion-logo/components/logos/notion.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Notion logo component with white background and theme-adaptive foreground.",
@@ -876,9 +851,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/openai-logo/components/openai.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/openai.tsx"
+          "path": "registry/default/blocks/openai-logo/components/logos/openai.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "OpenAI logo component with official brand colors.",
@@ -894,9 +868,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/perplexity-logo/components/perplexity.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/perplexity.tsx"
+          "path": "registry/default/blocks/perplexity-logo/components/logos/perplexity.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Perplexity logo component with official brand teal color.",
@@ -912,9 +885,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/polar-logo/components/polar.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/polar.tsx"
+          "path": "registry/default/blocks/polar-logo/components/logos/polar.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Polar logo component with official brand blue color.",
@@ -977,9 +949,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/qwen-logo/components/qwen.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/qwen.tsx"
+          "path": "registry/default/blocks/qwen-logo/components/logos/qwen.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Qwen logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -995,9 +966,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/resend-logo/components/resend.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/resend.tsx"
+          "path": "registry/default/blocks/resend-logo/components/logos/resend.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Resend logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -1013,9 +983,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/slack-logo/components/slack.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/slack.tsx"
+          "path": "registry/default/blocks/slack-logo/components/logos/slack.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Slack logo component with official multi-color brand design.",
@@ -1031,9 +1000,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/spotify-logo/components/spotify.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/spotify.tsx"
+          "path": "registry/default/blocks/spotify-logo/components/logos/spotify.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Spotify logo component with official brand green color.",
@@ -1049,9 +1017,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/stripe-logo/components/stripe.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/stripe.tsx"
+          "path": "registry/default/blocks/stripe-logo/components/logos/stripe.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Stripe logo component with official brand purple color.",
@@ -1067,9 +1034,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/supabase-logo/components/supabase.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/supabase.tsx"
+          "path": "registry/default/blocks/supabase-logo/components/logos/supabase.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Supabase logo component with official brand green gradient colors.",
@@ -1313,9 +1279,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/tinte-logo/components/tinte.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/tinte.tsx"
+          "path": "registry/default/blocks/tinte-logo/components/logos/tinte.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -1331,9 +1296,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/twitch-logo/components/twitch.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/twitch.tsx"
+          "path": "registry/default/blocks/twitch-logo/components/logos/twitch.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Twitch logo component with official brand purple and white colors.",
@@ -1349,9 +1313,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/twitter-logo/components/twitter.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/twitter.tsx"
+          "path": "registry/default/blocks/twitter-logo/components/logos/twitter.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -1440,9 +1403,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/upstash-logo/components/upstash.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/upstash.tsx"
+          "path": "registry/default/blocks/upstash-logo/components/logos/upstash.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Upstash logo component with official brand green color.",
@@ -1458,9 +1420,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/v0-logo/components/v0.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/v0.tsx"
+          "path": "registry/default/blocks/v0-logo/components/logos/v0.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "v0 logo component that adapts to your theme. Uses white colors.",
@@ -1476,9 +1437,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/vercel-logo/components/vercel.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/vercel.tsx"
+          "path": "registry/default/blocks/vercel-logo/components/logos/vercel.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",
@@ -1494,9 +1454,8 @@
       "dependencies": [],
       "files": [
         {
-          "path": "registry/default/blocks/xai-logo/components/xai.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/xai.tsx"
+          "path": "registry/default/blocks/xai-logo/components/logos/xai.tsx",
+          "type": "registry:component"
         }
       ],
       "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system.",

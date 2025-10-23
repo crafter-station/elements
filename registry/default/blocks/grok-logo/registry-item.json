@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/grok-logo/components/grok.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/grok.tsx"
+      "path": "registry/default/blocks/grok-logo/components/logos/grok.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Grok logo component that adapts to your theme. Uses white colors.",

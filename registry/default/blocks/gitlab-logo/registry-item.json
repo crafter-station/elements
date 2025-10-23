@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/gitlab-logo/components/gitlab.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/gitlab.tsx"
+      "path": "registry/default/blocks/gitlab-logo/components/logos/gitlab.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "GitLab logo component with official tanuki mascot brand colors.",

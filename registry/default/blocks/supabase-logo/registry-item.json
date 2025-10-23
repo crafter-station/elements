@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/supabase-logo/components/supabase.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/supabase.tsx"
+      "path": "registry/default/blocks/supabase-logo/components/logos/supabase.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Supabase logo component with official brand green gradient colors.",

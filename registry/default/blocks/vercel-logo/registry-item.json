@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/vercel-logo/components/vercel.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/vercel.tsx"
+      "path": "registry/default/blocks/vercel-logo/components/logos/vercel.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",

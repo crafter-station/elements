@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/perplexity-logo/components/perplexity.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/perplexity.tsx"
+      "path": "registry/default/blocks/perplexity-logo/components/logos/perplexity.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Perplexity logo component with official brand teal color.",

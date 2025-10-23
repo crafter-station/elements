@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/polar-logo/components/polar.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/polar.tsx"
+      "path": "registry/default/blocks/polar-logo/components/logos/polar.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Polar logo component with official brand blue color.",

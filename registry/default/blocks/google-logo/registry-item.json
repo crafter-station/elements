@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/google-logo/components/google.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/google.tsx"
+      "path": "registry/default/blocks/google-logo/components/logos/google.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Google logo component with official four-color brand design.",

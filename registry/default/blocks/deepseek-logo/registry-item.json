@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/deepseek-logo/components/deepseek.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/deepseek.tsx"
+      "path": "registry/default/blocks/deepseek-logo/components/logos/deepseek.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "DeepSeek logo component with official brand purple color.",

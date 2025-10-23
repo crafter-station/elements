@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/better-auth-logo/components/better-auth.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/better-auth.tsx"
+      "path": "registry/default/blocks/better-auth-logo/components/logos/better-auth.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system.",

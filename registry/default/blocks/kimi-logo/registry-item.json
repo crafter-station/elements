@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/kimi-logo/components/kimi.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/kimi.tsx"
+      "path": "registry/default/blocks/kimi-logo/components/logos/kimi.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Kimi logo component that adapts to your theme. Uses currentColor to match your design system.",

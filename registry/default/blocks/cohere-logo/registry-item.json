@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/cohere-logo/components/cohere.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/cohere.tsx"
+      "path": "registry/default/blocks/cohere-logo/components/logos/cohere.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Cohere logo component with official brand colors.",

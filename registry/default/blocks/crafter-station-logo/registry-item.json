@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/crafter-station-logo/components/crafter-station.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/crafter-station.tsx"
+      "path": "registry/default/blocks/crafter-station-logo/components/logos/crafter-station.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Crafter Station logo component with official brand yellow color.",

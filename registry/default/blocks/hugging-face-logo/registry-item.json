@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/hugging-face-logo/components/hugging-face.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/hugging-face.tsx"
+      "path": "registry/default/blocks/hugging-face-logo/components/logos/hugging-face.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Hugging Face logo component with official multi-color brand design.",

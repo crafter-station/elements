@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/openai-logo/components/openai.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/openai.tsx"
+      "path": "registry/default/blocks/openai-logo/components/logos/openai.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "OpenAI logo component with official brand colors.",

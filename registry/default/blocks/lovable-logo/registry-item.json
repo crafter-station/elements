@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/lovable-logo/components/lovable.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/lovable.tsx"
+      "path": "registry/default/blocks/lovable-logo/components/logos/lovable.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Lovable logo component with official multi-color gradient brand design.",

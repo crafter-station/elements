@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/v0-logo/components/v0.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/v0.tsx"
+      "path": "registry/default/blocks/v0-logo/components/logos/v0.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "v0 logo component that adapts to your theme. Uses white colors.",

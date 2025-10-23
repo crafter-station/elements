@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/kebo-logo/components/kebo.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/kebo.tsx"
+      "path": "registry/default/blocks/kebo-logo/components/logos/kebo.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Kebo logo component with official brand purple color.",

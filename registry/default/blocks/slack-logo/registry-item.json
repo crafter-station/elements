@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/slack-logo/components/slack.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/slack.tsx"
+      "path": "registry/default/blocks/slack-logo/components/logos/slack.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Slack logo component with official multi-color brand design.",

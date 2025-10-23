@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/moonshot-ai-logo/components/moonshot-ai.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/moonshot-ai.tsx"
+      "path": "registry/default/blocks/moonshot-ai-logo/components/logos/moonshot-ai.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "MoonshotAI logo component that adapts to your theme. Uses currentColor to match your design system.",

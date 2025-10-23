@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/gemini-logo/components/gemini.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/gemini.tsx"
+      "path": "registry/default/blocks/gemini-logo/components/logos/gemini.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Gemini logo component with official multi-color gradient brand design.",

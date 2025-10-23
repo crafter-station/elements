@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/aws-logo/components/aws.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/aws.tsx"
+      "path": "registry/default/blocks/aws-logo/components/logos/aws.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "AWS logo component with official brand orange and white colors.",

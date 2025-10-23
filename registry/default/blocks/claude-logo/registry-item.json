@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/claude-logo/components/claude.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/claude.tsx"
+      "path": "registry/default/blocks/claude-logo/components/logos/claude.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Claude logo component with official brand orange color.",

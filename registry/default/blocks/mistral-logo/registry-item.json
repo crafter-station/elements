@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/mistral-logo/components/mistral.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/mistral.tsx"
+      "path": "registry/default/blocks/mistral-logo/components/logos/mistral.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Mistral logo component with official multi-color mosaic brand design.",

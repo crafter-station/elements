@@ -8,9 +8,8 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/default/blocks/microsoft-logo/components/microsoft.tsx",
-      "type": "registry:component",
-      "target": "components/ui/logos/microsoft.tsx"
+      "path": "registry/default/blocks/microsoft-logo/components/logos/microsoft.tsx",
+      "type": "registry:component"
     }
   ],
   "docs": "Microsoft logo component with official four-square brand colors.",
