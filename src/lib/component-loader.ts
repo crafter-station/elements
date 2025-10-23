@@ -26,7 +26,9 @@ export async function loadLogoComponent(
 ): Promise<ComponentType<{ className?: string }> | null> {
   try {
     const logoName = itemName.replace("-logo", "");
-    const module = await import(`@/registry/default/blocks/${itemName}/components/${logoName}`);
+    const module = await import(
+      `@/registry/default/blocks/logos/${itemName}/components/logos/${logoName}`
+    );
     return module[getLogoExportName(itemName)] || module.default || null;
   } catch (error) {
     console.error(`Failed to load logo: ${itemName}`, error);
