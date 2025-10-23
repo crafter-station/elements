@@ -5,9 +5,7 @@
   "title": "Clerk Middleware",
   "description": "Clerk middleware for Next.js App Router with route protection",
   "registryDependencies": [],
-  "dependencies": [
-    "@clerk/nextjs"
-  ],
+  "dependencies": ["@clerk/nextjs"],
   "files": [
     {
       "path": "registry/default/blocks/clerk-middleware/lib/middleware.ts",

@@ -5,10 +5,10 @@
  * Update src/registry/... paths to registry/default/blocks/...
  */
 
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 
-const REGISTRY_DIR = join(process.cwd(), 'registry/default/blocks');
+const REGISTRY_DIR = join(process.cwd(), "registry/default/blocks");
 
 function findAllRegistryItemFiles(dir: string): string[] {
   const files: string[] = [];
@@ -21,7 +21,7 @@ function findAllRegistryItemFiles(dir: string): string[] {
 
       if (entry.isDirectory()) {
         traverse(fullPath);
-      } else if (entry.isFile() && entry.name === 'registry-item.json') {
+      } else if (entry.isFile() && entry.name === "registry-item.json") {
         files.push(fullPath);
       }
     }
@@ -32,23 +32,23 @@ function findAllRegistryItemFiles(dir: string): string[] {
 }
 
 function main() {
-  console.log('🔧 Fixing file paths in registry-item.json files...\n');
+  console.log("🔧 Fixing file paths in registry-item.json files...\n");
 
   const files = findAllRegistryItemFiles(REGISTRY_DIR);
   let fixedCount = 0;
 
   for (const file of files) {
-    let content = readFileSync(file, 'utf-8');
+    let content = readFileSync(file, "utf-8");
     const original = content;
 
     // Replace src/registry/[provider]/[component]/ with registry/default/blocks/[provider]/[component]/
     content = content.replace(
       /"path":\s*"src\/registry\/([^"]+)"/g,
-      (match, path) => {
-        const provider = path.split('/')[0];
-        const rest = path.split('/').slice(1).join('/');
+      (_match, path) => {
+        const provider = path.split("/")[0];
+        const rest = path.split("/").slice(1).join("/");
         return `"path": "registry/default/blocks/${provider}/${rest}"`;
-      }
+      },
     );
 
     if (content !== original) {

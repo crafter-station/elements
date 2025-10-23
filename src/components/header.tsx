@@ -3,7 +3,6 @@
 import Link from "next/link";
 
 import { SignInButton, useClerk, useUser } from "@clerk/nextjs";
-import { ThemeSwitcherButton } from "@/registry/default/blocks/theme-switcher-button/components/button";
 import { SearchIcon } from "lucide-react";
 
 import { CommandSearch, useCommandSearch } from "@/components/command-search";
@@ -18,6 +17,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+import { ThemeSwitcherButton } from "@/registry/default/blocks/theme-switcher-button/components/button";
 
 export function Header() {
   const { isSignedIn, user } = useUser();

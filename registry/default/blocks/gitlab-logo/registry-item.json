@@ -14,9 +14,5 @@
     }
   ],
   "docs": "GitLab logo component with official tanuki mascot brand colors.",
-  "categories": [
-    "Development",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Development", "logo", "brand"]
 }

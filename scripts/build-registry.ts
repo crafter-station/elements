@@ -10,12 +10,12 @@
  * 4. Runs `shadcn build` to create individual JSON files
  */
 
-import { execSync } from 'node:child_process';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { execSync } from "node:child_process";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 
-const PUBLIC_REGISTRY_DIR = join(process.cwd(), 'public/r');
-const REGISTRY_INDEX_DIR = join(process.cwd(), '__registry__');
+const PUBLIC_REGISTRY_DIR = join(process.cwd(), "public/r");
+const REGISTRY_INDEX_DIR = join(process.cwd(), "__registry__");
 
 function ensureDir(path: string) {
   if (!existsSync(path)) {
@@ -24,24 +24,26 @@ function ensureDir(path: string) {
 }
 
 async function main() {
-  console.log('🚀 Building Elements registry (Supabase pattern)...\n');
+  console.log("🚀 Building Elements registry (Supabase pattern)...\n");
 
   // Step 1: Import registry
-  console.log('📝 Step 1: Importing registry...');
+  console.log("📝 Step 1: Importing registry...");
 
   // Dynamic import to get the registry
-  const registryModule = await import('../registry/index');
+  const registryModule = await import("../registry/index");
   const registry = registryModule.registry;
 
   console.log(`   ✓ Loaded ${registry.items.length} total items`);
 
   // Step 2: Prepare public registry (filter out examples)
-  console.log('\n📦 Step 2: Preparing public registry.json...');
+  console.log("\n📦 Step 2: Preparing public registry.json...");
 
   const cleanedRegistry = {
-    $schema: 'https://ui.shadcn.com/schema/registry.json',
+    $schema: "https://ui.shadcn.com/schema/registry.json",
     ...registry,
-    items: registry.items.filter((item: any) => item.type !== 'registry:example'),
+    items: registry.items.filter(
+      (item: any) => item.type !== "registry:example",
+    ),
   };
 
   // Ensure directories exist
@@ -49,15 +51,17 @@ async function main() {
   ensureDir(REGISTRY_INDEX_DIR);
 
   // Write registry.json
-  const registryPath = join(PUBLIC_REGISTRY_DIR, 'registry.json');
+  const registryPath = join(PUBLIC_REGISTRY_DIR, "registry.json");
   writeFileSync(registryPath, JSON.stringify(cleanedRegistry, null, 2));
   console.log(`   ✓ Wrote ${registryPath}`);
   console.log(`   ✓ ${cleanedRegistry.items.length} public components`);
 
   // Step 3: Generate __registry__/index.tsx for ComponentPreview
-  console.log('\n🎨 Step 3: Generating __registry__/index.tsx...');
+  console.log("\n🎨 Step 3: Generating __registry__/index.tsx...");
 
-  const exampleComponents = registry.items.filter((item: any) => item.type === 'registry:example');
+  const exampleComponents = registry.items.filter(
+    (item: any) => item.type === "registry:example",
+  );
 
   const registryIndexContent = `
 // @ts-nocheck
@@ -69,7 +73,9 @@ export const Index = {
   "default": {
     ${exampleComponents
       .map((item: any) => {
-        const componentFile = item.files?.find((file: any) => file.path.endsWith('.tsx'));
+        const componentFile = item.files?.find((file: any) =>
+          file.path.endsWith(".tsx"),
+        );
         if (!componentFile) return null;
 
         return `
@@ -78,34 +84,38 @@ export const Index = {
     }`;
       })
       .filter(Boolean)
-      .join(',\n')}
+      .join(",\n")}
   },
 } as const
 `;
 
-  const registryIndexPath = join(REGISTRY_INDEX_DIR, 'index.tsx');
+  const registryIndexPath = join(REGISTRY_INDEX_DIR, "index.tsx");
   writeFileSync(registryIndexPath, registryIndexContent);
   console.log(`   ✓ Wrote ${registryIndexPath}`);
   console.log(`   ✓ ${exampleComponents.length} example components registered`);
 
   // Step 4: Run shadcn build with the registry.json file
-  console.log('\n🔨 Step 4: Running shadcn build...');
+  console.log("\n🔨 Step 4: Running shadcn build...");
   try {
-    execSync('bunx shadcn@latest build public/r/registry.json', { stdio: 'inherit' });
-  } catch (error) {
-    console.error('\n❌ shadcn build failed');
-    console.error('Make sure you have the shadcn package installed:');
-    console.error('  bun add -D shadcn@latest');
+    execSync("bunx shadcn@latest build public/r/registry.json", {
+      stdio: "inherit",
+    });
+  } catch (_error) {
+    console.error("\n❌ shadcn build failed");
+    console.error("Make sure you have the shadcn package installed:");
+    console.error("  bun add -D shadcn@latest");
     process.exit(1);
   }
 
-  console.log('\n✨ Registry build complete!');
+  console.log("\n✨ Registry build complete!");
   console.log(`   📁 Public registry: ${PUBLIC_REGISTRY_DIR}`);
   console.log(`   📁 Preview registry: ${REGISTRY_INDEX_DIR}`);
-  console.log('\n   You can now:');
-  console.log('   1. Test locally: npx shadcn add http://localhost:3000/r/clerk-sign-in-shadcn.json');
-  console.log('   2. Use ComponentPreview in docs to show examples');
-  console.log('   3. Deploy to production and share your registry!');
+  console.log("\n   You can now:");
+  console.log(
+    "   1. Test locally: npx shadcn add http://localhost:3000/r/clerk-sign-in-shadcn.json",
+  );
+  console.log("   2. Use ComponentPreview in docs to show examples");
+  console.log("   3. Deploy to production and share your registry!");
 }
 
 main();

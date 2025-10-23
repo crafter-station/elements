@@ -9,10 +9,10 @@
  * - Relative imports -> @/registry/default/blocks/...
  */
 
-import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
-import { join, relative, dirname } from 'node:path';
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join, relative } from "node:path";
 
-const REGISTRY_DIR = join(process.cwd(), 'registry/default/blocks');
+const REGISTRY_DIR = join(process.cwd(), "registry/default/blocks");
 
 interface ImportMapping {
   from: RegExp;
@@ -25,62 +25,63 @@ const importMappings: ImportMapping[] = [
   // Logo imports: @/components/ui/logos/apple -> @/registry/default/blocks/logos/apple-logo/components/apple
   {
     from: /@\/components\/ui\/logos\/([a-z-]+)/g,
-    to: (match, logoName) => {
+    to: (_match, logoName) => {
       // Map logo file names to component names
       const logoMapping: Record<string, string> = {
-        apple: 'apple-logo',
-        linear: 'linear-logo',
-        microsoft: 'microsoft-logo',
-        github: 'github-logo',
-        spotify: 'spotify-logo',
-        slack: 'slack-logo',
-        twitch: 'twitch-logo',
-        twitter: 'twitter-logo',
-        gitlab: 'gitlab-logo',
-        discord: 'discord-logo',
-        notion: 'notion-logo',
-        google: 'google-logo',
-        qwen: 'qwen-logo',
-        moonshot: 'moonshot-ai-logo',
-        cohere: 'cohere-logo',
-        openai: 'openai-logo',
-        anthropic: 'anthropic-logo',
-        deepseek: 'deepseek-logo',
-        hugging: 'hugging-face-logo',
-        groq: 'groq-logo',
-        grok: 'grok-logo',
-        gemini: 'gemini-logo',
-        lovable: 'lovable-logo',
-        perplexity: 'perplexity-logo',
-        xai: 'xai-logo',
-        v0: 'v0-logo',
-        claude: 'claude-logo',
-        mistral: 'mistral-logo',
-        meta: 'meta-logo',
-        aws: 'aws-logo',
-        kimi: 'kimi-logo',
-        supabase: 'supabase-logo',
-        stripe: 'stripe-logo',
-        resend: 'resend-logo',
-        'better-auth': 'better-auth-logo',
-        upstash: 'upstash-logo',
-        vercel: 'vercel-logo',
-        'crafter-station': 'crafter-station-logo',
-        kebo: 'kebo-logo',
-        polar: 'polar-logo',
-        tinte: 'tinte-logo',
+        apple: "apple-logo",
+        linear: "linear-logo",
+        microsoft: "microsoft-logo",
+        github: "github-logo",
+        spotify: "spotify-logo",
+        slack: "slack-logo",
+        twitch: "twitch-logo",
+        twitter: "twitter-logo",
+        gitlab: "gitlab-logo",
+        discord: "discord-logo",
+        notion: "notion-logo",
+        google: "google-logo",
+        qwen: "qwen-logo",
+        moonshot: "moonshot-ai-logo",
+        cohere: "cohere-logo",
+        openai: "openai-logo",
+        anthropic: "anthropic-logo",
+        deepseek: "deepseek-logo",
+        hugging: "hugging-face-logo",
+        groq: "groq-logo",
+        grok: "grok-logo",
+        gemini: "gemini-logo",
+        lovable: "lovable-logo",
+        perplexity: "perplexity-logo",
+        xai: "xai-logo",
+        v0: "v0-logo",
+        claude: "claude-logo",
+        mistral: "mistral-logo",
+        meta: "meta-logo",
+        aws: "aws-logo",
+        kimi: "kimi-logo",
+        supabase: "supabase-logo",
+        stripe: "stripe-logo",
+        resend: "resend-logo",
+        "better-auth": "better-auth-logo",
+        upstash: "upstash-logo",
+        vercel: "vercel-logo",
+        "crafter-station": "crafter-station-logo",
+        kebo: "kebo-logo",
+        polar: "polar-logo",
+        tinte: "tinte-logo",
       };
 
       const componentName = logoMapping[logoName] || `${logoName}-logo`;
       return `@/registry/default/blocks/logos/${componentName}/components/${logoName}`;
     },
-    description: 'Update logo imports',
+    description: "Update logo imports",
   },
   // Special case: ClerkLogo
   {
     from: /@\/components\/clerk-logo/g,
-    to: () => '@/registry/default/blocks/logos/clerk-logo/components/clerk-logo',
-    description: 'Update Clerk logo import',
+    to: () =>
+      "@/registry/default/blocks/logos/clerk-logo/components/clerk-logo",
+    description: "Update Clerk logo import",
   },
   // UI component imports remain unchanged - these reference shadcn/ui components
   // We don't change @/components/ui/button etc. because those are external dependencies
@@ -97,7 +98,10 @@ function findAllTypeScriptFiles(dir: string): string[] {
 
       if (entry.isDirectory()) {
         traverse(fullPath);
-      } else if (entry.isFile() && (entry.name.endsWith('.tsx') || entry.name.endsWith('.ts'))) {
+      } else if (
+        entry.isFile() &&
+        (entry.name.endsWith(".tsx") || entry.name.endsWith(".ts"))
+      ) {
         files.push(fullPath);
       }
     }
@@ -108,7 +112,7 @@ function findAllTypeScriptFiles(dir: string): string[] {
 }
 
 function updateImportsInFile(filePath: string): boolean {
-  let content = readFileSync(filePath, 'utf-8');
+  let content = readFileSync(filePath, "utf-8");
   let hasChanges = false;
 
   for (const mapping of importMappings) {
@@ -131,7 +135,9 @@ function updateImportsInFile(filePath: string): boolean {
 }
 
 function main() {
-  console.log('🔄 Updating imports in registry files to use @/registry pattern...\n');
+  console.log(
+    "🔄 Updating imports in registry files to use @/registry pattern...\n",
+  );
 
   const files = findAllTypeScriptFiles(REGISTRY_DIR);
   console.log(`📋 Found ${files.length} TypeScript files\n`);
@@ -152,7 +158,7 @@ function main() {
   console.log(`\n✨ Updated ${updatedCount} files`);
 
   if (updatedCount === 0) {
-    console.log('   No changes needed - all imports are already correct!');
+    console.log("   No changes needed - all imports are already correct!");
   }
 }
 

@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Theme Switcher Dropdown",
   "description": "Dropdown theme switcher with system/light/dark options",
-  "registryDependencies": [
-    "button",
-    "dropdown-menu"
-  ],
-  "dependencies": [
-    "next-themes"
-  ],
+  "registryDependencies": ["button", "dropdown-menu"],
+  "dependencies": ["next-themes"],
   "files": [
     {
       "path": "registry/default/blocks/theme-switcher-dropdown/components/dropdown.tsx",

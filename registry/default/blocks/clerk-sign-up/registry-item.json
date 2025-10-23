@@ -10,10 +10,7 @@
     "avatar",
     "@elements/clerk-middleware"
   ],
-  "dependencies": [
-    "@clerk/nextjs",
-    "@clerk/themes"
-  ],
+  "dependencies": ["@clerk/nextjs", "@clerk/themes"],
   "files": [
     {
       "path": "registry/default/blocks/clerk-sign-up/page.tsx",

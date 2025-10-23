@@ -5,13 +5,13 @@
  * Updates paths from nested structure to flat structure
  */
 
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 
-const BLOCKS_DIR = join(process.cwd(), 'registry/default/blocks');
+const BLOCKS_DIR = join(process.cwd(), "registry/default/blocks");
 
 function fixRegistryItem(componentName: string, registryItemPath: string) {
-  const content = readFileSync(registryItemPath, 'utf-8');
+  const content = readFileSync(registryItemPath, "utf-8");
   const item = JSON.parse(content);
 
   if (!item.files) return false;
@@ -26,10 +26,12 @@ function fixRegistryItem(componentName: string, registryItemPath: string) {
     const oldPath = file.path;
 
     // Match pattern: registry/default/blocks/PROVIDER/COMPONENT/rest
-    const match = oldPath.match(/^registry\/default\/blocks\/([^/]+)\/([^/]+)\/(.+)$/);
+    const match = oldPath.match(
+      /^registry\/default\/blocks\/([^/]+)\/([^/]+)\/(.+)$/,
+    );
 
     if (match) {
-      const [, provider, component, rest] = match;
+      const [, _provider, _component, rest] = match;
 
       // New path should be: registry/default/blocks/COMPONENT/rest
       const newPath = `registry/default/blocks/${componentName}/${rest}`;
@@ -45,24 +47,28 @@ function fixRegistryItem(componentName: string, registryItemPath: string) {
   });
 
   if (hasChanges) {
-    writeFileSync(registryItemPath, JSON.stringify(item, null, 2) + '\n');
+    writeFileSync(registryItemPath, `${JSON.stringify(item, null, 2)}\n`);
   }
 
   return hasChanges;
 }
 
 function main() {
-  console.log('🔧 Fixing all registry-item.json file paths...\n');
+  console.log("🔧 Fixing all registry-item.json file paths...\n");
 
   const components = readdirSync(BLOCKS_DIR, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name)
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
     .sort();
 
   let fixedCount = 0;
 
   for (const componentName of components) {
-    const registryItemPath = join(BLOCKS_DIR, componentName, 'registry-item.json');
+    const registryItemPath = join(
+      BLOCKS_DIR,
+      componentName,
+      "registry-item.json",
+    );
 
     try {
       const hasChanges = fixRegistryItem(componentName, registryItemPath);
@@ -75,8 +81,8 @@ function main() {
   }
 
   console.log(`\n✨ Fixed ${fixedCount} components`);
-  console.log('\nAll paths now use flat structure:');
-  console.log('   registry/default/blocks/[component]/[subdir]/[file]');
+  console.log("\nAll paths now use flat structure:");
+  console.log("   registry/default/blocks/[component]/[subdir]/[file]");
 }
 
 main();

@@ -14,9 +14,5 @@
     }
   ],
   "docs": "AWS logo component with official brand orange and white colors.",
-  "categories": [
-    "Cloud",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Cloud", "logo", "brand"]
 }

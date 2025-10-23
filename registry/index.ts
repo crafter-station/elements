@@ -1,16 +1,17 @@
-import { type Registry, type RegistryItem } from 'shadcn/registry'
-import { blocks } from './blocks'
-import { examples } from './examples'
+import type { Registry } from "shadcn/registry";
+
+import { blocks } from "./blocks";
+import { examples } from "./examples";
 
 export const registry = {
-  name: 'elements',
-  homepage: 'https://tryelements.dev',
+  name: "elements",
+  homepage: "https://tryelements.dev",
   items: [
     ...blocks,
 
     // Internal use only - filtered out from public registry
     ...examples,
   ],
-} satisfies Registry
+} satisfies Registry;
 
-export default registry
+export default registry;

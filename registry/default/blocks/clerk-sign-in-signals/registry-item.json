@@ -4,18 +4,8 @@
   "type": "registry:ui",
   "title": "Clerk Sign In (Signals)",
   "description": "Advanced sign-in form using Clerk's experimental Signals API with password reset functionality",
-  "registryDependencies": [
-    "button",
-    "input",
-    "label",
-    "alert",
-    "card"
-  ],
-  "dependencies": [
-    "@clerk/nextjs",
-    "@clerk/types",
-    "lucide-react"
-  ],
+  "registryDependencies": ["button", "input", "label", "alert", "card"],
+  "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
   "files": [
     {
       "path": "registry/default/blocks/clerk-sign-in-signals/components/sign-in-signals.tsx",

@@ -14,9 +14,5 @@
     }
   ],
   "docs": "Notion logo component with white background and theme-adaptive foreground.",
-  "categories": [
-    "Productivity",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Productivity", "logo", "brand"]
 }

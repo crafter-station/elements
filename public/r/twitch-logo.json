@@ -15,9 +15,5 @@
     }
   ],
   "docs": "Twitch logo component with official brand purple and white colors.",
-  "categories": [
-    "Entertainment",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Entertainment", "logo", "brand"]
 }

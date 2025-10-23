@@ -10,11 +10,7 @@
     "label",
     "@elements/clerk-middleware"
   ],
-  "dependencies": [
-    "motion",
-    "@clerk/backend",
-    "@clerk/nextjs"
-  ],
+  "dependencies": ["motion", "@clerk/backend", "@clerk/nextjs"],
   "files": [
     {
       "path": "registry/default/blocks/clerk-waitlist-shadcn/components/waitlist.tsx",

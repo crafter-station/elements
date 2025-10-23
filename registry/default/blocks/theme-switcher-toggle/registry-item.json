@@ -5,9 +5,7 @@
   "title": "Theme Switcher Toggle",
   "description": "Custom toggle theme switcher with sliding animation",
   "registryDependencies": [],
-  "dependencies": [
-    "next-themes"
-  ],
+  "dependencies": ["next-themes"],
   "files": [
     {
       "path": "registry/default/blocks/theme-switcher-toggle/components/toggle.tsx",

@@ -1,4 +1,5 @@
 import { Children, isValidElement } from "react";
+
 import type { MDXComponents } from "mdx/types";
 
 import { ComponentPreview } from "@/components/component-preview";
@@ -7,18 +8,18 @@ import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
 // Direct imports from examples
 import ClerkSignInShadcnDemo from "@/registry/default/examples/clerk-sign-in-shadcn-demo";
-import ClerkSignUpShadcnDemo from "@/registry/default/examples/clerk-sign-up-shadcn-demo";
 import ClerkSignInSignalsDemo from "@/registry/default/examples/clerk-sign-in-signals-demo";
+import ClerkSignUpShadcnDemo from "@/registry/default/examples/clerk-sign-up-shadcn-demo";
 import ClerkSignUpSignalsDemo from "@/registry/default/examples/clerk-sign-up-signals-demo";
 import ClerkWaitlistShadcnDemo from "@/registry/default/examples/clerk-waitlist-shadcn-demo";
-import ThemeSwitcherDemo from "@/registry/default/examples/theme-switcher-demo";
+import PolarSponsorshipDemo from "@/registry/default/examples/polar-sponsorship-demo";
 import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
+import ThemeSwitcherDemo from "@/registry/default/examples/theme-switcher-demo";
 import ThemeSwitcherDropdownDemo from "@/registry/default/examples/theme-switcher-dropdown-demo";
 import ThemeSwitcherMultiButtonDemo from "@/registry/default/examples/theme-switcher-multi-button-demo";
 import ThemeSwitcherSwitchDemo from "@/registry/default/examples/theme-switcher-switch-demo";
 import ThemeSwitcherToggleDemo from "@/registry/default/examples/theme-switcher-toggle-demo";
 import TinteEditorDemo from "@/registry/default/examples/tinte-editor-demo";
-import PolarSponsorshipDemo from "@/registry/default/examples/polar-sponsorship-demo";
 import UploadthingButtonDemo from "@/registry/default/examples/uploadthing-button-demo";
 import UploadthingDropzoneDemo from "@/registry/default/examples/uploadthing-dropzone-demo";
 

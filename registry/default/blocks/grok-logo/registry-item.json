@@ -14,9 +14,5 @@
     }
   ],
   "docs": "Grok logo component that adapts to your theme. Uses white colors.",
-  "categories": [
-    "AI",
-    "logo",
-    "brand"
-  ]
+  "categories": ["AI", "logo", "brand"]
 }

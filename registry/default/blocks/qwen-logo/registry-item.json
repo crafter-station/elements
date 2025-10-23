@@ -14,9 +14,5 @@
     }
   ],
   "docs": "Qwen logo component that adapts to your theme. Uses currentColor to match your design system.",
-  "categories": [
-    "AI",
-    "logo",
-    "brand"
-  ]
+  "categories": ["AI", "logo", "brand"]
 }

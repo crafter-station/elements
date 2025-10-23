@@ -11,8 +11,15 @@
  * 5. Updates imports to use @/registry pattern
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync, cpSync, readdirSync } from 'node:fs';
-import { join, dirname, relative } from 'node:path';
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
+import { join, relative } from "node:path";
 
 interface RegistryFile {
   path: string;
@@ -40,9 +47,9 @@ interface ProviderRegistry {
   items: RegistryItem[];
 }
 
-const SRC_REGISTRY_DIR = join(process.cwd(), 'src/registry');
-const NEW_REGISTRY_DIR = join(process.cwd(), 'registry');
-const DEFAULT_STYLE = 'default';
+const SRC_REGISTRY_DIR = join(process.cwd(), "src/registry");
+const NEW_REGISTRY_DIR = join(process.cwd(), "registry");
+const DEFAULT_STYLE = "default";
 
 function ensureDir(path: string) {
   if (!existsSync(path)) {
@@ -52,15 +59,20 @@ function ensureDir(path: string) {
 
 function getComponentName(itemName: string): string {
   // Remove @elements/ prefix if present
-  return itemName.replace('@elements/', '');
+  return itemName.replace("@elements/", "");
 }
 
-function getProviderFromPath(filePath: string): string | null {
+function _getProviderFromPath(filePath: string): string | null {
   const match = filePath.match(/src\/registry\/([^/]+)\//);
   return match ? match[1] : null;
 }
 
-function organizeFileByType(file: RegistryFile, componentDir: string, provider: string, componentName: string) {
+function organizeFileByType(
+  file: RegistryFile,
+  componentDir: string,
+  _provider: string,
+  _componentName: string,
+) {
   const originalPath = join(process.cwd(), file.path);
 
   if (!existsSync(originalPath)) {
@@ -69,21 +81,25 @@ function organizeFileByType(file: RegistryFile, componentDir: string, provider: 
   }
 
   // Determine subdirectory based on file type and path
-  let subdir = '';
-  const fileName = file.path.split('/').pop() || '';
+  let subdir = "";
+  const fileName = file.path.split("/").pop() || "";
 
-  if (file.path.includes('/components/')) {
-    subdir = 'components';
-  } else if (file.path.includes('/hooks/')) {
-    subdir = 'hooks';
-  } else if (file.path.includes('/lib/')) {
-    subdir = 'lib';
-  } else if (file.path.includes('/api/')) {
-    subdir = 'api';
-  } else if (fileName.endsWith('.tsx') && !fileName.includes('page')) {
-    subdir = 'components';
-  } else if (fileName.endsWith('.ts') && !fileName.includes('route') && !fileName.includes('actions')) {
-    subdir = 'lib';
+  if (file.path.includes("/components/")) {
+    subdir = "components";
+  } else if (file.path.includes("/hooks/")) {
+    subdir = "hooks";
+  } else if (file.path.includes("/lib/")) {
+    subdir = "lib";
+  } else if (file.path.includes("/api/")) {
+    subdir = "api";
+  } else if (fileName.endsWith(".tsx") && !fileName.includes("page")) {
+    subdir = "components";
+  } else if (
+    fileName.endsWith(".ts") &&
+    !fileName.includes("route") &&
+    !fileName.includes("actions")
+  ) {
+    subdir = "lib";
   }
 
   const targetDir = subdir ? join(componentDir, subdir) : componentDir;
@@ -106,18 +122,20 @@ function organizeFileByType(file: RegistryFile, componentDir: string, provider: 
 function createRegistryItemJson(
   item: RegistryItem,
   componentDir: string,
-  provider: string
+  _provider: string,
 ): void {
-  const registryItemPath = join(componentDir, 'registry-item.json');
+  const registryItemPath = join(componentDir, "registry-item.json");
 
   // Create the registry-item.json with updated file paths
   const registryItem = {
-    $schema: 'https://ui.shadcn.com/schema/registry-item.json',
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
     name: item.name,
     type: item.type,
     ...(item.title && { title: item.title }),
     ...(item.description && { description: item.description }),
-    ...(item.registryDependencies && { registryDependencies: item.registryDependencies }),
+    ...(item.registryDependencies && {
+      registryDependencies: item.registryDependencies,
+    }),
     ...(item.dependencies && { dependencies: item.dependencies }),
     ...(item.files && { files: item.files }),
     ...(item.envVars && { envVars: item.envVars }),
@@ -125,22 +143,26 @@ function createRegistryItemJson(
     ...(item.categories && { categories: item.categories }),
   };
 
-  writeFileSync(registryItemPath, JSON.stringify(registryItem, null, 2) + '\n');
+  writeFileSync(registryItemPath, `${JSON.stringify(registryItem, null, 2)}\n`);
   console.log(`   ✓ Created registry-item.json`);
 }
 
-function updateImportsInFile(filePath: string, provider: string, componentName: string) {
+function updateImportsInFile(
+  filePath: string,
+  _provider: string,
+  _componentName: string,
+) {
   if (!existsSync(filePath)) return;
 
   try {
-    let content = readFileSync(filePath, 'utf-8');
-    let hasChanges = false;
+    const content = readFileSync(filePath, "utf-8");
+    const hasChanges = false;
 
     // Update imports from @/components/ui/ to @/registry/default/blocks/
     // This is a placeholder - we'll need to be smart about this
     // For now, just add a comment
 
-    if (content.includes('import') && content.includes('@/components/ui/')) {
+    if (content.includes("import") && content.includes("@/components/ui/")) {
       // TODO: Update imports - this needs careful handling
       console.log(`   ℹ️  Note: ${filePath} has imports that may need updating`);
     }
@@ -156,7 +178,11 @@ function updateImportsInFile(filePath: string, provider: string, componentName: 
 function migrateProvider(provider: string) {
   console.log(`\n📦 Migrating provider: ${provider}`);
 
-  const providerRegistryPath = join(SRC_REGISTRY_DIR, provider, 'registry.json');
+  const providerRegistryPath = join(
+    SRC_REGISTRY_DIR,
+    provider,
+    "registry.json",
+  );
 
   if (!existsSync(providerRegistryPath)) {
     console.log(`   ⊘ No registry.json found, skipping`);
@@ -164,7 +190,7 @@ function migrateProvider(provider: string) {
   }
 
   const providerRegistry: ProviderRegistry = JSON.parse(
-    readFileSync(providerRegistryPath, 'utf-8')
+    readFileSync(providerRegistryPath, "utf-8"),
   );
 
   const migratedItems: RegistryItem[] = [];
@@ -177,9 +203,9 @@ function migrateProvider(provider: string) {
     const componentDir = join(
       NEW_REGISTRY_DIR,
       DEFAULT_STYLE,
-      'blocks',
+      "blocks",
       provider,
-      componentName
+      componentName,
     );
 
     ensureDir(componentDir);
@@ -189,7 +215,12 @@ function migrateProvider(provider: string) {
 
     if (item.files) {
       for (const file of item.files) {
-        const newPath = organizeFileByType(file, componentDir, provider, componentName);
+        const newPath = organizeFileByType(
+          file,
+          componentDir,
+          provider,
+          componentName,
+        );
 
         if (newPath) {
           updatedFiles.push({
@@ -199,7 +230,11 @@ function migrateProvider(provider: string) {
           });
 
           // Update imports in the copied file
-          updateImportsInFile(join(process.cwd(), newPath), provider, componentName);
+          updateImportsInFile(
+            join(process.cwd(), newPath),
+            provider,
+            componentName,
+          );
         }
       }
     }
@@ -221,22 +256,26 @@ function migrateProvider(provider: string) {
 }
 
 function main() {
-  console.log('🚀 Starting registry migration to shadcn structure...\n');
-  console.log('This will:');
-  console.log('  1. Create new registry/default/blocks/[provider]/[component] structure');
-  console.log('  2. Copy and organize files (components/, lib/, hooks/, api/)');
-  console.log('  3. Create registry-item.json for each component');
-  console.log('  4. Keep original files in src/registry for reference\n');
+  console.log("🚀 Starting registry migration to shadcn structure...\n");
+  console.log("This will:");
+  console.log(
+    "  1. Create new registry/default/blocks/[provider]/[component] structure",
+  );
+  console.log("  2. Copy and organize files (components/, lib/, hooks/, api/)");
+  console.log("  3. Create registry-item.json for each component");
+  console.log("  4. Keep original files in src/registry for reference\n");
 
   // Ensure base registry structure exists
-  ensureDir(join(NEW_REGISTRY_DIR, DEFAULT_STYLE, 'blocks'));
+  ensureDir(join(NEW_REGISTRY_DIR, DEFAULT_STYLE, "blocks"));
 
   // Get all providers
   const providers = readdirSync(SRC_REGISTRY_DIR, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name);
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 
-  console.log(`📋 Found ${providers.length} providers: ${providers.join(', ')}\n`);
+  console.log(
+    `📋 Found ${providers.length} providers: ${providers.join(", ")}\n`,
+  );
 
   const allMigratedItems: RegistryItem[] = [];
 
@@ -251,8 +290,12 @@ function main() {
   console.log(`\nNext steps:`);
   console.log(`  1. Review the new registry/ directory structure`);
   console.log(`  2. Create registry/index.ts to export all items`);
-  console.log(`  3. Update imports in component files to use @/registry pattern`);
-  console.log(`  4. Run 'bun run build:registry' to generate distribution files`);
+  console.log(
+    `  3. Update imports in component files to use @/registry pattern`,
+  );
+  console.log(
+    `  4. Run 'bun run build:registry' to generate distribution files`,
+  );
   console.log(`\nNote: Original files remain in src/registry for reference`);
 }
 

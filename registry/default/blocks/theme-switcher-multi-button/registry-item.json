@@ -5,9 +5,7 @@
   "title": "Theme Switcher Multi Button",
   "description": "Multi-button theme switcher with system/light/dark options",
   "registryDependencies": [],
-  "dependencies": [
-    "next-themes"
-  ],
+  "dependencies": ["next-themes"],
   "files": [
     {
       "path": "registry/default/blocks/theme-switcher-multi-button/components/multi-button.tsx",

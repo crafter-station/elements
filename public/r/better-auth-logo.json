@@ -15,9 +15,5 @@
     }
   ],
   "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system.",
-  "categories": [
-    "Auth",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Auth", "logo", "brand"]
 }

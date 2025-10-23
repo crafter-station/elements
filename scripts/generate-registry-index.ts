@@ -9,11 +9,11 @@
  * 3. Generates registry/index.ts that exports all items
  */
 
-import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 
-const REGISTRY_DIR = join(process.cwd(), 'registry/default/blocks');
-const OUTPUT_FILE = join(process.cwd(), 'registry/index.ts');
+const REGISTRY_DIR = join(process.cwd(), "registry/default/blocks");
+const OUTPUT_FILE = join(process.cwd(), "registry/index.ts");
 
 interface RegistryItem {
   name: string;
@@ -39,9 +39,9 @@ function findAllRegistryItems(dir: string): RegistryItem[] {
 
       if (entry.isDirectory()) {
         traverse(fullPath);
-      } else if (entry.isFile() && entry.name === 'registry-item.json') {
+      } else if (entry.isFile() && entry.name === "registry-item.json") {
         try {
-          const content = readFileSync(fullPath, 'utf-8');
+          const content = readFileSync(fullPath, "utf-8");
           const item = JSON.parse(content) as RegistryItem;
           items.push(item);
           console.log(`   ✓ ${item.name}`);
@@ -61,9 +61,9 @@ function generateIndex(items: RegistryItem[]): string {
   const sortedItems = items.sort((a, b) => a.name.localeCompare(b.name));
 
   const registry: Registry = {
-    $schema: 'https://ui.shadcn.com/schema/registry.json',
-    name: 'elements',
-    homepage: 'https://tryelements.dev',
+    $schema: "https://ui.shadcn.com/schema/registry.json",
+    name: "elements",
+    homepage: "https://tryelements.dev",
     items: sortedItems,
   };
 
@@ -85,7 +85,7 @@ export default registry;
 }
 
 function main() {
-  console.log('🔍 Scanning for registry items...\n');
+  console.log("🔍 Scanning for registry items...\n");
 
   const items = findAllRegistryItems(REGISTRY_DIR);
 

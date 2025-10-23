@@ -34,7 +34,7 @@ export interface RegistryItem {
  */
 export function registryItemAppend(
   item: RegistryItem,
-  items: RegistryItem[]
+  items: RegistryItem[],
 ): RegistryItem {
   return {
     ...item,
@@ -49,7 +49,10 @@ export function registryItemAppend(
     files: [...(item.files || []), ...items.flatMap((i) => i.files || [])],
     envVars: {
       ...item.envVars,
-      ...items.reduce((acc, i) => ({ ...acc, ...i.envVars }), {} as Record<string, string>),
+      ...items.reduce(
+        (acc, i) => ({ ...acc, ...i.envVars }),
+        {} as Record<string, string>,
+      ),
     },
   };
 }
@@ -65,16 +68,16 @@ export function registryItemAppend(
  */
 export function combineWithClients(
   component: RegistryItem,
-  clients: RegistryItem[]
+  clients: RegistryItem[],
 ): RegistryItem[] {
   return clients.map((client) => {
-    const clientSuffix = client.name.replace(/^.*-client-/, '');
+    const clientSuffix = client.name.replace(/^.*-client-/, "");
     return registryItemAppend(
       {
         ...component,
         name: `${component.name}-${clientSuffix}`,
       },
-      [client]
+      [client],
     );
   });
 }
@@ -83,7 +86,7 @@ export function combineWithClients(
  * Read and parse a registry-item.json file
  */
 export function loadRegistryItem(path: string): RegistryItem {
-  const fs = require('node:fs');
-  const content = fs.readFileSync(path, 'utf-8');
+  const fs = require("node:fs");
+  const content = fs.readFileSync(path, "utf-8");
   return JSON.parse(content) as RegistryItem;
 }

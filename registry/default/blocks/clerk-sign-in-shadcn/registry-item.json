@@ -25,10 +25,7 @@
     "@elements/google-logo",
     "@elements/clerk-middleware"
   ],
-  "dependencies": [
-    "@clerk/nextjs",
-    "@clerk/types"
-  ],
+  "dependencies": ["@clerk/nextjs", "@clerk/types"],
   "files": [
     {
       "path": "registry/default/blocks/clerk-sign-in-shadcn/components/sign-in.tsx",

@@ -14,9 +14,5 @@
     }
   ],
   "docs": "Stripe logo component with official brand purple color.",
-  "categories": [
-    "Payments",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Payments", "logo", "brand"]
 }

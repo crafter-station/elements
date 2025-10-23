@@ -14,9 +14,5 @@
     }
   ],
   "docs": "GitHub logo component that adapts to your theme. Uses currentColor to match your design system.",
-  "categories": [
-    "Development",
-    "logo",
-    "brand"
-  ]
+  "categories": ["Development", "logo", "brand"]
 }
