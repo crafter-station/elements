@@ -1270,7 +1270,8 @@
       "files": [
         {
           "path": "registry/default/blocks/tinte-editor/page.tsx",
-          "type": "registry:page"
+          "type": "registry:page",
+          "target": "app/elements/tinte/page.tsx"
         },
         {
           "path": "registry/default/blocks/tinte-editor/components/tinte-editor.tsx",
@@ -1299,7 +1300,8 @@
         },
         {
           "path": "registry/default/blocks/tinte-editor/lib/tinte-to-shadcn.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/tinte-to-shadcn.ts"
         }
       ],
       "envVars": {

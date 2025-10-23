@@ -94,6 +94,17 @@ export const Index = {
   console.log(`   ✓ Wrote ${registryIndexPath}`);
   console.log(`   ✓ ${exampleComponents.length} example components registered`);
 
+  // Step 4: Run shadcn build to generate individual component JSON files with inline content
+  console.log("\n🔨 Step 4: Running shadcn build...");
+  try {
+    execSync("bunx shadcn@latest build public/r/registry.json", {
+      stdio: "inherit",
+    });
+  } catch (_error) {
+    console.error("\n❌ shadcn build failed");
+    process.exit(1);
+  }
+
   console.log("\n✨ Registry build complete!");
   console.log(`   📁 Public registry: ${PUBLIC_REGISTRY_DIR}`);
   console.log(`   📁 Preview registry: ${REGISTRY_INDEX_DIR}`);
