@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "google-logo",
+  "type": "registry:ui",
+  "title": "Google Logo",
+  "description": "Google logo component with brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/google-logo/components/google.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/google.tsx"
+    }
+  ],
+  "docs": "Google logo component with official four-color brand design.",
+  "categories": [
+    "Search",
+    "logo",
+    "brand"
+  ]
+}

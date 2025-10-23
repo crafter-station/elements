@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-switcher-toggle",
+  "type": "registry:ui",
+  "title": "Theme Switcher Toggle",
+  "description": "Custom toggle theme switcher with sliding animation",
+  "registryDependencies": [],
+  "dependencies": [
+    "next-themes"
+  ],
+  "files": [
+    {
+      "path": "registry/default/blocks/theme-switcher-toggle/components/toggle.tsx",
+      "type": "registry:component",
+      "target": "components/elements/theme-switcher-toggle.tsx"
+    },
+    {
+      "path": "registry/default/blocks/theme-switcher-toggle/components/layout.tsx",
+      "type": "registry:page",
+      "target": "app/layout.tsx"
+    },
+    {
+      "path": "registry/default/blocks/theme-switcher-toggle/toggle-page.tsx",
+      "type": "registry:page",
+      "target": "app/theme-switcher-toggle/page.tsx"
+    }
+  ],
+  "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Custom toggle with sliding animation."
+}

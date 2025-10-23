@@ -1,57 +1,51 @@
 import { Children, isValidElement } from "react";
-
-// Import from @elements packages
-import {
-  SignInShadcn,
-  SignInSignals,
-  SignUpShadcn,
-  SignUpSignals,
-  WaitlistShadcn,
-} from "@elements/clerk";
-import { SponsorTiersPreview } from "@elements/polar";
-import {
-  ThemeSwitcher,
-  ThemeSwitcherButton,
-  ThemeSwitcherDropdown,
-  ThemeSwitcherMultiButton,
-  ThemeSwitcherSwitch,
-  ThemeSwitcherToggle,
-} from "@elements/theme";
-import { TinteEditor } from "@elements/tinte";
-import {
-  UploadButtonPreview,
-  UploadDropzonePreview,
-} from "@elements/uploadthing";
 import type { MDXComponents } from "mdx/types";
 
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentPreviewItem } from "@/components/component-preview-item";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
+// Direct imports from examples
+import ClerkSignInShadcnDemo from "@/registry/default/examples/clerk-sign-in-shadcn-demo";
+import ClerkSignUpShadcnDemo from "@/registry/default/examples/clerk-sign-up-shadcn-demo";
+import ClerkSignInSignalsDemo from "@/registry/default/examples/clerk-sign-in-signals-demo";
+import ClerkSignUpSignalsDemo from "@/registry/default/examples/clerk-sign-up-signals-demo";
+import ClerkWaitlistShadcnDemo from "@/registry/default/examples/clerk-waitlist-shadcn-demo";
+import ThemeSwitcherDemo from "@/registry/default/examples/theme-switcher-demo";
+import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
+import ThemeSwitcherDropdownDemo from "@/registry/default/examples/theme-switcher-dropdown-demo";
+import ThemeSwitcherMultiButtonDemo from "@/registry/default/examples/theme-switcher-multi-button-demo";
+import ThemeSwitcherSwitchDemo from "@/registry/default/examples/theme-switcher-switch-demo";
+import ThemeSwitcherToggleDemo from "@/registry/default/examples/theme-switcher-toggle-demo";
+import TinteEditorDemo from "@/registry/default/examples/tinte-editor-demo";
+import PolarSponsorshipDemo from "@/registry/default/examples/polar-sponsorship-demo";
+import UploadthingButtonDemo from "@/registry/default/examples/uploadthing-button-demo";
+import UploadthingDropzoneDemo from "@/registry/default/examples/uploadthing-dropzone-demo";
+
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ComponentPreview,
     ComponentPreviewItem,
     // Clerk Components
-    SignInShadcn,
-    SignInSignals,
-    SignUpShadcn,
-    SignUpSignals,
-    WaitlistShadcn,
-    // Polar Components
-    SponsorTiersPreview,
+    SignInShadcn: ClerkSignInShadcnDemo,
+    SignUpShadcn: ClerkSignUpShadcnDemo,
+    SignInSignals: ClerkSignInSignalsDemo,
+    SignUpSignals: ClerkSignUpSignalsDemo,
+    WaitlistShadcn: ClerkWaitlistShadcnDemo,
     // Theme Components
-    ThemeSwitcher,
-    ThemeSwitcherButton,
-    ThemeSwitcherDropdown,
-    ThemeSwitcherMultiButton,
-    ThemeSwitcherSwitch,
-    ThemeSwitcherToggle,
-    // Tinte Components
-    TinteEditor,
-    // UploadThing Components
-    UploadButtonPreview,
-    UploadDropzonePreview,
+    ThemeSwitcher: ThemeSwitcherDemo,
+    ThemeSwitcherButton: ThemeSwitcherButtonDemo,
+    ThemeSwitcherDropdown: ThemeSwitcherDropdownDemo,
+    ThemeSwitcherMultiButton: ThemeSwitcherMultiButtonDemo,
+    ThemeSwitcherSwitch: ThemeSwitcherSwitchDemo,
+    ThemeSwitcherToggle: ThemeSwitcherToggleDemo,
+    // Tinte Editor
+    TinteEditor: TinteEditorDemo,
+    // Polar
+    SponsorTiersPreview: PolarSponsorshipDemo,
+    // UploadThing
+    UploadButtonPreview: UploadthingButtonDemo,
+    UploadDropzonePreview: UploadthingDropzoneDemo,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

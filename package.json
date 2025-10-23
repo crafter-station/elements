@@ -5,14 +5,14 @@
   "packageManager": "bun@1.2.2",
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "bunx shadcn@latest build",
-    "build": "bun run registry:merge && bun run preview:generate && next build --turbopack",
+    "prebuild": "bun run build:registry",
+    "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check .",
     "format": "biome format --write",
     "prepare": "husky",
-    "registry:merge": "bun run scripts/merge-registry.ts",
-    "preview:generate": "bun run scripts/generate-preview-map.ts",
+    "build:registry": "bun run scripts/build-registry.ts",
+    "registry:index": "bun run scripts/generate-registry-index.ts",
     "move-component": "bun run scripts/move-component.ts"
   },
   "dependencies": {

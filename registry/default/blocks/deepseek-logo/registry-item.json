@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "deepseek-logo",
+  "type": "registry:ui",
+  "title": "DeepSeek Logo",
+  "description": "DeepSeek logo component with brand purple",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/deepseek-logo/components/deepseek.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/deepseek.tsx"
+    }
+  ],
+  "docs": "DeepSeek logo component with official brand purple color.",
+  "categories": [
+    "AI",
+    "logo",
+    "brand"
+  ]
+}

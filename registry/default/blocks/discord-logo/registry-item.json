@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "discord-logo",
+  "type": "registry:ui",
+  "title": "Discord Logo",
+  "description": "Discord logo component with brand purple",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/discord-logo/components/discord.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/discord.tsx"
+    }
+  ],
+  "docs": "Discord logo component with official brand blurple color.",
+  "categories": [
+    "Communication",
+    "logo",
+    "brand"
+  ]
+}

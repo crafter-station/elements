@@ -1,0 +1,59 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-sign-in-shadcn",
+  "type": "registry:ui",
+  "title": "Clerk Sign In (ShadCN)",
+  "description": "Complete sign-in form with Clerk integration using custom ShadCN components",
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "alert",
+    "card",
+    "avatar",
+    "@elements/apple-logo",
+    "@elements/linear-logo",
+    "@elements/microsoft-logo",
+    "@elements/github-logo",
+    "@elements/spotify-logo",
+    "@elements/slack-logo",
+    "@elements/twitch-logo",
+    "@elements/twitter-logo",
+    "@elements/gitlab-logo",
+    "@elements/discord-logo",
+    "@elements/notion-logo",
+    "@elements/google-logo",
+    "@elements/clerk-middleware"
+  ],
+  "dependencies": [
+    "@clerk/nextjs",
+    "@clerk/types"
+  ],
+  "files": [
+    {
+      "path": "registry/default/blocks/clerk-sign-in-shadcn/components/sign-in.tsx",
+      "type": "registry:component",
+      "target": "app/elements/clerk/sign-in/sign-in.tsx"
+    },
+    {
+      "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
+      "type": "registry:page",
+      "target": "app/elements/clerk/sign-in/page.tsx"
+    },
+    {
+      "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
+      "type": "registry:page",
+      "target": "app/elements/clerk/dashboard/page.tsx"
+    },
+    {
+      "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
+      "type": "registry:page",
+      "target": "app/elements/clerk/sso-callback/page.tsx"
+    }
+  ],
+  "envVars": {
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+    "CLERK_SECRET_KEY": "sk_test_"
+  },
+  "docs": "Complete sign-in form with OAuth providers, MFA support, and error handling using custom ShadCN components. Requires ClerkProvider in root layout."
+}

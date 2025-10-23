@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "claude-logo",
+  "type": "registry:ui",
+  "title": "Claude Logo",
+  "description": "Claude logo component with brand orange",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/claude-logo/components/claude.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/claude.tsx"
+    }
+  ],
+  "docs": "Claude logo component with official brand orange color.",
+  "categories": [
+    "AI",
+    "logo",
+    "brand"
+  ]
+}

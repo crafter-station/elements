@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { SignInButton, useClerk, useUser } from "@clerk/nextjs";
-import { ThemeSwitcherButton } from "@elements/theme";
+import { ThemeSwitcherButton } from "@/registry/default/blocks/theme-switcher-button/components/button";
 import { SearchIcon } from "lucide-react";
 
 import { CommandSearch, useCommandSearch } from "@/components/command-search";

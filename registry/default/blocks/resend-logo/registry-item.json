@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resend-logo",
+  "type": "registry:ui",
+  "title": "Resend Logo",
+  "description": "Resend logo component with theme-adaptive colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/resend-logo/components/resend.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/resend.tsx"
+    }
+  ],
+  "docs": "Resend logo component that adapts to your theme. Uses currentColor to match your design system.",
+  "categories": [
+    "Email",
+    "logo",
+    "brand"
+  ]
+}

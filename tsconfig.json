@@ -15,13 +15,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/registry/*": ["./src/registry/*"],
-      "@elements/clerk": ["./src/registry/clerk"],
-      "@elements/polar": ["./src/registry/polar"],
-      "@elements/theme": ["./src/registry/theme"],
-      "@elements/tinte": ["./src/registry/tinte"],
-      "@elements/uploadthing": ["./src/registry/uploadthing"]
+      "@/*": ["./*", "./src/*"],
+      "@/registry/*": ["./registry/*"]
     },
     "plugins": [
       {
@@ -30,5 +25,5 @@
     ]
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "registry/default/blocks/**/*"]
 }

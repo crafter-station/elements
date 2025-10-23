@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meta-logo",
+  "type": "registry:ui",
+  "title": "Meta Logo",
+  "description": "Meta logo component with brand gradient blue",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/meta-logo/components/meta.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/meta.tsx"
+    }
+  ],
+  "docs": "Meta logo component with official brand gradient blue design.",
+  "categories": [
+    "Social",
+    "logo",
+    "brand"
+  ]
+}

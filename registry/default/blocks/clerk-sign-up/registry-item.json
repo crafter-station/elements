@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-sign-up",
+  "type": "registry:ui",
+  "title": "Clerk Sign Up",
+  "description": "Sign-up page using Clerk's built-in SignUp component",
+  "registryDependencies": [
+    "button",
+    "card",
+    "avatar",
+    "@elements/clerk-middleware"
+  ],
+  "dependencies": [
+    "@clerk/nextjs",
+    "@clerk/themes"
+  ],
+  "files": [
+    {
+      "path": "registry/default/blocks/clerk-sign-up/page.tsx",
+      "type": "registry:page",
+      "target": "app/elements/clerk/sign-up/[[...sign-up]]/page.tsx"
+    },
+    {
+      "path": "registry/default/blocks/clerk-sign-up/page.tsx",
+      "type": "registry:page",
+      "target": "app/elements/clerk/dashboard/page.tsx"
+    }
+  ],
+  "envVars": {
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+    "CLERK_SECRET_KEY": "sk_test_",
+    "NEXT_PUBLIC_CLERK_SIGN_UP_URL": "/sign-up",
+    "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/elements/clerk/dashboard",
+    "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/elements/clerk/dashboard"
+  },
+  "docs": "Sign-up page using Clerk's built-in SignUp component. Requires ClerkProvider in root layout."
+}

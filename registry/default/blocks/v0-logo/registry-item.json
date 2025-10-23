@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "v0-logo",
+  "type": "registry:ui",
+  "title": "v0 Logo",
+  "description": "v0 logo component with theme-adaptive colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/v0-logo/components/v0.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/v0.tsx"
+    }
+  ],
+  "docs": "v0 logo component that adapts to your theme. Uses white colors.",
+  "categories": [
+    "AI",
+    "logo",
+    "brand"
+  ]
+}

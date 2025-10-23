@@ -4,395 +4,7 @@
   "homepage": "https://tryelements.dev",
   "items": [
     {
-      "name": "polar-sponsorship",
-      "type": "registry:block",
-      "title": "Polar Sponsorship Suite",
-      "description": "Complete sponsorship integration with Polar.sh - sponsorship tiers, checkout flow, and API integration",
-      "registryDependencies": [
-        "button",
-        "badge",
-        "card",
-        "@elements/polar-logo"
-      ],
-      "dependencies": ["@polar-sh/nextjs"],
-      "files": [
-        {
-          "path": "src/registry/polar/sponsorship/sponsor-tiers-preview.tsx",
-          "type": "registry:component",
-          "target": "app/elements/polar/sponsor-tiers-preview.tsx"
-        },
-        {
-          "path": "src/registry/polar/sponsorship/sponsor-tiers.tsx",
-          "type": "registry:lib",
-          "target": "app/elements/polar/sponsor-tiers.tsx"
-        },
-        {
-          "path": "src/registry/polar/sponsorship/checkout-route.ts",
-          "type": "registry:lib",
-          "target": "app/elements/polar/api/checkout/route.ts"
-        },
-        {
-          "path": "src/registry/polar/sponsorship/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/polar/sponsor/page.tsx"
-        },
-        {
-          "path": "src/registry/polar/sponsorship/success-page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/polar/success/page.tsx"
-        }
-      ],
-      "envVars": {
-        "POLAR_ACCESS_TOKEN": "polar_oat_...",
-        "POLAR_SUCCESS_URL": "https://yourdomain.com/elements/polar/success?checkout_id={CHECKOUT_ID}",
-        "POLAR_BASE_URL": "https://api.polar.sh"
-      },
-      "docs": "Complete Polar.sh sponsorship suite with tiers, checkout, and sponsor display. Set up products in Polar dashboard, update POLAR_PRODUCT_IDS in lib/polar.ts with your product IDs, and configure environment variables. Includes API routes, sponsor components, and checkout integration."
-    },
-    {
-      "name": "uploadthing-dropzone",
-      "type": "registry:block",
-      "title": "UploadThing Dropzone",
-      "description": "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
-      "registryDependencies": ["button", "card", "badge", "tabs"],
-      "dependencies": [
-        "uploadthing",
-        "@uploadthing/react",
-        "@vercel/analytics",
-        "sonner"
-      ],
-      "files": [
-        {
-          "path": "src/registry/uploadthing/core.ts",
-          "type": "registry:lib",
-          "target": "app/api/uploadthing/core.ts"
-        },
-        {
-          "path": "src/registry/uploadthing/route.ts",
-          "type": "registry:lib",
-          "target": "app/api/uploadthing/route.ts"
-        },
-        {
-          "path": "src/registry/uploadthing/upload-dropzone.tsx",
-          "type": "registry:component",
-          "target": "components/elements/uploadthing/upload-dropzone.tsx"
-        }
-      ],
-      "envVars": {
-        "UPLOADTHING_TOKEN": "ut_..."
-      },
-      "categories": ["upload", "file", "storage"],
-      "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token."
-    },
-    {
-      "name": "uploadthing-button",
-      "type": "registry:ui",
-      "title": "UploadThing Button",
-      "description": "Simple upload button with UploadThing integration",
-      "registryDependencies": [],
-      "dependencies": [
-        "uploadthing",
-        "@uploadthing/react",
-        "@vercel/analytics",
-        "sonner"
-      ],
-      "files": [
-        {
-          "path": "src/registry/uploadthing/core.ts",
-          "type": "registry:lib",
-          "target": "app/api/uploadthing/core.ts"
-        },
-        {
-          "path": "src/registry/uploadthing/route.ts",
-          "type": "registry:lib",
-          "target": "app/api/uploadthing/route.ts"
-        },
-        {
-          "path": "src/registry/uploadthing/upload-button.tsx",
-          "type": "registry:component",
-          "target": "components/elements/uploadthing/upload-button.tsx"
-        }
-      ],
-      "envVars": {
-        "UPLOADTHING_TOKEN": "ut_...",
-        "UPLOADTHING_APP_ID": "your_app_id"
-      },
-      "categories": ["upload", "file", "storage"],
-      "docs": "Simple upload button component using UploadThing for basic file uploads with analytics tracking and error handling. Requires UploadThing account and API token."
-    },
-    {
-      "name": "apple-logo",
-      "type": "registry:ui",
-      "title": "Apple Logo",
-      "description": "Apple logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/apple.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/apple.tsx"
-        }
-      ],
-      "categories": ["Hardware", "logo", "brand"],
-      "docs": "Apple logo component that adapts to your theme. Uses currentColor to match your design system."
-    },
-    {
-      "name": "linear-logo",
-      "type": "registry:ui",
-      "title": "Linear Logo",
-      "description": "Linear logo component with brand purple gradient",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/linear.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/linear.tsx"
-        }
-      ],
-      "categories": ["Project Management", "logo", "brand"],
-      "docs": "Linear logo component with official brand colors and gradient."
-    },
-    {
-      "name": "microsoft-logo",
-      "type": "registry:ui",
-      "title": "Microsoft Logo",
-      "description": "Microsoft logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/microsoft.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/microsoft.tsx"
-        }
-      ],
-      "categories": ["Software", "logo", "brand"],
-      "docs": "Microsoft logo component with official four-square brand colors."
-    },
-    {
-      "name": "github-logo",
-      "type": "registry:ui",
-      "title": "GitHub Logo",
-      "description": "GitHub logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/github.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/github.tsx"
-        }
-      ],
-      "categories": ["Development", "logo", "brand"],
-      "docs": "GitHub logo component that adapts to your theme. Uses currentColor to match your design system."
-    },
-    {
-      "name": "spotify-logo",
-      "type": "registry:ui",
-      "title": "Spotify Logo",
-      "description": "Spotify logo component with brand green",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/spotify.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/spotify.tsx"
-        }
-      ],
-      "categories": ["Entertainment", "logo", "brand"],
-      "docs": "Spotify logo component with official brand green color."
-    },
-    {
-      "name": "slack-logo",
-      "type": "registry:ui",
-      "title": "Slack Logo",
-      "description": "Slack logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/slack.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/slack.tsx"
-        }
-      ],
-      "categories": ["Communication", "logo", "brand"],
-      "docs": "Slack logo component with official multi-color brand design."
-    },
-    {
-      "name": "twitch-logo",
-      "type": "registry:ui",
-      "title": "Twitch Logo",
-      "description": "Twitch logo component with brand purple",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/twitch.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/twitch.tsx"
-        }
-      ],
-      "categories": ["Entertainment", "logo", "brand"],
-      "docs": "Twitch logo component with official brand purple and white colors."
-    },
-    {
-      "name": "twitter-logo",
-      "type": "registry:ui",
-      "title": "Twitter/X Logo",
-      "description": "Twitter (X) logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/twitter.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/twitter.tsx"
-        }
-      ],
-      "categories": ["Social", "logo", "brand"],
-      "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system."
-    },
-    {
-      "name": "gitlab-logo",
-      "type": "registry:ui",
-      "title": "GitLab Logo",
-      "description": "GitLab logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/gitlab.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/gitlab.tsx"
-        }
-      ],
-      "categories": ["Development", "logo", "brand"],
-      "docs": "GitLab logo component with official tanuki mascot brand colors."
-    },
-    {
-      "name": "discord-logo",
-      "type": "registry:ui",
-      "title": "Discord Logo",
-      "description": "Discord logo component with brand purple",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/discord.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/discord.tsx"
-        }
-      ],
-      "categories": ["Communication", "logo", "brand"],
-      "docs": "Discord logo component with official brand blurple color."
-    },
-    {
-      "name": "notion-logo",
-      "type": "registry:ui",
-      "title": "Notion Logo",
-      "description": "Notion logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/notion.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/notion.tsx"
-        }
-      ],
-      "categories": ["Productivity", "logo", "brand"],
-      "docs": "Notion logo component with white background and theme-adaptive foreground."
-    },
-    {
-      "name": "google-logo",
-      "type": "registry:ui",
-      "title": "Google Logo",
-      "description": "Google logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/google.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/google.tsx"
-        }
-      ],
-      "categories": ["Search", "logo", "brand"],
-      "docs": "Google logo component with official four-color brand design."
-    },
-    {
-      "name": "qwen-logo",
-      "type": "registry:ui",
-      "title": "Qwen Logo",
-      "description": "Qwen logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/qwen.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/qwen.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Qwen logo component that adapts to your theme. Uses currentColor to match your design system."
-    },
-    {
-      "name": "moonshot-ai-logo",
-      "type": "registry:ui",
-      "title": "MoonshotAI Logo",
-      "description": "MoonshotAI logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/moonshot-ai.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/moonshot-ai.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "MoonshotAI logo component that adapts to your theme. Uses currentColor to match your design system."
-    },
-    {
-      "name": "cohere-logo",
-      "type": "registry:ui",
-      "title": "Cohere Logo",
-      "description": "Cohere logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/cohere.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/cohere.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Cohere logo component with official brand colors."
-    },
-    {
-      "name": "openai-logo",
-      "type": "registry:ui",
-      "title": "OpenAI Logo",
-      "description": "OpenAI logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/openai.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/openai.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "OpenAI logo component with official brand colors."
-    },
-    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "anthropic-logo",
       "type": "registry:ui",
       "title": "Anthropic Logo",
@@ -401,219 +13,42 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/anthropic.tsx",
+          "path": "registry/default/blocks/anthropic-logo/components/anthropic.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/anthropic.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Anthropic logo component that adapts to your theme. Uses currentColor to match your design system."
+      "docs": "Anthropic logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
-      "name": "deepseek-logo",
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "apple-logo",
       "type": "registry:ui",
-      "title": "DeepSeek Logo",
-      "description": "DeepSeek logo component with brand purple",
+      "title": "Apple Logo",
+      "description": "Apple logo component with theme-adaptive colors",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/deepseek.tsx",
+          "path": "registry/default/blocks/apple-logo/components/apple.tsx",
           "type": "registry:component",
-          "target": "components/ui/logos/deepseek.tsx"
+          "target": "components/ui/logos/apple.tsx"
         }
       ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "DeepSeek logo component with official brand purple color."
+      "docs": "Apple logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "Hardware",
+        "logo",
+        "brand"
+      ]
     },
     {
-      "name": "hugging-face-logo",
-      "type": "registry:ui",
-      "title": "Hugging Face Logo",
-      "description": "Hugging Face logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/hugging-face.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/hugging-face.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Hugging Face logo component with official multi-color brand design."
-    },
-    {
-      "name": "groq-logo",
-      "type": "registry:ui",
-      "title": "Groq Logo",
-      "description": "Groq logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/groq.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/groq.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Groq logo component with official brand orange and white colors."
-    },
-    {
-      "name": "grok-logo",
-      "type": "registry:ui",
-      "title": "Grok Logo",
-      "description": "Grok logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/grok.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/grok.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Grok logo component that adapts to your theme. Uses white colors."
-    },
-    {
-      "name": "gemini-logo",
-      "type": "registry:ui",
-      "title": "Gemini Logo",
-      "description": "Gemini logo component with brand gradient colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/gemini.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/gemini.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Gemini logo component with official multi-color gradient brand design."
-    },
-    {
-      "name": "lovable-logo",
-      "type": "registry:ui",
-      "title": "Lovable Logo",
-      "description": "Lovable logo component with brand gradient colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/lovable.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/lovable.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Lovable logo component with official multi-color gradient brand design."
-    },
-    {
-      "name": "perplexity-logo",
-      "type": "registry:ui",
-      "title": "Perplexity Logo",
-      "description": "Perplexity logo component with brand teal",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/perplexity.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/perplexity.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Perplexity logo component with official brand teal color."
-    },
-    {
-      "name": "xai-logo",
-      "type": "registry:ui",
-      "title": "xAI Logo",
-      "description": "xAI logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/xai.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/xai.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system."
-    },
-    {
-      "name": "v0-logo",
-      "type": "registry:ui",
-      "title": "v0 Logo",
-      "description": "v0 logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/v0.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/v0.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "v0 logo component that adapts to your theme. Uses white colors."
-    },
-    {
-      "name": "claude-logo",
-      "type": "registry:ui",
-      "title": "Claude Logo",
-      "description": "Claude logo component with brand orange",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/claude.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/claude.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Claude logo component with official brand orange color."
-    },
-    {
-      "name": "mistral-logo",
-      "type": "registry:ui",
-      "title": "Mistral Logo",
-      "description": "Mistral logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/mistral.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/mistral.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Mistral logo component with official multi-color mosaic brand design."
-    },
-    {
-      "name": "meta-logo",
-      "type": "registry:ui",
-      "title": "Meta Logo",
-      "description": "Meta logo component with brand gradient blue",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/meta.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/meta.tsx"
-        }
-      ],
-      "categories": ["Social", "logo", "brand"],
-      "docs": "Meta logo component with official brand gradient blue design."
-    },
-    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "aws-logo",
       "type": "registry:ui",
       "title": "AWS Logo",
@@ -622,83 +57,20 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/aws.tsx",
+          "path": "registry/default/blocks/aws-logo/components/aws.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/aws.tsx"
         }
       ],
-      "categories": ["Cloud", "logo", "brand"],
-      "docs": "AWS logo component with official brand orange and white colors."
+      "docs": "AWS logo component with official brand orange and white colors.",
+      "categories": [
+        "Cloud",
+        "logo",
+        "brand"
+      ]
     },
     {
-      "name": "kimi-logo",
-      "type": "registry:ui",
-      "title": "Kimi Logo",
-      "description": "Kimi logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/kimi.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/kimi.tsx"
-        }
-      ],
-      "categories": ["AI", "logo", "brand"],
-      "docs": "Kimi logo component that adapts to your theme. Uses currentColor to match your design system."
-    },
-    {
-      "name": "supabase-logo",
-      "type": "registry:ui",
-      "title": "Supabase Logo",
-      "description": "Supabase logo component with brand colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/supabase.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/supabase.tsx"
-        }
-      ],
-      "categories": ["Database", "logo", "brand"],
-      "docs": "Supabase logo component with official brand green gradient colors."
-    },
-    {
-      "name": "stripe-logo",
-      "type": "registry:ui",
-      "title": "Stripe Logo",
-      "description": "Stripe logo component with brand purple",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/stripe.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/stripe.tsx"
-        }
-      ],
-      "categories": ["Payments", "logo", "brand"],
-      "docs": "Stripe logo component with official brand purple color."
-    },
-    {
-      "name": "resend-logo",
-      "type": "registry:ui",
-      "title": "Resend Logo",
-      "description": "Resend logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "src/registry/logos/resend.tsx",
-          "type": "registry:component",
-          "target": "components/ui/logos/resend.tsx"
-        }
-      ],
-      "categories": ["Email", "logo", "brand"],
-      "docs": "Resend logo component that adapts to your theme. Uses currentColor to match your design system."
-    },
-    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "better-auth-logo",
       "type": "registry:ui",
       "title": "Better Auth Logo",
@@ -707,49 +79,467 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/better-auth.tsx",
+          "path": "registry/default/blocks/better-auth-logo/components/better-auth.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/better-auth.tsx"
         }
       ],
-      "categories": ["Auth", "logo", "brand"],
-      "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system."
+      "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "Auth",
+        "logo",
+        "brand"
+      ]
     },
     {
-      "name": "upstash-logo",
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "claude-logo",
       "type": "registry:ui",
-      "title": "Upstash Logo",
-      "description": "Upstash logo component with brand green",
+      "title": "Claude Logo",
+      "description": "Claude logo component with brand orange",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/upstash.tsx",
+          "path": "registry/default/blocks/claude-logo/components/claude.tsx",
           "type": "registry:component",
-          "target": "components/ui/logos/upstash.tsx"
+          "target": "components/ui/logos/claude.tsx"
         }
       ],
-      "categories": ["Database", "logo", "brand"],
-      "docs": "Upstash logo component with official brand green color."
+      "docs": "Claude logo component with official brand orange color.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
-      "name": "vercel-logo",
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-auth",
+      "type": "registry:block",
+      "title": "Clerk Auth Suite",
+      "description": "Complete Clerk authentication suite using Clerk's built-in components",
+      "registryDependencies": [
+        "@elements/clerk-sign-in",
+        "@elements/clerk-sign-up",
+        "@elements/clerk-waitlist"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Complete Clerk authentication bundle using built-in Clerk components: sign-in, sign-up, waitlist components, and middleware. Requires ClerkProvider in root layout."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-auth-shadcn",
+      "type": "registry:block",
+      "title": "Clerk Auth Suite (ShadCN)",
+      "description": "Complete Clerk authentication suite with sign-in, sign-up, waitlist, and middleware using custom ShadCN components",
+      "registryDependencies": [
+        "@elements/clerk-sign-in-shadcn",
+        "@elements/clerk-sign-up-shadcn",
+        "@elements/clerk-waitlist-shadcn"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Complete Clerk authentication bundle with custom ShadCN components: sign-in, sign-up, waitlist components, and middleware. Requires ClerkProvider in root layout."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-auth-signals",
+      "type": "registry:block",
+      "title": "Clerk Auth Suite (Signals)",
+      "description": "Complete Clerk authentication suite using experimental Signals API with advanced authentication flows",
+      "registryDependencies": [
+        "@elements/clerk-sign-in-signals",
+        "@elements/clerk-sign-up-signals",
+        "@elements/clerk-middleware"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "⚠️ Experimental: Complete Clerk authentication bundle using Clerk's experimental Signals API (@clerk/clerk-react@5.44.0+). Includes advanced sign-in with password reset, sign-up with email verification, and middleware for route protection. Features real-time validation, enhanced error handling, and CAPTCHA support."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-middleware",
       "type": "registry:ui",
-      "title": "Vercel Logo",
-      "description": "Vercel logo component with theme-adaptive colors",
+      "title": "Clerk Middleware",
+      "description": "Clerk middleware for Next.js App Router with route protection",
+      "registryDependencies": [],
+      "dependencies": [
+        "@clerk/nextjs"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-middleware/lib/middleware.ts",
+          "type": "registry:lib",
+          "target": "middleware.ts"
+        }
+      ],
+      "envVars": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+        "CLERK_SECRET_KEY": "sk_test_"
+      },
+      "docs": "Clerk middleware for Next.js App Router with route protection. Install in project root as middleware.ts."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-sign-in",
+      "type": "registry:ui",
+      "title": "Clerk Sign In",
+      "description": "Sign-in page using Clerk's built-in SignIn component",
+      "registryDependencies": [
+        "button",
+        "card",
+        "avatar",
+        "@elements/clerk-middleware"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-sign-in/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/sign-in/[[...sign-in]]/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-in/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/dashboard/page.tsx"
+        }
+      ],
+      "envVars": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+        "CLERK_SECRET_KEY": "sk_test_",
+        "NEXT_PUBLIC_CLERK_SIGN_IN_URL": "/sign-in",
+        "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/dashboard",
+        "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/dashboard"
+      },
+      "docs": "Sign-in page using Clerk's built-in SignIn component. Requires ClerkProvider in root layout."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-sign-in-shadcn",
+      "type": "registry:ui",
+      "title": "Clerk Sign In (ShadCN)",
+      "description": "Complete sign-in form with Clerk integration using custom ShadCN components",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "alert",
+        "card",
+        "avatar",
+        "@elements/apple-logo",
+        "@elements/linear-logo",
+        "@elements/microsoft-logo",
+        "@elements/github-logo",
+        "@elements/spotify-logo",
+        "@elements/slack-logo",
+        "@elements/twitch-logo",
+        "@elements/twitter-logo",
+        "@elements/gitlab-logo",
+        "@elements/discord-logo",
+        "@elements/notion-logo",
+        "@elements/google-logo",
+        "@elements/clerk-middleware"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-sign-in-shadcn/components/sign-in.tsx",
+          "type": "registry:component",
+          "target": "app/elements/clerk/sign-in/sign-in.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/sign-in/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/sso-callback/page.tsx"
+        }
+      ],
+      "envVars": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+        "CLERK_SECRET_KEY": "sk_test_"
+      },
+      "docs": "Complete sign-in form with OAuth providers, MFA support, and error handling using custom ShadCN components. Requires ClerkProvider in root layout."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-sign-in-signals",
+      "type": "registry:ui",
+      "title": "Clerk Sign In (Signals)",
+      "description": "Advanced sign-in form using Clerk's experimental Signals API with password reset functionality",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "alert",
+        "card"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-sign-in-signals/components/sign-in-signals.tsx",
+          "type": "registry:component",
+          "target": "app/elements/clerk/sign-in-signals/sign-in-signals.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-in-signals/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/sign-in-signals/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-in-signals/components/layout.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/layout.tsx"
+        }
+      ],
+      "envVars": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+        "CLERK_SECRET_KEY": "sk_test_"
+      },
+      "docs": "⚠️ Experimental: Advanced sign-in form using Clerk's experimental Signals API (@clerk/clerk-react@5.44.0+). Features password reset flow, real-time validation, and enhanced error handling. Requires ClerkProvider in root layout."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-sign-up",
+      "type": "registry:ui",
+      "title": "Clerk Sign Up",
+      "description": "Sign-up page using Clerk's built-in SignUp component",
+      "registryDependencies": [
+        "button",
+        "card",
+        "avatar",
+        "@elements/clerk-middleware"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-sign-up/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/sign-up/[[...sign-up]]/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-up/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/dashboard/page.tsx"
+        }
+      ],
+      "envVars": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+        "CLERK_SECRET_KEY": "sk_test_",
+        "NEXT_PUBLIC_CLERK_SIGN_UP_URL": "/sign-up",
+        "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/elements/clerk/dashboard",
+        "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/elements/clerk/dashboard"
+      },
+      "docs": "Sign-up page using Clerk's built-in SignUp component. Requires ClerkProvider in root layout."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-sign-up-shadcn",
+      "type": "registry:ui",
+      "title": "Clerk Sign Up (ShadCN)",
+      "description": "Complete sign-up form with Clerk integration and CAPTCHA support using custom ShadCN components",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "alert",
+        "@elements/apple-logo",
+        "@elements/linear-logo",
+        "@elements/microsoft-logo",
+        "@elements/github-logo",
+        "@elements/spotify-logo",
+        "@elements/slack-logo",
+        "@elements/twitch-logo",
+        "@elements/twitter-logo",
+        "@elements/gitlab-logo",
+        "@elements/discord-logo",
+        "@elements/notion-logo",
+        "@elements/google-logo",
+        "@elements/clerk-middleware"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-sign-up-shadcn/components/sign-up.tsx",
+          "type": "registry:component",
+          "target": "app/elements/clerk/sign-up/sign-up.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-up-shadcn/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/sign-up/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-up-shadcn/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/dashboard/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-up-shadcn/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/sso-callback/page.tsx"
+        }
+      ],
+      "envVars": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+        "CLERK_SECRET_KEY": "sk_test_"
+      },
+      "docs": "Complete sign-up form with OAuth providers, email verification, and CAPTCHA support using custom ShadCN components. Requires ClerkProvider in root layout."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-sign-up-signals",
+      "type": "registry:ui",
+      "title": "Clerk Sign Up (Signals)",
+      "description": "Advanced sign-up form using Clerk's experimental Signals API with email verification",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "alert"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/types",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-sign-up-signals/components/sign-up-signals.tsx",
+          "type": "registry:component",
+          "target": "app/elements/clerk/sign-up-signals/sign-up-signals.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-up-signals/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/sign-up-signals/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-sign-up-signals/components/layout.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/layout.tsx"
+        }
+      ],
+      "envVars": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+        "CLERK_SECRET_KEY": "sk_test_"
+      },
+      "docs": "⚠️ Experimental: Advanced sign-up form using Clerk's experimental Signals API (@clerk/clerk-react@5.44.0+). Features automatic email verification, CAPTCHA support, and real-time validation. Requires ClerkProvider in root layout."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-waitlist",
+      "type": "registry:block",
+      "title": "Clerk Waitlist",
+      "description": "Waitlist signup using Clerk's built-in components",
+      "registryDependencies": [
+        "@elements/clerk-sign-in"
+      ],
+      "dependencies": [
+        "@clerk/nextjs",
+        "@clerk/themes"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-waitlist/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/waitlist/page.tsx"
+        }
+      ],
+      "envVars": {
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
+        "CLERK_SECRET_KEY": "sk_test_"
+      },
+      "docs": "Waitlist signup using Clerk's built-in components. Requires ClerkProvider in root layout and waitlist mode enabled in Clerk dashboard (Configure > Restrictions > Sign-up mode)."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-waitlist-shadcn",
+      "type": "registry:block",
+      "title": "Clerk Waitlist (ShadCN)",
+      "description": "An animated waitlist signup form with Clerk integration using custom ShadCN components",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "@elements/clerk-middleware"
+      ],
+      "dependencies": [
+        "motion",
+        "@clerk/backend",
+        "@clerk/nextjs"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/clerk-waitlist-shadcn/components/waitlist.tsx",
+          "type": "registry:component",
+          "target": "app/elements/clerk/waitlist/waitlist.tsx"
+        },
+        {
+          "path": "registry/default/blocks/clerk-waitlist-shadcn/actions.ts",
+          "type": "registry:lib",
+          "target": "app/elements/clerk/waitlist/actions.ts"
+        },
+        {
+          "path": "registry/default/blocks/clerk-waitlist-shadcn/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/clerk/waitlist/page.tsx"
+        }
+      ],
+      "docs": "Animated waitlist signup form with Clerk integration using custom ShadCN components. Requires ClerkProvider in root layout and waitlist mode enabled in Clerk dashboard (Configure > Restrictions > Sign-up mode)."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "cohere-logo",
+      "type": "registry:ui",
+      "title": "Cohere Logo",
+      "description": "Cohere logo component with brand colors",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/vercel.tsx",
+          "path": "registry/default/blocks/cohere-logo/components/cohere.tsx",
           "type": "registry:component",
-          "target": "components/ui/logos/vercel.tsx"
+          "target": "components/ui/logos/cohere.tsx"
         }
       ],
-      "categories": ["Cloud", "logo", "brand"],
-      "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system."
+      "docs": "Cohere logo component with official brand colors.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "crafter-station-logo",
       "type": "registry:ui",
       "title": "Crafter Station Logo",
@@ -758,15 +548,218 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/crafter-station.tsx",
+          "path": "registry/default/blocks/crafter-station-logo/components/crafter-station.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/crafter-station.tsx"
         }
       ],
-      "categories": ["Development", "logo", "brand"],
-      "docs": "Crafter Station logo component with official brand yellow color."
+      "docs": "Crafter Station logo component with official brand yellow color.",
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ]
     },
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "deepseek-logo",
+      "type": "registry:ui",
+      "title": "DeepSeek Logo",
+      "description": "DeepSeek logo component with brand purple",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/deepseek-logo/components/deepseek.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/deepseek.tsx"
+        }
+      ],
+      "docs": "DeepSeek logo component with official brand purple color.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "discord-logo",
+      "type": "registry:ui",
+      "title": "Discord Logo",
+      "description": "Discord logo component with brand purple",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/discord-logo/components/discord.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/discord.tsx"
+        }
+      ],
+      "docs": "Discord logo component with official brand blurple color.",
+      "categories": [
+        "Communication",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "gemini-logo",
+      "type": "registry:ui",
+      "title": "Gemini Logo",
+      "description": "Gemini logo component with brand gradient colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/gemini-logo/components/gemini.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/gemini.tsx"
+        }
+      ],
+      "docs": "Gemini logo component with official multi-color gradient brand design.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "github-logo",
+      "type": "registry:ui",
+      "title": "GitHub Logo",
+      "description": "GitHub logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/github-logo/components/github.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/github.tsx"
+        }
+      ],
+      "docs": "GitHub logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "gitlab-logo",
+      "type": "registry:ui",
+      "title": "GitLab Logo",
+      "description": "GitLab logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/gitlab-logo/components/gitlab.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/gitlab.tsx"
+        }
+      ],
+      "docs": "GitLab logo component with official tanuki mascot brand colors.",
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "google-logo",
+      "type": "registry:ui",
+      "title": "Google Logo",
+      "description": "Google logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/google-logo/components/google.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/google.tsx"
+        }
+      ],
+      "docs": "Google logo component with official four-color brand design.",
+      "categories": [
+        "Search",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "grok-logo",
+      "type": "registry:ui",
+      "title": "Grok Logo",
+      "description": "Grok logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/grok-logo/components/grok.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/grok.tsx"
+        }
+      ],
+      "docs": "Grok logo component that adapts to your theme. Uses white colors.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "groq-logo",
+      "type": "registry:ui",
+      "title": "Groq Logo",
+      "description": "Groq logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/groq-logo/components/groq.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/groq.tsx"
+        }
+      ],
+      "docs": "Groq logo component with official brand orange and white colors.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "hugging-face-logo",
+      "type": "registry:ui",
+      "title": "Hugging Face Logo",
+      "description": "Hugging Face logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hugging-face-logo/components/hugging-face.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/hugging-face.tsx"
+        }
+      ],
+      "docs": "Hugging Face logo component with official multi-color brand design.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "kebo-logo",
       "type": "registry:ui",
       "title": "Kebo Logo",
@@ -775,49 +768,64 @@
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/kebo.tsx",
+          "path": "registry/default/blocks/kebo-logo/components/kebo.tsx",
           "type": "registry:component",
           "target": "components/ui/logos/kebo.tsx"
         }
       ],
-      "categories": ["Development", "logo", "brand"],
-      "docs": "Kebo logo component with official brand purple color."
+      "docs": "Kebo logo component with official brand purple color.",
+      "categories": [
+        "Development",
+        "logo",
+        "brand"
+      ]
     },
     {
-      "name": "polar-logo",
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "kimi-logo",
       "type": "registry:ui",
-      "title": "Polar Logo",
-      "description": "Polar logo component with brand blue",
+      "title": "Kimi Logo",
+      "description": "Kimi logo component with theme-adaptive colors",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/polar.tsx",
+          "path": "registry/default/blocks/kimi-logo/components/kimi.tsx",
           "type": "registry:component",
-          "target": "components/ui/logos/polar.tsx"
+          "target": "components/ui/logos/kimi.tsx"
         }
       ],
-      "categories": ["Funding", "logo", "brand"],
-      "docs": "Polar logo component with official brand blue color."
+      "docs": "Kimi logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     },
     {
-      "name": "tinte-logo",
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "linear-logo",
       "type": "registry:ui",
-      "title": "Tinte Logo",
-      "description": "Tinte logo component with theme-adaptive colors",
+      "title": "Linear Logo",
+      "description": "Linear logo component with brand purple gradient",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
         {
-          "path": "src/registry/logos/tinte.tsx",
+          "path": "registry/default/blocks/linear-logo/components/linear.tsx",
           "type": "registry:component",
-          "target": "components/ui/logos/tinte.tsx"
+          "target": "components/ui/logos/linear.tsx"
         }
       ],
-      "categories": ["Theme", "logo", "brand"],
-      "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system."
+      "docs": "Linear logo component with official brand colors and gradient.",
+      "categories": [
+        "Project Management",
+        "logo",
+        "brand"
+      ]
     },
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "logos",
       "type": "registry:block",
       "title": "Brand Logos Collection",
@@ -866,29 +874,416 @@
       ],
       "dependencies": [],
       "files": [],
-      "categories": ["logo", "brand"],
-      "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use."
+      "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use.",
+      "categories": [
+        "logo",
+        "brand"
+      ]
     },
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "lovable-logo",
+      "type": "registry:ui",
+      "title": "Lovable Logo",
+      "description": "Lovable logo component with brand gradient colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/lovable-logo/components/lovable.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/lovable.tsx"
+        }
+      ],
+      "docs": "Lovable logo component with official multi-color gradient brand design.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "meta-logo",
+      "type": "registry:ui",
+      "title": "Meta Logo",
+      "description": "Meta logo component with brand gradient blue",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/meta-logo/components/meta.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/meta.tsx"
+        }
+      ],
+      "docs": "Meta logo component with official brand gradient blue design.",
+      "categories": [
+        "Social",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "microsoft-logo",
+      "type": "registry:ui",
+      "title": "Microsoft Logo",
+      "description": "Microsoft logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/microsoft-logo/components/microsoft.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/microsoft.tsx"
+        }
+      ],
+      "docs": "Microsoft logo component with official four-square brand colors.",
+      "categories": [
+        "Software",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "mistral-logo",
+      "type": "registry:ui",
+      "title": "Mistral Logo",
+      "description": "Mistral logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/mistral-logo/components/mistral.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/mistral.tsx"
+        }
+      ],
+      "docs": "Mistral logo component with official multi-color mosaic brand design.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "moonshot-ai-logo",
+      "type": "registry:ui",
+      "title": "MoonshotAI Logo",
+      "description": "MoonshotAI logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/moonshot-ai-logo/components/moonshot-ai.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/moonshot-ai.tsx"
+        }
+      ],
+      "docs": "MoonshotAI logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "notion-logo",
+      "type": "registry:ui",
+      "title": "Notion Logo",
+      "description": "Notion logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/notion-logo/components/notion.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/notion.tsx"
+        }
+      ],
+      "docs": "Notion logo component with white background and theme-adaptive foreground.",
+      "categories": [
+        "Productivity",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "openai-logo",
+      "type": "registry:ui",
+      "title": "OpenAI Logo",
+      "description": "OpenAI logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/openai-logo/components/openai.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/openai.tsx"
+        }
+      ],
+      "docs": "OpenAI logo component with official brand colors.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "perplexity-logo",
+      "type": "registry:ui",
+      "title": "Perplexity Logo",
+      "description": "Perplexity logo component with brand teal",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/perplexity-logo/components/perplexity.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/perplexity.tsx"
+        }
+      ],
+      "docs": "Perplexity logo component with official brand teal color.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "polar-logo",
+      "type": "registry:ui",
+      "title": "Polar Logo",
+      "description": "Polar logo component with brand blue",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/polar-logo/components/polar.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/polar.tsx"
+        }
+      ],
+      "docs": "Polar logo component with official brand blue color.",
+      "categories": [
+        "Funding",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "polar-sponsorship",
+      "type": "registry:block",
+      "title": "Polar Sponsorship Suite",
+      "description": "Complete sponsorship integration with Polar.sh - sponsorship tiers, checkout flow, and API integration",
+      "registryDependencies": [
+        "button",
+        "badge",
+        "card",
+        "@elements/polar-logo"
+      ],
+      "dependencies": [
+        "@polar-sh/nextjs"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/polar-sponsorship/components/sponsor-tiers-preview.tsx",
+          "type": "registry:component",
+          "target": "app/elements/polar/sponsor-tiers-preview.tsx"
+        },
+        {
+          "path": "registry/default/blocks/polar-sponsorship/components/sponsor-tiers.tsx",
+          "type": "registry:lib",
+          "target": "app/elements/polar/sponsor-tiers.tsx"
+        },
+        {
+          "path": "registry/default/blocks/polar-sponsorship/checkout-route.ts",
+          "type": "registry:lib",
+          "target": "app/elements/polar/api/checkout/route.ts"
+        },
+        {
+          "path": "registry/default/blocks/polar-sponsorship/page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/polar/sponsor/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/polar-sponsorship/success-page.tsx",
+          "type": "registry:page",
+          "target": "app/elements/polar/success/page.tsx"
+        }
+      ],
+      "envVars": {
+        "POLAR_ACCESS_TOKEN": "polar_oat_...",
+        "POLAR_SUCCESS_URL": "https://yourdomain.com/elements/polar/success?checkout_id={CHECKOUT_ID}",
+        "POLAR_BASE_URL": "https://api.polar.sh"
+      },
+      "docs": "Complete Polar.sh sponsorship suite with tiers, checkout, and sponsor display. Set up products in Polar dashboard, update POLAR_PRODUCT_IDS in lib/polar.ts with your product IDs, and configure environment variables. Includes API routes, sponsor components, and checkout integration."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "qwen-logo",
+      "type": "registry:ui",
+      "title": "Qwen Logo",
+      "description": "Qwen logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/qwen-logo/components/qwen.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/qwen.tsx"
+        }
+      ],
+      "docs": "Qwen logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "resend-logo",
+      "type": "registry:ui",
+      "title": "Resend Logo",
+      "description": "Resend logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/resend-logo/components/resend.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/resend.tsx"
+        }
+      ],
+      "docs": "Resend logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "Email",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "slack-logo",
+      "type": "registry:ui",
+      "title": "Slack Logo",
+      "description": "Slack logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/slack-logo/components/slack.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/slack.tsx"
+        }
+      ],
+      "docs": "Slack logo component with official multi-color brand design.",
+      "categories": [
+        "Communication",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "spotify-logo",
+      "type": "registry:ui",
+      "title": "Spotify Logo",
+      "description": "Spotify logo component with brand green",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/spotify-logo/components/spotify.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/spotify.tsx"
+        }
+      ],
+      "docs": "Spotify logo component with official brand green color.",
+      "categories": [
+        "Entertainment",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "stripe-logo",
+      "type": "registry:ui",
+      "title": "Stripe Logo",
+      "description": "Stripe logo component with brand purple",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/stripe-logo/components/stripe.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/stripe.tsx"
+        }
+      ],
+      "docs": "Stripe logo component with official brand purple color.",
+      "categories": [
+        "Payments",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "supabase-logo",
+      "type": "registry:ui",
+      "title": "Supabase Logo",
+      "description": "Supabase logo component with brand colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/supabase-logo/components/supabase.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/supabase.tsx"
+        }
+      ],
+      "docs": "Supabase logo component with official brand green gradient colors.",
+      "categories": [
+        "Database",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "theme-switcher",
       "type": "registry:ui",
       "title": "Theme Switcher",
       "description": "A theme switcher component with animated sun/moon icons",
-      "registryDependencies": ["switch"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "switch"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "src/registry/theme/theme-switcher.tsx",
+          "path": "registry/default/blocks/theme-switcher/components/theme-switcher.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/default/blocks/theme-switcher/components/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/theme-switcher-page.tsx",
+          "path": "registry/default/blocks/theme-switcher/theme-switcher-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher/page.tsx"
         }
@@ -896,51 +1291,30 @@
       "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."
     },
     {
-      "name": "theme-switcher-switch",
-      "type": "registry:ui",
-      "title": "Theme Switcher Switch",
-      "description": "Switch-based theme switcher with animated sun/moon icons",
-      "registryDependencies": ["switch"],
-      "dependencies": ["next-themes"],
-      "files": [
-        {
-          "path": "src/registry/theme/switch.tsx",
-          "type": "registry:component",
-          "target": "components/elements/theme-switcher-switch.tsx"
-        },
-        {
-          "path": "src/registry/theme/layout.tsx",
-          "type": "registry:page",
-          "target": "app/layout.tsx"
-        },
-        {
-          "path": "src/registry/theme/switch-page.tsx",
-          "type": "registry:page",
-          "target": "app/theme-switcher-switch/page.tsx"
-        }
-      ],
-      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."
-    },
-    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "theme-switcher-button",
       "type": "registry:ui",
       "title": "Theme Switcher Button",
       "description": "Button-based theme switcher with rotating icons",
-      "registryDependencies": ["button"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "src/registry/theme/button.tsx",
+          "path": "registry/default/blocks/theme-switcher-button/components/button.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-button.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/default/blocks/theme-switcher-button/components/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/button-page.tsx",
+          "path": "registry/default/blocks/theme-switcher-button/button-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-button/page.tsx"
         }
@@ -948,25 +1322,31 @@
       "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Button-based theme switcher with rotating icons."
     },
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "theme-switcher-dropdown",
       "type": "registry:ui",
       "title": "Theme Switcher Dropdown",
       "description": "Dropdown theme switcher with system/light/dark options",
-      "registryDependencies": ["button", "dropdown-menu"],
-      "dependencies": ["next-themes"],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "src/registry/theme/dropdown.tsx",
+          "path": "registry/default/blocks/theme-switcher-dropdown/components/dropdown.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-dropdown.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/default/blocks/theme-switcher-dropdown/components/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/dropdown-page.tsx",
+          "path": "registry/default/blocks/theme-switcher-dropdown/dropdown-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-dropdown/page.tsx"
         }
@@ -974,51 +1354,28 @@
       "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Dropdown with light/dark/system options."
     },
     {
-      "name": "theme-switcher-toggle",
-      "type": "registry:ui",
-      "title": "Theme Switcher Toggle",
-      "description": "Custom toggle theme switcher with sliding animation",
-      "registryDependencies": [],
-      "dependencies": ["next-themes"],
-      "files": [
-        {
-          "path": "src/registry/theme/toggle.tsx",
-          "type": "registry:component",
-          "target": "components/elements/theme-switcher-toggle.tsx"
-        },
-        {
-          "path": "src/registry/theme/layout.tsx",
-          "type": "registry:page",
-          "target": "app/layout.tsx"
-        },
-        {
-          "path": "src/registry/theme/toggle-page.tsx",
-          "type": "registry:page",
-          "target": "app/theme-switcher-toggle/page.tsx"
-        }
-      ],
-      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Custom toggle with sliding animation."
-    },
-    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "theme-switcher-multi-button",
       "type": "registry:ui",
       "title": "Theme Switcher Multi Button",
       "description": "Multi-button theme switcher with system/light/dark options",
       "registryDependencies": [],
-      "dependencies": ["next-themes"],
+      "dependencies": [
+        "next-themes"
+      ],
       "files": [
         {
-          "path": "src/registry/theme/multi-button.tsx",
+          "path": "registry/default/blocks/theme-switcher-multi-button/components/multi-button.tsx",
           "type": "registry:component",
           "target": "components/elements/theme-switcher-multi-button.tsx"
         },
         {
-          "path": "src/registry/theme/layout.tsx",
+          "path": "registry/default/blocks/theme-switcher-multi-button/components/layout.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         },
         {
-          "path": "src/registry/theme/multi-button-page.tsx",
+          "path": "registry/default/blocks/theme-switcher-multi-button/multi-button-page.tsx",
           "type": "registry:page",
           "target": "app/theme-switcher-multi-button/page.tsx"
         }
@@ -1026,6 +1383,67 @@
       "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Multi-button with system/light/dark options."
     },
     {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "theme-switcher-switch",
+      "type": "registry:ui",
+      "title": "Theme Switcher Switch",
+      "description": "Switch-based theme switcher with animated sun/moon icons",
+      "registryDependencies": [
+        "switch"
+      ],
+      "dependencies": [
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/theme-switcher-switch/components/switch.tsx",
+          "type": "registry:component",
+          "target": "components/elements/theme-switcher-switch.tsx"
+        },
+        {
+          "path": "registry/default/blocks/theme-switcher-switch/components/layout.tsx",
+          "type": "registry:page",
+          "target": "app/layout.tsx"
+        },
+        {
+          "path": "registry/default/blocks/theme-switcher-switch/switch-page.tsx",
+          "type": "registry:page",
+          "target": "app/theme-switcher-switch/page.tsx"
+        }
+      ],
+      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "theme-switcher-toggle",
+      "type": "registry:ui",
+      "title": "Theme Switcher Toggle",
+      "description": "Custom toggle theme switcher with sliding animation",
+      "registryDependencies": [],
+      "dependencies": [
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/theme-switcher-toggle/components/toggle.tsx",
+          "type": "registry:component",
+          "target": "components/elements/theme-switcher-toggle.tsx"
+        },
+        {
+          "path": "registry/default/blocks/theme-switcher-toggle/components/layout.tsx",
+          "type": "registry:page",
+          "target": "app/layout.tsx"
+        },
+        {
+          "path": "registry/default/blocks/theme-switcher-toggle/toggle-page.tsx",
+          "type": "registry:page",
+          "target": "app/theme-switcher-toggle/page.tsx"
+        }
+      ],
+      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Custom toggle with sliding animation."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "tinte-editor",
       "type": "registry:block",
       "title": "Tinte Theme Editor",
@@ -1057,49 +1475,47 @@
       ],
       "files": [
         {
-          "path": "src/registry/tinte/tinte-editor/api/write-globals/route.ts",
+          "path": "registry/default/blocks/tinte-editor/api/write-globals/route.ts",
           "type": "registry:page",
           "target": "app/api/elements/tinte/write-globals/route.ts"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/api/read-globals/route.ts",
+          "path": "registry/default/blocks/tinte-editor/api/read-globals/route.ts",
           "type": "registry:page",
           "target": "app/api/elements/tinte/read-globals/route.ts"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/tinte-editor.tsx",
+          "path": "registry/default/blocks/tinte-editor/components/tinte-editor.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/tinte-editor.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/color-input.tsx",
+          "path": "registry/default/blocks/tinte-editor/components/color-input.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/color-input.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/chat/chat-container.tsx",
+          "path": "registry/default/blocks/tinte-editor/components/chat-container.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-container.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/chat/chat-input.tsx",
+          "path": "registry/default/blocks/tinte-editor/components/chat-input.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-input.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/components/chat/chat-message.tsx",
+          "path": "registry/default/blocks/tinte-editor/components/chat-message.tsx",
           "type": "registry:component",
           "target": "components/elements/tinte/chat-message.tsx"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/lib/tinte-to-shadcn.ts",
-          "type": "registry:file",
-          "target": "lib/elements/tinte/tinte-to-shadcn.ts"
+          "path": "registry/default/blocks/tinte-editor/lib/tinte-to-shadcn.ts",
+          "type": "registry:lib"
         },
         {
-          "path": "src/registry/tinte/tinte-editor/lib/get-css-path.ts",
-          "type": "registry:file",
-          "target": "lib/elements/tinte/get-css-path.ts"
+          "path": "registry/default/blocks/tinte-editor/lib/get-css-path.ts",
+          "type": "registry:lib"
         }
       ],
       "envVars": {
@@ -1108,352 +1524,244 @@
       "docs": "https://www.tryelements.dev/docs/tinte"
     },
     {
-      "name": "clerk-waitlist-shadcn",
-      "type": "registry:block",
-      "title": "Clerk Waitlist (ShadCN)",
-      "description": "An animated waitlist signup form with Clerk integration using custom ShadCN components",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "@elements/clerk-middleware"
-      ],
-      "dependencies": ["motion", "@clerk/backend", "@clerk/nextjs"],
-      "files": [
-        {
-          "path": "src/registry/clerk/waitlist-shadcn/waitlist.tsx",
-          "type": "registry:component",
-          "target": "app/elements/clerk/waitlist/waitlist.tsx"
-        },
-        {
-          "path": "src/registry/clerk/waitlist-shadcn/actions.ts",
-          "type": "registry:lib",
-          "target": "app/elements/clerk/waitlist/actions.ts"
-        },
-        {
-          "path": "src/registry/clerk/waitlist-shadcn/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/waitlist/page.tsx"
-        }
-      ],
-      "docs": "Animated waitlist signup form with Clerk integration using custom ShadCN components. Requires ClerkProvider in root layout and waitlist mode enabled in Clerk dashboard (Configure > Restrictions > Sign-up mode)."
-    },
-    {
-      "name": "clerk-sign-in-shadcn",
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "tinte-logo",
       "type": "registry:ui",
-      "title": "Clerk Sign In (ShadCN)",
-      "description": "Complete sign-in form with Clerk integration using custom ShadCN components",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "alert",
-        "card",
-        "avatar",
-        "@elements/apple-logo",
-        "@elements/linear-logo",
-        "@elements/microsoft-logo",
-        "@elements/github-logo",
-        "@elements/spotify-logo",
-        "@elements/slack-logo",
-        "@elements/twitch-logo",
-        "@elements/twitter-logo",
-        "@elements/gitlab-logo",
-        "@elements/discord-logo",
-        "@elements/notion-logo",
-        "@elements/google-logo",
-        "@elements/clerk-middleware"
-      ],
-      "dependencies": ["@clerk/nextjs", "@clerk/types"],
-      "files": [
-        {
-          "path": "src/registry/clerk/sign-in-shadcn/sign-in.tsx",
-          "type": "registry:component",
-          "target": "app/elements/clerk/sign-in/sign-in.tsx"
-        },
-        {
-          "path": "src/registry/clerk/sign-in-shadcn/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/sign-in/page.tsx"
-        },
-        {
-          "path": "src/registry/clerk/shared/dashboard/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/dashboard/page.tsx"
-        },
-        {
-          "path": "src/registry/clerk/shared/sso-callback/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/sso-callback/page.tsx"
-        }
-      ],
-      "envVars": {
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-        "CLERK_SECRET_KEY": "sk_test_"
-      },
-      "docs": "Complete sign-in form with OAuth providers, MFA support, and error handling using custom ShadCN components. Requires ClerkProvider in root layout."
-    },
-    {
-      "name": "clerk-sign-up-shadcn",
-      "type": "registry:ui",
-      "title": "Clerk Sign Up (ShadCN)",
-      "description": "Complete sign-up form with Clerk integration and CAPTCHA support using custom ShadCN components",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "alert",
-        "@elements/apple-logo",
-        "@elements/linear-logo",
-        "@elements/microsoft-logo",
-        "@elements/github-logo",
-        "@elements/spotify-logo",
-        "@elements/slack-logo",
-        "@elements/twitch-logo",
-        "@elements/twitter-logo",
-        "@elements/gitlab-logo",
-        "@elements/discord-logo",
-        "@elements/notion-logo",
-        "@elements/google-logo",
-        "@elements/clerk-middleware"
-      ],
-      "dependencies": ["@clerk/nextjs", "@clerk/types"],
-      "files": [
-        {
-          "path": "src/registry/clerk/sign-up-shadcn/sign-up.tsx",
-          "type": "registry:component",
-          "target": "app/elements/clerk/sign-up/sign-up.tsx"
-        },
-        {
-          "path": "src/registry/clerk/sign-up-shadcn/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/sign-up/page.tsx"
-        },
-        {
-          "path": "src/registry/clerk/shared/dashboard/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/dashboard/page.tsx"
-        },
-        {
-          "path": "src/registry/clerk/shared/sso-callback/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/sso-callback/page.tsx"
-        }
-      ],
-      "envVars": {
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-        "CLERK_SECRET_KEY": "sk_test_"
-      },
-      "docs": "Complete sign-up form with OAuth providers, email verification, and CAPTCHA support using custom ShadCN components. Requires ClerkProvider in root layout."
-    },
-    {
-      "name": "clerk-waitlist",
-      "type": "registry:block",
-      "title": "Clerk Waitlist",
-      "description": "Waitlist signup using Clerk's built-in components",
-      "registryDependencies": ["@elements/clerk-sign-in"],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
-      "files": [
-        {
-          "path": "src/registry/clerk/waitlist/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/waitlist/page.tsx"
-        }
-      ],
-      "envVars": {
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-        "CLERK_SECRET_KEY": "sk_test_"
-      },
-      "docs": "Waitlist signup using Clerk's built-in components. Requires ClerkProvider in root layout and waitlist mode enabled in Clerk dashboard (Configure > Restrictions > Sign-up mode)."
-    },
-    {
-      "name": "clerk-sign-in",
-      "type": "registry:ui",
-      "title": "Clerk Sign In",
-      "description": "Sign-in page using Clerk's built-in SignIn component",
-      "registryDependencies": [
-        "button",
-        "card",
-        "avatar",
-        "@elements/clerk-middleware"
-      ],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
-      "files": [
-        {
-          "path": "src/registry/clerk/sign-in/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/sign-in/[[...sign-in]]/page.tsx"
-        },
-        {
-          "path": "src/registry/clerk/shared/dashboard/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/dashboard/page.tsx"
-        }
-      ],
-      "envVars": {
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-        "CLERK_SECRET_KEY": "sk_test_",
-        "NEXT_PUBLIC_CLERK_SIGN_IN_URL": "/sign-in",
-        "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/dashboard",
-        "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/dashboard"
-      },
-      "docs": "Sign-in page using Clerk's built-in SignIn component. Requires ClerkProvider in root layout."
-    },
-    {
-      "name": "clerk-sign-up",
-      "type": "registry:ui",
-      "title": "Clerk Sign Up",
-      "description": "Sign-up page using Clerk's built-in SignUp component",
-      "registryDependencies": [
-        "button",
-        "card",
-        "avatar",
-        "@elements/clerk-middleware"
-      ],
-      "dependencies": ["@clerk/nextjs", "@clerk/themes"],
-      "files": [
-        {
-          "path": "src/registry/clerk/sign-up/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/sign-up/[[...sign-up]]/page.tsx"
-        },
-        {
-          "path": "src/registry/clerk/shared/dashboard/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/dashboard/page.tsx"
-        }
-      ],
-      "envVars": {
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-        "CLERK_SECRET_KEY": "sk_test_",
-        "NEXT_PUBLIC_CLERK_SIGN_UP_URL": "/sign-up",
-        "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL": "/elements/clerk/dashboard",
-        "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/elements/clerk/dashboard"
-      },
-      "docs": "Sign-up page using Clerk's built-in SignUp component. Requires ClerkProvider in root layout."
-    },
-    {
-      "name": "clerk-sign-in-signals",
-      "type": "registry:ui",
-      "title": "Clerk Sign In (Signals)",
-      "description": "Advanced sign-in form using Clerk's experimental Signals API with password reset functionality",
-      "registryDependencies": ["button", "input", "label", "alert", "card"],
-      "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
-      "files": [
-        {
-          "path": "src/registry/clerk/sign-in-signals/sign-in-signals.tsx",
-          "type": "registry:component",
-          "target": "app/elements/clerk/sign-in-signals/sign-in-signals.tsx"
-        },
-        {
-          "path": "src/registry/clerk/sign-in-signals/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/sign-in-signals/page.tsx"
-        },
-        {
-          "path": "src/registry/clerk/shared/layout.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/layout.tsx"
-        }
-      ],
-      "envVars": {
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-        "CLERK_SECRET_KEY": "sk_test_"
-      },
-      "docs": "⚠️ Experimental: Advanced sign-in form using Clerk's experimental Signals API (@clerk/clerk-react@5.44.0+). Features password reset flow, real-time validation, and enhanced error handling. Requires ClerkProvider in root layout."
-    },
-    {
-      "name": "clerk-sign-up-signals",
-      "type": "registry:ui",
-      "title": "Clerk Sign Up (Signals)",
-      "description": "Advanced sign-up form using Clerk's experimental Signals API with email verification",
-      "registryDependencies": ["button", "card", "input", "label", "alert"],
-      "dependencies": ["@clerk/nextjs", "@clerk/types", "lucide-react"],
-      "files": [
-        {
-          "path": "src/registry/clerk/sign-up-signals/sign-up-signals.tsx",
-          "type": "registry:component",
-          "target": "app/elements/clerk/sign-up-signals/sign-up-signals.tsx"
-        },
-        {
-          "path": "src/registry/clerk/sign-up-signals/page.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/sign-up-signals/page.tsx"
-        },
-        {
-          "path": "src/registry/clerk/shared/layout.tsx",
-          "type": "registry:page",
-          "target": "app/elements/clerk/layout.tsx"
-        }
-      ],
-      "envVars": {
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-        "CLERK_SECRET_KEY": "sk_test_"
-      },
-      "docs": "⚠️ Experimental: Advanced sign-up form using Clerk's experimental Signals API (@clerk/clerk-react@5.44.0+). Features automatic email verification, CAPTCHA support, and real-time validation. Requires ClerkProvider in root layout."
-    },
-    {
-      "name": "clerk-auth-shadcn",
-      "type": "registry:block",
-      "title": "Clerk Auth Suite (ShadCN)",
-      "description": "Complete Clerk authentication suite with sign-in, sign-up, waitlist, and middleware using custom ShadCN components",
-      "registryDependencies": [
-        "@elements/clerk-sign-in-shadcn",
-        "@elements/clerk-sign-up-shadcn",
-        "@elements/clerk-waitlist-shadcn"
-      ],
-      "dependencies": [],
-      "files": [],
-      "docs": "Complete Clerk authentication bundle with custom ShadCN components: sign-in, sign-up, waitlist components, and middleware. Requires ClerkProvider in root layout."
-    },
-    {
-      "name": "clerk-auth-signals",
-      "type": "registry:block",
-      "title": "Clerk Auth Suite (Signals)",
-      "description": "Complete Clerk authentication suite using experimental Signals API with advanced authentication flows",
-      "registryDependencies": [
-        "@elements/clerk-sign-in-signals",
-        "@elements/clerk-sign-up-signals",
-        "@elements/clerk-middleware"
-      ],
-      "dependencies": [],
-      "files": [],
-      "docs": "⚠️ Experimental: Complete Clerk authentication bundle using Clerk's experimental Signals API (@clerk/clerk-react@5.44.0+). Includes advanced sign-in with password reset, sign-up with email verification, and middleware for route protection. Features real-time validation, enhanced error handling, and CAPTCHA support."
-    },
-    {
-      "name": "clerk-auth",
-      "type": "registry:block",
-      "title": "Clerk Auth Suite",
-      "description": "Complete Clerk authentication suite using Clerk's built-in components",
-      "registryDependencies": [
-        "@elements/clerk-sign-in",
-        "@elements/clerk-sign-up",
-        "@elements/clerk-waitlist"
-      ],
-      "dependencies": [],
-      "files": [],
-      "docs": "Complete Clerk authentication bundle using built-in Clerk components: sign-in, sign-up, waitlist components, and middleware. Requires ClerkProvider in root layout."
-    },
-    {
-      "name": "clerk-middleware",
-      "type": "registry:ui",
-      "title": "Clerk Middleware",
-      "description": "Clerk middleware for Next.js App Router with route protection",
+      "title": "Tinte Logo",
+      "description": "Tinte logo component with theme-adaptive colors",
       "registryDependencies": [],
-      "dependencies": ["@clerk/nextjs"],
+      "dependencies": [],
       "files": [
         {
-          "path": "src/registry/clerk/shared/middleware.ts",
+          "path": "registry/default/blocks/tinte-logo/components/tinte.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/tinte.tsx"
+        }
+      ],
+      "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "Theme",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "twitch-logo",
+      "type": "registry:ui",
+      "title": "Twitch Logo",
+      "description": "Twitch logo component with brand purple",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/twitch-logo/components/twitch.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/twitch.tsx"
+        }
+      ],
+      "docs": "Twitch logo component with official brand purple and white colors.",
+      "categories": [
+        "Entertainment",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "twitter-logo",
+      "type": "registry:ui",
+      "title": "Twitter/X Logo",
+      "description": "Twitter (X) logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/twitter-logo/components/twitter.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/twitter.tsx"
+        }
+      ],
+      "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "Social",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "uploadthing-button",
+      "type": "registry:ui",
+      "title": "UploadThing Button",
+      "description": "Simple upload button with UploadThing integration",
+      "registryDependencies": [],
+      "dependencies": [
+        "uploadthing",
+        "@uploadthing/react",
+        "@vercel/analytics",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/uploadthing-button/lib/core.ts",
           "type": "registry:lib",
-          "target": "middleware.ts"
+          "target": "app/api/uploadthing/core.ts"
+        },
+        {
+          "path": "registry/default/blocks/uploadthing-button/route.ts",
+          "type": "registry:lib",
+          "target": "app/api/uploadthing/route.ts"
+        },
+        {
+          "path": "registry/default/blocks/uploadthing-button/components/upload-button.tsx",
+          "type": "registry:component",
+          "target": "components/elements/uploadthing/upload-button.tsx"
         }
       ],
       "envVars": {
-        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_",
-        "CLERK_SECRET_KEY": "sk_test_"
+        "UPLOADTHING_TOKEN": "ut_...",
+        "UPLOADTHING_APP_ID": "your_app_id"
       },
-      "docs": "Clerk middleware for Next.js App Router with route protection. Install in project root as middleware.ts."
+      "docs": "Simple upload button component using UploadThing for basic file uploads with analytics tracking and error handling. Requires UploadThing account and API token.",
+      "categories": [
+        "upload",
+        "file",
+        "storage"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "uploadthing-dropzone",
+      "type": "registry:block",
+      "title": "UploadThing Dropzone",
+      "description": "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
+      "registryDependencies": [
+        "button",
+        "card",
+        "badge",
+        "tabs"
+      ],
+      "dependencies": [
+        "uploadthing",
+        "@uploadthing/react",
+        "@vercel/analytics",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/default/blocks/uploadthing-dropzone/lib/core.ts",
+          "type": "registry:lib",
+          "target": "app/api/uploadthing/core.ts"
+        },
+        {
+          "path": "registry/default/blocks/uploadthing-dropzone/route.ts",
+          "type": "registry:lib",
+          "target": "app/api/uploadthing/route.ts"
+        },
+        {
+          "path": "registry/default/blocks/uploadthing-dropzone/components/upload-dropzone.tsx",
+          "type": "registry:component",
+          "target": "components/elements/uploadthing/upload-dropzone.tsx"
+        }
+      ],
+      "envVars": {
+        "UPLOADTHING_TOKEN": "ut_..."
+      },
+      "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token.",
+      "categories": [
+        "upload",
+        "file",
+        "storage"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "upstash-logo",
+      "type": "registry:ui",
+      "title": "Upstash Logo",
+      "description": "Upstash logo component with brand green",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/upstash-logo/components/upstash.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/upstash.tsx"
+        }
+      ],
+      "docs": "Upstash logo component with official brand green color.",
+      "categories": [
+        "Database",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "v0-logo",
+      "type": "registry:ui",
+      "title": "v0 Logo",
+      "description": "v0 logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/v0-logo/components/v0.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/v0.tsx"
+        }
+      ],
+      "docs": "v0 logo component that adapts to your theme. Uses white colors.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "vercel-logo",
+      "type": "registry:ui",
+      "title": "Vercel Logo",
+      "description": "Vercel logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/vercel-logo/components/vercel.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/vercel.tsx"
+        }
+      ],
+      "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "Cloud",
+        "logo",
+        "brand"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "xai-logo",
+      "type": "registry:ui",
+      "title": "xAI Logo",
+      "description": "xAI logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/xai-logo/components/xai.tsx",
+          "type": "registry:component",
+          "target": "components/ui/logos/xai.tsx"
+        }
+      ],
+      "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": [
+        "AI",
+        "logo",
+        "brand"
+      ]
     }
   ]
 }

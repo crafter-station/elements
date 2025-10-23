@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stripe-logo",
+  "type": "registry:ui",
+  "title": "Stripe Logo",
+  "description": "Stripe logo component with brand purple",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/stripe-logo/components/stripe.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/stripe.tsx"
+    }
+  ],
+  "docs": "Stripe logo component with official brand purple color.",
+  "categories": [
+    "Payments",
+    "logo",
+    "brand"
+  ]
+}

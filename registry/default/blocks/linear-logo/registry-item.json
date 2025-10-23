@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "linear-logo",
+  "type": "registry:ui",
+  "title": "Linear Logo",
+  "description": "Linear logo component with brand purple gradient",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/linear-logo/components/linear.tsx",
+      "type": "registry:component",
+      "target": "components/ui/logos/linear.tsx"
+    }
+  ],
+  "docs": "Linear logo component with official brand colors and gradient.",
+  "categories": [
+    "Project Management",
+    "logo",
+    "brand"
+  ]
+}
