@@ -29,7 +29,7 @@ import {
   convertTinteToShadcn,
   type TinteTheme,
 } from "@/registry/default/blocks/tinte-editor/lib/tinte-to-shadcn";
-import { TinteLogo } from "@/registry/default/blocks/tinte-logo/components/tinte";
+import { TinteLogo } from "@/registry/default/blocks/tinte-logo/components/logos/tinte";
 import { ChatInput } from "./chat-input";
 import { Message as ChatMessage } from "./chat-message";
 import { ColorInput } from "./color-input";

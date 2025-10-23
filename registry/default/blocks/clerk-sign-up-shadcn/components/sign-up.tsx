@@ -14,18 +14,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { AppleLogo } from "@/registry/default/blocks/apple-logo/components/apple";
-import { DiscordLogo } from "@/registry/default/blocks/discord-logo/components/discord";
-import { GitHubLogo } from "@/registry/default/blocks/github-logo/components/github";
-import { GitLabLogo } from "@/registry/default/blocks/gitlab-logo/components/gitlab";
-import { GoogleLogo } from "@/registry/default/blocks/google-logo/components/google";
-import { LinearLogo } from "@/registry/default/blocks/linear-logo/components/linear";
-import { MicrosoftLogo } from "@/registry/default/blocks/microsoft-logo/components/microsoft";
-import { NotionLogo } from "@/registry/default/blocks/notion-logo/components/notion";
-import { SlackLogo } from "@/registry/default/blocks/slack-logo/components/slack";
-import { SpotifyLogo } from "@/registry/default/blocks/spotify-logo/components/spotify";
-import { TwitchLogo } from "@/registry/default/blocks/twitch-logo/components/twitch";
-import { TwitterLogo } from "@/registry/default/blocks/twitter-logo/components/twitter";
+import { AppleLogo } from "@/registry/default/blocks/apple-logo/components/logos/apple";
+import { DiscordLogo } from "@/registry/default/blocks/discord-logo/components/logos/discord";
+import { GitHubLogo } from "@/registry/default/blocks/github-logo/components/logos/github";
+import { GitLabLogo } from "@/registry/default/blocks/gitlab-logo/components/logos/gitlab";
+import { GoogleLogo } from "@/registry/default/blocks/google-logo/components/logos/google";
+import { LinearLogo } from "@/registry/default/blocks/linear-logo/components/logos/linear";
+import { MicrosoftLogo } from "@/registry/default/blocks/microsoft-logo/components/logos/microsoft";
+import { NotionLogo } from "@/registry/default/blocks/notion-logo/components/logos/notion";
+import { SlackLogo } from "@/registry/default/blocks/slack-logo/components/logos/slack";
+import { SpotifyLogo } from "@/registry/default/blocks/spotify-logo/components/logos/spotify";
+import { TwitchLogo } from "@/registry/default/blocks/twitch-logo/components/logos/twitch";
+import { TwitterLogo } from "@/registry/default/blocks/twitter-logo/components/logos/twitter";
 
 interface SignUpState {
   isLoading?: boolean;
