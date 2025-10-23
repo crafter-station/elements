@@ -30,6 +30,10 @@
   ],
   "files": [
     {
+      "path": "registry/default/blocks/tinte-editor/page.tsx",
+      "type": "registry:page"
+    },
+    {
       "path": "registry/default/blocks/tinte-editor/components/tinte-editor.tsx",
       "type": "registry:component",
       "target": "components/elements/tinte/tinte-editor.tsx"
