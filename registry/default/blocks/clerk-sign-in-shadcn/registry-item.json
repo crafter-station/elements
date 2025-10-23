@@ -30,22 +30,22 @@
     {
       "path": "registry/default/blocks/clerk-sign-in-shadcn/components/sign-in.tsx",
       "type": "registry:component",
-      "target": "app/elements/clerk/sign-in/sign-in.tsx"
+      "target": "app/sign-in/sign-in.tsx"
     },
     {
       "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/sign-in/page.tsx"
+      "target": "app/sign-in/page.tsx"
     },
     {
       "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/dashboard/page.tsx"
+      "target": "app/dashboard/page.tsx"
     },
     {
       "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/sso-callback/page.tsx"
+      "target": "app/sso-callback/page.tsx"
     }
   ],
   "envVars": {

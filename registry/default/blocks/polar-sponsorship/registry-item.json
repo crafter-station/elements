@@ -10,27 +10,27 @@
     {
       "path": "registry/default/blocks/polar-sponsorship/components/sponsor-tiers-preview.tsx",
       "type": "registry:component",
-      "target": "app/elements/polar/sponsor-tiers-preview.tsx"
+      "target": "app/sponsor-tiers-preview.tsx"
     },
     {
       "path": "registry/default/blocks/polar-sponsorship/components/sponsor-tiers.tsx",
       "type": "registry:lib",
-      "target": "app/elements/polar/sponsor-tiers.tsx"
+      "target": "app/sponsor-tiers.tsx"
     },
     {
       "path": "registry/default/blocks/polar-sponsorship/checkout-route.ts",
       "type": "registry:lib",
-      "target": "app/elements/polar/api/checkout/route.ts"
+      "target": "app/api/checkout/route.ts"
     },
     {
       "path": "registry/default/blocks/polar-sponsorship/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/polar/sponsor/page.tsx"
+      "target": "app/sponsor/page.tsx"
     },
     {
       "path": "registry/default/blocks/polar-sponsorship/success-page.tsx",
       "type": "registry:page",
-      "target": "app/elements/polar/success/page.tsx"
+      "target": "app/success/page.tsx"
     }
   ],
   "envVars": {

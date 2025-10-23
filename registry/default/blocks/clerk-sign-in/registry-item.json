@@ -15,12 +15,12 @@
     {
       "path": "registry/default/blocks/clerk-sign-in/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/sign-in/[[...sign-in]]/page.tsx"
+      "target": "app/sign-in/[[...sign-in]]/page.tsx"
     },
     {
       "path": "registry/default/blocks/clerk-sign-in/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/dashboard/page.tsx"
+      "target": "app/dashboard/page.tsx"
     }
   ],
   "envVars": {

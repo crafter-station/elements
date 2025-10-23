@@ -10,17 +10,17 @@
     {
       "path": "registry/default/blocks/clerk-sign-in-signals/components/sign-in-signals.tsx",
       "type": "registry:component",
-      "target": "app/elements/clerk/sign-in-signals/sign-in-signals.tsx"
+      "target": "app/sign-in-signals/sign-in-signals.tsx"
     },
     {
       "path": "registry/default/blocks/clerk-sign-in-signals/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/sign-in-signals/page.tsx"
+      "target": "app/sign-in-signals/page.tsx"
     },
     {
       "path": "registry/default/blocks/clerk-sign-in-signals/components/layout.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/layout.tsx"
+      "target": "app/layout.tsx"
     }
   ],
   "envVars": {

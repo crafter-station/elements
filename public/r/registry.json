@@ -176,12 +176,12 @@
         {
           "path": "registry/default/blocks/clerk-sign-in/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/sign-in/[[...sign-in]]/page.tsx"
+          "target": "app/sign-in/[[...sign-in]]/page.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-in/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/dashboard/page.tsx"
+          "target": "app/dashboard/page.tsx"
         }
       ],
       "envVars": {
@@ -225,22 +225,22 @@
         {
           "path": "registry/default/blocks/clerk-sign-in-shadcn/components/sign-in.tsx",
           "type": "registry:component",
-          "target": "app/elements/clerk/sign-in/sign-in.tsx"
+          "target": "app/sign-in/sign-in.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/sign-in/page.tsx"
+          "target": "app/sign-in/page.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/dashboard/page.tsx"
+          "target": "app/dashboard/page.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-in-shadcn/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/sso-callback/page.tsx"
+          "target": "app/sso-callback/page.tsx"
         }
       ],
       "envVars": {
@@ -261,17 +261,17 @@
         {
           "path": "registry/default/blocks/clerk-sign-in-signals/components/sign-in-signals.tsx",
           "type": "registry:component",
-          "target": "app/elements/clerk/sign-in-signals/sign-in-signals.tsx"
+          "target": "app/sign-in-signals/sign-in-signals.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-in-signals/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/sign-in-signals/page.tsx"
+          "target": "app/sign-in-signals/page.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-in-signals/components/layout.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/layout.tsx"
+          "target": "app/layout.tsx"
         }
       ],
       "envVars": {
@@ -297,12 +297,12 @@
         {
           "path": "registry/default/blocks/clerk-sign-up/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/sign-up/[[...sign-up]]/page.tsx"
+          "target": "app/sign-up/[[...sign-up]]/page.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-up/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/dashboard/page.tsx"
+          "target": "app/dashboard/page.tsx"
         }
       ],
       "envVars": {
@@ -345,22 +345,22 @@
         {
           "path": "registry/default/blocks/clerk-sign-up-shadcn/components/sign-up.tsx",
           "type": "registry:component",
-          "target": "app/elements/clerk/sign-up/sign-up.tsx"
+          "target": "app/sign-up/sign-up.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-up-shadcn/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/sign-up/page.tsx"
+          "target": "app/sign-up/page.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-up-shadcn/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/dashboard/page.tsx"
+          "target": "app/dashboard/page.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-up-shadcn/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/sso-callback/page.tsx"
+          "target": "app/sso-callback/page.tsx"
         }
       ],
       "envVars": {
@@ -381,17 +381,17 @@
         {
           "path": "registry/default/blocks/clerk-sign-up-signals/components/sign-up-signals.tsx",
           "type": "registry:component",
-          "target": "app/elements/clerk/sign-up-signals/sign-up-signals.tsx"
+          "target": "app/sign-up-signals/sign-up-signals.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-up-signals/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/sign-up-signals/page.tsx"
+          "target": "app/sign-up-signals/page.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-sign-up-signals/components/layout.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/layout.tsx"
+          "target": "app/layout.tsx"
         }
       ],
       "envVars": {
@@ -412,7 +412,7 @@
         {
           "path": "registry/default/blocks/clerk-waitlist/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/waitlist/page.tsx"
+          "target": "app/waitlist/page.tsx"
         }
       ],
       "envVars": {
@@ -438,17 +438,17 @@
         {
           "path": "registry/default/blocks/clerk-waitlist-shadcn/components/waitlist.tsx",
           "type": "registry:component",
-          "target": "app/elements/clerk/waitlist/waitlist.tsx"
+          "target": "app/waitlist/waitlist.tsx"
         },
         {
           "path": "registry/default/blocks/clerk-waitlist-shadcn/actions.ts",
           "type": "registry:lib",
-          "target": "app/elements/clerk/waitlist/actions.ts"
+          "target": "app/waitlist/actions.ts"
         },
         {
           "path": "registry/default/blocks/clerk-waitlist-shadcn/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/clerk/waitlist/page.tsx"
+          "target": "app/waitlist/page.tsx"
         }
       ],
       "docs": "Animated waitlist signup form with Clerk integration using custom ShadCN components. Requires ClerkProvider in root layout and waitlist mode enabled in Clerk dashboard (Configure > Restrictions > Sign-up mode)."
@@ -937,27 +937,27 @@
         {
           "path": "registry/default/blocks/polar-sponsorship/components/sponsor-tiers-preview.tsx",
           "type": "registry:component",
-          "target": "app/elements/polar/sponsor-tiers-preview.tsx"
+          "target": "app/sponsor-tiers-preview.tsx"
         },
         {
           "path": "registry/default/blocks/polar-sponsorship/components/sponsor-tiers.tsx",
           "type": "registry:lib",
-          "target": "app/elements/polar/sponsor-tiers.tsx"
+          "target": "app/sponsor-tiers.tsx"
         },
         {
           "path": "registry/default/blocks/polar-sponsorship/checkout-route.ts",
           "type": "registry:lib",
-          "target": "app/elements/polar/api/checkout/route.ts"
+          "target": "app/api/checkout/route.ts"
         },
         {
           "path": "registry/default/blocks/polar-sponsorship/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/polar/sponsor/page.tsx"
+          "target": "app/sponsor/page.tsx"
         },
         {
           "path": "registry/default/blocks/polar-sponsorship/success-page.tsx",
           "type": "registry:page",
-          "target": "app/elements/polar/success/page.tsx"
+          "target": "app/success/page.tsx"
         }
       ],
       "envVars": {
@@ -1271,17 +1271,15 @@
         {
           "path": "registry/default/blocks/tinte-editor/page.tsx",
           "type": "registry:page",
-          "target": "app/elements/tinte/page.tsx"
+          "target": "app/page.tsx"
         },
         {
           "path": "registry/default/blocks/tinte-editor/components/tinte-editor.tsx",
-          "type": "registry:file",
-          "target": "components/elements/tinte/tinte-editor.tsx"
+          "type": "registry:component"
         },
         {
           "path": "registry/default/blocks/tinte-editor/components/color-input.tsx",
-          "type": "registry:component",
-          "target": "components/elements/tinte/color-input.tsx"
+          "type": "registry:component"
         },
         {
           "path": "registry/default/blocks/tinte-editor/components/chat-container.tsx",
@@ -1290,18 +1288,15 @@
         },
         {
           "path": "registry/default/blocks/tinte-editor/components/chat-input.tsx",
-          "type": "registry:component",
-          "target": "components/elements/tinte/chat-input.tsx"
+          "type": "registry:component"
         },
         {
           "path": "registry/default/blocks/tinte-editor/components/chat-message.tsx",
-          "type": "registry:component",
-          "target": "components/elements/tinte/chat-message.tsx"
+          "type": "registry:component"
         },
         {
           "path": "registry/default/blocks/tinte-editor/lib/tinte-to-shadcn.ts",
-          "type": "registry:lib",
-          "target": "lib/tinte-to-shadcn.ts"
+          "type": "registry:lib"
         }
       ],
       "envVars": {

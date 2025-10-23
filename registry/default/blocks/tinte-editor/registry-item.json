@@ -32,17 +32,15 @@
     {
       "path": "registry/default/blocks/tinte-editor/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/tinte/page.tsx"
+      "target": "app/page.tsx"
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/tinte-editor.tsx",
-      "type": "registry:file",
-      "target": "components/elements/tinte/tinte-editor.tsx"
+      "type": "registry:component"
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/color-input.tsx",
-      "type": "registry:component",
-      "target": "components/elements/tinte/color-input.tsx"
+      "type": "registry:component"
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/chat-container.tsx",
@@ -51,18 +49,15 @@
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/chat-input.tsx",
-      "type": "registry:component",
-      "target": "components/elements/tinte/chat-input.tsx"
+      "type": "registry:component"
     },
     {
       "path": "registry/default/blocks/tinte-editor/components/chat-message.tsx",
-      "type": "registry:component",
-      "target": "components/elements/tinte/chat-message.tsx"
+      "type": "registry:component"
     },
     {
       "path": "registry/default/blocks/tinte-editor/lib/tinte-to-shadcn.ts",
-      "type": "registry:lib",
-      "target": "lib/tinte-to-shadcn.ts"
+      "type": "registry:lib"
     }
   ],
   "envVars": {

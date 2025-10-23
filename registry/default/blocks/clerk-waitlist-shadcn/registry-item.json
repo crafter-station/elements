@@ -15,17 +15,17 @@
     {
       "path": "registry/default/blocks/clerk-waitlist-shadcn/components/waitlist.tsx",
       "type": "registry:component",
-      "target": "app/elements/clerk/waitlist/waitlist.tsx"
+      "target": "app/waitlist/waitlist.tsx"
     },
     {
       "path": "registry/default/blocks/clerk-waitlist-shadcn/actions.ts",
       "type": "registry:lib",
-      "target": "app/elements/clerk/waitlist/actions.ts"
+      "target": "app/waitlist/actions.ts"
     },
     {
       "path": "registry/default/blocks/clerk-waitlist-shadcn/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/waitlist/page.tsx"
+      "target": "app/waitlist/page.tsx"
     }
   ],
   "docs": "Animated waitlist signup form with Clerk integration using custom ShadCN components. Requires ClerkProvider in root layout and waitlist mode enabled in Clerk dashboard (Configure > Restrictions > Sign-up mode)."

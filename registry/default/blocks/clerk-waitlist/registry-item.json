@@ -10,7 +10,7 @@
     {
       "path": "registry/default/blocks/clerk-waitlist/page.tsx",
       "type": "registry:page",
-      "target": "app/elements/clerk/waitlist/page.tsx"
+      "target": "app/waitlist/page.tsx"
     }
   ],
   "envVars": {
