@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitcherToggle } from "@/registry/default/blocks/theme-switcher/theme-switcher-toggle/components/toggle";
+import { ThemeSwitcherToggle } from "@/registry/default/blocks/theme-switcher/theme-switcher-toggle/components/elements/theme-switcher-toggle";
 
 export default function ThemeSwitcherToggleDemo() {
   return (
