@@ -181,7 +181,30 @@ function buildFileStructureFromPaths(
 
   // Add files
   files.forEach((file) => {
-    const parts = file.target.split("/");
+    // Use target if available, otherwise fall back to path
+    let filePath = file.target || file.path;
+
+    // Skip files without either target or path
+    if (!filePath) {
+      console.warn("⚠️ Skipping file without target or path:", file);
+      return;
+    }
+
+    // Strip common registry prefixes to show cleaner paths
+    // e.g., "registry/default/blocks/tinte/tinte-editor/components/..." -> "components/..."
+    const prefixPatterns = [
+      /^registry\/[^/]+\/blocks\/[^/]+\/[^/]+\//, // registry/default/blocks/{provider}/{component}/
+      /^registry\/[^/]+\/[^/]+\//, // registry/default/{type}/
+    ];
+
+    for (const pattern of prefixPatterns) {
+      if (pattern.test(filePath)) {
+        filePath = filePath.replace(pattern, "");
+        break;
+      }
+    }
+
+    const parts = filePath.split("/");
     let currentPath = "";
 
     parts.forEach((part, index) => {
@@ -250,7 +273,7 @@ function buildFileStructureFromPaths(
     });
   }
 
-  // Sort children alphabetically (folders first, then files, both alphabetically)
+  // Sort children alphabetically (folders first, then files, dependencies last)
   Object.values(tree).forEach((node) => {
     if (node.children) {
       node.children.sort((a, b) => {
@@ -259,7 +282,25 @@ function buildFileStructureFromPaths(
         const isAFolder = nodeA?.type === "folder";
         const isBFolder = nodeB?.type === "folder";
 
-        // Folders first
+        // Check if this is a dependency folder (Dependencies or Registry Dependencies)
+        const isADepFolder =
+          nodeA?.name === "Dependencies" ||
+          nodeA?.name === "Registry Dependencies";
+        const isBDepFolder =
+          nodeB?.name === "Dependencies" ||
+          nodeB?.name === "Registry Dependencies";
+
+        // Dependencies folders go last
+        if (isADepFolder && !isBDepFolder) return 1;
+        if (!isADepFolder && isBDepFolder) return -1;
+
+        // Within dependency folders, Registry Dependencies comes after Dependencies
+        if (isADepFolder && isBDepFolder) {
+          if (nodeA?.name === "Registry Dependencies") return 1;
+          if (nodeB?.name === "Registry Dependencies") return -1;
+        }
+
+        // Regular folders before files
         if (isAFolder && !isBFolder) return -1;
         if (!isAFolder && isBFolder) return 1;
 

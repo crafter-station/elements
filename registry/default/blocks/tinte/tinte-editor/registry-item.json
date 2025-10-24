@@ -13,7 +13,8 @@
     "tabs",
     "textarea",
     "accordion",
-    "@elements/tinte-logo"
+    "@elements/tinte-logo",
+    "@elements/theme-switcher-classic"
   ],
   "dependencies": [
     "@ai-sdk/openai",
