@@ -8,17 +8,16 @@
   "dependencies": ["next-themes"],
   "files": [
     {
-      "path": "registry/default/blocks/theme-switcher/theme-switcher-switch/components/switch.tsx",
-      "type": "registry:component",
-      "target": "components/elements/theme-switcher-switch.tsx"
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-switch/components/elements/theme-switcher-switch.tsx",
+      "type": "registry:component"
     },
     {
-      "path": "registry/default/blocks/theme-switcher/theme-switcher-switch/components/layout.tsx",
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-switch/routes/layout.tsx",
       "type": "registry:page",
       "target": "app/layout.tsx"
     },
     {
-      "path": "registry/default/blocks/theme-switcher/theme-switcher-switch/switch-page.tsx",
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-switch/routes/page.tsx",
       "type": "registry:page",
       "target": "app/theme-switcher-switch/page.tsx"
     }

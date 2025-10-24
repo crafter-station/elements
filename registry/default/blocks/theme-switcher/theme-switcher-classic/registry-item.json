@@ -8,19 +8,18 @@
   "dependencies": ["next-themes"],
   "files": [
     {
-      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/components/theme-switcher.tsx",
-      "type": "registry:component",
-      "target": "components/elements/theme-switcher.tsx"
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/components/elements/theme-switcher-classic.tsx",
+      "type": "registry:component"
     },
     {
-      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/components/layout.tsx",
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/routes/layout.tsx",
       "type": "registry:page",
       "target": "app/layout.tsx"
     },
     {
-      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/theme-switcher-page.tsx",
+      "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/routes/page.tsx",
       "type": "registry:page",
-      "target": "app/theme-switcher/page.tsx"
+      "target": "app/theme-switcher-classic/page.tsx"
     }
   ],
   "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."

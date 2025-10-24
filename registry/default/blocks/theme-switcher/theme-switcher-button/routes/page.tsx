@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitcherButton } from "./button";
+import { ThemeSwitcherButton } from "@/registry/default/blocks/theme-switcher/theme-switcher-button/components/elements/theme-switcher-button";
 
 export default function ThemeSwitcherButtonPage() {
   return (
