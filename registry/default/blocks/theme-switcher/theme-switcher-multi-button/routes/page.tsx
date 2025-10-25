@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitcherMultiButton } from "./multi-button";
+import { ThemeSwitcherMultiButton } from "@/registry/default/blocks/theme-switcher/theme-switcher-multi-button/components/elements/theme-switcher-multi-button";
 
 export default function ThemeSwitcherMultiButtonPage() {
   return (

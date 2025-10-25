@@ -63,7 +63,6 @@ interface TinteThemePreview {
   };
 }
 
-// Token groups for organized UI
 const TOKEN_GROUPS = [
   {
     label: "Background & Text",
@@ -123,12 +122,14 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
   const themeRef = useRef<ShadcnTheme>({ light: {}, dark: {} });
   const [_originalFormats, setOriginalFormats] = useState<
     Record<string, Record<string, string>>
-  >({ light: {}, dark: {} });
+  >({
+    light: {},
+    dark: {},
+  });
   const [mode, setMode] = useState<"light" | "dark">("light");
   const [loading, setLoading] = useState(false);
   const [rawCss, setRawCss] = useState("");
 
-  // Tinte themes state
   const [tinteThemes, setTinteThemes] = useState<TinteThemePreview[]>([]);
   const [loadingTinteThemes, setLoadingTinteThemes] = useState(false);
   const [tinteError, setTinteError] = useState<string | null>(null);
@@ -140,12 +141,10 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
   const [selectedThemeId, setSelectedThemeId] = useState<string | null>(null);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
-  // Keep ref in sync with theme state
   useEffect(() => {
     themeRef.current = theme;
   }, [theme]);
 
-  // Chat functionality
   const [apiKeyError, setApiKeyError] = useState(false);
   const { messages, sendMessage, status } = useChat({
     transport: new DefaultChatTransport({
@@ -160,30 +159,24 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
     },
   });
 
-  // Convert color to hex if it's in another format
   const convertToHex = useCallback((colorValue: string): string => {
     try {
       const trimmed = colorValue.trim();
       if (trimmed.startsWith("#")) {
         return trimmed; // Already hex
       }
-      // Use culori to convert any color format to hex
       const colorObj = oklch(trimmed);
       if (colorObj) {
         return formatHex(colorObj);
       }
-      return colorValue; // Return original if conversion fails
+      return colorValue;
     } catch {
       return colorValue;
     }
   }, []);
 
-  // Handle theme application from the Message component
   const handleApplyTheme = useCallback(
     (newTheme: { light: ShadcnTokens; dark: ShadcnTokens }) => {
-      console.log("Applying theme:", newTheme);
-
-      // Convert all colors to hex format
       const lightHex: ShadcnTokens = {};
       const darkHex: ShadcnTokens = {};
 
@@ -200,28 +193,14 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
       setTheme(hexTheme);
       onChange?.(hexTheme);
 
-      // Update original formats with hex
       setOriginalFormats({
         light: { ...lightHex },
         dark: { ...darkHex },
       });
 
-      // Mark as unsaved and let user save manually
-      // Setting to true will trigger the pulsing save button
       setHasUnsavedChanges(true);
 
-      // Apply theme to DOM immediately for instant preview
       setTimeout(() => {
-        const root = document.documentElement;
-        const isDark = root.classList.contains("dark");
-        const activeTheme = isDark ? hexTheme.dark : hexTheme.light;
-
-        // Apply all CSS variables to the root element
-        Object.entries(activeTheme).forEach(([key, value]) => {
-          root.style.setProperty(`--${key}`, value);
-        });
-
-        // Also inject style for both modes
         const styleId = "tinte-dynamic-theme";
         let styleElement = document.getElementById(styleId) as HTMLStyleElement;
 
@@ -529,18 +508,6 @@ export function TinteEditor({ onChange }: TinteEditorProps) {
         darkHex[key] = convertToHex(value);
       });
 
-      // Apply CSS variables to DOM
-      const root = document.documentElement;
-      const isDark = root.classList.contains("dark");
-      const activeTheme = isDark ? darkHex : lightHex;
-
-      // Apply all CSS variables to the root element
-      Object.entries(activeTheme).forEach(([key, value]) => {
-        root.style.setProperty(`--${key}`, value);
-      });
-
-      // Also update both modes by injecting a style element
-      // This ensures switching themes works without reload
       const styleId = "tinte-dynamic-theme";
       let styleElement = document.getElementById(styleId) as HTMLStyleElement;
 

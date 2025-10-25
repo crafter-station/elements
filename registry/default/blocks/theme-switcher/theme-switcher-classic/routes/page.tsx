@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitcher } from "./theme-switcher";
+import { ThemeSwitcherClassic } from "@/registry/default/blocks/theme-switcher/theme-switcher-classic/components/elements/theme-switcher-classic";
 
 export default function ThemeSwitcherPage() {
   return (
@@ -15,7 +15,7 @@ export default function ThemeSwitcherPage() {
           </div>
 
           <div className="flex justify-center">
-            <ThemeSwitcher />
+            <ThemeSwitcherClassic />
           </div>
 
           <div className="bg-card border rounded-lg p-6 text-left space-y-4">

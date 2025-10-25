@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitcher } from "@/registry/default/blocks/theme-switcher/theme-switcher-classic/components/elements/theme-switcher-classic";
+import { ThemeSwitcherClassic } from "@/registry/default/blocks/theme-switcher/theme-switcher-classic/components/elements/theme-switcher-classic";
 import { TinteEditor } from "@/registry/default/blocks/tinte/tinte-editor/components/tinte-editor";
 
 export default function TinteEditorDemo() {
@@ -24,7 +24,7 @@ export default function TinteEditorDemo() {
             <span className="text-sm text-muted-foreground">
               Try switching themes
             </span>
-            <ThemeSwitcher />
+            <ThemeSwitcherClassic />
           </div>
         </div>
       </div>

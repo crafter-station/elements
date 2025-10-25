@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeSwitcherDropdown } from "./dropdown";
+import { ThemeSwitcherDropdown } from "@/registry/default/blocks/theme-switcher/theme-switcher-dropdown/components/elements/theme-switcher-dropdown";
 
 export default function ThemeSwitcherDropdownPage() {
   return (
