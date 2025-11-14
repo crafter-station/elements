@@ -92,10 +92,7 @@ export function CodeBlock({ code, lang, className = "" }: CodeBlockProps) {
   if (!html) {
     return (
       <pre
-        className={`shiki vesper-light dark:vesper-dark bg-muted/30 rounded border border-border/50 p-4 font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words ${className}`}
-        style={{
-          color: resolvedTheme === "dark" ? "#DBD7CA" : "#393A34",
-        }}
+        className={`shiki vesper-light dark:vesper-dark bg-muted/30 rounded border border-border/50 p-4 font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words text-foreground ${className}`}
       >
         <code className="whitespace-pre-wrap break-words">{code}</code>
       </pre>
@@ -105,7 +102,7 @@ export function CodeBlock({ code, lang, className = "" }: CodeBlockProps) {
   // Override Shiki's background with our bg-muted, but keep syntax colors
   return (
     <div
-      className={`[&_pre]:p-4 [&_pre]:font-mono [&_pre]:text-[13px] [&_pre]:leading-relaxed [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:overflow-hidden [&_code]:whitespace-pre-wrap [&_code]:break-words ${className}`}
+      className={`[&_pre]:bg-muted/30 [&_pre]:rounded [&_pre]:border [&_pre]:border-border/50 [&_pre]:p-4 [&_pre]:font-mono [&_pre]:text-[13px] [&_pre]:leading-relaxed [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:overflow-hidden [&_code]:whitespace-pre-wrap [&_code]:break-words ${className}`}
       // biome-ignore lint/security/noDangerouslySetInnerHtml: html is safe
       dangerouslySetInnerHTML={{ __html: html }}
     />

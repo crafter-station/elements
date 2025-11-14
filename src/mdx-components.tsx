@@ -7,11 +7,6 @@ import { ComponentPreviewItem } from "@/components/component-preview-item";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
 // Direct imports from examples
-import ClerkSignInShadcnDemo from "@/registry/default/examples/clerk-sign-in-shadcn-demo";
-import ClerkSignInSignalsDemo from "@/registry/default/examples/clerk-sign-in-signals-demo";
-import ClerkSignUpShadcnDemo from "@/registry/default/examples/clerk-sign-up-shadcn-demo";
-import ClerkSignUpSignalsDemo from "@/registry/default/examples/clerk-sign-up-signals-demo";
-import ClerkWaitlistShadcnDemo from "@/registry/default/examples/clerk-waitlist-shadcn-demo";
 import PolarSponsorshipDemo from "@/registry/default/examples/polar-sponsorship-demo";
 import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
 import ThemeSwitcherDemo from "@/registry/default/examples/theme-switcher-demo";
@@ -27,12 +22,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ComponentPreview,
     ComponentPreviewItem,
-    // Clerk Components
-    SignInShadcn: ClerkSignInShadcnDemo,
-    SignUpShadcn: ClerkSignUpShadcnDemo,
-    SignInSignals: ClerkSignInSignalsDemo,
-    SignUpSignals: ClerkSignUpSignalsDemo,
-    WaitlistShadcn: ClerkWaitlistShadcnDemo,
     // Theme Components
     ThemeSwitcher: ThemeSwitcherDemo,
     ThemeSwitcherButton: ThemeSwitcherButtonDemo,

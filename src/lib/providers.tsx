@@ -31,6 +31,7 @@ export interface Provider {
   href: string;
   elementsCount: number;
   providerLink?: string;
+  status?: "building" | "ready";
 }
 
 /**
@@ -50,11 +51,14 @@ export function getProvidersData(): Provider[] {
       description?: string;
       category?: string;
       brandColor?: string;
+      status?: "building" | "ready";
     }
   > = {
     clerk: {
       providerLink: "https://clerk.com",
       isEnabled: true,
+      status: "building" as const,
+      displayName: "Clerk",
     },
     polar: {
       providerLink: "https://polar.sh",
@@ -154,7 +158,7 @@ export function getProvidersData(): Provider[] {
         };
 
     return {
-      name: metadata.displayName,
+      name: config.displayName || metadata.displayName,
       description: metadata.description,
       icon: <ProviderIcon provider={providerName} />,
       category: metadata.category,
@@ -163,6 +167,7 @@ export function getProvidersData(): Provider[] {
       href: `/docs/${providerName}`,
       elementsCount: metadata.componentCount,
       providerLink: config.providerLink,
+      status: config.status,
     };
   });
 }

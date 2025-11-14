@@ -30,9 +30,9 @@ import { getMDXComponents } from "@/mdx-components";
 export async function generateStaticParams() {
   const providers = getProviders();
 
-  // Filter out logos since it has its own special page
+  // Filter out special pages (logos and clerk have their own dedicated pages)
   return providers
-    .filter((p) => p !== "logos")
+    .filter((p) => p !== "logos" && p !== "clerk")
     .map((provider) => ({
       provider,
     }));

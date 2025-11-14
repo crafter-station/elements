@@ -4,42 +4,6 @@ import type { RegistryItem } from "shadcn/registry";
 import _bundles_logos from "./default/blocks/_bundles/logos/registry-item.json" with {
   type: "json",
 };
-import clerk_clerk_auth from "./default/blocks/clerk/clerk-auth/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_auth_shadcn from "./default/blocks/clerk/clerk-auth-shadcn/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_auth_signals from "./default/blocks/clerk/clerk-auth-signals/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_middleware from "./default/blocks/clerk/clerk-middleware/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_sign_in from "./default/blocks/clerk/clerk-sign-in/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_sign_in_shadcn from "./default/blocks/clerk/clerk-sign-in-shadcn/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_sign_in_signals from "./default/blocks/clerk/clerk-sign-in-signals/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_sign_up from "./default/blocks/clerk/clerk-sign-up/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_sign_up_shadcn from "./default/blocks/clerk/clerk-sign-up-shadcn/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_sign_up_signals from "./default/blocks/clerk/clerk-sign-up-signals/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_waitlist from "./default/blocks/clerk/clerk-waitlist/registry-item.json" with {
-  type: "json",
-};
-import clerk_clerk_waitlist_shadcn from "./default/blocks/clerk/clerk-waitlist-shadcn/registry-item.json" with {
-  type: "json",
-};
 import logos_anthropic_logo from "./default/blocks/logos/anthropic-logo/registry-item.json" with {
   type: "json",
 };
@@ -196,18 +160,6 @@ import uploadthing_uploadthing_dropzone from "./default/blocks/uploadthing/uploa
 
 export const blocks = [
   _bundles_logos as RegistryItem,
-  clerk_clerk_auth as RegistryItem,
-  clerk_clerk_auth_shadcn as RegistryItem,
-  clerk_clerk_auth_signals as RegistryItem,
-  clerk_clerk_middleware as RegistryItem,
-  clerk_clerk_sign_in as RegistryItem,
-  clerk_clerk_sign_in_shadcn as RegistryItem,
-  clerk_clerk_sign_in_signals as RegistryItem,
-  clerk_clerk_sign_up as RegistryItem,
-  clerk_clerk_sign_up_shadcn as RegistryItem,
-  clerk_clerk_sign_up_signals as RegistryItem,
-  clerk_clerk_waitlist as RegistryItem,
-  clerk_clerk_waitlist_shadcn as RegistryItem,
   logos_anthropic_logo as RegistryItem,
   logos_apple_logo as RegistryItem,
   logos_aws_logo as RegistryItem,

@@ -98,17 +98,30 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
 
               {/* Badge or count */}
               {provider.isEnabled ? (
-                provider.elementsCount > 0 && (
+                provider.status === "building" ? (
                   <Badge
-                    variant="secondary"
-                    className={cn(
-                      "h-5 px-1.5 text-xs font-normal",
-                      isActive &&
-                        "bg-primary/20 text-primary border-primary/30",
-                    )}
+                    variant="outline"
+                    className="h-5 px-1.5 text-[10px] font-normal border-[#6C47FF]/50 text-[#6C47FF]"
+                    style={{
+                      borderColor: isActive ? "#6C47FF" : "#6C47FF80",
+                      backgroundColor: isActive ? "#6C47FF20" : "transparent",
+                    }}
                   >
-                    {provider.elementsCount}
+                    Building
                   </Badge>
+                ) : (
+                  provider.elementsCount > 0 && (
+                    <Badge
+                      variant="secondary"
+                      className={cn(
+                        "h-5 px-1.5 text-xs font-normal",
+                        isActive &&
+                          "bg-primary/20 text-primary border-primary/30",
+                      )}
+                    >
+                      {provider.elementsCount}
+                    </Badge>
+                  )
                 )
               ) : (
                 <Badge

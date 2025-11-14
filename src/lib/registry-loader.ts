@@ -151,8 +151,8 @@ export function getProviderMetadata(provider: string): {
     clerk: {
       displayName: "Clerk",
       description:
-        "Complete authentication suite with sign-in, sign-up, and user management",
-      category: "AUTH",
+        "Complete user management suite - Auth, Organizations, Billing & more",
+      category: "USER MGMT",
       brandColor: "#6C47FF",
     },
     polar: {

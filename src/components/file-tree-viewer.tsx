@@ -179,9 +179,10 @@ function buildFileStructureFromPaths(
     root: { name: "Project", children: [] },
   };
 
-  // Add files
-  files.forEach((file) => {
-    // Use target if available, otherwise fall back to path
+  // Add files - use target for display path
+  files.forEach((file, fileIndex) => {
+    // Use target if available (where file should be installed),
+    // otherwise fall back to path (source location in registry)
     let filePath = file.target || file.path;
 
     // Skip files without either target or path
@@ -190,17 +191,19 @@ function buildFileStructureFromPaths(
       return;
     }
 
-    // Strip common registry prefixes to show cleaner paths
-    // e.g., "registry/default/blocks/tinte/tinte-editor/components/..." -> "components/..."
-    const prefixPatterns = [
-      /^registry\/[^/]+\/blocks\/[^/]+\/[^/]+\//, // registry/default/blocks/{provider}/{component}/
-      /^registry\/[^/]+\/[^/]+\//, // registry/default/{type}/
-    ];
+    // Strip common registry prefixes from path (not target)
+    // Only strip if we're using path, not target
+    if (!file.target && file.path) {
+      const prefixPatterns = [
+        /^registry\/[^/]+\/blocks\/[^/]+\/[^/]+\//, // registry/default/blocks/{provider}/{component}/
+        /^registry\/[^/]+\/[^/]+\//, // registry/default/{type}/
+      ];
 
-    for (const pattern of prefixPatterns) {
-      if (pattern.test(filePath)) {
-        filePath = filePath.replace(pattern, "");
-        break;
+      for (const pattern of prefixPatterns) {
+        if (pattern.test(filePath)) {
+          filePath = filePath.replace(pattern, "");
+          break;
+        }
       }
     }
 
@@ -211,11 +214,18 @@ function buildFileStructureFromPaths(
       const parentPath = currentPath || "root";
       currentPath = currentPath ? `${currentPath}/${part}` : part;
 
-      if (!tree[currentPath]) {
-        const isFile = index === parts.length - 1 && part.includes(".");
+      const isFile = index === parts.length - 1 && part.includes(".");
+
+      // For files, create unique ID using the full target path + index
+      // This ensures files with same name in different folders are unique
+      const nodeId = isFile
+        ? `file_${fileIndex}_${filePath.replace(/\//g, "_")}`
+        : currentPath;
+
+      if (!tree[nodeId]) {
         const extension = isFile ? part.split(".").pop() : undefined;
 
-        tree[currentPath] = {
+        tree[nodeId] = {
           name: part,
           children: isFile ? undefined : [],
           fileExtension: extension,
@@ -223,8 +233,8 @@ function buildFileStructureFromPaths(
           registryFile: isFile ? file : undefined,
         };
 
-        if (!tree[parentPath].children?.includes(currentPath)) {
-          tree[parentPath].children?.push(currentPath);
+        if (!tree[parentPath].children?.includes(nodeId)) {
+          tree[parentPath].children?.push(nodeId);
         }
       }
     });
