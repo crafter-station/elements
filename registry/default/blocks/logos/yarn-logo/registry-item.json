@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "yarn-logo",
+  "type": "registry:ui",
+  "title": "Yarn Logo",
+  "description": "Yarn logo component - Fast, reliable, and secure dependency management",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/yarn-logo/components/logos/yarn.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Yarn logo component for the fast, reliable, and secure dependency management tool. Features the iconic blue cat design.",
+  "categories": ["Package Manager", "logo", "brand", "JavaScript", "Node.js"]
+}

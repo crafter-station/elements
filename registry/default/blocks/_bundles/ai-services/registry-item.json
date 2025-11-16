@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-services",
+  "type": "registry:block",
+  "title": "AI Services",
+  "description": "Complete collection of AI service provider logos including OpenAI, Anthropic, Google Gemini, and more",
+  "registryDependencies": [
+    "@elements/openai-logo",
+    "@elements/anthropic-logo",
+    "@elements/claude-logo",
+    "@elements/gemini-logo",
+    "@elements/mistral-logo",
+    "@elements/cohere-logo",
+    "@elements/deepseek-logo",
+    "@elements/qwen-logo",
+    "@elements/moonshot-ai-logo",
+    "@elements/hugging-face-logo",
+    "@elements/groq-logo",
+    "@elements/grok-logo",
+    "@elements/perplexity-logo",
+    "@elements/xai-logo",
+    "@elements/kimi-logo"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "Collection of AI service provider logos including major LLM providers, AI platforms, and machine learning services. Perfect for AI-powered applications and ML dashboards.",
+  "categories": ["logo", "brand", "AI", "collection"]
+}

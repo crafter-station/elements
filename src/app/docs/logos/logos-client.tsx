@@ -3,8 +3,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { track } from "@vercel/analytics";
-import { Filter } from "lucide-react";
+import { Check, ChevronDown, Filter } from "lucide-react";
 import { useTheme } from "next-themes";
+import { toast } from "sonner";
 
 import { getBrandUrl } from "@/lib/brand-urls";
 import { loadLogoComponent } from "@/lib/component-loader";
@@ -17,8 +18,18 @@ import { PixelatedCheckIcon } from "@/components/pixelated-check-icon";
 import { ScrambleText } from "@/components/scramble-text";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { BunLogo } from "@/components/ui/logos/bun";
+import { NpmLogo } from "@/components/ui/logos/npm";
+import { PnpmLogo } from "@/components/ui/logos/pnpm";
+import { YarnLogo } from "@/components/ui/logos/yarn";
 import {
   Popover,
   PopoverContent,
@@ -44,11 +55,27 @@ interface LogoWithComponent extends Logo {
   }> | null;
 }
 
-interface LogosClientProps {
-  logos: Logo[];
+interface Bundle {
+  id: string;
+  name: string;
+  title: string;
+  description: string;
+  docs: string;
+  logoCount: number;
+  dependencies: string[];
 }
 
-export function LogosClient({ logos: initialLogos }: LogosClientProps) {
+interface LogosClientProps {
+  logos: Logo[];
+  bundles: Bundle[];
+}
+
+type ViewMode = "individual" | "collections";
+
+export function LogosClient({
+  logos: initialLogos,
+  bundles,
+}: LogosClientProps) {
   const { resolvedTheme } = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLogos, setSelectedLogos] = useState<Set<string>>(new Set());
@@ -59,6 +86,12 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
   const [variantsDialogOpen, setVariantsDialogOpen] = useState(false);
   const [selectedLogoForVariants, setSelectedLogoForVariants] =
     useState<LogoWithComponent | null>(null);
+  const [packageManager, setPackageManager] = useState("bunx");
+  const [copied, setCopied] = useState(false);
+  const [viewMode, setViewMode] = useState<ViewMode>("individual");
+  const [selectedBundles, setSelectedBundles] = useState<Set<string>>(
+    new Set(),
+  );
 
   const currentMode = (resolvedTheme as "light" | "dark") || "light";
 
@@ -105,6 +138,18 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
       return matchesSearch && matchesCategory;
     });
   }, [logos, searchTerm, selectedCategories]);
+
+  const filteredBundles = useMemo(() => {
+    return bundles.filter((bundle) => {
+      // Search filter for bundles
+      const matchesSearch =
+        bundle.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        bundle.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        bundle.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+      return matchesSearch;
+    });
+  }, [bundles, searchTerm]);
 
   // Get unique categories and counts
   const uniqueCategories = useMemo(() => {
@@ -190,19 +235,85 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
   };
 
   const handleSelectAll = () => {
-    const isSelectingAll = selectedLogos.size !== filteredLogos.length;
+    // For individual mode, use filtered logos; for collections, use all logos
+    const targetLogos = viewMode === "individual" ? filteredLogos : logos;
+    const isSelectingAll = selectedLogos.size !== targetLogos.length;
 
     track("Bulk Logo Selection", {
       action: isSelectingAll ? "select_all" : "deselect_all",
-      logos_count: filteredLogos.length,
+      logos_count: targetLogos.length,
+      view_mode: viewMode,
       search_term: searchTerm || "none",
       source: "logos_page_bulk_action",
     });
 
-    if (selectedLogos.size === filteredLogos.length) {
+    if (selectedLogos.size === targetLogos.length) {
       setSelectedLogos(new Set());
     } else {
-      setSelectedLogos(new Set(filteredLogos.map((logo) => logo.id)));
+      setSelectedLogos(new Set(targetLogos.map((logo) => logo.id)));
+    }
+  };
+
+  const handleBundleSelect = (bundle: Bundle) => {
+    const isCurrentlySelected = selectedBundles.has(bundle.id);
+
+    track("Bundle Selection", {
+      bundle_name: bundle.name,
+      bundle_title: bundle.title,
+      action: isCurrentlySelected ? "deselect" : "select",
+      logos_count: bundle.logoCount,
+      source: "logos_page_bundles",
+    });
+
+    // Toggle bundle selection
+    const newSelectedBundles = new Set(selectedBundles);
+    if (newSelectedBundles.has(bundle.id)) {
+      newSelectedBundles.delete(bundle.id);
+    } else {
+      newSelectedBundles.add(bundle.id);
+    }
+    setSelectedBundles(newSelectedBundles);
+  };
+
+  const getInstallCommand = () => {
+    // Combine selected logos and bundles
+    const selectedLogoUrls = logos
+      .filter((logo) => selectedLogos.has(logo.id))
+      .map((logo) => `@elements/${logo.name}`);
+
+    const selectedBundleUrls = bundles
+      .filter((bundle) => selectedBundles.has(bundle.id))
+      .map((bundle) => `@elements/${bundle.name}`);
+
+    const urls = [...selectedBundleUrls, ...selectedLogoUrls].join(" ");
+
+    const commands = {
+      bunx: `bunx shadcn@latest add ${urls}`,
+      npx: `npx shadcn@latest add ${urls}`,
+      pnpm: `pnpm dlx shadcn@latest add ${urls}`,
+      yarn: `yarn dlx shadcn@latest add ${urls}`,
+    };
+
+    return commands[packageManager as keyof typeof commands] || commands.bunx;
+  };
+
+  const handleCopyCommand = async () => {
+    track("Logo Install Command Copy", {
+      package_manager: packageManager,
+      selected_logos_count: selectedLogos.size,
+      selected_bundles_count: selectedBundles.size,
+      total_selected: selectedLogos.size + selectedBundles.size,
+      source: "logos_page_install_dock",
+    });
+
+    try {
+      await navigator.clipboard.writeText(getInstallCommand());
+      setCopied(true);
+      toast.success("Command copied to clipboard!");
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy command:", err);
+      toast.error("Failed to copy command");
     }
   };
 
@@ -284,12 +395,63 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
         {/* Controls Section */}
         <div className="border-t border-border border-dotted px-4 sm:px-6 md:px-8 py-6">
           <div className="w-full mx-auto">
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center flex-1">
+            {/* Single Row Controls */}
+            <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+              {/* Left side - View Mode Toggle + Search/Filter */}
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center flex-1 w-full">
+                {/* View Mode Toggle */}
+                <div className="inline-flex items-center rounded-lg border bg-background p-1 shadow-sm shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setViewMode("individual");
+                      setSearchTerm("");
+                    }}
+                    className={`
+                      relative px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200
+                      ${
+                        viewMode === "individual"
+                          ? "bg-primary text-primary-foreground shadow-sm"
+                          : "text-muted-foreground hover:text-foreground"
+                      }
+                    `}
+                  >
+                    Individual
+                    <span className="ml-1.5 text-xs opacity-70">
+                      ({logos.length})
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setViewMode("collections");
+                      setSearchTerm("");
+                    }}
+                    className={`
+                      relative px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200
+                      ${
+                        viewMode === "collections"
+                          ? "bg-primary text-primary-foreground shadow-sm"
+                          : "text-muted-foreground hover:text-foreground"
+                      }
+                    `}
+                  >
+                    Collections
+                    <span className="ml-1.5 text-xs opacity-70">
+                      ({bundles.length})
+                    </span>
+                  </button>
+                </div>
+
+                {/* Search - Show for both modes */}
                 <div className="relative flex-1 max-w-md">
                   <Input
                     type="text"
-                    placeholder="Search logos..."
+                    placeholder={
+                      viewMode === "individual"
+                        ? "Search logos..."
+                        : "Search collections..."
+                    }
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pr-10"
@@ -299,102 +461,117 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
                   </div>
                 </div>
 
-                {/* Category Filter */}
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button variant="outline" size="sm">
-                      <Filter
-                        className="-ms-1 opacity-60"
-                        size={16}
-                        aria-hidden="true"
-                      />
-                      Categories
-                      {selectedCategories.length > 0 && (
-                        <span className="bg-background text-muted-foreground/70 -me-1 inline-flex h-5 max-h-full items-center rounded border px-1 font-[inherit] text-[0.625rem] font-medium">
-                          {selectedCategories.length}
-                        </span>
-                      )}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto min-w-36 p-3" align="start">
-                    <div className="space-y-3">
-                      <div className="text-muted-foreground text-xs font-medium">
-                        Filter by Category
-                      </div>
+                {/* Category Filter - Only for individual mode */}
+                {viewMode === "individual" && (
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" size="sm">
+                        <Filter
+                          className="-ms-1 opacity-60"
+                          size={16}
+                          aria-hidden="true"
+                        />
+                        Categories
+                        {selectedCategories.length > 0 && (
+                          <span className="bg-background text-muted-foreground/70 -me-1 inline-flex h-5 max-h-full items-center rounded border px-1 font-[inherit] text-[0.625rem] font-medium">
+                            {selectedCategories.length}
+                          </span>
+                        )}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent
+                      className="w-auto min-w-36 p-3"
+                      align="start"
+                    >
                       <div className="space-y-3">
-                        {uniqueCategories.map((category, i) => (
-                          <div
-                            key={category}
-                            className="flex items-center gap-2"
-                          >
-                            <Checkbox
-                              id={`category-${i}`}
-                              checked={selectedCategories.includes(category)}
-                              onCheckedChange={(checked: boolean) =>
-                                handleCategoryChange(checked, category)
-                              }
-                            />
-                            <Label
-                              htmlFor={`category-${i}`}
-                              className="flex grow justify-between gap-2 font-normal"
+                        <div className="text-muted-foreground text-xs font-medium">
+                          Filter by Category
+                        </div>
+                        <div className="space-y-3">
+                          {uniqueCategories.map((category, i) => (
+                            <div
+                              key={category}
+                              className="flex items-center gap-2"
                             >
-                              {category}{" "}
-                              <span className="text-muted-foreground ms-2 text-xs">
-                                {categoryCounts.get(category)}
-                              </span>
-                            </Label>
-                          </div>
-                        ))}
+                              <Checkbox
+                                id={`category-${i}`}
+                                checked={selectedCategories.includes(category)}
+                                onCheckedChange={(checked: boolean) =>
+                                  handleCategoryChange(checked, category)
+                                }
+                              />
+                              <Label
+                                htmlFor={`category-${i}`}
+                                className="flex grow justify-between gap-2 font-normal"
+                              >
+                                {category}{" "}
+                                <span className="text-muted-foreground ms-2 text-xs">
+                                  {categoryCounts.get(category)}
+                                </span>
+                              </Label>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </PopoverContent>
-                </Popover>
+                    </PopoverContent>
+                  </Popover>
+                )}
               </div>
 
+              {/* Right side - Select All (for both modes) */}
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleSelectAll}
                 className="shrink-0"
               >
-                {selectedLogos.size === filteredLogos.length
-                  ? `Deselect All (${filteredLogos.length})`
-                  : `Select All (${filteredLogos.length})`}
+                {(() => {
+                  const targetLogos =
+                    viewMode === "individual" ? filteredLogos : logos;
+                  const allSelected = selectedLogos.size === targetLogos.length;
+                  return allSelected
+                    ? `Deselect All (${targetLogos.length})`
+                    : `Select All (${targetLogos.length})`;
+                })()}
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Logo Grid */}
+        {/* Logo Grid / Collections Grid */}
         <div className="border-t border-border border-dotted px-4 sm:px-6 md:px-8 py-8">
           <div className="w-full mx-auto">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
-              {filteredLogos.map((logo) => {
-                const LogoComponent = logo.component;
-                const isSelected = selectedLogos.has(logo.id);
-                const brandUrl = getBrandUrl(logo.name);
-                const variantCount = logo.variants?.length || 0;
-                const totalVariants =
-                  logo.name === "clerk-logo" ? variantCount * 2 : variantCount;
+            {/* Individual Logos Grid */}
+            {viewMode === "individual" && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+                {filteredLogos.map((logo) => {
+                  const LogoComponent = logo.component;
+                  const isSelected = selectedLogos.has(logo.id);
+                  const brandUrl = getBrandUrl(logo.name);
+                  const variantCount = logo.variants?.length || 0;
+                  const totalVariants =
+                    logo.name === "clerk-logo"
+                      ? variantCount * 2
+                      : variantCount;
 
-                if (!LogoComponent) return null;
+                  if (!LogoComponent) return null;
 
-                return (
-                  <LogoContextMenu
-                    key={logo.id}
-                    logoName={logo.name}
-                    displayName={logo.displayName}
-                    category={logo.category}
-                    component={LogoComponent}
-                    brandUrl={brandUrl}
-                    hasVariants={logo.hasVariants}
-                    variantsCount={totalVariants}
-                    onViewVariants={() => handleViewVariants(logo)}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => handleLogoToggle(logo.id)}
-                      className={`
+                  return (
+                    <LogoContextMenu
+                      key={logo.id}
+                      logoName={logo.name}
+                      displayName={logo.displayName}
+                      category={logo.category}
+                      component={LogoComponent}
+                      brandUrl={brandUrl}
+                      hasVariants={logo.hasVariants}
+                      variantsCount={totalVariants}
+                      onViewVariants={() => handleViewVariants(logo)}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => handleLogoToggle(logo.id)}
+                        className={`
                         group relative p-4 md:p-6 rounded-lg border cursor-context-menu transition-all duration-200
                         hover:shadow-md hover:scale-105
                         ${
@@ -403,56 +580,186 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
                             : "bg-card hover:bg-accent/50"
                         }
                       `}
-                      title="Right-click for options"
-                    >
-                      {/* Variants badge - top left */}
-                      {logo.hasVariants && totalVariants > 0 && (
-                        <div
-                          className="absolute top-2 left-2 inline-flex items-center justify-center min-w-[18px] h-4 px-1.5 rounded text-[10px] font-medium bg-secondary/80 text-secondary-foreground border border-border/50"
-                          title={`${totalVariants} variants`}
-                        >
-                          {totalVariants}
-                        </div>
-                      )}
-
-                      {/* Selection indicator */}
-                      <div
-                        className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 transition-all duration-200 ${
-                          isSelected
-                            ? "bg-primary border-primary"
-                            : "border-muted-foreground/30 group-hover:border-primary/50"
-                        }`}
+                        title="Right-click for options"
                       >
-                        {isSelected && (
-                          <PixelatedCheckIcon className="w-2 h-2 text-primary-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                        {/* Variants badge - top left */}
+                        {logo.hasVariants && totalVariants > 0 && (
+                          <div
+                            className="absolute top-2 left-2 inline-flex items-center justify-center min-w-[18px] h-4 px-1.5 rounded text-[10px] font-medium bg-secondary/80 text-secondary-foreground border border-border/50"
+                            title={`${totalVariants} variants`}
+                          >
+                            {totalVariants}
+                          </div>
                         )}
-                      </div>
 
-                      <div className="flex flex-col items-center space-y-3">
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                          <LogoComponent
-                            className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 group-hover:scale-110"
-                            mode={currentMode}
-                          />
+                        {/* Selection indicator */}
+                        <div
+                          className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 transition-all duration-200 ${
+                            isSelected
+                              ? "bg-primary border-primary"
+                              : "border-muted-foreground/30 group-hover:border-primary/50"
+                          }`}
+                        >
+                          {isSelected && (
+                            <PixelatedCheckIcon className="w-2 h-2 text-primary-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                          )}
                         </div>
 
-                        <div className="text-center space-y-1">
-                          <h3 className="font-medium text-xs md:text-sm">
-                            {logo.displayName}
-                          </h3>
-                          <p className="text-xs text-muted-foreground">
-                            {logo.category}
+                        <div className="flex flex-col items-center space-y-3">
+                          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+                            <LogoComponent
+                              className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 group-hover:scale-110"
+                              mode={currentMode}
+                            />
+                          </div>
+
+                          <div className="text-center space-y-1">
+                            <h3 className="font-medium text-xs md:text-sm">
+                              {logo.displayName}
+                            </h3>
+                            <p className="text-xs text-muted-foreground">
+                              {logo.category}
+                            </p>
+                          </div>
+                        </div>
+                      </button>
+                    </LogoContextMenu>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Collections Grid */}
+            {viewMode === "collections" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredBundles.map((bundle) => {
+                  // Get all logos from the bundle
+                  const allBundleLogos = bundle.dependencies
+                    .map((dep) => {
+                      const logoId = dep.replace("@elements/", "");
+                      return logos.find((logo) => logo.id === logoId);
+                    })
+                    .filter(Boolean) as LogoWithComponent[];
+
+                  // Get preview logos (first 4 logos from the bundle)
+                  const previewLogos = allBundleLogos.slice(0, 4);
+
+                  return (
+                    <div
+                      key={bundle.id}
+                      className="group relative rounded-lg border bg-card hover:bg-accent/50 transition-all duration-200 hover:shadow-md overflow-hidden"
+                    >
+                      <div className="p-6 space-y-4">
+                        {/* Header */}
+                        <div className="space-y-2">
+                          <div className="flex items-start justify-between gap-2">
+                            <h3 className="font-semibold text-lg">
+                              {bundle.title}
+                            </h3>
+                            <span className="inline-flex items-center justify-center min-w-[32px] h-6 px-2 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                              {bundle.logoCount}
+                            </span>
+                          </div>
+                          <p className="text-sm text-muted-foreground line-clamp-2">
+                            {bundle.description}
                           </p>
                         </div>
-                      </div>
-                    </button>
-                  </LogoContextMenu>
-                );
-              })}
-            </div>
 
-            {/* Empty state */}
-            {filteredLogos.length === 0 && (
+                        {/* Preview Logos with Popover */}
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <button
+                              type="button"
+                              className="flex items-center -space-x-2 hover:scale-105 transition-transform cursor-pointer"
+                            >
+                              {previewLogos.map((logo, index) => {
+                                const LogoComponent = logo?.component;
+                                if (!LogoComponent) return null;
+                                return (
+                                  <div
+                                    key={logo.id}
+                                    className="relative inline-flex items-center justify-center size-10 rounded-full bg-background border-2 border-card ring-2 ring-primary/20"
+                                    style={{ zIndex: 10 - index }}
+                                    title={logo.displayName}
+                                  >
+                                    <LogoComponent
+                                      className="w-5 h-5"
+                                      mode={currentMode}
+                                    />
+                                  </div>
+                                );
+                              })}
+                              {bundle.logoCount > 4 && (
+                                <div
+                                  className="relative inline-flex items-center justify-center size-10 rounded-full bg-background border-2 border-card ring-2 ring-primary/20 text-[10px] font-bold text-foreground"
+                                  style={{ zIndex: 5 }}
+                                >
+                                  +{bundle.logoCount - 4}
+                                </div>
+                              )}
+                            </button>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-80 p-4" align="start">
+                            <div className="space-y-3">
+                              <div className="text-sm font-medium text-foreground">
+                                Included Logos ({bundle.logoCount})
+                              </div>
+                              <div className="grid grid-cols-4 gap-3">
+                                {allBundleLogos.map((logo) => {
+                                  const LogoComponent = logo?.component;
+                                  if (!LogoComponent) return null;
+                                  return (
+                                    <div
+                                      key={logo.id}
+                                      className="flex flex-col items-center gap-1.5 group/logo"
+                                      title={logo.displayName}
+                                    >
+                                      <div className="size-10 flex items-center justify-center rounded-lg bg-accent/50 group-hover/logo:bg-accent transition-colors">
+                                        <LogoComponent
+                                          className="w-6 h-6"
+                                          mode={currentMode}
+                                        />
+                                      </div>
+                                      <span className="text-[10px] text-muted-foreground text-center line-clamp-1 w-full">
+                                        {logo.displayName}
+                                      </span>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </PopoverContent>
+                        </Popover>
+
+                        {/* Action Button */}
+                        <Button
+                          onClick={() => handleBundleSelect(bundle)}
+                          variant={
+                            selectedBundles.has(bundle.id)
+                              ? "default"
+                              : "outline"
+                          }
+                          className="w-full"
+                          size="sm"
+                        >
+                          {selectedBundles.has(bundle.id) ? (
+                            <>
+                              <Check className="w-3.5 h-3.5 mr-1.5" />
+                              Collection Added
+                            </>
+                          ) : (
+                            "Add Collection"
+                          )}
+                        </Button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Empty state - Individual */}
+            {viewMode === "individual" && filteredLogos.length === 0 && (
               <div className="text-center py-12">
                 <div className="text-muted-foreground">
                   <svg
@@ -474,24 +781,401 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
                 </div>
               </div>
             )}
+
+            {/* Empty state - Collections */}
+            {viewMode === "collections" && filteredBundles.length === 0 && (
+              <div className="text-center py-12">
+                <div className="text-muted-foreground">
+                  <svg
+                    className="w-12 h-12 mx-auto mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <title>No collections found</title>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    />
+                  </svg>
+                  <p className="text-lg font-medium mb-2">
+                    No collections found
+                  </p>
+                  <p className="text-sm">Try adjusting your search term</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Dock-style Install Command */}
-      {selectedLogos.size > 0 && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
-          <div className="bg-card border rounded-lg shadow-lg w-full p-3 overflow-hidden">
-            <InstallCommand
-              url={logos
-                .filter((logo) => selectedLogos.has(logo.id))
-                .map((logo) => `@elements/${logo.name}`)
-                .join(" ")}
-              className="w-full max-w-none min-w-0"
-              source="logos_page_install_dock"
-              componentName={`${selectedLogos.size} Logos`}
-              category="Brand"
-            />
+      {/* Enhanced Dock-style Install Command */}
+      {(selectedLogos.size > 0 || selectedBundles.size > 0) && (
+        <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 px-3 sm:px-4">
+          <div className="bg-accent/95 backdrop-blur-sm border border-dotted rounded-xl shadow-2xl p-3 sm:p-4 overflow-hidden animate-in slide-in-from-bottom-4 duration-300 w-fit">
+            {/* Mobile Layout */}
+            <div className="flex sm:hidden flex-col gap-3">
+              <div className="flex items-center justify-between">
+                {/* Overlapping Logo Avatars */}
+                <div className="flex -space-x-2.5">
+                  {/* Show selected bundles first */}
+                  {bundles
+                    .filter((bundle) => selectedBundles.has(bundle.id))
+                    .slice(0, 4)
+                    .map((bundle, index) => {
+                      // Find first available logo with loaded component
+                      let LogoComponent = null;
+                      for (const dep of bundle.dependencies) {
+                        const logoId = dep.replace("@elements/", "");
+                        const logo = logos.find((l) => l.id === logoId);
+                        if (logo?.component) {
+                          LogoComponent = logo.component;
+                          break;
+                        }
+                      }
+
+                      // If no logo component found, use GroupIcon as fallback
+                      return (
+                        <div
+                          key={bundle.id}
+                          className="relative inline-flex items-center justify-center size-8 rounded-full bg-primary border-2 border-accent"
+                          style={{
+                            zIndex: 20 - index,
+                          }}
+                          title={bundle.title}
+                        >
+                          {LogoComponent ? (
+                            <LogoComponent
+                              className="w-4 h-4 text-primary-foreground"
+                              mode={currentMode}
+                            />
+                          ) : (
+                            <GroupIcon className="w-4 h-4 text-primary-foreground" />
+                          )}
+                          <div className="absolute -top-0.5 -right-0.5 size-3 rounded-full bg-background border border-accent flex items-center justify-center">
+                            <GroupIcon className="w-1.5 h-1.5" />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  {/* Then show individual logos - only if there's space */}
+                  {selectedBundles.size < 4 &&
+                    logos
+                      .filter((logo) => selectedLogos.has(logo.id))
+                      .slice(0, Math.max(0, 4 - selectedBundles.size))
+                      .map((logo, index) => {
+                        const LogoComponent = logo.component;
+                        if (!LogoComponent) return null;
+                        return (
+                          <div
+                            key={logo.id}
+                            className="relative inline-flex items-center justify-center size-8 rounded-full bg-background border-2 border-accent ring-2 ring-primary/20"
+                            style={{
+                              zIndex: 10 - index,
+                            }}
+                            title={logo.displayName}
+                          >
+                            <LogoComponent
+                              className="w-4 h-4"
+                              mode={currentMode}
+                            />
+                          </div>
+                        );
+                      })}
+                  {selectedLogos.size + selectedBundles.size > 4 && (
+                    <div
+                      className="relative inline-flex items-center justify-center size-8 rounded-full bg-background border-2 border-accent ring-2 ring-primary/20 text-[10px] font-bold text-foreground"
+                      style={{ zIndex: 5 }}
+                    >
+                      +{selectedLogos.size + selectedBundles.size - 4}
+                    </div>
+                  )}
+                </div>
+
+                {/* Selected Count */}
+                <div className="text-sm font-bold text-foreground">
+                  {selectedLogos.size + selectedBundles.size}{" "}
+                  <span className="text-muted-foreground font-normal text-xs">
+                    selected
+                  </span>
+                </div>
+              </div>
+
+              {/* Copy Button Group */}
+              <div className="flex rounded-lg shadow-sm overflow-hidden">
+                <Button
+                  onClick={handleCopyCommand}
+                  variant="outline"
+                  className="rounded-none rounded-l-lg h-9 gap-2 font-medium border-r-0 min-w-[180px]"
+                  disabled={copied}
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      {packageManager === "bunx" && (
+                        <BunLogo className="w-3.5 h-3.5" />
+                      )}
+                      {packageManager === "npx" && (
+                        <NpmLogo className="w-3.5 h-3.5" />
+                      )}
+                      {packageManager === "pnpm" && (
+                        <PnpmLogo className="w-3.5 h-3.5" />
+                      )}
+                      {packageManager === "yarn" && (
+                        <YarnLogo className="w-3.5 h-3.5" />
+                      )}
+                      Copy Command
+                    </>
+                  )}
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="rounded-none rounded-r-lg h-9 px-3"
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="min-w-[140px]">
+                    <DropdownMenuItem
+                      onClick={() => setPackageManager("bunx")}
+                      className="gap-2"
+                    >
+                      <BunLogo className="w-3.5 h-3.5" />
+                      bunx
+                      {packageManager === "bunx" && (
+                        <Check className="w-3 h-3 ml-auto" />
+                      )}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setPackageManager("npx")}
+                      className="gap-2"
+                    >
+                      <NpmLogo className="w-3.5 h-3.5" />
+                      npx
+                      {packageManager === "npx" && (
+                        <Check className="w-3 h-3 ml-auto" />
+                      )}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setPackageManager("pnpm")}
+                      className="gap-2"
+                    >
+                      <PnpmLogo className="w-3.5 h-3.5" />
+                      pnpm
+                      {packageManager === "pnpm" && (
+                        <Check className="w-3 h-3 ml-auto" />
+                      )}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setPackageManager("yarn")}
+                      className="gap-2"
+                    >
+                      <YarnLogo className="w-3.5 h-3.5" />
+                      yarn
+                      {packageManager === "yarn" && (
+                        <Check className="w-3 h-3 ml-auto" />
+                      )}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="hidden sm:flex items-center gap-4">
+              {/* Overlapping Logo Avatars */}
+              <div className="flex items-center">
+                <div className="flex -space-x-3">
+                  {/* Show selected bundles first */}
+                  {bundles
+                    .filter((bundle) => selectedBundles.has(bundle.id))
+                    .slice(0, 5)
+                    .map((bundle, index) => {
+                      // Find first available logo with loaded component
+                      let LogoComponent = null;
+                      for (const dep of bundle.dependencies) {
+                        const logoId = dep.replace("@elements/", "");
+                        const logo = logos.find((l) => l.id === logoId);
+                        if (logo?.component) {
+                          LogoComponent = logo.component;
+                          break;
+                        }
+                      }
+
+                      // If no logo component found, use GroupIcon as fallback
+                      return (
+                        <div
+                          key={bundle.id}
+                          className="relative inline-flex items-center justify-center size-10 rounded-full bg-primary border-2 border-accent hover:scale-110 transition-all hover:z-10 cursor-pointer"
+                          style={{
+                            zIndex: 20 - index,
+                          }}
+                          title={bundle.title}
+                        >
+                          {LogoComponent ? (
+                            <LogoComponent
+                              className="w-5 h-5 text-primary-foreground"
+                              mode={currentMode}
+                            />
+                          ) : (
+                            <GroupIcon className="w-5 h-5 text-primary-foreground" />
+                          )}
+                          <div className="absolute -top-0.5 -right-0.5 size-3.5 rounded-full bg-background border border-accent flex items-center justify-center">
+                            <GroupIcon className="w-2 h-2" />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  {/* Then show individual logos - only if there's space */}
+                  {selectedBundles.size < 5 &&
+                    logos
+                      .filter((logo) => selectedLogos.has(logo.id))
+                      .slice(0, Math.max(0, 5 - selectedBundles.size))
+                      .map((logo, index) => {
+                        const LogoComponent = logo.component;
+                        if (!LogoComponent) return null;
+                        return (
+                          <div
+                            key={logo.id}
+                            className="relative inline-flex items-center justify-center size-10 rounded-full bg-background border-2 border-accent ring-2 ring-primary/20 hover:ring-primary/40 transition-all hover:scale-110 hover:z-10 cursor-pointer"
+                            style={{
+                              zIndex: 10 - index,
+                            }}
+                            title={logo.displayName}
+                          >
+                            <LogoComponent
+                              className="w-5 h-5"
+                              mode={currentMode}
+                            />
+                          </div>
+                        );
+                      })}
+                  {selectedLogos.size + selectedBundles.size > 5 && (
+                    <div
+                      className="relative inline-flex items-center justify-center size-10 rounded-full bg-background border-2 border-accent ring-2 ring-primary/20 text-xs font-bold text-foreground"
+                      style={{ zIndex: 5 }}
+                      title={`${selectedLogos.size + selectedBundles.size - 5} more items selected`}
+                    >
+                      +{selectedLogos.size + selectedBundles.size - 5}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="h-10 w-px bg-border" />
+
+              {/* Selected Count */}
+              <div className="flex flex-col justify-center min-w-0">
+                <div className="text-xs text-muted-foreground font-medium">
+                  Selected
+                </div>
+                <div className="text-sm font-bold text-foreground">
+                  {selectedLogos.size + selectedBundles.size}{" "}
+                  <span className="text-muted-foreground font-normal">
+                    {selectedLogos.size + selectedBundles.size === 1
+                      ? "item"
+                      : "items"}
+                  </span>
+                </div>
+              </div>
+
+              {/* Spacer */}
+              <div className="flex-1 min-w-0" />
+
+              {/* Copy Button Group */}
+              <div className="flex rounded-lg shadow-sm overflow-hidden">
+                <Button
+                  onClick={handleCopyCommand}
+                  variant="outline"
+                  className="rounded-none rounded-l-lg h-9 gap-2 font-medium border-r-0 min-w-[160px]"
+                  disabled={copied}
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      {packageManager === "bunx" && (
+                        <BunLogo className="w-3.5 h-3.5" />
+                      )}
+                      {packageManager === "npx" && (
+                        <NpmLogo className="w-3.5 h-3.5" />
+                      )}
+                      {packageManager === "pnpm" && (
+                        <PnpmLogo className="w-3.5 h-3.5" />
+                      )}
+                      {packageManager === "yarn" && (
+                        <YarnLogo className="w-3.5 h-3.5" />
+                      )}
+                      Copy Command
+                    </>
+                  )}
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="rounded-none rounded-r-lg h-9 px-3"
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="min-w-[140px]">
+                    <DropdownMenuItem
+                      onClick={() => setPackageManager("bunx")}
+                      className="gap-2"
+                    >
+                      <BunLogo className="w-3.5 h-3.5" />
+                      bunx
+                      {packageManager === "bunx" && (
+                        <Check className="w-3 h-3 ml-auto" />
+                      )}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setPackageManager("npx")}
+                      className="gap-2"
+                    >
+                      <NpmLogo className="w-3.5 h-3.5" />
+                      npx
+                      {packageManager === "npx" && (
+                        <Check className="w-3 h-3 ml-auto" />
+                      )}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setPackageManager("pnpm")}
+                      className="gap-2"
+                    >
+                      <PnpmLogo className="w-3.5 h-3.5" />
+                      pnpm
+                      {packageManager === "pnpm" && (
+                        <Check className="w-3 h-3 ml-auto" />
+                      )}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setPackageManager("yarn")}
+                      className="gap-2"
+                    >
+                      <YarnLogo className="w-3.5 h-3.5" />
+                      yarn
+                      {packageManager === "yarn" && (
+                        <Check className="w-3 h-3 ml-auto" />
+                      )}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </div>
           </div>
         </div>
       )}

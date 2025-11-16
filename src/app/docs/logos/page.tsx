@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { getLogoComponents } from "@/lib/registry-loader";
+import { getLogoBundles, getLogoComponents } from "@/lib/registry-loader";
 
 import { LogosClient } from "./logos-client";
 
@@ -56,12 +56,13 @@ export const metadata: Metadata = {
 export default function TechLogosPage() {
   // Server-side data loading - no useEffect needed!
   const logoItems = getLogoComponents();
+  const bundleItems = getLogoBundles();
 
   // Transform registry items to logo format
   const logos = logoItems.map((item) => {
     // Get the first category that's not "logo" or "brand"
     const specificCategory = item.categories?.find(
-      (cat) => cat !== "logo" && cat !== "brand",
+      (cat) => cat !== "logo" && cat !== "brand" && cat !== "collection",
     );
 
     return {
@@ -74,5 +75,16 @@ export default function TechLogosPage() {
     };
   });
 
-  return <LogosClient logos={logos} />;
+  // Transform bundles
+  const bundles = bundleItems.map((item) => ({
+    id: item.name,
+    name: item.name,
+    title: item.title,
+    description: item.description,
+    docs: item.docs || "",
+    logoCount: item.registryDependencies?.length || 0,
+    dependencies: item.registryDependencies || [],
+  }));
+
+  return <LogosClient logos={logos} bundles={bundles} />;
 }

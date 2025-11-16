@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bun-logo",
+  "type": "registry:ui",
+  "title": "Bun Logo",
+  "description": "Bun logo component - fast all-in-one JavaScript runtime",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/bun-logo/components/logos/bun.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Bun logo component for the fast all-in-one JavaScript runtime. Features the iconic Bun mascot design.",
+  "categories": ["Package Manager", "logo", "brand", "JavaScript"]
+}

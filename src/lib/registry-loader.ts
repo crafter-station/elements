@@ -230,3 +230,27 @@ export function groupByCategory(
 
   return groups;
 }
+
+/**
+ * Get all bundle items (collections)
+ */
+export function getBundles(): RegistryItem[] {
+  const items = getRegistryItems();
+
+  return items.filter((item) => {
+    // Bundles are registry:block items with no files
+    return item.type === "registry:block" && item.files?.length === 0;
+  });
+}
+
+/**
+ * Get bundles for logos specifically
+ */
+export function getLogoBundles(): RegistryItem[] {
+  const bundles = getBundles();
+
+  return bundles.filter((bundle) => {
+    // Check if bundle has logo-related dependencies
+    return bundle.registryDependencies?.some((dep) => dep.includes("-logo"));
+  });
+}

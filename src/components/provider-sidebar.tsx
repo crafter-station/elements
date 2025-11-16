@@ -23,24 +23,41 @@ import {
 function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
   const pathname = usePathname();
 
-  // Sort providers: enabled first, then alphabetically
+  // Sort providers:
+  // 1. Enabled with components first
+  // 2. Building (enabled but no components yet)
+  // 3. Disabled (coming soon)
+  // Then alphabetically within each group
   const sortedProviders = [...providers].sort((a, b) => {
+    // First priority: enabled status
     if (a.isEnabled !== b.isEnabled) {
       return a.isEnabled ? -1 : 1;
     }
+
+    // Second priority: for enabled providers, sort by building status
+    if (a.isEnabled && b.isEnabled) {
+      const aIsBuilding = a.status === "building";
+      const bIsBuilding = b.status === "building";
+
+      if (aIsBuilding !== bIsBuilding) {
+        return aIsBuilding ? 1 : -1; // Building goes after available
+      }
+    }
+
+    // Third priority: alphabetically
     return a.name.localeCompare(b.name);
   });
 
   return (
     <div className="py-2 md:py-0">
-      <h2 className="font-dotted font-black text-lg mb-2 px-4">Providers</h2>
+      <h2 className="font-dotted font-black mt-1.5 mb-2 px-4">Providers</h2>
 
       <nav className="flex flex-col -space-y-px">
         {/* Overview Link */}
         <Link
           href="/docs"
           className={cn(
-            "group flex items-center border border-dotted border-border border-x-0 border-l-2 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
+            "group flex items-center border border-dotted border-border border-x-0 border-l-2 gap-3 p-2.5 text-sm rounded-sm transition-all relative",
             pathname === "/docs"
               ? "bg-muted text-foreground font-medium z-10 border-l-primary"
               : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10 border-l-transparent hover:border-l-primary/30",
@@ -69,7 +86,7 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
               key={provider.href}
               href={provider.isEnabled ? provider.href : "#"}
               className={cn(
-                "group flex items-center border border-dotted border-border border-x-0 border-l-2 gap-3 px-4 py-2.5 text-sm rounded-sm transition-all relative",
+                "group flex items-center border border-dotted border-border border-x-0 border-l-2 gap-3 p-2.5 text-[13px] rounded-sm transition-all relative",
                 isActive
                   ? "bg-muted text-foreground font-medium z-10 border-l-primary"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10 border-l-transparent hover:border-l-primary/30",
@@ -167,7 +184,7 @@ export function ProviderSidebar() {
       </div>
 
       {/* Desktop Sidebar */}
-      <aside className="md:transition-all border-r border-border border-dotted top-[55px] md:flex hidden md:w-[268px] lg:w-[286px] overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
+      <aside className="md:transition-all border-r border-border border-dotted top-[55px] md:flex hidden md:w-[220px] lg:w-[240px] overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
         <ProviderList />
       </aside>
     </>

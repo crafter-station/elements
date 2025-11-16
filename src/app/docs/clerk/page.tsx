@@ -66,11 +66,13 @@ export default function ClerkPage() {
                   style={{ backgroundColor: BRAND_COLOR }}
                 />
                 <div className="space-y-3">
-                  <h2 className="font-semibold text-lg">Coming Soon</h2>
+                  <h2 className="font-semibold text-lg">Building Components</h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    We're building a complete suite of components for
-                    authentication, organizations, billing, and account
-                    management using Clerk's powerful React hooks. Stay tuned!
+                    A complete suite of authentication, organization management,
+                    and billing components built with Clerk's powerful React
+                    hooks. Featuring sign-in/up flows, user profiles,
+                    organization switchers, and seamless integration with your
+                    existing UI.
                   </p>
                 </div>
               </div>

@@ -45,7 +45,11 @@
     "@elements/polar-logo",
     "@elements/tinte-logo",
     "@elements/crafter-station-logo",
-    "@elements/kebo-logo"
+    "@elements/kebo-logo",
+    "@elements/bun-logo",
+    "@elements/npm-logo",
+    "@elements/pnpm-logo",
+    "@elements/yarn-logo"
   ],
   "dependencies": [],
   "files": [],

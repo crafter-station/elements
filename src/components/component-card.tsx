@@ -15,6 +15,7 @@ interface ComponentCardProps {
   elementsCount?: number;
   providerLink?: string;
   trackingSource?: string;
+  status?: "building" | "ready";
 }
 
 export function ComponentCard({
@@ -28,11 +29,14 @@ export function ComponentCard({
   elementsCount,
   providerLink,
   trackingSource = "unknown",
+  status,
 }: ComponentCardProps) {
+  const isBuilding = status === "building";
+
   const patternStyle =
     brandColor && isEnabled
       ? {
-          backgroundColor: `${brandColor}05`,
+          backgroundColor: isBuilding ? `${brandColor}05` : `${brandColor}05`,
           backgroundImage: `repeating-linear-gradient(
           45deg,
           transparent,
@@ -66,10 +70,16 @@ export function ComponentCard({
             {icon}
           </div>
           <Badge
-            variant={isEnabled ? "default" : "secondary"}
-            className="text-xs"
+            variant={
+              isBuilding ? "outline" : isEnabled ? "default" : "secondary"
+            }
+            className={cn(
+              "text-xs",
+              isBuilding &&
+                "border-[#6C47FF]/50 text-[#6C47FF] bg-[#6C47FF]/10",
+            )}
           >
-            {isEnabled ? "Available" : "Coming Soon"}
+            {isBuilding ? "Building" : isEnabled ? "Available" : "Coming Soon"}
           </Badge>
         </div>
 

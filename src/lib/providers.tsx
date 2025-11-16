@@ -59,6 +59,9 @@ export function getProvidersData(): Provider[] {
       isEnabled: true,
       status: "building" as const,
       displayName: "Clerk",
+      description:
+        "Complete user management suite with auth, organizations, and billing components",
+      category: "User Management",
     },
     polar: {
       providerLink: "https://polar.sh",
@@ -76,6 +79,9 @@ export function getProvidersData(): Provider[] {
     },
     tinte: {
       isEnabled: true,
+      description:
+        "AI-powered theme generator for VS Code, shadcn/ui, terminals and more",
+      category: "Theming",
     },
     vercel: {
       providerLink: "https://vercel.com/ai",
@@ -159,9 +165,9 @@ export function getProvidersData(): Provider[] {
 
     return {
       name: config.displayName || metadata.displayName,
-      description: metadata.description,
+      description: config.description || metadata.description,
       icon: <ProviderIcon provider={providerName} />,
-      category: metadata.category,
+      category: config.category || metadata.category,
       brandColor: metadata.brandColor,
       isEnabled: config.isEnabled,
       href: `/docs/${providerName}`,

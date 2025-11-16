@@ -88,7 +88,7 @@ export default function ProvidersIndexPage() {
         </div>
 
         {/* Providers Grid */}
-        <div className="border-t border-border border-dotted px-4 sm:px-6 md:px-8 py-12">
+        <div className="border-t border-border border-dotted p-4 sm:p-6 md:p-8">
           <div className="grid gap-4 place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {providers.map((provider) => (
               <ComponentCard
@@ -103,6 +103,7 @@ export default function ProvidersIndexPage() {
                 elementsCount={provider.elementsCount}
                 providerLink={provider.providerLink}
                 trackingSource={trackingSource}
+                status={provider.status}
               />
             ))}
           </div>

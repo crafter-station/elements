@@ -5,57 +5,31 @@
   "items": [
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "logos",
+      "name": "ai-services",
       "type": "registry:block",
-      "title": "Brand Logos Collection",
-      "description": "Complete collection of brand logos for popular tech companies and AI services",
+      "title": "AI Services",
+      "description": "Complete collection of AI service provider logos including OpenAI, Anthropic, Google Gemini, and more",
       "registryDependencies": [
-        "@elements/apple-logo",
-        "@elements/linear-logo",
-        "@elements/microsoft-logo",
-        "@elements/github-logo",
-        "@elements/spotify-logo",
-        "@elements/slack-logo",
-        "@elements/twitch-logo",
-        "@elements/twitter-logo",
-        "@elements/gitlab-logo",
-        "@elements/discord-logo",
-        "@elements/notion-logo",
-        "@elements/google-logo",
-        "@elements/qwen-logo",
-        "@elements/moonshot-ai-logo",
-        "@elements/cohere-logo",
         "@elements/openai-logo",
         "@elements/anthropic-logo",
+        "@elements/claude-logo",
+        "@elements/gemini-logo",
+        "@elements/mistral-logo",
+        "@elements/cohere-logo",
         "@elements/deepseek-logo",
+        "@elements/qwen-logo",
+        "@elements/moonshot-ai-logo",
         "@elements/hugging-face-logo",
         "@elements/groq-logo",
         "@elements/grok-logo",
-        "@elements/gemini-logo",
-        "@elements/lovable-logo",
         "@elements/perplexity-logo",
         "@elements/xai-logo",
-        "@elements/v0-logo",
-        "@elements/claude-logo",
-        "@elements/mistral-logo",
-        "@elements/meta-logo",
-        "@elements/aws-logo",
-        "@elements/kimi-logo",
-        "@elements/supabase-logo",
-        "@elements/stripe-logo",
-        "@elements/resend-logo",
-        "@elements/better-auth-logo",
-        "@elements/upstash-logo",
-        "@elements/vercel-logo",
-        "@elements/polar-logo",
-        "@elements/tinte-logo",
-        "@elements/crafter-station-logo",
-        "@elements/kebo-logo"
+        "@elements/kimi-logo"
       ],
       "dependencies": [],
       "files": [],
-      "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use.",
-      "categories": ["logo", "brand"]
+      "docs": "Collection of AI service provider logos including major LLM providers, AI platforms, and machine learning services. Perfect for AI-powered applications and ML dashboards.",
+      "categories": ["logo", "brand", "AI", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -127,6 +101,23 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "bun-logo",
+      "type": "registry:ui",
+      "title": "Bun Logo",
+      "description": "Bun logo component - fast all-in-one JavaScript runtime",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/bun-logo/components/logos/bun.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Bun logo component for the fast all-in-one JavaScript runtime. Features the iconic Bun mascot design.",
+      "categories": ["Package Manager", "logo", "brand", "JavaScript"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "claude-logo",
       "type": "registry:ui",
       "title": "Claude Logo",
@@ -180,6 +171,27 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "cloud-infrastructure",
+      "type": "registry:block",
+      "title": "Cloud & Infrastructure",
+      "description": "Collection of cloud services and infrastructure logos including AWS, Supabase, Stripe, and more",
+      "registryDependencies": [
+        "@elements/aws-logo",
+        "@elements/supabase-logo",
+        "@elements/upstash-logo",
+        "@elements/stripe-logo",
+        "@elements/resend-logo",
+        "@elements/better-auth-logo",
+        "@elements/clerk-logo",
+        "@elements/polar-logo"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Collection of cloud services and infrastructure logos. Perfect for tech stack displays, service integrations, and infrastructure documentation.",
+      "categories": ["logo", "brand", "cloud", "infrastructure", "collection"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "cohere-logo",
       "type": "registry:ui",
       "title": "Cohere Logo",
@@ -228,6 +240,26 @@
       ],
       "docs": "DeepSeek logo component with official brand purple color.",
       "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "developer-tools",
+      "type": "registry:block",
+      "title": "Developer Tools & Platforms",
+      "description": "Collection of developer tools and platform logos including GitHub, GitLab, Linear, Notion, and more",
+      "registryDependencies": [
+        "@elements/github-logo",
+        "@elements/gitlab-logo",
+        "@elements/vercel-logo",
+        "@elements/linear-logo",
+        "@elements/notion-logo",
+        "@elements/v0-logo",
+        "@elements/lovable-logo"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Collection of developer tools and platform logos. Ideal for showcasing integrations, tools used, and development workflows.",
+      "categories": ["logo", "brand", "developer", "tools", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -418,6 +450,64 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "logos",
+      "type": "registry:block",
+      "title": "Brand Logos Collection",
+      "description": "Complete collection of brand logos for popular tech companies and AI services",
+      "registryDependencies": [
+        "@elements/apple-logo",
+        "@elements/linear-logo",
+        "@elements/microsoft-logo",
+        "@elements/github-logo",
+        "@elements/spotify-logo",
+        "@elements/slack-logo",
+        "@elements/twitch-logo",
+        "@elements/twitter-logo",
+        "@elements/gitlab-logo",
+        "@elements/discord-logo",
+        "@elements/notion-logo",
+        "@elements/google-logo",
+        "@elements/qwen-logo",
+        "@elements/moonshot-ai-logo",
+        "@elements/cohere-logo",
+        "@elements/openai-logo",
+        "@elements/anthropic-logo",
+        "@elements/deepseek-logo",
+        "@elements/hugging-face-logo",
+        "@elements/groq-logo",
+        "@elements/grok-logo",
+        "@elements/gemini-logo",
+        "@elements/lovable-logo",
+        "@elements/perplexity-logo",
+        "@elements/xai-logo",
+        "@elements/v0-logo",
+        "@elements/claude-logo",
+        "@elements/mistral-logo",
+        "@elements/meta-logo",
+        "@elements/aws-logo",
+        "@elements/kimi-logo",
+        "@elements/supabase-logo",
+        "@elements/stripe-logo",
+        "@elements/resend-logo",
+        "@elements/better-auth-logo",
+        "@elements/upstash-logo",
+        "@elements/vercel-logo",
+        "@elements/polar-logo",
+        "@elements/tinte-logo",
+        "@elements/crafter-station-logo",
+        "@elements/kebo-logo",
+        "@elements/bun-logo",
+        "@elements/npm-logo",
+        "@elements/pnpm-logo",
+        "@elements/yarn-logo"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use.",
+      "categories": ["logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "lovable-logo",
       "type": "registry:ui",
       "title": "Lovable Logo",
@@ -520,6 +610,29 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "npm-logo",
+      "type": "registry:ui",
+      "title": "npm Logo",
+      "description": "npm logo component - Node package manager",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/npm-logo/components/logos/npm.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "npm logo component for the Node.js package manager. Features the classic red npm wordmark design.",
+      "categories": [
+        "Package Manager",
+        "logo",
+        "brand",
+        "JavaScript",
+        "Node.js"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "openai-logo",
       "type": "registry:ui",
       "title": "OpenAI Logo",
@@ -534,6 +647,23 @@
       ],
       "docs": "OpenAI logo component with official brand colors.",
       "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "package-managers",
+      "type": "registry:block",
+      "title": "Package Managers",
+      "description": "Complete collection of JavaScript package manager logos including npm, pnpm, Yarn, and Bun",
+      "registryDependencies": [
+        "@elements/bun-logo",
+        "@elements/npm-logo",
+        "@elements/pnpm-logo",
+        "@elements/yarn-logo"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Collection of popular JavaScript package manager logos. Essential for documentation, installation guides, and developer tools.",
+      "categories": ["logo", "brand", "Package Manager", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -554,6 +684,29 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "pnpm-logo",
+      "type": "registry:ui",
+      "title": "pnpm Logo",
+      "description": "pnpm logo component - Fast, disk space efficient package manager",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/pnpm-logo/components/logos/pnpm.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "pnpm logo component for the fast, disk space efficient package manager. Features the distinctive yellow and gray blocks design.",
+      "categories": [
+        "Package Manager",
+        "logo",
+        "brand",
+        "JavaScript",
+        "Node.js"
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "polar-logo",
       "type": "registry:ui",
       "title": "Polar Logo",
@@ -568,6 +721,53 @@
       ],
       "docs": "Polar logo component with official brand blue color.",
       "categories": ["Funding", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "polar-sponsorship",
+      "type": "registry:block",
+      "title": "Polar Sponsorship Suite",
+      "description": "Complete sponsorship integration with Polar.sh - sponsorship tiers, checkout flow, and API integration",
+      "registryDependencies": [
+        "button",
+        "badge",
+        "card",
+        "@elements/polar-logo"
+      ],
+      "dependencies": ["@polar-sh/nextjs"],
+      "files": [
+        {
+          "path": "registry/default/blocks/polar/polar-sponsorship/components/sponsor-tiers-preview.tsx",
+          "type": "registry:component",
+          "target": "app/sponsor-tiers-preview.tsx"
+        },
+        {
+          "path": "registry/default/blocks/polar/polar-sponsorship/components/sponsor-tiers.tsx",
+          "type": "registry:lib",
+          "target": "app/sponsor-tiers.tsx"
+        },
+        {
+          "path": "registry/default/blocks/polar/polar-sponsorship/checkout-route.ts",
+          "type": "registry:lib",
+          "target": "app/api/checkout/route.ts"
+        },
+        {
+          "path": "registry/default/blocks/polar/polar-sponsorship/page.tsx",
+          "type": "registry:page",
+          "target": "app/sponsor/page.tsx"
+        },
+        {
+          "path": "registry/default/blocks/polar/polar-sponsorship/success-page.tsx",
+          "type": "registry:page",
+          "target": "app/success/page.tsx"
+        }
+      ],
+      "envVars": {
+        "POLAR_ACCESS_TOKEN": "polar_oat_...",
+        "POLAR_SUCCESS_URL": "https://yourdomain.com/elements/polar/success?checkout_id={CHECKOUT_ID}",
+        "POLAR_BASE_URL": "https://api.polar.sh"
+      },
+      "docs": "Complete Polar.sh sponsorship suite with tiers, checkout, and sponsor display. Set up products in Polar dashboard, update POLAR_PRODUCT_IDS in lib/polar.ts with your product IDs, and configure environment variables. Includes API routes, sponsor components, and checkout integration."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -622,6 +822,24 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "social-media",
+      "type": "registry:block",
+      "title": "Social Media & Communication",
+      "description": "Collection of social media and communication platform logos including Twitter, Discord, Slack, and more",
+      "registryDependencies": [
+        "@elements/twitter-logo",
+        "@elements/discord-logo",
+        "@elements/slack-logo",
+        "@elements/twitch-logo",
+        "@elements/spotify-logo"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Collection of social media and communication platform logos. Perfect for social sharing features, community sections, and integration showcases.",
+      "categories": ["logo", "brand", "social", "collection"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "spotify-logo",
       "type": "registry:ui",
       "title": "Spotify Logo",
@@ -673,169 +891,20 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "tinte-logo",
-      "type": "registry:ui",
-      "title": "Tinte Logo",
-      "description": "Tinte logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/logos/tinte-logo/components/logos/tinte.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Theme", "logo", "brand"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "twitch-logo",
-      "type": "registry:ui",
-      "title": "Twitch Logo",
-      "description": "Twitch logo component with brand purple",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/logos/twitch-logo/components/logos/twitch.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "Twitch logo component with official brand purple and white colors.",
-      "categories": ["Entertainment", "logo", "brand"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "twitter-logo",
-      "type": "registry:ui",
-      "title": "Twitter/X Logo",
-      "description": "Twitter (X) logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/logos/twitter-logo/components/logos/twitter.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Social", "logo", "brand"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "upstash-logo",
-      "type": "registry:ui",
-      "title": "Upstash Logo",
-      "description": "Upstash logo component with brand green",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/logos/upstash-logo/components/logos/upstash.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "Upstash logo component with official brand green color.",
-      "categories": ["Database", "logo", "brand"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "v0-logo",
-      "type": "registry:ui",
-      "title": "v0 Logo",
-      "description": "v0 logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/logos/v0-logo/components/logos/v0.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "v0 logo component that adapts to your theme. Uses white colors.",
-      "categories": ["AI", "logo", "brand"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "vercel-logo",
-      "type": "registry:ui",
-      "title": "Vercel Logo",
-      "description": "Vercel logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/logos/vercel-logo/components/logos/vercel.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["Cloud", "logo", "brand"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "xai-logo",
-      "type": "registry:ui",
-      "title": "xAI Logo",
-      "description": "xAI logo component with theme-adaptive colors",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/logos/xai-logo/components/logos/xai.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": ["AI", "logo", "brand"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "polar-sponsorship",
+      "name": "tech-giants",
       "type": "registry:block",
-      "title": "Polar Sponsorship Suite",
-      "description": "Complete sponsorship integration with Polar.sh - sponsorship tiers, checkout flow, and API integration",
+      "title": "Tech Giants",
+      "description": "Collection of major technology company logos including Apple, Microsoft, Google, and Meta",
       "registryDependencies": [
-        "button",
-        "badge",
-        "card",
-        "@elements/polar-logo"
+        "@elements/apple-logo",
+        "@elements/microsoft-logo",
+        "@elements/google-logo",
+        "@elements/meta-logo"
       ],
-      "dependencies": ["@polar-sh/nextjs"],
-      "files": [
-        {
-          "path": "registry/default/blocks/polar/polar-sponsorship/components/sponsor-tiers-preview.tsx",
-          "type": "registry:component",
-          "target": "app/sponsor-tiers-preview.tsx"
-        },
-        {
-          "path": "registry/default/blocks/polar/polar-sponsorship/components/sponsor-tiers.tsx",
-          "type": "registry:lib",
-          "target": "app/sponsor-tiers.tsx"
-        },
-        {
-          "path": "registry/default/blocks/polar/polar-sponsorship/checkout-route.ts",
-          "type": "registry:lib",
-          "target": "app/api/checkout/route.ts"
-        },
-        {
-          "path": "registry/default/blocks/polar/polar-sponsorship/page.tsx",
-          "type": "registry:page",
-          "target": "app/sponsor/page.tsx"
-        },
-        {
-          "path": "registry/default/blocks/polar/polar-sponsorship/success-page.tsx",
-          "type": "registry:page",
-          "target": "app/success/page.tsx"
-        }
-      ],
-      "envVars": {
-        "POLAR_ACCESS_TOKEN": "polar_oat_...",
-        "POLAR_SUCCESS_URL": "https://yourdomain.com/elements/polar/success?checkout_id={CHECKOUT_ID}",
-        "POLAR_BASE_URL": "https://api.polar.sh"
-      },
-      "docs": "Complete Polar.sh sponsorship suite with tiers, checkout, and sponsor display. Set up products in Polar dashboard, update POLAR_PRODUCT_IDS in lib/polar.ts with your product IDs, and configure environment variables. Includes API routes, sponsor components, and checkout integration."
+      "dependencies": [],
+      "files": [],
+      "docs": "Collection of major technology company logos. Essential for platform integrations, sign-in options, and enterprise partnerships.",
+      "categories": ["logo", "brand", "enterprise", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1062,6 +1131,57 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "tinte-logo",
+      "type": "registry:ui",
+      "title": "Tinte Logo",
+      "description": "Tinte logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/tinte-logo/components/logos/tinte.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": ["Theme", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "twitch-logo",
+      "type": "registry:ui",
+      "title": "Twitch Logo",
+      "description": "Twitch logo component with brand purple",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/twitch-logo/components/logos/twitch.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Twitch logo component with official brand purple and white colors.",
+      "categories": ["Entertainment", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "twitter-logo",
+      "type": "registry:ui",
+      "title": "Twitter/X Logo",
+      "description": "Twitter (X) logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/twitter-logo/components/logos/twitter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": ["Social", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "uploadthing-button",
       "type": "registry:ui",
       "title": "UploadThing Button",
@@ -1132,6 +1252,97 @@
       },
       "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token.",
       "categories": ["upload", "file", "storage"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "upstash-logo",
+      "type": "registry:ui",
+      "title": "Upstash Logo",
+      "description": "Upstash logo component with brand green",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/upstash-logo/components/logos/upstash.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Upstash logo component with official brand green color.",
+      "categories": ["Database", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "v0-logo",
+      "type": "registry:ui",
+      "title": "v0 Logo",
+      "description": "v0 logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/v0-logo/components/logos/v0.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "v0 logo component that adapts to your theme. Uses white colors.",
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "vercel-logo",
+      "type": "registry:ui",
+      "title": "Vercel Logo",
+      "description": "Vercel logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/vercel-logo/components/logos/vercel.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": ["Cloud", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "xai-logo",
+      "type": "registry:ui",
+      "title": "xAI Logo",
+      "description": "xAI logo component with theme-adaptive colors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/xai-logo/components/logos/xai.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system.",
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "yarn-logo",
+      "type": "registry:ui",
+      "title": "Yarn Logo",
+      "description": "Yarn logo component - Fast, reliable, and secure dependency management",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/yarn-logo/components/logos/yarn.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Yarn logo component for the fast, reliable, and secure dependency management tool. Features the iconic blue cat design.",
+      "categories": [
+        "Package Manager",
+        "logo",
+        "brand",
+        "JavaScript",
+        "Node.js"
+      ]
     }
   ]
 }

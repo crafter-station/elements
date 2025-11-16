@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "package-managers",
+  "type": "registry:block",
+  "title": "Package Managers",
+  "description": "Complete collection of JavaScript package manager logos including npm, pnpm, Yarn, and Bun",
+  "registryDependencies": [
+    "@elements/bun-logo",
+    "@elements/npm-logo",
+    "@elements/pnpm-logo",
+    "@elements/yarn-logo"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "Collection of popular JavaScript package manager logos. Essential for documentation, installation guides, and developer tools.",
+  "categories": ["logo", "brand", "Package Manager", "collection"]
+}

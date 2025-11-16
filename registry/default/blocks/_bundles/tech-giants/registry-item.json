@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tech-giants",
+  "type": "registry:block",
+  "title": "Tech Giants",
+  "description": "Collection of major technology company logos including Apple, Microsoft, Google, and Meta",
+  "registryDependencies": [
+    "@elements/apple-logo",
+    "@elements/microsoft-logo",
+    "@elements/google-logo",
+    "@elements/meta-logo"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "Collection of major technology company logos. Essential for platform integrations, sign-in options, and enterprise partnerships.",
+  "categories": ["logo", "brand", "enterprise", "collection"]
+}
