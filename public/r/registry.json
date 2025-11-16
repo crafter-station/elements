@@ -144,6 +144,42 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clerk-logo",
+      "type": "registry:ui",
+      "title": "Clerk Logo",
+      "description": "Clerk logo component with variants, color schemes, modes, and backgrounds",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/clerk-logo/components/logos/clerk.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Clerk authentication logo with 2 base variants (icon, wordmark), 2 color schemes (grayscale, purple), 3 background options (none, square, circle), and 2 modes (light, dark) = 16 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      "categories": ["Auth", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": [
+          "icon-grayscale",
+          "icon-purple",
+          "icon-square-grayscale",
+          "icon-square-purple",
+          "icon-circle-grayscale",
+          "icon-circle-purple",
+          "wordmark-grayscale",
+          "wordmark-purple"
+        ],
+        "variantTypes": {
+          "base": ["icon", "wordmark"],
+          "colorSchemes": ["grayscale", "purple"],
+          "modes": ["dark", "light"],
+          "backgrounds": ["none", "square", "circle"]
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "cohere-logo",
       "type": "registry:ui",
       "title": "Cohere Logo",

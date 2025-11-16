@@ -19,6 +19,9 @@ import logos_better_auth_logo from "./default/blocks/logos/better-auth-logo/regi
 import logos_claude_logo from "./default/blocks/logos/claude-logo/registry-item.json" with {
   type: "json",
 };
+import logos_clerk_logo from "./default/blocks/logos/clerk-logo/registry-item.json" with {
+  type: "json",
+};
 import logos_cohere_logo from "./default/blocks/logos/cohere-logo/registry-item.json" with {
   type: "json",
 };
@@ -165,6 +168,7 @@ export const blocks = [
   logos_aws_logo as RegistryItem,
   logos_better_auth_logo as RegistryItem,
   logos_claude_logo as RegistryItem,
+  logos_clerk_logo as RegistryItem,
   logos_cohere_logo as RegistryItem,
   logos_crafter_station_logo as RegistryItem,
   logos_deepseek_logo as RegistryItem,

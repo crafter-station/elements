@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { track } from "@vercel/analytics";
 import { Filter } from "lucide-react";
+import { useTheme } from "next-themes";
 
 import { getBrandUrl } from "@/lib/brand-urls";
 import { loadLogoComponent } from "@/lib/component-loader";
@@ -25,16 +26,22 @@ import {
 } from "@/components/ui/popover";
 
 import { LogoContextMenu } from "./logo-context-menu";
+import { LogoVariantsDialog } from "./logo-variants-dialog";
 
 interface Logo {
   id: string;
   name: string;
   displayName: string;
   category: string;
+  hasVariants?: boolean;
+  variants?: string[];
 }
 
 interface LogoWithComponent extends Logo {
-  component: React.ComponentType<{ className?: string }> | null;
+  component: React.ComponentType<{
+    className?: string;
+    mode?: "light" | "dark";
+  }> | null;
 }
 
 interface LogosClientProps {
@@ -42,12 +49,18 @@ interface LogosClientProps {
 }
 
 export function LogosClient({ logos: initialLogos }: LogosClientProps) {
+  const { resolvedTheme } = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLogos, setSelectedLogos] = useState<Set<string>>(new Set());
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [logos, setLogos] = useState<LogoWithComponent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [variantsDialogOpen, setVariantsDialogOpen] = useState(false);
+  const [selectedLogoForVariants, setSelectedLogoForVariants] =
+    useState<LogoWithComponent | null>(null);
+
+  const currentMode = (resolvedTheme as "light" | "dark") || "light";
 
   // Load logo components on mount
   useEffect(() => {
@@ -163,6 +176,17 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
       newSelected.add(logoId);
     }
     setSelectedLogos(newSelected);
+  };
+
+  const handleViewVariants = (logo: LogoWithComponent) => {
+    setSelectedLogoForVariants(logo);
+    setVariantsDialogOpen(true);
+    track("Logo Variants Dialog Opened", {
+      logo_id: logo.id,
+      logo_name: logo.displayName,
+      variants_count: logo.variants?.length || 0,
+      source: "logos_page_context_menu",
+    });
   };
 
   const handleSelectAll = () => {
@@ -349,6 +373,9 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
                 const LogoComponent = logo.component;
                 const isSelected = selectedLogos.has(logo.id);
                 const brandUrl = getBrandUrl(logo.name);
+                const variantCount = logo.variants?.length || 0;
+                const totalVariants =
+                  logo.name === "clerk-logo" ? variantCount * 2 : variantCount;
 
                 if (!LogoComponent) return null;
 
@@ -360,6 +387,9 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
                     category={logo.category}
                     component={LogoComponent}
                     brandUrl={brandUrl}
+                    hasVariants={logo.hasVariants}
+                    variantsCount={totalVariants}
+                    onViewVariants={() => handleViewVariants(logo)}
                   >
                     <button
                       type="button"
@@ -375,6 +405,16 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
                       `}
                       title="Right-click for options"
                     >
+                      {/* Variants badge - top left */}
+                      {logo.hasVariants && totalVariants > 0 && (
+                        <div
+                          className="absolute top-2 left-2 inline-flex items-center justify-center min-w-[18px] h-4 px-1.5 rounded text-[10px] font-medium bg-secondary/80 text-secondary-foreground border border-border/50"
+                          title={`${totalVariants} variants`}
+                        >
+                          {totalVariants}
+                        </div>
+                      )}
+
                       {/* Selection indicator */}
                       <div
                         className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 transition-all duration-200 ${
@@ -388,23 +428,12 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
                         )}
                       </div>
 
-                      {/* Context menu indicator */}
-                      <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-70 transition-opacity duration-200">
-                        <svg
-                          className="w-3 h-3 text-muted-foreground"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                        >
-                          <title>Right-click for more options</title>
-                          <circle cx="2" cy="8" r="1.5" />
-                          <circle cx="8" cy="8" r="1.5" />
-                          <circle cx="14" cy="8" r="1.5" />
-                        </svg>
-                      </div>
-
                       <div className="flex flex-col items-center space-y-3">
                         <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                          <LogoComponent className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 group-hover:scale-110" />
+                          <LogoComponent
+                            className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 group-hover:scale-110"
+                            mode={currentMode}
+                          />
                         </div>
 
                         <div className="text-center space-y-1">
@@ -465,6 +494,25 @@ export function LogosClient({ logos: initialLogos }: LogosClientProps) {
             />
           </div>
         </div>
+      )}
+
+      {/* Variants Dialog */}
+      {selectedLogoForVariants && (
+        <LogoVariantsDialog
+          open={variantsDialogOpen}
+          onOpenChange={setVariantsDialogOpen}
+          logoName={selectedLogoForVariants.name}
+          displayName={selectedLogoForVariants.displayName}
+          component={
+            selectedLogoForVariants.component as React.ComponentType<{
+              className?: string;
+              variant?: string;
+              colorScheme?: string;
+              mode?: string;
+              background?: string;
+            }>
+          }
+        />
       )}
     </div>
   );

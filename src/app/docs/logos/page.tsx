@@ -69,6 +69,8 @@ export default function TechLogosPage() {
       name: item.name,
       displayName: item.title.replace(" Logo", "").trim(),
       category: specificCategory || item.categories?.[0] || "Other",
+      hasVariants: item.meta?.hasVariants || false,
+      variants: item.meta?.variants || [],
     };
   });
 

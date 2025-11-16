@@ -21,6 +21,11 @@ export interface RegistryItem {
   docs?: string;
   envVars?: Record<string, string>;
   categories?: string[];
+  meta?: {
+    hasVariants?: boolean;
+    variants?: string[];
+    [key: string]: unknown;
+  };
 }
 
 export interface RegistryData {

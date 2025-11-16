@@ -24,6 +24,9 @@ interface LogoContextMenuProps {
   category: string;
   component: ComponentType<{ className?: string }>;
   brandUrl?: string;
+  hasVariants?: boolean;
+  variantsCount?: number;
+  onViewVariants?: () => void;
 }
 
 export function LogoContextMenu({
@@ -33,6 +36,9 @@ export function LogoContextMenu({
   category,
   component: LogoComponent,
   brandUrl,
+  hasVariants,
+  variantsCount,
+  onViewVariants,
 }: LogoContextMenuProps) {
   const copyToClipboard = async (
     text: string,
@@ -131,6 +137,29 @@ export function LogoContextMenu({
     <ContextMenu>
       <ContextMenuTrigger asChild>{children}</ContextMenuTrigger>
       <ContextMenuContent className="w-56">
+        {hasVariants && onViewVariants && (
+          <>
+            <ContextMenuItem onClick={onViewVariants}>
+              <svg
+                className="mr-2 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <title>View variants</title>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              View {variantsCount} Variants
+            </ContextMenuItem>
+            <ContextMenuSeparator />
+          </>
+        )}
+
         <ContextMenuItem onClick={handleCopyCommand}>
           <ShadcnIcon className="mr-2 h-4 w-4" />
           Copy Install Command
