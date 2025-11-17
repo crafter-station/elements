@@ -34,23 +34,28 @@ export function TableOfContents({ className }: TableOfContentsProps) {
         document.querySelectorAll("article h2, article h3"),
       );
 
-      const headingData: Heading[] = elements.map((element, index) => {
-        const text = element.textContent || "";
-        let id = element.id;
+      const headingData: Heading[] = elements
+        .filter((element) => {
+          // Exclude headings inside component preview items
+          return !element.closest("[data-component-preview]");
+        })
+        .map((element, index) => {
+          const text = element.textContent || "";
+          let id = element.id;
 
-        // If heading doesn't have an ID, generate one
-        if (!id) {
-          id = `${slugify(text)}-${index}`;
-          element.id = id;
-        }
+          // If heading doesn't have an ID, generate one
+          if (!id) {
+            id = `${slugify(text)}-${index}`;
+            element.id = id;
+          }
 
-        return {
-          id,
-          text,
-          level: Number(element.tagName.charAt(1)),
-          element,
-        };
-      });
+          return {
+            id,
+            text,
+            level: Number(element.tagName.charAt(1)),
+            element,
+          };
+        });
 
       setHeadings(headingData);
 

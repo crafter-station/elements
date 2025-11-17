@@ -15,12 +15,14 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 
 import {
+  getAdjacentComponents,
   getComponentsByProvider,
   getProviderMetadata,
   getProviders,
 } from "@/lib/registry-loader";
 
 import { ComponentInstallDockWrapper } from "@/components/component-page/install-dock-wrapper";
+import { PrevNextNav } from "@/components/component-page/prev-next-nav";
 import { LLMCopyButton, ViewOptions } from "@/components/docs/llm-actions";
 import { TableOfContents } from "@/components/table-of-contents";
 import { ThemeAwarePattern } from "@/components/theme-aware-brand";
@@ -123,6 +125,10 @@ export default async function ComponentPage(props: ComponentPageProps) {
   const mdxContent = await loadComponentMDX(provider, component);
   const providerMetadata = getProviderMetadata(provider);
 
+  // Calculate previous and next components (including cross-provider navigation)
+  const { previous: previousComponent, next: nextComponent } =
+    getAdjacentComponents(provider, component);
+
   return (
     <div className="flex gap-8">
       <div className="flex-1 min-w-0">
@@ -171,7 +177,7 @@ export default async function ComponentPage(props: ComponentPageProps) {
         </div>
 
         {/* MDX Content */}
-        <article className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 pb-14">
+        <article className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 pb-24">
           {mdxContent ? (
             <MDXRemote
               source={mdxContent}
@@ -227,6 +233,26 @@ export default async function ComponentPage(props: ComponentPageProps) {
               </pre>
             </div>
           )}
+
+          {/* Previous/Next Navigation */}
+          <PrevNextNav
+            previous={
+              previousComponent
+                ? {
+                    title: previousComponent.title,
+                    href: `/docs/${previousComponent.provider}/${previousComponent.component}`,
+                  }
+                : undefined
+            }
+            next={
+              nextComponent
+                ? {
+                    title: nextComponent.title,
+                    href: `/docs/${nextComponent.provider}/${nextComponent.component}`,
+                  }
+                : undefined
+            }
+          />
         </article>
       </div>
 

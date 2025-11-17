@@ -206,31 +206,6 @@ export function ComponentPreview({
             >
               <div className="space-y-3">
                 <div className="hidden mb-0 sm:flex sm:items-center sm:justify-between">
-                  <div className="flex items-center gap-3">
-                    <Checkbox
-                      checked={isSelected}
-                      onCheckedChange={() => handleComponentToggle(key)}
-                      className="shrink-0"
-                    />
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        className="text-sm md:text-base font-medium text-foreground capitalize cursor-pointer hover:text-primary transition-colors"
-                        onClick={() => handleComponentToggle(key)}
-                      >
-                        {key.replace("-", " ")}
-                      </button>
-                      {key.includes("shadcn") && (
-                        <Badge
-                          variant="outline"
-                          className="border-blue-500 text-blue-500 text-xs"
-                        >
-                          BETA
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-
                   <div className="flex items-center gap-2">
                     {(() => {
                       const componentRegistryItem = findRegistryItemMatch(
@@ -307,31 +282,6 @@ export function ComponentPreview({
 
                 <div className="sm:hidden space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Checkbox
-                        checked={isSelected}
-                        onCheckedChange={() => handleComponentToggle(key)}
-                        className="shrink-0"
-                      />
-                      <div className="flex items-center gap-2">
-                        <button
-                          type="button"
-                          className="text-sm font-medium text-foreground capitalize cursor-pointer hover:text-primary transition-colors"
-                          onClick={() => handleComponentToggle(key)}
-                        >
-                          {key.replace("-", " ")}
-                        </button>
-                        {key.includes("shadcn") && (
-                          <Badge
-                            variant="outline"
-                            className="border-blue-500 text-blue-500 text-xs"
-                          >
-                            BETA
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-
                     <div className="flex items-center gap-2">
                       {(() => {
                         const componentRegistryItem = findRegistryItemMatch(

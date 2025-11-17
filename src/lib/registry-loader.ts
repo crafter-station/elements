@@ -261,3 +261,102 @@ export function getLogoBundles(): RegistryItem[] {
     return bundle.registryDependencies?.some((dep) => dep.includes("-logo"));
   });
 }
+
+/**
+ * Get sorted providers in the same order as sidebar
+ * (enabled with components first, then building, then disabled, alphabetically within each)
+ */
+export function getSortedProviders(): string[] {
+  const allProviders = getProviders();
+
+  return allProviders.sort((a, b) => {
+    const aComponents = getComponentsByProvider(a);
+    const bComponents = getComponentsByProvider(b);
+    const aHasComponents = aComponents.length > 0;
+    const bHasComponents = bComponents.length > 0;
+
+    // Providers with components come first
+    if (aHasComponents !== bHasComponents) {
+      return aHasComponents ? -1 : 1;
+    }
+
+    // Alphabetically within each group
+    return a.localeCompare(b);
+  });
+}
+
+/**
+ * Get previous and next component for navigation
+ * Includes cross-provider navigation when at boundaries
+ */
+export function getAdjacentComponents(
+  currentProvider: string,
+  currentComponent: string,
+): {
+  previous: { provider: string; component: string; title: string } | null;
+  next: { provider: string; component: string; title: string } | null;
+} {
+  const sortedProviders = getSortedProviders();
+  const currentComponents = getComponentsByProvider(currentProvider);
+  const currentIndex = currentComponents.findIndex(
+    (c) => c.name === currentComponent,
+  );
+
+  let previous = null;
+  let next = null;
+
+  // Check for next component
+  if (currentIndex < currentComponents.length - 1) {
+    // Next component in same provider
+    const nextComp = currentComponents[currentIndex + 1];
+    next = {
+      provider: currentProvider,
+      component: nextComp.name,
+      title: nextComp.title,
+    };
+  } else {
+    // Check next provider
+    const currentProviderIndex = sortedProviders.indexOf(currentProvider);
+    if (currentProviderIndex < sortedProviders.length - 1) {
+      const nextProvider = sortedProviders[currentProviderIndex + 1];
+      const nextProviderComponents = getComponentsByProvider(nextProvider);
+      if (nextProviderComponents.length > 0) {
+        const nextComp = nextProviderComponents[0];
+        next = {
+          provider: nextProvider,
+          component: nextComp.name,
+          title: nextComp.title,
+        };
+      }
+    }
+  }
+
+  // Check for previous component
+  if (currentIndex > 0) {
+    // Previous component in same provider
+    const prevComp = currentComponents[currentIndex - 1];
+    previous = {
+      provider: currentProvider,
+      component: prevComp.name,
+      title: prevComp.title,
+    };
+  } else {
+    // Check previous provider
+    const currentProviderIndex = sortedProviders.indexOf(currentProvider);
+    if (currentProviderIndex > 0) {
+      const prevProvider = sortedProviders[currentProviderIndex - 1];
+      const prevProviderComponents = getComponentsByProvider(prevProvider);
+      if (prevProviderComponents.length > 0) {
+        const prevComp =
+          prevProviderComponents[prevProviderComponents.length - 1];
+        previous = {
+          provider: prevProvider,
+          component: prevComp.name,
+          title: prevComp.title,
+        };
+      }
+    }
+  }
+
+  return { previous, next };
+}

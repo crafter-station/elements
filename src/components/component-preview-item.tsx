@@ -105,6 +105,7 @@ export function ComponentPreviewItem({
 
   return (
     <div
+      data-component-preview
       className={cn(
         customClassName,
         "border border-border rounded-lg overflow-hidden transition-all duration-200 my-6 bg-card/30",
@@ -113,23 +114,8 @@ export function ComponentPreviewItem({
     >
       {/* Compact Header */}
       <div className="px-2 sm:px-4 py-2 sm:py-2.5 border-b border-border bg-muted flex items-center justify-between gap-2 sm:gap-3 relative z-10">
-        {/* Title Section - Hidden on mobile */}
-        <div className="hidden md:flex items-center gap-2 min-w-0">
-          <h3 className="text-sm font-medium text-foreground capitalize truncate">
-            {componentKey.replace(/-/g, " ")}
-          </h3>
-          {componentKey.includes("shadcn") && (
-            <Badge
-              variant="outline"
-              className="border-blue-500 text-blue-500 text-xs shrink-0"
-            >
-              BETA
-            </Badge>
-          )}
-        </div>
-
         {/* Actions Section */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 md:ml-auto">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 w-full">
           {finalInstallUrl && (
             <InstallCommand
               className="!max-w-full"
