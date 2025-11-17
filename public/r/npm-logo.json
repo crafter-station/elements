@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/blocks/logos/npm-logo/components/logos/npm.tsx",
-      "content": "export function NpmLogo({ className }: { className?: string }) {\n  return (\n    <svg viewBox=\"0 0 256 256\" className={className || \"w-8 h-8\"}>\n      <title>npm Logo</title>\n      <polygon fill=\"#C12127\" points=\"0 256 0 0 256 0 256 256\" />\n      <polygon fill=\"#FFFFFF\" points=\"48 48 208 48 208 208 176 208 176 80 128 80 128 208 48 208\" />\n    </svg>\n  );\n}\n",
+      "content": "export function NpmLogo({ className }: { className?: string }) {\n  return (\n    <svg viewBox=\"0 0 256 256\" className={className || \"w-8 h-8\"}>\n      <title>npm Logo</title>\n      <polygon fill=\"#C12127\" points=\"0 256 0 0 256 0 256 256\" />\n      <polygon\n        fill=\"#FFFFFF\"\n        points=\"48 48 208 48 208 208 176 208 176 80 128 80 128 208 48 208\"\n      />\n    </svg>\n  );\n}\n",
       "type": "registry:component"
     }
   ],

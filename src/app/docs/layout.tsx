@@ -8,11 +8,11 @@ export default function ProvidersLayout({ children }: { children: ReactNode }) {
     <div className="min-h-screen flex flex-col">
       <Header />
       <div className="flex-1 flex pt-[55px]">
-        {/* Sidebar */}
+        {/* Left Sidebar */}
         <ProviderSidebar />
 
         {/* Main content */}
-        <main className="flex-1 min-w-0 md:ml-[220px] lg:ml-[240px]">
+        <main className="flex-1 min-w-0 md:ml-[220px] lg:ml-[240px] max-w-[1400px] mx-auto w-full">
           {children}
         </main>
       </div>

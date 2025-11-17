@@ -10,7 +10,7 @@ interface ScrambleTextProps {
 export function ScrambleText({ text, className }: ScrambleTextProps) {
   return (
     <motion.span
-      className={`text-5xl sm:text-6xl md:text-7xl leading-tight ${className || ""}`}
+      className={className || "text-5xl sm:text-6xl md:text-7xl leading-tight"}
       initial="hidden"
       animate="visible"
       variants={{

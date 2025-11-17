@@ -21,6 +21,7 @@ import {
 } from "@/lib/registry-loader";
 
 import { ComponentPageHero } from "@/components/component-page/hero";
+import { TableOfContents } from "@/components/table-of-contents";
 
 import vesperDark from "@/data/vesper-dark.json";
 import vesperLight from "@/data/vesper-light.json";
@@ -156,93 +157,102 @@ export default async function ProviderPage(props: ProviderPageProps) {
     : `@elements/${primaryComponent?.name || provider}`;
 
   return (
-    <div className="flex-1 w-full border-border border-dotted border-x">
-      <ul className="hidden ml-4 list-outside list-disc whitespace-normal">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-      </ul>
-      <ComponentPageHero
-        brandColor={metadata.brandColor}
-        darkBrandColor={metadata.darkBrandColor}
-        category={metadata.category}
-        name={metadata.displayName}
-        description={metadata.description}
-        icon={<ProviderIcon provider={provider} />}
-        installCommand={installCommand}
-        provider={provider}
-        mdxContent={mdxPage?.data.body}
-      />
+    <div className="flex gap-8">
+      <div className="flex-1 min-w-0 border-border border-dotted">
+        <ul className="hidden ml-4 list-outside list-disc whitespace-normal">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+        <ComponentPageHero
+          brandColor={metadata.brandColor}
+          darkBrandColor={metadata.darkBrandColor}
+          category={metadata.category}
+          name={metadata.displayName}
+          description={metadata.description}
+          icon={<ProviderIcon provider={provider} />}
+          installCommand={installCommand}
+          provider={provider}
+          mdxContent={mdxPage?.data.body}
+        />
 
-      {mdxPage ? (
-        <article className="max-w-5xl mx-auto px-8 py-12">
-          <MDXRemote
-            source={mdxPage.data.body}
-            components={getMDXComponents()}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [
-                  [
-                    rehypeShiki,
-                    {
-                      themes: {
-                        light: vesperLight,
-                        dark: vesperDark,
+        {mdxPage ? (
+          <article className="max-w-3xl mx-auto px-4 sm:px-0">
+            <MDXRemote
+              source={mdxPage.data.body}
+              components={getMDXComponents()}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [
+                    [
+                      rehypeShiki,
+                      {
+                        themes: {
+                          light: vesperLight,
+                          dark: vesperDark,
+                        },
+                        defaultColor: false,
+                        cssVariablePrefix: "--shiki-",
+                        transformers: [
+                          transformerNotationHighlight({
+                            matchAlgorithm: "v3",
+                          }),
+                          transformerNotationDiff({
+                            matchAlgorithm: "v3",
+                          }),
+                          transformerNotationFocus({
+                            matchAlgorithm: "v3",
+                          }),
+                          transformerNotationErrorLevel(),
+                        ],
                       },
-                      defaultColor: false,
-                      cssVariablePrefix: "--shiki-",
-                      transformers: [
-                        transformerNotationHighlight({
-                          matchAlgorithm: "v3",
-                        }),
-                        transformerNotationDiff({
-                          matchAlgorithm: "v3",
-                        }),
-                        transformerNotationFocus({
-                          matchAlgorithm: "v3",
-                        }),
-                        transformerNotationErrorLevel(),
-                      ],
-                    },
+                    ],
                   ],
-                ],
-              },
-            }}
-          />
-        </article>
-      ) : (
-        <article className="prose prose-gray dark:prose-invert max-w-5xl mx-auto px-8 py-12">
-          <h2>Components</h2>
-          <p>
-            This provider includes {components.length} component
-            {components.length !== 1 ? "s" : ""}.
-          </p>
-          <div className="grid gap-6 not-prose">
-            {components.map((component) => (
-              <div
-                key={component.name}
-                className="border border-border rounded-lg p-6 space-y-3"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-semibold">{component.title}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {component.description}
-                    </p>
+                },
+              }}
+            />
+          </article>
+        ) : (
+          <article className="prose prose-gray dark:prose-invert max-w-5xl mx-auto px-8 py-12">
+            <h2>Components</h2>
+            <p>
+              This provider includes {components.length} component
+              {components.length !== 1 ? "s" : ""}.
+            </p>
+            <div className="grid gap-6 not-prose">
+              {components.map((component) => (
+                <div
+                  key={component.name}
+                  className="border border-border rounded-lg p-6 space-y-3"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="space-y-1">
+                      <h3 className="text-lg font-semibold">
+                        {component.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {component.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <code className="text-xs bg-muted px-2 py-1 rounded">
+                      @elements/{component.name}
+                    </code>
                   </div>
                 </div>
+              ))}
+            </div>
+          </article>
+        )}
+      </div>
 
-                <div className="flex items-center gap-2">
-                  <code className="text-xs bg-muted px-2 py-1 rounded">
-                    @elements/{component.name}
-                  </code>
-                </div>
-              </div>
-            ))}
-          </div>
-        </article>
-      )}
+      {/* Right TOC - Desktop only */}
+      <aside className="hidden xl:block w-64 shrink-0 sticky top-[71px] h-[calc(100vh-71px)] overflow-y-auto py-8 pr-4">
+        <TableOfContents />
+      </aside>
     </div>
   );
 }

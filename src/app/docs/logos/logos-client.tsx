@@ -355,113 +355,194 @@ export function LogosClient({
             />
           </div>
 
-          <div className="relative z-10 w-full py-8 md:py-12 px-4 sm:px-6 md:px-8">
-            {/* Centered Hero */}
-            <div className="text-center max-w-3xl mx-auto space-y-4 md:space-y-6">
-              <div className="space-y-3 md:space-y-4">
+          <div className="relative z-10 py-4 md:py-5 px-4 sm:px-6 md:px-8">
+            <div className="max-w-4xl">
+              {/* Category Label */}
+              <div className="mb-3">
                 <span
-                  className="font-mono text-xs sm:text-sm"
+                  className="font-mono text-[10px] uppercase tracking-wider"
                   style={{ color: "#10B981" }}
                 >
-                  [ BRAND ]
+                  BRAND
                 </span>
-                <div className="flex items-center justify-center gap-3 md:gap-4 mb-3 md:mb-4">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0">
-                    <GroupIcon className="w-6 h-6 sm:w-8 sm:h-8" />
+              </div>
+
+              {/* Icon, Title & Description */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center flex-shrink-0">
+                    <GroupIcon className="w-6 h-6 md:w-7 md:h-7" />
                   </div>
-                  <h1 className="font-dotted font-black text-2xl sm:text-3xl md:text-4xl leading-tight">
-                    <ScrambleText text="Brand Logos" />
+                  <h1>
+                    <ScrambleText
+                      text="Brand Logos"
+                      className="font-dotted font-black text-2xl md:text-3xl leading-tight"
+                    />
                   </h1>
                 </div>
-                <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                <p className="text-xs md:text-sm text-muted-foreground leading-relaxed max-w-3xl">
                   Tech company logos for popular services and platforms. Select
                   the ones you need or Install all {logos.length} logos at once
                 </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <InstallCommand
-                  url="@elements/logos"
-                  className="max-w-xs"
-                  source="logos_page_hero"
-                  componentName="Tech Logos"
-                  category="Brand"
-                />
               </div>
             </div>
           </div>
         </div>
 
         {/* Controls Section */}
-        <div className="border-t border-border border-dotted px-4 sm:px-6 md:px-8 py-6">
+        <div className="border-t border-border border-dotted px-4 sm:px-6 md:px-8 py-4 md:py-6">
           <div className="w-full mx-auto">
             {/* Single Row Controls */}
-            <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-              {/* Left side - View Mode Toggle + Search/Filter */}
-              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center flex-1 w-full">
-                {/* View Mode Toggle */}
-                <div className="inline-flex items-center rounded-lg border bg-background p-1 shadow-sm shrink-0">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setViewMode("individual");
-                      setSearchTerm("");
-                    }}
-                    className={`
-                      relative px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200
+            <div className="flex flex-col gap-2">
+              {/* Row 1: View Mode Toggle + Search (desktop inline) */}
+              <div className="flex flex-col md:flex-row gap-2 items-stretch md:items-center md:justify-between w-full">
+                {/* Left side: Tabs + Search + Categories */}
+                <div className="flex flex-col md:flex-row gap-2 items-stretch md:items-center flex-1">
+                  <div className="inline-flex items-center rounded-lg border bg-background p-1 shadow-sm shrink-0 h-9 w-full md:w-auto">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setViewMode("individual");
+                        setSearchTerm("");
+                      }}
+                      className={`
+                      relative flex-1 md:flex-none px-3 py-0.5 rounded-md text-sm font-medium transition-all duration-200
                       ${
                         viewMode === "individual"
                           ? "bg-primary text-primary-foreground shadow-sm"
                           : "text-muted-foreground hover:text-foreground"
                       }
                     `}
-                  >
-                    Individual
-                    <span className="ml-1.5 text-xs opacity-70">
-                      ({logos.length})
-                    </span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setViewMode("collections");
-                      setSearchTerm("");
-                    }}
-                    className={`
-                      relative px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200
+                    >
+                      Individual
+                      <span className="ml-1.5 text-xs opacity-70">
+                        ({logos.length})
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setViewMode("collections");
+                        setSearchTerm("");
+                      }}
+                      className={`
+                      relative flex-1 md:flex-none px-3 py-0.5 rounded-md text-sm font-medium transition-all duration-200
                       ${
                         viewMode === "collections"
                           ? "bg-primary text-primary-foreground shadow-sm"
                           : "text-muted-foreground hover:text-foreground"
                       }
                     `}
-                  >
-                    Collections
-                    <span className="ml-1.5 text-xs opacity-70">
-                      ({bundles.length})
-                    </span>
-                  </button>
-                </div>
-
-                {/* Search - Show for both modes */}
-                <div className="relative flex-1 max-w-md">
-                  <Input
-                    type="text"
-                    placeholder={
-                      viewMode === "individual"
-                        ? "Search logos..."
-                        : "Search collections..."
-                    }
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pr-10"
-                  />
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                    <SearchIcon className="size-4" />
+                    >
+                      Collections
+                      <span className="ml-1.5 text-xs opacity-70">
+                        ({bundles.length})
+                      </span>
+                    </button>
                   </div>
+
+                  {/* Search - Show for both modes */}
+                  <div className="relative flex-1">
+                    <Input
+                      type="text"
+                      placeholder={
+                        viewMode === "individual"
+                          ? "Search logos..."
+                          : "Search collections..."
+                      }
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="pr-10 h-9"
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                      <SearchIcon className="size-4" />
+                    </div>
+                  </div>
+
+                  {/* Category Filter - Only for individual mode - Desktop only */}
+                  {viewMode === "individual" && (
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="hidden md:flex"
+                        >
+                          <Filter
+                            className="-ms-1 opacity-60"
+                            size={16}
+                            aria-hidden="true"
+                          />
+                          Categories
+                          {selectedCategories.length > 0 && (
+                            <span className="bg-background text-muted-foreground/70 -me-1 inline-flex h-5 max-h-full items-center rounded border px-1 font-[inherit] text-[0.625rem] font-medium">
+                              {selectedCategories.length}
+                            </span>
+                          )}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent
+                        className="w-auto min-w-36 p-3"
+                        align="start"
+                      >
+                        <div className="space-y-3">
+                          <div className="text-muted-foreground text-xs font-medium">
+                            Filter by Category
+                          </div>
+                          <div className="space-y-3">
+                            {uniqueCategories.map((category, i) => (
+                              <div
+                                key={category}
+                                className="flex items-center gap-2"
+                              >
+                                <Checkbox
+                                  id={`category-${i}`}
+                                  checked={selectedCategories.includes(
+                                    category,
+                                  )}
+                                  onCheckedChange={(checked: boolean) =>
+                                    handleCategoryChange(checked, category)
+                                  }
+                                />
+                                <Label
+                                  htmlFor={`category-${i}`}
+                                  className="flex grow justify-between gap-2 font-normal"
+                                >
+                                  {category}{" "}
+                                  <span className="text-muted-foreground ms-2 text-xs">
+                                    {categoryCounts.get(category)}
+                                  </span>
+                                </Label>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  )}
                 </div>
 
-                {/* Category Filter - Only for individual mode */}
+                {/* Select All - Desktop only (inline) */}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleSelectAll}
+                  className="hidden md:flex shrink-0"
+                >
+                  {(() => {
+                    const targetLogos =
+                      viewMode === "individual" ? filteredLogos : logos;
+                    const allSelected =
+                      selectedLogos.size === targetLogos.length;
+                    return allSelected
+                      ? `Deselect All (${targetLogos.length})`
+                      : `Select All (${targetLogos.length})`;
+                  })()}
+                </Button>
+              </div>
+
+              {/* Row 2: Categories + Select All - Mobile only */}
+              <div className="flex md:hidden gap-2 items-center justify-between">
                 {viewMode === "individual" && (
                   <Popover>
                     <PopoverTrigger asChild>
@@ -494,14 +575,14 @@ export function LogosClient({
                               className="flex items-center gap-2"
                             >
                               <Checkbox
-                                id={`category-${i}`}
+                                id={`category-mobile-${i}`}
                                 checked={selectedCategories.includes(category)}
                                 onCheckedChange={(checked: boolean) =>
                                   handleCategoryChange(checked, category)
                                 }
                               />
                               <Label
-                                htmlFor={`category-${i}`}
+                                htmlFor={`category-mobile-${i}`}
                                 className="flex grow justify-between gap-2 font-normal"
                               >
                                 {category}{" "}
@@ -516,24 +597,25 @@ export function LogosClient({
                     </PopoverContent>
                   </Popover>
                 )}
-              </div>
 
-              {/* Right side - Select All (for both modes) */}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleSelectAll}
-                className="shrink-0"
-              >
-                {(() => {
-                  const targetLogos =
-                    viewMode === "individual" ? filteredLogos : logos;
-                  const allSelected = selectedLogos.size === targetLogos.length;
-                  return allSelected
-                    ? `Deselect All (${targetLogos.length})`
-                    : `Select All (${targetLogos.length})`;
-                })()}
-              </Button>
+                {/* Select All - Mobile */}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleSelectAll}
+                  className="shrink-0 ml-auto"
+                >
+                  {(() => {
+                    const targetLogos =
+                      viewMode === "individual" ? filteredLogos : logos;
+                    const allSelected =
+                      selectedLogos.size === targetLogos.length;
+                    return allSelected
+                      ? `Deselect All (${targetLogos.length})`
+                      : `Select All (${targetLogos.length})`;
+                  })()}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -572,12 +654,12 @@ export function LogosClient({
                         type="button"
                         onClick={() => handleLogoToggle(logo.id)}
                         className={`
-                        group relative p-4 md:p-6 rounded-lg border cursor-context-menu transition-all duration-200
-                        hover:shadow-md hover:scale-105
+                        group relative p-4 md:p-6 rounded-lg border cursor-context-menu transition-all duration-300
+                        hover:shadow-lg hover:bg-primary/10
                         ${
                           isSelected
                             ? "bg-primary/10 border-primary ring-2 ring-primary/20"
-                            : "bg-card hover:bg-accent/50"
+                            : "bg-card border-border"
                         }
                       `}
                         title="Right-click for options"
@@ -608,7 +690,7 @@ export function LogosClient({
                         <div className="flex flex-col items-center space-y-3">
                           <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
                             <LogoComponent
-                              className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 group-hover:scale-110"
+                              className="w-8 h-8 md:w-10 md:h-10 transition-opacity duration-300 group-hover:opacity-80"
                               mode={currentMode}
                             />
                           </div>
@@ -670,7 +752,7 @@ export function LogosClient({
                           <PopoverTrigger asChild>
                             <button
                               type="button"
-                              className="flex items-center -space-x-2 hover:scale-105 transition-transform cursor-pointer"
+                              className="flex items-center -space-x-2 hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                             >
                               {previewLogos.map((logo, index) => {
                                 const LogoComponent = logo?.component;

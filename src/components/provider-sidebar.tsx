@@ -184,7 +184,7 @@ export function ProviderSidebar() {
       </div>
 
       {/* Desktop Sidebar */}
-      <aside className="md:transition-all border-r border-border border-dotted top-[55px] md:flex hidden md:w-[220px] lg:w-[240px] overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
+      <aside className="md:transition-all border-r border-border border-dotted top-[55px] md:flex hidden sm:w-54 overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
         <ProviderList />
       </aside>
     </>

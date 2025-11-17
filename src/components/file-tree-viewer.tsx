@@ -736,7 +736,7 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
     >
       <div className="h-full flex w-full">
         {/* Sidebar - File Tree */}
-        <div className="w-80 border-r border-border border-dotted bg-card/30">
+        <div className="w-64 border-r border-border border-dotted bg-card/30">
           <div className="p-3 border-b border-border border-dotted flex items-center justify-between">
             <div className="flex items-center gap-2 w-full">
               <FileIcon className="text-muted-foreground size-3.5 shrink-0" />
@@ -788,12 +788,14 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
                           handleNodeSelect(item.getId());
                         }}
                       >
-                        <span className="flex items-center gap-2">
+                        <span className="flex items-center gap-2 min-w-0">
                           {getFileIcon(
                             nodeData,
-                            "text-muted-foreground pointer-events-none size-4",
+                            "text-muted-foreground pointer-events-none size-4 shrink-0",
                           )}
-                          <span className="text-sm">{item.getItemName()}</span>
+                          <span className="text-sm truncate max-w-[17ch]">
+                            {item.getItemName()}
+                          </span>
                         </span>
                       </TreeItemLabel>
                     </TreeItem>

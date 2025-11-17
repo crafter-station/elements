@@ -194,6 +194,13 @@ export function getProviderMetadata(provider: string): {
       brandColor: "#8B5CF6",
       darkBrandColor: "#8DFF53",
     },
+    tinte: {
+      displayName: "Tinte",
+      description:
+        "AI-powered theme generator for VS Code, shadcn/ui, terminals and more",
+      category: "THEMING",
+      brandColor: "#6E78D5",
+    },
   };
 
   const info = metadata[provider] || {

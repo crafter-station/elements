@@ -64,21 +64,29 @@ export default function ProvidersIndexPage() {
 
       <div className="flex-1 w-full max-w-screen-xl border-border border-dotted sm:border-x mx-auto">
         {/* Hero Section */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden border-b border-border border-dotted">
           <div className="absolute inset-0 opacity-30">
             <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
           </div>
 
-          <div className="relative z-10 w-full py-12 md:py-16 px-4 sm:px-6 md:px-8">
-            <div className="text-center max-w-3xl mx-auto space-y-6">
-              <div className="space-y-4">
-                <span className="font-mono text-xs sm:text-sm text-primary">
-                  [ COMPONENT LIBRARY ]
+          <div className="relative z-10 py-4 md:py-5 px-4 sm:px-6 md:px-8">
+            <div className="max-w-4xl">
+              {/* Category Label */}
+              <div className="mb-3">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-primary">
+                  COMPONENT LIBRARY
                 </span>
-                <h1 className="font-dotted font-black text-3xl sm:text-4xl md:text-5xl leading-tight">
-                  <ScrambleText text="Browse Components" />
+              </div>
+
+              {/* Title & Description */}
+              <div className="space-y-2">
+                <h1>
+                  <ScrambleText
+                    text="Browse Components"
+                    className="font-dotted font-black text-2xl md:text-3xl leading-tight"
+                  />
                 </h1>
-                <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                <p className="text-xs md:text-sm text-muted-foreground leading-relaxed max-w-3xl">
                   Explore our collection of production-ready components
                   organized by provider
                 </p>
