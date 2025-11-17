@@ -13,8 +13,10 @@ import {
 import { AssistiveTreeDescription, useTree } from "@headless-tree/react";
 import {
   RiBracesLine,
+  RiCodeLine,
   RiFileLine,
   RiFileTextLine,
+  RiFolderOpenLine,
   RiImageLine,
   RiReactjsLine,
 } from "@remixicon/react";
@@ -339,6 +341,7 @@ export function FileTreeViewer({
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
+  const [showFileTree, setShowFileTree] = useState(true); // For mobile toggle
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleNodeSelect = async (nodeId: string) => {
@@ -370,6 +373,9 @@ export function FileTreeViewer({
       setIsLoading(true);
       setFileContent(null);
       setSelectedFile(nodeId);
+
+      // Auto-switch to code view on mobile when file is selected
+      setShowFileTree(false);
 
       // For dependencies, we don't generate content - we'll show InstallCommand instead
       if (node.type === "dependency" || node.type === "registry-dependency") {
@@ -734,9 +740,39 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
           : `fixed inset-0 bg-background/95 backdrop-blur-sm z-50 ${className}`
       }
     >
-      <div className="h-full flex w-full">
+      <div className="h-full flex flex-col md:flex-row w-full">
+        {/* Mobile Toggle Bar */}
+        <div className="md:hidden flex border-b border-border border-dotted bg-muted">
+          <button
+            type="button"
+            onClick={() => setShowFileTree(true)}
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors ${
+              showFileTree
+                ? "bg-background text-foreground border-b-2 border-primary"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <RiFolderOpenLine className="w-4 h-4" />
+            <span>Files</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowFileTree(false)}
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors ${
+              !showFileTree
+                ? "bg-background text-foreground border-b-2 border-primary"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <RiCodeLine className="w-4 h-4" />
+            <span>Code</span>
+          </button>
+        </div>
+
         {/* Sidebar - File Tree */}
-        <div className="w-64 border-r border-border border-dotted bg-card/30">
+        <div
+          className={`w-full md:w-64 border-r border-border border-dotted bg-card/30 ${showFileTree ? "flex flex-col" : "hidden md:flex md:flex-col"}`}
+        >
           <div className="p-3 border-b border-border border-dotted flex items-center justify-between">
             <div className="flex items-center gap-2 w-full">
               <FileIcon className="text-muted-foreground size-3.5 shrink-0" />
@@ -807,7 +843,9 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
         </div>
 
         {/* Main Content - Code View */}
-        <div className="flex-1 flex flex-col">
+        <div
+          className={`flex-1 flex flex-col ${!showFileTree ? "flex" : "hidden md:flex"}`}
+        >
           <div className="px-3 py-2 border-b border-border border-dotted">
             {(() => {
               if (
@@ -817,32 +855,30 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
                   selectedFileNode.type === "registry-dependency")
               ) {
                 return (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 min-w-0 flex-1">
-                      <div className="flex items-center gap-2 min-w-0">
-                        {getFileIcon(
-                          selectedFileNode,
-                          "text-muted-foreground size-3.5 shrink-0",
-                        )}
-                        <span className="font-mono text-xs truncate">
-                          {selectedFileNode.name}
-                        </span>
-                      </div>
-                      {selectedFileNode.registryFile?.target && (
-                        <span className="text-xs text-muted-foreground">
-                          {selectedFileNode.registryFile.target}
-                        </span>
+                  <div className="flex items-center justify-between gap-1.5 sm:gap-2">
+                    {/* Left side: Icon + File name */}
+                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1 overflow-hidden">
+                      {/* Icon */}
+                      {getFileIcon(
+                        selectedFileNode,
+                        "text-muted-foreground size-3.5 sm:size-4 shrink-0",
                       )}
+
+                      {/* File name - always visible, truncated */}
+                      <span className="font-mono text-xs sm:text-sm truncate font-medium">
+                        {selectedFileNode.name}
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    {/* Right side: Actions + Badges - compact */}
+                    <div className="flex items-center gap-1 shrink-0">
                       {/* Copy button - always visible for files */}
                       {selectedFileNode.type === "file" && (
                         <Button
                           onClick={copyFileContent}
                           size="sm"
                           variant="outline"
-                          className="h-6 w-6 p-0"
+                          className="h-7 w-7 sm:h-8 sm:w-8 p-0"
                           disabled={isLoading || !fileContent}
                         >
                           {isLoading ? (
@@ -888,22 +924,29 @@ export function ${fileName.replace(".ts", "")}<T>(value: T): T {
                         </Button>
                       )}
 
+                      {/* Badges - Compact and always visible */}
                       {selectedFileNode.type === "file" &&
                         selectedFileNode.registryFile && (
                           <Badge
                             variant="secondary"
-                            className="text-xs h-6 px-2"
+                            className="text-[10px] h-5 px-1.5"
                           >
                             {selectedFileNode.registryFile.type}
                           </Badge>
                         )}
                       {selectedFileNode.type === "dependency" && (
-                        <Badge variant="outline" className="text-xs h-5 px-2">
+                        <Badge
+                          variant="outline"
+                          className="text-[10px] h-5 px-1.5"
+                        >
                           NPM
                         </Badge>
                       )}
                       {selectedFileNode.type === "registry-dependency" && (
-                        <Badge variant="outline" className="text-xs h-5 px-2">
+                        <Badge
+                          variant="outline"
+                          className="text-[10px] h-5 px-1.5"
+                        >
                           Registry
                         </Badge>
                       )}

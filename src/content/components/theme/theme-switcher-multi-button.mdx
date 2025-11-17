@@ -1,0 +1,45 @@
+---
+title: Theme Switcher Multi Button
+description: Segmented control with individual buttons for each theme option
+---
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-multi-button"
+  installUrl="@elements/theme-switcher-multi-button"
+  category="Theme"
+  name="Theme Switcher Multi Button"
+>
+  <ThemeSwitcherMultiButton />
+</ComponentPreviewItem>
+
+## Overview
+
+Multi-button theme switcher displayed as a segmented control. Each theme option has its own dedicated button for quick access.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/theme-switcher-multi-button
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcherMultiButton } from "@/components/theme-switcher-multi-button";
+
+export function SettingsPanel() {
+  return (
+    <div>
+      <label>Theme</label>
+      <ThemeSwitcherMultiButton />
+    </div>
+  );
+}
+```
+
+## Features
+
+- Individual buttons for Light, Dark, and System
+- Segmented control design
+- Clear visual feedback for active theme
+- Horizontal layout

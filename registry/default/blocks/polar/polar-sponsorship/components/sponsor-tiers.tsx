@@ -33,13 +33,13 @@ export function SponsorTiers({
 }: SponsorTiersProps) {
   return (
     <div className={className}>
-      <div className="space-y-8 max-w-6xl mx-auto">
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="space-y-8 w-full mx-auto">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {tiers.map((tier) => (
             <button
               key={tier.name}
               type="button"
-              className={`relative flex h-full w-full flex-col justify-between rounded-lg border p-6 text-sm hover:border-primary/50 transition-all duration-200 group cursor-pointer ${
+              className={`relative flex h-full w-full flex-col justify-between rounded-lg border p-4 sm:p-6 text-sm hover:border-primary/50 transition-all duration-200 group cursor-pointer ${
                 selectedTier === tier.name
                   ? "bg-primary/5 border-primary ring-2 ring-primary/20"
                   : tier.isHighlight
@@ -60,31 +60,33 @@ export function SponsorTiers({
                 </Badge>
               )}
 
-              <div className="space-y-4 text-center">
+              <div className="space-y-3 sm:space-y-4 text-center">
                 <div className="text-center">
-                  <h3 className="text-xl font-semibold">{tier.name}</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold">
+                    {tier.name}
+                  </h3>
                 </div>
 
                 <div className="space-y-3 text-center">
-                  <div className="text-3xl font-bold">
+                  <div className="text-2xl sm:text-3xl font-bold">
                     ${tier.price}
-                    <span className="text-lg font-normal text-muted-foreground">
+                    <span className="text-base sm:text-lg font-normal text-muted-foreground">
                       +
                     </span>
-                    <div className="text-sm font-normal text-muted-foreground mt-1">
+                    <div className="text-xs sm:text-sm font-normal text-muted-foreground mt-1">
                       {tier.isOneTime ? "minimum/once" : "minimum/mo"}
                     </div>
                   </div>
-                  <p className="text-sm w-full text-center text-muted-foreground leading-relaxed">
+                  <p className="text-xs sm:text-sm w-full text-center text-muted-foreground leading-relaxed">
                     {tier.description}
                   </p>
                 </div>
 
-                <ul className="space-y-3 text-sm">
+                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                   {tier.perks.map((perk, index) => (
                     <li
                       key={`${tier.name}-perk-${index}`}
-                      className="flex items-start gap-3"
+                      className="flex items-start gap-2 sm:gap-3"
                     >
                       <svg
                         role="img"
@@ -110,10 +112,10 @@ export function SponsorTiers({
           ))}
         </div>
 
-        <div className="text-center space-y-4">
+        <div className="text-center space-y-3 sm:space-y-4 px-2">
           <Button
             size="lg"
-            className="h-12 px-8 gap-2"
+            className="h-10 sm:h-12 px-4 sm:px-8 gap-2 text-sm sm:text-base w-full sm:w-auto"
             disabled={!selectedTier || isPending}
             onClick={() => selectedTier && onSponsor(selectedTier)}
           >
@@ -123,7 +125,7 @@ export function SponsorTiers({
                 ? `Continue with ${selectedTier}`
                 : "Select a tier"}
           </Button>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs sm:text-sm text-muted-foreground">
             Need a custom tier?{" "}
             <a href="#contact" className="underline hover:text-foreground">
               Contact us

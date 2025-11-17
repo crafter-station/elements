@@ -10,7 +10,7 @@ import { ScrambleText } from "@/components/scramble-text";
 const trackingSource = "providers_overview" as const;
 
 export const metadata: Metadata = {
-  title: "Browse Components - Elements",
+  title: "Browse Elements",
   description:
     "Explore our collection of production-ready React components organized by provider. Built with Next.js, TypeScript, and shadcn/ui.",
   keywords: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     canonical: "https://tryelements.dev/docs",
   },
   openGraph: {
-    title: "Browse Components - Elements",
+    title: "Browse Elements",
     description:
       "Explore our collection of production-ready React components organized by provider. Built with Next.js, TypeScript, and shadcn/ui.",
     type: "website",
@@ -74,7 +74,7 @@ export default function ProvidersIndexPage() {
               {/* Category Label */}
               <div className="mb-3">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-primary">
-                  COMPONENT LIBRARY
+                  FULL-STACK COMPONENT LIBRARY
                 </span>
               </div>
 
@@ -82,7 +82,7 @@ export default function ProvidersIndexPage() {
               <div className="space-y-2">
                 <h1>
                   <ScrambleText
-                    text="Browse Components"
+                    text="Browse Elements"
                     className="font-dotted font-black text-2xl md:text-3xl leading-tight"
                   />
                 </h1>

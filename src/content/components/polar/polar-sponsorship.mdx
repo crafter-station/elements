@@ -1,0 +1,115 @@
+---
+title: Polar Sponsorship
+description: Complete sponsorship integration with tier selection and checkout flow
+---
+
+<ComponentPreviewItem
+  componentKey="polar-sponsorship"
+  installUrl="@elements/polar-sponsorship"
+  category="Sponsorship"
+  name="Polar Sponsorship"
+>
+  <SponsorTiersPreview />
+</ComponentPreviewItem>
+
+## Overview
+
+Sponsorship system with tier selection and Polar checkout integration. Includes sponsor tiers display, checkout flow, and API integration.
+
+## Installation
+
+```bash
+npm install @polar-sh/nextjs
+```
+
+## Setup
+
+Get your Access Token from the [Polar Dashboard](https://polar.sh/dashboard).
+
+Add environment variables:
+
+```bash
+POLAR_ACCESS_TOKEN=polar_at_...
+POLAR_BASE_URL=https://api.polar.sh
+```
+
+## Usage
+
+```tsx
+import { SponsorTiers } from "@/components/elements/polar/sponsor-tiers";
+
+const tiers = [
+  {
+    name: "Supporter",
+    price: 10,
+    description: "Help keep the project alive",
+    perks: ["Early access", "Discord access"],
+  },
+  {
+    name: "Sponsor",
+    price: 50,
+    description: "Help shape the roadmap",
+    perks: ["Feature voting", "Priority support", "Logo in README"],
+    popular: true,
+  },
+];
+
+export function Tiers() {
+  const [selected, setSelected] = useState(null);
+
+  return (
+    <SponsorTiers
+      tiers={tiers}
+      selectedTier={selected}
+      onTierSelect={setSelected}
+      onSponsor={(tier) => {
+        // Handle checkout
+      }}
+    />
+  );
+}
+```
+
+## API Route
+
+Create the checkout API route:
+
+```tsx
+// app/api/polar/checkout/route.ts
+import { polar } from "@polar-sh/nextjs";
+
+const client = new polar.Polar({
+  accessToken: process.env.POLAR_ACCESS_TOKEN || "",
+  server: "sandbox",
+});
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const products = searchParams.get("products")?.split(",") || [];
+
+  const checkout = await client.checkouts.custom.create({
+    productPriceIds: products,
+    successUrl: `${request.url.split("/api")[0]}/success`,
+  });
+
+  return Response.redirect(checkout.url);
+}
+```
+
+## Configuration
+
+Update `lib/polar.ts` with your product IDs from the Polar Dashboard:
+
+```tsx
+const PRODUCT_IDS = {
+  "Tier Name": "prod_xxxxx",
+};
+```
+
+## Troubleshooting
+
+**Checkout not working?** Verify `POLAR_ACCESS_TOKEN` is set and API route exists.
+
+**Product ID not found?** Check the exact ID from your Polar Dashboard.
+
+**Redirects failing?** Ensure success URL is absolute.

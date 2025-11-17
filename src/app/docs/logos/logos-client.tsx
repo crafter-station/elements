@@ -13,7 +13,6 @@ import { loadLogoComponent } from "@/lib/component-loader";
 import { Header } from "@/components/header";
 import { GroupIcon } from "@/components/icons/group";
 import { SearchIcon } from "@/components/icons/search";
-import { InstallCommand } from "@/components/install-command";
 import { PixelatedCheckIcon } from "@/components/pixelated-check-icon";
 import { ScrambleText } from "@/components/scramble-text";
 import { Button } from "@/components/ui/button";

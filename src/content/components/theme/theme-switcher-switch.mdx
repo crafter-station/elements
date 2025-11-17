@@ -1,0 +1,45 @@
+---
+title: Theme Switcher Switch
+description: Toggle switch for light and dark mode switching
+---
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-switch"
+  installUrl="@elements/theme-switcher-switch"
+  category="Theme"
+  name="Theme Switcher Switch"
+>
+  <ThemeSwitcherSwitch />
+</ComponentPreviewItem>
+
+## Overview
+
+Clean toggle switch component for switching between light and dark themes. Features smooth animations and clear visual states.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/theme-switcher-switch
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcherSwitch } from "@/components/theme-switcher-switch";
+
+export function PreferencesForm() {
+  return (
+    <div className="flex items-center justify-between">
+      <span>Dark Mode</span>
+      <ThemeSwitcherSwitch />
+    </div>
+  );
+}
+```
+
+## Features
+
+- Toggle switch UI pattern
+- Smooth slide animation
+- Binary light/dark selection
+- Accessible switch component

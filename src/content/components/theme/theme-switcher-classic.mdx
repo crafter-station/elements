@@ -1,0 +1,44 @@
+---
+title: Theme Switcher Classic
+description: Traditional dropdown-style theme switcher with light, dark, and system options
+---
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-classic"
+  installUrl="@elements/theme-switcher-classic"
+  category="Theme"
+  name="Theme Switcher Classic"
+>
+  <ThemeSwitcherClassic />
+</ComponentPreviewItem>
+
+## Overview
+
+Classic dropdown theme switcher that provides three options: Light, Dark, and System. Uses a popover interface for theme selection.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/theme-switcher-classic
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcherClassic } from "@/components/theme-switcher-classic";
+
+export function Header() {
+  return (
+    <header>
+      <ThemeSwitcherClassic />
+    </header>
+  );
+}
+```
+
+## Features
+
+- Light, Dark, and System theme options
+- Dropdown popover interface
+- Persists theme preference
+- Respects system preferences when set to "System"

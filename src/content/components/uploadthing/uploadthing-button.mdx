@@ -1,0 +1,73 @@
+---
+title: UploadThing Button
+description: Simple button component for file uploads with UploadThing
+---
+
+<ComponentPreviewItem
+  componentKey="uploadthing-button"
+  installUrl="@elements/uploadthing-button"
+  category="Upload"
+  name="UploadThing Button"
+>
+  <UploadThingButton />
+</ComponentPreviewItem>
+
+## Overview
+
+Clean button upload component powered by UploadThing. Triggers file picker on click and handles upload automatically.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/uploadthing-button
+```
+
+## Setup
+
+Create your UploadThing configuration:
+
+```tsx
+// app/api/uploadthing/core.ts
+import { createUploadthing } from "uploadthing/next";
+
+const f = createUploadthing();
+
+export const ourFileRouter = {
+  imageUploader: f({ image: { maxFileSize: "4MB" } }).onUploadComplete(
+    ({ file }) => {
+      console.log("Upload complete:", file.url);
+    },
+  ),
+};
+```
+
+Add environment variable:
+
+```bash
+UPLOADTHING_SECRET=sk_live_...
+UPLOADTHING_APP_ID=app_...
+```
+
+## Usage
+
+```tsx
+import { UploadThingButton } from "@/components/uploadthing-button";
+
+export function ProfileUpload() {
+  return (
+    <UploadThingButton
+      endpoint="imageUploader"
+      onClientUploadComplete={(res) => {
+        console.log("Files:", res);
+      }}
+    />
+  );
+}
+```
+
+## Features
+
+- One-click file upload
+- Progress tracking
+- Error handling
+- Customizable styling

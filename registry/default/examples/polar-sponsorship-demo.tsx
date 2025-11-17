@@ -4,7 +4,7 @@ import { SponsorTiersPreview } from "@/registry/default/blocks/polar/polar-spons
 
 export default function PolarSponsorshipDemo() {
   return (
-    <div className="w-full max-w-4xl mx-auto p-4">
+    <div className="w-full max-w-full mx-auto px-2 sm:px-4">
       <SponsorTiersPreview />
     </div>
   );

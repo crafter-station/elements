@@ -1,0 +1,57 @@
+---
+title: UploadThing Dropzone
+description: Drag-and-drop file upload zone with UploadThing integration
+---
+
+<ComponentPreviewItem
+  componentKey="uploadthing-dropzone"
+  installUrl="@elements/uploadthing-dropzone"
+  category="Upload"
+  name="UploadThing Dropzone"
+>
+  <UploadThingDropzone />
+</ComponentPreviewItem>
+
+## Overview
+
+Drag-and-drop upload zone component with UploadThing. Supports both drag-and-drop and click-to-upload interactions.
+
+## Installation
+
+```bash
+npm install uploadthing @uploadthing/react
+npx shadcn@latest add @elements/uploadthing-dropzone
+```
+
+## Setup
+
+Configure your upload endpoint (see UploadThing Button setup for core configuration).
+
+## Usage
+
+```tsx
+import { UploadThingDropzone } from "@/components/uploadthing-dropzone";
+
+export function DocumentUpload() {
+  return (
+    <UploadThingDropzone
+      endpoint="documentUploader"
+      onClientUploadComplete={(res) => {
+        console.log("Uploaded:", res);
+      }}
+      onUploadError={(error) => {
+        console.error("Error:", error);
+      }}
+    />
+  );
+}
+```
+
+## Features
+
+- Drag-and-drop interface
+- Click-to-browse fallback
+- Upload progress indicator
+- File type validation
+- Multiple file support
+- Visual feedback states

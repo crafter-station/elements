@@ -1,0 +1,44 @@
+---
+title: Theme Switcher Toggle
+description: Icon-based toggle button for theme switching
+---
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-toggle"
+  installUrl="@elements/theme-switcher-toggle"
+  category="Theme"
+  name="Theme Switcher Toggle"
+>
+  <ThemeSwitcherToggle />
+</ComponentPreviewItem>
+
+## Overview
+
+Icon toggle button that switches between light and dark themes. Uses sun and moon icons for visual clarity.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/theme-switcher-toggle
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcherToggle } from "@/components/theme-switcher-toggle";
+
+export function AppHeader() {
+  return (
+    <header>
+      <ThemeSwitcherToggle />
+    </header>
+  );
+}
+```
+
+## Features
+
+- Icon-based interface (sun/moon)
+- Single-click toggle
+- Smooth icon transitions
+- Compact design for toolbars

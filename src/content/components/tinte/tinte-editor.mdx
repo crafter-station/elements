@@ -1,0 +1,88 @@
+---
+title: Tinte Theme Editor
+description: Live theme editor with AI-powered theme generation, Browse tab for tinte.dev themes, and manual color editing. Complete shadcn/ui theme customization tool.
+---
+
+<ComponentPreviewItem
+  componentKey="tinte-editor"
+  installUrl="@elements/tinte-editor"
+  category="Theme"
+  name="Tinte Theme Editor"
+>
+  <TinteEditor />
+</ComponentPreviewItem>
+
+## Overview
+
+A complete shadcn/ui theme customization tool that works entirely client-side with DOM-based CSS variable management. Features AI-powered theme generation, browsing of tinte.dev themes, manual color editing, and raw CSS editing.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/tinte-editor
+```
+
+## Usage
+
+```tsx
+import { TinteEditor } from "@/components/tinte-editor";
+
+export function ThemeCustomizer() {
+  const handleThemeChange = (theme) => {
+    console.log("Theme updated:", theme);
+  };
+
+  return <TinteEditor onChange={handleThemeChange} />;
+}
+```
+
+## Features
+
+### AI-Powered Theme Generation
+- Natural language theme descriptions
+- Automatic color palette generation
+- Instant preview and apply
+
+### Browse Tinte Themes
+- Search and browse public themes from tinte.dev
+- Preview color palettes
+- One-click theme application
+- Pagination support
+
+### Manual Color Editing
+- Visual color picker for each token
+- Organized by token groups (Background & Text, Cards & Surfaces, Interactive Elements, etc.)
+- Supports multiple color formats (hex, oklch, rgb, hsl)
+- Real-time preview
+
+### Raw CSS Editor
+- Direct CSS variable editing
+- Syntax highlighting
+- Auto-parsing and validation
+
+## Token Groups
+
+The editor organizes shadcn/ui tokens into logical groups:
+
+- **Background & Text**: background, foreground, muted, muted-foreground
+- **Cards & Surfaces**: card, card-foreground, popover, popover-foreground
+- **Interactive Elements**: primary, secondary, accent (with foreground variants)
+- **Forms & States**: border, input, ring, destructive
+- **Charts**: chart-1 through chart-5
+- **Sidebar**: sidebar-background, sidebar-foreground, sidebar-primary, etc.
+
+## AI Theme Generation
+
+Describe your theme in natural language:
+
+```
+"Create a purple theme with high contrast for accessibility"
+"Generate a warm autumn theme with orange and brown tones"
+"Design a soft pastel theme perfect for a wellness app"
+```
+
+**Note**: Requires `OPENAI_API_KEY` in your `.env.local` file.
+
+## Floating Trigger
+
+The editor appears as a floating button in the bottom-right corner of your page, featuring the Tinte logo. Click to open the theme editor dialog.

@@ -107,6 +107,7 @@ export function InstallCommand({
   return (
     <div className={`w-fit ${className || ""}`}>
       <div className="flex rounded-md shadow-xs border">
+        {/* Package Manager Select - Hidden on mobile */}
         <Select
           value={packageManager}
           onValueChange={(value) => {
@@ -123,7 +124,7 @@ export function InstallCommand({
         >
           <SelectTrigger
             size="sm"
-            className="text-muted-foreground hover:text-foreground w-[10ch] rounded-e-none border-0 border-r shadow-none text-xs h-7"
+            className="text-muted-foreground hover:text-foreground w-[10ch] rounded-e-none border-0 border-r shadow-none text-xs h-7 hidden md:flex"
           >
             <SelectValue />
           </SelectTrigger>
@@ -146,7 +147,7 @@ export function InstallCommand({
           onClick={copyCommand}
           variant="ghost"
           size="sm"
-          className={`-ms-px rounded-none border-0 shadow-none h-8 px-2.5 justify-start font-mono text-xs ${
+          className={`-ms-px rounded-none md:rounded-l-none border-0 shadow-none h-7 sm:h-8 px-1.5 sm:px-2.5 justify-start font-mono text-xs ${
             copied ? "bg-muted" : "hover:bg-muted"
           } ${
             brandColor
@@ -161,12 +162,19 @@ export function InstallCommand({
               : undefined
           }
         >
-          {copied ? (
-            <Check className="size-3.5 flex-shrink-0" />
-          ) : (
-            <ShadcnIcon className="size-3.5 flex-shrink-0" />
-          )}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
+            {copied ? (
+              <Check className="size-3.5 flex-shrink-0" />
+            ) : (
+              <ShadcnIcon className="size-3.5 flex-shrink-0" />
+            )}
+            {/* Mobile: Show component name, Desktop: Show full command */}
+            <span className="md:hidden text-foreground/70 text-xs whitespace-nowrap">
+              {componentName}
+            </span>
+          </div>
+          {/* Full command - Desktop only */}
+          <div className="hidden md:flex items-center gap-1">
             <span className="whitespace-nowrap">{urlSummary.display}</span>
             {urls.length > 1 && (
               <span className="text-muted-foreground whitespace-nowrap text-[10px]">

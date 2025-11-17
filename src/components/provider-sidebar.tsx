@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { Menu } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu } from "lucide-react";
 
 import { providers } from "@/lib/providers";
+import { getComponentsByProvider } from "@/lib/registry-loader";
 import { cn } from "@/lib/utils";
 
 import { OverviewIcon } from "@/components/icons/overview";
@@ -22,6 +23,31 @@ import {
 
 function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
   const pathname = usePathname();
+  const [expandedProviders, setExpandedProviders] = useState<Set<string>>(
+    new Set(),
+  );
+
+  // Auto-expand if we're on a component page
+  useEffect(() => {
+    const currentProvider = pathname.split("/")[2];
+    if (currentProvider && !expandedProviders.has(currentProvider)) {
+      setExpandedProviders((prev) => new Set(prev).add(currentProvider));
+    }
+  }, [pathname, expandedProviders.has]); // Only run when pathname changes
+
+  const toggleProvider = (providerSlug: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpandedProviders((prev) => {
+      const next = new Set(prev);
+      if (next.has(providerSlug)) {
+        next.delete(providerSlug);
+      } else {
+        next.add(providerSlug);
+      }
+      return next;
+    });
+  };
 
   // Sort providers:
   // 1. Enabled with components first
@@ -79,76 +105,111 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
         </Link>
 
         {sortedProviders.map((provider) => {
-          const isActive = pathname === provider.href;
+          const providerSlug = provider.href.split("/").pop() || "";
+          const isActive = pathname.startsWith(provider.href);
+          const isExpanded = expandedProviders.has(providerSlug);
+          const providerComponents = provider.isEnabled
+            ? getComponentsByProvider(providerSlug)
+            : [];
+          const hasComponents =
+            providerComponents.length > 0 &&
+            provider.status !== "building" &&
+            providerSlug !== "logos"; // Don't allow logos to expand
 
           return (
-            <Link
-              key={provider.href}
-              href={provider.isEnabled ? provider.href : "#"}
-              className={cn(
-                "group flex items-center border border-dotted border-border border-x-0 border-l-2 gap-3 p-2.5 text-[13px] rounded-sm transition-all relative",
-                isActive
-                  ? "bg-muted text-foreground font-medium z-10 border-l-primary"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10 border-l-transparent hover:border-l-primary/30",
-                !provider.isEnabled && "opacity-50 cursor-not-allowed",
-              )}
-              onClick={(e) => {
-                if (!provider.isEnabled) {
-                  e.preventDefault();
-                } else if (onLinkClick) {
-                  onLinkClick();
-                }
-              }}
-            >
-              {/* Icon */}
-              <div
+            <div key={provider.href}>
+              <Link
+                href={provider.isEnabled ? provider.href : "#"}
                 className={cn(
-                  "flex items-center justify-center w-5 h-5 shrink-0",
-                  isActive && "text-foreground",
+                  "group flex items-center border border-dotted border-border border-x-0 border-l-2 gap-3 p-2.5 text-[13px] rounded-sm transition-all relative",
+                  isActive
+                    ? "bg-muted text-foreground font-medium z-10 border-l-primary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:z-10 border-l-transparent hover:border-l-primary/30",
+                  !provider.isEnabled && "opacity-50 cursor-not-allowed",
                 )}
+                onClick={(e) => {
+                  if (!provider.isEnabled) {
+                    e.preventDefault();
+                  } else if (onLinkClick) {
+                    onLinkClick();
+                  }
+                }}
               >
-                {provider.icon}
-              </div>
+                {/* Icon */}
+                <div
+                  className={cn(
+                    "flex items-center justify-center w-5 h-5 shrink-0",
+                    isActive && "text-foreground",
+                  )}
+                >
+                  {provider.icon}
+                </div>
 
-              {/* Name */}
-              <span className="flex-1 truncate">{provider.name}</span>
+                {/* Name */}
+                <span className="flex-1 truncate">{provider.name}</span>
 
-              {/* Badge or count */}
-              {provider.isEnabled ? (
-                provider.status === "building" ? (
+                {/* Badge or expand icon */}
+                {provider.isEnabled ? (
+                  provider.status === "building" ? (
+                    <Badge
+                      variant="outline"
+                      className="h-5 px-1.5 text-[10px] font-normal border-[#6C47FF]/50 text-[#6C47FF]"
+                      style={{
+                        borderColor: isActive ? "#6C47FF" : "#6C47FF80",
+                        backgroundColor: isActive ? "#6C47FF20" : "transparent",
+                      }}
+                    >
+                      Building
+                    </Badge>
+                  ) : hasComponents ? (
+                    <button
+                      type="button"
+                      onClick={(e) => toggleProvider(providerSlug, e)}
+                      className="p-0.5 hover:bg-primary/10 rounded transition-colors"
+                    >
+                      {isExpanded ? (
+                        <ChevronDown className="w-4 h-4" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4" />
+                      )}
+                    </button>
+                  ) : null
+                ) : (
                   <Badge
                     variant="outline"
-                    className="h-5 px-1.5 text-[10px] font-normal border-[#6C47FF]/50 text-[#6C47FF]"
-                    style={{
-                      borderColor: isActive ? "#6C47FF" : "#6C47FF80",
-                      backgroundColor: isActive ? "#6C47FF20" : "transparent",
-                    }}
+                    className="h-5 px-1.5 text-[10px] font-normal"
                   >
-                    Building
+                    Soon
                   </Badge>
-                ) : (
-                  provider.elementsCount > 0 && (
-                    <Badge
-                      variant="secondary"
-                      className={cn(
-                        "h-5 px-1.5 text-xs font-normal",
-                        isActive &&
-                          "bg-primary/20 text-primary border-primary/30",
-                      )}
-                    >
-                      {provider.elementsCount}
-                    </Badge>
-                  )
-                )
-              ) : (
-                <Badge
-                  variant="outline"
-                  className="h-5 px-1.5 text-[10px] font-normal"
-                >
-                  Soon
-                </Badge>
+                )}
+              </Link>
+
+              {/* Expanded component list */}
+              {isExpanded && hasComponents && (
+                <div className="ml-8 border-l border-dotted border-border">
+                  {providerComponents.map((component) => {
+                    const componentPath = `/docs/${providerSlug}/${component.name}`;
+                    const isComponentActive = pathname === componentPath;
+
+                    return (
+                      <Link
+                        key={component.name}
+                        href={componentPath}
+                        className={cn(
+                          "group flex items-center gap-2 pl-3 pr-2 py-1.5 text-xs transition-colors",
+                          isComponentActive
+                            ? "text-foreground font-medium bg-primary/5"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted/30",
+                        )}
+                        onClick={() => onLinkClick?.()}
+                      >
+                        <span className="truncate">{component.title}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
               )}
-            </Link>
+            </div>
           );
         })}
       </nav>
@@ -162,7 +223,7 @@ export function ProviderSidebar() {
   return (
     <>
       {/* Mobile Toggle */}
-      <div className="md:hidden fixed top-16 left-4 z-40">
+      <div className="md:hidden fixed top-16 right-4 z-40">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button
@@ -184,7 +245,7 @@ export function ProviderSidebar() {
       </div>
 
       {/* Desktop Sidebar */}
-      <aside className="md:transition-all border-r border-border border-dotted top-[55px] md:flex hidden sm:w-54 overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
+      <aside className="md:transition-all border-r border-border border-dotted top-[55px] md:flex hidden md:w-54 overflow-y-auto fixed h-[calc(100dvh-55px)] pb-2 flex-col justify-between left-0 z-40 bg-background">
         <ProviderList />
       </aside>
     </>

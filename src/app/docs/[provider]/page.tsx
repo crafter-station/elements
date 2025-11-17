@@ -1,31 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import rehypeShiki from "@shikijs/rehype";
-import {
-  transformerNotationDiff,
-  transformerNotationErrorLevel,
-  transformerNotationFocus,
-  transformerNotationHighlight,
-} from "@shikijs/transformers";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
-
 import { ProviderIcon } from "@/lib/providers";
-import { providersSource } from "@/lib/providers-source";
 import {
   getComponentsByProvider,
   getProviderMetadata,
   getProviders,
-  getRegistryItems,
 } from "@/lib/registry-loader";
 
-import { ComponentPageHero } from "@/components/component-page/hero";
-import { TableOfContents } from "@/components/table-of-contents";
-
-import vesperDark from "@/data/vesper-dark.json";
-import vesperLight from "@/data/vesper-light.json";
-import { getMDXComponents } from "@/mdx-components";
+import { ScrambleText } from "@/components/scramble-text";
 
 // Generate static params for all providers
 export async function generateStaticParams() {
@@ -123,136 +107,84 @@ export default async function ProviderPage(props: ProviderPageProps) {
     notFound();
   }
 
-  // Try to get MDX content
-  const mdxPage = providersSource.getPage([provider]);
-
-  // Generate install command for the full suite
-  // Search in ALL registry items (not filtered) to find bundle components
-  const allItems = getRegistryItems();
-  const bundleComponent =
-    allItems.find(
-      (c) =>
-        c.type === "registry:block" &&
-        c.files?.length === 0 &&
-        c.name.startsWith(provider) &&
-        c.name.includes("shadcn"), // Prioritize shadcn bundles
-    ) ||
-    allItems.find(
-      (c) =>
-        c.type === "registry:block" &&
-        c.files?.length === 0 &&
-        c.name.startsWith(provider),
-    );
-
-  // Find the primary component - prioritize sign-in or first shadcn component
-  const primaryComponent =
-    components.find(
-      (c) => c.name.includes("sign-in") && c.name.includes("shadcn"),
-    ) ||
-    components.find((c) => c.name.includes("shadcn")) ||
-    components[0];
-
-  const installCommand = bundleComponent
-    ? `@elements/${bundleComponent.name}`
-    : `@elements/${primaryComponent?.name || provider}`;
-
   return (
-    <div className="flex gap-8">
-      <div className="flex-1 min-w-0 border-border border-dotted">
-        <ul className="hidden ml-4 list-outside list-disc whitespace-normal">
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-        </ul>
-        <ComponentPageHero
-          brandColor={metadata.brandColor}
-          darkBrandColor={metadata.darkBrandColor}
-          category={metadata.category}
-          name={metadata.displayName}
-          description={metadata.description}
-          icon={<ProviderIcon provider={provider} />}
-          installCommand={installCommand}
-          provider={provider}
-          mdxContent={mdxPage?.data.body}
-        />
+    <div className="flex-1 w-full">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden border-b border-border border-dotted">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+        </div>
 
-        {mdxPage ? (
-          <article className="max-w-3xl mx-auto px-4 sm:px-0">
-            <MDXRemote
-              source={mdxPage.data.body}
-              components={getMDXComponents()}
-              options={{
-                mdxOptions: {
-                  remarkPlugins: [remarkGfm],
-                  rehypePlugins: [
-                    [
-                      rehypeShiki,
-                      {
-                        themes: {
-                          light: vesperLight,
-                          dark: vesperDark,
-                        },
-                        defaultColor: false,
-                        cssVariablePrefix: "--shiki-",
-                        transformers: [
-                          transformerNotationHighlight({
-                            matchAlgorithm: "v3",
-                          }),
-                          transformerNotationDiff({
-                            matchAlgorithm: "v3",
-                          }),
-                          transformerNotationFocus({
-                            matchAlgorithm: "v3",
-                          }),
-                          transformerNotationErrorLevel(),
-                        ],
-                      },
-                    ],
-                  ],
-                },
-              }}
-            />
-          </article>
-        ) : (
-          <article className="prose prose-gray dark:prose-invert max-w-5xl mx-auto px-8 py-12">
-            <h2>Components</h2>
-            <p>
-              This provider includes {components.length} component
-              {components.length !== 1 ? "s" : ""}.
+        <div className="relative z-10 py-4 md:py-5 px-4 sm:px-6 md:px-8">
+          <div className="max-w-4xl">
+            {/* Category Label */}
+            <div className="mb-3">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-primary">
+                {metadata.category}
+              </span>
+            </div>
+
+            {/* Title & Description */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 md:w-9 md:h-9">
+                  <ProviderIcon provider={provider} />
+                </div>
+                <h1>
+                  <ScrambleText
+                    text={metadata.displayName}
+                    className="font-dotted font-black text-2xl md:text-3xl leading-tight"
+                  />
+                </h1>
+              </div>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed max-w-3xl">
+                {metadata.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Elements Grid */}
+      <div className="px-4 sm:px-6 md:px-8 py-8">
+        <div className="max-w-6xl">
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold mb-2">
+              Elements ({components.length})
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Browse all available elements for {metadata.displayName}
             </p>
-            <div className="grid gap-6 not-prose">
-              {components.map((component) => (
-                <div
-                  key={component.name}
-                  className="border border-border rounded-lg p-6 space-y-3"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-1">
-                      <h3 className="text-lg font-semibold">
-                        {component.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {component.description}
-                      </p>
-                    </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {components.map((component) => (
+              <Link
+                key={component.name}
+                href={`/docs/${provider}/${component.name}`}
+                className="group border border-border rounded-lg p-5 hover:border-primary/50 hover:bg-primary/5 transition-all duration-200"
+              >
+                <div className="space-y-3">
+                  <div className="space-y-1.5">
+                    <h3 className="font-semibold group-hover:text-primary transition-colors">
+                      {component.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {component.description}
+                    </p>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <code className="text-xs bg-muted px-2 py-1 rounded">
+                  <div className="flex items-center gap-2 text-xs">
+                    <code className="bg-muted px-2 py-1 rounded border border-border">
                       @elements/{component.name}
                     </code>
                   </div>
                 </div>
-              ))}
-            </div>
-          </article>
-        )}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
-
-      {/* Right TOC - Desktop only */}
-      <aside className="hidden xl:block w-64 shrink-0 sticky top-[71px] h-[calc(100vh-71px)] overflow-y-auto py-8 pr-4">
-        <TableOfContents />
-      </aside>
     </div>
   );
 }

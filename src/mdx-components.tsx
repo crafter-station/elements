@@ -24,6 +24,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ComponentPreviewItem,
     // Theme Components
     ThemeSwitcher: ThemeSwitcherDemo,
+    ThemeSwitcherClassic: ThemeSwitcherDemo, // Alias for classic variant
     ThemeSwitcherButton: ThemeSwitcherButtonDemo,
     ThemeSwitcherDropdown: ThemeSwitcherDropdownDemo,
     ThemeSwitcherMultiButton: ThemeSwitcherMultiButtonDemo,
@@ -34,8 +35,10 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // Polar
     SponsorTiersPreview: PolarSponsorshipDemo,
     // UploadThing
-    UploadButtonPreview: UploadthingButtonDemo,
-    UploadDropzonePreview: UploadthingDropzoneDemo,
+    UploadThingButton: UploadthingButtonDemo,
+    UploadThingDropzone: UploadthingDropzoneDemo,
+    UploadButtonPreview: UploadthingButtonDemo, // Legacy alias
+    UploadDropzonePreview: UploadthingDropzoneDemo, // Legacy alias
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

@@ -1,0 +1,44 @@
+---
+title: Theme Switcher Button
+description: Simple button toggle between light and dark themes
+---
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-button"
+  installUrl="@elements/theme-switcher-button"
+  category="Theme"
+  name="Theme Switcher Button"
+>
+  <ThemeSwitcherButton />
+</ComponentPreviewItem>
+
+## Overview
+
+Minimalist button that toggles between light and dark themes with a single click. Perfect for compact navigation bars.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/theme-switcher-button
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcherButton } from "@/components/theme-switcher-button";
+
+export function Navbar() {
+  return (
+    <nav>
+      <ThemeSwitcherButton />
+    </nav>
+  );
+}
+```
+
+## Features
+
+- One-click theme toggle
+- Animated icon transition
+- Minimal footprint
+- Accessible button

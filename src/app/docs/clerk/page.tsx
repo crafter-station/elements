@@ -10,7 +10,6 @@ import {
   ThemeAwareBrandText,
   ThemeAwarePattern,
 } from "@/components/theme-aware-brand";
-import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Clerk - User Management Suite",

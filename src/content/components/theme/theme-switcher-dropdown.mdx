@@ -1,0 +1,44 @@
+---
+title: Theme Switcher Dropdown
+description: Compact dropdown menu for theme selection
+---
+
+<ComponentPreviewItem
+  componentKey="theme-switcher-dropdown"
+  installUrl="@elements/theme-switcher-dropdown"
+  category="Theme"
+  name="Theme Switcher Dropdown"
+>
+  <ThemeSwitcherDropdown />
+</ComponentPreviewItem>
+
+## Overview
+
+Dropdown-based theme switcher with a compact trigger button. Shows all theme options in a clean dropdown menu.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/theme-switcher-dropdown
+```
+
+## Usage
+
+```tsx
+import { ThemeSwitcherDropdown } from "@/components/theme-switcher-dropdown";
+
+export function Settings() {
+  return (
+    <div>
+      <ThemeSwitcherDropdown />
+    </div>
+  );
+}
+```
+
+## Features
+
+- Dropdown menu interface
+- Light, Dark, and System options
+- Compact trigger button
+- Keyboard navigation support

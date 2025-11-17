@@ -12,7 +12,7 @@ export default function ProvidersLayout({ children }: { children: ReactNode }) {
         <ProviderSidebar />
 
         {/* Main content */}
-        <main className="flex-1 min-w-0 md:ml-[220px] lg:ml-[240px] max-w-[1400px] mx-auto w-full">
+        <main className="flex-1 min-w-0 md:ml-54 max-w-[1400px] mx-auto w-full">
           {children}
         </main>
       </div>

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Browse Components - Elements";
+export const alt = "Browse Elements";
 export const size = {
   width: 1200,
   height: 630,
@@ -77,7 +77,7 @@ export default async function Image() {
                 fontFamily: "monospace",
               }}
             >
-              Browse Components
+              Browse Elements
             </div>
             <div
               style={{
