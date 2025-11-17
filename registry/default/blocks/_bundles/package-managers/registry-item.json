@@ -3,7 +3,7 @@
   "name": "package-managers",
   "type": "registry:block",
   "title": "Package Managers",
-  "description": "Complete collection of JavaScript package manager logos including npm, pnpm, Yarn, and Bun",
+  "description": "JavaScript package managers: npm, pnpm, Yarn, and Bun",
   "registryDependencies": [
     "@elements/bun-logo",
     "@elements/npm-logo",

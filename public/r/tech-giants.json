@@ -3,7 +3,7 @@
   "name": "tech-giants",
   "type": "registry:block",
   "title": "Tech Giants",
-  "description": "Collection of major technology company logos including Apple, Microsoft, Google, and Meta",
+  "description": "Leading technology companies",
   "dependencies": [],
   "registryDependencies": [
     "@elements/apple-logo",

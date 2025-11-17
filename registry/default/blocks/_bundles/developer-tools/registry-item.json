@@ -3,7 +3,7 @@
   "name": "developer-tools",
   "type": "registry:block",
   "title": "Developer Tools & Platforms",
-  "description": "Collection of developer tools and platform logos including GitHub, GitLab, Linear, Notion, and more",
+  "description": "Development platforms, productivity tools, and workflows",
   "registryDependencies": [
     "@elements/github-logo",
     "@elements/gitlab-logo",

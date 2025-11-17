@@ -3,7 +3,7 @@
   "name": "cloud-infrastructure",
   "type": "registry:block",
   "title": "Cloud & Infrastructure",
-  "description": "Collection of cloud services and infrastructure logos including AWS, Supabase, Stripe, and more",
+  "description": "Cloud services, infrastructure, and backend platforms",
   "dependencies": [],
   "registryDependencies": [
     "@elements/aws-logo",

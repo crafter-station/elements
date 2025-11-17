@@ -3,7 +3,7 @@
   "name": "ai-services",
   "type": "registry:block",
   "title": "AI Services",
-  "description": "Complete collection of AI service provider logos including OpenAI, Anthropic, Google Gemini, and more",
+  "description": "Major AI service providers and LLM platforms",
   "registryDependencies": [
     "@elements/openai-logo",
     "@elements/anthropic-logo",

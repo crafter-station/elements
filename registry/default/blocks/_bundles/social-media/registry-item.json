@@ -3,7 +3,7 @@
   "name": "social-media",
   "type": "registry:block",
   "title": "Social Media & Communication",
-  "description": "Collection of social media and communication platform logos including Twitter, Discord, Slack, and more",
+  "description": "Social media and communication platforms",
   "registryDependencies": [
     "@elements/twitter-logo",
     "@elements/discord-logo",

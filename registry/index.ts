@@ -14,8 +14,7 @@ export const registry = {
       name: "ai-services",
       type: "registry:block",
       title: "AI Services",
-      description:
-        "Complete collection of AI service provider logos including OpenAI, Anthropic, Google Gemini, and more",
+      description: "Major AI service providers and LLM platforms",
       registryDependencies: [
         "@elements/openai-logo",
         "@elements/anthropic-logo",
@@ -182,8 +181,7 @@ export const registry = {
       name: "cloud-infrastructure",
       type: "registry:block",
       title: "Cloud & Infrastructure",
-      description:
-        "Collection of cloud services and infrastructure logos including AWS, Supabase, Stripe, and more",
+      description: "Cloud services, infrastructure, and backend platforms",
       registryDependencies: [
         "@elements/aws-logo",
         "@elements/supabase-logo",
@@ -255,8 +253,7 @@ export const registry = {
       name: "developer-tools",
       type: "registry:block",
       title: "Developer Tools & Platforms",
-      description:
-        "Collection of developer tools and platform logos including GitHub, GitLab, Linear, Notion, and more",
+      description: "Development platforms, productivity tools, and workflows",
       registryDependencies: [
         "@elements/github-logo",
         "@elements/gitlab-logo",
@@ -463,8 +460,7 @@ export const registry = {
       name: "logos",
       type: "registry:block",
       title: "Brand Logos Collection",
-      description:
-        "Complete collection of brand logos for popular tech companies and AI services",
+      description: "All popular tech companies and services",
       registryDependencies: [
         "@elements/apple-logo",
         "@elements/linear-logo",
@@ -658,8 +654,7 @@ export const registry = {
       name: "package-managers",
       type: "registry:block",
       title: "Package Managers",
-      description:
-        "Complete collection of JavaScript package manager logos including npm, pnpm, Yarn, and Bun",
+      description: "JavaScript package managers: npm, pnpm, Yarn, and Bun",
       registryDependencies: [
         "@elements/bun-logo",
         "@elements/npm-logo",
@@ -823,8 +818,7 @@ export const registry = {
       name: "social-media",
       type: "registry:block",
       title: "Social Media & Communication",
-      description:
-        "Collection of social media and communication platform logos including Twitter, Discord, Slack, and more",
+      description: "Social media and communication platforms",
       registryDependencies: [
         "@elements/twitter-logo",
         "@elements/discord-logo",
@@ -893,8 +887,7 @@ export const registry = {
       name: "tech-giants",
       type: "registry:block",
       title: "Tech Giants",
-      description:
-        "Collection of major technology company logos including Apple, Microsoft, Google, and Meta",
+      description: "Leading technology companies",
       registryDependencies: [
         "@elements/apple-logo",
         "@elements/microsoft-logo",
