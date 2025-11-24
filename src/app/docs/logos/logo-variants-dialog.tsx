@@ -344,7 +344,9 @@ export function LogoVariantsDialog({
                               {copiedVariant === `${variantKey}-svg` ? (
                                 <Check className="w-3 h-3" />
                               ) : (
-                                <Code className="w-3 h-3" />
+                                <span className="font-mono text-[10px] font-medium">
+                                  SVG
+                                </span>
                               )}
                             </Button>
                             <Button
@@ -359,7 +361,9 @@ export function LogoVariantsDialog({
                               {copiedVariant === `${variantKey}-jsx` ? (
                                 <Check className="w-3 h-3" />
                               ) : (
-                                <Copy className="w-3 h-3" />
+                                <span className="font-mono text-[10px] font-medium">
+                                  JSX
+                                </span>
                               )}
                             </Button>
                             <Button
@@ -421,7 +425,9 @@ export function LogoVariantsDialog({
                         {copiedVariant === `${variantKey}-svg` ? (
                           <Check className="w-3 h-3" />
                         ) : (
-                          <Code className="w-3 h-3" />
+                          <span className="font-mono text-[10px] font-medium">
+                            SVG
+                          </span>
                         )}
                       </Button>
                       <Button
@@ -434,7 +440,9 @@ export function LogoVariantsDialog({
                         {copiedVariant === `${variantKey}-jsx` ? (
                           <Check className="w-3 h-3" />
                         ) : (
-                          <Copy className="w-3 h-3" />
+                          <span className="font-mono text-[10px] font-medium">
+                            JSX
+                          </span>
                         )}
                       </Button>
                       <Button
