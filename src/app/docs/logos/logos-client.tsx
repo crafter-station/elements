@@ -52,6 +52,12 @@ interface Logo {
   category: string;
   hasVariants?: boolean;
   variants?: string[];
+  variantTypes?: {
+    base?: string[];
+    colorSchemes?: string[];
+    modes?: string[];
+    backgrounds?: string[];
+  };
 }
 
 interface LogoWithComponent extends Logo {
@@ -1614,6 +1620,7 @@ export function LogosClient({
           onOpenChange={setVariantsDialogOpen}
           logoName={selectedLogoForVariants.name}
           displayName={selectedLogoForVariants.displayName}
+          variantTypes={selectedLogoForVariants.variantTypes}
           component={
             selectedLogoForVariants.component as React.ComponentType<{
               className?: string;

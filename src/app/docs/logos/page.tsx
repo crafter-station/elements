@@ -72,6 +72,7 @@ export default function TechLogosPage() {
       category: specificCategory || item.categories?.[0] || "Other",
       hasVariants: item.meta?.hasVariants || false,
       variants: item.meta?.variants || [],
+      variantTypes: item.meta?.variantTypes,
     };
   });
 

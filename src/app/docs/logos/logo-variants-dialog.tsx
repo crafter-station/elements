@@ -33,6 +33,12 @@ interface LogoVariantsDialogProps {
     mode?: string;
     background?: string;
   }>;
+  variantTypes?: {
+    base?: string[];
+    colorSchemes?: string[];
+    modes?: string[];
+    backgrounds?: string[];
+  };
   colorSchemes?: Array<{ readonly value: string; readonly label: string }>;
   baseVariants?: Array<{
     readonly variant: string;
@@ -59,12 +65,70 @@ export function LogoVariantsDialog({
   logoName,
   displayName,
   component: LogoComponent,
-  colorSchemes = DEFAULT_COLOR_SCHEMES,
-  baseVariants = DEFAULT_BASE_VARIANTS,
+  variantTypes,
+  colorSchemes: providedColorSchemes,
+  baseVariants: providedBaseVariants,
 }: LogoVariantsDialogProps) {
   const { resolvedTheme } = useTheme();
   const [copiedVariant, setCopiedVariant] = useState<string | null>(null);
   const currentMode = (resolvedTheme as "light" | "dark") || "light";
+
+  // Build colorSchemes from variantTypes if available
+  // If variantTypes exists but has no colorSchemes, set to null (no tabs)
+  // If variantTypes doesn't exist, use defaults (backwards compatibility)
+  const colorSchemes =
+    providedColorSchemes ||
+    (variantTypes
+      ? variantTypes.colorSchemes
+        ? variantTypes.colorSchemes.map((scheme) => ({
+            value: scheme,
+            label: scheme.charAt(0).toUpperCase() + scheme.slice(1),
+          }))
+        : null // No colorSchemes means no tabs
+      : DEFAULT_COLOR_SCHEMES); // No variantTypes means use defaults
+
+  // Build baseVariants from variantTypes if available
+  const baseVariants =
+    providedBaseVariants ||
+    (variantTypes
+      ? (() => {
+          const bases = variantTypes.base || ["icon", "wordmark"];
+          const backgrounds = variantTypes.backgrounds || ["none"];
+
+          // If no backgrounds or only "none", return simple variants
+          if (backgrounds.length === 1 && backgrounds[0] === "none") {
+            return bases.map((variant) => ({
+              variant,
+              background: "none",
+              label: variant.charAt(0).toUpperCase() + variant.slice(1),
+            }));
+          }
+
+          // Otherwise, create combinations of bases × backgrounds
+          const variants: Array<{
+            variant: string;
+            background?: string;
+            label: string;
+          }> = [];
+
+          for (const base of bases) {
+            for (const bg of backgrounds) {
+              const label =
+                bg === "none"
+                  ? base.charAt(0).toUpperCase() + base.slice(1)
+                  : `${base.charAt(0).toUpperCase() + base.slice(1)} ${bg.charAt(0).toUpperCase() + bg.slice(1)}`;
+
+              variants.push({
+                variant: base,
+                background: bg,
+                label,
+              });
+            }
+          }
+
+          return variants;
+        })()
+      : DEFAULT_BASE_VARIANTS);
 
   const copyToClipboard = async (
     text: string,
@@ -97,14 +161,18 @@ export function LogoVariantsDialog({
   };
 
   const getVariantKey = (
-    colorScheme: string,
+    colorScheme: string | null,
     variant: { variant: string; background?: string },
   ) => {
+    if (!colorScheme) {
+      // For logos without colorSchemes (like Linear)
+      return `${variant.variant}-${currentMode}`;
+    }
     return `${variant.variant}-${colorScheme}-${currentMode}-${variant.background || "none"}`;
   };
 
   const handleCopySVG = (
-    colorScheme: string,
+    colorScheme: string | null,
     variant: { variant: string; background?: string; label: string },
   ) => {
     const svg = renderToStaticMarkup(
@@ -120,13 +188,13 @@ export function LogoVariantsDialog({
   };
 
   const handleCopyJSX = (
-    colorScheme: string,
+    colorScheme: string | null,
     variant: { variant: string; background?: string; label: string },
   ) => {
     const componentName = getComponentName(logoName);
     const propsStr = [
       `variant="${variant.variant}"`,
-      `colorScheme="${colorScheme}"`,
+      colorScheme ? `colorScheme="${colorScheme}"` : "",
       `mode="${currentMode}"`,
       variant.background && variant.background !== "none"
         ? `background="${variant.background}"`
@@ -142,7 +210,7 @@ export function LogoVariantsDialog({
   };
 
   const handleDownloadSVG = (
-    colorScheme: string,
+    colorScheme: string | null,
     variant: { variant: string; background?: string; label: string },
   ) => {
     try {
@@ -201,99 +269,178 @@ export function LogoVariantsDialog({
           </div>
         </DialogHeader>
 
-        <Tabs defaultValue={colorSchemes[0]?.value} className="w-full">
-          <TabsList className={`grid w-full grid-cols-${colorSchemes.length}`}>
-            {colorSchemes.map((scheme) => (
-              <TabsTrigger key={scheme.value} value={scheme.value}>
-                {scheme.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {colorSchemes.map((scheme) => (
-            <TabsContent
-              key={scheme.value}
-              value={scheme.value}
-              className="space-y-4 mt-4"
+        {/* Render content based on whether colorSchemes exist */}
+        {colorSchemes ? (
+          // With tabs (logos that have colorSchemes like Clerk)
+          <Tabs defaultValue={colorSchemes[0]?.value} className="w-full">
+            <TabsList
+              className={`grid w-full grid-cols-${colorSchemes.length}`}
             >
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-h-[500px] overflow-y-auto">
-                {baseVariants.map((variantConfig) => {
-                  const variantKey = getVariantKey(scheme.value, variantConfig);
-                  return (
-                    <div
-                      key={variantKey}
-                      className="border rounded-lg p-4 space-y-3 bg-card"
-                    >
-                      <div className="flex items-center justify-center h-24 bg-muted/50 rounded">
-                        <LogoComponent
-                          variant={variantConfig.variant}
-                          colorScheme={scheme.value}
-                          mode={currentMode}
-                          background={variantConfig.background}
-                          className={
-                            variantConfig.variant === "wordmark"
-                              ? "h-10 w-auto"
-                              : "w-12 h-12"
-                          }
-                        />
-                      </div>
+              {colorSchemes.map((scheme) => (
+                <TabsTrigger key={scheme.value} value={scheme.value}>
+                  {scheme.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
 
-                      <div className="space-y-2">
-                        <h3 className="text-xs font-medium text-center">
-                          {variantConfig.label}
-                        </h3>
+            {colorSchemes.map((scheme) => (
+              <TabsContent
+                key={scheme.value}
+                value={scheme.value}
+                className="space-y-4 mt-4"
+              >
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-h-[500px] overflow-y-auto">
+                  {baseVariants.map((variantConfig) => {
+                    const variantKey = getVariantKey(
+                      scheme.value,
+                      variantConfig,
+                    );
+                    return (
+                      <div
+                        key={variantKey}
+                        className="border rounded-lg p-4 space-y-3 bg-card"
+                      >
+                        <div className="flex items-center justify-center h-24 bg-muted/50 rounded">
+                          <LogoComponent
+                            variant={variantConfig.variant}
+                            colorScheme={scheme.value}
+                            mode={currentMode}
+                            background={variantConfig.background}
+                            className={
+                              variantConfig.variant === "wordmark"
+                                ? "h-10 w-auto"
+                                : "w-12 h-12"
+                            }
+                          />
+                        </div>
 
-                        <div className="flex gap-1">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="flex-1 px-2"
-                            onClick={() =>
-                              handleCopySVG(scheme.value, variantConfig)
-                            }
-                            title="Copy SVG"
-                          >
-                            {copiedVariant === `${variantKey}-svg` ? (
-                              <Check className="w-3 h-3" />
-                            ) : (
-                              <Code className="w-3 h-3" />
-                            )}
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="flex-1 px-2"
-                            onClick={() =>
-                              handleCopyJSX(scheme.value, variantConfig)
-                            }
-                            title="Copy JSX"
-                          >
-                            {copiedVariant === `${variantKey}-jsx` ? (
-                              <Check className="w-3 h-3" />
-                            ) : (
-                              <Copy className="w-3 h-3" />
-                            )}
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="flex-1 px-2"
-                            onClick={() =>
-                              handleDownloadSVG(scheme.value, variantConfig)
-                            }
-                            title="Download SVG"
-                          >
-                            <Download className="w-3 h-3" />
-                          </Button>
+                        <div className="space-y-2">
+                          <h3 className="text-xs font-medium text-center">
+                            {variantConfig.label}
+                          </h3>
+
+                          <div className="flex gap-1">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex-1 px-2"
+                              onClick={() =>
+                                handleCopySVG(scheme.value, variantConfig)
+                              }
+                              title="Copy SVG"
+                            >
+                              {copiedVariant === `${variantKey}-svg` ? (
+                                <Check className="w-3 h-3" />
+                              ) : (
+                                <Code className="w-3 h-3" />
+                              )}
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex-1 px-2"
+                              onClick={() =>
+                                handleCopyJSX(scheme.value, variantConfig)
+                              }
+                              title="Copy JSX"
+                            >
+                              {copiedVariant === `${variantKey}-jsx` ? (
+                                <Check className="w-3 h-3" />
+                              ) : (
+                                <Copy className="w-3 h-3" />
+                              )}
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex-1 px-2"
+                              onClick={() =>
+                                handleDownloadSVG(scheme.value, variantConfig)
+                              }
+                              title="Download SVG"
+                            >
+                              <Download className="w-3 h-3" />
+                            </Button>
+                          </div>
                         </div>
                       </div>
+                    );
+                  })}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
+        ) : (
+          // Without tabs (logos without colorSchemes like Linear)
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-[500px] overflow-y-auto mt-4">
+            {baseVariants.map((variantConfig) => {
+              const variantKey = `${variantConfig.variant}-${currentMode}`;
+              return (
+                <div
+                  key={variantKey}
+                  className="border rounded-lg p-4 space-y-3 bg-card"
+                >
+                  <div className="flex items-center justify-center h-24 bg-muted/50 rounded">
+                    <LogoComponent
+                      variant={variantConfig.variant}
+                      mode={currentMode}
+                      background={variantConfig.background}
+                      className={
+                        variantConfig.variant === "wordmark"
+                          ? "h-10 w-auto"
+                          : "w-12 h-12"
+                      }
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <h3 className="text-xs font-medium text-center">
+                      {variantConfig.label}
+                    </h3>
+
+                    <div className="flex gap-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 px-2"
+                        onClick={() => handleCopySVG(null, variantConfig)}
+                        title="Copy SVG"
+                      >
+                        {copiedVariant === `${variantKey}-svg` ? (
+                          <Check className="w-3 h-3" />
+                        ) : (
+                          <Code className="w-3 h-3" />
+                        )}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 px-2"
+                        onClick={() => handleCopyJSX(null, variantConfig)}
+                        title="Copy JSX"
+                      >
+                        {copiedVariant === `${variantKey}-jsx` ? (
+                          <Check className="w-3 h-3" />
+                        ) : (
+                          <Copy className="w-3 h-3" />
+                        )}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 px-2"
+                        onClick={() => handleDownloadSVG(null, variantConfig)}
+                        title="Download SVG"
+                      >
+                        <Download className="w-3 h-3" />
+                      </Button>
                     </div>
-                  );
-                })}
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );
