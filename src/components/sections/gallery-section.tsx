@@ -25,6 +25,7 @@ export function GallerySection() {
               elementsCount={provider.elementsCount}
               providerLink={provider.providerLink}
               trackingSource={trackingSource}
+              status={provider.status}
             />
           ))}
         </div>
