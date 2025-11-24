@@ -104,7 +104,8 @@ export function LogoVariantsDialog({
             }));
           }
 
-          // Otherwise, create combinations of bases × backgrounds
+          // Otherwise, create combinations intelligently
+          // Rule: Only "icon" variants get backgrounds, wordmarks always use "none"
           const variants: Array<{
             variant: string;
             background?: string;
@@ -112,6 +113,17 @@ export function LogoVariantsDialog({
           }> = [];
 
           for (const base of bases) {
+            // Wordmarks always have no background
+            if (base === "wordmark") {
+              variants.push({
+                variant: base,
+                background: "none",
+                label: "Wordmark",
+              });
+              continue;
+            }
+
+            // Icons get all background options
             for (const bg of backgrounds) {
               const label =
                 bg === "none"
