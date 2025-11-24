@@ -441,19 +441,35 @@ export const registry = {
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "linear-logo",
-      type: "registry:ui",
+      type: "registry:block",
       title: "Linear Logo",
-      description: "Linear logo component with brand purple gradient",
+      description:
+        "Linear issue tracking and project management platform logo with multiple variants",
       registryDependencies: [],
       dependencies: [],
+      categories: ["logos"],
+      meta: {
+        hasVariants: true,
+        variants: [
+          "icon-dark",
+          "icon-light",
+          "logo-dark",
+          "logo-light",
+          "wordmark-dark",
+          "wordmark-light",
+        ],
+        variantTypes: {
+          base: ["icon", "logo", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
       files: [
         {
           path: "registry/default/blocks/logos/linear-logo/components/logos/linear.tsx",
           type: "registry:component",
         },
       ],
-      docs: "Linear logo component with official brand colors and gradient.",
-      categories: ["Project Management", "logo", "brand"],
+      docs: "Linear logo with 3 base variants (icon, logo, wordmark) and 2 modes (dark, light) = 6 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
