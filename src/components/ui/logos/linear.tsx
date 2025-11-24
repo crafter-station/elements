@@ -14,17 +14,17 @@ const COLORS = {
  *
  * Brand Guidelines:
  * - Wordmark: Primary logo, use when space allows
- * - Logo: Logomark for tight layouts or logo-only grids
+ * - Logo: Logomark for tight layouts or logo-only grids (default)
  * - Icon: Stylized app icon for social media or chip designs
  *
  * Usage:
- * - Default is wordmark variant
+ * - Default is logo variant (logomark)
  * - Provide plenty of space around logo assets
  * - Monochrome usage preferred with brand colors
  */
 export function LinearLogo({
   className,
-  variant = "wordmark",
+  variant = "logo",
   mode = "dark",
 }: LinearLogoProps) {
   const color = COLORS[mode];

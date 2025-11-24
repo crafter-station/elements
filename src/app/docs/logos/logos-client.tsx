@@ -961,9 +961,6 @@ export function LogosClient({
                             <LogoComponent
                               className="w-8 h-8 md:w-10 md:h-10 transition-opacity duration-300 group-hover:opacity-80"
                               mode={currentMode}
-                              variant={
-                                logo.name === "linear-logo" ? "logo" : undefined
-                              }
                             />
                           </div>
 
