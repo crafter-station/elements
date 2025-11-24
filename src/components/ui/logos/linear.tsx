@@ -5,8 +5,8 @@ interface LinearLogoProps {
 }
 
 const COLORS = {
-  dark: "#222326",
-  light: "#fff",
+  dark: "#fff", // Use light color on dark backgrounds
+  light: "#222326", // Use dark color on light backgrounds
 };
 
 /**
