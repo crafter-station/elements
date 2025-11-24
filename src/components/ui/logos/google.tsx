@@ -1,6 +1,11 @@
 export function GoogleLogo({ className }: { className?: string }) {
   return (
-    <svg className={className || "w-8 h-8"} viewBox="0 0 24 24">
+    <svg
+      className={className || "w-8 h-8"}
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+    >
       <title>Google Logo</title>
       <path
         fill="#4285F4"

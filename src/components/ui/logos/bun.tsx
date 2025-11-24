@@ -1,6 +1,11 @@
 export function BunLogo({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 256 225" className={className || "w-8 h-8"}>
+    <svg
+      viewBox="0 0 256 225"
+      width="256"
+      height="225"
+      className={className || "w-8 h-8"}
+    >
       <title>Bun Logo</title>
       <g>
         <path

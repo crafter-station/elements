@@ -4,18 +4,41 @@ import type * as React from "react";
 import type { ComponentType } from "react";
 
 import { track } from "@vercel/analytics";
-import { Code, Download, ExternalLink, FileCode } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { toast } from "sonner";
 
+import {
+  canvasToBlob,
+  cleanSvgMarkup,
+  copyImageToClipboard,
+  copyTextToClipboard,
+  downloadBlob,
+  svgToCanvas,
+} from "@/lib/svg-utils";
+
+import {
+  CopyImageIcon,
+  CopyJsxIcon,
+  CopySvgIcon,
+  DownloadImageIcon,
+  DownloadSvgIcon,
+} from "@/components/context-menu-icons";
 import { ShadcnIcon } from "@/components/shadcn-icon";
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import { BunLogo } from "@/components/ui/logos/bun";
+import { NpmLogo } from "@/components/ui/logos/npm";
+import { PnpmLogo } from "@/components/ui/logos/pnpm";
+import { YarnLogo } from "@/components/ui/logos/yarn";
 
 interface LogoContextMenuProps {
   children: React.ReactNode;
@@ -67,14 +90,28 @@ export function LogoContextMenu({
     }
   };
 
-  const handleCopyCommand = () => {
-    const command = `bunx --bun shadcn@latest add @elements/${logoName}`;
-    copyToClipboard(command, "copy_command", "Install command copied!");
+  const handleCopyCommand = (
+    packageManager: "bunx" | "npx" | "pnpm" | "yarn",
+  ) => {
+    const commands = {
+      bunx: `bunx --bun shadcn@latest add @elements/${logoName}`,
+      npx: `npx shadcn@latest add @elements/${logoName}`,
+      pnpm: `pnpm dlx shadcn@latest add @elements/${logoName}`,
+      yarn: `yarn dlx shadcn@latest add @elements/${logoName}`,
+    };
+
+    const command = commands[packageManager];
+    copyToClipboard(
+      command,
+      `copy_command_${packageManager}`,
+      `Install command copied!`,
+    );
   };
 
   const handleCopySVG = () => {
     const svg = renderToStaticMarkup(<LogoComponent />);
-    copyToClipboard(svg, "copy_svg", "SVG code copied!");
+    const cleanedSvg = cleanSvgMarkup(svg);
+    copyToClipboard(cleanedSvg, "copy_svg", "SVG code copied!");
   };
 
   const handleCopyJSX = () => {
@@ -85,15 +122,9 @@ export function LogoContextMenu({
   const handleDownloadSVG = () => {
     try {
       const svg = renderToStaticMarkup(<LogoComponent />);
-      const blob = new Blob([svg], { type: "image/svg+xml" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${logoName}.svg`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      const cleanedSvg = cleanSvgMarkup(svg);
+      const blob = new Blob([cleanedSvg], { type: "image/svg+xml" });
+      downloadBlob(blob, `${logoName}.svg`, "image/svg+xml");
 
       track("Logo Context Menu Action", {
         logo_name: displayName,
@@ -109,6 +140,60 @@ export function LogoContextMenu({
     } catch (err) {
       console.error("Failed to download:", err);
       toast.error("Failed to download SVG", {
+        description: "Please try again",
+      });
+    }
+  };
+
+  const handleCopyImage = async () => {
+    try {
+      const svg = renderToStaticMarkup(<LogoComponent />);
+      const cleanedSvg = cleanSvgMarkup(svg);
+      const canvas = await svgToCanvas(cleanedSvg, 512);
+      const blob = await canvasToBlob(canvas);
+      await copyImageToClipboard(blob);
+
+      track("Logo Context Menu Action", {
+        logo_name: displayName,
+        logo_id: logoName,
+        category: category,
+        action: "copy_image",
+        source: "logos_page_context_menu",
+      });
+
+      toast.success("Image copied to clipboard!", {
+        description: `${displayName} logo copied as PNG`,
+      });
+    } catch (err) {
+      console.error("Failed to copy image:", err);
+      toast.error("Failed to copy image", {
+        description: "Please try again",
+      });
+    }
+  };
+
+  const handleDownloadImage = async () => {
+    try {
+      const svg = renderToStaticMarkup(<LogoComponent />);
+      const cleanedSvg = cleanSvgMarkup(svg);
+      const canvas = await svgToCanvas(cleanedSvg, 1024);
+      const blob = await canvasToBlob(canvas);
+      downloadBlob(blob, `${logoName}.png`, "image/png");
+
+      track("Logo Context Menu Action", {
+        logo_name: displayName,
+        logo_id: logoName,
+        category: category,
+        action: "download_image",
+        source: "logos_page_context_menu",
+      });
+
+      toast.success("Image downloaded!", {
+        description: `${displayName} logo saved as ${logoName}.png`,
+      });
+    } catch (err) {
+      console.error("Failed to download image:", err);
+      toast.error("Failed to download image", {
         description: "Please try again",
       });
     }
@@ -160,26 +245,70 @@ export function LogoContextMenu({
           </>
         )}
 
-        <ContextMenuItem onClick={handleCopyCommand}>
-          <ShadcnIcon className="mr-2 h-4 w-4" />
-          Copy Install Command
-        </ContextMenuItem>
+        <ContextMenuSub>
+          <ContextMenuSubTrigger className="gap-2">
+            <ShadcnIcon className="mr-2 h-4 w-4" />
+            Copy Command
+          </ContextMenuSubTrigger>
+          <ContextMenuSubContent className="w-32">
+            <ContextMenuItem
+              onClick={() => handleCopyCommand("bunx")}
+              className="gap-2"
+            >
+              <BunLogo className="h-4 w-4" />
+              bunx
+            </ContextMenuItem>
+            <ContextMenuItem
+              onClick={() => handleCopyCommand("npx")}
+              className="gap-2"
+            >
+              <NpmLogo className="h-4 w-4" />
+              npx
+            </ContextMenuItem>
+            <ContextMenuItem
+              onClick={() => handleCopyCommand("pnpm")}
+              className="gap-2"
+            >
+              <PnpmLogo className="h-4 w-4" />
+              pnpm
+            </ContextMenuItem>
+            <ContextMenuItem
+              onClick={() => handleCopyCommand("yarn")}
+              className="gap-2"
+            >
+              <YarnLogo className="h-4 w-4" />
+              yarn
+            </ContextMenuItem>
+          </ContextMenuSubContent>
+        </ContextMenuSub>
 
         <ContextMenuSeparator />
 
         <ContextMenuItem onClick={handleCopySVG}>
-          <Code className="mr-2 h-4 w-4" />
+          <CopySvgIcon className="mr-2 h-4 w-4" />
           Copy as SVG
         </ContextMenuItem>
 
         <ContextMenuItem onClick={handleCopyJSX}>
-          <FileCode className="mr-2 h-4 w-4" />
+          <CopyJsxIcon className="mr-2 h-4 w-4" />
           Copy as JSX
         </ContextMenuItem>
 
+        <ContextMenuItem onClick={handleCopyImage}>
+          <CopyImageIcon className="mr-2 h-4 w-4" />
+          Copy as Image
+        </ContextMenuItem>
+
+        <ContextMenuSeparator />
+
         <ContextMenuItem onClick={handleDownloadSVG}>
-          <Download className="mr-2 h-4 w-4" />
+          <DownloadSvgIcon className="mr-2 h-4 w-4" />
           Download SVG
+        </ContextMenuItem>
+
+        <ContextMenuItem onClick={handleDownloadImage}>
+          <DownloadImageIcon className="mr-2 h-4 w-4" />
+          Download Image
         </ContextMenuItem>
 
         {brandUrl && (

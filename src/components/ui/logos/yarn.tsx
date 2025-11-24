@@ -1,6 +1,11 @@
 export function YarnLogo({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 256 256" className={className || "w-8 h-8"}>
+    <svg
+      viewBox="0 0 256 256"
+      width="256"
+      height="256"
+      className={className || "w-8 h-8"}
+    >
       <title>Yarn Logo</title>
       <path
         d="M128,0 C57.3281853,0 0,57.3281853 0,128 C0,198.671815 57.3281853,256 128,256 C198.671815,256 256,198.671815 256,128 C256,57.3281853 198.671815,0 128,0"

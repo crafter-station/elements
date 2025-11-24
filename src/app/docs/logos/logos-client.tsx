@@ -3,13 +3,20 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { track } from "@vercel/analytics";
-import { Check, ChevronDown, Filter } from "lucide-react";
+import { Check, ChevronDown, Download, Filter } from "lucide-react";
 import { useTheme } from "next-themes";
+import { renderToStaticMarkup } from "react-dom/server";
 import { toast } from "sonner";
 
 import { getBrandUrl } from "@/lib/brand-urls";
 import { loadLogoComponent } from "@/lib/component-loader";
 
+import {
+  CopyImageIcon,
+  CopySvgIcon,
+  DownloadImageIcon,
+  DownloadSvgIcon,
+} from "@/components/context-menu-icons";
 import { Header } from "@/components/header";
 import { GroupIcon } from "@/components/icons/group";
 import { SearchIcon } from "@/components/icons/search";
@@ -313,6 +320,263 @@ export function LogosClient({
     } catch (err) {
       console.error("Failed to copy command:", err);
       toast.error("Failed to copy command");
+    }
+  };
+
+  const handleBulkExport = async (
+    type: "copy-svg" | "copy-image" | "download-svg" | "download-image",
+  ) => {
+    const selectedLogoComponents = logos.filter(
+      (logo) => selectedLogos.has(logo.id) && logo.component,
+    );
+
+    if (selectedLogoComponents.length === 0) {
+      toast.error("No logos to export", {
+        description: "Please select at least one logo first",
+      });
+      return;
+    }
+
+    track("Bulk Logo Export", {
+      export_type: type,
+      logos_count: selectedLogoComponents.length,
+      source: "logos_page_install_dock",
+    });
+
+    try {
+      if (type === "copy-svg") {
+        // Copy all SVGs as text
+        const svgs = selectedLogoComponents
+          .map((logo) => {
+            const LogoComponent = logo.component!;
+            let svg = renderToStaticMarkup(<LogoComponent />);
+            // Clean up SVG
+            svg = svg.replace(/\sclass="[^"]*"/g, "");
+            svg = svg.replace(/\sclassName="[^"]*"/g, "");
+            if (!svg.includes("xmlns=")) {
+              svg = svg.replace(
+                "<svg",
+                '<svg xmlns="http://www.w3.org/2000/svg"',
+              );
+            }
+            return `<!-- ${logo.displayName} -->\n${svg}`;
+          })
+          .join("\n\n");
+
+        await navigator.clipboard.writeText(svgs);
+        toast.success(
+          `${selectedLogoComponents.length} SVG${selectedLogoComponents.length > 1 ? "s" : ""} copied!`,
+          {
+            description: "Pasted to clipboard",
+          },
+        );
+      } else if (type === "copy-image") {
+        // Copy as single combined image in grid layout
+        await toast.promise(
+          (async () => {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d")!;
+
+            // Calculate grid layout
+            const cols = Math.ceil(Math.sqrt(selectedLogoComponents.length));
+            const rows = Math.ceil(selectedLogoComponents.length / cols);
+            const cellSize = 512;
+
+            canvas.width = cols * cellSize;
+            canvas.height = rows * cellSize;
+
+            // Draw all logos
+            for (let i = 0; i < selectedLogoComponents.length; i++) {
+              const logo = selectedLogoComponents[i];
+              const LogoComponent = logo.component!;
+              let svg = renderToStaticMarkup(<LogoComponent />);
+
+              // Clean up SVG
+              svg = svg.replace(/\sclass="[^"]*"/g, "");
+              svg = svg.replace(/\sclassName="[^"]*"/g, "");
+              if (!svg.includes("xmlns=")) {
+                svg = svg.replace(
+                  "<svg",
+                  '<svg xmlns="http://www.w3.org/2000/svg"',
+                );
+              }
+
+              const img = new Image();
+              await new Promise((resolve, reject) => {
+                img.onload = resolve;
+                img.onerror = reject;
+                img.src = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+              });
+
+              // Get dimensions
+              let width = img.naturalWidth;
+              let height = img.naturalHeight;
+
+              if (!width || !height) {
+                const viewBoxMatch = svg.match(/viewBox=["']([^"']+)["']/);
+                if (viewBoxMatch) {
+                  const parts = viewBoxMatch[1].split(/\s+/).map(Number);
+                  width = parts[2] || cellSize;
+                  height = parts[3] || cellSize;
+                } else {
+                  width = width || cellSize;
+                  height = height || cellSize;
+                }
+              }
+
+              // Scale to fit cell while preserving aspect ratio
+              const scale = Math.min(cellSize / width, cellSize / height);
+              const scaledWidth = width * scale;
+              const scaledHeight = height * scale;
+
+              // Center in cell
+              const col = i % cols;
+              const row = Math.floor(i / cols);
+              const x = col * cellSize + (cellSize - scaledWidth) / 2;
+              const y = row * cellSize + (cellSize - scaledHeight) / 2;
+
+              ctx.drawImage(img, x, y, scaledWidth, scaledHeight);
+            }
+
+            await new Promise<void>((resolve) => {
+              canvas.toBlob(async (blob) => {
+                if (blob) {
+                  await navigator.clipboard.write([
+                    new ClipboardItem({ "image/png": blob }),
+                  ]);
+                }
+                resolve();
+              }, "image/png");
+            });
+
+            return { cols, rows };
+          })(),
+          {
+            loading: "Preparing images...",
+            success: (data) =>
+              `${selectedLogoComponents.length} logo${selectedLogoComponents.length > 1 ? "s" : ""} copied as image! Combined in ${data.cols}x${data.rows} grid`,
+            error: "Failed to copy images",
+          },
+        );
+      } else if (type === "download-svg") {
+        // Download all SVGs as separate files (using zip would be better, but for now individual downloads)
+        for (const logo of selectedLogoComponents) {
+          const LogoComponent = logo.component!;
+          let svg = renderToStaticMarkup(<LogoComponent />);
+
+          // Clean up SVG
+          svg = svg.replace(/\sclass="[^"]*"/g, "");
+          svg = svg.replace(/\sclassName="[^"]*"/g, "");
+          if (!svg.includes("xmlns=")) {
+            svg = svg.replace(
+              "<svg",
+              '<svg xmlns="http://www.w3.org/2000/svg"',
+            );
+          }
+
+          const blob = new Blob([svg], { type: "image/svg+xml" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `${logo.name}.svg`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          // Small delay between downloads to avoid browser blocking
+          await new Promise((resolve) => setTimeout(resolve, 100));
+        }
+
+        toast.success(
+          `${selectedLogoComponents.length} SVG${selectedLogoComponents.length > 1 ? "s" : ""} downloaded!`,
+          {
+            description: "Check your downloads folder",
+          },
+        );
+      } else if (type === "download-image") {
+        // Download all logos as separate PNG files
+        await toast.promise(
+          (async () => {
+            for (const logo of selectedLogoComponents) {
+              const LogoComponent = logo.component!;
+              let svg = renderToStaticMarkup(<LogoComponent />);
+
+              // Clean up SVG
+              svg = svg.replace(/\sclass="[^"]*"/g, "");
+              svg = svg.replace(/\sclassName="[^"]*"/g, "");
+              if (!svg.includes("xmlns=")) {
+                svg = svg.replace(
+                  "<svg",
+                  '<svg xmlns="http://www.w3.org/2000/svg"',
+                );
+              }
+
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d")!;
+              const img = new Image();
+
+              await new Promise((resolve, reject) => {
+                img.onload = resolve;
+                img.onerror = reject;
+                img.src = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+              });
+
+              // Get dimensions
+              let width = img.naturalWidth;
+              let height = img.naturalHeight;
+
+              if (!width || !height) {
+                const viewBoxMatch = svg.match(/viewBox=["']([^"']+)["']/);
+                if (viewBoxMatch) {
+                  const parts = viewBoxMatch[1].split(/\s+/).map(Number);
+                  width = parts[2] || 1024;
+                  height = parts[3] || 1024;
+                } else {
+                  width = width || 1024;
+                  height = height || 1024;
+                }
+              }
+
+              // Scale to 1024px max dimension
+              const scale = 1024 / Math.max(width, height);
+              canvas.width = width * scale;
+              canvas.height = height * scale;
+
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+              await new Promise<void>((resolve) => {
+                canvas.toBlob((blob) => {
+                  if (blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = `${logo.name}.png`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                  }
+                  resolve();
+                }, "image/png");
+              });
+
+              // Small delay between downloads
+              await new Promise((resolve) => setTimeout(resolve, 100));
+            }
+          })(),
+          {
+            loading: "Generating images...",
+            success: `${selectedLogoComponents.length} PNG${selectedLogoComponents.length > 1 ? "s" : ""} downloaded! Check your downloads folder`,
+            error: "Failed to download images",
+          },
+        );
+      }
+    } catch (err) {
+      console.error("Bulk export failed:", err);
+      toast.error("Export failed", {
+        description: "Please try again",
+      });
     }
   };
 
@@ -1068,6 +1332,47 @@ export function LogosClient({
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
+
+              {/* Export Button - Mobile */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="h-9 gap-2 font-medium">
+                    <Download className="w-4 h-4" />
+                    Export Options
+                    <ChevronDown className="w-3.5 h-3.5 ml-1 opacity-60" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem
+                    className="gap-2"
+                    onClick={() => handleBulkExport("copy-svg")}
+                  >
+                    <CopySvgIcon className="h-4 w-4" />
+                    Copy as SVG
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="gap-2"
+                    onClick={() => handleBulkExport("copy-image")}
+                  >
+                    <CopyImageIcon className="h-4 w-4" />
+                    Copy as Image
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="gap-2"
+                    onClick={() => handleBulkExport("download-svg")}
+                  >
+                    <DownloadSvgIcon className="h-4 w-4" />
+                    Download SVG
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="gap-2"
+                    onClick={() => handleBulkExport("download-image")}
+                  >
+                    <DownloadImageIcon className="h-4 w-4" />
+                    Download Image
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             {/* Desktop Layout */}
@@ -1256,6 +1561,47 @@ export function LogosClient({
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
+
+              {/* Export Button - Desktop */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="h-9 gap-2 font-medium">
+                    <Download className="w-4 h-4" />
+                    Export Options
+                    <ChevronDown className="w-3.5 h-3.5 ml-1 opacity-60" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem
+                    className="gap-2"
+                    onClick={() => handleBulkExport("copy-svg")}
+                  >
+                    <CopySvgIcon className="h-4 w-4" />
+                    Copy as SVG
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="gap-2"
+                    onClick={() => handleBulkExport("copy-image")}
+                  >
+                    <CopyImageIcon className="h-4 w-4" />
+                    Copy as Image
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="gap-2"
+                    onClick={() => handleBulkExport("download-svg")}
+                  >
+                    <DownloadSvgIcon className="h-4 w-4" />
+                    Download SVG
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="gap-2"
+                    onClick={() => handleBulkExport("download-image")}
+                  >
+                    <DownloadImageIcon className="h-4 w-4" />
+                    Download Image
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>

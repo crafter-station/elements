@@ -6,6 +6,13 @@ import { track } from "@vercel/analytics";
 
 import { CopyIcon } from "@/components/icons/copy";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -89,6 +96,23 @@ export function ComponentInstallDock({
     }
   };
 
+  const handleBulkExport = (
+    type: "copy-svg" | "copy-image" | "download-svg" | "download-image",
+  ) => {
+    track("Bulk Export Action", {
+      component_category: category,
+      page_name: name || "unknown",
+      export_type: type,
+      selected_count: selectedComponents.size,
+      source: "component_page_install_dock",
+    });
+
+    // TODO: Implement bulk export functionality
+    console.log(
+      `Bulk export: ${type} for ${selectedComponents.size} components`,
+    );
+  };
+
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
       <div className="bg-card border rounded-lg shadow-lg max-w-lg w-full mx-4">
@@ -126,7 +150,7 @@ export function ComponentInstallDock({
             onClick={copyCommand}
             size="sm"
             variant="outline"
-            className="-ms-px rounded-s-none border-0 border-l shadow-none text-teal-600 hover:text-teal-500 h-9 w-12 sm:w-auto px-0 sm:px-3"
+            className="-ms-px rounded-none border-0 border-l shadow-none text-teal-600 hover:text-teal-500 h-9 w-12 sm:w-auto px-0 sm:px-3"
           >
             {copied ? (
               <svg
@@ -137,7 +161,7 @@ export function ComponentInstallDock({
                 viewBox="0 0 24 24"
                 className="w-4 h-4"
               >
-                <title>Copy Icon</title>
+                <title>Copied</title>
                 <path
                   d="M18 6h2v2h-2V6zm-2 4V8h2v2h-2zm-2 2v-2h2v2h-2zm-2 2h2v-2h-2v2zm-2 2h2v-2h-2v2zm-2 0v2h2v-2H8zm-2-2h2v2H6v-2zm0 0H4v-2h2v2z"
                   fill="currentColor"
@@ -150,6 +174,125 @@ export function ComponentInstallDock({
               </>
             )}
           </Button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                size="sm"
+                variant="outline"
+                className="-ms-px rounded-s-none border-0 border-l shadow-none h-9 px-3"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <title>Export</title>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                <span className="hidden sm:inline ml-2">Export</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => handleBulkExport("copy-svg")}>
+                <svg
+                  className="mr-2 h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <title>Copy SVG</title>
+                  <rect
+                    width="14"
+                    height="14"
+                    x="8"
+                    y="8"
+                    rx="2"
+                    ry="2"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                    strokeWidth="2"
+                  />
+                </svg>
+                Copy as SVG
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleBulkExport("copy-image")}>
+                <svg
+                  className="mr-2 h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <title>Copy Image</title>
+                  <rect
+                    width="14"
+                    height="14"
+                    x="8"
+                    y="8"
+                    rx="2"
+                    ry="2"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                    strokeWidth="2"
+                  />
+                  <circle cx="17.5" cy="10.5" r="0.8" strokeWidth="1.5" />
+                </svg>
+                Copy as Image
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={() => handleBulkExport("download-svg")}
+              >
+                <svg
+                  className="mr-2 h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <title>Download SVG</title>
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    strokeWidth="2"
+                  />
+                  <polyline points="14 2 14 8 20 8" strokeWidth="2" />
+                  <line x1="12" y1="11" x2="12" y2="17" strokeWidth="2" />
+                  <polyline points="9 14 12 17 15 14" strokeWidth="2" />
+                </svg>
+                Download SVG
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => handleBulkExport("download-image")}
+              >
+                <svg
+                  className="mr-2 h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <title>Download Image</title>
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    strokeWidth="2"
+                  />
+                  <polyline points="14 2 14 8 20 8" strokeWidth="2" />
+                  <line x1="12" y1="11" x2="12" y2="17" strokeWidth="2" />
+                  <polyline points="9 14 12 17 15 14" strokeWidth="2" />
+                  <circle cx="10" cy="19" r="0.6" strokeWidth="1.5" />
+                </svg>
+                Download Image
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </div>
