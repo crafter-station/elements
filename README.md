@@ -1,5 +1,8 @@
 # Elements - Full Stack Components
 
+[![Run in Smithery](https://smithery.ai/badge/skills/crafter-station)](https://smithery.ai/skills?ns=crafter-station&utm_source=github&utm_medium=badge)
+
+
 A custom documentation system for Elements, providing comprehensive provider documentation and component demos in a maintainable, in-house built solution.
 
 ![Elements Cover](elements-cover.webp)
