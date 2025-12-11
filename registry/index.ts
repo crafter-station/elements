@@ -4,6 +4,8 @@
  * Do not edit manually - run 'bun run scripts/generate-registry-index.ts' to regenerate
  */
 
+import type { RegistryItem } from "./utils";
+
 export const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
   name: "elements",
@@ -307,7 +309,7 @@ export const registry = {
       name: "github-logo",
       type: "registry:ui",
       title: "GitHub Logo",
-      description: "GitHub logo component with theme-adaptive colors",
+      description: "GitHub logo component with variants and modes",
       registryDependencies: [],
       dependencies: [],
       files: [
@@ -316,8 +318,23 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      docs: "GitHub logo component that adapts to your theme. Uses currentColor to match your design system.",
+      docs: "GitHub logo with 3 base variants (invertocat, wordmark, lockup) and 2 modes (light, dark) = 6 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
       categories: ["Development", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: [
+          "invertocat-light",
+          "invertocat-dark",
+          "wordmark-light",
+          "wordmark-dark",
+          "lockup-light",
+          "lockup-dark",
+        ],
+        variantTypes: {
+          base: ["invertocat", "wordmark", "lockup"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -447,7 +464,7 @@ export const registry = {
         "Linear issue tracking and project management platform logo with multiple variants",
       registryDependencies: [],
       dependencies: [],
-      categories: ["logos"],
+      categories: ["Project Management"],
       meta: {
         hasVariants: true,
         variants: [

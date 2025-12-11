@@ -24,7 +24,7 @@
   },
   "files": [
     {
-      "path": "components/logos/linear.tsx",
+      "path": "registry/default/blocks/logos/linear-logo/components/logos/linear.tsx",
       "type": "registry:component"
     }
   ],

@@ -6,7 +6,7 @@ export const brandUrls: Record<string, string> = {
   "apple-logo": "https://www.apple.com",
   "linear-logo": "https://linear.app",
   "microsoft-logo": "https://www.microsoft.com",
-  "github-logo": "https://github.com",
+  "github-logo": "https://brand.github.com/foundations/logo",
   "spotify-logo": "https://www.spotify.com",
   "slack-logo": "https://slack.com",
   "twitch-logo": "https://www.twitch.tv",
