@@ -319,7 +319,8 @@ export function LogoVariantsDialog({
                             mode={currentMode}
                             background={variantConfig.background}
                             className={
-                              variantConfig.variant === "wordmark"
+                              variantConfig.variant === "wordmark" ||
+                              variantConfig.variant === "lockup"
                                 ? "h-10 w-auto"
                                 : "w-12 h-12"
                             }
@@ -402,7 +403,8 @@ export function LogoVariantsDialog({
                       mode={currentMode}
                       background={variantConfig.background}
                       className={
-                        variantConfig.variant === "wordmark"
+                        variantConfig.variant === "wordmark" ||
+                        variantConfig.variant === "lockup"
                           ? "h-10 w-auto"
                           : "w-12 h-12"
                       }

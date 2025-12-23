@@ -16,8 +16,8 @@ export async function GET(request: NextRequest) {
       pubDateStrategy: "githubLastEdit",
     },
     github: {
-      owner: "your-username",
-      repo: "your-repo",
+      owner: "crafter-station",
+      repo: "elements",
       token: process.env.GITHUB_TOKEN,
     },
   });
