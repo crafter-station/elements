@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slack-logo",
-  "type": "registry:ui",
   "title": "Slack Logo",
   "description": "Slack logo component with brand colors",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Slack logo component with official multi-color brand design.",
-  "categories": ["Communication", "logo", "brand"]
+  "categories": ["Communication", "logo", "brand"],
+  "type": "registry:ui"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "perplexity-logo",
-  "type": "registry:ui",
   "title": "Perplexity Logo",
   "description": "Perplexity logo component with brand teal",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Perplexity logo component with official brand teal color.",
-  "categories": ["AI", "logo", "brand"]
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
 }

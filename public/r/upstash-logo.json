@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "upstash-logo",
-  "type": "registry:ui",
   "title": "Upstash Logo",
   "description": "Upstash logo component with brand green",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Upstash logo component with official brand green color.",
-  "categories": ["Database", "logo", "brand"]
+  "categories": ["Database", "logo", "brand"],
+  "type": "registry:ui"
 }

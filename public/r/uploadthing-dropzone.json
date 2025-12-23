@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "uploadthing-dropzone",
-  "type": "registry:block",
   "title": "UploadThing Dropzone",
   "description": "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
   "dependencies": [
@@ -35,5 +34,6 @@
     "UPLOADTHING_TOKEN": "ut_..."
   },
   "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token.",
-  "categories": ["upload", "file", "storage"]
+  "categories": ["upload", "file", "storage"],
+  "type": "registry:block"
 }

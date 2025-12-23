@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "theme-switcher-button",
-  "type": "registry:ui",
   "title": "Theme Switcher Button",
   "description": "Button-based theme switcher with rotating icons",
   "dependencies": ["next-themes"],
@@ -25,5 +24,6 @@
       "target": "app/theme-switcher-button/page.tsx"
     }
   ],
-  "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Button-based theme switcher with rotating icons."
+  "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Button-based theme switcher with rotating icons.",
+  "type": "registry:ui"
 }

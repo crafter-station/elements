@@ -1,12 +1,12 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "social-media",
-  "type": "registry:block",
   "title": "Social Media & Communication",
   "description": "Social media and communication platforms",
   "dependencies": [],
   "registryDependencies": [
     "@elements/twitter-logo",
+    "@elements/linkedin-logo",
     "@elements/discord-logo",
     "@elements/slack-logo",
     "@elements/twitch-logo",
@@ -14,5 +14,6 @@
   ],
   "files": [],
   "docs": "Collection of social media and communication platform logos. Perfect for social sharing features, community sections, and integration showcases.",
-  "categories": ["logo", "brand", "social", "collection"]
+  "categories": ["logo", "brand", "social", "collection"],
+  "type": "registry:block"
 }

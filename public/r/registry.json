@@ -480,6 +480,36 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "linkedin-logo",
+      "type": "registry:ui",
+      "title": "LinkedIn Logo",
+      "description": "LinkedIn logo component with variants and modes",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/linkedin-logo/components/logos/linkedin.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "LinkedIn logo with 2 base variants (icon, wordmark) and 2 modes (light, dark) = 4 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      "categories": ["Social", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": [
+          "icon-light",
+          "icon-dark",
+          "wordmark-light",
+          "wordmark-dark"
+        ],
+        "variantTypes": {
+          "base": ["icon", "wordmark"],
+          "modes": ["dark", "light"]
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "logos",
       "type": "registry:block",
       "title": "Brand Logos Collection",
@@ -487,6 +517,7 @@
       "registryDependencies": [
         "@elements/apple-logo",
         "@elements/linear-logo",
+        "@elements/linkedin-logo",
         "@elements/microsoft-logo",
         "@elements/github-logo",
         "@elements/spotify-logo",
@@ -858,6 +889,7 @@
       "description": "Social media and communication platforms",
       "registryDependencies": [
         "@elements/twitter-logo",
+        "@elements/linkedin-logo",
         "@elements/discord-logo",
         "@elements/slack-logo",
         "@elements/twitch-logo",

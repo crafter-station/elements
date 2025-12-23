@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "linear-logo",
-  "type": "registry:block",
   "title": "Linear Logo",
   "description": "Linear issue tracking and project management platform logo with multiple variants",
   "dependencies": [],
@@ -29,5 +28,6 @@
     }
   },
   "docs": "Linear logo with 3 base variants (icon, logo, wordmark) and 2 modes (dark, light) = 6 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-  "categories": ["Project Management"]
+  "categories": ["Project Management"],
+  "type": "registry:block"
 }

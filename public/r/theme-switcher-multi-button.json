@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "theme-switcher-multi-button",
-  "type": "registry:ui",
   "title": "Theme Switcher Multi Button",
   "description": "Multi-button theme switcher with system/light/dark options",
   "dependencies": ["next-themes"],
@@ -25,5 +24,6 @@
       "target": "app/theme-switcher-multi-button/page.tsx"
     }
   ],
-  "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Multi-button with system/light/dark options."
+  "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Multi-button with system/light/dark options.",
+  "type": "registry:ui"
 }

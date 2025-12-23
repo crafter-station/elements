@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "claude-logo",
-  "type": "registry:ui",
   "title": "Claude Logo",
   "description": "Claude logo component with brand orange",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Claude logo component with official brand orange color.",
-  "categories": ["AI", "logo", "brand"]
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
 }

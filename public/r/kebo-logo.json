@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "kebo-logo",
-  "type": "registry:ui",
   "title": "Kebo Logo",
   "description": "Kebo logo component with brand purple",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Kebo logo component with official brand purple color.",
-  "categories": ["Development", "logo", "brand"]
+  "categories": ["Development", "logo", "brand"],
+  "type": "registry:ui"
 }

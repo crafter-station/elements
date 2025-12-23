@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "deepseek-logo",
-  "type": "registry:ui",
   "title": "DeepSeek Logo",
   "description": "DeepSeek logo component with brand purple",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "DeepSeek logo component with official brand purple color.",
-  "categories": ["AI", "logo", "brand"]
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "npm-logo",
-  "type": "registry:ui",
   "title": "npm Logo",
   "description": "npm logo component - Node package manager",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "npm logo component for the Node.js package manager. Features the classic red npm wordmark design.",
-  "categories": ["Package Manager", "logo", "brand", "JavaScript", "Node.js"]
+  "categories": ["Package Manager", "logo", "brand", "JavaScript", "Node.js"],
+  "type": "registry:ui"
 }

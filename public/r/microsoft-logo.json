@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "microsoft-logo",
-  "type": "registry:ui",
   "title": "Microsoft Logo",
   "description": "Microsoft logo component with brand colors",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Microsoft logo component with official four-square brand colors.",
-  "categories": ["Software", "logo", "brand"]
+  "categories": ["Software", "logo", "brand"],
+  "type": "registry:ui"
 }

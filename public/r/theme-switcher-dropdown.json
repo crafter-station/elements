@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "theme-switcher-dropdown",
-  "type": "registry:ui",
   "title": "Theme Switcher Dropdown",
   "description": "Dropdown theme switcher with system/light/dark options",
   "dependencies": ["next-themes"],
@@ -25,5 +24,6 @@
       "target": "app/theme-switcher-dropdown/page.tsx"
     }
   ],
-  "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Dropdown with light/dark/system options."
+  "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Dropdown with light/dark/system options.",
+  "type": "registry:ui"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "developer-tools",
-  "type": "registry:block",
   "title": "Developer Tools & Platforms",
   "description": "Development platforms, productivity tools, and workflows",
   "dependencies": [],
@@ -16,5 +15,6 @@
   ],
   "files": [],
   "docs": "Collection of developer tools and platform logos. Ideal for showcasing integrations, tools used, and development workflows.",
-  "categories": ["logo", "brand", "developer", "tools", "collection"]
+  "categories": ["logo", "brand", "developer", "tools", "collection"],
+  "type": "registry:block"
 }

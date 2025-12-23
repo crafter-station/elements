@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "groq-logo",
-  "type": "registry:ui",
   "title": "Groq Logo",
   "description": "Groq logo component with brand colors",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Groq logo component with official brand orange and white colors.",
-  "categories": ["AI", "logo", "brand"]
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
 }

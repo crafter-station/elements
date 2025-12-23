@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "stripe-logo",
-  "type": "registry:ui",
   "title": "Stripe Logo",
   "description": "Stripe logo component with brand purple",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Stripe logo component with official brand purple color.",
-  "categories": ["Payments", "logo", "brand"]
+  "categories": ["Payments", "logo", "brand"],
+  "type": "registry:ui"
 }

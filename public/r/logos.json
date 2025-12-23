@@ -1,13 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "logos",
-  "type": "registry:block",
   "title": "Brand Logos Collection",
   "description": "All popular tech companies and services",
   "dependencies": [],
   "registryDependencies": [
     "@elements/apple-logo",
     "@elements/linear-logo",
+    "@elements/linkedin-logo",
     "@elements/microsoft-logo",
     "@elements/github-logo",
     "@elements/spotify-logo",
@@ -54,5 +54,6 @@
   ],
   "files": [],
   "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use.",
-  "categories": ["logo", "brand"]
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ai-services",
-  "type": "registry:block",
   "title": "AI Services",
   "description": "Major AI service providers and LLM platforms",
   "dependencies": [],
@@ -24,5 +23,6 @@
   ],
   "files": [],
   "docs": "Collection of AI service provider logos including major LLM providers, AI platforms, and machine learning services. Perfect for AI-powered applications and ML dashboards.",
-  "categories": ["logo", "brand", "AI", "collection"]
+  "categories": ["logo", "brand", "AI", "collection"],
+  "type": "registry:block"
 }

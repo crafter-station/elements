@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tech-giants",
-  "type": "registry:block",
   "title": "Tech Giants",
   "description": "Leading technology companies",
   "dependencies": [],
@@ -13,5 +12,6 @@
   ],
   "files": [],
   "docs": "Collection of major technology company logos. Essential for platform integrations, sign-in options, and enterprise partnerships.",
-  "categories": ["logo", "brand", "enterprise", "collection"]
+  "categories": ["logo", "brand", "enterprise", "collection"],
+  "type": "registry:block"
 }

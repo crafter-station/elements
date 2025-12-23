@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pnpm-logo",
-  "type": "registry:ui",
   "title": "pnpm Logo",
   "description": "pnpm logo component - Fast, disk space efficient package manager",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "pnpm logo component for the fast, disk space efficient package manager. Features the distinctive yellow and gray blocks design.",
-  "categories": ["Package Manager", "logo", "brand", "JavaScript", "Node.js"]
+  "categories": ["Package Manager", "logo", "brand", "JavaScript", "Node.js"],
+  "type": "registry:ui"
 }

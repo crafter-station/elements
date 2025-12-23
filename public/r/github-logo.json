@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "github-logo",
-  "type": "registry:ui",
   "title": "GitHub Logo",
   "description": "GitHub logo component with variants and modes",
   "dependencies": [],
@@ -29,5 +28,6 @@
     }
   },
   "docs": "GitHub logo with 3 base variants (invertocat, wordmark, lockup) and 2 modes (light, dark) = 6 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-  "categories": ["Development", "logo", "brand"]
+  "categories": ["Development", "logo", "brand"],
+  "type": "registry:ui"
 }

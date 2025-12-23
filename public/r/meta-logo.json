@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "meta-logo",
-  "type": "registry:ui",
   "title": "Meta Logo",
   "description": "Meta logo component with brand gradient blue",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Meta logo component with official brand gradient blue design.",
-  "categories": ["Social", "logo", "brand"]
+  "categories": ["Social", "logo", "brand"],
+  "type": "registry:ui"
 }

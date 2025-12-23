@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "cloud-infrastructure",
-  "type": "registry:block",
   "title": "Cloud & Infrastructure",
   "description": "Cloud services, infrastructure, and backend platforms",
   "dependencies": [],
@@ -17,5 +16,6 @@
   ],
   "files": [],
   "docs": "Collection of cloud services and infrastructure logos. Perfect for tech stack displays, service integrations, and infrastructure documentation.",
-  "categories": ["logo", "brand", "cloud", "infrastructure", "collection"]
+  "categories": ["logo", "brand", "cloud", "infrastructure", "collection"],
+  "type": "registry:block"
 }

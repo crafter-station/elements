@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "anthropic-logo",
-  "type": "registry:ui",
   "title": "Anthropic Logo",
   "description": "Anthropic logo component with theme-adaptive colors",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Anthropic logo component that adapts to your theme. Uses currentColor to match your design system.",
-  "categories": ["AI", "logo", "brand"]
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
 }

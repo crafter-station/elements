@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "gemini-logo",
-  "type": "registry:ui",
   "title": "Gemini Logo",
   "description": "Gemini logo component with brand gradient colors",
   "dependencies": [],
@@ -14,5 +13,6 @@
     }
   ],
   "docs": "Gemini logo component with official multi-color gradient brand design.",
-  "categories": ["AI", "logo", "brand"]
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
 }
