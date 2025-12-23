@@ -1,9 +1,11 @@
 export function InstagramLogo({
   className,
-  variant = "brand",
+  variant = "icon",
+  mode = "light",
 }: {
   className?: string;
-  variant?: "brand" | "dark" | "light";
+  variant?: "icon" | "brand";
+  mode?: "dark" | "light";
 }) {
   const gradientId = "instagram-gradient";
 
@@ -38,7 +40,7 @@ export function InstagramLogo({
     );
   }
 
-  const fillColor = variant === "dark" ? "#FFFFFF" : "#000000";
+  const fillColor = mode === "dark" ? "#FFFFFF" : "#000000";
 
   return (
     <svg

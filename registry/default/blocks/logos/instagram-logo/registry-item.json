@@ -12,13 +12,14 @@
       "type": "registry:component"
     }
   ],
-  "docs": "Instagram logo with 3 variants (brand gradient, dark, light) for different backgrounds. The brand variant features Instagram's iconic gradient.",
+  "docs": "Instagram logo with 2 base variants (icon, brand) and 2 modes (dark, light) = 4 total combinations. The brand variant features Instagram's iconic gradient.",
   "categories": ["Social", "logo", "brand"],
   "meta": {
     "hasVariants": true,
-    "variants": ["brand", "dark", "light"],
+    "variants": ["icon-dark", "icon-light", "brand-dark", "brand-light"],
     "variantTypes": {
-      "base": ["brand", "dark", "light"]
+      "base": ["icon", "brand"],
+      "modes": ["dark", "light"]
     }
   }
 }
