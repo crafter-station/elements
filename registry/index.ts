@@ -423,6 +423,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "instagram-logo",
+      type: "registry:ui",
+      title: "Instagram Logo",
+      description:
+        "Instagram logo component with brand gradient and monochrome variants",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/instagram-logo/components/logos/instagram.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Instagram logo with 3 variants (brand gradient, dark, light) for different backgrounds. The brand variant features Instagram's iconic gradient.",
+      categories: ["Social", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["brand", "dark", "light"],
+        variantTypes: {
+          base: ["brand", "dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "kebo-logo",
       type: "registry:ui",
       title: "Kebo Logo",
@@ -530,6 +555,7 @@ export const registry = {
         "@elements/linkedin-logo",
         "@elements/microsoft-logo",
         "@elements/github-logo",
+        "@elements/instagram-logo",
         "@elements/spotify-logo",
         "@elements/slack-logo",
         "@elements/twitch-logo",
@@ -885,6 +911,7 @@ export const registry = {
       description: "Social media and communication platforms",
       registryDependencies: [
         "@elements/twitter-logo",
+        "@elements/instagram-logo",
         "@elements/linkedin-logo",
         "@elements/discord-logo",
         "@elements/slack-logo",
