@@ -3,7 +3,7 @@
   "name": "github-logo",
   "type": "registry:ui",
   "title": "GitHub Logo",
-  "description": "GitHub logo component with variants and modes",
+  "description": "GitHub logo component with theme-aware variants",
   "registryDependencies": [],
   "dependencies": [],
   "files": [
@@ -12,21 +12,13 @@
       "type": "registry:component"
     }
   ],
-  "docs": "GitHub logo with 3 base variants (invertocat, wordmark, lockup) and 2 modes (light, dark) = 6 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "docs": "GitHub logo with 3 variants (invertocat, wordmark, lockup). Uses currentColor for automatic theme adaptation.",
   "categories": ["Development", "logo", "brand"],
   "meta": {
     "hasVariants": true,
-    "variants": [
-      "invertocat-light",
-      "invertocat-dark",
-      "wordmark-light",
-      "wordmark-dark",
-      "lockup-light",
-      "lockup-dark"
-    ],
+    "variants": ["invertocat", "wordmark", "lockup"],
     "variantTypes": {
-      "base": ["invertocat", "wordmark", "lockup"],
-      "modes": ["dark", "light"]
+      "base": ["invertocat", "wordmark", "lockup"]
     }
   }
 }

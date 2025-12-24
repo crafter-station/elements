@@ -3,7 +3,7 @@
   "name": "instagram-logo",
   "type": "registry:ui",
   "title": "Instagram Logo",
-  "description": "Instagram logo component with brand gradient and monochrome variants",
+  "description": "Instagram logo component with brand gradient and theme-aware icon",
   "registryDependencies": [],
   "dependencies": [],
   "files": [
@@ -12,14 +12,13 @@
       "type": "registry:component"
     }
   ],
-  "docs": "Instagram logo with 2 base variants (icon, brand) and 2 modes (dark, light) = 4 total combinations. The brand variant features Instagram's iconic gradient.",
+  "docs": "Instagram logo with 2 variants (icon, brand). Icon uses currentColor for theme-awareness, brand features Instagram's iconic gradient.",
   "categories": ["Social", "logo", "brand"],
   "meta": {
     "hasVariants": true,
-    "variants": ["icon-dark", "icon-light", "brand-dark", "brand-light"],
+    "variants": ["icon", "brand"],
     "variantTypes": {
-      "base": ["icon", "brand"],
-      "modes": ["dark", "light"]
+      "base": ["icon", "brand"]
     }
   }
 }

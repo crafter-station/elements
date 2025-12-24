@@ -309,7 +309,7 @@ export const registry = {
       name: "github-logo",
       type: "registry:ui",
       title: "GitHub Logo",
-      description: "GitHub logo component with variants and modes",
+      description: "GitHub logo component with theme-aware variants",
       registryDependencies: [],
       dependencies: [],
       files: [
@@ -318,21 +318,13 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      docs: "GitHub logo with 3 base variants (invertocat, wordmark, lockup) and 2 modes (light, dark) = 6 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      docs: "GitHub logo with 3 variants (invertocat, wordmark, lockup). Uses currentColor for automatic theme adaptation.",
       categories: ["Development", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: [
-          "invertocat-light",
-          "invertocat-dark",
-          "wordmark-light",
-          "wordmark-dark",
-          "lockup-light",
-          "lockup-dark",
-        ],
+        variants: ["invertocat", "wordmark", "lockup"],
         variantTypes: {
           base: ["invertocat", "wordmark", "lockup"],
-          modes: ["dark", "light"],
         },
       },
     },
@@ -427,7 +419,7 @@ export const registry = {
       type: "registry:ui",
       title: "Instagram Logo",
       description:
-        "Instagram logo component with brand gradient and monochrome variants",
+        "Instagram logo component with brand gradient and theme-aware icon",
       registryDependencies: [],
       dependencies: [],
       files: [
@@ -436,14 +428,13 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      docs: "Instagram logo with 2 base variants (icon, brand) and 2 modes (dark, light) = 4 total combinations. The brand variant features Instagram's iconic gradient.",
+      docs: "Instagram logo with 2 variants (icon, brand). Icon uses currentColor for theme-awareness, brand features Instagram's iconic gradient.",
       categories: ["Social", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light", "brand-dark", "brand-light"],
+        variants: ["icon", "brand"],
         variantTypes: {
           base: ["icon", "brand"],
-          modes: ["dark", "light"],
         },
       },
     },
@@ -519,7 +510,7 @@ export const registry = {
       name: "linkedin-logo",
       type: "registry:ui",
       title: "LinkedIn Logo",
-      description: "LinkedIn logo component with variants and modes",
+      description: "LinkedIn logo component with color schemes and variants",
       registryDependencies: [],
       dependencies: [],
       files: [
@@ -528,19 +519,19 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      docs: "LinkedIn logo with 2 base variants (icon, wordmark) and 2 modes (light, dark) = 4 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      docs: "LinkedIn logo with 2 variants (icon, wordmark) and 2 color schemes (brand blue, grayscale). Grayscale uses currentColor for theme-awareness.",
       categories: ["Social", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: [
-          "icon-light",
-          "icon-dark",
-          "wordmark-light",
-          "wordmark-dark",
+          "icon-brand",
+          "icon-grayscale",
+          "wordmark-brand",
+          "wordmark-grayscale",
         ],
         variantTypes: {
           base: ["icon", "wordmark"],
-          modes: ["dark", "light"],
+          colorSchemes: ["brand", "grayscale"],
         },
       },
     },

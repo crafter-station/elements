@@ -3,7 +3,7 @@
   "name": "linkedin-logo",
   "type": "registry:ui",
   "title": "LinkedIn Logo",
-  "description": "LinkedIn logo component with variants and modes",
+  "description": "LinkedIn logo component with color schemes and variants",
   "registryDependencies": [],
   "dependencies": [],
   "files": [
@@ -12,14 +12,19 @@
       "type": "registry:component"
     }
   ],
-  "docs": "LinkedIn logo with 2 base variants (icon, wordmark) and 2 modes (light, dark) = 4 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "docs": "LinkedIn logo with 2 variants (icon, wordmark) and 2 color schemes (brand blue, grayscale). Grayscale uses currentColor for theme-awareness.",
   "categories": ["Social", "logo", "brand"],
   "meta": {
     "hasVariants": true,
-    "variants": ["icon-light", "icon-dark", "wordmark-light", "wordmark-dark"],
+    "variants": [
+      "icon-brand",
+      "icon-grayscale",
+      "wordmark-brand",
+      "wordmark-grayscale"
+    ],
     "variantTypes": {
       "base": ["icon", "wordmark"],
-      "modes": ["dark", "light"]
+      "colorSchemes": ["brand", "grayscale"]
     }
   }
 }

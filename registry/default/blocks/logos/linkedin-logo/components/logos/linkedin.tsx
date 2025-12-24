@@ -1,13 +1,13 @@
 export function LinkedinLogo({
   className,
   variant = "icon",
-  mode = "light",
+  colorScheme = "brand",
 }: {
   className?: string;
   variant?: "icon" | "wordmark";
-  mode?: "dark" | "light";
+  colorScheme?: "brand" | "grayscale";
 }) {
-  const fillColor = mode === "dark" ? "#FFFFFF" : "#0A66C2";
+  const fillColor = colorScheme === "brand" ? "#0A66C2" : "currentColor";
 
   if (variant === "wordmark") {
     return (
