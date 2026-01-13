@@ -6,6 +6,8 @@ import { ComponentPreview } from "@/components/component-preview";
 import { ComponentPreviewItem } from "@/components/component-preview-item";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
+import GitHubContributionsDemo from "@/registry/default/examples/github-contributions-demo";
+import GitHubStarsDemo from "@/registry/default/examples/github-stars-demo";
 // Direct imports from examples
 import PolarSponsorshipDemo from "@/registry/default/examples/polar-sponsorship-demo";
 import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
@@ -39,6 +41,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     UploadThingDropzone: UploadthingDropzoneDemo,
     UploadButtonPreview: UploadthingButtonDemo, // Legacy alias
     UploadDropzonePreview: UploadthingDropzoneDemo, // Legacy alias
+    // GitHub
+    GitHubStars: GitHubStarsDemo,
+    GitHubContributions: GitHubContributionsDemo,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

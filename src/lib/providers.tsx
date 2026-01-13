@@ -5,8 +5,9 @@
 
 import { getProviderMetadata, getProviders } from "@/lib/registry-loader";
 
-// Import pixelart icons
 import { ClerkLogo } from "@/components/clerk-logo";
+// Import pixelart icons
+import { GitHubIcon } from "@/components/icons/github";
 import { GroupIcon } from "@/components/icons/group";
 import { MoonIcon } from "@/components/icons/moon";
 import { TriggerIcon } from "@/components/icons/trigger";
@@ -82,6 +83,13 @@ export function getProvidersData(): Provider[] {
       description:
         "AI-powered theme generator for VS Code, shadcn/ui, terminals and more",
       category: "Theming",
+    },
+    github: {
+      providerLink: "https://github.com",
+      isEnabled: true,
+      displayName: "GitHub",
+      description: "Display GitHub repository statistics with visual charts",
+      category: "Integration",
     },
     vercel: {
       providerLink: "https://vercel.com/ai",
@@ -203,6 +211,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     logos: <GroupIcon className="w-10 h-10" />,
     theme: <MoonIcon className="w-10 h-10" />,
     tinte: <TinteLogo size={40} />,
+    github: <GitHubIcon className="w-10 h-10" />,
   };
 
   return (

@@ -1,0 +1,59 @@
+---
+title: GitHub Contributions
+description: Display contribution activity grid like GitHub's profile
+---
+
+<ComponentPreviewItem
+  componentKey="github-contributions"
+  installUrl="@elements/github-contributions"
+  category="Integration"
+  name="GitHub Contributions"
+>
+  <GitHubContributions />
+</ComponentPreviewItem>
+
+## Overview
+
+A full-stack component that fetches commit activity data for a GitHub repository and displays it as a contribution heatmap grid, similar to GitHub's profile contribution graph.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/github-contributions
+```
+
+## Usage
+
+```tsx
+import { GitHubContributions } from "@/components/elements/github/github-contributions";
+
+export function RepoActivity() {
+  return <GitHubContributions owner="shadcn-ui" repo="ui" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `owner` | `string` | - | GitHub repository owner |
+| `repo` | `string` | - | GitHub repository name |
+| `staticContributions` | `number` | - | Static contributor count (bypasses API) |
+| `staticData` | `number[][]` | - | Static heatmap data (bypasses API) |
+| `className` | `string` | - | Additional CSS classes |
+
+## Environment Variables
+
+For higher API rate limits:
+
+```bash
+GITHUB_TOKEN=your_github_token
+```
+
+## Features
+
+- Fetches real-time contribution data from GitHub API
+- Shows commit activity over last 12 weeks
+- Self-contained with inline heatmap grid visualization
+- Built-in loading and error states
+- Handles GitHub API rate limiting (202 responses) gracefully

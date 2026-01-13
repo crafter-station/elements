@@ -306,6 +306,32 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "github-contributions",
+      type: "registry:block",
+      title: "GitHub Contributions",
+      description: "Display contribution activity grid like GitHub's profile",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/github/github-contributions/components/elements/github-contributions.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/github/github-contributions/routes/layout.tsx",
+          type: "registry:page",
+          target: "app/layout.tsx",
+        },
+        {
+          path: "registry/default/blocks/github/github-contributions/routes/page.tsx",
+          type: "registry:page",
+          target: "app/github-contributions/page.tsx",
+        },
+      ],
+      categories: ["github"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "github-logo",
       type: "registry:ui",
       title: "GitHub Logo",
@@ -327,6 +353,33 @@ export const registry = {
           base: ["invertocat", "wordmark", "lockup"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "github-stars",
+      type: "registry:block",
+      title: "GitHub Stars",
+      description:
+        "Display repository star history with area chart visualization",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/github/github-stars/components/elements/github-stars.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/github/github-stars/routes/layout.tsx",
+          type: "registry:page",
+          target: "app/layout.tsx",
+        },
+        {
+          path: "registry/default/blocks/github/github-stars/routes/page.tsx",
+          type: "registry:page",
+          target: "app/github-stars/page.tsx",
+        },
+      ],
+      categories: ["github"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -544,10 +597,8 @@ export const registry = {
       registryDependencies: [
         "@elements/apple-logo",
         "@elements/linear-logo",
-        "@elements/linkedin-logo",
         "@elements/microsoft-logo",
         "@elements/github-logo",
-        "@elements/instagram-logo",
         "@elements/spotify-logo",
         "@elements/slack-logo",
         "@elements/twitch-logo",
@@ -903,8 +954,6 @@ export const registry = {
       description: "Social media and communication platforms",
       registryDependencies: [
         "@elements/twitter-logo",
-        "@elements/instagram-logo",
-        "@elements/linkedin-logo",
         "@elements/discord-logo",
         "@elements/slack-logo",
         "@elements/twitch-logo",

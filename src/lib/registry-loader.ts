@@ -50,7 +50,7 @@ export function getRegistryItems(): RegistryItem[] {
  * - "apple-logo" -> "logos"
  * - "polar-sponsorship" -> "polar"
  */
-export function getProviderFromName(name: string): string {
+export function getProviderFromName(name: string): string | null {
   // Special case: all logos go to "logos" provider
   if (name.endsWith("-logo")) {
     return "logos";
@@ -69,6 +69,11 @@ export function getProviderFromName(name: string): string {
   // Special case: clerk-middleware should be under clerk
   if (name === "clerk-middleware") {
     return "clerk";
+  }
+
+  // Special case: github components go to "github" provider
+  if (name === "github-stars" || name === "github-contributions") {
+    return "github";
   }
 
   // Extract first part of name (before first hyphen)
@@ -90,7 +95,9 @@ export function getProviders(): string[] {
     }
 
     const provider = getProviderFromName(item.name);
-    providers.add(provider);
+    if (provider) {
+      providers.add(provider);
+    }
   }
 
   return Array.from(providers).sort();
@@ -200,6 +207,13 @@ export function getProviderMetadata(provider: string): {
         "AI-powered theme generator for VS Code, shadcn/ui, terminals and more",
       category: "THEMING",
       brandColor: "#6E78D5",
+    },
+    github: {
+      displayName: "GitHub",
+      description: "Display GitHub repository statistics with visual charts",
+      category: "INTEGRATION",
+      brandColor: "#24292F",
+      darkBrandColor: "#FFFFFF",
     },
   };
 

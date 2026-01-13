@@ -1,0 +1,60 @@
+---
+title: GitHub Stars
+description: Display repository star count with history visualization
+---
+
+<ComponentPreviewItem
+  componentKey="github-stars"
+  installUrl="@elements/github-stars"
+  category="Integration"
+  name="GitHub Stars"
+>
+  <GitHubStars />
+</ComponentPreviewItem>
+
+## Overview
+
+A full-stack component that fetches the star count and star history for a GitHub repository and displays it with an area chart visualization.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/github-stars
+```
+
+## Usage
+
+```tsx
+import { GitHubStars } from "@/components/elements/github/github-stars";
+
+export function RepoStats() {
+  return <GitHubStars owner="shadcn-ui" repo="ui" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `owner` | `string` | - | GitHub repository owner |
+| `repo` | `string` | - | GitHub repository name |
+| `days` | `number` | `30` | Number of days of history to show |
+| `staticStars` | `number` | - | Static star count (bypasses API) |
+| `staticData` | `number[]` | - | Static chart data (bypasses API) |
+| `className` | `string` | - | Additional CSS classes |
+
+## Environment Variables
+
+For higher API rate limits:
+
+```bash
+GITHUB_TOKEN=your_github_token
+```
+
+## Features
+
+- Fetches real-time star count from GitHub API
+- Shows star history over configurable time period
+- Self-contained with inline area chart visualization
+- Built-in loading and error states
+- Handles API rate limiting gracefully

@@ -1,0 +1,81 @@
+---
+title: GitHub
+description: Display GitHub repository statistics with visual charts
+category: Integration
+brandColor: "#24292F"
+---
+
+## Overview
+
+Full-stack components that fetch real-time data from the GitHub API and display it with beautiful visualizations. Each component is independent and can be installed separately.
+
+## Components
+
+### GitHub Stars
+
+Display repository star count with history visualization.
+
+<ComponentPreviewItem
+  componentKey="github-stars"
+  installUrl="@elements/github-stars"
+  category="Integration"
+  name="GitHub Stars"
+>
+  <GitHubStars />
+</ComponentPreviewItem>
+
+### GitHub Contributions
+
+Display contribution activity grid like GitHub's profile.
+
+<ComponentPreviewItem
+  componentKey="github-contributions"
+  installUrl="@elements/github-contributions"
+  category="Integration"
+  name="GitHub Contributions"
+>
+  <GitHubContributions />
+</ComponentPreviewItem>
+
+## Installation
+
+Install any component individually:
+
+```bash
+bunx shadcn@latest add @elements/github-stars
+bunx shadcn@latest add @elements/github-contributions
+```
+
+## Environment Variables
+
+For higher API rate limits, set a GitHub token:
+
+```bash
+GITHUB_TOKEN=your_github_token
+```
+
+Without a token, you're limited to 60 requests/hour. With a token, 5,000 requests/hour.
+
+## Usage
+
+```tsx
+import { GitHubStars } from "@/components/elements/github/github-stars";
+import { GitHubContributions } from "@/components/elements/github/github-contributions";
+
+export function RepoMetrics() {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      <GitHubStars owner="shadcn-ui" repo="ui" />
+      <GitHubContributions owner="shadcn-ui" repo="ui" />
+    </div>
+  );
+}
+```
+
+## Features
+
+- Real-time data from GitHub API
+- Built-in loading and error states
+- Self-contained components with inline chart visualizations
+- Handles API rate limiting gracefully
+- Theme-compatible styling

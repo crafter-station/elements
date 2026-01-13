@@ -7,10 +7,8 @@
   "registryDependencies": [
     "@elements/apple-logo",
     "@elements/linear-logo",
-    "@elements/linkedin-logo",
     "@elements/microsoft-logo",
     "@elements/github-logo",
-    "@elements/instagram-logo",
     "@elements/spotify-logo",
     "@elements/slack-logo",
     "@elements/twitch-logo",

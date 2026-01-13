@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-contributions",
+  "type": "registry:block",
+  "title": "GitHub Contributions",
+  "description": "Display contribution activity grid like GitHub's profile",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/github/github-contributions/components/elements/github-contributions.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/github/github-contributions/routes/layout.tsx",
+      "type": "registry:page",
+      "target": "app/layout.tsx"
+    },
+    {
+      "path": "registry/default/blocks/github/github-contributions/routes/page.tsx",
+      "type": "registry:page",
+      "target": "app/github-contributions/page.tsx"
+    }
+  ],
+  "categories": ["github"]
+}

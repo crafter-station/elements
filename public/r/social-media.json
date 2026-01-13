@@ -6,8 +6,6 @@
   "dependencies": [],
   "registryDependencies": [
     "@elements/twitter-logo",
-    "@elements/instagram-logo",
-    "@elements/linkedin-logo",
     "@elements/discord-logo",
     "@elements/slack-logo",
     "@elements/twitch-logo",
