@@ -106,3 +106,5 @@ export function GithubLogo({
 
   return null;
 }
+
+export { GithubLogo as GitHubLogo };
