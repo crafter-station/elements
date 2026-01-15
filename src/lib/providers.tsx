@@ -34,7 +34,7 @@ export interface Provider {
   href: string;
   elementsCount: number;
   providerLink?: string;
-  status?: "building" | "ready";
+  status?: "building" | "ready" | "beta";
 }
 
 /**
@@ -54,7 +54,7 @@ export function getProvidersData(): Provider[] {
       description?: string;
       category?: string;
       brandColor?: string;
-      status?: "building" | "ready";
+      status?: "building" | "ready" | "beta";
     }
   > = {
     clerk: {
@@ -98,6 +98,7 @@ export function getProvidersData(): Provider[] {
       displayName: "Dev Tools",
       description: "Developer utilities for auditing and debugging your app",
       category: "Dev Tools",
+      status: "beta",
     },
     "ai-elements": {
       isEnabled: true,
@@ -105,6 +106,7 @@ export function getProvidersData(): Provider[] {
       description:
         "Building blocks for AI-powered applications with Vercel AI SDK",
       category: "AI",
+      status: "beta",
     },
     vercel: {
       providerLink: "https://vercel.com/ai",

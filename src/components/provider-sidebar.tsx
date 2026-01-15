@@ -182,30 +182,45 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
 
                 {/* Badge or expand icon */}
                 {provider.isEnabled ? (
-                  provider.status === "building" ? (
-                    <Badge
-                      variant="outline"
-                      className="h-5 px-1.5 text-[10px] font-normal border-[#6C47FF]/50 text-[#6C47FF]"
-                      style={{
-                        borderColor: isActive ? "#6C47FF" : "#6C47FF80",
-                        backgroundColor: isActive ? "#6C47FF20" : "transparent",
-                      }}
-                    >
-                      Building
-                    </Badge>
-                  ) : hasComponents ? (
-                    <button
-                      type="button"
-                      onClick={(e) => toggleProvider(providerSlug, e)}
-                      className="p-0.5 hover:bg-primary/10 rounded transition-colors"
-                    >
-                      {isExpanded ? (
-                        <ChevronDown className="w-4 h-4" />
-                      ) : (
-                        <ChevronRight className="w-4 h-4" />
-                      )}
-                    </button>
-                  ) : null
+                  <>
+                    {provider.status === "building" && (
+                      <Badge
+                        variant="outline"
+                        className="h-5 px-1.5 text-[10px] font-normal border-[#6C47FF]/50 text-[#6C47FF]"
+                        style={{
+                          borderColor: isActive ? "#6C47FF" : "#6C47FF80",
+                          backgroundColor: isActive ? "#6C47FF20" : "transparent",
+                        }}
+                      >
+                        Building
+                      </Badge>
+                    )}
+                    {provider.status === "beta" && (
+                      <Badge
+                        variant="outline"
+                        className="h-5 px-1.5 text-[10px] font-normal border-blue-500/50 text-blue-500"
+                        style={{
+                          borderColor: isActive ? "#3B82F6" : "#3B82F680",
+                          backgroundColor: isActive ? "#3B82F620" : "transparent",
+                        }}
+                      >
+                        Beta
+                      </Badge>
+                    )}
+                    {hasComponents && (
+                      <button
+                        type="button"
+                        onClick={(e) => toggleProvider(providerSlug, e)}
+                        className="p-0.5 hover:bg-primary/10 rounded transition-colors"
+                      >
+                        {isExpanded ? (
+                          <ChevronDown className="w-4 h-4" />
+                        ) : (
+                          <ChevronRight className="w-4 h-4" />
+                        )}
+                      </button>
+                    )}
+                  </>
                 ) : (
                   <Badge
                     variant="outline"
@@ -250,6 +265,18 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
                               <span className="flex-1 truncate">
                                 {subMeta.displayName}
                               </span>
+                              {subMeta.status === "beta" && (
+                                <Badge
+                                  variant="outline"
+                                  className="h-4 px-1 text-[9px] font-normal border-blue-500/50 text-blue-500"
+                                  style={{
+                                    borderColor: isSubActive ? "#3B82F6" : "#3B82F680",
+                                    backgroundColor: isSubActive ? "#3B82F620" : "transparent",
+                                  }}
+                                >
+                                  Beta
+                                </Badge>
+                              )}
                               <button
                                 type="button"
                                 onClick={(e) =>

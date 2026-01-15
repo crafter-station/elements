@@ -15,7 +15,7 @@ interface ComponentCardProps {
   elementsCount?: number;
   providerLink?: string;
   trackingSource?: string;
-  status?: "building" | "ready";
+  status?: "building" | "ready" | "beta";
 }
 
 export function ComponentCard({
@@ -32,6 +32,7 @@ export function ComponentCard({
   status,
 }: ComponentCardProps) {
   const isBuilding = status === "building";
+  const isBeta = status === "beta";
 
   const patternStyle =
     brandColor && isEnabled
@@ -71,15 +72,17 @@ export function ComponentCard({
           </div>
           <Badge
             variant={
-              isBuilding ? "outline" : isEnabled ? "default" : "secondary"
+              isBuilding || isBeta ? "outline" : isEnabled ? "default" : "secondary"
             }
             className={cn(
               "text-xs",
               isBuilding &&
                 "border-[#6C47FF]/50 text-[#6C47FF] bg-[#6C47FF]/10",
+              isBeta &&
+                "border-blue-500/50 text-blue-500 bg-blue-500/10",
             )}
           >
-            {isBuilding ? "Building" : isEnabled ? "Available" : "Coming Soon"}
+            {isBuilding ? "Building" : isBeta ? "Beta" : isEnabled ? "Available" : "Coming Soon"}
           </Badge>
         </div>
 

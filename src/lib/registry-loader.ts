@@ -424,21 +424,25 @@ export const AI_ELEMENTS_SUBCATEGORIES = {
     displayName: "Chat",
     description: "Core conversational UI components",
     order: 1,
+    status: null,
   },
   agentic: {
     displayName: "Agentic",
     description: "Tool use and reasoning components",
     order: 2,
+    status: null,
   },
   "multi-agent": {
     displayName: "Multi-Agent",
     description: "Agent orchestration components",
     order: 3,
+    status: null,
   },
   devtools: {
     displayName: "Devtools",
     description: "Debugging and inspection tools",
     order: 4,
+    status: null,
   },
 } as const;
 
@@ -462,12 +466,14 @@ export function getComponentsBySubcategory(
 export function getSubcategoryMetadata(subcategory: string): {
   displayName: string;
   description: string;
+  status?: "beta" | null;
 } {
   const meta = AI_ELEMENTS_SUBCATEGORIES[subcategory as AIElementsSubcategory];
   return (
     meta || {
       displayName: subcategory.charAt(0).toUpperCase() + subcategory.slice(1),
       description: `${subcategory} components`,
+      status: null,
     }
   );
 }
