@@ -767,6 +767,42 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "og-image-explorer",
+      type: "registry:block",
+      title: "OG Image Explorer",
+      description:
+        "A dev tool to audit and preview Open Graph images from all routes in your app. Visual gallery with status indicators for broken images.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/media/og-image-explorer/components/elements/og-image-explorer.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/media/og-image-explorer/components/elements/og-category-section.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/media/og-image-explorer/components/elements/og-image-card.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/media/og-image-explorer/routes/layout.tsx",
+          type: "registry:page",
+          target: "app/og-explorer/layout.tsx",
+        },
+        {
+          path: "registry/default/blocks/media/og-image-explorer/routes/page.tsx",
+          type: "registry:page",
+          target: "app/og-explorer/page.tsx",
+        },
+      ],
+      docs: "Configure the `routes` prop with your app's routes and OG image URLs. The component auto-groups by route category and shows green/red borders for loaded/broken images.",
+      categories: ["media", "seo", "dev-tools"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "openai-logo",
       type: "registry:ui",
       title: "OpenAI Logo",

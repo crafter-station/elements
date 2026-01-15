@@ -1,0 +1,57 @@
+---
+title: Dev Tools
+description: Developer utilities for auditing and debugging your app
+category: Dev Tools
+brandColor: "#F97316"
+darkBrandColor: "#FB923C"
+---
+
+## Overview
+
+Developer-focused tools for auditing, debugging, and improving your application before deployment. Each component helps you catch issues early in development.
+
+## Components
+
+### OG Image Explorer
+
+Audit and preview Open Graph images across all routes in your app.
+
+<ComponentPreviewItem
+  componentKey="og-image-explorer"
+  installUrl="@elements/og-image-explorer"
+  category="Dev Tools"
+  name="OG Image Explorer"
+>
+  <OgImageExplorer />
+</ComponentPreviewItem>
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/og-image-explorer
+```
+
+## Usage
+
+```tsx
+import { OgImageExplorer } from "@/components/elements/devtools/og-image-explorer";
+
+const routes = [
+  { path: "/", title: "Home", ogImageUrl: "/opengraph-image.png" },
+  { path: "/blog", title: "Blog", ogImageUrl: "/blog/opengraph-image.png" },
+  { path: "/docs", title: "Docs", ogImageUrl: "/docs/opengraph-image.png" },
+];
+
+export function OgAuditPage() {
+  return <OgImageExplorer routes={routes} />;
+}
+```
+
+## Features
+
+- Visual gallery of all OG images across routes
+- Status indicators: green (loaded), red (broken), gray (loading)
+- Auto-grouping by route category
+- "View more" pagination for large categories
+- Click to open full-size image in new tab
+- Catch broken OG images before deployment

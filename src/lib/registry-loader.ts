@@ -76,6 +76,11 @@ export function getProviderFromName(name: string): string | null {
     return "github";
   }
 
+  // Special case: og-image-explorer goes to "devtools" provider
+  if (name === "og-image-explorer") {
+    return "devtools";
+  }
+
   // Extract first part of name (before first hyphen)
   const parts = name.split("-");
   return parts[0] || name;
@@ -214,6 +219,13 @@ export function getProviderMetadata(provider: string): {
       category: "INTEGRATION",
       brandColor: "#24292F",
       darkBrandColor: "#FFFFFF",
+    },
+    devtools: {
+      displayName: "Dev Tools",
+      description: "Developer utilities for auditing and debugging your app",
+      category: "DEV TOOLS",
+      brandColor: "#F97316",
+      darkBrandColor: "#FB923C",
     },
   };
 

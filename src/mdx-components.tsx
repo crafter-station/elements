@@ -8,6 +8,7 @@ import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
 import GitHubContributionsDemo from "@/registry/default/examples/github-contributions-demo";
 import GitHubStarsDemo from "@/registry/default/examples/github-stars-demo";
+import OgImageExplorerDemo from "@/registry/default/examples/og-image-explorer-demo";
 // Direct imports from examples
 import PolarSponsorshipDemo from "@/registry/default/examples/polar-sponsorship-demo";
 import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
@@ -44,6 +45,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // GitHub
     GitHubStars: GitHubStarsDemo,
     GitHubContributions: GitHubContributionsDemo,
+    // Dev Tools
+    OgImageExplorer: OgImageExplorerDemo,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

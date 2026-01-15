@@ -3,7 +3,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { track } from "@vercel/analytics";
-import { Check, ChevronDown, Download, Filter } from "lucide-react";
+import {
+  Check,
+  ChevronDown,
+  Copy,
+  Download,
+  Filter,
+  Sparkles,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import { renderToStaticMarkup } from "react-dom/server";
 import { toast } from "sonner";
@@ -100,6 +107,7 @@ export function LogosClient({
     useState<LogoWithComponent | null>(null);
   const [packageManager, setPackageManager] = useState("bunx");
   const [copied, setCopied] = useState(false);
+  const [skillCopied, setSkillCopied] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("individual");
   const [selectedBundles, setSelectedBundles] = useState<Set<string>>(
     new Set(),
@@ -325,6 +333,26 @@ export function LogosClient({
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy command:", err);
+      toast.error("Failed to copy command");
+    }
+  };
+
+  const handleCopySkillCommand = async () => {
+    const command = "npx add-skill crafter-station/elements --skill tech-logos";
+    track("AI Skill Command Copy", {
+      skill: "tech-logos",
+      source: "logos_page_hero",
+    });
+
+    try {
+      await navigator.clipboard.writeText(command);
+      setSkillCopied(true);
+      toast.success("AI Skill command copied!", {
+        description: "Paste in your terminal to install the skill",
+      });
+      setTimeout(() => setSkillCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy skill command:", err);
       toast.error("Failed to copy command");
     }
   };
@@ -654,6 +682,28 @@ export function LogosClient({
                   the ones you need or Install all {logos.length} logos at once
                 </p>
               </div>
+
+              {/* AI Skill Card - Compact */}
+              <button
+                type="button"
+                onClick={handleCopySkillCommand}
+                className="group mt-3 inline-flex items-center gap-2.5 px-3 py-2 rounded-md border border-dashed border-primary/50 bg-primary/5 hover:bg-primary/10 hover:border-primary transition-all duration-200"
+              >
+                <Sparkles className="size-3.5 text-primary flex-shrink-0" />
+                <span className="text-[11px] font-medium text-primary uppercase tracking-wide">
+                  AI Skill
+                </span>
+                <code className="text-[11px] text-muted-foreground font-mono">
+                  npx add-skill crafter-station/elements --skill tech-logos
+                </code>
+                <div className="flex items-center justify-center size-6 rounded bg-background/80 border border-border/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors ml-1">
+                  {skillCopied ? (
+                    <Check className="size-3 text-primary" />
+                  ) : (
+                    <Copy className="size-3" />
+                  )}
+                </div>
+              </button>
             </div>
           </div>
         </div>

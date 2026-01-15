@@ -91,6 +91,12 @@ export function getProvidersData(): Provider[] {
       description: "Display GitHub repository statistics with visual charts",
       category: "Integration",
     },
+    devtools: {
+      isEnabled: true,
+      displayName: "Dev Tools",
+      description: "Developer utilities for auditing and debugging your app",
+      category: "Dev Tools",
+    },
     vercel: {
       providerLink: "https://vercel.com/ai",
       isEnabled: false,
@@ -212,6 +218,20 @@ export function ProviderIcon({ provider }: { provider: string }) {
     theme: <MoonIcon className="w-10 h-10" />,
     tinte: <TinteLogo size={40} />,
     github: <GitHubIcon className="w-10 h-10" />,
+    devtools: (
+      <svg
+        className="w-10 h-10"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <title>Dev Tools</title>
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+      </svg>
+    ),
   };
 
   return (
