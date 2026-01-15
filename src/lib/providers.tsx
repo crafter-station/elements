@@ -3,6 +3,8 @@
  * Replaces hardcoded provider definitions
  */
 
+import { Sparkles } from "lucide-react";
+
 import { getProviderMetadata, getProviders } from "@/lib/registry-loader";
 
 import { ClerkLogo } from "@/components/clerk-logo";
@@ -15,7 +17,6 @@ import { UploadThingLogo } from "@/components/icons/upload-thing";
 import TinteLogo from "@/components/tinte-logo";
 // Import logo components from registry
 import { BetterAuthLogo } from "@/components/ui/logos/better-auth";
-import { OpenAILogo } from "@/components/ui/logos/openai";
 import { PolarLogo } from "@/components/ui/logos/polar";
 import { ResendLogo } from "@/components/ui/logos/resend";
 import { StripeLogo } from "@/components/ui/logos/stripe";
@@ -225,7 +226,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     theme: <MoonIcon className="w-10 h-10" />,
     tinte: <TinteLogo size={40} />,
     github: <GitHubIcon className="w-10 h-10" />,
-    ai: <OpenAILogo className="w-10 h-10" />,
+    ai: <Sparkles className="w-10 h-10" />,
     devtools: (
       <svg
         className="w-10 h-10"
