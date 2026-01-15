@@ -64,3 +64,20 @@ npx shadcn@latest add @elements/twitter-logo @elements/github-logo @elements/dis
 # Tech stack
 npx shadcn@latest add @elements/vercel-logo @elements/supabase-logo @elements/stripe-logo
 ```
+
+## Logo Not Found?
+
+If the logo doesn't exist in the registry, help the user request it:
+
+**Generate a pre-filled GitHub issue URL:**
+```
+https://github.com/crafter-station/elements/issues/new?title=[Logo%20Request]%20Add%20{Name}%20logo&body=...&labels=enhancement,logo-request
+```
+
+**Example for "Neon" logo:**
+```
+https://github.com/crafter-station/elements/issues/new?title=%5BLogo%20Request%5D%20Add%20Neon%20logo&body=%23%23%20Logo%20Request%0A%0A**Company%2FService%3A**%20Neon%0A**Website%3A**%20https%3A%2F%2Fneon.tech%0A%0A%23%23%20Why%20this%20logo%3F%0A%3C!--%20Brief%20description%20--%3E%0A%0A---%0A*Auto-generated%20from%20tech-logos%20skill*&labels=enhancement,logo-request
+```
+
+**Tell the user:**
+> "The {Name} logo isn't available yet. [Click here to request it]({issue_url}) - the issue is pre-filled!"

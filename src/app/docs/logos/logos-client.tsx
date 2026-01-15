@@ -9,13 +9,14 @@ import {
   Copy,
   Download,
   Filter,
+  Plus,
   Sparkles,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { renderToStaticMarkup } from "react-dom/server";
 import { toast } from "sonner";
 
-import { getBrandUrl } from "@/lib/brand-urls";
+import { getBrandUrl, getRequestLogoIssueUrl } from "@/lib/brand-urls";
 import { loadLogoComponent } from "@/lib/component-loader";
 
 import {
@@ -684,26 +685,43 @@ export function LogosClient({
               </div>
 
               {/* AI Skill Card - Compact */}
-              <button
-                type="button"
-                onClick={handleCopySkillCommand}
-                className="group mt-3 inline-flex items-center gap-2.5 px-3 py-2 rounded-md border border-dashed border-primary/50 bg-primary/5 hover:bg-primary/10 hover:border-primary transition-all duration-200"
-              >
-                <Sparkles className="size-3.5 text-primary flex-shrink-0" />
-                <span className="text-[11px] font-medium text-primary uppercase tracking-wide">
-                  AI Skill
-                </span>
-                <code className="text-[11px] text-muted-foreground font-mono">
-                  npx add-skill crafter-station/elements --skill tech-logos
-                </code>
-                <div className="flex items-center justify-center size-6 rounded bg-background/80 border border-border/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors ml-1">
-                  {skillCopied ? (
-                    <Check className="size-3 text-primary" />
-                  ) : (
-                    <Copy className="size-3" />
-                  )}
-                </div>
-              </button>
+              <div className="flex flex-wrap items-center gap-3 mt-3">
+                <button
+                  type="button"
+                  onClick={handleCopySkillCommand}
+                  className="group inline-flex items-center gap-2.5 px-3 py-2 rounded-md border border-dashed border-primary/50 bg-primary/5 hover:bg-primary/10 hover:border-primary transition-all duration-200"
+                >
+                  <Sparkles className="size-3.5 text-primary flex-shrink-0" />
+                  <span className="text-[11px] font-medium text-primary uppercase tracking-wide">
+                    AI Skill
+                  </span>
+                  <code className="text-[11px] text-muted-foreground font-mono">
+                    npx add-skill crafter-station/elements --skill tech-logos
+                  </code>
+                  <div className="flex items-center justify-center size-6 rounded bg-background/80 border border-border/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors ml-1">
+                    {skillCopied ? (
+                      <Check className="size-3 text-primary" />
+                    ) : (
+                      <Copy className="size-3" />
+                    )}
+                  </div>
+                </button>
+
+                <a
+                  href={getRequestLogoIssueUrl("your-logo")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    track("Request Logo Click", {
+                      source: "logos_page_hero",
+                    });
+                  }}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Plus className="size-3" />
+                  Request a Logo
+                </a>
+              </div>
             </div>
           </div>
         </div>

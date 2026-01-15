@@ -51,3 +51,34 @@ export const brandUrls: Record<string, string> = {
 export function getBrandUrl(logoName: string): string | undefined {
   return brandUrls[logoName];
 }
+
+/**
+ * Generate a GitHub issue URL to request a missing logo
+ * Pre-fills title, body, and labels for better UX
+ */
+export function getRequestLogoIssueUrl(logoName: string): string {
+  const cleanName = logoName.replace(/-logo$/, "");
+  const displayName = cleanName
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  const title = encodeURIComponent(`[Logo Request] Add ${displayName} logo`);
+  const body = encodeURIComponent(`## Logo Request
+
+**Company/Service:** ${displayName}
+**Website:** <!-- Add official website URL -->
+
+## Why this logo?
+<!-- Brief description of why this logo would be useful -->
+
+## Reference
+<!-- Link to official brand assets/guidelines if available -->
+
+---
+*This issue was auto-generated from tryelements.dev*`);
+
+  const labels = encodeURIComponent("enhancement,logo-request");
+
+  return `https://github.com/crafter-station/elements/issues/new?title=${title}&body=${body}&labels=${labels}`;
+}
