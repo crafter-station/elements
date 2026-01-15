@@ -6,6 +6,7 @@ import { ComponentPreview } from "@/components/component-preview";
 import { ComponentPreviewItem } from "@/components/component-preview-item";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
+import AiModelSelectorDemo from "@/registry/default/examples/ai-model-selector-demo";
 import GitHubContributionsDemo from "@/registry/default/examples/github-contributions-demo";
 import GitHubStarsDemo from "@/registry/default/examples/github-stars-demo";
 import OgImageExplorerDemo from "@/registry/default/examples/og-image-explorer-demo";
@@ -47,6 +48,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     GitHubContributions: GitHubContributionsDemo,
     // Dev Tools
     OgImageExplorer: OgImageExplorerDemo,
+    // AI Components
+    AiModelSelector: AiModelSelectorDemo,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

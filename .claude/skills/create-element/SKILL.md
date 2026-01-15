@@ -160,6 +160,7 @@ bun run dev
 - [ ] Hydration-safe if using theme/client state
 - [ ] `bun run build:registry` succeeds
 - [ ] Component renders correctly in dev
+- [ ] **If new category**: Provider grouping configured (see "Creating New Categories" section)
 
 ## Commands
 
@@ -256,3 +257,188 @@ export function DialogTrigger({ className, ...props }: DialogPrimitive.DialogTri
 - Don't skip hydration handling for theme-dependent components
 - Don't use `any` types - properly type props
 - Don't forget to run `build:registry` after changes
+
+## Creating New Categories (Provider Grouping)
+
+When creating a **new category of components** (not just a new component in an existing category), you must configure the provider system for proper landing page display. Otherwise, each component will appear as a separate "Coming Soon" card.
+
+### When This Applies
+
+- Creating a new integration (e.g., `charts/`, `payments/`, `analytics/`)
+- Adding multiple related components that should be grouped together
+- The category doesn't exist in the current provider list
+
+### Two-File Setup Required
+
+#### 1. `src/lib/registry-loader.ts`
+
+**Add grouping logic** in `getProviderFromName()` (~line 53):
+
+```typescript
+// Special case: chart components go to "charts" provider
+if (
+  name === "area-chart" ||
+  name === "bar-chart-vertical" ||
+  name === "heatmap-grid" ||
+  name === "growth-stats"
+) {
+  return "charts";
+}
+```
+
+**Add provider metadata** in `getProviderMetadata()` (~line 156):
+
+```typescript
+charts: {
+  displayName: "Charts",
+  description: "Data visualization primitives - area charts, heatmaps, bar charts",
+  category: "DATA VIZ",
+  brandColor: "#14B8A6",
+},
+```
+
+#### 2. `src/lib/providers.tsx`
+
+**Add provider config** in `providerConfig` (~line 46):
+
+```typescript
+charts: {
+  isEnabled: true,
+  displayName: "Charts",
+  description: "Data visualization primitives - area charts, heatmaps, bar charts",
+  category: "Data Viz",
+},
+```
+
+**Add provider icon** in `ProviderIcon()` (~line 196):
+
+```typescript
+charts: <ChartIcon className="w-10 h-10" />,
+```
+
+Create the icon at `src/components/icons/{provider}.tsx` if needed.
+
+### Provider Metadata Fields
+
+| Field | Example | Purpose |
+|-------|---------|---------|
+| `displayName` | "Charts" | Landing page card title |
+| `description` | "Data visualization..." | Card description |
+| `category` | "DATA VIZ" | Badge shown on card |
+| `brandColor` | "#14B8A6" | Diagonal hatch pattern color |
+
+### Existing Providers (Reference)
+
+| Provider Key | Display Name | Category |
+|--------------|--------------|----------|
+| `clerk` | Clerk | USER MGMT |
+| `polar` | Polar | MONETIZATION |
+| `theme` | Theme Switcher | UI |
+| `logos` | Brand Logos | BRAND |
+| `uploadthing` | UploadThing | FILES |
+| `tinte` | Tinte | THEMING |
+| `charts` | Charts | DATA VIZ |
+
+### Naming Convention
+
+The default extraction uses the first part before hyphen:
+- `clerk-sign-in` → `clerk`
+- `polar-checkout` → `polar`
+
+Add special cases when:
+- Components share a category but have different prefixes (e.g., `area-chart`, `heatmap-grid`)
+- You want a custom provider name (e.g., `theme-switcher-*` → `theme`)
+
+### MDX Documentation Setup
+
+New categories also need MDX documentation files for the docs pages to render properly:
+
+#### 1. Create Demo Components
+
+For each component, create a demo in `/registry/default/examples/{component}-demo.tsx`:
+
+```tsx
+"use client";
+
+import { MyComponent } from "@/registry/default/blocks/{category}/{component}/components/elements/{component}";
+
+export default function MyComponentDemo() {
+  return (
+    <div className="flex items-center justify-center p-4">
+      <MyComponent />
+    </div>
+  );
+}
+```
+
+#### 2. Register in MDX Components
+
+Add imports and mappings in `/src/mdx-components.tsx`:
+
+```tsx
+// Add import
+import MyComponentDemo from "@/registry/default/examples/my-component-demo";
+
+// Add to getMDXComponents return object
+MyComponent: MyComponentDemo,
+```
+
+#### 3. Create Provider MDX
+
+Create `/src/content/providers/{provider}.mdx`:
+
+```mdx
+---
+title: My Provider
+description: Description of the category
+category: CATEGORY TAG
+brandColor: "#hexcolor"
+---
+
+## Overview
+
+Brief description.
+
+## Components
+
+### Component Name
+
+<ComponentPreviewItem
+  componentKey="component-name"
+  installUrl="@elements/component-name"
+  category="Category"
+  name="Component Name"
+>
+  <ComponentName />
+</ComponentPreviewItem>
+```
+
+#### 4. Create Component MDX Files
+
+Create `/src/content/components/{provider}/{component}.mdx` for each component:
+
+```mdx
+---
+title: Component Name
+description: Brief description
+---
+
+<ComponentPreviewItem
+  componentKey="component-name"
+  installUrl="@elements/component-name"
+  category="Category"
+  name="Component Name"
+>
+  <ComponentName />
+</ComponentPreviewItem>
+
+## Overview
+
+## Installation
+
+## Usage
+
+## Props
+
+## Features
+```

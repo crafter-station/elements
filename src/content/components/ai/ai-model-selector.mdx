@@ -1,0 +1,77 @@
+---
+title: AI Model Selector
+description: A searchable combobox for selecting AI models from multiple providers
+---
+
+<ComponentPreviewItem
+  componentKey="ai-model-selector"
+  installUrl="@elements/ai-model-selector"
+  category="AI"
+  name="AI Model Selector"
+>
+  <AiModelSelector />
+</ComponentPreviewItem>
+
+## Overview
+
+A fully functional AI model selector with 22+ popular models from OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Cohere, and Meta. Returns `provider/model-id` format compatible with Vercel AI SDK.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/ai-model-selector
+```
+
+## Usage
+
+```tsx
+import { AiModelSelector } from "@/components/elements/ai/ai-model-selector";
+import { useState } from "react";
+
+export function ModelPicker() {
+  const [model, setModel] = useState("");
+
+  return (
+    <AiModelSelector
+      value={model}
+      onValueChange={setModel}
+      placeholder="Select a model..."
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Controlled value |
+| `onValueChange` | `(value: string) => void` | - | Callback when value changes |
+| `models` | `Model[]` | `DEFAULT_MODELS` | Custom model list |
+| `placeholder` | `string` | `"Select a model..."` | Placeholder text |
+| `className` | `string` | - | Additional CSS classes |
+| `disabled` | `boolean` | `false` | Disable the selector |
+
+## Custom Models
+
+```tsx
+import { AiModelSelector, type Model } from "@/components/elements/ai/ai-model-selector";
+
+const customModels: Model[] = [
+  { id: "openai/gpt-4o", name: "GPT-4o", provider: "openai", description: "Multimodal" },
+  { id: "anthropic/claude-sonnet-4", name: "Claude Sonnet 4", provider: "anthropic" },
+];
+
+export function CustomSelector() {
+  return <AiModelSelector models={customModels} />;
+}
+```
+
+## Features
+
+- Searchable combobox with fuzzy matching
+- Provider logos from Elements registry
+- Model grouping by provider
+- Returns `provider/model-id` format
+- Controlled and uncontrolled modes
+- Keyboard navigation support

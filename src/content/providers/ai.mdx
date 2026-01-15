@@ -1,0 +1,56 @@
+---
+title: AI Components
+description: AI model selectors and utilities for Vercel AI SDK
+category: AI
+brandColor: "#8B5CF6"
+---
+
+## Overview
+
+Components for building AI-powered applications with the Vercel AI SDK. Select models from popular providers with beautiful, searchable interfaces.
+
+## Components
+
+### AI Model Selector
+
+A searchable combobox for selecting AI models from multiple providers.
+
+<ComponentPreviewItem
+  componentKey="ai-model-selector"
+  installUrl="@elements/ai-model-selector"
+  category="AI"
+  name="AI Model Selector"
+>
+  <AiModelSelector />
+</ComponentPreviewItem>
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/ai-model-selector
+```
+
+## Usage
+
+```tsx
+import { AiModelSelector } from "@/components/elements/ai/ai-model-selector";
+
+export function ModelPicker() {
+  const [model, setModel] = useState("");
+
+  return (
+    <AiModelSelector
+      value={model}
+      onValueChange={setModel}
+    />
+  );
+}
+```
+
+## Features
+
+- 22+ popular models from 9 providers
+- Provider logos (OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Cohere, Meta)
+- Searchable combobox with model grouping
+- Returns `provider/model-id` format compatible with Vercel AI SDK
+- Custom models via the `models` prop

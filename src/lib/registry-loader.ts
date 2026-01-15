@@ -81,6 +81,11 @@ export function getProviderFromName(name: string): string | null {
     return "devtools";
   }
 
+  // Special case: ai components go to "ai" provider
+  if (name === "ai-model-selector") {
+    return "ai";
+  }
+
   // Extract first part of name (before first hyphen)
   const parts = name.split("-");
   return parts[0] || name;
@@ -226,6 +231,13 @@ export function getProviderMetadata(provider: string): {
       category: "DEV TOOLS",
       brandColor: "#F97316",
       darkBrandColor: "#FB923C",
+    },
+    ai: {
+      displayName: "AI Components",
+      description: "AI model selectors and utilities for Vercel AI SDK",
+      category: "AI",
+      brandColor: "#8B5CF6",
+      darkBrandColor: "#A78BFA",
     },
   };
 

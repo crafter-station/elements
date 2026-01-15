@@ -31,5 +31,5 @@
     "**/*.tsx",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "registry/default/blocks/**/*"]
+  "exclude": ["node_modules", "registry/default/blocks/**/*", "scripts/**/*"]
 }

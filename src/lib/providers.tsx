@@ -15,6 +15,7 @@ import { UploadThingLogo } from "@/components/icons/upload-thing";
 import TinteLogo from "@/components/tinte-logo";
 // Import logo components from registry
 import { BetterAuthLogo } from "@/components/ui/logos/better-auth";
+import { OpenAILogo } from "@/components/ui/logos/openai";
 import { PolarLogo } from "@/components/ui/logos/polar";
 import { ResendLogo } from "@/components/ui/logos/resend";
 import { StripeLogo } from "@/components/ui/logos/stripe";
@@ -96,6 +97,12 @@ export function getProvidersData(): Provider[] {
       displayName: "Dev Tools",
       description: "Developer utilities for auditing and debugging your app",
       category: "Dev Tools",
+    },
+    ai: {
+      isEnabled: true,
+      displayName: "AI Components",
+      description: "AI model selectors and utilities for Vercel AI SDK",
+      category: "AI",
     },
     vercel: {
       providerLink: "https://vercel.com/ai",
@@ -218,6 +225,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     theme: <MoonIcon className="w-10 h-10" />,
     tinte: <TinteLogo size={40} />,
     github: <GitHubIcon className="w-10 h-10" />,
+    ai: <OpenAILogo className="w-10 h-10" />,
     devtools: (
       <svg
         className="w-10 h-10"

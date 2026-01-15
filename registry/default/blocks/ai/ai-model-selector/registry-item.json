@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-model-selector",
+  "type": "registry:ui",
+  "title": "AI Model Selector",
+  "description": "A functional AI model selector with provider logos and popular models from Vercel AI Gateway. Features searchable combobox, provider icons, and model grouping.",
+  "registryDependencies": [
+    "button",
+    "command",
+    "popover",
+    "openai-logo",
+    "anthropic-logo",
+    "gemini-logo",
+    "xai-logo",
+    "deepseek-logo",
+    "mistral-logo",
+    "groq-logo",
+    "cohere-logo",
+    "meta-logo"
+  ],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-model-selector/components/elements/ai-model-selector.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Fully functional AI model selector with 22+ popular models from OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Cohere, and Meta. Supports custom models via the models prop. Returns provider/model-id format compatible with Vercel AI SDK.",
+  "categories": ["ai", "form", "selector"]
+}
