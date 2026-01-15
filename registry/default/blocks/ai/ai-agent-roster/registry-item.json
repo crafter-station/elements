@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-roster",
+  "subcategory": "multi-agent",
+  "type": "registry:ui",
+  "title": "AI Agent Roster",
+  "description": "Display a directory of AI agents with status indicators, match patterns, and selection support. Supports grid and list layouts for multi-agent orchestration UIs.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-agent-roster/components/elements/ai-agent-roster.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for agent directories. Sub-components: AiAgentRoster, AiAgentRosterHeader, AiAgentRosterContent, AiAgentCard, AiAgentRosterEmpty. Agent statuses: active, idle, busy, offline.",
+  "categories": ["ai"]
+}

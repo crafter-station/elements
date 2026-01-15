@@ -1,13 +1,13 @@
 ---
 title: AI Components
-description: AI model selectors and utilities for Vercel AI SDK
+description: Building blocks for AI-powered applications with Vercel AI SDK
 category: AI
 brandColor: "#8B5CF6"
 ---
 
 ## Overview
 
-Components for building AI-powered applications with the Vercel AI SDK. Select models from popular providers with beautiful, searchable interfaces.
+Components for building AI-powered applications. Includes model selectors, chat interfaces, streaming text displays, and utility components for building conversational AI experiences.
 
 ## Components
 
@@ -24,33 +24,480 @@ A searchable combobox for selecting AI models from multiple providers.
   <AiModelSelector />
 </ComponentPreviewItem>
 
+### AI Chat Input
+
+Expandable textarea with send button and keyboard shortcuts.
+
+<ComponentPreviewItem
+  componentKey="ai-chat-input"
+  installUrl="@elements/ai-chat-input"
+  category="AI"
+  name="AI Chat Input"
+>
+  <AiChatInput />
+</ComponentPreviewItem>
+
+### AI Message Bubble
+
+Chat message component with user/assistant variants and markdown support.
+
+<ComponentPreviewItem
+  componentKey="ai-message-bubble"
+  installUrl="@elements/ai-message-bubble"
+  category="AI"
+  name="AI Message Bubble"
+>
+  <AiMessageBubble />
+</ComponentPreviewItem>
+
+### AI Streaming Text
+
+Animated streaming text display with cursor animation.
+
+<ComponentPreviewItem
+  componentKey="ai-streaming-text"
+  installUrl="@elements/ai-streaming-text"
+  category="AI"
+  name="AI Streaming Text"
+>
+  <AiStreamingText />
+</ComponentPreviewItem>
+
+### AI Thinking Indicator
+
+Loading indicator for AI processing with multiple variants.
+
+<ComponentPreviewItem
+  componentKey="ai-thinking-indicator"
+  installUrl="@elements/ai-thinking-indicator"
+  category="AI"
+  name="AI Thinking Indicator"
+>
+  <AiThinkingIndicator />
+</ComponentPreviewItem>
+
+### AI Response Actions
+
+Action buttons for AI responses including copy, regenerate, and feedback.
+
+<ComponentPreviewItem
+  componentKey="ai-response-actions"
+  installUrl="@elements/ai-response-actions"
+  category="AI"
+  name="AI Response Actions"
+>
+  <AiResponseActions />
+</ComponentPreviewItem>
+
+### AI Token Counter
+
+Token count with progress visualization and color states.
+
+<ComponentPreviewItem
+  componentKey="ai-token-counter"
+  installUrl="@elements/ai-token-counter"
+  category="AI"
+  name="AI Token Counter"
+>
+  <AiTokenCounter />
+</ComponentPreviewItem>
+
+### AI Temperature Slider
+
+Temperature slider with preset labels (Precise, Balanced, Creative, Wild).
+
+<ComponentPreviewItem
+  componentKey="ai-temperature-slider"
+  installUrl="@elements/ai-temperature-slider"
+  category="AI"
+  name="AI Temperature Slider"
+>
+  <AiTemperatureSlider />
+</ComponentPreviewItem>
+
+## Agentic AI Components
+
+Components for building agentic AI applications with tool use, reasoning visualization, and human-in-the-loop workflows.
+
+### AI Tool Call
+
+Display tool/function invocations with status indicators.
+
+<ComponentPreviewItem
+  componentKey="ai-tool-call"
+  installUrl="@elements/ai-tool-call"
+  category="AI"
+  name="AI Tool Call"
+>
+  <AiToolCall />
+</ComponentPreviewItem>
+
+### AI Confirmation
+
+Human-in-the-loop approval workflow with accept/reject states.
+
+<ComponentPreviewItem
+  componentKey="ai-confirmation"
+  installUrl="@elements/ai-confirmation"
+  category="AI"
+  name="AI Confirmation"
+>
+  <AiConfirmation />
+</ComponentPreviewItem>
+
+### AI Task List
+
+Workflow progress display with status indicators.
+
+<ComponentPreviewItem
+  componentKey="ai-task-list"
+  installUrl="@elements/ai-task-list"
+  category="AI"
+  name="AI Task List"
+>
+  <AiTaskList />
+</ComponentPreviewItem>
+
+### AI Reasoning
+
+Collapsible reasoning content with streaming awareness.
+
+<ComponentPreviewItem
+  componentKey="ai-reasoning"
+  installUrl="@elements/ai-reasoning"
+  category="AI"
+  name="AI Reasoning"
+>
+  <AiReasoning />
+</ComponentPreviewItem>
+
+### AI Chain of Thought
+
+Step-by-step reasoning visualization.
+
+<ComponentPreviewItem
+  componentKey="ai-chain-of-thought"
+  installUrl="@elements/ai-chain-of-thought"
+  category="AI"
+  name="AI Chain of Thought"
+>
+  <AiChainOfThought />
+</ComponentPreviewItem>
+
+### AI Plan
+
+AI-generated execution plan display with streaming support.
+
+<ComponentPreviewItem
+  componentKey="ai-plan"
+  installUrl="@elements/ai-plan"
+  category="AI"
+  name="AI Plan"
+>
+  <AiPlan />
+</ComponentPreviewItem>
+
+### AI Artifact
+
+Container for AI-generated content with action buttons.
+
+<ComponentPreviewItem
+  componentKey="ai-artifact"
+  installUrl="@elements/ai-artifact"
+  category="AI"
+  name="AI Artifact"
+>
+  <AiArtifact />
+</ComponentPreviewItem>
+
+### AI Sources
+
+Collapsible citations/sources viewer with favicons.
+
+<ComponentPreviewItem
+  componentKey="ai-sources"
+  installUrl="@elements/ai-sources"
+  category="AI"
+  name="AI Sources"
+>
+  <AiSources />
+</ComponentPreviewItem>
+
+## AI Devtools Components
+
+Developer utilities for debugging and inspecting AI applications.
+
+### AI Request Inspector
+
+Display raw AI request/response data with collapsible sections and JSON syntax highlighting.
+
+<ComponentPreviewItem
+  componentKey="ai-request-inspector"
+  installUrl="@elements/ai-request-inspector"
+  category="AI"
+  name="AI Request Inspector"
+>
+  <AiRequestInspector />
+</ComponentPreviewItem>
+
+### AI Stream Debugger
+
+Real-time visualization of streaming chunks with timing and event data.
+
+<ComponentPreviewItem
+  componentKey="ai-stream-debugger"
+  installUrl="@elements/ai-stream-debugger"
+  category="AI"
+  name="AI Stream Debugger"
+>
+  <AiStreamDebugger />
+</ComponentPreviewItem>
+
+### AI Latency Meter
+
+Display API response timing with visual breakdown of TTFB, streaming, and total time.
+
+<ComponentPreviewItem
+  componentKey="ai-latency-meter"
+  installUrl="@elements/ai-latency-meter"
+  category="AI"
+  name="AI Latency Meter"
+>
+  <AiLatencyMeter />
+</ComponentPreviewItem>
+
+### AI Token Viewer
+
+Character-by-character token visualization with highlighting and count stats.
+
+<ComponentPreviewItem
+  componentKey="ai-token-viewer"
+  installUrl="@elements/ai-token-viewer"
+  category="AI"
+  name="AI Token Viewer"
+>
+  <AiTokenViewer />
+</ComponentPreviewItem>
+
+### AI Tool Inspector
+
+Detailed view of tool definitions, parameters, and execution history.
+
+<ComponentPreviewItem
+  componentKey="ai-tool-inspector"
+  installUrl="@elements/ai-tool-inspector"
+  category="AI"
+  name="AI Tool Inspector"
+>
+  <AiToolInspector />
+</ComponentPreviewItem>
+
+### AI Prompt Diff
+
+Side-by-side comparison of prompt versions with highlighted changes.
+
+<ComponentPreviewItem
+  componentKey="ai-prompt-diff"
+  installUrl="@elements/ai-prompt-diff"
+  category="AI"
+  name="AI Prompt Diff"
+>
+  <AiPromptDiff />
+</ComponentPreviewItem>
+
+### AI Conversation Tree
+
+Visualize conversation history as a tree with branching for edited messages.
+
+<ComponentPreviewItem
+  componentKey="ai-conversation-tree"
+  installUrl="@elements/ai-conversation-tree"
+  category="AI"
+  name="AI Conversation Tree"
+>
+  <AiConversationTree />
+</ComponentPreviewItem>
+
+### AI Model Info
+
+Display model capabilities, context window, and pricing information.
+
+<ComponentPreviewItem
+  componentKey="ai-model-info"
+  installUrl="@elements/ai-model-info"
+  category="AI"
+  name="AI Model Info"
+>
+  <AiModelInfo />
+</ComponentPreviewItem>
+
+## Multi-Agent Components
+
+Components for building and visualizing multi-agent AI systems.
+
+### AI Agent Status
+
+Display current agent handling a request with status indicators and handoff visualization.
+
+<ComponentPreviewItem
+  componentKey="ai-agent-status"
+  installUrl="@elements/ai-agent-status"
+  category="AI"
+  name="AI Agent Status"
+>
+  <AiAgentStatus />
+</ComponentPreviewItem>
+
+### AI Handoff Chain
+
+Visualize the sequence of agent handoffs in a multi-agent workflow.
+
+<ComponentPreviewItem
+  componentKey="ai-handoff-chain"
+  installUrl="@elements/ai-handoff-chain"
+  category="AI"
+  name="AI Handoff Chain"
+>
+  <AiHandoffChain />
+</ComponentPreviewItem>
+
+### AI Pipeline
+
+Display multi-step AI processing pipeline with stage progress indicators.
+
+<ComponentPreviewItem
+  componentKey="ai-pipeline"
+  installUrl="@elements/ai-pipeline"
+  category="AI"
+  name="AI Pipeline"
+>
+  <AiPipeline />
+</ComponentPreviewItem>
+
+### AI Memory Viewer
+
+Display and manage agent memory/context with CRUD operations.
+
+<ComponentPreviewItem
+  componentKey="ai-memory-viewer"
+  installUrl="@elements/ai-memory-viewer"
+  category="AI"
+  name="AI Memory Viewer"
+>
+  <AiMemoryViewer />
+</ComponentPreviewItem>
+
+### AI Agent Roster
+
+Grid display of available agents with capabilities and selection.
+
+<ComponentPreviewItem
+  componentKey="ai-agent-roster"
+  installUrl="@elements/ai-agent-roster"
+  category="AI"
+  name="AI Agent Roster"
+>
+  <AiAgentRoster />
+</ComponentPreviewItem>
+
+### AI Guardrails
+
+Display active guardrails and safety constraints with violation indicators.
+
+<ComponentPreviewItem
+  componentKey="ai-guardrails"
+  installUrl="@elements/ai-guardrails"
+  category="AI"
+  name="AI Guardrails"
+>
+  <AiGuardrails />
+</ComponentPreviewItem>
+
+### AI Agent Context
+
+Display the context/state being passed between agents.
+
+<ComponentPreviewItem
+  componentKey="ai-agent-context"
+  installUrl="@elements/ai-agent-context"
+  category="AI"
+  name="AI Agent Context"
+>
+  <AiAgentContext />
+</ComponentPreviewItem>
+
+### AI Routing Indicator
+
+Show which agent will handle a request based on routing rules.
+
+<ComponentPreviewItem
+  componentKey="ai-routing-indicator"
+  installUrl="@elements/ai-routing-indicator"
+  category="AI"
+  name="AI Routing Indicator"
+>
+  <AiRoutingIndicator />
+</ComponentPreviewItem>
+
 ## Installation
 
 ```bash
+# Core AI Components
 bunx shadcn@latest add @elements/ai-model-selector
-```
+bunx shadcn@latest add @elements/ai-chat-input
+bunx shadcn@latest add @elements/ai-message-bubble
+bunx shadcn@latest add @elements/ai-streaming-text
+bunx shadcn@latest add @elements/ai-thinking-indicator
+bunx shadcn@latest add @elements/ai-response-actions
+bunx shadcn@latest add @elements/ai-token-counter
+bunx shadcn@latest add @elements/ai-temperature-slider
 
-## Usage
+# Agentic AI Components
+bunx shadcn@latest add @elements/ai-tool-call
+bunx shadcn@latest add @elements/ai-confirmation
+bunx shadcn@latest add @elements/ai-task-list
+bunx shadcn@latest add @elements/ai-reasoning
+bunx shadcn@latest add @elements/ai-chain-of-thought
+bunx shadcn@latest add @elements/ai-plan
+bunx shadcn@latest add @elements/ai-artifact
+bunx shadcn@latest add @elements/ai-sources
 
-```tsx
-import { AiModelSelector } from "@/components/elements/ai/ai-model-selector";
+# AI Devtools Components
+bunx shadcn@latest add @elements/ai-request-inspector
+bunx shadcn@latest add @elements/ai-stream-debugger
+bunx shadcn@latest add @elements/ai-latency-meter
+bunx shadcn@latest add @elements/ai-token-viewer
+bunx shadcn@latest add @elements/ai-tool-inspector
+bunx shadcn@latest add @elements/ai-prompt-diff
+bunx shadcn@latest add @elements/ai-conversation-tree
+bunx shadcn@latest add @elements/ai-model-info
 
-export function ModelPicker() {
-  const [model, setModel] = useState("");
-
-  return (
-    <AiModelSelector
-      value={model}
-      onValueChange={setModel}
-    />
-  );
-}
+# Multi-Agent Components
+bunx shadcn@latest add @elements/ai-agent-status
+bunx shadcn@latest add @elements/ai-handoff-chain
+bunx shadcn@latest add @elements/ai-pipeline
+bunx shadcn@latest add @elements/ai-memory-viewer
+bunx shadcn@latest add @elements/ai-agent-roster
+bunx shadcn@latest add @elements/ai-guardrails
+bunx shadcn@latest add @elements/ai-agent-context
+bunx shadcn@latest add @elements/ai-routing-indicator
 ```
 
 ## Features
 
+- Compatible with Vercel AI SDK
 - 22+ popular models from 9 providers
-- Provider logos (OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Cohere, Meta)
-- Searchable combobox with model grouping
-- Returns `provider/model-id` format compatible with Vercel AI SDK
-- Custom models via the `models` prop
+- Streaming text with cursor animation
+- Chat message components with role variants
+- Token counting with progress visualization
+- Temperature control with preset values
+- Tool call display with status tracking
+- Human-in-the-loop approval workflows
+- Reasoning and chain-of-thought visualization
+- Plan generation with streaming support
+- Artifact containers for generated content
+- Source citations with favicons
+- AI debugging and inspection tools
+- Multi-agent orchestration visualization
+- Agent handoff and routing display
+- Memory and context management

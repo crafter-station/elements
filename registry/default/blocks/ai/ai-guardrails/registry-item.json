@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "guardrails",
+  "subcategory": "multi-agent",
+  "type": "registry:ui",
+  "title": "AI Guardrails",
+  "description": "Display content moderation and safety check results with blocked/modified/approved states, before/after comparison, and override actions for AI safety workflows.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-guardrails/components/elements/ai-guardrails.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for guardrail displays. Sub-components: AiGuardrails, AiGuardrailsHeader, AiGuardrailsContent, AiGuardrailCheck, AiGuardrailDiff, AiGuardrailsEmpty. Check statuses: blocked, modified, approved, pending.",
+  "categories": ["ai"]
+}

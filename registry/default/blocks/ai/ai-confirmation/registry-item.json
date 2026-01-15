@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confirmation",
+  "subcategory": "agentic",
+  "type": "registry:ui",
+  "title": "AI Confirmation",
+  "description": "Human-in-the-loop tool approval workflow with accept/reject states for agentic AI applications.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-confirmation/components/elements/ai-confirmation.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for tool approval workflows. States: approval-requested, approval-responded, output-available, output-denied.",
+  "categories": ["ai"]
+}

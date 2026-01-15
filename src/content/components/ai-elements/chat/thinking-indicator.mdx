@@ -1,0 +1,61 @@
+---
+title: Thinking Indicator
+description: Loading indicator for AI processing with multiple variants
+---
+
+<ComponentPreviewItem
+  componentKey="thinking-indicator"
+  installUrl="@elements/thinking-indicator"
+  category="AI"
+  name="Thinking Indicator"
+>
+  <ThinkingIndicator />
+</ComponentPreviewItem>
+
+## Overview
+
+A loading indicator component for AI processing states. Multiple animation variants to match your design system.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/thinking-indicator
+```
+
+## Usage
+
+```tsx
+import { ThinkingIndicator } from "@/components/elements/ai-elements/chat/thinking-indicator";
+
+export function LoadingState() {
+  return (
+    <ThinkingIndicator
+      variant="dots"
+      message="Thinking"
+      showLabel
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"dots" \| "pulse" \| "bounce"` | `"dots"` | Animation variant |
+| `message` | `string` | `"Thinking"` | Loading message |
+| `showLabel` | `boolean` | `true` | Show the message label |
+| `className` | `string` | - | Additional CSS classes |
+
+## Variants
+
+- **dots**: Three animated dots
+- **pulse**: Pulsing circle animation
+- **bounce**: Bouncing dots animation
+
+## Features
+
+- Multiple animation variants
+- Customizable loading message
+- Compact mode without label
+- Accessible loading states

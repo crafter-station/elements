@@ -1,0 +1,73 @@
+---
+title: Code Diff Viewer
+description: Side-by-side or unified diff view with syntax highlighting
+---
+
+<ComponentPreviewItem
+  componentKey="code-diff-viewer"
+  installUrl="@elements/code-diff-viewer"
+  category="Dev Tools"
+  name="Code Diff Viewer"
+>
+  <CodeDiffViewer />
+</ComponentPreviewItem>
+
+## Overview
+
+A code diff viewer component with Shiki syntax highlighting. Supports both unified and split (side-by-side) view modes with line numbers and addition/deletion highlighting.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/code-diff-viewer
+```
+
+## Usage
+
+```tsx
+import { CodeDiffViewer } from "@/components/elements/devtools/code-diff-viewer";
+
+const oldCode = `function greet(name) {
+  console.log("Hello " + name);
+}`;
+
+const newCode = `function greet(name: string) {
+  console.log(\`Hello \${name}!\`);
+}`;
+
+export function DiffExample() {
+  return (
+    <CodeDiffViewer
+      oldCode={oldCode}
+      newCode={newCode}
+      language="typescript"
+      mode="unified"
+      showLineNumbers
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `oldCode` | `string` | - | Original code content |
+| `newCode` | `string` | - | Modified code content |
+| `language` | `string` | `"typescript"` | Programming language for highlighting |
+| `mode` | `"unified" \| "split"` | `"unified"` | Diff view mode |
+| `showLineNumbers` | `boolean` | `true` | Show line numbers |
+| `className` | `string` | - | Additional CSS classes |
+
+## Modes
+
+- **Unified**: Shows changes inline with + and - prefixes
+- **Split**: Side-by-side comparison of old and new code
+
+## Features
+
+- Shiki syntax highlighting
+- Unified or split view modes
+- Line numbers with old/new mapping
+- Color-coded additions and deletions
+- Responsive layout

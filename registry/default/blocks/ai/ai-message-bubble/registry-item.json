@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "message-bubble",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Message Bubble",
+  "description": "Chat message component with user/assistant variants and copy functionality",
+  "registryDependencies": ["button"],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-message-bubble/components/elements/ai-message-bubble.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Role-based chat bubbles with avatars, timestamps, and copy-on-hover for AI responses.",
+  "categories": ["ai"]
+}

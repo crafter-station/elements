@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "prompt-diff",
+  "subcategory": "devtools",
+  "type": "registry:ui",
+  "title": "AI Prompt Diff",
+  "description": "Compare system prompts with side-by-side or unified diff views. Shows added/removed line highlighting, line numbers, and copy buttons. Essential for prompt engineering and version tracking.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-prompt-diff/components/elements/ai-prompt-diff.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A compound component for comparing prompts. Supports unified and side-by-side diff views with LCS-based diff algorithm. Use AiPromptDiff as root with AiPromptDiffHeader, AiPromptDiffViewToggle, AiPromptDiffContent, and AiPromptDiffCopyButton sub-components.",
+  "categories": ["ai"]
+}

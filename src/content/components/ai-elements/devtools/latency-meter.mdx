@@ -1,0 +1,73 @@
+---
+title: Latency Meter
+description: Display API response timing with visual breakdown of TTFB, streaming, and total time
+---
+
+<ComponentPreviewItem
+  componentKey="latency-meter"
+  installUrl="@elements/latency-meter"
+  category="AI"
+  name="Latency Meter"
+>
+  <LatencyMeter />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for visualizing AI response latency with color-coded performance indicators. Shows time to first byte (TTFB) and total duration with animated progress bars. Supports compact (inline badge) and expanded (full bar chart) variants.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/latency-meter
+```
+
+## Usage
+
+```tsx
+import {
+  LatencyMeter,
+  LatencyMeterBar,
+  LatencyMeterStats,
+} from "@/components/elements/ai-elements/devtools/latency-meter";
+
+export function LatencyMeterExample() {
+  return (
+    <LatencyMeter ttfb={450} total={2100} status="complete">
+      <LatencyMeterBar />
+      <LatencyMeterStats />
+    </LatencyMeter>
+  );
+}
+```
+
+## Props
+
+### LatencyMeter
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `ttfb` | `number` | - | Time to first byte in milliseconds |
+| `total` | `number` | - | Total request duration in milliseconds |
+| `status` | `"loading" \| "complete"` | `"complete"` | Current request status |
+| `variant` | `"compact" \| "expanded"` | `"expanded"` | Display variant |
+
+### Performance Levels
+
+```typescript
+// Color coding based on total duration
+const levels = {
+  fast: total < 1000,     // Green
+  moderate: total < 3000, // Yellow
+  slow: total >= 3000,    // Red
+};
+```
+
+## Features
+
+- Visual progress bar showing TTFB vs streaming time
+- Color-coded performance indicators (fast/moderate/slow)
+- Compact inline badge variant for tight spaces
+- Expanded bar chart variant with detailed breakdown
+- Loading animation during active requests
+- TTFB and total duration display

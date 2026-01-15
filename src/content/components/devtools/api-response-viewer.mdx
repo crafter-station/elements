@@ -1,0 +1,100 @@
+---
+title: API Response Viewer
+description: HTTP response viewer with status, headers, body, and timing tabs
+---
+
+<ComponentPreviewItem
+  componentKey="api-response-viewer"
+  installUrl="@elements/api-response-viewer"
+  category="Dev Tools"
+  name="API Response Viewer"
+>
+  <ApiResponseViewer />
+</ComponentPreviewItem>
+
+## Overview
+
+A comprehensive HTTP response viewer with tabbed interface for body, headers, and timing information. Features status badges, collapsible JSON body, and timing visualization.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/api-response-viewer
+```
+
+## Usage
+
+```tsx
+import { ApiResponseViewer } from "@/components/elements/devtools/api-response-viewer";
+
+const response = {
+  status: 200,
+  statusText: "OK",
+  headers: {
+    "content-type": "application/json",
+    "x-request-id": "abc123"
+  },
+  body: {
+    data: { id: 1, name: "Example" },
+    meta: { total: 1 }
+  },
+  timing: {
+    dns: 10,
+    connect: 25,
+    ttfb: 150,
+    download: 15,
+    total: 200
+  }
+};
+
+export function ResponseExample() {
+  return (
+    <ApiResponseViewer
+      response={response}
+      defaultTab="body"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `response` | `ApiResponse` | - | Response object to display |
+| `defaultTab` | `"body" \| "headers" \| "timing"` | `"body"` | Initially active tab |
+| `className` | `string` | - | Additional CSS classes |
+
+## Response Object
+
+```typescript
+interface ApiResponse {
+  status: number;
+  statusText?: string;
+  headers?: Record<string, string>;
+  body?: unknown;
+  timing?: {
+    dns?: number;
+    connect?: number;
+    ttfb?: number;
+    download?: number;
+    total: number;
+  };
+}
+```
+
+## Status Colors
+
+- **1xx**: Blue (informational)
+- **2xx**: Green (success)
+- **3xx**: Yellow (redirect)
+- **4xx**: Orange (client error)
+- **5xx**: Red (server error)
+
+## Features
+
+- Color-coded status badges
+- Collapsible JSON body viewer
+- Headers table view
+- Timing breakdown with visual bar
+- Tab-based navigation

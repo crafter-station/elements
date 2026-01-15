@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "request-inspector",
+  "subcategory": "devtools",
+  "type": "registry:ui",
+  "title": "AI Request Inspector",
+  "description": "Display raw AI request/response data with collapsible sections, JSON syntax highlighting, copy buttons, and status code badges for debugging API calls.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-request-inspector/components/elements/ai-request-inspector.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for inspecting AI API requests. Features collapsible request/response sections, JSON formatting with copy-to-clipboard, HTTP method and URL display, status code badges with color coding (green: 2xx, yellow: 3xx, red: 4xx/5xx), duration and timestamp display.",
+  "categories": ["ai"]
+}

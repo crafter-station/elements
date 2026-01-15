@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pipeline",
+  "subcategory": "multi-agent",
+  "type": "registry:ui",
+  "title": "AI Pipeline",
+  "description": "Multi-stage workflow visualization with horizontal or vertical layout, stage status indicators, progress tracking, and expandable stage details.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-pipeline/components/elements/ai-pipeline.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for pipeline visualization. Orientations: horizontal, vertical. Stage states: pending, active, completed, error. Features progress bar, animated connectors, expandable stage details, and compact variant.",
+  "categories": ["ai"]
+}

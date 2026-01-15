@@ -6,9 +6,13 @@ import { ArrowRight } from "lucide-react";
 
 import { ProviderIcon } from "@/lib/providers";
 import {
+  AI_ELEMENTS_SUBCATEGORIES,
+  type AIElementsSubcategory,
   getComponentsByProvider,
+  getComponentsBySubcategory,
   getProviderMetadata,
   getProviders,
+  getSubcategoryMetadata,
 } from "@/lib/registry-loader";
 
 import { ScrambleText } from "@/components/scramble-text";
@@ -96,12 +100,10 @@ export default async function ProviderPage(props: ProviderPageProps) {
   const params = await props.params;
   const { provider } = params;
 
-  // Redirect logos to its special page
   if (provider === "logos") {
     notFound();
   }
 
-  // Get provider metadata
   const metadata = getProviderMetadata(provider);
   const components = getComponentsByProvider(provider);
 
@@ -109,20 +111,22 @@ export default async function ProviderPage(props: ProviderPageProps) {
     notFound();
   }
 
+  const isAIElements = provider === "ai-elements";
+  const subcategories = isAIElements
+    ? (Object.keys(AI_ELEMENTS_SUBCATEGORIES) as AIElementsSubcategory[])
+    : [];
+
   return (
     <div className="flex-1 w-full">
-      {/* Compact Hero Section */}
       <div className="border-b border-border border-dotted">
         <div className="px-4 sm:px-6 md:px-8 py-8 md:py-10">
           <div className="max-w-6xl space-y-4">
-            {/* Category Label */}
             <div className="flex items-center gap-2">
               <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                 {metadata.category}
               </span>
             </div>
 
-            {/* Title with Icon */}
             <div className="flex items-center gap-3">
               <div className="w-7 h-7 shrink-0 flex items-center justify-center">
                 <ProviderIcon provider={provider} />
@@ -135,7 +139,6 @@ export default async function ProviderPage(props: ProviderPageProps) {
               </h1>
             </div>
 
-            {/* Description */}
             <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
               {metadata.description}
             </p>
@@ -143,41 +146,86 @@ export default async function ProviderPage(props: ProviderPageProps) {
         </div>
       </div>
 
-      {/* Elements Grid */}
       <div className="px-4 sm:px-6 md:px-8 py-8">
         <div className="max-w-6xl">
-          <div className="mb-6">
-            <h2 className="text-base font-medium mb-1">
-              Elements ({components.length})
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Browse all available elements for {metadata.displayName}
-            </p>
-          </div>
+          {isAIElements ? (
+            <>
+              <div className="mb-6">
+                <h2 className="text-base font-medium mb-1">
+                  Categories ({subcategories.length})
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Browse AI components by category
+                </p>
+              </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-            {components.map((component) => (
-              <Link
-                key={component.name}
-                href={`/docs/${provider}/${component.name}`}
-                aria-label={`View ${component.title}`}
-                className="flex items-center justify-between gap-2 rounded-md border bg-card p-3 outline-none transition-colors hover:bg-accent focus-visible:bg-accent"
-              >
-                <div className="flex min-w-0 flex-col">
-                  <span className="truncate font-medium">
-                    {component.title}
-                  </span>
-                  <span className="text-muted-foreground text-xs">
-                    {component.name}
-                  </span>
-                </div>
-                <ArrowRight
-                  className="size-5 shrink-0 text-muted-foreground"
-                  aria-hidden="true"
-                />
-              </Link>
-            ))}
-          </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {subcategories.map((subcategory) => {
+                  const subMeta = getSubcategoryMetadata(subcategory);
+                  const subComponents = getComponentsBySubcategory(subcategory);
+                  return (
+                    <Link
+                      key={subcategory}
+                      href={`/docs/${provider}/${subcategory}`}
+                      aria-label={`View ${subMeta.displayName}`}
+                      className="flex flex-col gap-2 rounded-md border bg-card p-4 outline-none transition-colors hover:bg-accent focus-visible:bg-accent"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium text-lg">
+                          {subMeta.displayName}
+                        </span>
+                        <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                          {subComponents.length} elements
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {subMeta.description}
+                      </p>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
+                        <span>View components</span>
+                        <ArrowRight className="size-3" aria-hidden="true" />
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="mb-6">
+                <h2 className="text-base font-medium mb-1">
+                  Elements ({components.length})
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Browse all available elements for {metadata.displayName}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+                {components.map((component) => (
+                  <Link
+                    key={component.name}
+                    href={`/docs/${provider}/${component.name}`}
+                    aria-label={`View ${component.title}`}
+                    className="flex items-center justify-between gap-2 rounded-md border bg-card p-3 outline-none transition-colors hover:bg-accent focus-visible:bg-accent"
+                  >
+                    <div className="flex min-w-0 flex-col">
+                      <span className="truncate font-medium">
+                        {component.title}
+                      </span>
+                      <span className="text-muted-foreground text-xs">
+                        {component.name}
+                      </span>
+                    </div>
+                    <ArrowRight
+                      className="size-5 shrink-0 text-muted-foreground"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

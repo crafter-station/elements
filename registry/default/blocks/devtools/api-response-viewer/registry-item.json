@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "api-response-viewer",
+  "type": "registry:ui",
+  "title": "API Response Viewer",
+  "description": "HTTP response viewer with tabbed Body, Headers, and Timing display",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/devtools/api-response-viewer/components/elements/api-response-viewer.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Status badge with color-coded HTTP codes, collapsible JSON body, headers table, and timing waterfall.",
+  "categories": ["devtools"]
+}

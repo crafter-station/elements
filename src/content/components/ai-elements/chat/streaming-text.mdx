@@ -1,0 +1,60 @@
+---
+title: Streaming Text
+description: Animated streaming text display with cursor animation
+---
+
+<ComponentPreviewItem
+  componentKey="streaming-text"
+  installUrl="@elements/streaming-text"
+  category="AI"
+  name="Streaming Text"
+>
+  <StreamingText />
+</ComponentPreviewItem>
+
+## Overview
+
+An animated text component that simulates streaming AI responses. Displays text character by character or word by word with a blinking cursor.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/streaming-text
+```
+
+## Usage
+
+```tsx
+import { StreamingText } from "@/components/elements/ai-elements/chat/streaming-text";
+
+export function StreamingResponse() {
+  return (
+    <StreamingText
+      text="This text will stream in character by character..."
+      speed={30}
+      showCursor
+      onComplete={() => console.log("Done!")}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `text` | `string` | - | Text to stream |
+| `speed` | `number` | `30` | Milliseconds per character/word |
+| `mode` | `"char" \| "word"` | `"char"` | Stream by character or word |
+| `showCursor` | `boolean` | `true` | Show blinking cursor |
+| `onComplete` | `() => void` | - | Callback when streaming completes |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Character-by-character streaming
+- Word-by-word streaming mode
+- Configurable speed
+- Blinking cursor animation
+- Completion callback
+- Supports streamdown integration

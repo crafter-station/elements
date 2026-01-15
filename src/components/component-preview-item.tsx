@@ -172,8 +172,8 @@ export function ComponentPreviewItem({
             />
           </div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center px-4">
-            <div className="w-full max-w-none flex justify-center items-center">
+          <div className="w-full h-full overflow-auto px-4 py-4">
+            <div className="w-full min-h-full max-w-none flex justify-center items-center">
               {componentNode as ReactNode}
             </div>
           </div>

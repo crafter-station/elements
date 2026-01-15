@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "json-viewer",
+  "type": "registry:ui",
+  "title": "JSON Viewer",
+  "description": "Collapsible JSON tree viewer with syntax highlighting, search, and copy path",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/devtools/json-viewer/components/elements/json-viewer.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Collapsible tree view with type-based coloring, search filter, and copy JSONPath on hover.",
+  "categories": ["devtools"]
+}

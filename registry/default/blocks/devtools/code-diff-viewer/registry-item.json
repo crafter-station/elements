@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-diff-viewer",
+  "type": "registry:ui",
+  "title": "Code Diff Viewer",
+  "description": "Side-by-side or unified diff view with syntax highlighting via Shiki",
+  "registryDependencies": [],
+  "dependencies": ["shiki"],
+  "files": [
+    {
+      "path": "registry/default/blocks/devtools/code-diff-viewer/components/elements/code-diff-viewer.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Unified or split view modes, line numbers, and Shiki-powered syntax highlighting for any language.",
+  "categories": ["devtools"]
+}

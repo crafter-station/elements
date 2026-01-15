@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "ai-model-selector",
+  "name": "model-selector",
+  "subcategory": "chat",
   "type": "registry:ui",
   "title": "AI Model Selector",
   "description": "A functional AI model selector with provider logos and popular models from Vercel AI Gateway. Features searchable combobox, provider icons, and model grouping.",

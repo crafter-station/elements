@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "plan",
+  "subcategory": "agentic",
+  "type": "registry:ui",
+  "title": "Ai Plan",
+  "description": "TODO: Add description",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-plan/components/elements/ai-plan.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "TODO: Add documentation",
+  "categories": ["ai"]
+}

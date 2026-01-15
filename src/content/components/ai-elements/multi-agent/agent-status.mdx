@@ -1,0 +1,84 @@
+---
+title: Agent Status
+description: Display current agent handling a request with status indicators, animated pulse for active states, and handoff visualization for multi-agent workflows.
+---
+
+<ComponentPreviewItem
+  componentKey="agent-status"
+  installUrl="@elements/agent-status"
+  category="AI"
+  name="Agent Status"
+>
+  <AgentStatus />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for displaying the current status of an AI agent in multi-agent workflows. Supports two variants: badge (compact) and card (detailed). Shows animated pulse indicators when agents are active and visualizes handoff transitions between agents.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/agent-status
+```
+
+## Usage
+
+```tsx
+import {
+  AgentStatus,
+  AgentStatusActions,
+} from "@/components/elements/ai-elements/multi-agent/agent-status";
+
+export function AgentStatusExample() {
+  return (
+    <AgentStatus
+      agent={{
+        name: "Research Agent",
+        description: "Searches and analyzes information",
+      }}
+      status="thinking"
+      variant="card"
+    >
+      <AgentStatusActions>
+        <button>Cancel</button>
+      </AgentStatusActions>
+    </AgentStatus>
+  );
+}
+```
+
+## Props
+
+### AgentStatus
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `agent` | `AgentInfo` | - | Agent information (name, icon, description) |
+| `status` | `AgentStatus` | - | Current agent status |
+| `handoffTo` | `string` | - | Name of agent being handed off to |
+| `variant` | `"badge" \| "card"` | `"badge"` | Display variant |
+
+### AgentStatus
+
+```typescript
+type AgentStatus = "idle" | "thinking" | "acting" | "waiting" | "done" | "handoff";
+```
+
+### AgentInfo
+
+```typescript
+interface AgentInfo {
+  name: string;
+  icon?: React.ReactNode;
+  description?: string;
+}
+```
+
+## Features
+
+- Two display variants: badge (compact) and card (detailed)
+- Animated pulse indicator for active states (thinking, acting)
+- Visual handoff indicator when transferring to another agent
+- Color-coded status badges with icons
+- Support for custom agent icons

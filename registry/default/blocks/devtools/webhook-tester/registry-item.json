@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "webhook-tester",
+  "type": "registry:ui",
+  "title": "Webhook Tester",
+  "description": "HTTP request testing UI with URL, method, headers, body inputs and response viewer",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/devtools/webhook-tester/components/elements/webhook-tester.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Complete request builder: method selector, URL input, headers editor, JSON body, response display.",
+  "categories": ["devtools"]
+}

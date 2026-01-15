@@ -1,0 +1,74 @@
+---
+title: Error Boundary UI
+description: Error display component for React error boundaries
+---
+
+<ComponentPreviewItem
+  componentKey="error-boundary-ui"
+  installUrl="@elements/error-boundary-ui"
+  category="Dev Tools"
+  name="Error Boundary UI"
+>
+  <ErrorBoundaryUi />
+</ComponentPreviewItem>
+
+## Overview
+
+An error display component designed for React error boundaries. Shows user-friendly messages in production and detailed stack traces in development, with retry and copy functionality.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/error-boundary-ui
+```
+
+## Usage
+
+```tsx
+import { ErrorBoundaryUi } from "@/components/elements/devtools/error-boundary-ui";
+
+export function ErrorFallback({ error, resetErrorBoundary }) {
+  return (
+    <ErrorBoundaryUi
+      error={error}
+      resetError={resetErrorBoundary}
+      isDev={process.env.NODE_ENV === "development"}
+    />
+  );
+}
+
+// With react-error-boundary
+<ErrorBoundary FallbackComponent={ErrorFallback}>
+  <App />
+</ErrorBoundary>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `error` | `Error` | - | Error object to display |
+| `resetError` | `() => void` | - | Callback to retry/reset |
+| `componentStack` | `string \| null` | - | React component stack trace |
+| `isDev` | `boolean` | `NODE_ENV === "development"` | Show detailed info |
+| `className` | `string` | - | Additional CSS classes |
+
+## Development vs Production
+
+**Development mode:**
+- Shows error name and full message
+- Expandable stack trace with parsed frames
+- Expandable component stack (if available)
+
+**Production mode:**
+- Shows generic "Something went wrong" message
+- Hides technical details from users
+
+## Features
+
+- Dev/prod mode switching
+- Collapsible stack trace
+- Component stack display
+- Copy error to clipboard
+- Try again button
+- Parsed stack frames with file locations

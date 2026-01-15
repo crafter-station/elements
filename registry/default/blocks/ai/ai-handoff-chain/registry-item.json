@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "handoff-chain",
+  "subcategory": "multi-agent",
+  "type": "registry:ui",
+  "title": "AI Handoff Chain",
+  "description": "Visualize agent transition breadcrumbs showing the chain of agents with arrows, active agent highlighting, and clickable nodes for handoff details.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-handoff-chain/components/elements/ai-handoff-chain.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for displaying agent handoff sequences. Features: chain visualization with arrows, active agent highlighting, hover for handoff reason, selectable nodes for details, and optional timeline view.",
+  "categories": ["ai"]
+}

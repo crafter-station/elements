@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cli-output",
+  "type": "registry:ui",
+  "title": "CLI Output",
+  "description": "Terminal-style output display with ANSI color support and controls",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/devtools/cli-output/components/elements/cli-output.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "ANSI color parsing, auto-scroll, max lines limit, copy/clear controls, timestamp display.",
+  "categories": ["devtools"]
+}

@@ -1,0 +1,104 @@
+---
+title: Agent Context
+description: Display and optionally edit agent context data with type indicators, nested object support, and collapsible sections. Visualizes user/team context for AI agents.
+---
+
+<ComponentPreviewItem
+  componentKey="agent-context"
+  installUrl="@elements/agent-context"
+  category="AI"
+  name="Agent Context"
+>
+  <AgentContext />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for displaying the context data being passed to AI agents. Shows a tree view of context variables with type indicators, supports nested objects and arrays, and optionally allows editing primitive values. Ideal for debugging agent context or displaying user/team information.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/agent-context
+```
+
+## Usage
+
+```tsx
+import {
+  AgentContext,
+  AgentContextHeader,
+  AgentContextContent,
+  AgentContextGroup,
+} from "@/components/elements/ai-elements/multi-agent/agent-context";
+
+const contextData = {
+  user: {
+    name: "John Doe",
+    email: "john@example.com",
+    preferences: {
+      language: "en",
+      timezone: "UTC",
+    },
+  },
+  session: {
+    id: "sess_123",
+    startedAt: "2024-01-15T10:30:00Z",
+  },
+  permissions: ["read", "write", "admin"],
+  isAuthenticated: true,
+  tokenCount: 1500,
+};
+
+export function AgentContextExample() {
+  return (
+    <AgentContext
+      context={contextData}
+      title="Agent Context"
+      editable
+      onChange={(key, value) => console.log("Changed:", key, value)}
+    >
+      <AgentContextHeader>Session Context</AgentContextHeader>
+      <AgentContextContent context={contextData} />
+    </AgentContext>
+  );
+}
+```
+
+## Props
+
+### AgentContext
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `context` | `Record<string, unknown>` | - | Context data object |
+| `title` | `string` | - | Optional title for the header |
+| `editable` | `boolean` | `false` | Enable inline editing |
+| `onChange` | `(key: string, value: unknown) => void` | - | Edit callback |
+
+## Sub-components
+
+- `AgentContextHeader` - Header with icon and title
+- `AgentContextContent` - Container for context entries
+- `AgentContextEntry` - Individual entry with type indicator
+- `AgentContextGroup` - Collapsible group of entries
+- `AgentContextEmpty` - Empty state component
+
+## Value Types
+
+```typescript
+type ValueType = "string" | "number" | "boolean" | "object" | "array" | "null";
+```
+
+Each type is displayed with a unique color and icon for easy identification.
+
+## Features
+
+- Tree view for nested objects and arrays
+- Color-coded type indicators (string, number, boolean, object, array, null)
+- Collapsible nested structures
+- Inline editing for primitive values
+- Keyboard navigation (Enter to save, Escape to cancel)
+- JSON-like display with syntax highlighting
+- Automatic depth-based expansion
+- Path-based change tracking for edits

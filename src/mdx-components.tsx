@@ -6,12 +6,50 @@ import { ComponentPreview } from "@/components/component-preview";
 import { ComponentPreviewItem } from "@/components/component-preview-item";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
+import AiAgentContextDemo from "@/registry/default/examples/ai-agent-context-demo";
+import AiAgentRosterDemo from "@/registry/default/examples/ai-agent-roster-demo";
+import AiAgentStatusDemo from "@/registry/default/examples/ai-agent-status-demo";
+import AiArtifactDemo from "@/registry/default/examples/ai-artifact-demo";
+import AiChainOfThoughtDemo from "@/registry/default/examples/ai-chain-of-thought-demo";
+import AiChatInputDemo from "@/registry/default/examples/ai-chat-input-demo";
+import AiConfirmationDemo from "@/registry/default/examples/ai-confirmation-demo";
+import AiConversationTreeDemo from "@/registry/default/examples/ai-conversation-tree-demo";
+import AiGuardrailsDemo from "@/registry/default/examples/ai-guardrails-demo";
+import AiHandoffChainDemo from "@/registry/default/examples/ai-handoff-chain-demo";
+import AiLatencyMeterDemo from "@/registry/default/examples/ai-latency-meter-demo";
+import AiMemoryViewerDemo from "@/registry/default/examples/ai-memory-viewer-demo";
+import AiMessageBubbleDemo from "@/registry/default/examples/ai-message-bubble-demo";
+import AiModelInfoDemo from "@/registry/default/examples/ai-model-info-demo";
 import AiModelSelectorDemo from "@/registry/default/examples/ai-model-selector-demo";
+import AiPipelineDemo from "@/registry/default/examples/ai-pipeline-demo";
+import AiPlanDemo from "@/registry/default/examples/ai-plan-demo";
+import AiPromptDiffDemo from "@/registry/default/examples/ai-prompt-diff-demo";
+import AiReasoningDemo from "@/registry/default/examples/ai-reasoning-demo";
+import AiRequestInspectorDemo from "@/registry/default/examples/ai-request-inspector-demo";
+import AiResponseActionsDemo from "@/registry/default/examples/ai-response-actions-demo";
+import AiRoutingIndicatorDemo from "@/registry/default/examples/ai-routing-indicator-demo";
+import AiSourcesDemo from "@/registry/default/examples/ai-sources-demo";
+import AiStreamDebuggerDemo from "@/registry/default/examples/ai-stream-debugger-demo";
+import AiStreamingTextDemo from "@/registry/default/examples/ai-streaming-text-demo";
+import AiTaskListDemo from "@/registry/default/examples/ai-task-list-demo";
+import AiTemperatureSliderDemo from "@/registry/default/examples/ai-temperature-slider-demo";
+import AiThinkingIndicatorDemo from "@/registry/default/examples/ai-thinking-indicator-demo";
+import AiTokenCounterDemo from "@/registry/default/examples/ai-token-counter-demo";
+import AiTokenViewerDemo from "@/registry/default/examples/ai-token-viewer-demo";
+import AiToolCallDemo from "@/registry/default/examples/ai-tool-call-demo";
+import AiToolInspectorDemo from "@/registry/default/examples/ai-tool-inspector-demo";
+import ApiResponseViewerDemo from "@/registry/default/examples/api-response-viewer-demo";
+import CliOutputDemo from "@/registry/default/examples/cli-output-demo";
+import CodeDiffViewerDemo from "@/registry/default/examples/code-diff-viewer-demo";
+import EnvEditorDemo from "@/registry/default/examples/env-editor-demo";
+import ErrorBoundaryUiDemo from "@/registry/default/examples/error-boundary-ui-demo";
 import GitHubContributionsDemo from "@/registry/default/examples/github-contributions-demo";
 import GitHubStarsDemo from "@/registry/default/examples/github-stars-demo";
+import JsonViewerDemo from "@/registry/default/examples/json-viewer-demo";
 import OgImageExplorerDemo from "@/registry/default/examples/og-image-explorer-demo";
 // Direct imports from examples
 import PolarSponsorshipDemo from "@/registry/default/examples/polar-sponsorship-demo";
+import SchemaViewerDemo from "@/registry/default/examples/schema-viewer-demo";
 import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
 import ThemeSwitcherDemo from "@/registry/default/examples/theme-switcher-demo";
 import ThemeSwitcherDropdownDemo from "@/registry/default/examples/theme-switcher-dropdown-demo";
@@ -21,6 +59,7 @@ import ThemeSwitcherToggleDemo from "@/registry/default/examples/theme-switcher-
 import TinteEditorDemo from "@/registry/default/examples/tinte-editor-demo";
 import UploadthingButtonDemo from "@/registry/default/examples/uploadthing-button-demo";
 import UploadthingDropzoneDemo from "@/registry/default/examples/uploadthing-dropzone-demo";
+import WebhookTesterDemo from "@/registry/default/examples/webhook-tester-demo";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -48,8 +87,83 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     GitHubContributions: GitHubContributionsDemo,
     // Dev Tools
     OgImageExplorer: OgImageExplorerDemo,
-    // AI Components
+    JsonViewer: JsonViewerDemo,
+    CodeDiffViewer: CodeDiffViewerDemo,
+    CliOutput: CliOutputDemo,
+    ApiResponseViewer: ApiResponseViewerDemo,
+    ErrorBoundaryUi: ErrorBoundaryUiDemo,
+    EnvEditor: EnvEditorDemo,
+    SchemaViewer: SchemaViewerDemo,
+    WebhookTester: WebhookTesterDemo,
+    // AI Elements - Chat (new names without Ai prefix)
+    ModelSelector: AiModelSelectorDemo,
+    ChatInput: AiChatInputDemo,
+    MessageBubble: AiMessageBubbleDemo,
+    StreamingText: AiStreamingTextDemo,
+    ThinkingIndicator: AiThinkingIndicatorDemo,
+    ResponseActions: AiResponseActionsDemo,
+    TokenCounter: AiTokenCounterDemo,
+    TemperatureSlider: AiTemperatureSliderDemo,
+    // AI Elements - Agentic (new names without Ai prefix)
+    ToolCall: AiToolCallDemo,
+    Confirmation: AiConfirmationDemo,
+    TaskList: AiTaskListDemo,
+    Reasoning: AiReasoningDemo,
+    ChainOfThought: AiChainOfThoughtDemo,
+    Plan: AiPlanDemo,
+    Artifact: AiArtifactDemo,
+    Sources: AiSourcesDemo,
+    // AI Elements - Devtools (new names without Ai prefix)
+    RequestInspector: AiRequestInspectorDemo,
+    StreamDebugger: AiStreamDebuggerDemo,
+    LatencyMeter: AiLatencyMeterDemo,
+    TokenViewer: AiTokenViewerDemo,
+    ToolInspector: AiToolInspectorDemo,
+    PromptDiff: AiPromptDiffDemo,
+    ConversationTree: AiConversationTreeDemo,
+    ModelInfo: AiModelInfoDemo,
+    // AI Elements - Multi-Agent (new names without Ai prefix)
+    AgentStatus: AiAgentStatusDemo,
+    HandoffChain: AiHandoffChainDemo,
+    Pipeline: AiPipelineDemo,
+    MemoryViewer: AiMemoryViewerDemo,
+    AgentRoster: AiAgentRosterDemo,
+    Guardrails: AiGuardrailsDemo,
+    AgentContext: AiAgentContextDemo,
+    RoutingIndicator: AiRoutingIndicatorDemo,
+    // Legacy AI Components (backward compatibility)
     AiModelSelector: AiModelSelectorDemo,
+    AiChatInput: AiChatInputDemo,
+    AiMessageBubble: AiMessageBubbleDemo,
+    AiStreamingText: AiStreamingTextDemo,
+    AiThinkingIndicator: AiThinkingIndicatorDemo,
+    AiResponseActions: AiResponseActionsDemo,
+    AiTokenCounter: AiTokenCounterDemo,
+    AiTemperatureSlider: AiTemperatureSliderDemo,
+    AiToolCall: AiToolCallDemo,
+    AiConfirmation: AiConfirmationDemo,
+    AiTaskList: AiTaskListDemo,
+    AiReasoning: AiReasoningDemo,
+    AiChainOfThought: AiChainOfThoughtDemo,
+    AiPlan: AiPlanDemo,
+    AiArtifact: AiArtifactDemo,
+    AiSources: AiSourcesDemo,
+    AiRequestInspector: AiRequestInspectorDemo,
+    AiStreamDebugger: AiStreamDebuggerDemo,
+    AiLatencyMeter: AiLatencyMeterDemo,
+    AiTokenViewer: AiTokenViewerDemo,
+    AiToolInspector: AiToolInspectorDemo,
+    AiPromptDiff: AiPromptDiffDemo,
+    AiConversationTree: AiConversationTreeDemo,
+    AiModelInfo: AiModelInfoDemo,
+    AiAgentStatus: AiAgentStatusDemo,
+    AiHandoffChain: AiHandoffChainDemo,
+    AiPipeline: AiPipelineDemo,
+    AiMemoryViewer: AiMemoryViewerDemo,
+    AiAgentRoster: AiAgentRosterDemo,
+    AiGuardrails: AiGuardrailsDemo,
+    AiAgentContext: AiAgentContextDemo,
+    AiRoutingIndicator: AiRoutingIndicatorDemo,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

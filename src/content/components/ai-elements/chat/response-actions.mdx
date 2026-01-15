@@ -1,0 +1,61 @@
+---
+title: Response Actions
+description: Action buttons for AI responses
+---
+
+<ComponentPreviewItem
+  componentKey="response-actions"
+  installUrl="@elements/response-actions"
+  category="AI"
+  name="Response Actions"
+>
+  <ResponseActions />
+</ComponentPreviewItem>
+
+## Overview
+
+A set of action buttons for AI responses including copy, regenerate, and feedback (thumbs up/down). Supports compact mode for inline usage.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/response-actions
+```
+
+## Usage
+
+```tsx
+import { ResponseActions } from "@/components/elements/ai-elements/chat/response-actions";
+
+export function ResponseWithActions() {
+  return (
+    <div>
+      <p>AI response content here...</p>
+      <ResponseActions
+        content="The response content to copy"
+        onRegenerate={() => console.log("Regenerate")}
+        onFeedback={(type) => console.log("Feedback:", type)}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `content` | `string` | - | Content for copy functionality |
+| `onRegenerate` | `() => void` | - | Callback for regenerate action |
+| `onFeedback` | `(type: "positive" \| "negative") => void` | - | Callback for feedback |
+| `onShare` | `() => void` | - | Callback for share action |
+| `compact` | `boolean` | `false` | Compact button layout |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Copy to clipboard
+- Regenerate response
+- Thumbs up/down feedback
+- Share functionality
+- Compact mode for space-constrained layouts

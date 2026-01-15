@@ -1,0 +1,83 @@
+---
+title: Env Editor
+description: Environment variable editor with import/export support
+---
+
+<ComponentPreviewItem
+  componentKey="env-editor"
+  installUrl="@elements/env-editor"
+  category="Dev Tools"
+  name="Env Editor"
+>
+  <EnvEditor />
+</ComponentPreviewItem>
+
+## Overview
+
+An environment variable editor with key-value grid, masked values for sensitive data, and .env file import/export functionality. Perfect for configuration management UIs.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/env-editor
+```
+
+## Usage
+
+```tsx
+import { EnvEditor, type EnvVariable } from "@/components/elements/devtools/env-editor";
+import { useState } from "react";
+
+export function ConfigEditor() {
+  const [variables, setVariables] = useState<EnvVariable[]>([
+    { key: "DATABASE_URL", value: "postgres://..." },
+    { key: "API_KEY", value: "sk_live_..." },
+    { key: "DEBUG", value: "true" }
+  ]);
+
+  return (
+    <EnvEditor
+      value={variables}
+      onChange={setVariables}
+      masked
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `EnvVariable[]` | `[]` | Current variables |
+| `onChange` | `(variables: EnvVariable[]) => void` | - | Change callback |
+| `readOnly` | `boolean` | `false` | Disable editing |
+| `masked` | `boolean` | `true` | Mask values by default |
+| `className` | `string` | - | Additional CSS classes |
+
+## EnvVariable Type
+
+```typescript
+interface EnvVariable {
+  key: string;
+  value: string;
+}
+```
+
+## File Format Support
+
+Import/export supports standard .env format:
+```
+DATABASE_URL=postgres://localhost:5432/db
+API_KEY="secret with spaces"
+DEBUG=true
+```
+
+## Features
+
+- Key-value grid editor
+- Show/hide masked values per variable
+- Import .env files
+- Export to .env format
+- Add/remove variables
+- Read-only mode

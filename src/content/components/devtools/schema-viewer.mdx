@@ -1,0 +1,84 @@
+---
+title: Schema Viewer
+description: JSON Schema visualizer with type badges and examples
+---
+
+<ComponentPreviewItem
+  componentKey="schema-viewer"
+  installUrl="@elements/schema-viewer"
+  category="Dev Tools"
+  name="Schema Viewer"
+>
+  <SchemaViewer />
+</ComponentPreviewItem>
+
+## Overview
+
+A JSON Schema visualizer that renders schema definitions as an interactive tree. Shows types, required fields, constraints, and examples with color-coded type badges.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/schema-viewer
+```
+
+## Usage
+
+```tsx
+import { SchemaViewer } from "@/components/elements/devtools/schema-viewer";
+
+const schema = {
+  title: "User",
+  description: "A user in the system",
+  type: "object",
+  properties: {
+    id: { type: "integer", description: "Unique identifier" },
+    email: { type: "string", format: "email" },
+    name: { type: "string", minLength: 1, maxLength: 100 },
+    role: { type: "string", enum: ["admin", "user", "guest"] }
+  },
+  required: ["id", "email"]
+};
+
+export function SchemaExample() {
+  return (
+    <SchemaViewer
+      schema={schema}
+      showExamples
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `schema` | `JsonSchema` | - | JSON Schema object |
+| `showExamples` | `boolean` | `true` | Display example values |
+| `className` | `string` | - | Additional CSS classes |
+
+## Supported Schema Features
+
+- **Types**: string, number, integer, boolean, object, array, null
+- **Composition**: oneOf, anyOf, allOf
+- **Constraints**: minimum, maximum, minLength, maxLength, pattern
+- **Metadata**: title, description, format, enum, default, example
+
+## Type Colors
+
+- **string**: Green
+- **number/integer**: Blue
+- **boolean**: Amber
+- **object**: Purple
+- **array**: Orange
+- **null**: Gray
+
+## Features
+
+- Collapsible nested properties
+- Type badges with format display
+- Required field indicators (*)
+- Constraint display (min/max, pattern)
+- Example value rendering
+- oneOf/anyOf/allOf support

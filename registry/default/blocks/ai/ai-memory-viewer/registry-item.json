@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "memory-viewer",
+  "subcategory": "multi-agent",
+  "type": "registry:ui",
+  "title": "AI Memory Viewer",
+  "description": "Display and manage working memory and conversation history with source badges, timestamps, search/filter, and add/remove functionality for agent memory systems.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-memory-viewer/components/elements/ai-memory-viewer.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for memory management. Memory types: working, history, system. Sources: user, system, conversation. Features: collapsible sections, search/filter, add/remove items, timestamps, and compact variant.",
+  "categories": ["ai"]
+}

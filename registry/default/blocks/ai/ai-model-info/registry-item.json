@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "model-info",
+  "subcategory": "devtools",
+  "type": "registry:ui",
+  "title": "AI Model Info",
+  "description": "Display AI model metadata including provider, context window, capabilities badges (vision, tools, streaming, JSON, functions), pricing info, and release date. Supports multiple providers with themed colors.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-model-info/components/elements/ai-model-info.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A compound component for displaying model information. Use AiModelInfo as root with AiModelInfoHeader, AiModelInfoCapabilities, AiModelInfoPricing, AiModelInfoMeta, and AiModelInfoBadge sub-components. Supports OpenAI, Anthropic, Google, Mistral, Cohere, and Meta providers with automatic theming.",
+  "categories": ["ai"]
+}

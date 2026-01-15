@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "env-editor",
+  "type": "registry:ui",
+  "title": "Env Editor",
+  "description": "Environment variable editor with key-value grid, masked values, and import/export",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/devtools/env-editor/components/elements/env-editor.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Key-value editing grid, password masking, .env file import/export, add/remove variables.",
+  "categories": ["devtools"]
+}

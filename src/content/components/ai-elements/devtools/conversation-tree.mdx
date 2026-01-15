@@ -1,0 +1,96 @@
+---
+title: Conversation Tree
+description: Visualize conversation history as a tree with branching for edited messages
+---
+
+<ComponentPreviewItem
+  componentKey="conversation-tree"
+  installUrl="@elements/conversation-tree"
+  category="AI"
+  name="Conversation Tree"
+>
+  <ConversationTree />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for visualizing branching conversations with a tree structure. Shows node types (user, assistant, system, tool), expandable branches, active path highlighting, and click-to-navigate functionality. Ideal for chat UIs with edit/regenerate features.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/conversation-tree
+```
+
+## Usage
+
+```tsx
+import {
+  ConversationTree,
+  ConversationTreeHeader,
+  ConversationTreeContent,
+  ConversationTreePreview,
+} from "@/components/elements/ai-elements/devtools/conversation-tree";
+
+export function ConversationTreeExample() {
+  const tree = {
+    id: "root",
+    role: "system",
+    content: "You are a helpful assistant",
+    children: [
+      {
+        id: "1",
+        role: "user",
+        content: "Hello",
+        children: [
+          { id: "2", role: "assistant", content: "Hi there!", children: [] },
+          { id: "3", role: "assistant", content: "Hello!", children: [] },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <ConversationTree
+      tree={tree}
+      activeNodeId="2"
+      onNodeSelect={(id) => console.log("Selected:", id)}
+    >
+      <ConversationTreeHeader />
+      <ConversationTreeContent />
+      <ConversationTreePreview />
+    </ConversationTree>
+  );
+}
+```
+
+## Props
+
+### ConversationTree
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `tree` | `ConversationNode` | - | Root node of the conversation tree |
+| `activeNodeId` | `string` | - | Currently active/selected node ID |
+| `onNodeSelect` | `(id: string) => void` | - | Callback when a node is selected |
+
+### ConversationNode
+
+```typescript
+interface ConversationNode {
+  id: string;
+  role: "user" | "assistant" | "system" | "tool";
+  content: string;
+  children: ConversationNode[];
+}
+```
+
+## Features
+
+- Tree structure visualization for branching conversations
+- Node type indicators (user, assistant, system, tool)
+- Expandable/collapsible branches
+- Active path highlighting
+- Click-to-navigate functionality
+- Preview panel for selected node content
+- Supports controlled activeNodeId and onNodeSelect callback

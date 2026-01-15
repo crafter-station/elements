@@ -1,0 +1,82 @@
+---
+title: Stream Debugger
+description: Real-time visualization of streaming chunks with timing and event data
+---
+
+<ComponentPreviewItem
+  componentKey="stream-debugger"
+  installUrl="@elements/stream-debugger"
+  category="AI"
+  name="Stream Debugger"
+>
+  <StreamDebugger />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for debugging AI streaming responses in real-time. Visualizes SSE (Server-Sent Events) chunks with auto-scroll, pause/resume controls, chunk type indicators, and millisecond-precision timestamps. Essential for debugging streaming implementations.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/stream-debugger
+```
+
+## Usage
+
+```tsx
+import {
+  StreamDebugger,
+  StreamDebuggerHeader,
+  StreamDebuggerContent,
+  StreamDebuggerChunk,
+} from "@/components/elements/ai-elements/devtools/stream-debugger";
+
+export function StreamDebuggerExample() {
+  const chunks = [
+    { type: "text", content: "Hello", timestamp: Date.now() },
+    { type: "text", content: " world", timestamp: Date.now() + 50 },
+    { type: "tool_call", content: "searchDatabase", timestamp: Date.now() + 100 },
+    { type: "finish", content: "stop", timestamp: Date.now() + 150 },
+  ];
+
+  return (
+    <StreamDebugger>
+      <StreamDebuggerHeader />
+      <StreamDebuggerContent chunks={chunks} />
+    </StreamDebugger>
+  );
+}
+```
+
+## Props
+
+### StreamDebuggerContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `chunks` | `Chunk[]` | - | Array of stream chunks to display |
+| `maxChunks` | `number` | `100` | Maximum chunks to display |
+| `autoScroll` | `boolean` | `true` | Auto-scroll to latest chunk |
+
+### Chunk Types
+
+```typescript
+type ChunkType = "text" | "tool_call" | "tool_result" | "error" | "finish";
+
+interface Chunk {
+  type: ChunkType;
+  content: string;
+  timestamp: number;
+}
+```
+
+## Features
+
+- Real-time chunk visualization with auto-scroll
+- Pause/resume controls for analysis
+- Chunk type indicators (text, tool_call, tool_result, error, finish)
+- Millisecond-precision timestamps
+- Live/paused status indicator
+- Clear button to reset view
+- Configurable max chunks limit

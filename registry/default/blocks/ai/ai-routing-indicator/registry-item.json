@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "routing-indicator",
+  "subcategory": "multi-agent",
+  "type": "registry:ui",
+  "title": "AI Routing Indicator",
+  "description": "Visualize real-time message routing with pattern matching highlights, target agent display, confidence scores, and animated routing states for multi-agent systems.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-routing-indicator/components/elements/ai-routing-indicator.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for routing visualization. Sub-components: AiRoutingIndicator, AiRoutingIndicatorHeader, AiRoutingIndicatorContent, AiRoutingInput, AiRoutingFlow, AiRoutingIndicatorEmpty, AiRoutingMatch. Supports animated routing state.",
+  "categories": ["ai"]
+}

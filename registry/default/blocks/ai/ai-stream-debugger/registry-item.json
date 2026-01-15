@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stream-debugger",
+  "subcategory": "devtools",
+  "type": "registry:ui",
+  "title": "AI Stream Debugger",
+  "description": "Real-time streaming chunk visualization for AI responses with auto-scroll, pause/resume, chunk type indicators, and timestamps for debugging SSE streams.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-stream-debugger/components/elements/ai-stream-debugger.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for debugging AI streaming responses. Chunk types: text, tool_call, tool_result, error, finish. Features auto-scroll with pause/resume, clear button, live/paused status indicator, configurable max chunks. Each chunk shows millisecond-precision timestamps.",
+  "categories": ["ai"]
+}

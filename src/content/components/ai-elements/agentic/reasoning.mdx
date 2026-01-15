@@ -1,0 +1,96 @@
+---
+title: Reasoning
+description: Collapsible reasoning content with streaming awareness for DeepSeek R1 style thinking
+---
+
+<ComponentPreviewItem
+  componentKey="reasoning"
+  installUrl="@elements/reasoning"
+  category="AI"
+  name="Reasoning"
+>
+  <Reasoning />
+</ComponentPreviewItem>
+
+## Overview
+
+A streaming-aware component for displaying AI reasoning/thinking content. Auto-opens during streaming and shows a pulsing animation. Displays thinking duration when complete. Inspired by DeepSeek R1 and Claude's extended thinking.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/reasoning
+```
+
+## Usage
+
+```tsx
+import {
+  Reasoning,
+  ReasoningTrigger,
+  ReasoningContent,
+  ReasoningText,
+} from "@/components/elements/ai-elements/agentic/reasoning";
+
+export function ReasoningExample() {
+  return (
+    <Reasoning isStreaming={false} thinkingDuration={2340}>
+      <ReasoningTrigger />
+      <ReasoningContent>
+        <ReasoningText>
+          Let me think about this step by step...
+          First, I need to understand the problem.
+          Then, I'll break it down into smaller parts.
+        </ReasoningText>
+      </ReasoningContent>
+    </Reasoning>
+  );
+}
+```
+
+## Streaming Example
+
+```tsx
+import { useState, useEffect } from "react";
+
+export function StreamingReasoning() {
+  const [isStreaming, setIsStreaming] = useState(true);
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    // Simulated streaming
+    const timer = setTimeout(() => setIsStreaming(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <Reasoning isStreaming={isStreaming} thinkingDuration={3000}>
+      <ReasoningTrigger />
+      <ReasoningContent>
+        <ReasoningText>{content}</ReasoningText>
+      </ReasoningContent>
+    </Reasoning>
+  );
+}
+```
+
+## Props
+
+### Reasoning
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `isStreaming` | `boolean` | `false` | Whether content is streaming |
+| `defaultOpen` | `boolean` | `false` | Initial open state |
+| `open` | `boolean` | - | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | - | Callback when open state changes |
+| `thinkingDuration` | `number \| null` | `null` | Thinking time in milliseconds |
+
+## Features
+
+- Auto-opens during streaming
+- Pulsing animation while streaming
+- Cursor blink animation during stream
+- Thinking duration display (ms or s)
+- Purple-themed streaming state
+- Manual toggle control

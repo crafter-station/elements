@@ -1,0 +1,101 @@
+---
+title: Handoff Chain
+description: Visualize agent transition breadcrumbs showing the chain of agents with arrows, active agent highlighting, and clickable nodes for handoff details.
+---
+
+<ComponentPreviewItem
+  componentKey="handoff-chain"
+  installUrl="@elements/handoff-chain"
+  category="AI"
+  name="Handoff Chain"
+>
+  <HandoffChain />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for visualizing the sequence of agent handoffs in multi-agent workflows. Displays a breadcrumb-style chain showing which agents have handled a request, with arrows between transitions and the ability to click nodes to see handoff details and reasons.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/handoff-chain
+```
+
+## Usage
+
+```tsx
+import {
+  HandoffChain,
+  HandoffChainDetail,
+  HandoffChainTimeline,
+} from "@/components/elements/ai-elements/multi-agent/handoff-chain";
+
+const handoffs = [
+  {
+    id: "1",
+    fromAgent: "Router",
+    toAgent: "Research Agent",
+    reason: "Query requires web search",
+    timestamp: new Date(),
+    isActive: false,
+  },
+  {
+    id: "2",
+    fromAgent: "Research Agent",
+    toAgent: "Writer Agent",
+    reason: "Data collected, ready to compose",
+    timestamp: new Date(),
+    isActive: true,
+  },
+];
+
+export function HandoffChainExample() {
+  return (
+    <HandoffChain
+      handoffs={handoffs}
+      onSelect={(handoff) => console.log("Selected:", handoff)}
+    >
+      <HandoffChainDetail />
+    </HandoffChain>
+  );
+}
+```
+
+## Props
+
+### HandoffChain
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `handoffs` | `Handoff[]` | - | Array of handoff transitions |
+| `onSelect` | `(handoff: Handoff \| null) => void` | - | Callback when a handoff is selected |
+
+### Handoff
+
+```typescript
+interface Handoff {
+  id: string;
+  fromAgent: string;
+  toAgent: string;
+  reason?: string;
+  timestamp: Date;
+  isActive?: boolean;
+}
+```
+
+## Sub-components
+
+- `HandoffChainNode` - Individual agent node in the chain
+- `HandoffChainArrow` - Arrow connector between nodes
+- `HandoffChainDetail` - Expanded details for selected handoff
+- `HandoffChainTimeline` - Alternative timeline view of handoffs
+
+## Features
+
+- Visual chain of agents with arrow connectors
+- Active agent highlighting with animated indicators
+- Clickable nodes to view handoff details and reasons
+- Hover tooltips showing handoff reasons
+- Timeline view alternative for detailed history
+- Timestamps for each handoff transition

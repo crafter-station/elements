@@ -1,0 +1,114 @@
+---
+title: Chain of Thought
+description: Step-by-step reasoning visualization with search results and image support
+---
+
+<ComponentPreviewItem
+  componentKey="chain-of-thought"
+  installUrl="@elements/chain-of-thought"
+  category="AI"
+  name="Chain of Thought"
+>
+  <ChainOfThought />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for visualizing AI reasoning as a series of steps. Each step can have a status (pending, active, complete) and include search results or images. Built with Radix Collapsible.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/chain-of-thought
+```
+
+## Usage
+
+```tsx
+import {
+  ChainOfThought,
+  ChainOfThoughtHeader,
+  ChainOfThoughtContent,
+  ChainOfThoughtStep,
+  ChainOfThoughtSearchResults,
+  ChainOfThoughtImage,
+} from "@/components/elements/ai-elements/agentic/chain-of-thought";
+
+export function ChainOfThoughtExample() {
+  return (
+    <ChainOfThought>
+      <ChainOfThoughtHeader stepCount={3} completedCount={2} />
+      <ChainOfThoughtContent>
+        <ChainOfThoughtStep
+          status="complete"
+          title="Understanding the question"
+          description="Parsed user intent and extracted key entities"
+        />
+        <ChainOfThoughtStep
+          status="complete"
+          title="Searching for information"
+        >
+          <ChainOfThoughtSearchResults
+            results={[
+              { title: "React Docs", url: "https://react.dev", snippet: "..." },
+            ]}
+          />
+        </ChainOfThoughtStep>
+        <ChainOfThoughtStep
+          status="active"
+          title="Formulating response"
+        />
+      </ChainOfThoughtContent>
+    </ChainOfThought>
+  );
+}
+```
+
+## Props
+
+### ChainOfThought
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultOpen` | `boolean` | `true` | Initial open state |
+| `open` | `boolean` | - | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | - | Callback when open state changes |
+
+### ChainOfThoughtHeader
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | `"Chain of Thought"` | Header title |
+| `stepCount` | `number` | - | Total number of steps |
+| `completedCount` | `number` | - | Number of completed steps |
+
+### ChainOfThoughtStep
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `status` | `StepStatus` | Step status: pending, active, complete |
+| `title` | `string` | Step title |
+| `description` | `string` | Optional description |
+
+### ChainOfThoughtSearchResults
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `results` | `SearchResult[]` | Array of search results |
+
+### ChainOfThoughtImage
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `src` | `string` | Image source URL |
+| `alt` | `string` | Alt text |
+| `caption` | `string` | Optional caption |
+
+## Features
+
+- Step-by-step visualization with timeline
+- Status icons with animations
+- Search results with external links
+- Image support with loading states
+- Collapsible with smooth animations
+- Amber-themed lightbulb icon

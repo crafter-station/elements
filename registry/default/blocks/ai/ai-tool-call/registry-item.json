@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tool-call",
+  "subcategory": "agentic",
+  "type": "registry:ui",
+  "title": "AI Tool Call",
+  "description": "Display AI tool/function invocations with status indicators, input/output visualization, and collapsible interface for MCP and function calling workflows.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-tool-call/components/elements/ai-tool-call.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for displaying tool calls. States: pending, running, completed, error, awaiting-approval, denied. Auto-opens on completion/error.",
+  "categories": ["ai"]
+}

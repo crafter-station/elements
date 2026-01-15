@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-streaming-text",
+  "title": "AI Streaming Text",
+  "description": "Animated text that streams in character-by-character or word-by-word",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-streaming-text/components/elements/ai-streaming-text.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype StreamingMode = \"character\" | \"word\";\n\ninterface AiStreamingTextProps {\n  text: string;\n  speed?: number;\n  mode?: StreamingMode;\n  showCursor?: boolean;\n  onComplete?: () => void;\n  className?: string;\n}\n\nexport function AiStreamingText({\n  text,\n  speed = 30,\n  mode = \"character\",\n  showCursor = true,\n  onComplete,\n  className,\n}: AiStreamingTextProps) {\n  const [displayedText, setDisplayedText] = React.useState(\"\");\n  const [isComplete, setIsComplete] = React.useState(false);\n\n  React.useEffect(() => {\n    setDisplayedText(\"\");\n    setIsComplete(false);\n\n    if (!text) return;\n\n    const tokens = mode === \"word\" ? text.split(/(\\s+)/) : text.split(\"\");\n    let currentIndex = 0;\n    let isCancelled = false;\n    let lastTime = 0;\n\n    const animate = (time: number) => {\n      if (isCancelled) return;\n\n      if (time - lastTime >= speed) {\n        lastTime = time;\n        const token = tokens[currentIndex];\n        if (currentIndex < tokens.length && token !== undefined) {\n          setDisplayedText((prev) => prev + token);\n          currentIndex++;\n        } else {\n          if (!isCancelled) {\n            setIsComplete(true);\n            onComplete?.();\n          }\n          return;\n        }\n      }\n\n      requestAnimationFrame(animate);\n    };\n\n    const frameId = requestAnimationFrame(animate);\n\n    return () => {\n      isCancelled = true;\n      cancelAnimationFrame(frameId);\n    };\n  }, [text, speed, mode, onComplete]);\n\n  return (\n    <div\n      data-slot=\"ai-streaming-text\"\n      role=\"status\"\n      aria-live=\"polite\"\n      aria-label=\"AI response\"\n      className={cn(\"relative\", className)}\n    >\n      <span className=\"whitespace-pre-wrap\">{displayedText}</span>\n      {showCursor && !isComplete && (\n        <span className=\"ml-0.5 inline-block h-[1.2em] w-[2px] animate-pulse bg-current align-middle will-change-[opacity]\" />\n      )}\n    </div>\n  );\n}\n\nexport type { AiStreamingTextProps, StreamingMode };\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Typewriter effect with configurable speed, character/word modes, and animated cursor.",
+  "categories": ["ai"],
+  "type": "registry:ui"
+}

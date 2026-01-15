@@ -21,6 +21,7 @@ export interface RegistryItem {
   docs?: string;
   envVars?: Record<string, string>;
   categories?: string[];
+  subcategory?: string;
   meta?: {
     hasVariants?: boolean;
     variants?: string[];
@@ -76,14 +77,32 @@ export function getProviderFromName(name: string): string | null {
     return "github";
   }
 
-  // Special case: og-image-explorer goes to "devtools" provider
-  if (name === "og-image-explorer") {
+  // Special case: devtools components
+  if (
+    name === "og-image-explorer" ||
+    name === "json-viewer" ||
+    name === "api-response-viewer" ||
+    name === "code-diff-viewer" ||
+    name === "cli-output" ||
+    name === "env-editor" ||
+    name === "error-boundary-ui" ||
+    name === "webhook-tester" ||
+    name === "schema-viewer"
+  ) {
     return "devtools";
   }
 
-  // Special case: ai components go to "ai" provider
-  if (name === "ai-model-selector") {
-    return "ai";
+  // Special case: ai components go to "ai-elements" provider
+  // Check by looking up the item to see if it has a subcategory
+  const items = getRegistryItems();
+  const item = items.find((i) => i.name === name);
+  if (item?.subcategory) {
+    return "ai-elements";
+  }
+
+  // Legacy: ai- prefixed components also go to ai-elements
+  if (name.startsWith("ai-")) {
+    return "ai-elements";
   }
 
   // Extract first part of name (before first hyphen)
@@ -232,9 +251,10 @@ export function getProviderMetadata(provider: string): {
       brandColor: "#F97316",
       darkBrandColor: "#FB923C",
     },
-    ai: {
-      displayName: "AI Components",
-      description: "AI model selectors and utilities for Vercel AI SDK",
+    "ai-elements": {
+      displayName: "AI Elements",
+      description:
+        "Building blocks for AI-powered applications with Vercel AI SDK",
       category: "AI",
       brandColor: "#8B5CF6",
       darkBrandColor: "#A78BFA",
@@ -397,4 +417,57 @@ export function getAdjacentComponents(
   }
 
   return { previous, next };
+}
+
+export const AI_ELEMENTS_SUBCATEGORIES = {
+  chat: {
+    displayName: "Chat",
+    description: "Core conversational UI components",
+    order: 1,
+  },
+  agentic: {
+    displayName: "Agentic",
+    description: "Tool use and reasoning components",
+    order: 2,
+  },
+  "multi-agent": {
+    displayName: "Multi-Agent",
+    description: "Agent orchestration components",
+    order: 3,
+  },
+  devtools: {
+    displayName: "Devtools",
+    description: "Debugging and inspection tools",
+    order: 4,
+  },
+} as const;
+
+export type AIElementsSubcategory = keyof typeof AI_ELEMENTS_SUBCATEGORIES;
+
+export function getAIElementsSubcategories(): AIElementsSubcategory[] {
+  return Object.keys(AI_ELEMENTS_SUBCATEGORIES).sort(
+    (a, b) =>
+      AI_ELEMENTS_SUBCATEGORIES[a as AIElementsSubcategory].order -
+      AI_ELEMENTS_SUBCATEGORIES[b as AIElementsSubcategory].order,
+  ) as AIElementsSubcategory[];
+}
+
+export function getComponentsBySubcategory(
+  subcategory: string,
+): RegistryItem[] {
+  const items = getRegistryItems();
+  return items.filter((item) => item.subcategory === subcategory);
+}
+
+export function getSubcategoryMetadata(subcategory: string): {
+  displayName: string;
+  description: string;
+} {
+  const meta = AI_ELEMENTS_SUBCATEGORIES[subcategory as AIElementsSubcategory];
+  return (
+    meta || {
+      displayName: subcategory.charAt(0).toUpperCase() + subcategory.slice(1),
+      description: `${subcategory} components`,
+    }
+  );
 }

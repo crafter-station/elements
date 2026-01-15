@@ -1,0 +1,112 @@
+---
+title: Pipeline
+description: Multi-stage workflow visualization with horizontal or vertical layout, stage status indicators, progress tracking, and expandable stage details.
+---
+
+<ComponentPreviewItem
+  componentKey="pipeline"
+  installUrl="@elements/pipeline"
+  category="AI"
+  name="Pipeline"
+>
+  <Pipeline />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for visualizing multi-step AI processing pipelines. Supports both horizontal and vertical layouts with stage progress indicators, animated connectors, and expandable stage details. Ideal for displaying complex AI workflows like RAG pipelines, agent chains, or data processing flows.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/pipeline
+```
+
+## Usage
+
+```tsx
+import {
+  Pipeline,
+  PipelineHeader,
+  PipelineContent,
+  PipelineCompact,
+} from "@/components/elements/ai-elements/multi-agent/pipeline";
+
+const stages = [
+  {
+    id: "1",
+    name: "Embed",
+    description: "Converting query to vector",
+    status: "completed",
+    agent: "Embedder",
+    startTime: new Date(),
+    endTime: new Date(),
+  },
+  {
+    id: "2",
+    name: "Retrieve",
+    description: "Searching vector database",
+    status: "active",
+    agent: "Retriever",
+    startTime: new Date(),
+  },
+  {
+    id: "3",
+    name: "Generate",
+    description: "Generating response",
+    status: "pending",
+    agent: "Generator",
+  },
+];
+
+export function PipelineExample() {
+  return (
+    <Pipeline stages={stages} orientation="horizontal">
+      <PipelineHeader title="RAG Pipeline" />
+      <PipelineContent />
+    </Pipeline>
+  );
+}
+```
+
+## Props
+
+### Pipeline
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `stages` | `PipelineStage[]` | - | Array of pipeline stages |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout orientation |
+| `defaultExpanded` | `string[]` | `[]` | IDs of stages expanded by default |
+
+### PipelineStage
+
+```typescript
+interface PipelineStage {
+  id: string;
+  name: string;
+  description?: string;
+  status: "pending" | "active" | "completed" | "error";
+  agent?: string;
+  startTime?: Date;
+  endTime?: Date;
+}
+```
+
+## Sub-components
+
+- `PipelineHeader` - Header with title and progress bar
+- `PipelineContent` - Container for pipeline stages
+- `PipelineStage` - Individual stage with status and details
+- `PipelineConnector` - Animated connector between stages
+- `PipelineCompact` - Compact inline view for space-constrained UIs
+
+## Features
+
+- Horizontal and vertical layout options
+- Progress bar showing overall completion
+- Stage status indicators (pending, active, completed, error)
+- Animated connectors between stages
+- Expandable stage details with duration tracking
+- Compact variant for inline display
+- Agent association per stage

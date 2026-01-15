@@ -1,0 +1,73 @@
+---
+title: Prompt Diff
+description: Side-by-side comparison of prompt versions with highlighted changes
+---
+
+<ComponentPreviewItem
+  componentKey="prompt-diff"
+  installUrl="@elements/prompt-diff"
+  category="AI"
+  name="Prompt Diff"
+>
+  <PromptDiff />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for comparing system prompts with side-by-side or unified diff views. Shows added/removed line highlighting, line numbers, and copy buttons. Essential for prompt engineering, A/B testing, and version tracking in AI applications.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/prompt-diff
+```
+
+## Usage
+
+```tsx
+import {
+  PromptDiff,
+  PromptDiffHeader,
+  PromptDiffViewToggle,
+  PromptDiffContent,
+  PromptDiffCopyButton,
+} from "@/components/elements/ai-elements/devtools/prompt-diff";
+
+export function PromptDiffExample() {
+  const oldPrompt = "You are a helpful assistant.";
+  const newPrompt = "You are a helpful AI assistant.\nBe concise.";
+
+  return (
+    <PromptDiff oldText={oldPrompt} newText={newPrompt}>
+      <PromptDiffHeader>
+        <PromptDiffViewToggle />
+        <PromptDiffCopyButton />
+      </PromptDiffHeader>
+      <PromptDiffContent />
+    </PromptDiff>
+  );
+}
+```
+
+## Props
+
+### PromptDiff
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `oldText` | `string` | - | Original prompt text |
+| `newText` | `string` | - | Modified prompt text |
+| `view` | `"unified" \| "split"` | `"split"` | Diff view mode |
+
+### Diff Algorithm
+
+Uses LCS (Longest Common Subsequence) based diff algorithm for accurate line-by-line comparison.
+
+## Features
+
+- Unified and side-by-side diff views
+- LCS-based diff algorithm for accurate comparisons
+- Added/removed line highlighting with color coding
+- Line numbers for easy reference
+- Copy buttons for each version
+- View toggle between unified and split modes

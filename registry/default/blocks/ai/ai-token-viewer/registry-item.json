@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "token-viewer",
+  "subcategory": "devtools",
+  "type": "registry:ui",
+  "title": "AI Token Viewer",
+  "description": "Token usage visualization with input/output/total counts, cost estimation for popular models, and interactive token breakdown with hover-to-inspect boundaries.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-token-viewer/components/elements/ai-token-viewer.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for visualizing token usage. Features input/output/total token counts, cost estimation for GPT-4/4o/3.5-turbo and Claude 3/3.5 models, visual token breakdown with color-coded types (text, special, control), hover tooltips showing token IDs and types.",
+  "categories": ["ai"]
+}

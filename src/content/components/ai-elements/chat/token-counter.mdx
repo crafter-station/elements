@@ -1,0 +1,64 @@
+---
+title: Token Counter
+description: Token count with progress visualization
+---
+
+<ComponentPreviewItem
+  componentKey="token-counter"
+  installUrl="@elements/token-counter"
+  category="AI"
+  name="Token Counter"
+>
+  <TokenCounter />
+</ComponentPreviewItem>
+
+## Overview
+
+A token counter component with progress bar visualization and color-coded states (normal, warning, danger). Shows current token usage against model limits.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/token-counter
+```
+
+## Usage
+
+```tsx
+import { TokenCounter } from "@/components/elements/ai-elements/chat/token-counter";
+
+export function TokenUsage() {
+  return (
+    <TokenCounter
+      tokens={2500}
+      maxTokens={4096}
+      model="gpt-4"
+      showProgress
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `tokens` | `number` | - | Current token count |
+| `maxTokens` | `number` | - | Maximum tokens allowed |
+| `model` | `string` | - | Model name for display |
+| `showProgress` | `boolean` | `true` | Show progress bar |
+| `className` | `string` | - | Additional CSS classes |
+
+## Color States
+
+- **Normal** (0-60%): Default color
+- **Warning** (60-90%): Yellow/amber
+- **Danger** (90-100%): Red
+
+## Features
+
+- Progress bar visualization
+- Color-coded usage states
+- Model name display
+- Preset model limits
+- Percentage calculation

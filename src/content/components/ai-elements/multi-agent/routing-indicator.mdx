@@ -1,0 +1,87 @@
+---
+title: Routing Indicator
+description: Visualize real-time message routing with pattern matching highlights, target agent display, confidence scores, and animated routing states for multi-agent systems.
+---
+
+<ComponentPreviewItem
+  componentKey="routing-indicator"
+  installUrl="@elements/routing-indicator"
+  category="AI"
+  name="Routing Indicator"
+>
+  <RoutingIndicator />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for visualizing how messages are routed to specific agents in multi-agent systems. Shows the input message with pattern matching highlights, the matched routing rule, and the target agent with confidence scores. Supports animated states during active routing decisions.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/routing-indicator
+```
+
+## Usage
+
+```tsx
+import {
+  RoutingIndicator,
+  RoutingIndicatorHeader,
+  RoutingIndicatorContent,
+  RoutingMatch,
+} from "@/components/elements/ai-elements/multi-agent/routing-indicator";
+
+export function RoutingIndicatorExample() {
+  return (
+    <RoutingIndicator
+      input="Can you help me search for information about React hooks?"
+      matchedPattern="search"
+      targetAgent="Research Agent"
+      confidence={0.92}
+      isRouting={false}
+    />
+  );
+}
+
+export function ActiveRoutingExample() {
+  return (
+    <RoutingIndicator
+      input="Help me write a Python function"
+      isRouting={true}
+    />
+  );
+}
+```
+
+## Props
+
+### RoutingIndicator
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `input` | `string` | - | The input message being routed |
+| `matchedPattern` | `string` | - | The pattern that matched |
+| `targetAgent` | `string` | - | The agent that will handle the request |
+| `confidence` | `number` | - | Confidence score (0-1) |
+| `isRouting` | `boolean` | `false` | Show animated routing state |
+
+## Sub-components
+
+- `RoutingIndicatorHeader` - Header with routing status
+- `RoutingIndicatorContent` - Container for routing visualization
+- `RoutingInput` - Input display with pattern highlighting
+- `RoutingFlow` - Visual flow from pattern to agent
+- `RoutingIndicatorEmpty` - Empty state component
+- `RoutingMatch` - Compact pattern-to-text match display
+
+## Features
+
+- Real-time routing animation with shimmer effect
+- Pattern matching highlights in input text
+- Visual flow from matched pattern to target agent
+- Confidence score badges
+- Animated "determining" state during routing
+- Pattern badges showing routing rules
+- Indigo-themed active routing state
+- Support for regex pattern matching

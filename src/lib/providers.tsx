@@ -99,10 +99,11 @@ export function getProvidersData(): Provider[] {
       description: "Developer utilities for auditing and debugging your app",
       category: "Dev Tools",
     },
-    ai: {
+    "ai-elements": {
       isEnabled: true,
-      displayName: "AI Components",
-      description: "AI model selectors and utilities for Vercel AI SDK",
+      displayName: "AI Elements",
+      description:
+        "Building blocks for AI-powered applications with Vercel AI SDK",
       category: "AI",
     },
     vercel: {
@@ -226,7 +227,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     theme: <MoonIcon className="w-10 h-10" />,
     tinte: <TinteLogo size={40} />,
     github: <GitHubIcon className="w-10 h-10" />,
-    ai: <Sparkles className="w-10 h-10" />,
+    "ai-elements": <Sparkles className="w-10 h-10" />,
     devtools: (
       <svg
         className="w-10 h-10"

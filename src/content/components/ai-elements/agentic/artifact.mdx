@@ -1,0 +1,107 @@
+---
+title: Artifact
+description: Container for AI-generated content with action buttons for code, previews, and documents
+---
+
+<ComponentPreviewItem
+  componentKey="artifact"
+  installUrl="@elements/artifact"
+  category="AI"
+  name="Artifact"
+>
+  <Artifact />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for displaying AI-generated artifacts like code snippets, documents, or previews. Includes action buttons (Run, Copy, Regenerate, Download, Share) and a close button. Inspired by Claude Artifacts.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/artifact
+```
+
+## Usage
+
+```tsx
+import {
+  Artifact,
+  ArtifactHeader,
+  ArtifactTitle,
+  ArtifactDescription,
+  ArtifactActions,
+  ArtifactAction,
+  ArtifactContent,
+  ArtifactCode,
+} from "@/components/elements/ai-elements/agentic/artifact";
+
+export function ArtifactExample() {
+  return (
+    <Artifact onClose={() => console.log("closed")}>
+      <ArtifactHeader>
+        <div>
+          <ArtifactTitle>Button Component</ArtifactTitle>
+          <ArtifactDescription>React component with variants</ArtifactDescription>
+        </div>
+        <ArtifactActions>
+          <ArtifactAction type="copy" onClick={() => {}} />
+          <ArtifactAction type="download" onClick={() => {}} />
+        </ArtifactActions>
+      </ArtifactHeader>
+      <ArtifactContent>
+        <ArtifactCode
+          language="tsx"
+          code={`export function Button({ children }) {
+  return <button>{children}</button>;
+}`}
+        />
+      </ArtifactContent>
+    </Artifact>
+  );
+}
+```
+
+## Props
+
+### Artifact
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `onClose` | `() => void` | Callback when close button clicked |
+
+### ArtifactAction
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `type` | `ActionType` | Action type: run, copy, regenerate, download, share |
+| `onClick` | `() => void` | Click handler |
+| `disabled` | `boolean` | Disable button |
+
+### ArtifactCode
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `code` | `string` | Code string to display |
+| `language` | `string` | Language label |
+
+## Sub-components
+
+- `ArtifactHeader` - Header with title and actions
+- `ArtifactTitle` - Artifact title
+- `ArtifactDescription` - Description text
+- `ArtifactActions` - Action button container
+- `ArtifactAction` - Individual action button
+- `ArtifactClose` - Close button
+- `ArtifactContent` - Main content area
+- `ArtifactCode` - Code display with language badge
+- `ArtifactPreview` - Preview container
+
+## Features
+
+- Action buttons with tooltips
+- Copy button with checkmark feedback
+- Code display with language badge
+- Close button integration
+- Shadow and border styling
+- Flexible content area

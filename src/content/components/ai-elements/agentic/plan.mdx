@@ -1,0 +1,96 @@
+---
+title: Plan
+description: Display AI-generated execution plans with streaming support and action buttons
+---
+
+<ComponentPreviewItem
+  componentKey="plan"
+  installUrl="@elements/plan"
+  category="AI"
+  name="Plan"
+>
+  <Plan />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for displaying AI-generated execution plans. Supports streaming with a shimmer loading effect, numbered steps, and action buttons for approval workflow. Auto-opens during streaming.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/plan
+```
+
+## Usage
+
+```tsx
+import {
+  Plan,
+  PlanHeader,
+  PlanTitle,
+  PlanDescription,
+  PlanContent,
+  PlanFooter,
+  PlanAction,
+  PlanStep,
+} from "@/components/elements/ai-elements/agentic/plan";
+
+export function PlanExample() {
+  return (
+    <Plan isStreaming={false}>
+      <PlanHeader>
+        <div>
+          <PlanTitle>Implementation Plan</PlanTitle>
+          <PlanDescription>3 steps to complete</PlanDescription>
+        </div>
+      </PlanHeader>
+      <PlanContent>
+        <div className="space-y-3">
+          <PlanStep number={1}>Create database schema</PlanStep>
+          <PlanStep number={2}>Implement API endpoints</PlanStep>
+          <PlanStep number={3}>Add frontend components</PlanStep>
+        </div>
+      </PlanContent>
+      <PlanFooter>
+        <PlanAction variant="secondary">Cancel</PlanAction>
+        <PlanAction variant="primary">Execute Plan</PlanAction>
+      </PlanFooter>
+    </Plan>
+  );
+}
+```
+
+## Props
+
+### Plan
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `isStreaming` | `boolean` | `false` | Whether plan is being generated |
+| `defaultOpen` | `boolean` | `true` | Initial open state |
+| `open` | `boolean` | - | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | - | Callback when open state changes |
+
+### PlanAction
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"primary" \| "secondary" \| "destructive"` | `"secondary"` | Button style |
+| `disabled` | `boolean` | `false` | Disable button |
+| `onClick` | `() => void` | - | Click handler |
+
+### PlanStep
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `number` | `number` | Step number |
+
+## Features
+
+- Shimmer loading during streaming
+- Indigo-themed streaming state
+- Numbered step display
+- Action buttons in footer
+- Auto-disabled buttons during streaming
+- Collapsible with smooth animations

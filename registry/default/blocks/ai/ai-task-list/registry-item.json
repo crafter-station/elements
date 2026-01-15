@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "task-list",
+  "subcategory": "agentic",
+  "type": "registry:ui",
+  "title": "AI Task List",
+  "description": "Display AI workflow progress with task status indicators, file references, and progress tracking.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-task-list/components/elements/ai-task-list.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Collapsible task list with status icons. Supports pending, in-progress, completed, error states with progress bar.",
+  "categories": ["ai"]
+}

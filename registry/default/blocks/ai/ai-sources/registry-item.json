@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sources",
+  "subcategory": "agentic",
+  "type": "registry:ui",
+  "title": "AI Sources",
+  "description": "Collapsible citations viewer with favicons, source links, and snippets for RAG/search results display.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-sources/components/elements/ai-sources.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component with trigger and content. Auto-fetches favicons from Google. Supports custom rendering.",
+  "categories": ["ai"]
+}

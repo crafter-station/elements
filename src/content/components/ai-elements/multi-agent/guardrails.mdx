@@ -1,0 +1,118 @@
+---
+title: Guardrails
+description: Display content moderation and safety check results with blocked/modified/approved states, before/after comparison, and override actions for AI safety workflows.
+---
+
+<ComponentPreviewItem
+  componentKey="guardrails"
+  installUrl="@elements/guardrails"
+  category="AI"
+  name="Guardrails"
+>
+  <Guardrails />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for displaying AI content moderation and safety check results. Shows which guardrails have been triggered with their status (blocked, modified, approved, pending), reasons for interventions, and before/after content comparisons. Supports optional override actions for blocked content.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/guardrails
+```
+
+## Usage
+
+```tsx
+import {
+  Guardrails,
+  GuardrailsHeader,
+  GuardrailsContent,
+  GuardrailCheck,
+} from "@/components/elements/ai-elements/multi-agent/guardrails";
+
+const checks = [
+  {
+    id: "1",
+    type: "input",
+    status: "approved",
+    category: "prompt-injection",
+    confidence: 0.95,
+  },
+  {
+    id: "2",
+    type: "output",
+    status: "modified",
+    category: "pii-detection",
+    reason: "Email address detected and redacted",
+    originalContent: "Contact me at john@example.com",
+    modifiedContent: "Contact me at [EMAIL REDACTED]",
+    confidence: 0.98,
+  },
+  {
+    id: "3",
+    type: "output",
+    status: "blocked",
+    category: "harmful-content",
+    reason: "Content violates safety guidelines",
+    originalContent: "Blocked content here",
+    confidence: 0.92,
+  },
+];
+
+export function GuardrailsExample() {
+  return (
+    <Guardrails
+      checks={checks}
+      onOverride={(checkId) => console.log("Override:", checkId)}
+    >
+      <GuardrailsHeader>Content Guardrails</GuardrailsHeader>
+      <GuardrailsContent />
+    </Guardrails>
+  );
+}
+```
+
+## Props
+
+### Guardrails
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checks` | `GuardrailCheck[]` | - | Array of guardrail check results |
+| `onOverride` | `(checkId: string) => void` | - | Callback for override actions |
+
+### GuardrailCheck
+
+```typescript
+interface GuardrailCheck {
+  id: string;
+  type: "input" | "output";
+  status: "blocked" | "modified" | "approved" | "pending";
+  category: string;
+  reason?: string;
+  originalContent?: string;
+  modifiedContent?: string;
+  confidence?: number;
+}
+```
+
+## Sub-components
+
+- `GuardrailsHeader` - Header with summary counts
+- `GuardrailsContent` - Container for check items
+- `GuardrailCheck` - Individual check with expandable details
+- `GuardrailDiff` - Before/after content comparison
+- `GuardrailsEmpty` - Empty state when all checks pass
+
+## Features
+
+- Status indicators (blocked, modified, approved, pending)
+- Color-coded checks by severity
+- Expandable details with reasons
+- Before/after content diff view
+- Confidence scores for each check
+- Optional override button for blocked content
+- Input vs output check differentiation
+- Animated pending state for active checks

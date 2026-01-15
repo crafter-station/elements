@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "temperature-slider",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Temperature Slider",
+  "description": "Temperature slider with labeled presets for AI model tuning",
+  "registryDependencies": ["slider"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-temperature-slider/components/elements/ai-temperature-slider.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Range 0-2 with presets: Precise (0), Balanced (0.7), Creative (1.0), Wild (1.5).",
+  "categories": ["ai"]
+}

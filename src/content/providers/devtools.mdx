@@ -1,6 +1,6 @@
 ---
 title: Dev Tools
-description: Developer utilities for auditing and debugging your app
+description: Developer utilities for debugging, auditing, and building APIs
 category: Dev Tools
 brandColor: "#F97316"
 darkBrandColor: "#FB923C"
@@ -8,9 +8,113 @@ darkBrandColor: "#FB923C"
 
 ## Overview
 
-Developer-focused tools for auditing, debugging, and improving your application before deployment. Each component helps you catch issues early in development.
+Developer-focused tools for debugging, auditing, and building applications. Each component helps you catch issues early in development and streamline your workflow.
 
 ## Components
+
+### JSON Viewer
+
+Collapsible JSON tree with syntax highlighting, search, and copy path functionality.
+
+<ComponentPreviewItem
+  componentKey="json-viewer"
+  installUrl="@elements/json-viewer"
+  category="Dev Tools"
+  name="JSON Viewer"
+>
+  <JsonViewer />
+</ComponentPreviewItem>
+
+### Code Diff Viewer
+
+Diff view with Shiki syntax highlighting. Supports unified and split modes.
+
+<ComponentPreviewItem
+  componentKey="code-diff-viewer"
+  installUrl="@elements/code-diff-viewer"
+  category="Dev Tools"
+  name="Code Diff Viewer"
+>
+  <CodeDiffViewer />
+</ComponentPreviewItem>
+
+### CLI Output
+
+Terminal-style output display with ANSI color support.
+
+<ComponentPreviewItem
+  componentKey="cli-output"
+  installUrl="@elements/cli-output"
+  category="Dev Tools"
+  name="CLI Output"
+>
+  <CliOutput />
+</ComponentPreviewItem>
+
+### API Response Viewer
+
+HTTP response viewer with tabs for body, headers, and timing information.
+
+<ComponentPreviewItem
+  componentKey="api-response-viewer"
+  installUrl="@elements/api-response-viewer"
+  category="Dev Tools"
+  name="API Response Viewer"
+>
+  <ApiResponseViewer />
+</ComponentPreviewItem>
+
+### Error Boundary UI
+
+Error display for React error boundaries with stack trace and retry functionality.
+
+<ComponentPreviewItem
+  componentKey="error-boundary-ui"
+  installUrl="@elements/error-boundary-ui"
+  category="Dev Tools"
+  name="Error Boundary UI"
+>
+  <ErrorBoundaryUi />
+</ComponentPreviewItem>
+
+### Env Editor
+
+Environment variable editor with key-value grid, masked values, and .env import/export.
+
+<ComponentPreviewItem
+  componentKey="env-editor"
+  installUrl="@elements/env-editor"
+  category="Dev Tools"
+  name="Env Editor"
+>
+  <EnvEditor />
+</ComponentPreviewItem>
+
+### Schema Viewer
+
+JSON Schema visualizer with tree view, type badges, and required indicators.
+
+<ComponentPreviewItem
+  componentKey="schema-viewer"
+  installUrl="@elements/schema-viewer"
+  category="Dev Tools"
+  name="Schema Viewer"
+>
+  <SchemaViewer />
+</ComponentPreviewItem>
+
+### Webhook Tester
+
+HTTP request testing UI with method selector, URL, headers, body inputs, and response viewer.
+
+<ComponentPreviewItem
+  componentKey="webhook-tester"
+  installUrl="@elements/webhook-tester"
+  category="Dev Tools"
+  name="Webhook Tester"
+>
+  <WebhookTester />
+</ComponentPreviewItem>
 
 ### OG Image Explorer
 
@@ -28,30 +132,25 @@ Audit and preview Open Graph images across all routes in your app.
 ## Installation
 
 ```bash
+bunx shadcn@latest add @elements/json-viewer
+bunx shadcn@latest add @elements/code-diff-viewer
+bunx shadcn@latest add @elements/cli-output
+bunx shadcn@latest add @elements/api-response-viewer
+bunx shadcn@latest add @elements/error-boundary-ui
+bunx shadcn@latest add @elements/env-editor
+bunx shadcn@latest add @elements/schema-viewer
+bunx shadcn@latest add @elements/webhook-tester
 bunx shadcn@latest add @elements/og-image-explorer
-```
-
-## Usage
-
-```tsx
-import { OgImageExplorer } from "@/components/elements/devtools/og-image-explorer";
-
-const routes = [
-  { path: "/", title: "Home", ogImageUrl: "/opengraph-image.png" },
-  { path: "/blog", title: "Blog", ogImageUrl: "/blog/opengraph-image.png" },
-  { path: "/docs", title: "Docs", ogImageUrl: "/docs/opengraph-image.png" },
-];
-
-export function OgAuditPage() {
-  return <OgImageExplorer routes={routes} />;
-}
 ```
 
 ## Features
 
-- Visual gallery of all OG images across routes
-- Status indicators: green (loaded), red (broken), gray (loading)
-- Auto-grouping by route category
-- "View more" pagination for large categories
-- Click to open full-size image in new tab
-- Catch broken OG images before deployment
+- JSON tree viewer with search and copy path
+- Code diff with Shiki syntax highlighting
+- Terminal output with ANSI colors
+- HTTP response viewer with timing
+- Error boundary UI with stack traces
+- Environment variable editor
+- JSON Schema visualizer
+- Webhook/API request tester
+- OG image auditing tool

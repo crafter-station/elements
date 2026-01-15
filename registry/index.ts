@@ -13,34 +13,60 @@ export const registry = {
   items: [
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      name: "ai-model-selector",
+      name: "agent-context",
+      subcategory: "multi-agent",
       type: "registry:ui",
-      title: "AI Model Selector",
+      title: "AI Agent Context",
       description:
-        "A functional AI model selector with provider logos and popular models from Vercel AI Gateway. Features searchable combobox, provider icons, and model grouping.",
-      registryDependencies: [
-        "button",
-        "command",
-        "popover",
-        "openai-logo",
-        "anthropic-logo",
-        "gemini-logo",
-        "xai-logo",
-        "deepseek-logo",
-        "mistral-logo",
-        "groq-logo",
-        "cohere-logo",
-        "meta-logo",
-      ],
-      dependencies: ["lucide-react"],
+        "Display and optionally edit agent context data with type indicators, nested object support, and collapsible sections. Visualizes user/team context for AI agents.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
       files: [
         {
-          path: "registry/default/blocks/ai/ai-model-selector/components/elements/ai-model-selector.tsx",
+          path: "registry/default/blocks/ai/ai-agent-context/components/elements/ai-agent-context.tsx",
           type: "registry:component",
         },
       ],
-      docs: "Fully functional AI model selector with 22+ popular models from OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Cohere, and Meta. Supports custom models via the models prop. Returns provider/model-id format compatible with Vercel AI SDK.",
-      categories: ["ai", "form", "selector"],
+      docs: "Compound component for context visualization. Sub-components: AiAgentContext, AiAgentContextHeader, AiAgentContextContent, AiAgentContextEntry, AiAgentContextGroup, AiAgentContextEmpty. Supports editing primitive values.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "agent-roster",
+      subcategory: "multi-agent",
+      type: "registry:ui",
+      title: "AI Agent Roster",
+      description:
+        "Display a directory of AI agents with status indicators, match patterns, and selection support. Supports grid and list layouts for multi-agent orchestration UIs.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-agent-roster/components/elements/ai-agent-roster.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for agent directories. Sub-components: AiAgentRoster, AiAgentRosterHeader, AiAgentRosterContent, AiAgentCard, AiAgentRosterEmpty. Agent statuses: active, idle, busy, offline.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "agent-status",
+      subcategory: "multi-agent",
+      type: "registry:ui",
+      title: "AI Agent Status",
+      description:
+        "Display current agent handling a request with status indicators, animated pulse for active states, and handoff visualization for multi-agent workflows.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-agent-status/components/elements/ai-agent-status.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for agent status display. Variants: badge (compact) and card (detailed). States: idle, thinking, acting, waiting, done, handoff. Shows animated pulse when active and handoff indicator when transferring.",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -89,6 +115,24 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "api-response-viewer",
+      type: "registry:ui",
+      title: "API Response Viewer",
+      description:
+        "HTTP response viewer with tabbed Body, Headers, and Timing display",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/devtools/api-response-viewer/components/elements/api-response-viewer.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Status badge with color-coded HTTP codes, collapsible JSON body, headers table, and timing waterfall.",
+      categories: ["devtools"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "apple-logo",
       type: "registry:ui",
       title: "Apple Logo",
@@ -103,6 +147,24 @@ export const registry = {
       ],
       docs: "Apple logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["Hardware", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "artifact",
+      subcategory: "agentic",
+      type: "registry:ui",
+      title: "Ai Artifact",
+      description: "TODO: Add description",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-artifact/components/elements/ai-artifact.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "TODO: Add documentation",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -154,6 +216,44 @@ export const registry = {
       ],
       docs: "Bun logo component for the fast all-in-one JavaScript runtime. Features the iconic Bun mascot design.",
       categories: ["Package Manager", "logo", "brand", "JavaScript"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "chain-of-thought",
+      subcategory: "agentic",
+      type: "registry:ui",
+      title: "AI Chain of Thought",
+      description:
+        "Visualize AI reasoning steps with search results and images for step-by-step thinking display.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-chain-of-thought/components/elements/ai-chain-of-thought.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component with steps, search results, and image support. Each step has pending/active/complete states.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "chat-input",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Chat Input",
+      description:
+        "Expandable chat input with send button, file attachments, and keyboard shortcuts",
+      registryDependencies: ["button"],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-chat-input/components/elements/ai-chat-input.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Auto-expanding textarea with Cmd+Enter to send. Supports file attachments and loading states.",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -211,6 +311,24 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "cli-output",
+      type: "registry:ui",
+      title: "CLI Output",
+      description:
+        "Terminal-style output display with ANSI color support and controls",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/devtools/cli-output/components/elements/cli-output.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "ANSI color parsing, auto-scroll, max lines limit, copy/clear controls, timestamp display.",
+      categories: ["devtools"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "cloud-infrastructure",
       type: "registry:block",
       title: "Cloud & Infrastructure",
@@ -232,6 +350,24 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "code-diff-viewer",
+      type: "registry:ui",
+      title: "Code Diff Viewer",
+      description:
+        "Side-by-side or unified diff view with syntax highlighting via Shiki",
+      registryDependencies: [],
+      dependencies: ["shiki"],
+      files: [
+        {
+          path: "registry/default/blocks/devtools/code-diff-viewer/components/elements/code-diff-viewer.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Unified or split view modes, line numbers, and Shiki-powered syntax highlighting for any language.",
+      categories: ["devtools"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "cohere-logo",
       type: "registry:ui",
       title: "Cohere Logo",
@@ -246,6 +382,44 @@ export const registry = {
       ],
       docs: "Cohere logo component with official brand colors.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "confirmation",
+      subcategory: "agentic",
+      type: "registry:ui",
+      title: "AI Confirmation",
+      description:
+        "Human-in-the-loop tool approval workflow with accept/reject states for agentic AI applications.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-confirmation/components/elements/ai-confirmation.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for tool approval workflows. States: approval-requested, approval-responded, output-available, output-denied.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "conversation-tree",
+      subcategory: "devtools",
+      type: "registry:ui",
+      title: "AI Conversation Tree",
+      description:
+        "Visualize branching conversations with a tree structure. Shows node types (user, assistant, system, tool), expandable branches, active path highlighting, and click-to-navigate functionality.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-conversation-tree/components/elements/ai-conversation-tree.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A compound component for visualizing conversation branches. Ideal for chat UIs with edit/regenerate features. Use AiConversationTree as root with AiConversationTreeHeader, AiConversationTreeContent, and AiConversationTreePreview sub-components. Supports controlled activeNodeId and onNodeSelect callback.",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -317,6 +491,42 @@ export const registry = {
       ],
       docs: "Discord logo component with official brand blurple color.",
       categories: ["Communication", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "env-editor",
+      type: "registry:ui",
+      title: "Env Editor",
+      description:
+        "Environment variable editor with key-value grid, masked values, and import/export",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/devtools/env-editor/components/elements/env-editor.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Key-value editing grid, password masking, .env file import/export, add/remove variables.",
+      categories: ["devtools"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "error-boundary-ui",
+      type: "registry:ui",
+      title: "Error Boundary UI",
+      description:
+        "Error display component for React error boundaries with stack trace and retry",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/devtools/error-boundary-ui/components/elements/error-boundary-ui.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Stack trace parsing, retry button, copy error, dev/prod modes with different verbosity.",
+      categories: ["devtools"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -482,6 +692,44 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "guardrails",
+      subcategory: "multi-agent",
+      type: "registry:ui",
+      title: "AI Guardrails",
+      description:
+        "Display content moderation and safety check results with blocked/modified/approved states, before/after comparison, and override actions for AI safety workflows.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-guardrails/components/elements/ai-guardrails.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for guardrail displays. Sub-components: AiGuardrails, AiGuardrailsHeader, AiGuardrailsContent, AiGuardrailCheck, AiGuardrailDiff, AiGuardrailsEmpty. Check statuses: blocked, modified, approved, pending.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "handoff-chain",
+      subcategory: "multi-agent",
+      type: "registry:ui",
+      title: "AI Handoff Chain",
+      description:
+        "Visualize agent transition breadcrumbs showing the chain of agents with arrows, active agent highlighting, and clickable nodes for handoff details.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-handoff-chain/components/elements/ai-handoff-chain.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for displaying agent handoff sequences. Features: chain visualization with arrows, active agent highlighting, hover for handoff reason, selectable nodes for details, and optional timeline view.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "hugging-face-logo",
       type: "registry:ui",
       title: "Hugging Face Logo",
@@ -524,6 +772,24 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "json-viewer",
+      type: "registry:ui",
+      title: "JSON Viewer",
+      description:
+        "Collapsible JSON tree viewer with syntax highlighting, search, and copy path",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/devtools/json-viewer/components/elements/json-viewer.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Collapsible tree view with type-based coloring, search filter, and copy JSONPath on hover.",
+      categories: ["devtools"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "kebo-logo",
       type: "registry:ui",
       title: "Kebo Logo",
@@ -555,6 +821,25 @@ export const registry = {
       ],
       docs: "Kimi logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "latency-meter",
+      subcategory: "devtools",
+      type: "registry:ui",
+      title: "AI Latency Meter",
+      description:
+        "Response time visualization with TTFB and total duration display, color-coded performance indicators, animated progress bar, and compact/expanded variants.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-latency-meter/components/elements/ai-latency-meter.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for visualizing AI response latency. Performance levels: fast (<1s, green), moderate (<3s, yellow), slow (>3s, red). Shows TTFB (time to first byte) and total duration. Supports compact (inline badge) and expanded (full bar chart) variants with loading animation.",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -696,6 +981,44 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "memory-viewer",
+      subcategory: "multi-agent",
+      type: "registry:ui",
+      title: "AI Memory Viewer",
+      description:
+        "Display and manage working memory and conversation history with source badges, timestamps, search/filter, and add/remove functionality for agent memory systems.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-memory-viewer/components/elements/ai-memory-viewer.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for memory management. Memory types: working, history, system. Sources: user, system, conversation. Features: collapsible sections, search/filter, add/remove items, timestamps, and compact variant.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "message-bubble",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Message Bubble",
+      description:
+        "Chat message component with user/assistant variants and copy functionality",
+      registryDependencies: ["button"],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-message-bubble/components/elements/ai-message-bubble.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Role-based chat bubbles with avatars, timestamps, and copy-on-hover for AI responses.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "meta-logo",
       type: "registry:ui",
       title: "Meta Logo",
@@ -744,6 +1067,57 @@ export const registry = {
       ],
       docs: "Mistral logo component with official multi-color mosaic brand design.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "model-info",
+      subcategory: "devtools",
+      type: "registry:ui",
+      title: "AI Model Info",
+      description:
+        "Display AI model metadata including provider, context window, capabilities badges (vision, tools, streaming, JSON, functions), pricing info, and release date. Supports multiple providers with themed colors.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-model-info/components/elements/ai-model-info.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A compound component for displaying model information. Use AiModelInfo as root with AiModelInfoHeader, AiModelInfoCapabilities, AiModelInfoPricing, AiModelInfoMeta, and AiModelInfoBadge sub-components. Supports OpenAI, Anthropic, Google, Mistral, Cohere, and Meta providers with automatic theming.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "model-selector",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Model Selector",
+      description:
+        "A functional AI model selector with provider logos and popular models from Vercel AI Gateway. Features searchable combobox, provider icons, and model grouping.",
+      registryDependencies: [
+        "button",
+        "command",
+        "popover",
+        "openai-logo",
+        "anthropic-logo",
+        "gemini-logo",
+        "xai-logo",
+        "deepseek-logo",
+        "mistral-logo",
+        "groq-logo",
+        "cohere-logo",
+        "meta-logo",
+      ],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-model-selector/components/elements/ai-model-selector.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Fully functional AI model selector with 22+ popular models from OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Cohere, and Meta. Supports custom models via the models prop. Returns provider/model-id format compatible with Vercel AI SDK.",
+      categories: ["ai", "form", "selector"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -885,6 +1259,43 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "pipeline",
+      subcategory: "multi-agent",
+      type: "registry:ui",
+      title: "AI Pipeline",
+      description:
+        "Multi-stage workflow visualization with horizontal or vertical layout, stage status indicators, progress tracking, and expandable stage details.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-pipeline/components/elements/ai-pipeline.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for pipeline visualization. Orientations: horizontal, vertical. Stage states: pending, active, completed, error. Features progress bar, animated connectors, expandable stage details, and compact variant.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "plan",
+      subcategory: "agentic",
+      type: "registry:ui",
+      title: "Ai Plan",
+      description: "TODO: Add description",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-plan/components/elements/ai-plan.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "TODO: Add documentation",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "pnpm-logo",
       type: "registry:ui",
       title: "pnpm Logo",
@@ -964,6 +1375,25 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "prompt-diff",
+      subcategory: "devtools",
+      type: "registry:ui",
+      title: "AI Prompt Diff",
+      description:
+        "Compare system prompts with side-by-side or unified diff views. Shows added/removed line highlighting, line numbers, and copy buttons. Essential for prompt engineering and version tracking.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-prompt-diff/components/elements/ai-prompt-diff.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A compound component for comparing prompts. Supports unified and side-by-side diff views with LCS-based diff algorithm. Use AiPromptDiff as root with AiPromptDiffHeader, AiPromptDiffViewToggle, AiPromptDiffContent, and AiPromptDiffCopyButton sub-components.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "qwen-logo",
       type: "registry:ui",
       title: "Qwen Logo",
@@ -981,6 +1411,44 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "reasoning",
+      subcategory: "agentic",
+      type: "registry:ui",
+      title: "AI Reasoning",
+      description:
+        "Collapsible reasoning content with streaming awareness for DeepSeek R1-style thinking visualization.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-reasoning/components/elements/ai-reasoning.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Auto-opens during streaming, shows thinking duration. Compound component with trigger and content.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "request-inspector",
+      subcategory: "devtools",
+      type: "registry:ui",
+      title: "AI Request Inspector",
+      description:
+        "Display raw AI request/response data with collapsible sections, JSON syntax highlighting, copy buttons, and status code badges for debugging API calls.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-request-inspector/components/elements/ai-request-inspector.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for inspecting AI API requests. Features collapsible request/response sections, JSON formatting with copy-to-clipboard, HTTP method and URL display, status code badges with color coding (green: 2xx, yellow: 3xx, red: 4xx/5xx), duration and timestamp display.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "resend-logo",
       type: "registry:ui",
       title: "Resend Logo",
@@ -995,6 +1463,62 @@ export const registry = {
       ],
       docs: "Resend logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["Email", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "response-actions",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Response Actions",
+      description:
+        "Action buttons for AI responses: copy, regenerate, thumbs up/down, share",
+      registryDependencies: ["button", "tooltip"],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-response-actions/components/elements/ai-response-actions.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Toolbar with copy, regenerate, feedback, and share actions. Supports compact mode.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "routing-indicator",
+      subcategory: "multi-agent",
+      type: "registry:ui",
+      title: "AI Routing Indicator",
+      description:
+        "Visualize real-time message routing with pattern matching highlights, target agent display, confidence scores, and animated routing states for multi-agent systems.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-routing-indicator/components/elements/ai-routing-indicator.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for routing visualization. Sub-components: AiRoutingIndicator, AiRoutingIndicatorHeader, AiRoutingIndicatorContent, AiRoutingInput, AiRoutingFlow, AiRoutingIndicatorEmpty, AiRoutingMatch. Supports animated routing state.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "schema-viewer",
+      type: "registry:ui",
+      title: "Schema Viewer",
+      description:
+        "JSON Schema visualizer with tree view, type badges, and required indicators",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/devtools/schema-viewer/components/elements/schema-viewer.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Collapsible tree view, type badges, required indicators, constraints display, example values.",
+      categories: ["devtools"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1033,6 +1557,25 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sources",
+      subcategory: "agentic",
+      type: "registry:ui",
+      title: "AI Sources",
+      description:
+        "Collapsible citations viewer with favicons, source links, and snippets for RAG/search results display.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-sources/components/elements/ai-sources.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component with trigger and content. Auto-fetches favicons from Google. Supports custom rendering.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "spotify-logo",
       type: "registry:ui",
       title: "Spotify Logo",
@@ -1047,6 +1590,44 @@ export const registry = {
       ],
       docs: "Spotify logo component with official brand green color.",
       categories: ["Entertainment", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "stream-debugger",
+      subcategory: "devtools",
+      type: "registry:ui",
+      title: "AI Stream Debugger",
+      description:
+        "Real-time streaming chunk visualization for AI responses with auto-scroll, pause/resume, chunk type indicators, and timestamps for debugging SSE streams.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-stream-debugger/components/elements/ai-stream-debugger.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for debugging AI streaming responses. Chunk types: text, tool_call, tool_result, error, finish. Features auto-scroll with pause/resume, clear button, live/paused status indicator, configurable max chunks. Each chunk shows millisecond-precision timestamps.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "streaming-text",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Streaming Text",
+      description:
+        "Animated text that streams in character-by-character or word-by-word",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-streaming-text/components/elements/ai-streaming-text.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Typewriter effect with configurable speed, character/word modes, and animated cursor.",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1084,6 +1665,25 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "task-list",
+      subcategory: "agentic",
+      type: "registry:ui",
+      title: "AI Task List",
+      description:
+        "Display AI workflow progress with task status indicators, file references, and progress tracking.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-task-list/components/elements/ai-task-list.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Collapsible task list with status icons. Supports pending, in-progress, completed, error states with progress bar.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "tech-giants",
       type: "registry:block",
       title: "Tech Giants",
@@ -1098,6 +1698,25 @@ export const registry = {
       files: [],
       docs: "Collection of major technology company logos. Essential for platform integrations, sign-in options, and enterprise partnerships.",
       categories: ["logo", "brand", "enterprise", "collection"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "temperature-slider",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Temperature Slider",
+      description:
+        "Temperature slider with labeled presets for AI model tuning",
+      registryDependencies: ["slider"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-temperature-slider/components/elements/ai-temperature-slider.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Range 0-2 with presets: Precise (0), Balanced (0.7), Creative (1.0), Wild (1.5).",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1258,6 +1877,25 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "thinking-indicator",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Thinking Indicator",
+      description:
+        "Loading indicator with multiple variants for AI processing states",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-thinking-indicator/components/elements/ai-thinking-indicator.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Animated indicators: bouncing dots, pulse, brain icon, or sparkles. Customizable message.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "tinte-editor",
       type: "registry:block",
       title: "Tinte Theme Editor",
@@ -1340,6 +1978,82 @@ export const registry = {
       ],
       docs: "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["Theme", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "token-counter",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Token Counter",
+      description:
+        "Real-time token count display with progress bar and model presets",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-token-counter/components/elements/ai-token-counter.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Shows current/max tokens with color-coded states: normal, warning (>75%), danger (>90%).",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "token-viewer",
+      subcategory: "devtools",
+      type: "registry:ui",
+      title: "AI Token Viewer",
+      description:
+        "Token usage visualization with input/output/total counts, cost estimation for popular models, and interactive token breakdown with hover-to-inspect boundaries.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-token-viewer/components/elements/ai-token-viewer.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for visualizing token usage. Features input/output/total token counts, cost estimation for GPT-4/4o/3.5-turbo and Claude 3/3.5 models, visual token breakdown with color-coded types (text, special, control), hover tooltips showing token IDs and types.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "tool-call",
+      subcategory: "agentic",
+      type: "registry:ui",
+      title: "AI Tool Call",
+      description:
+        "Display AI tool/function invocations with status indicators, input/output visualization, and collapsible interface for MCP and function calling workflows.",
+      registryDependencies: [],
+      dependencies: ["@radix-ui/react-collapsible", "lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-tool-call/components/elements/ai-tool-call.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compound component for displaying tool calls. States: pending, running, completed, error, awaiting-approval, denied. Auto-opens on completion/error.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "tool-inspector",
+      subcategory: "devtools",
+      type: "registry:ui",
+      title: "AI Tool Inspector",
+      description:
+        "Debug panel for inspecting AI tool executions with timing, status indicators, and expandable JSON input/output views. Perfect for debugging MCP tools, function calls, and agent actions.",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-tool-inspector/components/elements/ai-tool-inspector.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A compound component for debugging AI tool calls. Features include tool name and description display, input/output JSON with copy functionality, execution time tracking, and status indicators (pending, running, success, error). Use AiToolInspector as the root with AiToolInspectorHeader, AiToolInspectorList, and AiToolInspectorItem sub-components.",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1499,6 +2213,24 @@ export const registry = {
       ],
       docs: "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["Cloud", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "webhook-tester",
+      type: "registry:ui",
+      title: "Webhook Tester",
+      description:
+        "HTTP request testing UI with URL, method, headers, body inputs and response viewer",
+      registryDependencies: [],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/devtools/webhook-tester/components/elements/webhook-tester.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Complete request builder: method selector, URL input, headers editor, JSON body, response display.",
+      categories: ["devtools"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

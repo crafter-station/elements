@@ -1,0 +1,98 @@
+---
+title: Webhook Tester
+description: Webhook testing UI with request builder and response viewer
+---
+
+<ComponentPreviewItem
+  componentKey="webhook-tester"
+  installUrl="@elements/webhook-tester"
+  category="Dev Tools"
+  name="Webhook Tester"
+>
+  <WebhookTester />
+</ComponentPreviewItem>
+
+## Overview
+
+A webhook testing interface with URL input, method selector, headers editor, body input, and response viewer. Perfect for testing API endpoints, webhooks, and HTTP requests.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/webhook-tester
+```
+
+## Usage
+
+```tsx
+import { WebhookTester } from "@/components/elements/devtools/webhook-tester";
+
+export function WebhookTesterExample() {
+  return (
+    <WebhookTester
+      defaultUrl="https://api.example.com/webhook"
+      defaultMethod="POST"
+      defaultHeaders={{ "Content-Type": "application/json" }}
+      defaultBody='{"event": "user.created", "data": {}}'
+    />
+  );
+}
+
+// With custom send handler
+export function CustomWebhookTester() {
+  return (
+    <WebhookTester
+      onSend={async (request) => {
+        // Custom logic, e.g., proxy through your server
+        const response = await fetch("/api/proxy", {
+          method: "POST",
+          body: JSON.stringify(request)
+        });
+        return response.json();
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultUrl` | `string` | `""` | Initial URL |
+| `defaultMethod` | `HttpMethod` | `"POST"` | Initial HTTP method |
+| `defaultHeaders` | `Record<string, string>` | `{ "Content-Type": "application/json" }` | Initial headers |
+| `defaultBody` | `string` | `"{}"` | Initial request body |
+| `onSend` | `(request) => Promise<WebhookResponse>` | - | Custom send handler |
+| `className` | `string` | - | Additional CSS classes |
+
+## HTTP Methods
+
+Supports all common methods with color coding:
+- **GET**: Green
+- **POST**: Blue
+- **PUT**: Amber
+- **PATCH**: Purple
+- **DELETE**: Red
+
+## Response Object
+
+```typescript
+interface WebhookResponse {
+  status: number;
+  statusText: string;
+  headers: Record<string, string>;
+  body: unknown;
+  timing: number;
+}
+```
+
+## Features
+
+- Method selector with color coding
+- Dynamic headers editor
+- JSON body editor
+- Built-in fetch or custom handler
+- Response timing display
+- Status code highlighting
+- Error handling

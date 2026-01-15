@@ -1,0 +1,61 @@
+---
+title: Chat Input
+description: Expandable textarea with send button and keyboard shortcuts
+---
+
+<ComponentPreviewItem
+  componentKey="chat-input"
+  installUrl="@elements/chat-input"
+  category="AI"
+  name="Chat Input"
+>
+  <ChatInput />
+</ComponentPreviewItem>
+
+## Overview
+
+An expandable chat input component with send button, keyboard shortcuts, and optional file attachment support. Auto-expands as you type and supports Cmd+Enter (or Ctrl+Enter) to submit.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/chat-input
+```
+
+## Usage
+
+```tsx
+import { ChatInput } from "@/components/elements/ai-elements/chat/chat-input";
+
+export function ChatInterface() {
+  const handleSubmit = (message: string) => {
+    console.log("Message:", message);
+  };
+
+  return (
+    <ChatInput
+      onSubmit={handleSubmit}
+      placeholder="Type a message..."
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `onSubmit` | `(message: string) => void` | - | Callback when message is submitted |
+| `placeholder` | `string` | `"Type a message..."` | Placeholder text |
+| `disabled` | `boolean` | `false` | Disable the input |
+| `loading` | `boolean` | `false` | Show loading state |
+| `allowAttachments` | `boolean` | `false` | Show attachment button |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Auto-expanding textarea
+- Cmd+Enter / Ctrl+Enter to submit
+- Loading state with spinner
+- Optional file attachments
+- Disabled state support

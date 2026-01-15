@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "error-boundary-ui",
+  "type": "registry:ui",
+  "title": "Error Boundary UI",
+  "description": "Error display component for React error boundaries with stack trace and retry",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/devtools/error-boundary-ui/components/elements/error-boundary-ui.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Stack trace parsing, retry button, copy error, dev/prod modes with different verbosity.",
+  "categories": ["devtools"]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "thinking-indicator",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Thinking Indicator",
+  "description": "Loading indicator with multiple variants for AI processing states",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-thinking-indicator/components/elements/ai-thinking-indicator.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Animated indicators: bouncing dots, pulse, brain icon, or sparkles. Customizable message.",
+  "categories": ["ai"]
+}

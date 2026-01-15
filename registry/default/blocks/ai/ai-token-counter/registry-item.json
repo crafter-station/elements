@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "token-counter",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Token Counter",
+  "description": "Real-time token count display with progress bar and model presets",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-token-counter/components/elements/ai-token-counter.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Shows current/max tokens with color-coded states: normal, warning (>75%), danger (>90%).",
+  "categories": ["ai"]
+}

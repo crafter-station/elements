@@ -1,0 +1,93 @@
+---
+title: Tool Call
+description: Display tool/function invocations with status indicators for agentic AI workflows
+---
+
+<ComponentPreviewItem
+  componentKey="tool-call"
+  installUrl="@elements/tool-call"
+  category="AI"
+  name="Tool Call"
+>
+  <ToolCall />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for displaying AI tool/function invocations with real-time status tracking. Supports states like pending, running, completed, error, awaiting-approval, and denied. Built with Radix Collapsible.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/tool-call
+```
+
+## Usage
+
+```tsx
+import {
+  ToolCall,
+  ToolCallHeader,
+  ToolCallContent,
+  ToolCallInput,
+  ToolCallOutput,
+  ToolCallError,
+} from "@/components/elements/ai-elements/agentic/tool-call";
+
+export function ToolCallExample() {
+  return (
+    <ToolCall name="searchDatabase" state="completed">
+      <ToolCallHeader />
+      <ToolCallContent>
+        <ToolCallInput input={{ query: "user:123", limit: 10 }} />
+        <ToolCallOutput>Found 3 matching records</ToolCallOutput>
+      </ToolCallContent>
+    </ToolCall>
+  );
+}
+```
+
+## Props
+
+### ToolCall
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | - | Tool/function name to display |
+| `state` | `ToolCallState` | - | Current execution state |
+| `defaultOpen` | `boolean` | `false` | Initial open state |
+| `open` | `boolean` | - | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | - | Callback when open state changes |
+
+### ToolCallState
+
+```typescript
+type ToolCallState =
+  | "pending"
+  | "running"
+  | "completed"
+  | "error"
+  | "awaiting-approval"
+  | "denied";
+```
+
+### ToolCallInput
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `input` | `Record<string, unknown>` | JSON input to display |
+
+### ToolCallError
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `error` | `string` | Error message to display |
+
+## Features
+
+- Collapsible interface with smooth animations
+- Status badges with icons (Loader2, Check, X, AlertTriangle)
+- JSON syntax highlighting for input
+- Auto-opens on completion or error
+- Controlled and uncontrolled modes
+- Keyboard navigation support

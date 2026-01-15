@@ -1,0 +1,117 @@
+---
+title: Memory Viewer
+description: Display and manage working memory and conversation history with source badges, timestamps, search/filter, and add/remove functionality for agent memory systems.
+---
+
+<ComponentPreviewItem
+  componentKey="memory-viewer"
+  installUrl="@elements/memory-viewer"
+  category="AI"
+  name="Memory Viewer"
+>
+  <MemoryViewer />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for displaying and managing AI agent memory systems. Organizes memory into working memory (active context) and conversation history sections. Supports search/filtering, timestamps, source badges, and CRUD operations for memory items.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/memory-viewer
+```
+
+## Usage
+
+```tsx
+import {
+  MemoryViewer,
+  MemoryViewerCompact,
+} from "@/components/elements/ai-elements/multi-agent/memory-viewer";
+
+const workingMemory = [
+  {
+    id: "1",
+    content: "User prefers concise responses",
+    type: "working",
+    source: "user",
+    createdAt: new Date(),
+  },
+  {
+    id: "2",
+    content: "Current task: code review",
+    type: "working",
+    source: "system",
+    createdAt: new Date(),
+  },
+];
+
+const conversationHistory = [
+  {
+    id: "3",
+    content: "Previous discussion about React hooks",
+    type: "history",
+    source: "conversation",
+    createdAt: new Date(),
+  },
+];
+
+export function MemoryViewerExample() {
+  return (
+    <MemoryViewer
+      workingMemory={workingMemory}
+      conversationHistory={conversationHistory}
+      onAdd={(content, type) => console.log("Add:", content, type)}
+      onRemove={(id) => console.log("Remove:", id)}
+      maxItems={100}
+    />
+  );
+}
+```
+
+## Props
+
+### MemoryViewer
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `workingMemory` | `MemoryItem[]` | `[]` | Active context items |
+| `conversationHistory` | `MemoryItem[]` | `[]` | Historical conversation items |
+| `onAdd` | `(content: string, type: string) => void` | - | Callback for adding items |
+| `onRemove` | `(id: string) => void` | - | Callback for removing items |
+| `maxItems` | `number` | - | Maximum total items allowed |
+
+### MemoryItem
+
+```typescript
+interface MemoryItem {
+  id: string;
+  content: string;
+  type: "working" | "history" | "system";
+  source?: "user" | "system" | "conversation";
+  createdAt: Date;
+  metadata?: Record<string, unknown>;
+}
+```
+
+## Sub-components
+
+- `MemoryViewerHeader` - Header with title and item count
+- `MemoryViewerSearch` - Search input for filtering items
+- `MemoryViewerContent` - Container for memory sections
+- `MemoryViewerSection` - Collapsible section (working/history)
+- `MemoryViewerItem` - Individual memory item with actions
+- `MemoryViewerAddButton` - Button to add new memory items
+- `MemoryViewerCompact` - Compact summary view
+
+## Features
+
+- Organized sections for working memory and conversation history
+- Search and filter functionality
+- Source badges (user, system, conversation)
+- Timestamps for each memory item
+- Add and remove memory items
+- Collapsible sections
+- Compact variant for inline display
+- Maximum item limits with count display

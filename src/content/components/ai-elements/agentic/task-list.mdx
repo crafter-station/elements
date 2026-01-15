@@ -1,0 +1,105 @@
+---
+title: Task List
+description: Display workflow progress with status indicators for agentic AI task execution
+---
+
+<ComponentPreviewItem
+  componentKey="task-list"
+  installUrl="@elements/task-list"
+  category="AI"
+  name="Task List"
+>
+  <TaskList />
+</ComponentPreviewItem>
+
+## Overview
+
+A collapsible task list component for displaying AI agent workflow progress. Shows task status (pending, in-progress, completed, error) with a progress counter. Supports file references and custom task rendering.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/task-list
+```
+
+## Usage
+
+```tsx
+import {
+  TaskList,
+  TaskListItem,
+  TaskListFile,
+  TaskListProgress,
+} from "@/components/elements/ai-elements/agentic/task-list";
+
+const tasks = [
+  { id: "1", title: "Analyze codebase", status: "completed" },
+  { id: "2", title: "Generate types", status: "in-progress" },
+  { id: "3", title: "Write tests", status: "pending" },
+];
+
+export function TaskListExample() {
+  return (
+    <TaskList title="Implementation Tasks" tasks={tasks}>
+      <TaskListItem status="completed">
+        Analyze codebase structure
+      </TaskListItem>
+      <TaskListItem status="in-progress">
+        Generate TypeScript types
+        <TaskListFile filename="types.ts" language="TypeScript" />
+      </TaskListItem>
+      <TaskListItem status="pending">
+        Write unit tests
+      </TaskListItem>
+    </TaskList>
+  );
+}
+```
+
+## Props
+
+### TaskList
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | `"Tasks"` | Header title |
+| `tasks` | `TaskItem[]` | `[]` | Array of tasks for automatic rendering |
+| `defaultOpen` | `boolean` | `true` | Initial open state |
+| `open` | `boolean` | - | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | - | Callback when open state changes |
+
+### TaskItem
+
+```typescript
+interface TaskItem {
+  id: string;
+  title: string;
+  status: TaskStatus;
+  description?: string;
+}
+
+type TaskStatus = "pending" | "in-progress" | "completed" | "error";
+```
+
+### TaskListItem
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `status` | `TaskStatus` | Current task status |
+| `description` | `string` | Optional description |
+
+### TaskListFile
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `filename` | `string` | File name to display |
+| `language` | `string` | Optional language label |
+
+## Features
+
+- Progress counter (completed/total)
+- Status icons with animations
+- File reference badges
+- Collapsible with smooth animations
+- Automatic or custom task rendering
+- Progress bar component

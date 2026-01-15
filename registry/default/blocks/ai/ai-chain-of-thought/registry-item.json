@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chain-of-thought",
+  "subcategory": "agentic",
+  "type": "registry:ui",
+  "title": "AI Chain of Thought",
+  "description": "Visualize AI reasoning steps with search results and images for step-by-step thinking display.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-chain-of-thought/components/elements/ai-chain-of-thought.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component with steps, search results, and image support. Each step has pending/active/complete states.",
+  "categories": ["ai"]
+}

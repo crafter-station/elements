@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "latency-meter",
+  "subcategory": "devtools",
+  "type": "registry:ui",
+  "title": "AI Latency Meter",
+  "description": "Response time visualization with TTFB and total duration display, color-coded performance indicators, animated progress bar, and compact/expanded variants.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-latency-meter/components/elements/ai-latency-meter.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for visualizing AI response latency. Performance levels: fast (<1s, green), moderate (<3s, yellow), slow (>3s, red). Shows TTFB (time to first byte) and total duration. Supports compact (inline badge) and expanded (full bar chart) variants with loading animation.",
+  "categories": ["ai"]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-token-counter",
+  "title": "AI Token Counter",
+  "description": "Real-time token count display with progress bar and model presets",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-token-counter/components/elements/ai-token-counter.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype ModelPreset = \"gpt-4\" | \"gpt-4o\" | \"gpt-5\" | \"claude-opus\" | \"claude-sonnet\" | \"gemini-pro\" | \"custom\";\n\nconst MODEL_LIMITS: Record<ModelPreset, number> = {\n  \"gpt-4\": 8192,\n  \"gpt-4o\": 128000,\n  \"gpt-5\": 128000,\n  \"claude-opus\": 200000,\n  \"claude-sonnet\": 200000,\n  \"gemini-pro\": 1000000,\n  custom: 128000,\n};\n\ninterface AiTokenCounterProps {\n  tokens: number;\n  maxTokens?: number;\n  model?: ModelPreset;\n  showProgress?: boolean;\n  className?: string;\n}\n\nexport function AiTokenCounter({\n  tokens,\n  maxTokens,\n  model = \"custom\",\n  showProgress = true,\n  className,\n}: AiTokenCounterProps) {\n  const limit = maxTokens ?? MODEL_LIMITS[model];\n\n  const { percentage, statusColor, progressColor } = React.useMemo(() => {\n    const pct = Math.min((tokens / limit) * 100, 100);\n    let status = \"text-muted-foreground\";\n    let progress = \"bg-primary\";\n\n    if (pct >= 90) {\n      status = \"text-red-500\";\n      progress = \"bg-red-500\";\n    } else if (pct >= 75) {\n      status = \"text-amber-500\";\n      progress = \"bg-amber-500\";\n    }\n\n    return { percentage: pct, statusColor: status, progressColor: progress };\n  }, [tokens, limit]);\n\n  const formatNumber = React.useCallback((num: number) => {\n    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;\n    if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;\n    return num.toLocaleString();\n  }, []);\n\n  return (\n    <div\n      data-slot=\"ai-token-counter\"\n      role=\"meter\"\n      aria-label=\"Token usage\"\n      aria-valuenow={tokens}\n      aria-valuemin={0}\n      aria-valuemax={limit}\n      className={cn(\"flex flex-col gap-1.5\", className)}\n    >\n      <div className=\"flex items-center justify-between text-sm\">\n        <span className={cn(\"font-mono tabular-nums\", statusColor)}>\n          {formatNumber(tokens)}\n        </span>\n        <span className=\"text-muted-foreground\">\n          / {formatNumber(limit)} tokens\n        </span>\n      </div>\n\n      {showProgress && (\n        <div className=\"h-1.5 w-full overflow-hidden rounded-full bg-muted\">\n          <div\n            className={cn(\n              \"h-full transition-[width] duration-300 ease-out\",\n              progressColor\n            )}\n            style={{ width: `${percentage}%` }}\n          />\n        </div>\n      )}\n\n      {percentage >= 90 && (\n        <p className=\"text-xs text-red-500\" role=\"alert\">\n          Approaching token limit\n        </p>\n      )}\n    </div>\n  );\n}\n\nexport type { AiTokenCounterProps, ModelPreset };\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Shows current/max tokens with color-coded states: normal, warning (>75%), danger (>90%).",
+  "categories": ["ai"],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-context",
+  "subcategory": "multi-agent",
+  "type": "registry:ui",
+  "title": "AI Agent Context",
+  "description": "Display and optionally edit agent context data with type indicators, nested object support, and collapsible sections. Visualizes user/team context for AI agents.",
+  "registryDependencies": [],
+  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-agent-context/components/elements/ai-agent-context.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for context visualization. Sub-components: AiAgentContext, AiAgentContextHeader, AiAgentContextContent, AiAgentContextEntry, AiAgentContextGroup, AiAgentContextEmpty. Supports editing primitive values.",
+  "categories": ["ai"]
+}

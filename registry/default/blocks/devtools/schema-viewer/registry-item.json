@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "schema-viewer",
+  "type": "registry:ui",
+  "title": "Schema Viewer",
+  "description": "JSON Schema visualizer with tree view, type badges, and required indicators",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/devtools/schema-viewer/components/elements/schema-viewer.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Collapsible tree view, type badges, required indicators, constraints display, example values.",
+  "categories": ["devtools"]
+}

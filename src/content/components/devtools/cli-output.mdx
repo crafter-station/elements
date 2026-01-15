@@ -1,0 +1,77 @@
+---
+title: CLI Output
+description: Terminal-style output display with ANSI color support
+---
+
+<ComponentPreviewItem
+  componentKey="cli-output"
+  installUrl="@elements/cli-output"
+  category="Dev Tools"
+  name="CLI Output"
+>
+  <CliOutput />
+</ComponentPreviewItem>
+
+## Overview
+
+A terminal-style output display component with ANSI color parsing, auto-scroll, and controls for copying and clearing output. Perfect for displaying command-line results, logs, or build output.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/cli-output
+```
+
+## Usage
+
+```tsx
+import { CliOutput } from "@/components/elements/devtools/cli-output";
+
+const output = [
+  "Installing dependencies...",
+  "\x1b[32m✓\x1b[0m @clerk/nextjs installed",
+  "\x1b[32m✓\x1b[0m tailwindcss installed",
+  "\x1b[33mwarning\x1b[0m peer dependency missing",
+  "\x1b[32mDone in 2.3s\x1b[0m"
+];
+
+export function TerminalOutput() {
+  return (
+    <CliOutput
+      output={output}
+      prompt="$"
+      autoScroll
+      showControls
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `output` | `CliOutputLine[] \| string[]` | - | Lines to display |
+| `prompt` | `string` | `"$"` | Command prompt character |
+| `autoScroll` | `boolean` | `true` | Auto-scroll to bottom on new output |
+| `maxLines` | `number` | - | Maximum lines to display |
+| `showTimestamps` | `boolean` | `false` | Show timestamps per line |
+| `showControls` | `boolean` | `true` | Show copy/clear buttons |
+| `onClear` | `() => void` | - | Callback for clear button |
+| `className` | `string` | - | Additional CSS classes |
+
+## ANSI Colors
+
+Supports standard ANSI color codes:
+- **Text colors**: 30-37, 90-97
+- **Background colors**: 40-47
+- **Styles**: bold, dim, italic, underline, strikethrough
+
+## Features
+
+- ANSI escape code parsing
+- Auto-scroll to latest output
+- Copy all output to clipboard
+- Clear output button
+- Optional timestamps
+- macOS-style window controls

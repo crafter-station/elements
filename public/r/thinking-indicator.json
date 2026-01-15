@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "thinking-indicator",
+  "title": "AI Thinking Indicator",
+  "description": "Loading indicator with multiple variants for AI processing states",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-thinking-indicator/components/elements/ai-thinking-indicator.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { Brain, Sparkles } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype ThinkingVariant = \"dots\" | \"pulse\" | \"brain\" | \"sparkles\";\n\ninterface AiThinkingIndicatorProps {\n  variant?: ThinkingVariant;\n  message?: string;\n  showLabel?: boolean;\n  className?: string;\n}\n\nexport function AiThinkingIndicator({\n  variant = \"dots\",\n  message = \"Thinking\",\n  showLabel = true,\n  className,\n}: AiThinkingIndicatorProps) {\n  const renderIndicator = () => {\n    switch (variant) {\n      case \"dots\":\n        return (\n          <div className=\"flex items-center gap-1\">\n            <span className=\"size-2 animate-bounce rounded-full bg-current will-change-transform [animation-delay:-0.3s]\" />\n            <span className=\"size-2 animate-bounce rounded-full bg-current will-change-transform [animation-delay:-0.15s]\" />\n            <span className=\"size-2 animate-bounce rounded-full bg-current will-change-transform\" />\n          </div>\n        );\n\n      case \"pulse\":\n        return (\n          <div className=\"flex items-center gap-1.5\">\n            <span className=\"size-2.5 animate-pulse rounded-full bg-current will-change-[opacity]\" />\n            <span className=\"size-2.5 animate-pulse rounded-full bg-current will-change-[opacity] [animation-delay:150ms]\" />\n            <span className=\"size-2.5 animate-pulse rounded-full bg-current will-change-[opacity] [animation-delay:300ms]\" />\n          </div>\n        );\n\n      case \"brain\":\n        return <Brain className=\"size-5 animate-pulse will-change-[opacity]\" />;\n\n      case \"sparkles\":\n        return <Sparkles className=\"size-5 animate-pulse will-change-[opacity]\" />;\n\n      default:\n        return null;\n    }\n  };\n\n  return (\n    <div\n      data-slot=\"ai-thinking-indicator\"\n      role=\"status\"\n      aria-live=\"polite\"\n      aria-label={message}\n      className={cn(\n        \"inline-flex items-center gap-2 text-muted-foreground\",\n        className\n      )}\n    >\n      {renderIndicator()}\n      {showLabel && (\n        <span className=\"text-sm\" aria-hidden=\"true\">\n          {message}\n          <span className=\"animate-pulse will-change-[opacity]\">...</span>\n        </span>\n      )}\n    </div>\n  );\n}\n\nexport type { AiThinkingIndicatorProps, ThinkingVariant };\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Animated indicators: bouncing dots, pulse, brain icon, or sparkles. Customizable message.",
+  "categories": ["ai"],
+  "type": "registry:ui"
+}

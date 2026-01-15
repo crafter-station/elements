@@ -1,0 +1,99 @@
+---
+title: Confirmation
+description: Tool approval workflow with accept/reject states for human-in-the-loop AI interactions
+---
+
+<ComponentPreviewItem
+  componentKey="confirmation"
+  installUrl="@elements/confirmation"
+  category="AI"
+  name="Confirmation"
+>
+  <Confirmation />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for human-in-the-loop AI workflows. Displays approval requests with approve/reject actions and shows the result state. Essential for agentic AI systems that require user confirmation before executing sensitive operations.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/confirmation
+```
+
+## Usage
+
+```tsx
+import {
+  Confirmation,
+  ConfirmationRequest,
+  ConfirmationAccepted,
+  ConfirmationRejected,
+  ConfirmationActions,
+} from "@/components/elements/ai-elements/agentic/confirmation";
+import { useState } from "react";
+
+export function ConfirmationExample() {
+  const [state, setState] = useState<ConfirmationState>("approval-requested");
+
+  return (
+    <Confirmation
+      state={state}
+      onApprove={() => setState("output-available")}
+      onReject={() => setState("output-denied")}
+    >
+      <ConfirmationRequest
+        title="Delete Files"
+        description="The AI wants to delete 3 temporary files from your project."
+      >
+        <ConfirmationActions />
+      </ConfirmationRequest>
+      <ConfirmationAccepted description="Files have been deleted." />
+      <ConfirmationRejected description="Operation was cancelled." />
+    </Confirmation>
+  );
+}
+```
+
+## Props
+
+### Confirmation
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `state` | `ConfirmationState` | - | Current confirmation state |
+| `onApprove` | `() => void` | - | Callback when approved |
+| `onReject` | `() => void` | - | Callback when rejected |
+
+### ConfirmationState
+
+```typescript
+type ConfirmationState =
+  | "approval-requested"
+  | "approval-responded"
+  | "output-available"
+  | "output-denied";
+```
+
+### ConfirmationRequest / Accepted / Rejected
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | Varies | Header title |
+| `description` | `string` | - | Description text |
+
+### ConfirmationAction
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `variant` | `"approve" \| "reject"` | Button variant |
+| `onClick` | `() => void` | Additional click handler |
+
+## Features
+
+- Context-based conditional rendering
+- Alert-based accessible design
+- Approve/Reject buttons with icons
+- State-aware color theming
+- Customizable action buttons

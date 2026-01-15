@@ -1,0 +1,98 @@
+---
+title: Request Inspector
+description: Display raw AI request/response data with collapsible sections and JSON syntax highlighting
+---
+
+<ComponentPreviewItem
+  componentKey="request-inspector"
+  installUrl="@elements/request-inspector"
+  category="AI"
+  name="Request Inspector"
+>
+  <RequestInspector />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for inspecting AI API requests and responses. Features collapsible request/response sections, JSON formatting with copy-to-clipboard, HTTP method and URL display, status code badges with color coding, and duration/timestamp display.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/request-inspector
+```
+
+## Usage
+
+```tsx
+import {
+  RequestInspector,
+  RequestInspectorHeader,
+  RequestInspectorRequest,
+  RequestInspectorResponse,
+} from "@/components/elements/ai-elements/devtools/request-inspector";
+
+export function RequestInspectorExample() {
+  return (
+    <RequestInspector
+      request={{
+        method: "POST",
+        url: "https://api.openai.com/v1/chat/completions",
+        headers: { "Content-Type": "application/json" },
+        body: { model: "gpt-4", messages: [] },
+      }}
+      response={{
+        status: 200,
+        body: { choices: [{ message: { content: "Hello!" } }] },
+      }}
+      duration={1250}
+      timestamp={new Date()}
+    >
+      <RequestInspectorHeader />
+      <RequestInspectorRequest />
+      <RequestInspectorResponse />
+    </RequestInspector>
+  );
+}
+```
+
+## Props
+
+### RequestInspector
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `request` | `RequestData` | - | Request data including method, url, headers, body |
+| `response` | `ResponseData` | - | Response data including status, headers, body |
+| `timestamp` | `Date` | - | When the request was made |
+| `duration` | `number` | - | Request duration in milliseconds |
+
+### RequestData
+
+```typescript
+interface RequestData {
+  url?: string;
+  method?: string;
+  headers?: Record<string, string>;
+  body?: unknown;
+}
+```
+
+### ResponseData
+
+```typescript
+interface ResponseData {
+  status?: number;
+  headers?: Record<string, string>;
+  body?: unknown;
+}
+```
+
+## Features
+
+- Collapsible request/response sections with smooth animations
+- HTTP method badge and URL display
+- Status code badges with color coding (green: 2xx, yellow: 3xx, red: 4xx/5xx)
+- JSON syntax highlighting with copy-to-clipboard
+- Duration display in ms or seconds
+- Timestamp display

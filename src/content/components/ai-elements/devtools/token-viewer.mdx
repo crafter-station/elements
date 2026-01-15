@@ -1,0 +1,84 @@
+---
+title: Token Viewer
+description: Character-by-character token visualization with highlighting and count stats
+---
+
+<ComponentPreviewItem
+  componentKey="token-viewer"
+  installUrl="@elements/token-viewer"
+  category="AI"
+  name="Token Viewer"
+>
+  <TokenViewer />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for visualizing token usage in AI requests. Displays input/output/total token counts with cost estimation for popular models. Features interactive token breakdown with hover-to-inspect boundaries and color-coded token types.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/token-viewer
+```
+
+## Usage
+
+```tsx
+import {
+  TokenViewer,
+  TokenViewerStats,
+  TokenViewerBreakdown,
+  TokenViewerCost,
+} from "@/components/elements/ai-elements/devtools/token-viewer";
+
+export function TokenViewerExample() {
+  return (
+    <TokenViewer
+      inputTokens={150}
+      outputTokens={320}
+      model="gpt-4"
+    >
+      <TokenViewerStats />
+      <TokenViewerBreakdown tokens={tokenArray} />
+      <TokenViewerCost />
+    </TokenViewer>
+  );
+}
+```
+
+## Props
+
+### TokenViewer
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `inputTokens` | `number` | - | Number of input/prompt tokens |
+| `outputTokens` | `number` | - | Number of output/completion tokens |
+| `model` | `string` | - | Model name for cost calculation |
+
+### Token Types
+
+```typescript
+type TokenType = "text" | "special" | "control";
+
+interface Token {
+  id: number;
+  text: string;
+  type: TokenType;
+}
+```
+
+### Supported Models for Cost Estimation
+
+- GPT-4, GPT-4o, GPT-3.5-turbo
+- Claude 3 (Opus, Sonnet, Haiku)
+- Claude 3.5 Sonnet
+
+## Features
+
+- Input/output/total token count display
+- Cost estimation for popular AI models
+- Visual token breakdown with color-coded types (text, special, control)
+- Hover tooltips showing token IDs and types
+- Interactive token inspection

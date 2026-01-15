@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tool-inspector",
+  "subcategory": "devtools",
+  "type": "registry:ui",
+  "title": "AI Tool Inspector",
+  "description": "Debug panel for inspecting AI tool executions with timing, status indicators, and expandable JSON input/output views. Perfect for debugging MCP tools, function calls, and agent actions.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-tool-inspector/components/elements/ai-tool-inspector.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A compound component for debugging AI tool calls. Features include tool name and description display, input/output JSON with copy functionality, execution time tracking, and status indicators (pending, running, success, error). Use AiToolInspector as the root with AiToolInspectorHeader, AiToolInspectorList, and AiToolInspectorItem sub-components.",
+  "categories": ["ai"]
+}

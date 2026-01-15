@@ -7,7 +7,13 @@ import { useEffect, useState } from "react";
 import { ChevronDown, ChevronRight, Menu } from "lucide-react";
 
 import { providers } from "@/lib/providers";
-import { getComponentsByProvider } from "@/lib/registry-loader";
+import {
+  AI_ELEMENTS_SUBCATEGORIES,
+  type AIElementsSubcategory,
+  getComponentsByProvider,
+  getComponentsBySubcategory,
+  getSubcategoryMetadata,
+} from "@/lib/registry-loader";
 import { cn } from "@/lib/utils";
 
 import { OverviewIcon } from "@/components/icons/overview";
@@ -26,14 +32,26 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
   const [expandedProviders, setExpandedProviders] = useState<Set<string>>(
     new Set(),
   );
+  const [expandedSubcategories, setExpandedSubcategories] = useState<
+    Set<string>
+  >(new Set());
 
-  // Auto-expand if we're on a component page
   useEffect(() => {
-    const currentProvider = pathname.split("/")[2];
+    const pathParts = pathname.split("/");
+    const currentProvider = pathParts[2];
     if (currentProvider && !expandedProviders.has(currentProvider)) {
       setExpandedProviders((prev) => new Set(prev).add(currentProvider));
     }
-  }, [pathname, expandedProviders.has]); // Only run when pathname changes
+    if (currentProvider === "ai-elements" && pathParts[3]) {
+      const subcategory = pathParts[3];
+      if (
+        subcategory in AI_ELEMENTS_SUBCATEGORIES &&
+        !expandedSubcategories.has(subcategory)
+      ) {
+        setExpandedSubcategories((prev) => new Set(prev).add(subcategory));
+      }
+    }
+  }, [pathname, expandedProviders.has, expandedSubcategories.has]);
 
   const toggleProvider = (providerSlug: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -44,6 +62,20 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
         next.delete(providerSlug);
       } else {
         next.add(providerSlug);
+      }
+      return next;
+    });
+  };
+
+  const toggleSubcategory = (subcategory: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpandedSubcategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(subcategory)) {
+        next.delete(subcategory);
+      } else {
+        next.add(subcategory);
       }
       return next;
     });
@@ -184,29 +216,105 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
                 )}
               </Link>
 
-              {/* Expanded component list */}
               {isExpanded && hasComponents && (
                 <div className="ml-8 border-l border-dotted border-border">
-                  {providerComponents.map((component) => {
-                    const componentPath = `/docs/${providerSlug}/${component.name}`;
-                    const isComponentActive = pathname === componentPath;
+                  {providerSlug === "ai-elements"
+                    ? (
+                        Object.keys(
+                          AI_ELEMENTS_SUBCATEGORIES,
+                        ) as AIElementsSubcategory[]
+                      ).map((subcategory) => {
+                        const subMeta = getSubcategoryMetadata(subcategory);
+                        const subComponents =
+                          getComponentsBySubcategory(subcategory);
+                        const isSubExpanded =
+                          expandedSubcategories.has(subcategory);
+                        const isSubActive =
+                          pathname === `/docs/ai-elements/${subcategory}` ||
+                          pathname.startsWith(
+                            `/docs/ai-elements/${subcategory}/`,
+                          );
 
-                    return (
-                      <Link
-                        key={component.name}
-                        href={componentPath}
-                        className={cn(
-                          "group flex items-center gap-2 pl-3 pr-2 py-1.5 text-xs transition-colors",
-                          isComponentActive
-                            ? "text-foreground font-medium bg-primary/5"
-                            : "text-muted-foreground hover:text-foreground hover:bg-muted/30",
-                        )}
-                        onClick={() => onLinkClick?.()}
-                      >
-                        <span className="truncate">{component.title}</span>
-                      </Link>
-                    );
-                  })}
+                        return (
+                          <div key={subcategory}>
+                            <Link
+                              href={`/docs/ai-elements/${subcategory}`}
+                              className={cn(
+                                "group flex items-center gap-2 pl-3 pr-2 py-1.5 text-xs transition-colors",
+                                isSubActive
+                                  ? "text-foreground font-medium bg-primary/5"
+                                  : "text-muted-foreground hover:text-foreground hover:bg-muted/30",
+                              )}
+                              onClick={() => onLinkClick?.()}
+                            >
+                              <span className="flex-1 truncate">
+                                {subMeta.displayName}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={(e) =>
+                                  toggleSubcategory(subcategory, e)
+                                }
+                                className="p-0.5 hover:bg-primary/10 rounded transition-colors"
+                              >
+                                {isSubExpanded ? (
+                                  <ChevronDown className="w-3 h-3" />
+                                ) : (
+                                  <ChevronRight className="w-3 h-3" />
+                                )}
+                              </button>
+                            </Link>
+
+                            {isSubExpanded && (
+                              <div className="ml-4 border-l border-dotted border-border/50">
+                                {subComponents.map((component) => {
+                                  const componentPath = `/docs/ai-elements/${subcategory}/${component.name}`;
+                                  const isComponentActive =
+                                    pathname === componentPath;
+
+                                  return (
+                                    <Link
+                                      key={component.name}
+                                      href={componentPath}
+                                      className={cn(
+                                        "group flex items-center gap-2 pl-3 pr-2 py-1 text-[11px] transition-colors",
+                                        isComponentActive
+                                          ? "text-foreground font-medium bg-primary/5"
+                                          : "text-muted-foreground hover:text-foreground hover:bg-muted/30",
+                                      )}
+                                      onClick={() => onLinkClick?.()}
+                                    >
+                                      <span className="truncate">
+                                        {component.title}
+                                      </span>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })
+                    : providerComponents.map((component) => {
+                        const componentPath = `/docs/${providerSlug}/${component.name}`;
+                        const isComponentActive = pathname === componentPath;
+
+                        return (
+                          <Link
+                            key={component.name}
+                            href={componentPath}
+                            className={cn(
+                              "group flex items-center gap-2 pl-3 pr-2 py-1.5 text-xs transition-colors",
+                              isComponentActive
+                                ? "text-foreground font-medium bg-primary/5"
+                                : "text-muted-foreground hover:text-foreground hover:bg-muted/30",
+                            )}
+                            onClick={() => onLinkClick?.()}
+                          >
+                            <span className="truncate">{component.title}</span>
+                          </Link>
+                        );
+                      })}
                 </div>
               )}
             </div>

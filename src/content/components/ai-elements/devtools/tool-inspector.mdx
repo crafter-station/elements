@@ -1,0 +1,91 @@
+---
+title: Tool Inspector
+description: Detailed view of tool definitions, parameters, and execution history
+---
+
+<ComponentPreviewItem
+  componentKey="tool-inspector"
+  installUrl="@elements/tool-inspector"
+  category="AI"
+  name="Tool Inspector"
+>
+  <ToolInspector />
+</ComponentPreviewItem>
+
+## Overview
+
+A debug panel for inspecting AI tool executions with timing, status indicators, and expandable JSON input/output views. Perfect for debugging MCP tools, function calls, and agent actions. Features tool name and description display, execution time tracking, and status indicators.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/tool-inspector
+```
+
+## Usage
+
+```tsx
+import {
+  ToolInspector,
+  ToolInspectorHeader,
+  ToolInspectorList,
+  ToolInspectorItem,
+} from "@/components/elements/ai-elements/devtools/tool-inspector";
+
+export function ToolInspectorExample() {
+  const tools = [
+    {
+      id: "1",
+      name: "searchDatabase",
+      description: "Search the database for records",
+      input: { query: "user:123" },
+      output: { results: [{ id: 1, name: "John" }] },
+      duration: 245,
+      status: "success",
+    },
+  ];
+
+  return (
+    <ToolInspector>
+      <ToolInspectorHeader title="Tool Executions" />
+      <ToolInspectorList>
+        {tools.map((tool) => (
+          <ToolInspectorItem key={tool.id} tool={tool} />
+        ))}
+      </ToolInspectorList>
+    </ToolInspector>
+  );
+}
+```
+
+## Props
+
+### ToolInspectorItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `tool` | `ToolExecution` | - | Tool execution data |
+
+### ToolExecution
+
+```typescript
+interface ToolExecution {
+  id: string;
+  name: string;
+  description?: string;
+  input: Record<string, unknown>;
+  output?: unknown;
+  duration?: number;
+  status: "pending" | "running" | "success" | "error";
+  error?: string;
+}
+```
+
+## Features
+
+- Tool name and description display
+- Expandable JSON input/output with copy functionality
+- Execution time tracking in milliseconds
+- Status indicators (pending, running, success, error)
+- Error message display for failed executions
+- Ideal for debugging MCP tools and function calls

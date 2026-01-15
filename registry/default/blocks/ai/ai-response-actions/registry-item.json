@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "response-actions",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Response Actions",
+  "description": "Action buttons for AI responses: copy, regenerate, thumbs up/down, share",
+  "registryDependencies": ["button", "tooltip"],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-response-actions/components/elements/ai-response-actions.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Toolbar with copy, regenerate, feedback, and share actions. Supports compact mode.",
+  "categories": ["ai"]
+}

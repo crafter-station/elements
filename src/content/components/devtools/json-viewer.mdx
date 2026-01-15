@@ -1,0 +1,69 @@
+---
+title: JSON Viewer
+description: Collapsible JSON tree with syntax highlighting and search
+---
+
+<ComponentPreviewItem
+  componentKey="json-viewer"
+  installUrl="@elements/json-viewer"
+  category="Dev Tools"
+  name="JSON Viewer"
+>
+  <JsonViewer />
+</ComponentPreviewItem>
+
+## Overview
+
+A collapsible JSON tree viewer with syntax highlighting, search functionality, and copy-path support. Perfect for inspecting API responses, configuration objects, or any JSON data.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/json-viewer
+```
+
+## Usage
+
+```tsx
+import { JsonViewer } from "@/components/elements/devtools/json-viewer";
+
+const data = {
+  user: {
+    id: 1,
+    name: "John Doe",
+    email: "john@example.com",
+    roles: ["admin", "user"]
+  }
+};
+
+export function DataInspector() {
+  return (
+    <JsonViewer
+      data={data}
+      searchable
+      copyPath
+      collapsed={2}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `data` | `JsonValue` | - | JSON data to display |
+| `collapsed` | `boolean \| number` | `false` | Initial collapse state or depth level |
+| `searchable` | `boolean` | `false` | Enable search filtering |
+| `copyPath` | `boolean` | `true` | Show copy path button on hover |
+| `maxDepth` | `number` | `10` | Maximum depth to render |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Collapsible tree nodes
+- Syntax highlighting for different types
+- Search/filter functionality
+- Copy JSON path on click
+- Configurable collapse depth
+- Type-colored values (strings, numbers, booleans, null)

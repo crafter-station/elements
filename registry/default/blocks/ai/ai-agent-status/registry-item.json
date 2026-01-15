@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-status",
+  "subcategory": "multi-agent",
+  "type": "registry:ui",
+  "title": "AI Agent Status",
+  "description": "Display current agent handling a request with status indicators, animated pulse for active states, and handoff visualization for multi-agent workflows.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-agent-status/components/elements/ai-agent-status.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compound component for agent status display. Variants: badge (compact) and card (detailed). States: idle, thinking, acting, waiting, done, handoff. Shows animated pulse when active and handoff indicator when transferring.",
+  "categories": ["ai"]
+}

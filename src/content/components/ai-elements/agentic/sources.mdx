@@ -1,0 +1,112 @@
+---
+title: Sources
+description: Collapsible citations/sources viewer with favicons for RAG and search results
+---
+
+<ComponentPreviewItem
+  componentKey="sources"
+  installUrl="@elements/sources"
+  category="AI"
+  name="Sources"
+>
+  <Sources />
+</ComponentPreviewItem>
+
+## Overview
+
+A collapsible component for displaying AI response citations and sources. Shows source count badge, favicons, and optional snippets. Essential for RAG (Retrieval-Augmented Generation) and search-based AI applications.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/sources
+```
+
+## Usage
+
+```tsx
+import {
+  Sources,
+  SourcesTrigger,
+  SourcesContent,
+  Source,
+} from "@/components/elements/ai-elements/agentic/sources";
+
+const sources = [
+  {
+    url: "https://react.dev/learn",
+    title: "React Documentation",
+    snippet: "Learn React with interactive tutorials and guides.",
+  },
+  {
+    url: "https://nextjs.org/docs",
+    title: "Next.js Documentation",
+  },
+];
+
+export function SourcesExample() {
+  return (
+    <Sources sources={sources}>
+      <SourcesTrigger>Referenced Sources</SourcesTrigger>
+      <SourcesContent />
+    </Sources>
+  );
+}
+```
+
+## Custom Source Rendering
+
+```tsx
+export function CustomSourcesExample() {
+  return (
+    <Sources sources={sources}>
+      <SourcesTrigger>Citations</SourcesTrigger>
+      <SourcesContent>
+        <div className="space-y-2">
+          {sources.map((source, i) => (
+            <Source key={i} source={source} />
+          ))}
+        </div>
+      </SourcesContent>
+    </Sources>
+  );
+}
+```
+
+## Props
+
+### Sources
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `sources` | `Source[]` | `[]` | Array of source objects |
+| `defaultOpen` | `boolean` | `false` | Initial open state |
+| `open` | `boolean` | - | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | - | Callback when open state changes |
+
+### Source
+
+```typescript
+interface Source {
+  url: string;
+  title: string;
+  favicon?: string;
+  snippet?: string;
+}
+```
+
+### Source
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `source` | `Source` | Source object to display |
+
+## Features
+
+- Source count badge in trigger
+- Automatic favicon fetching via Google
+- Custom favicon support
+- Snippet display with line clamping
+- Grid layout (responsive 2 columns)
+- External link indicator on hover
+- Collapsible with smooth animations

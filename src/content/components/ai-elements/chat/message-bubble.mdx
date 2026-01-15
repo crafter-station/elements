@@ -1,0 +1,65 @@
+---
+title: Message Bubble
+description: Chat message component with user/assistant variants
+---
+
+<ComponentPreviewItem
+  componentKey="message-bubble"
+  installUrl="@elements/message-bubble"
+  category="AI"
+  name="Message Bubble"
+>
+  <MessageBubble />
+</ComponentPreviewItem>
+
+## Overview
+
+A chat message bubble component with variants for user and assistant messages. Supports markdown content, timestamps, avatars, and streaming indicators.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/message-bubble
+```
+
+## Usage
+
+```tsx
+import { MessageBubble } from "@/components/elements/ai-elements/chat/message-bubble";
+
+export function ChatMessages() {
+  return (
+    <div className="space-y-4">
+      <MessageBubble
+        role="user"
+        content="How do I implement authentication?"
+      />
+      <MessageBubble
+        role="assistant"
+        content="You can use Clerk for authentication. Here's how..."
+        isStreaming={false}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `role` | `"user" \| "assistant"` | - | Message sender role |
+| `content` | `string` | - | Message content (supports markdown) |
+| `timestamp` | `Date` | - | Message timestamp |
+| `avatar` | `string` | - | Avatar URL |
+| `isStreaming` | `boolean` | `false` | Show streaming indicator |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- User and assistant variants with distinct styling
+- Markdown content support
+- Timestamp display
+- Custom avatars
+- Streaming indicator animation
+- Copy message on hover

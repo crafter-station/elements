@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "conversation-tree",
+  "subcategory": "devtools",
+  "type": "registry:ui",
+  "title": "AI Conversation Tree",
+  "description": "Visualize branching conversations with a tree structure. Shows node types (user, assistant, system, tool), expandable branches, active path highlighting, and click-to-navigate functionality.",
+  "registryDependencies": [],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-conversation-tree/components/elements/ai-conversation-tree.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A compound component for visualizing conversation branches. Ideal for chat UIs with edit/regenerate features. Use AiConversationTree as root with AiConversationTreeHeader, AiConversationTreeContent, and AiConversationTreePreview sub-components. Supports controlled activeNodeId and onNodeSelect callback.",
+  "categories": ["ai"]
+}

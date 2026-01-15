@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "streaming-text",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Streaming Text",
+  "description": "Animated text that streams in character-by-character or word-by-word",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-streaming-text/components/elements/ai-streaming-text.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Typewriter effect with configurable speed, character/word modes, and animated cursor.",
+  "categories": ["ai"]
+}

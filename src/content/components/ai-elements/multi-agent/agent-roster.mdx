@@ -1,0 +1,118 @@
+---
+title: Agent Roster
+description: Display a directory of AI agents with status indicators, match patterns, and selection support. Supports grid and list layouts for multi-agent orchestration UIs.
+---
+
+<ComponentPreviewItem
+  componentKey="agent-roster"
+  installUrl="@elements/agent-roster"
+  category="AI"
+  name="Agent Roster"
+>
+  <AgentRoster />
+</ComponentPreviewItem>
+
+## Overview
+
+A compound component for displaying a directory of available AI agents in multi-agent systems. Shows agent capabilities, status, and match patterns with support for agent selection. Supports both grid and list layouts to fit different UI requirements.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/agent-roster
+```
+
+## Usage
+
+```tsx
+import {
+  AgentRoster,
+  AgentRosterHeader,
+  AgentRosterContent,
+  AgentCard,
+} from "@/components/elements/ai-elements/multi-agent/agent-roster";
+
+const agents = [
+  {
+    id: "1",
+    name: "Research Agent",
+    description: "Searches and analyzes information from multiple sources",
+    status: "active",
+    model: "gpt-4o",
+    matchOn: ["search", "analyze", "research"],
+  },
+  {
+    id: "2",
+    name: "Code Agent",
+    description: "Writes, reviews, and debugs code",
+    status: "idle",
+    model: "claude-3",
+    matchOn: ["code", "debug", "review"],
+  },
+  {
+    id: "3",
+    name: "Writer Agent",
+    description: "Creates and edits written content",
+    status: "busy",
+    model: "gpt-4o",
+    matchOn: ["write", "edit", "compose"],
+  },
+];
+
+export function AgentRosterExample() {
+  return (
+    <AgentRoster
+      agents={agents}
+      activeAgentId="1"
+      onSelect={(id) => console.log("Selected:", id)}
+      layout="grid"
+    >
+      <AgentRosterHeader>Available Agents</AgentRosterHeader>
+      <AgentRosterContent />
+    </AgentRoster>
+  );
+}
+```
+
+## Props
+
+### AgentRoster
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `agents` | `RosterAgent[]` | - | Array of available agents |
+| `activeAgentId` | `string` | - | Currently selected agent ID |
+| `onSelect` | `(agentId: string) => void` | - | Selection callback |
+| `layout` | `"grid" \| "list"` | `"grid"` | Display layout |
+
+### RosterAgent
+
+```typescript
+interface RosterAgent {
+  id: string;
+  name: string;
+  description?: string;
+  matchOn?: string[];
+  status: "active" | "idle" | "busy" | "offline";
+  icon?: React.ReactNode;
+  model?: string;
+}
+```
+
+## Sub-components
+
+- `AgentRosterHeader` - Header with title and active count
+- `AgentRosterContent` - Container for agent cards
+- `AgentCard` - Individual agent card with status
+- `AgentRosterEmpty` - Empty state component
+
+## Features
+
+- Grid and list layout options
+- Agent status indicators (active, idle, busy, offline)
+- Match pattern badges showing agent capabilities
+- Model information display
+- Selectable agent cards with keyboard support
+- Active agent highlighting
+- Custom agent icons support
+- Disabled state for offline agents
