@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drizzle-logo",
+  "type": "registry:ui",
+  "title": "Drizzle Logo",
+  "description": "Drizzle ORM brand logo component with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/drizzle-logo/components/logos/drizzle.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["DevTools", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  }
+}

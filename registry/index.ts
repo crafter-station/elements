@@ -394,6 +394,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "cloudflare-logo",
+      type: "registry:ui",
+      title: "Cloudflare Logo",
+      description:
+        "Cloudflare brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/cloudflare-logo/components/logos/cloudflare.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "code-diff-viewer",
       type: "registry:ui",
       title: "Code Diff Viewer",
@@ -538,6 +563,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "drizzle-logo",
+      type: "registry:ui",
+      title: "Drizzle Logo",
+      description:
+        "Drizzle ORM brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/drizzle-logo/components/logos/drizzle.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "env-editor",
       type: "registry:ui",
       title: "Env Editor",
@@ -571,6 +621,30 @@ export const registry = {
       ],
       docs: "Stack trace parsing, retry button, copy error, dev/prod modes with different verbosity.",
       categories: ["devtools"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "figma-logo",
+      type: "registry:ui",
+      title: "Figma Logo",
+      description: "Figma brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/figma-logo/components/logos/figma.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1291,6 +1365,79 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "neon-logo",
+      type: "registry:ui",
+      title: "Neon Logo",
+      description:
+        "Neon database brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/neon-logo/components/logos/neon.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "nextjs-logo",
+      type: "registry:ui",
+      title: "Next.js Logo",
+      description: "Next.js brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/nextjs-logo/components/logos/nextjs.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "nodejs-logo",
+      type: "registry:ui",
+      title: "Node.js Logo",
+      description: "Node.js brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/nodejs-logo/components/logos/nodejs.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "notion-logo",
       type: "registry:ui",
       title: "Notion Logo",
@@ -1574,6 +1721,30 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "prisma-logo",
+      type: "registry:ui",
+      title: "Prisma Logo",
+      description: "Prisma brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/prisma-logo/components/logos/prisma.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "prompt-diff",
       subcategory: "devtools",
       type: "registry:ui",
@@ -1607,6 +1778,30 @@ export const registry = {
       ],
       docs: "Qwen logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "react-logo",
+      type: "registry:ui",
+      title: "React Logo",
+      description: "React brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/react-logo/components/logos/react.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1880,6 +2075,31 @@ export const registry = {
       ],
       docs: "Supabase logo component with official brand green gradient colors.",
       categories: ["Database", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "tailwindcss-logo",
+      type: "registry:ui",
+      title: "Tailwind CSS Logo",
+      description:
+        "Tailwind CSS brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/tailwindcss-logo/components/logos/tailwindcss.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2306,6 +2526,31 @@ export const registry = {
       ],
       docs: "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["Social", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "typescript-logo",
+      type: "registry:ui",
+      title: "TypeScript Logo",
+      description:
+        "TypeScript brand logo component with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/typescript-logo/components/logos/typescript.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

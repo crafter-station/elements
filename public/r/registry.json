@@ -11,10 +11,7 @@
       "title": "AI Agent Context",
       "description": "Display and optionally edit agent context data with type indicators, nested object support, and collapsible sections. Visualizes user/team context for AI agents.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-agent-context/components/elements/ai-agent-context.tsx",
@@ -22,9 +19,7 @@
         }
       ],
       "docs": "Compound component for context visualization. Sub-components: AiAgentContext, AiAgentContextHeader, AiAgentContextContent, AiAgentContextEntry, AiAgentContextGroup, AiAgentContextEmpty. Supports editing primitive values.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -34,9 +29,7 @@
       "title": "AI Agent Roster",
       "description": "Display a directory of AI agents with status indicators, match patterns, and selection support. Supports grid and list layouts for multi-agent orchestration UIs.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-agent-roster/components/elements/ai-agent-roster.tsx",
@@ -44,9 +37,7 @@
         }
       ],
       "docs": "Compound component for agent directories. Sub-components: AiAgentRoster, AiAgentRosterHeader, AiAgentRosterContent, AiAgentCard, AiAgentRosterEmpty. Agent statuses: active, idle, busy, offline.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -56,9 +47,7 @@
       "title": "AI Agent Status",
       "description": "Display current agent handling a request with status indicators, animated pulse for active states, and handoff visualization for multi-agent workflows.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-agent-status/components/elements/ai-agent-status.tsx",
@@ -66,9 +55,7 @@
         }
       ],
       "docs": "Compound component for agent status display. Variants: badge (compact) and card (detailed). States: idle, thinking, acting, waiting, done, handoff. Shows animated pulse when active and handoff indicator when transferring.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -96,12 +83,7 @@
       "dependencies": [],
       "files": [],
       "docs": "Collection of AI service provider logos including major LLM providers, AI platforms, and machine learning services. Perfect for AI-powered applications and ML dashboards.",
-      "categories": [
-        "logo",
-        "brand",
-        "AI",
-        "collection"
-      ]
+      "categories": ["logo", "brand", "AI", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -118,11 +100,7 @@
         }
       ],
       "docs": "Anthropic logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -139,9 +117,7 @@
         }
       ],
       "docs": "Status badge with color-coded HTTP codes, collapsible JSON body, headers table, and timing waterfall.",
-      "categories": [
-        "devtools"
-      ]
+      "categories": ["devtools"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -158,11 +134,7 @@
         }
       ],
       "docs": "Apple logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "Hardware",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Hardware", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -180,9 +152,7 @@
         }
       ],
       "docs": "TODO: Add documentation",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -199,11 +169,7 @@
         }
       ],
       "docs": "AWS logo component with official brand orange and white colors.",
-      "categories": [
-        "Cloud",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -220,26 +186,13 @@
         }
       ],
       "docs": "BeInCrypto logo with 2 variants (icon, wordmark) and 2 modes (dark, light). The icon shows the bracket shapes, wordmark includes full brand mark.",
-      "categories": [
-        "Crypto",
-        "logo",
-        "brand"
-      ],
+      "categories": ["Crypto", "logo", "brand"],
       "meta": {
         "hasVariants": true,
-        "variants": [
-          "icon",
-          "wordmark"
-        ],
+        "variants": ["icon", "wordmark"],
         "variantTypes": {
-          "base": [
-            "icon",
-            "wordmark"
-          ],
-          "modes": [
-            "dark",
-            "light"
-          ]
+          "base": ["icon", "wordmark"],
+          "modes": ["dark", "light"]
         }
       }
     },
@@ -258,11 +211,7 @@
         }
       ],
       "docs": "Better Auth logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "Auth",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Auth", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -279,12 +228,7 @@
         }
       ],
       "docs": "Bun logo component for the fast all-in-one JavaScript runtime. Features the iconic Bun mascot design.",
-      "categories": [
-        "Package Manager",
-        "logo",
-        "brand",
-        "JavaScript"
-      ]
+      "categories": ["Package Manager", "logo", "brand", "JavaScript"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -294,10 +238,7 @@
       "title": "AI Chain of Thought",
       "description": "Visualize AI reasoning steps with search results and images for step-by-step thinking display.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-chain-of-thought/components/elements/ai-chain-of-thought.tsx",
@@ -305,9 +246,7 @@
         }
       ],
       "docs": "Compound component with steps, search results, and image support. Each step has pending/active/complete states.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -325,9 +264,7 @@
         }
       ],
       "docs": "Flexible chat layout with AiChatHeader, AiChatBody, and AiChatFooter slots. Supports status context for streaming states.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -336,12 +273,8 @@
       "type": "registry:ui",
       "title": "AI Chat Input",
       "description": "Expandable chat input with send button, file attachments, and keyboard shortcuts",
-      "registryDependencies": [
-        "button"
-      ],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "registryDependencies": ["button"],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-chat-input/components/elements/ai-chat-input.tsx",
@@ -349,9 +282,7 @@
         }
       ],
       "docs": "Auto-expanding textarea with Cmd+Enter to send. Supports file attachments and loading states.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -368,11 +299,7 @@
         }
       ],
       "docs": "Claude logo component with official brand orange color.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -389,11 +316,7 @@
         }
       ],
       "docs": "Clerk authentication logo with 2 base variants (icon, wordmark), 2 color schemes (grayscale, purple), 3 background options (none, square, circle), and 2 modes (light, dark) = 16 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-      "categories": [
-        "Auth",
-        "logo",
-        "brand"
-      ],
+      "categories": ["Auth", "logo", "brand"],
       "meta": {
         "hasVariants": true,
         "variants": [
@@ -407,23 +330,10 @@
           "wordmark-purple"
         ],
         "variantTypes": {
-          "base": [
-            "icon",
-            "wordmark"
-          ],
-          "colorSchemes": [
-            "grayscale",
-            "purple"
-          ],
-          "modes": [
-            "dark",
-            "light"
-          ],
-          "backgrounds": [
-            "none",
-            "square",
-            "circle"
-          ]
+          "base": ["icon", "wordmark"],
+          "colorSchemes": ["grayscale", "purple"],
+          "modes": ["dark", "light"],
+          "backgrounds": ["none", "square", "circle"]
         }
       }
     },
@@ -434,9 +344,7 @@
       "title": "CLI Output",
       "description": "Terminal-style output display with ANSI color support and controls",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/devtools/cli-output/components/elements/cli-output.tsx",
@@ -444,9 +352,7 @@
         }
       ],
       "docs": "ANSI color parsing, auto-scroll, max lines limit, copy/clear controls, timestamp display.",
-      "categories": [
-        "devtools"
-      ]
+      "categories": ["devtools"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -467,13 +373,31 @@
       "dependencies": [],
       "files": [],
       "docs": "Collection of cloud services and infrastructure logos. Perfect for tech stack displays, service integrations, and infrastructure documentation.",
-      "categories": [
-        "logo",
-        "brand",
-        "cloud",
-        "infrastructure",
-        "collection"
-      ]
+      "categories": ["logo", "brand", "cloud", "infrastructure", "collection"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "cloudflare-logo",
+      "type": "registry:ui",
+      "title": "Cloudflare Logo",
+      "description": "Cloudflare brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/cloudflare-logo/components/logos/cloudflare.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -482,9 +406,7 @@
       "title": "Code Diff Viewer",
       "description": "Side-by-side or unified diff view with syntax highlighting via Shiki",
       "registryDependencies": [],
-      "dependencies": [
-        "shiki"
-      ],
+      "dependencies": ["shiki"],
       "files": [
         {
           "path": "registry/default/blocks/devtools/code-diff-viewer/components/elements/code-diff-viewer.tsx",
@@ -492,9 +414,7 @@
         }
       ],
       "docs": "Unified or split view modes, line numbers, and Shiki-powered syntax highlighting for any language.",
-      "categories": [
-        "devtools"
-      ]
+      "categories": ["devtools"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -511,11 +431,7 @@
         }
       ],
       "docs": "Cohere logo component with official brand colors.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -525,9 +441,7 @@
       "title": "AI Confirmation",
       "description": "Human-in-the-loop tool approval workflow with accept/reject states for agentic AI applications.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-confirmation/components/elements/ai-confirmation.tsx",
@@ -535,9 +449,7 @@
         }
       ],
       "docs": "Compound component for tool approval workflows. States: approval-requested, approval-responded, output-available, output-denied.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -547,9 +459,7 @@
       "title": "AI Conversation Tree",
       "description": "Visualize branching conversations with a tree structure. Shows node types (user, assistant, system, tool), expandable branches, active path highlighting, and click-to-navigate functionality.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-conversation-tree/components/elements/ai-conversation-tree.tsx",
@@ -557,9 +467,7 @@
         }
       ],
       "docs": "A compound component for visualizing conversation branches. Ideal for chat UIs with edit/regenerate features. Use AiConversationTree as root with AiConversationTreeHeader, AiConversationTreeContent, and AiConversationTreePreview sub-components. Supports controlled activeNodeId and onNodeSelect callback.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -576,11 +484,7 @@
         }
       ],
       "docs": "Crafter Station logo component with official brand yellow color.",
-      "categories": [
-        "Development",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Development", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -597,11 +501,7 @@
         }
       ],
       "docs": "DeepSeek logo component with official brand purple color.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -621,13 +521,7 @@
       "dependencies": [],
       "files": [],
       "docs": "Collection of developer tools and platform logos. Ideal for showcasing integrations, tools used, and development workflows.",
-      "categories": [
-        "logo",
-        "brand",
-        "developer",
-        "tools",
-        "collection"
-      ]
+      "categories": ["logo", "brand", "developer", "tools", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -644,11 +538,31 @@
         }
       ],
       "docs": "Discord logo component with official brand blurple color.",
-      "categories": [
-        "Communication",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Communication", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "drizzle-logo",
+      "type": "registry:ui",
+      "title": "Drizzle Logo",
+      "description": "Drizzle ORM brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/drizzle-logo/components/logos/drizzle.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -657,9 +571,7 @@
       "title": "Env Editor",
       "description": "Environment variable editor with key-value grid, masked values, and import/export",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/devtools/env-editor/components/elements/env-editor.tsx",
@@ -667,9 +579,7 @@
         }
       ],
       "docs": "Key-value editing grid, password masking, .env file import/export, add/remove variables.",
-      "categories": [
-        "devtools"
-      ]
+      "categories": ["devtools"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -678,9 +588,7 @@
       "title": "Error Boundary UI",
       "description": "Error display component for React error boundaries with stack trace and retry",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/devtools/error-boundary-ui/components/elements/error-boundary-ui.tsx",
@@ -688,9 +596,31 @@
         }
       ],
       "docs": "Stack trace parsing, retry button, copy error, dev/prod modes with different verbosity.",
-      "categories": [
-        "devtools"
-      ]
+      "categories": ["devtools"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "figma-logo",
+      "type": "registry:ui",
+      "title": "Figma Logo",
+      "description": "Figma brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/figma-logo/components/logos/figma.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -707,11 +637,7 @@
         }
       ],
       "docs": "Gemini logo component with official multi-color gradient brand design.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -728,9 +654,7 @@
         }
       ],
       "docs": "Displays a year's worth of contribution activity. Supports green, blue, purple, and orange color schemes. Pass year prop to show different years.",
-      "categories": [
-        "github"
-      ]
+      "categories": ["github"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -756,9 +680,7 @@
           "target": "app/github-contributions/page.tsx"
         }
       ],
-      "categories": [
-        "github"
-      ]
+      "categories": ["github"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -775,9 +697,7 @@
         }
       ],
       "docs": "Fetches language statistics from GitHub API. Shows a colored bar with language percentages. Supports hiding labels with showLabels={false}.",
-      "categories": [
-        "github"
-      ]
+      "categories": ["github"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -794,24 +714,12 @@
         }
       ],
       "docs": "GitHub logo with 3 variants (invertocat, wordmark, lockup). Uses currentColor for automatic theme adaptation.",
-      "categories": [
-        "Development",
-        "logo",
-        "brand"
-      ],
+      "categories": ["Development", "logo", "brand"],
       "meta": {
         "hasVariants": true,
-        "variants": [
-          "invertocat",
-          "wordmark",
-          "lockup"
-        ],
+        "variants": ["invertocat", "wordmark", "lockup"],
         "variantTypes": {
-          "base": [
-            "invertocat",
-            "wordmark",
-            "lockup"
-          ]
+          "base": ["invertocat", "wordmark", "lockup"]
         }
       }
     },
@@ -830,9 +738,7 @@
         }
       ],
       "docs": "Fetches user profile from GitHub API. Shows avatar, name, bio, location, company, website, and Twitter. Toggle stats with showStats prop.",
-      "categories": [
-        "github"
-      ]
+      "categories": ["github"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -849,9 +755,7 @@
         }
       ],
       "docs": "Fetches repository data from GitHub API. Pass owner and repo props to display any public repository. Supports static data for SSR/demos.",
-      "categories": [
-        "github"
-      ]
+      "categories": ["github"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -868,9 +772,7 @@
         }
       ],
       "docs": "Fetches star count from GitHub API. Supports 'default' and 'outline' variants. Opens repository in new tab on click.",
-      "categories": [
-        "github"
-      ]
+      "categories": ["github"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -896,9 +798,7 @@
           "target": "app/github-stars/page.tsx"
         }
       ],
-      "categories": [
-        "github"
-      ]
+      "categories": ["github"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -915,11 +815,7 @@
         }
       ],
       "docs": "GitLab logo component with official tanuki mascot brand colors.",
-      "categories": [
-        "Development",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Development", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -936,11 +832,7 @@
         }
       ],
       "docs": "Google logo component with official four-color brand design.",
-      "categories": [
-        "Search",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Search", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -957,11 +849,7 @@
         }
       ],
       "docs": "Grok logo component that adapts to your theme. Uses white colors.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -978,11 +866,7 @@
         }
       ],
       "docs": "Groq logo component with official brand orange and white colors.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -992,10 +876,7 @@
       "title": "AI Guardrails",
       "description": "Display content moderation and safety check results with blocked/modified/approved states, before/after comparison, and override actions for AI safety workflows.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-guardrails/components/elements/ai-guardrails.tsx",
@@ -1003,9 +884,7 @@
         }
       ],
       "docs": "Compound component for guardrail displays. Sub-components: AiGuardrails, AiGuardrailsHeader, AiGuardrailsContent, AiGuardrailCheck, AiGuardrailDiff, AiGuardrailsEmpty. Check statuses: blocked, modified, approved, pending.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1015,9 +894,7 @@
       "title": "AI Handoff Chain",
       "description": "Visualize agent transition breadcrumbs showing the chain of agents with arrows, active agent highlighting, and clickable nodes for handoff details.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-handoff-chain/components/elements/ai-handoff-chain.tsx",
@@ -1025,9 +902,7 @@
         }
       ],
       "docs": "Compound component for displaying agent handoff sequences. Features: chain visualization with arrows, active agent highlighting, hover for handoff reason, selectable nodes for details, and optional timeline view.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1044,11 +919,7 @@
         }
       ],
       "docs": "Hugging Face logo component with official multi-color brand design.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1065,22 +936,12 @@
         }
       ],
       "docs": "Instagram logo with 2 variants (icon, brand). Icon uses currentColor for theme-awareness, brand features Instagram's iconic gradient.",
-      "categories": [
-        "Social",
-        "logo",
-        "brand"
-      ],
+      "categories": ["Social", "logo", "brand"],
       "meta": {
         "hasVariants": true,
-        "variants": [
-          "icon",
-          "brand"
-        ],
+        "variants": ["icon", "brand"],
         "variantTypes": {
-          "base": [
-            "icon",
-            "brand"
-          ]
+          "base": ["icon", "brand"]
         }
       }
     },
@@ -1099,9 +960,7 @@
         }
       ],
       "docs": "Collapsible tree view with type-based coloring, search filter, and copy JSONPath on hover.",
-      "categories": [
-        "devtools"
-      ]
+      "categories": ["devtools"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1118,11 +977,7 @@
         }
       ],
       "docs": "Kebo logo component with official brand purple color.",
-      "categories": [
-        "Development",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Development", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1139,11 +994,7 @@
         }
       ],
       "docs": "Kimi logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1153,9 +1004,7 @@
       "title": "AI Latency Meter",
       "description": "Response time visualization with TTFB and total duration display, color-coded performance indicators, animated progress bar, and compact/expanded variants.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-latency-meter/components/elements/ai-latency-meter.tsx",
@@ -1163,9 +1012,7 @@
         }
       ],
       "docs": "Compound component for visualizing AI response latency. Performance levels: fast (<1s, green), moderate (<3s, yellow), slow (>3s, red). Shows TTFB (time to first byte) and total duration. Supports compact (inline badge) and expanded (full bar chart) variants with loading animation.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1175,9 +1022,7 @@
       "description": "Linear issue tracking and project management platform logo with multiple variants",
       "registryDependencies": [],
       "dependencies": [],
-      "categories": [
-        "Project Management"
-      ],
+      "categories": ["Project Management"],
       "meta": {
         "hasVariants": true,
         "variants": [
@@ -1189,15 +1034,8 @@
           "wordmark-light"
         ],
         "variantTypes": {
-          "base": [
-            "icon",
-            "logo",
-            "wordmark"
-          ],
-          "modes": [
-            "dark",
-            "light"
-          ]
+          "base": ["icon", "logo", "wordmark"],
+          "modes": ["dark", "light"]
         }
       },
       "files": [
@@ -1223,11 +1061,7 @@
         }
       ],
       "docs": "LinkedIn logo with 2 variants (icon, wordmark) and 2 color schemes (brand blue, grayscale). Grayscale uses currentColor for theme-awareness.",
-      "categories": [
-        "Social",
-        "logo",
-        "brand"
-      ],
+      "categories": ["Social", "logo", "brand"],
       "meta": {
         "hasVariants": true,
         "variants": [
@@ -1237,14 +1071,8 @@
           "wordmark-grayscale"
         ],
         "variantTypes": {
-          "base": [
-            "icon",
-            "wordmark"
-          ],
-          "colorSchemes": [
-            "brand",
-            "grayscale"
-          ]
+          "base": ["icon", "wordmark"],
+          "colorSchemes": ["brand", "grayscale"]
         }
       }
     },
@@ -1304,10 +1132,7 @@
       "dependencies": [],
       "files": [],
       "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use.",
-      "categories": [
-        "logo",
-        "brand"
-      ]
+      "categories": ["logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1324,11 +1149,7 @@
         }
       ],
       "docs": "Lovable logo component with official multi-color gradient brand design.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1338,10 +1159,7 @@
       "title": "AI Memory Viewer",
       "description": "Display and manage working memory and conversation history with source badges, timestamps, search/filter, and add/remove functionality for agent memory systems.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-memory-viewer/components/elements/ai-memory-viewer.tsx",
@@ -1349,9 +1167,7 @@
         }
       ],
       "docs": "Compound component for memory management. Memory types: working, history, system. Sources: user, system, conversation. Features: collapsible sections, search/filter, add/remove items, timestamps, and compact variant.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1360,12 +1176,8 @@
       "type": "registry:ui",
       "title": "AI Message Bubble",
       "description": "Chat message component with user/assistant variants and copy functionality",
-      "registryDependencies": [
-        "button"
-      ],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "registryDependencies": ["button"],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-message-bubble/components/elements/ai-message-bubble.tsx",
@@ -1373,9 +1185,7 @@
         }
       ],
       "docs": "Role-based chat bubbles with avatars, timestamps, and copy-on-hover for AI responses.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1384,12 +1194,8 @@
       "type": "registry:ui",
       "title": "AI Messages",
       "description": "Scrollable message list with auto-scroll to bottom and scroll-to-bottom button",
-      "registryDependencies": [
-        "button"
-      ],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "registryDependencies": ["button"],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-messages/components/elements/ai-messages.tsx",
@@ -1397,9 +1203,7 @@
         }
       ],
       "docs": "Container for chat messages with automatic scroll management. Shows scroll-to-bottom button when not at bottom.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1416,11 +1220,7 @@
         }
       ],
       "docs": "Meta logo component with official brand gradient blue design.",
-      "categories": [
-        "Social",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Social", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1437,11 +1237,7 @@
         }
       ],
       "docs": "Microsoft logo component with official four-square brand colors.",
-      "categories": [
-        "Software",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Software", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1458,11 +1254,7 @@
         }
       ],
       "docs": "Mistral logo component with official multi-color mosaic brand design.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1472,9 +1264,7 @@
       "title": "AI Model Info",
       "description": "Display AI model metadata including provider, context window, capabilities badges (vision, tools, streaming, JSON, functions), pricing info, and release date. Supports multiple providers with themed colors.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-model-info/components/elements/ai-model-info.tsx",
@@ -1482,9 +1272,7 @@
         }
       ],
       "docs": "A compound component for displaying model information. Use AiModelInfo as root with AiModelInfoHeader, AiModelInfoCapabilities, AiModelInfoPricing, AiModelInfoMeta, and AiModelInfoBadge sub-components. Supports OpenAI, Anthropic, Google, Mistral, Cohere, and Meta providers with automatic theming.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1507,9 +1295,7 @@
         "cohere-logo",
         "meta-logo"
       ],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-model-selector/components/elements/ai-model-selector.tsx",
@@ -1517,11 +1303,7 @@
         }
       ],
       "docs": "Fully functional AI model selector with 22+ popular models from OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Cohere, and Meta. Supports custom models via the models prop. Returns provider/model-id format compatible with Vercel AI SDK.",
-      "categories": [
-        "ai",
-        "form",
-        "selector"
-      ]
+      "categories": ["ai", "form", "selector"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1538,11 +1320,79 @@
         }
       ],
       "docs": "MoonshotAI logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "neon-logo",
+      "type": "registry:ui",
+      "title": "Neon Logo",
+      "description": "Neon database brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/neon-logo/components/logos/neon.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "nextjs-logo",
+      "type": "registry:ui",
+      "title": "Next.js Logo",
+      "description": "Next.js brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/nextjs-logo/components/logos/nextjs.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "nodejs-logo",
+      "type": "registry:ui",
+      "title": "Node.js Logo",
+      "description": "Node.js brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/nodejs-logo/components/logos/nodejs.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1559,11 +1409,7 @@
         }
       ],
       "docs": "Notion logo component with white background and theme-adaptive foreground.",
-      "categories": [
-        "Productivity",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Productivity", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1595,9 +1441,7 @@
       "title": "OG Image Explorer",
       "description": "A dev tool to audit and preview Open Graph images from all routes in your app. Visual gallery with status indicators for broken images.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/media/og-image-explorer/components/elements/og-image-explorer.tsx",
@@ -1623,11 +1467,7 @@
         }
       ],
       "docs": "Configure the `routes` prop with your app's routes and OG image URLs. The component auto-groups by route category and shows green/red borders for loaded/broken images.",
-      "categories": [
-        "media",
-        "seo",
-        "dev-tools"
-      ]
+      "categories": ["media", "seo", "dev-tools"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1644,11 +1484,7 @@
         }
       ],
       "docs": "OpenAI logo component with official brand colors.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1665,12 +1501,7 @@
       "dependencies": [],
       "files": [],
       "docs": "Collection of popular JavaScript package manager logos. Essential for documentation, installation guides, and developer tools.",
-      "categories": [
-        "logo",
-        "brand",
-        "Package Manager",
-        "collection"
-      ]
+      "categories": ["logo", "brand", "Package Manager", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1687,11 +1518,7 @@
         }
       ],
       "docs": "Perplexity logo component with official brand teal color.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1701,10 +1528,7 @@
       "title": "AI Pipeline",
       "description": "Multi-stage workflow visualization with horizontal or vertical layout, stage status indicators, progress tracking, and expandable stage details.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-pipeline/components/elements/ai-pipeline.tsx",
@@ -1712,9 +1536,7 @@
         }
       ],
       "docs": "Compound component for pipeline visualization. Orientations: horizontal, vertical. Stage states: pending, active, completed, error. Features progress bar, animated connectors, expandable stage details, and compact variant.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1732,9 +1554,7 @@
         }
       ],
       "docs": "TODO: Add documentation",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1766,9 +1586,7 @@
       "title": "Polar License Key",
       "description": "Styled license key display with masking, copy functionality, and status indicators.",
       "registryDependencies": [],
-      "dependencies": [
-        "@polar-sh/sdk"
-      ],
+      "dependencies": ["@polar-sh/sdk"],
       "files": [
         {
           "path": "registry/default/blocks/polar/polar-license-key/components/elements/polar-license-key.tsx",
@@ -1776,9 +1594,7 @@
         }
       ],
       "docs": "Secure license key display with toggle visibility, copy-to-clipboard, activation count, and expiration date.",
-      "categories": [
-        "polar"
-      ]
+      "categories": ["polar"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1795,11 +1611,7 @@
         }
       ],
       "docs": "Polar logo component with official brand blue color.",
-      "categories": [
-        "Funding",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Funding", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1808,9 +1620,7 @@
       "title": "Polar Pricing Card",
       "description": "Product pricing card with features list, price display, and checkout CTA. Supports monthly/yearly/one-time pricing.",
       "registryDependencies": [],
-      "dependencies": [
-        "@polar-sh/sdk"
-      ],
+      "dependencies": ["@polar-sh/sdk"],
       "files": [
         {
           "path": "registry/default/blocks/polar/polar-pricing-card/components/elements/polar-pricing-card.tsx",
@@ -1818,9 +1628,7 @@
         }
       ],
       "docs": "A beautiful pricing card component for displaying product tiers. Supports popular badge, highlighted variant, and disabled states.",
-      "categories": [
-        "polar"
-      ]
+      "categories": ["polar"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1829,9 +1637,7 @@
       "title": "Polar Revenue Card",
       "description": "MRR/ARR metric card with trend sparkline and percentage change indicator.",
       "registryDependencies": [],
-      "dependencies": [
-        "@polar-sh/sdk"
-      ],
+      "dependencies": ["@polar-sh/sdk"],
       "files": [
         {
           "path": "registry/default/blocks/polar/polar-revenue-card/components/elements/polar-revenue-card.tsx",
@@ -1839,9 +1645,7 @@
         }
       ],
       "docs": "Display revenue metrics with SVG sparkline trends. Shows MRR, ARR, or custom metrics with automatic value formatting.",
-      "categories": [
-        "polar"
-      ]
+      "categories": ["polar"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1850,9 +1654,7 @@
       "title": "Polar Sponsor Grid",
       "description": "Grid of sponsor avatars grouped by tier with customizable colors and avatar sizes.",
       "registryDependencies": [],
-      "dependencies": [
-        "@polar-sh/sdk"
-      ],
+      "dependencies": ["@polar-sh/sdk"],
       "files": [
         {
           "path": "registry/default/blocks/polar/polar-sponsor-grid/components/elements/polar-sponsor-grid.tsx",
@@ -1860,9 +1662,7 @@
         }
       ],
       "docs": "Automatically groups sponsors by contribution amount. Supports custom tiers, avatar fallbacks with initials, and profile links.",
-      "categories": [
-        "polar"
-      ]
+      "categories": ["polar"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1871,9 +1671,7 @@
       "title": "Polar Subscription Badge",
       "description": "Subscription tier badge with status indicators and automatic tier-based coloring.",
       "registryDependencies": [],
-      "dependencies": [
-        "@polar-sh/sdk"
-      ],
+      "dependencies": ["@polar-sh/sdk"],
       "files": [
         {
           "path": "registry/default/blocks/polar/polar-subscription-badge/components/elements/polar-subscription-badge.tsx",
@@ -1881,9 +1679,31 @@
         }
       ],
       "docs": "Compact badge for displaying subscription tiers. Supports status indicators, multiple sizes, and outline variant.",
-      "categories": [
-        "polar"
-      ]
+      "categories": ["polar"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "prisma-logo",
+      "type": "registry:ui",
+      "title": "Prisma Logo",
+      "description": "Prisma brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/prisma-logo/components/logos/prisma.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1893,9 +1713,7 @@
       "title": "AI Prompt Diff",
       "description": "Compare system prompts with side-by-side or unified diff views. Shows added/removed line highlighting, line numbers, and copy buttons. Essential for prompt engineering and version tracking.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-prompt-diff/components/elements/ai-prompt-diff.tsx",
@@ -1903,9 +1721,7 @@
         }
       ],
       "docs": "A compound component for comparing prompts. Supports unified and side-by-side diff views with LCS-based diff algorithm. Use AiPromptDiff as root with AiPromptDiffHeader, AiPromptDiffViewToggle, AiPromptDiffContent, and AiPromptDiffCopyButton sub-components.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1922,11 +1738,31 @@
         }
       ],
       "docs": "Qwen logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "react-logo",
+      "type": "registry:ui",
+      "title": "React Logo",
+      "description": "React brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/react-logo/components/logos/react.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1936,10 +1772,7 @@
       "title": "AI Reasoning",
       "description": "Collapsible reasoning content with streaming awareness for DeepSeek R1-style thinking visualization.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-reasoning/components/elements/ai-reasoning.tsx",
@@ -1947,9 +1780,7 @@
         }
       ],
       "docs": "Auto-opens during streaming, shows thinking duration. Compound component with trigger and content.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1959,10 +1790,7 @@
       "title": "AI Request Inspector",
       "description": "Display raw AI request/response data with collapsible sections, JSON syntax highlighting, copy buttons, and status code badges for debugging API calls.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-request-inspector/components/elements/ai-request-inspector.tsx",
@@ -1970,9 +1798,7 @@
         }
       ],
       "docs": "Compound component for inspecting AI API requests. Features collapsible request/response sections, JSON formatting with copy-to-clipboard, HTTP method and URL display, status code badges with color coding (green: 2xx, yellow: 3xx, red: 4xx/5xx), duration and timestamp display.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1989,11 +1815,7 @@
         }
       ],
       "docs": "Resend logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "Email",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Email", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2002,13 +1824,8 @@
       "type": "registry:ui",
       "title": "AI Response Actions",
       "description": "Action buttons for AI responses: copy, regenerate, thumbs up/down, share",
-      "registryDependencies": [
-        "button",
-        "tooltip"
-      ],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "registryDependencies": ["button", "tooltip"],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-response-actions/components/elements/ai-response-actions.tsx",
@@ -2016,9 +1833,7 @@
         }
       ],
       "docs": "Toolbar with copy, regenerate, feedback, and share actions. Supports compact mode.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2028,9 +1843,7 @@
       "title": "AI Routing Indicator",
       "description": "Visualize real-time message routing with pattern matching highlights, target agent display, confidence scores, and animated routing states for multi-agent systems.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-routing-indicator/components/elements/ai-routing-indicator.tsx",
@@ -2038,9 +1851,7 @@
         }
       ],
       "docs": "Compound component for routing visualization. Sub-components: AiRoutingIndicator, AiRoutingIndicatorHeader, AiRoutingIndicatorContent, AiRoutingInput, AiRoutingFlow, AiRoutingIndicatorEmpty, AiRoutingMatch. Supports animated routing state.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2049,9 +1860,7 @@
       "title": "Schema Viewer",
       "description": "JSON Schema visualizer with tree view, type badges, and required indicators",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/devtools/schema-viewer/components/elements/schema-viewer.tsx",
@@ -2059,9 +1868,7 @@
         }
       ],
       "docs": "Collapsible tree view, type badges, required indicators, constraints display, example values.",
-      "categories": [
-        "devtools"
-      ]
+      "categories": ["devtools"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2078,11 +1885,7 @@
         }
       ],
       "docs": "Slack logo component with official multi-color brand design.",
-      "categories": [
-        "Communication",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Communication", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2100,12 +1903,7 @@
       "dependencies": [],
       "files": [],
       "docs": "Collection of social media and communication platform logos. Perfect for social sharing features, community sections, and integration showcases.",
-      "categories": [
-        "logo",
-        "brand",
-        "social",
-        "collection"
-      ]
+      "categories": ["logo", "brand", "social", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2115,10 +1913,7 @@
       "title": "AI Sources",
       "description": "Collapsible citations viewer with favicons, source links, and snippets for RAG/search results display.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-sources/components/elements/ai-sources.tsx",
@@ -2126,9 +1921,7 @@
         }
       ],
       "docs": "Compound component with trigger and content. Auto-fetches favicons from Google. Supports custom rendering.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2145,11 +1938,7 @@
         }
       ],
       "docs": "Spotify logo component with official brand green color.",
-      "categories": [
-        "Entertainment",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Entertainment", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2159,9 +1948,7 @@
       "title": "AI Stream Debugger",
       "description": "Real-time streaming chunk visualization for AI responses with auto-scroll, pause/resume, chunk type indicators, and timestamps for debugging SSE streams.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-stream-debugger/components/elements/ai-stream-debugger.tsx",
@@ -2169,9 +1956,7 @@
         }
       ],
       "docs": "Compound component for debugging AI streaming responses. Chunk types: text, tool_call, tool_result, error, finish. Features auto-scroll with pause/resume, clear button, live/paused status indicator, configurable max chunks. Each chunk shows millisecond-precision timestamps.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2189,9 +1974,7 @@
         }
       ],
       "docs": "Typewriter effect with configurable speed, character/word modes, and animated cursor.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2208,11 +1991,7 @@
         }
       ],
       "docs": "Stripe logo component with official brand purple color.",
-      "categories": [
-        "Payments",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Payments", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2221,9 +2000,7 @@
       "type": "registry:ui",
       "title": "AI Suggested Actions",
       "description": "Grid of suggestion buttons for quick chat prompts and actions",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "dependencies": [],
       "files": [
         {
@@ -2232,9 +2009,7 @@
         }
       ],
       "docs": "Display suggested prompts as clickable buttons in a responsive grid. Perfect for onboarding users to chat capabilities.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2251,11 +2026,31 @@
         }
       ],
       "docs": "Supabase logo component with official brand green gradient colors.",
-      "categories": [
-        "Database",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Database", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "tailwindcss-logo",
+      "type": "registry:ui",
+      "title": "Tailwind CSS Logo",
+      "description": "Tailwind CSS brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/tailwindcss-logo/components/logos/tailwindcss.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2265,10 +2060,7 @@
       "title": "AI Task List",
       "description": "Display AI workflow progress with task status indicators, file references, and progress tracking.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-task-list/components/elements/ai-task-list.tsx",
@@ -2276,9 +2068,7 @@
         }
       ],
       "docs": "Collapsible task list with status icons. Supports pending, in-progress, completed, error states with progress bar.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2295,12 +2085,7 @@
       "dependencies": [],
       "files": [],
       "docs": "Collection of major technology company logos. Essential for platform integrations, sign-in options, and enterprise partnerships.",
-      "categories": [
-        "logo",
-        "brand",
-        "enterprise",
-        "collection"
-      ]
+      "categories": ["logo", "brand", "enterprise", "collection"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2309,9 +2094,7 @@
       "type": "registry:ui",
       "title": "AI Temperature Slider",
       "description": "Temperature slider with labeled presets for AI model tuning",
-      "registryDependencies": [
-        "slider"
-      ],
+      "registryDependencies": ["slider"],
       "dependencies": [],
       "files": [
         {
@@ -2320,9 +2103,7 @@
         }
       ],
       "docs": "Range 0-2 with presets: Precise (0), Balanced (0.7), Creative (1.0), Wild (1.5).",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2330,12 +2111,8 @@
       "type": "registry:ui",
       "title": "Theme Switcher Button",
       "description": "Button-based theme switcher with rotating icons",
-      "registryDependencies": [
-        "button"
-      ],
-      "dependencies": [
-        "next-themes"
-      ],
+      "registryDependencies": ["button"],
+      "dependencies": ["next-themes"],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher/theme-switcher-button/components/elements/theme-switcher-button.tsx",
@@ -2360,12 +2137,8 @@
       "type": "registry:ui",
       "title": "Theme Switcher Classic",
       "description": "A classic theme switcher component with animated sun/moon icons",
-      "registryDependencies": [
-        "switch"
-      ],
-      "dependencies": [
-        "next-themes"
-      ],
+      "registryDependencies": ["switch"],
+      "dependencies": ["next-themes"],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher/theme-switcher-classic/components/elements/theme-switcher-classic.tsx",
@@ -2390,13 +2163,8 @@
       "type": "registry:ui",
       "title": "Theme Switcher Dropdown",
       "description": "Dropdown theme switcher with system/light/dark options",
-      "registryDependencies": [
-        "button",
-        "dropdown-menu"
-      ],
-      "dependencies": [
-        "next-themes"
-      ],
+      "registryDependencies": ["button", "dropdown-menu"],
+      "dependencies": ["next-themes"],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher/theme-switcher-dropdown/components/elements/theme-switcher-dropdown.tsx",
@@ -2422,9 +2190,7 @@
       "title": "Theme Switcher Multi Button",
       "description": "Multi-button theme switcher with system/light/dark options",
       "registryDependencies": [],
-      "dependencies": [
-        "next-themes"
-      ],
+      "dependencies": ["next-themes"],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher/theme-switcher-multi-button/components/elements/theme-switcher-multi-button.tsx",
@@ -2449,12 +2215,8 @@
       "type": "registry:ui",
       "title": "Theme Switcher Switch",
       "description": "Switch-based theme switcher with animated sun/moon icons",
-      "registryDependencies": [
-        "switch"
-      ],
-      "dependencies": [
-        "next-themes"
-      ],
+      "registryDependencies": ["switch"],
+      "dependencies": ["next-themes"],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher/theme-switcher-switch/components/elements/theme-switcher-switch.tsx",
@@ -2480,9 +2242,7 @@
       "title": "Theme Switcher Toggle",
       "description": "Custom toggle theme switcher with sliding animation",
       "registryDependencies": [],
-      "dependencies": [
-        "next-themes"
-      ],
+      "dependencies": ["next-themes"],
       "files": [
         {
           "path": "registry/default/blocks/theme-switcher/theme-switcher-toggle/components/elements/theme-switcher-toggle.tsx",
@@ -2509,9 +2269,7 @@
       "title": "AI Thinking Indicator",
       "description": "Loading indicator with multiple variants for AI processing states",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-thinking-indicator/components/elements/ai-thinking-indicator.tsx",
@@ -2519,9 +2277,7 @@
         }
       ],
       "docs": "Animated indicators: bouncing dots, pulse, brain icon, or sparkles. Customizable message.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2605,11 +2361,7 @@
         }
       ],
       "docs": "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "Theme",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Theme", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2627,9 +2379,7 @@
         }
       ],
       "docs": "Shows current/max tokens with color-coded states: normal, warning (>75%), danger (>90%).",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2639,9 +2389,7 @@
       "title": "AI Token Viewer",
       "description": "Token usage visualization with input/output/total counts, cost estimation for popular models, and interactive token breakdown with hover-to-inspect boundaries.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-token-viewer/components/elements/ai-token-viewer.tsx",
@@ -2649,9 +2397,7 @@
         }
       ],
       "docs": "Compound component for visualizing token usage. Features input/output/total token counts, cost estimation for GPT-4/4o/3.5-turbo and Claude 3/3.5 models, visual token breakdown with color-coded types (text, special, control), hover tooltips showing token IDs and types.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2661,10 +2407,7 @@
       "title": "AI Tool Call",
       "description": "Display AI tool/function invocations with status indicators, input/output visualization, and collapsible interface for MCP and function calling workflows.",
       "registryDependencies": [],
-      "dependencies": [
-        "@radix-ui/react-collapsible",
-        "lucide-react"
-      ],
+      "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-tool-call/components/elements/ai-tool-call.tsx",
@@ -2672,9 +2415,7 @@
         }
       ],
       "docs": "Compound component for displaying tool calls. States: pending, running, completed, error, awaiting-approval, denied. Auto-opens on completion/error.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2684,9 +2425,7 @@
       "title": "AI Tool Inspector",
       "description": "Debug panel for inspecting AI tool executions with timing, status indicators, and expandable JSON input/output views. Perfect for debugging MCP tools, function calls, and agent actions.",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/ai/ai-tool-inspector/components/elements/ai-tool-inspector.tsx",
@@ -2694,9 +2433,7 @@
         }
       ],
       "docs": "A compound component for debugging AI tool calls. Features include tool name and description display, input/output JSON with copy functionality, execution time tracking, and status indicators (pending, running, success, error). Use AiToolInspector as the root with AiToolInspectorHeader, AiToolInspectorList, and AiToolInspectorItem sub-components.",
-      "categories": [
-        "ai"
-      ]
+      "categories": ["ai"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2713,11 +2450,7 @@
         }
       ],
       "docs": "Twitch logo component with official brand purple and white colors.",
-      "categories": [
-        "Entertainment",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Entertainment", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2734,11 +2467,31 @@
         }
       ],
       "docs": "Twitter/X logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "Social",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Social", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "typescript-logo",
+      "type": "registry:ui",
+      "title": "TypeScript Logo",
+      "description": "TypeScript brand logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/typescript-logo/components/logos/typescript.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2747,10 +2500,7 @@
       "title": "UploadThing Avatar",
       "description": "A circular avatar uploader with preview, hover state, and upload progress. Perfect for profile pictures.",
       "registryDependencies": [],
-      "dependencies": [
-        "@uploadthing/react",
-        "uploadthing"
-      ],
+      "dependencies": ["@uploadthing/react", "uploadthing"],
       "files": [
         {
           "path": "registry/default/blocks/uploadthing/uploadthing-avatar/components/elements/uploadthing-avatar.tsx",
@@ -2758,9 +2508,7 @@
         }
       ],
       "docs": "Circular avatar uploader with camera icon overlay. Supports size variants (sm, md, lg, xl), fallback initials, and custom upload handlers.",
-      "categories": [
-        "uploadthing"
-      ]
+      "categories": ["uploadthing"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2769,10 +2517,7 @@
       "title": "UploadThing Button",
       "description": "A simple upload button with loading states and file validation. Self-contained component that works with any upload backend.",
       "registryDependencies": [],
-      "dependencies": [
-        "@uploadthing/react",
-        "uploadthing"
-      ],
+      "dependencies": ["@uploadthing/react", "uploadthing"],
       "files": [
         {
           "path": "registry/default/blocks/uploadthing/uploadthing-button/components/elements/uploadthing-button.tsx",
@@ -2780,9 +2525,7 @@
         }
       ],
       "docs": "Self-contained upload button with progress indication, file validation, and customizable accept types. Wire up to any upload backend via the onUpload prop.",
-      "categories": [
-        "uploadthing"
-      ]
+      "categories": ["uploadthing"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2791,10 +2534,7 @@
       "title": "UploadThing Dropzone",
       "description": "Drag and drop file upload zone with progress tracking and file management. Self-contained component that works with any upload backend.",
       "registryDependencies": [],
-      "dependencies": [
-        "@uploadthing/react",
-        "uploadthing"
-      ],
+      "dependencies": ["@uploadthing/react", "uploadthing"],
       "files": [
         {
           "path": "registry/default/blocks/uploadthing/uploadthing-dropzone/components/elements/uploadthing-dropzone.tsx",
@@ -2802,9 +2542,7 @@
         }
       ],
       "docs": "Drag and drop upload zone with visual feedback, progress indication, and uploaded file management. Wire up to any upload backend via the onUpload prop.",
-      "categories": [
-        "uploadthing"
-      ]
+      "categories": ["uploadthing"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2813,10 +2551,7 @@
       "title": "UploadThing File Card",
       "description": "A beautiful file card displaying uploaded file info with copy URL, download, open, and remove actions.",
       "registryDependencies": [],
-      "dependencies": [
-        "@uploadthing/react",
-        "uploadthing"
-      ],
+      "dependencies": ["@uploadthing/react", "uploadthing"],
       "files": [
         {
           "path": "registry/default/blocks/uploadthing/uploadthing-file-card/components/elements/uploadthing-file-card.tsx",
@@ -2824,9 +2559,7 @@
         }
       ],
       "docs": "Displays file name, size, type with appropriate icons. Image files show thumbnail preview. Includes copy URL, download, and remove actions.",
-      "categories": [
-        "uploadthing"
-      ]
+      "categories": ["uploadthing"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2835,10 +2568,7 @@
       "title": "UploadThing Image Grid",
       "description": "A multi-image upload grid with preview thumbnails, remove buttons, and configurable columns.",
       "registryDependencies": [],
-      "dependencies": [
-        "@uploadthing/react",
-        "uploadthing"
-      ],
+      "dependencies": ["@uploadthing/react", "uploadthing"],
       "files": [
         {
           "path": "registry/default/blocks/uploadthing/uploadthing-image-grid/components/elements/uploadthing-image-grid.tsx",
@@ -2846,9 +2576,7 @@
         }
       ],
       "docs": "Grid layout for multiple image uploads. Supports 2, 3, or 4 columns, max image limits, and hover-to-remove functionality.",
-      "categories": [
-        "uploadthing"
-      ]
+      "categories": ["uploadthing"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2857,10 +2585,7 @@
       "title": "UploadThing Paste",
       "description": "A clipboard paste zone that accepts pasted images and files. Perfect for quick screenshot uploads.",
       "registryDependencies": [],
-      "dependencies": [
-        "@uploadthing/react",
-        "uploadthing"
-      ],
+      "dependencies": ["@uploadthing/react", "uploadthing"],
       "files": [
         {
           "path": "registry/default/blocks/uploadthing/uploadthing-paste/components/elements/uploadthing-paste.tsx",
@@ -2868,9 +2593,7 @@
         }
       ],
       "docs": "Focus the zone and paste (Cmd+V) to upload. Shows upload progress and success state. Supports file type filtering via accept prop.",
-      "categories": [
-        "uploadthing"
-      ]
+      "categories": ["uploadthing"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2879,10 +2602,7 @@
       "title": "UploadThing Progress",
       "description": "A standalone upload progress indicator with bar, ring, and minimal variants.",
       "registryDependencies": [],
-      "dependencies": [
-        "@uploadthing/react",
-        "uploadthing"
-      ],
+      "dependencies": ["@uploadthing/react", "uploadthing"],
       "files": [
         {
           "path": "registry/default/blocks/uploadthing/uploadthing-progress/components/elements/uploadthing-progress.tsx",
@@ -2890,9 +2610,7 @@
         }
       ],
       "docs": "Three variants: bar (horizontal), ring (circular), minimal (compact). Three sizes: sm, md, lg. Use with useUploadThing's onUploadProgress.",
-      "categories": [
-        "uploadthing"
-      ]
+      "categories": ["uploadthing"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2901,9 +2619,7 @@
       "title": "Upstash Cache Badge",
       "description": "Inline cache status indicator showing HIT/MISS/STALE/EXPIRED states with TTL countdown.",
       "registryDependencies": [],
-      "dependencies": [
-        "@upstash/redis"
-      ],
+      "dependencies": ["@upstash/redis"],
       "files": [
         {
           "path": "registry/default/blocks/upstash/upstash-cache-badge/components/elements/upstash-cache-badge.tsx",
@@ -2911,9 +2627,7 @@
         }
       ],
       "docs": "Display cache status with color-coded badges. Shows TTL countdown for hits and optional refresh button for misses. Great for debugging cache behavior.",
-      "categories": [
-        "upstash"
-      ]
+      "categories": ["upstash"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2922,9 +2636,7 @@
       "title": "Upstash Counter",
       "description": "Animated counter display for Redis INCR patterns with optional increment/decrement controls.",
       "registryDependencies": [],
-      "dependencies": [
-        "@upstash/redis"
-      ],
+      "dependencies": ["@upstash/redis"],
       "files": [
         {
           "path": "registry/default/blocks/upstash/upstash-counter/components/elements/upstash-counter.tsx",
@@ -2932,9 +2644,7 @@
         }
       ],
       "docs": "Animated counter with smooth number transitions, compact formatting (1.2K), and optional +/- controls. Great for page views, likes, or any Redis counter.",
-      "categories": [
-        "upstash"
-      ]
+      "categories": ["upstash"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2943,9 +2653,7 @@
       "title": "Upstash Leaderboard",
       "description": "Ranked leaderboard display for Redis sorted sets (ZSET) with positions, scores, and avatars.",
       "registryDependencies": [],
-      "dependencies": [
-        "@upstash/redis"
-      ],
+      "dependencies": ["@upstash/redis"],
       "files": [
         {
           "path": "registry/default/blocks/upstash/upstash-leaderboard/components/elements/upstash-leaderboard.tsx",
@@ -2953,9 +2661,7 @@
         }
       ],
       "docs": "Display Redis ZSET data as a ranked leaderboard. Features gold/silver/bronze styling for top 3, avatar support, and score formatting.",
-      "categories": [
-        "upstash"
-      ]
+      "categories": ["upstash"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2972,11 +2678,7 @@
         }
       ],
       "docs": "Upstash logo component with official brand green color.",
-      "categories": [
-        "Database",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Database", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2985,9 +2687,7 @@
       "title": "Upstash Queue Card",
       "description": "QStash message/task status card showing state, retries, scheduled time, and payload preview.",
       "registryDependencies": [],
-      "dependencies": [
-        "@upstash/qstash"
-      ],
+      "dependencies": ["@upstash/qstash"],
       "files": [
         {
           "path": "registry/default/blocks/upstash/upstash-queue-card/components/elements/upstash-queue-card.tsx",
@@ -2995,9 +2695,7 @@
         }
       ],
       "docs": "Display QStash task status with visual badges for pending/processing/completed/failed states. Shows retry count, scheduled time, and error messages.",
-      "categories": [
-        "upstash"
-      ]
+      "categories": ["upstash"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3006,10 +2704,7 @@
       "title": "Upstash Ratelimit",
       "description": "Visual rate limit indicator with progress bar, remaining count, and reset timer. Perfect for displaying @upstash/ratelimit responses.",
       "registryDependencies": [],
-      "dependencies": [
-        "@upstash/ratelimit",
-        "@upstash/redis"
-      ],
+      "dependencies": ["@upstash/ratelimit", "@upstash/redis"],
       "files": [
         {
           "path": "registry/default/blocks/upstash/upstash-ratelimit/components/elements/upstash-ratelimit.tsx",
@@ -3017,9 +2712,7 @@
         }
       ],
       "docs": "Self-contained rate limit indicator showing remaining requests, limit, and countdown to reset. Supports multiple sizes and automatic color states.",
-      "categories": [
-        "upstash"
-      ]
+      "categories": ["upstash"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3036,11 +2729,7 @@
         }
       ],
       "docs": "v0 logo component that adapts to your theme. Uses white colors.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3057,11 +2746,7 @@
         }
       ],
       "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "Cloud",
-        "logo",
-        "brand"
-      ]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3070,9 +2755,7 @@
       "title": "Webhook Tester",
       "description": "HTTP request testing UI with URL, method, headers, body inputs and response viewer",
       "registryDependencies": [],
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/default/blocks/devtools/webhook-tester/components/elements/webhook-tester.tsx",
@@ -3080,9 +2763,7 @@
         }
       ],
       "docs": "Complete request builder: method selector, URL input, headers editor, JSON body, response display.",
-      "categories": [
-        "devtools"
-      ]
+      "categories": ["devtools"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3099,11 +2780,7 @@
         }
       ],
       "docs": "xAI logo component that adapts to your theme. Uses currentColor to match your design system.",
-      "categories": [
-        "AI",
-        "logo",
-        "brand"
-      ]
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
