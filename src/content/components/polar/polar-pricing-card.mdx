@@ -1,0 +1,79 @@
+---
+title: Polar Pricing Card
+description: Product pricing card with features list and checkout CTA
+category: Monetization
+---
+
+<ComponentPreviewItem
+  componentKey="polar-pricing-card"
+  installUrl="@elements/polar-pricing-card"
+  category="Monetization"
+  name="Polar Pricing Card"
+>
+  <PolarPricingCardDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A beautiful pricing card component for displaying product tiers with features, pricing, and checkout actions. Supports monthly/yearly/one-time pricing, popular badges, and disabled states.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/polar-pricing-card"
+```
+
+## Usage
+
+```tsx
+import { PolarPricingCard } from "@/components/elements/polar-pricing-card";
+
+export function PricingSection() {
+  return (
+    <PolarPricingCard
+      name="Pro"
+      description="For professionals and growing teams"
+      price={29}
+      interval="month"
+      features={[
+        "Unlimited projects",
+        "Advanced analytics",
+        { text: "Custom domain", included: true },
+        { text: "White label", included: false },
+      ]}
+      popular
+      highlighted
+      ctaText="Start Free Trial"
+      onCheckout={() => {
+        // Redirect to Polar checkout
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | - | Product/tier name |
+| `description` | `string` | - | Short description |
+| `price` | `number` | - | Price amount (0 for free) |
+| `currency` | `string` | `"$"` | Currency symbol |
+| `interval` | `"month" \| "year" \| "one_time"` | `"month"` | Billing interval |
+| `features` | `(string \| { text: string; included?: boolean })[]` | - | List of features |
+| `popular` | `boolean` | `false` | Show "Most Popular" badge |
+| `highlighted` | `boolean` | `false` | Highlight with primary color |
+| `ctaText` | `string` | `"Get Started"` | Button text |
+| `ctaUrl` | `string` | - | Checkout URL |
+| `onCheckout` | `() => void` | - | Checkout handler |
+| `disabled` | `boolean` | `false` | Disable button |
+
+## Features
+
+- Monthly/yearly/one-time pricing display
+- Feature list with included/excluded indicators
+- Popular badge with sparkles icon
+- Highlighted variant with primary color
+- Hover animations
+- Accessible button states

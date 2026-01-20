@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "suggested-actions",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Suggested Actions",
+  "description": "Grid of suggestion buttons for quick chat prompts and actions",
+  "registryDependencies": ["button"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-suggested-actions/components/elements/ai-suggested-actions.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Display suggested prompts as clickable buttons in a responsive grid. Perfect for onboarding users to chat capabilities.",
+  "categories": ["ai"]
+}

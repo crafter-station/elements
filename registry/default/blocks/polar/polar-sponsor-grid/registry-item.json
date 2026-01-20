@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "polar-sponsor-grid",
+  "type": "registry:block",
+  "title": "Polar Sponsor Grid",
+  "description": "Grid of sponsor avatars grouped by tier with customizable colors and avatar sizes.",
+  "registryDependencies": [],
+  "dependencies": ["@polar-sh/sdk"],
+  "files": [
+    {
+      "path": "registry/default/blocks/polar/polar-sponsor-grid/components/elements/polar-sponsor-grid.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Automatically groups sponsors by contribution amount. Supports custom tiers, avatar fallbacks with initials, and profile links.",
+  "categories": ["polar"]
+}

@@ -13,6 +13,10 @@
     }
   ],
   "docs": "Mistral logo component with official multi-color mosaic brand design.",
-  "categories": ["AI", "logo", "brand"],
+  "categories": [
+    "AI",
+    "logo",
+    "brand"
+  ],
   "type": "registry:ui"
 }

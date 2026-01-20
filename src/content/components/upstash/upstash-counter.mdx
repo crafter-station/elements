@@ -1,0 +1,65 @@
+---
+title: Upstash Counter
+description: Animated counter display for Redis INCR patterns
+---
+
+<ComponentPreviewItem
+  componentKey="upstash-counter"
+  installUrl="@elements/upstash-counter"
+  category="Integration"
+  name="Upstash Counter"
+>
+  <UpstashCounter />
+</ComponentPreviewItem>
+
+## Overview
+
+Animated counter with smooth number transitions. Perfect for displaying Redis counters with optional increment/decrement controls.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/upstash-counter
+```
+
+## Usage
+
+```tsx
+import { UpstashCounter } from "@/components/elements/upstash/upstash-counter";
+
+export function PageViews() {
+  const [count, setCount] = useState(1234);
+
+  return (
+    <UpstashCounter
+      value={count}
+      label="Page Views"
+      format="compact"
+      showControls
+      onIncrement={() => setCount(c => c + 1)}
+      onDecrement={() => setCount(c => c - 1)}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | - | Current counter value |
+| `label` | `string` | - | Label below the counter |
+| `format` | `"full" \| "compact"` | `"full"` | Number format (1,234 vs 1.2K) |
+| `showControls` | `boolean` | `false` | Show +/- buttons |
+| `onIncrement` | `() => void` | - | Increment callback |
+| `onDecrement` | `() => void` | - | Decrement callback |
+| `animated` | `boolean` | `true` | Animate value changes |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Component size |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Smooth number animation on change
+- Compact formatting (1.2K, 1.5M, 2.3B)
+- Optional increment/decrement controls
+- Pulse effect on value change

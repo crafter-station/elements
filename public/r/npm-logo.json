@@ -13,6 +13,12 @@
     }
   ],
   "docs": "npm logo component for the Node.js package manager. Features the classic red npm wordmark design.",
-  "categories": ["Package Manager", "logo", "brand", "JavaScript", "Node.js"],
+  "categories": [
+    "Package Manager",
+    "logo",
+    "brand",
+    "JavaScript",
+    "Node.js"
+  ],
   "type": "registry:ui"
 }

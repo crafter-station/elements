@@ -1,0 +1,207 @@
+---
+title: Upstash
+description: UI components for displaying Upstash Redis, QStash, and rate limiting data
+category: Integration
+brandColor: "#00E9A3"
+---
+
+## Overview
+
+Self-contained components for visualizing Upstash data. Rate limits, counters, queues, leaderboards, and cache status. Works with any Upstash product.
+
+## Components
+
+### Rate Limit
+
+Visual rate limit indicator with progress bar and reset timer.
+
+<ComponentPreviewItem
+  componentKey="upstash-ratelimit"
+  installUrl="@elements/upstash-ratelimit"
+  category="Integration"
+  name="Upstash Ratelimit"
+>
+  <UpstashRatelimit />
+</ComponentPreviewItem>
+
+```tsx
+import { UpstashRatelimit } from "@/components/elements/upstash/upstash-ratelimit";
+
+export function RateLimitStatus({ result }) {
+  return (
+    <UpstashRatelimit
+      limit={result.limit}
+      remaining={result.remaining}
+      reset={result.reset}
+      success={result.success}
+    />
+  );
+}
+```
+
+### Counter
+
+Animated counter display for Redis INCR patterns.
+
+<ComponentPreviewItem
+  componentKey="upstash-counter"
+  installUrl="@elements/upstash-counter"
+  category="Integration"
+  name="Upstash Counter"
+>
+  <UpstashCounter />
+</ComponentPreviewItem>
+
+```tsx
+import { UpstashCounter } from "@/components/elements/upstash/upstash-counter";
+
+export function PageViews({ count }) {
+  return (
+    <UpstashCounter
+      value={count}
+      label="Page Views"
+      format="compact"
+      showControls
+      onIncrement={() => redis.incr("views")}
+    />
+  );
+}
+```
+
+### Queue Card
+
+QStash message/task status card.
+
+<ComponentPreviewItem
+  componentKey="upstash-queue-card"
+  installUrl="@elements/upstash-queue-card"
+  category="Integration"
+  name="Upstash Queue Card"
+>
+  <UpstashQueueCard />
+</ComponentPreviewItem>
+
+```tsx
+import { UpstashQueueCard } from "@/components/elements/upstash/upstash-queue-card";
+
+export function TaskStatus({ task }) {
+  return (
+    <UpstashQueueCard
+      id={task.messageId}
+      status={task.state}
+      payload={JSON.stringify(task.body)}
+      scheduledAt={task.notBefore}
+      retries={task.retried}
+    />
+  );
+}
+```
+
+### Leaderboard
+
+Ranked list for Redis sorted sets (ZSET).
+
+<ComponentPreviewItem
+  componentKey="upstash-leaderboard"
+  installUrl="@elements/upstash-leaderboard"
+  category="Integration"
+  name="Upstash Leaderboard"
+>
+  <UpstashLeaderboard />
+</ComponentPreviewItem>
+
+```tsx
+import { UpstashLeaderboard } from "@/components/elements/upstash/upstash-leaderboard";
+
+export function GameLeaderboard({ players }) {
+  return (
+    <UpstashLeaderboard
+      entries={players}
+      title="Top Players"
+      scoreLabel="Points"
+      maxEntries={10}
+    />
+  );
+}
+```
+
+### Cache Badge
+
+Inline cache status indicator.
+
+<ComponentPreviewItem
+  componentKey="upstash-cache-badge"
+  installUrl="@elements/upstash-cache-badge"
+  category="Integration"
+  name="Upstash Cache Badge"
+>
+  <UpstashCacheBadge />
+</ComponentPreviewItem>
+
+```tsx
+import { UpstashCacheBadge } from "@/components/elements/upstash/upstash-cache-badge";
+
+export function CacheStatus({ hit, ttl }) {
+  return (
+    <UpstashCacheBadge
+      status={hit ? "hit" : "miss"}
+      ttl={ttl}
+      onRefresh={() => revalidate()}
+    />
+  );
+}
+```
+
+## Installation
+
+Install any component individually:
+
+```bash
+bunx shadcn@latest add @elements/upstash-ratelimit
+bunx shadcn@latest add @elements/upstash-counter
+bunx shadcn@latest add @elements/upstash-queue-card
+bunx shadcn@latest add @elements/upstash-leaderboard
+bunx shadcn@latest add @elements/upstash-cache-badge
+```
+
+## Usage with @upstash/ratelimit
+
+```tsx
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
+import { UpstashRatelimit } from "@/components/elements/upstash/upstash-ratelimit";
+
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(10, "10 s"),
+});
+
+export async function RateLimitedAPI() {
+  const { success, limit, remaining, reset } = await ratelimit.limit("user_123");
+
+  return (
+    <UpstashRatelimit
+      success={success}
+      limit={limit}
+      remaining={remaining}
+      reset={reset}
+    />
+  );
+}
+```
+
+## Features
+
+- Self-contained with no Upstash dependencies
+- Works with any data source
+- Real-time TTL countdown
+- Animated transitions
+- Multiple size variants
+- Theme-compatible styling
+
+## Resources
+
+- [Upstash Docs](https://upstash.com/docs)
+- [@upstash/ratelimit](https://github.com/upstash/ratelimit)
+- [@upstash/redis](https://github.com/upstash/upstash-redis)
+- [QStash](https://upstash.com/docs/qstash)

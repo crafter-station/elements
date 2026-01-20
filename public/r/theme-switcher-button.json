@@ -3,8 +3,12 @@
   "name": "theme-switcher-button",
   "title": "Theme Switcher Button",
   "description": "Button-based theme switcher with rotating icons",
-  "dependencies": ["next-themes"],
-  "registryDependencies": ["button"],
+  "dependencies": [
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/default/blocks/theme-switcher/theme-switcher-button/components/elements/theme-switcher-button.tsx",

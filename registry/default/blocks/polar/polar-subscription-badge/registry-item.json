@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "polar-subscription-badge",
+  "type": "registry:block",
+  "title": "Polar Subscription Badge",
+  "description": "Subscription tier badge with status indicators and automatic tier-based coloring.",
+  "registryDependencies": [],
+  "dependencies": ["@polar-sh/sdk"],
+  "files": [
+    {
+      "path": "registry/default/blocks/polar/polar-subscription-badge/components/elements/polar-subscription-badge.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Compact badge for displaying subscription tiers. Supports status indicators, multiple sizes, and outline variant.",
+  "categories": ["polar"]
+}

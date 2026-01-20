@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-star-button",
+  "type": "registry:block",
+  "title": "GitHub Star Button",
+  "description": "An interactive star button with live star count that links to a GitHub repository. Perfect for call-to-action elements.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/github/github-star-button/components/elements/github-star-button.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Fetches star count from GitHub API. Supports 'default' and 'outline' variants. Opens repository in new tab on click.",
+  "categories": [
+    "github"
+  ]
+}

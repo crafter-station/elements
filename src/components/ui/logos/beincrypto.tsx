@@ -9,7 +9,7 @@ const COLORS = {
   light: "#171717",
 };
 
-export function BeInCryptoLogo({
+export function BeincryptoLogo({
   className,
   variant = "wordmark",
   mode = "dark",

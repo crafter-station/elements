@@ -1,0 +1,67 @@
+---
+title: Upstash Cache Badge
+description: Inline cache status indicator with TTL countdown
+---
+
+<ComponentPreviewItem
+  componentKey="upstash-cache-badge"
+  installUrl="@elements/upstash-cache-badge"
+  category="Integration"
+  name="Upstash Cache Badge"
+>
+  <UpstashCacheBadge />
+</ComponentPreviewItem>
+
+## Overview
+
+Display cache status with color-coded badges. Shows live TTL countdown for hits and optional refresh button for misses/stale/expired states.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/upstash-cache-badge
+```
+
+## Usage
+
+```tsx
+import { UpstashCacheBadge } from "@/components/elements/upstash/upstash-cache-badge";
+
+export function CacheStatus({ cacheResult }) {
+  return (
+    <UpstashCacheBadge
+      status={cacheResult.hit ? "hit" : "miss"}
+      ttl={cacheResult.ttl}
+      onRefresh={() => revalidate()}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `"hit" \| "miss" \| "stale" \| "expired"` | - | Cache status |
+| `ttl` | `number` | - | Time to live in seconds |
+| `showTtl` | `boolean` | `true` | Show TTL countdown |
+| `onRefresh` | `() => void` | - | Refresh callback (shows button for miss/stale/expired) |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Badge size |
+| `className` | `string` | - | Additional CSS classes |
+
+## Status Colors
+
+| Status | Color | Description |
+|--------|-------|-------------|
+| `hit` | Green | Cache hit, data is fresh |
+| `miss` | Orange | Cache miss, data was fetched |
+| `stale` | Yellow | Data is stale but usable |
+| `expired` | Red | Cache entry has expired |
+
+## Features
+
+- Color-coded status badges
+- Live TTL countdown
+- Refresh button for non-hit states
+- Multiple size variants
+- Monospace font for TTL display

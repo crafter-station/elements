@@ -13,6 +13,11 @@
   ],
   "files": [],
   "docs": "Collection of social media and communication platform logos. Perfect for social sharing features, community sections, and integration showcases.",
-  "categories": ["logo", "brand", "social", "collection"],
+  "categories": [
+    "logo",
+    "brand",
+    "social",
+    "collection"
+  ],
   "type": "registry:block"
 }

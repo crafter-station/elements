@@ -3,8 +3,13 @@
   "name": "theme-switcher-dropdown",
   "title": "Theme Switcher Dropdown",
   "description": "Dropdown theme switcher with system/light/dark options",
-  "dependencies": ["next-themes"],
-  "registryDependencies": ["button", "dropdown-menu"],
+  "dependencies": [
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "button",
+    "dropdown-menu"
+  ],
   "files": [
     {
       "path": "registry/default/blocks/theme-switcher/theme-switcher-dropdown/components/elements/theme-switcher-dropdown.tsx",

@@ -11,6 +11,19 @@ Full-stack components that fetch real-time data from the GitHub API and display 
 
 ## Components
 
+### GitHub Repo Card
+
+Display repository information in a beautiful card format.
+
+<ComponentPreviewItem
+  componentKey="github-repo-card"
+  installUrl="@elements/github-repo-card"
+  category="Integration"
+  name="GitHub Repo Card"
+>
+  <GitHubRepoCard />
+</ComponentPreviewItem>
+
 ### GitHub Stars
 
 Display repository star count with history visualization.
@@ -37,13 +50,70 @@ Display contribution activity grid like GitHub's profile.
   <GitHubContributions />
 </ComponentPreviewItem>
 
+### GitHub Languages
+
+Display repository language breakdown with colored bar.
+
+<ComponentPreviewItem
+  componentKey="github-languages"
+  installUrl="@elements/github-languages"
+  category="Integration"
+  name="GitHub Languages"
+>
+  <GitHubLanguages />
+</ComponentPreviewItem>
+
+### GitHub Star Button
+
+Interactive star button with live count.
+
+<ComponentPreviewItem
+  componentKey="github-star-button"
+  installUrl="@elements/github-star-button"
+  category="Integration"
+  name="GitHub Star Button"
+>
+  <GitHubStarButton />
+</ComponentPreviewItem>
+
+### GitHub Profile Card
+
+Display user profile information in a card.
+
+<ComponentPreviewItem
+  componentKey="github-profile-card"
+  installUrl="@elements/github-profile-card"
+  category="Integration"
+  name="GitHub Profile Card"
+>
+  <GitHubProfileCard />
+</ComponentPreviewItem>
+
+### GitHub Activity Calendar
+
+The iconic contribution calendar with customizable colors.
+
+<ComponentPreviewItem
+  componentKey="github-activity-calendar"
+  installUrl="@elements/github-activity-calendar"
+  category="Integration"
+  name="GitHub Activity Calendar"
+>
+  <GitHubActivityCalendar />
+</ComponentPreviewItem>
+
 ## Installation
 
 Install any component individually:
 
 ```bash
+bunx shadcn@latest add @elements/github-repo-card
 bunx shadcn@latest add @elements/github-stars
 bunx shadcn@latest add @elements/github-contributions
+bunx shadcn@latest add @elements/github-languages
+bunx shadcn@latest add @elements/github-star-button
+bunx shadcn@latest add @elements/github-profile-card
+bunx shadcn@latest add @elements/github-activity-calendar
 ```
 
 ## Environment Variables
@@ -59,14 +129,24 @@ Without a token, you're limited to 60 requests/hour. With a token, 5,000 request
 ## Usage
 
 ```tsx
+import { GitHubRepoCard } from "@/components/elements/github/github-repo-card";
 import { GitHubStars } from "@/components/elements/github/github-stars";
 import { GitHubContributions } from "@/components/elements/github/github-contributions";
+import { GitHubLanguages } from "@/components/elements/github/github-languages";
+import { GitHubStarButton } from "@/components/elements/github/github-star-button";
+import { GitHubProfileCard } from "@/components/elements/github/github-profile-card";
+import { GitHubActivityCalendar } from "@/components/elements/github/github-activity-calendar";
 
 export function RepoMetrics() {
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="space-y-4">
+      <GitHubRepoCard owner="shadcn-ui" repo="ui" />
       <GitHubStars owner="shadcn-ui" repo="ui" />
       <GitHubContributions owner="shadcn-ui" repo="ui" />
+      <GitHubLanguages owner="shadcn-ui" repo="ui" />
+      <GitHubStarButton owner="shadcn-ui" repo="ui" />
+      <GitHubProfileCard username="shadcn" />
+      <GitHubActivityCalendar username="shadcn" />
     </div>
   );
 }

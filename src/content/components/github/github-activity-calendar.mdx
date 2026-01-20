@@ -1,0 +1,95 @@
+---
+title: GitHub Activity Calendar
+description: The iconic contribution calendar with customizable colors
+---
+
+<ComponentPreviewItem
+  componentKey="github-activity-calendar"
+  installUrl="@elements/github-activity-calendar"
+  category="Integration"
+  name="GitHub Activity Calendar"
+>
+  <GitHubActivityCalendar />
+</ComponentPreviewItem>
+
+## Overview
+
+The iconic GitHub contribution calendar showing activity levels throughout the year. Displays a grid of colored squares representing contribution intensity, with customizable color schemes.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/github-activity-calendar
+```
+
+## Usage
+
+```tsx
+import { GitHubActivityCalendar } from "@/components/elements/github/github-activity-calendar";
+
+export function ProfileActivity() {
+  return <GitHubActivityCalendar username="shadcn" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `username` | `string` | - | GitHub username |
+| `year` | `number` | Current year | Year to display |
+| `colorScheme` | `"green" \| "blue" \| "purple" \| "orange"` | `"green"` | Color scheme for the calendar |
+| `staticData` | `ContributionDay[]` | - | Static data array (bypasses API) |
+| `className` | `string` | - | Additional CSS classes |
+
+### Static Data Shape
+
+```tsx
+{
+  date: string;      // ISO date string (YYYY-MM-DD)
+  count: number;     // Number of contributions
+  level: 0 | 1 | 2 | 3 | 4;  // Intensity level
+}[]
+```
+
+## Color Schemes
+
+### Green (Default)
+
+```tsx
+<GitHubActivityCalendar username="shadcn" colorScheme="green" />
+```
+
+### Blue
+
+```tsx
+<GitHubActivityCalendar username="shadcn" colorScheme="blue" />
+```
+
+### Purple
+
+```tsx
+<GitHubActivityCalendar username="shadcn" colorScheme="purple" />
+```
+
+### Orange
+
+```tsx
+<GitHubActivityCalendar username="shadcn" colorScheme="orange" />
+```
+
+## Specific Year
+
+```tsx
+<GitHubActivityCalendar username="shadcn" year={2024} />
+```
+
+## Features
+
+- Full year contribution calendar visualization
+- Four color scheme options
+- Shows total contribution count
+- Day and month labels
+- Intensity legend (Less to More)
+- Built-in loading state
+- Hover tooltips with contribution details

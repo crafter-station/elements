@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "upstash-counter",
+  "type": "registry:block",
+  "title": "Upstash Counter",
+  "description": "Animated counter display for Redis INCR patterns with optional increment/decrement controls.",
+  "registryDependencies": [],
+  "dependencies": ["@upstash/redis"],
+  "files": [
+    {
+      "path": "registry/default/blocks/upstash/upstash-counter/components/elements/upstash-counter.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Animated counter with smooth number transitions, compact formatting (1.2K), and optional +/- controls. Great for page views, likes, or any Redis counter.",
+  "categories": ["upstash"]
+}

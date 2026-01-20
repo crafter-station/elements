@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uploadthing-progress",
+  "type": "registry:block",
+  "title": "UploadThing Progress",
+  "description": "A standalone upload progress indicator with bar, ring, and minimal variants.",
+  "registryDependencies": [],
+  "dependencies": ["@uploadthing/react", "uploadthing"],
+  "files": [
+    {
+      "path": "registry/default/blocks/uploadthing/uploadthing-progress/components/elements/uploadthing-progress.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Three variants: bar (horizontal), ring (circular), minimal (compact). Three sizes: sm, md, lg. Use with useUploadThing's onUploadProgress.",
+  "categories": [
+    "uploadthing"
+  ]
+}

@@ -2,11 +2,9 @@
 
 import * as React from "react";
 
-import { ArrowUp, Loader2, Paperclip } from "lucide-react";
+import { Loader2, Paperclip } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-
-import { Button } from "@/components/ui/button";
 
 interface AiChatInputProps {
   onSubmit?: (message: string, attachments?: File[]) => void;
@@ -41,8 +39,9 @@ export function AiChatInput({
 
     textarea.style.height = "auto";
     const lineHeight = 24;
+    const minHeight = 72;
     const maxHeight = lineHeight * maxRows;
-    const newHeight = Math.min(textarea.scrollHeight, maxHeight);
+    const newHeight = Math.max(minHeight, Math.min(textarea.scrollHeight, maxHeight));
     textarea.style.height = `${newHeight}px`;
   }, [maxRows]);
 
@@ -58,7 +57,7 @@ export function AiChatInput({
     setAttachments([]);
 
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = "72px";
     }
   }, [value, attachments, canSubmit, onSubmit]);
 
@@ -69,7 +68,7 @@ export function AiChatInput({
         handleSubmit();
       }
     },
-    [handleSubmit],
+    [handleSubmit]
   );
 
   const handleFileChange = React.useCallback(
@@ -80,35 +79,33 @@ export function AiChatInput({
         fileInputRef.current.value = "";
       }
     },
-    [],
+    []
   );
 
   const removeAttachment = React.useCallback((index: number) => {
     setAttachments((prev) => prev.filter((_, i) => i !== index));
   }, []);
 
-  const isMac = React.useMemo(
-    () =>
-      typeof navigator !== "undefined" &&
-      /Mac|iPod|iPhone|iPad/.test(navigator.platform),
-    [],
-  );
-
   return (
-    <div data-slot="ai-chat-input" className={cn("w-full", className)}>
+    <div
+      data-slot="ai-chat-input"
+      className={cn("w-full font-mono", className)}
+    >
       {attachments.length > 0 && (
         <div className="mb-2 flex flex-wrap gap-2">
           {attachments.map((file, index) => (
             <div
               key={`${file.name}-${index}`}
-              className="flex items-center gap-1.5 rounded-md bg-muted px-2 py-1 text-sm"
+              className="flex items-center gap-1.5 border bg-muted px-2 py-1 text-xs"
             >
-              <Paperclip className="size-3.5 text-muted-foreground" />
-              <span className="max-w-[150px] truncate">{file.name}</span>
+              <Paperclip className="size-3 text-muted-foreground" />
+              <span className="max-w-[150px] truncate uppercase tracking-wider">
+                {file.name}
+              </span>
               <button
                 type="button"
                 onClick={() => removeAttachment(index)}
-                className="text-muted-foreground hover:text-foreground ml-1"
+                className="ml-1 text-muted-foreground hover:text-foreground"
                 disabled={isDisabled}
                 aria-label={`Remove ${file.name}`}
               >
@@ -119,7 +116,7 @@ export function AiChatInput({
         </div>
       )}
 
-      <div className="relative flex items-end gap-2 rounded-xl border bg-background p-2 shadow-sm focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
+      <div className="flex items-end gap-0 border bg-background focus-within:ring-1 focus-within:ring-ring">
         {allowAttachments && (
           <>
             <input
@@ -130,17 +127,15 @@ export function AiChatInput({
               className="hidden"
               disabled={isDisabled}
             />
-            <Button
+            <button
               type="button"
-              variant="ghost"
-              size="icon"
-              className="size-8 shrink-0"
+              className="flex size-10 shrink-0 items-center justify-center border-r text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
               onClick={() => fileInputRef.current?.click()}
               disabled={isDisabled}
             >
               <Paperclip className="size-4" />
               <span className="sr-only">Attach files</span>
-            </Button>
+            </button>
           </>
         )}
 
@@ -151,41 +146,24 @@ export function AiChatInput({
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           disabled={isDisabled}
-          rows={1}
+          rows={3}
           aria-label="Chat message input"
           className={cn(
-            "flex-1 resize-none bg-transparent text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
-            "min-h-[24px] py-1.5 px-2",
+            "flex-1 resize-none bg-transparent text-sm outline-none placeholder:text-muted-foreground/50 disabled:cursor-not-allowed disabled:opacity-50",
+            "min-h-[72px] px-3 py-2.5"
           )}
         />
 
-        <Button
+        <button
           type="button"
-          size="icon"
-          className="size-8 shrink-0 rounded-lg"
+          className="shrink-0 border-l px-4 py-2.5 text-xs uppercase tracking-wider transition-colors hover:bg-muted disabled:opacity-30"
           onClick={handleSubmit}
           disabled={!canSubmit}
         >
-          {loading ? (
-            <Loader2 className="size-4 animate-spin" />
-          ) : (
-            <ArrowUp className="size-4" />
-          )}
+          {loading ? <Loader2 className="size-4 animate-spin" /> : "SEND"}
           <span className="sr-only">Send message</span>
-        </Button>
+        </button>
       </div>
-
-      <p className="mt-1.5 text-xs text-muted-foreground text-center">
-        Press{" "}
-        <kbd className="rounded border bg-muted px-1 py-0.5 text-[10px] font-mono">
-          {isMac ? "⌘" : "Ctrl"}
-        </kbd>{" "}
-        +{" "}
-        <kbd className="rounded border bg-muted px-1 py-0.5 text-[10px] font-mono">
-          Enter
-        </kbd>{" "}
-        to send
-      </p>
     </div>
   );
 }

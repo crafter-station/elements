@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "messages",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Messages",
+  "description": "Scrollable message list with auto-scroll to bottom and scroll-to-bottom button",
+  "registryDependencies": ["button"],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-messages/components/elements/ai-messages.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Container for chat messages with automatic scroll management. Shows scroll-to-bottom button when not at bottom.",
+  "categories": ["ai"]
+}

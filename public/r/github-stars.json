@@ -24,6 +24,8 @@
       "target": "app/github-stars/page.tsx"
     }
   ],
-  "categories": ["github"],
+  "categories": [
+    "github"
+  ],
   "type": "registry:block"
 }

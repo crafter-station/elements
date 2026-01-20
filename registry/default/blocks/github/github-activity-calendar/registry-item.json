@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-activity-calendar",
+  "type": "registry:block",
+  "title": "GitHub Activity Calendar",
+  "description": "The iconic GitHub contribution calendar showing activity levels throughout the year with customizable color schemes.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/github/github-activity-calendar/components/elements/github-activity-calendar.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Displays a year's worth of contribution activity. Supports green, blue, purple, and orange color schemes. Pass year prop to show different years.",
+  "categories": [
+    "github"
+  ]
+}

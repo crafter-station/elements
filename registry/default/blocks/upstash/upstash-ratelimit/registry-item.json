@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "upstash-ratelimit",
+  "type": "registry:block",
+  "title": "Upstash Ratelimit",
+  "description": "Visual rate limit indicator with progress bar, remaining count, and reset timer. Perfect for displaying @upstash/ratelimit responses.",
+  "registryDependencies": [],
+  "dependencies": ["@upstash/ratelimit", "@upstash/redis"],
+  "files": [
+    {
+      "path": "registry/default/blocks/upstash/upstash-ratelimit/components/elements/upstash-ratelimit.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Self-contained rate limit indicator showing remaining requests, limit, and countdown to reset. Supports multiple sizes and automatic color states.",
+  "categories": ["upstash"]
+}

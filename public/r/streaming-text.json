@@ -13,6 +13,8 @@
     }
   ],
   "docs": "Typewriter effect with configurable speed, character/word modes, and animated cursor.",
-  "categories": ["ai"],
+  "categories": [
+    "ai"
+  ],
   "type": "registry:ui"
 }

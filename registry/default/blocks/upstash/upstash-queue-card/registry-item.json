@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "upstash-queue-card",
+  "type": "registry:block",
+  "title": "Upstash Queue Card",
+  "description": "QStash message/task status card showing state, retries, scheduled time, and payload preview.",
+  "registryDependencies": [],
+  "dependencies": ["@upstash/qstash"],
+  "files": [
+    {
+      "path": "registry/default/blocks/upstash/upstash-queue-card/components/elements/upstash-queue-card.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Display QStash task status with visual badges for pending/processing/completed/failed states. Shows retry count, scheduled time, and error messages.",
+  "categories": ["upstash"]
+}

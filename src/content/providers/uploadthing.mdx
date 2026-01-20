@@ -65,6 +65,150 @@ export function FileUploader() {
 }
 ```
 
+### Avatar Uploader
+
+Circular avatar uploader with preview and fallback.
+
+<ComponentPreviewItem
+  componentKey="uploadthing-avatar"
+  installUrl="@elements/uploadthing-avatar"
+  category="File Upload"
+  name="UploadThing Avatar"
+>
+  <UploadThingAvatar />
+</ComponentPreviewItem>
+
+```tsx
+import { UploadThingAvatar } from "@/components/elements/uploadthing/uploadthing-avatar";
+
+export function ProfileAvatar() {
+  const [avatar, setAvatar] = useState<string | null>(null);
+  
+  return (
+    <UploadThingAvatar
+      value={avatar}
+      onChange={setAvatar}
+      size="lg"
+      fallback="JD"
+    />
+  );
+}
+```
+
+### Image Grid
+
+Multi-image grid uploader with configurable columns.
+
+<ComponentPreviewItem
+  componentKey="uploadthing-image-grid"
+  installUrl="@elements/uploadthing-image-grid"
+  category="File Upload"
+  name="UploadThing Image Grid"
+>
+  <UploadThingImageGrid />
+</ComponentPreviewItem>
+
+```tsx
+import { UploadThingImageGrid } from "@/components/elements/uploadthing/uploadthing-image-grid";
+
+export function GalleryUploader() {
+  const [images, setImages] = useState<string[]>([]);
+  
+  return (
+    <UploadThingImageGrid
+      value={images}
+      onChange={setImages}
+      maxImages={9}
+      columns={3}
+    />
+  );
+}
+```
+
+### File Card
+
+Display uploaded files with actions.
+
+<ComponentPreviewItem
+  componentKey="uploadthing-file-card"
+  installUrl="@elements/uploadthing-file-card"
+  category="File Upload"
+  name="UploadThing File Card"
+>
+  <UploadThingFileCard />
+</ComponentPreviewItem>
+
+```tsx
+import { UploadThingFileCard } from "@/components/elements/uploadthing/uploadthing-file-card";
+
+export function FileDisplay() {
+  return (
+    <UploadThingFileCard
+      name="document.pdf"
+      size={1024 * 1024 * 2.5}
+      type="application/pdf"
+      url="https://example.com/document.pdf"
+      onRemove={() => console.log("removed")}
+    />
+  );
+}
+```
+
+### Paste Upload
+
+Upload files via clipboard paste.
+
+<ComponentPreviewItem
+  componentKey="uploadthing-paste"
+  installUrl="@elements/uploadthing-paste"
+  category="File Upload"
+  name="UploadThing Paste"
+>
+  <UploadThingPaste />
+</ComponentPreviewItem>
+
+```tsx
+import { UploadThingPaste } from "@/components/elements/uploadthing/uploadthing-paste";
+
+export function PasteUploader() {
+  return (
+    <UploadThingPaste
+      onPaste={(files) => console.log("Pasted:", files)}
+      accept={["image/*"]}
+    >
+      <p>Click and paste an image (Cmd+V)</p>
+    </UploadThingPaste>
+  );
+}
+```
+
+### Progress Indicator
+
+Upload progress with multiple variants.
+
+<ComponentPreviewItem
+  componentKey="uploadthing-progress"
+  installUrl="@elements/uploadthing-progress"
+  category="File Upload"
+  name="UploadThing Progress"
+>
+  <UploadThingProgress />
+</ComponentPreviewItem>
+
+```tsx
+import { UploadThingProgress } from "@/components/elements/uploadthing/uploadthing-progress";
+
+export function UploadStatus() {
+  return (
+    <div className="space-y-4">
+      <UploadThingProgress progress={65} variant="bar" />
+      <UploadThingProgress progress={65} variant="ring" />
+      <UploadThingProgress progress={65} variant="minimal" />
+    </div>
+  );
+}
+```
+
 ## Setup
 
 ### 1. Install

@@ -1,37 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "uploadthing-button",
-  "type": "registry:ui",
+  "type": "registry:block",
   "title": "UploadThing Button",
-  "description": "Simple upload button with UploadThing integration",
+  "description": "A simple upload button with loading states and file validation. Self-contained component that works with any upload backend.",
   "registryDependencies": [],
-  "dependencies": [
-    "uploadthing",
-    "@uploadthing/react",
-    "@vercel/analytics",
-    "sonner"
-  ],
+  "dependencies": ["@uploadthing/react", "uploadthing"],
   "files": [
     {
-      "path": "registry/default/blocks/uploadthing/uploadthing-button/lib/core.ts",
-      "type": "registry:lib",
-      "target": "app/api/uploadthing/core.ts"
-    },
-    {
-      "path": "registry/default/blocks/uploadthing/uploadthing-button/route.ts",
-      "type": "registry:lib",
-      "target": "app/api/uploadthing/route.ts"
-    },
-    {
-      "path": "registry/default/blocks/uploadthing/uploadthing-button/components/upload-button.tsx",
-      "type": "registry:component",
-      "target": "components/elements/uploadthing/upload-button.tsx"
+      "path": "registry/default/blocks/uploadthing/uploadthing-button/components/elements/uploadthing-button.tsx",
+      "type": "registry:component"
     }
   ],
-  "envVars": {
-    "UPLOADTHING_TOKEN": "ut_...",
-    "UPLOADTHING_APP_ID": "your_app_id"
-  },
-  "docs": "Simple upload button component using UploadThing for basic file uploads with analytics tracking and error handling. Requires UploadThing account and API token.",
-  "categories": ["upload", "file", "storage"]
+  "docs": "Self-contained upload button with progress indication, file validation, and customizable accept types. Wire up to any upload backend via the onUpload prop.",
+  "categories": ["uploadthing"]
 }

@@ -13,6 +13,10 @@
     }
   ],
   "docs": "Claude logo component with official brand orange color.",
-  "categories": ["AI", "logo", "brand"],
+  "categories": [
+    "AI",
+    "logo",
+    "brand"
+  ],
   "type": "registry:ui"
 }

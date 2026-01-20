@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "polar-pricing-card",
+  "type": "registry:block",
+  "title": "Polar Pricing Card",
+  "description": "Product pricing card with features list, price display, and checkout CTA. Supports monthly/yearly/one-time pricing.",
+  "registryDependencies": [],
+  "dependencies": ["@polar-sh/sdk"],
+  "files": [
+    {
+      "path": "registry/default/blocks/polar/polar-pricing-card/components/elements/polar-pricing-card.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A beautiful pricing card component for displaying product tiers. Supports popular badge, highlighted variant, and disabled states.",
+  "categories": ["polar"]
+}

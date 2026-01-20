@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uploadthing-paste",
+  "type": "registry:block",
+  "title": "UploadThing Paste",
+  "description": "A clipboard paste zone that accepts pasted images and files. Perfect for quick screenshot uploads.",
+  "registryDependencies": [],
+  "dependencies": ["@uploadthing/react", "uploadthing"],
+  "files": [
+    {
+      "path": "registry/default/blocks/uploadthing/uploadthing-paste/components/elements/uploadthing-paste.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Focus the zone and paste (Cmd+V) to upload. Shows upload progress and success state. Supports file type filtering via accept prop.",
+  "categories": [
+    "uploadthing"
+  ]
+}

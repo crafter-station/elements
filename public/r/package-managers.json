@@ -12,6 +12,11 @@
   ],
   "files": [],
   "docs": "Collection of popular JavaScript package manager logos. Essential for documentation, installation guides, and developer tools.",
-  "categories": ["logo", "brand", "Package Manager", "collection"],
+  "categories": [
+    "logo",
+    "brand",
+    "Package Manager",
+    "collection"
+  ],
   "type": "registry:block"
 }

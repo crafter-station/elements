@@ -25,13 +25,30 @@
       "wordmark-purple"
     ],
     "variantTypes": {
-      "base": ["icon", "wordmark"],
-      "colorSchemes": ["grayscale", "purple"],
-      "modes": ["dark", "light"],
-      "backgrounds": ["none", "square", "circle"]
+      "base": [
+        "icon",
+        "wordmark"
+      ],
+      "colorSchemes": [
+        "grayscale",
+        "purple"
+      ],
+      "modes": [
+        "dark",
+        "light"
+      ],
+      "backgrounds": [
+        "none",
+        "square",
+        "circle"
+      ]
     }
   },
   "docs": "Clerk authentication logo with 2 base variants (icon, wordmark), 2 color schemes (grayscale, purple), 3 background options (none, square, circle), and 2 modes (light, dark) = 16 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-  "categories": ["Auth", "logo", "brand"],
+  "categories": [
+    "Auth",
+    "logo",
+    "brand"
+  ],
   "type": "registry:ui"
 }

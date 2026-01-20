@@ -23,11 +23,20 @@
       "wordmark-light"
     ],
     "variantTypes": {
-      "base": ["icon", "logo", "wordmark"],
-      "modes": ["dark", "light"]
+      "base": [
+        "icon",
+        "logo",
+        "wordmark"
+      ],
+      "modes": [
+        "dark",
+        "light"
+      ]
     }
   },
   "docs": "Linear logo with 3 base variants (icon, logo, wordmark) and 2 modes (dark, light) = 6 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-  "categories": ["Project Management"],
+  "categories": [
+    "Project Management"
+  ],
   "type": "registry:block"
 }

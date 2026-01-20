@@ -1,0 +1,69 @@
+---
+title: GitHub Languages
+description: Display repository language breakdown with colored bar
+---
+
+<ComponentPreviewItem
+  componentKey="github-languages"
+  installUrl="@elements/github-languages"
+  category="Integration"
+  name="GitHub Languages"
+>
+  <GitHubLanguages />
+</ComponentPreviewItem>
+
+## Overview
+
+A visual component that fetches the programming languages used in a GitHub repository and displays them as a colored bar with percentage labels, matching GitHub's official language colors.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/github-languages
+```
+
+## Usage
+
+```tsx
+import { GitHubLanguages } from "@/components/elements/github/github-languages";
+
+export function TechStack() {
+  return <GitHubLanguages owner="vercel" repo="next.js" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `owner` | `string` | - | GitHub repository owner |
+| `repo` | `string` | - | GitHub repository name |
+| `showLabels` | `boolean` | `true` | Show language labels with percentages |
+| `staticData` | `LanguageData[]` | - | Static data array (bypasses API) |
+| `className` | `string` | - | Additional CSS classes |
+
+### Static Data Shape
+
+```tsx
+{
+  name: string;
+  percentage: number;
+  color: string;
+}[]
+```
+
+## Environment Variables
+
+For higher API rate limits:
+
+```bash
+GITHUB_TOKEN=your_github_token
+```
+
+## Features
+
+- Fetches real-time language data from GitHub API
+- Uses official GitHub language colors
+- Responsive colored bar visualization
+- Optional language labels with percentages
+- Built-in loading and error states

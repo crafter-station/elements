@@ -1,0 +1,90 @@
+---
+title: GitHub Profile Card
+description: Display user profile information in a card
+---
+
+<ComponentPreviewItem
+  componentKey="github-profile-card"
+  installUrl="@elements/github-profile-card"
+  category="Integration"
+  name="GitHub Profile Card"
+>
+  <GitHubProfileCard />
+</ComponentPreviewItem>
+
+## Overview
+
+A comprehensive profile card that fetches and displays GitHub user information including avatar, name, bio, location, company, website, Twitter handle, and follower statistics.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/github-profile-card
+```
+
+## Usage
+
+```tsx
+import { GitHubProfileCard } from "@/components/elements/github/github-profile-card";
+
+export function TeamMember() {
+  return <GitHubProfileCard username="shadcn" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `username` | `string` | - | GitHub username |
+| `showStats` | `boolean` | `true` | Show repos, followers, following counts |
+| `staticData` | `ProfileData` | - | Static data object (bypasses API) |
+| `className` | `string` | - | Additional CSS classes |
+
+### Static Data Shape
+
+```tsx
+{
+  login: string;
+  name: string | null;
+  avatar_url: string;
+  bio: string | null;
+  public_repos: number;
+  followers: number;
+  following: number;
+  company: string | null;
+  location: string | null;
+  blog: string | null;
+  twitter_username: string | null;
+}
+```
+
+## Variants
+
+### With Stats (Default)
+
+```tsx
+<GitHubProfileCard username="shadcn" />
+```
+
+### Without Stats
+
+```tsx
+<GitHubProfileCard username="shadcn" showStats={false} />
+```
+
+## Environment Variables
+
+For higher API rate limits:
+
+```bash
+GITHUB_TOKEN=your_github_token
+```
+
+## Features
+
+- Fetches real-time profile data from GitHub API
+- Displays avatar, name, username, and bio
+- Shows location, company, website, and Twitter links
+- Optional stats section with repos/followers/following
+- Built-in loading and error states

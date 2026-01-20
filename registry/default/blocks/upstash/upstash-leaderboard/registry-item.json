@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "upstash-leaderboard",
+  "type": "registry:block",
+  "title": "Upstash Leaderboard",
+  "description": "Ranked leaderboard display for Redis sorted sets (ZSET) with positions, scores, and avatars.",
+  "registryDependencies": [],
+  "dependencies": ["@upstash/redis"],
+  "files": [
+    {
+      "path": "registry/default/blocks/upstash/upstash-leaderboard/components/elements/upstash-leaderboard.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Display Redis ZSET data as a ranked leaderboard. Features gold/silver/bronze styling for top 3, avatar support, and score formatting.",
+  "categories": ["upstash"]
+}

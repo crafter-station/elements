@@ -14,12 +14,22 @@
   ],
   "meta": {
     "hasVariants": true,
-    "variants": ["icon", "brand"],
+    "variants": [
+      "icon",
+      "brand"
+    ],
     "variantTypes": {
-      "base": ["icon", "brand"]
+      "base": [
+        "icon",
+        "brand"
+      ]
     }
   },
   "docs": "Instagram logo with 2 variants (icon, brand). Icon uses currentColor for theme-awareness, brand features Instagram's iconic gradient.",
-  "categories": ["Social", "logo", "brand"],
+  "categories": [
+    "Social",
+    "logo",
+    "brand"
+  ],
   "type": "registry:ui"
 }

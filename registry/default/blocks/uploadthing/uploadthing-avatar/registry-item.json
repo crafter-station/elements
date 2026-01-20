@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uploadthing-avatar",
+  "type": "registry:block",
+  "title": "UploadThing Avatar",
+  "description": "A circular avatar uploader with preview, hover state, and upload progress. Perfect for profile pictures.",
+  "registryDependencies": [],
+  "dependencies": ["@uploadthing/react", "uploadthing"],
+  "files": [
+    {
+      "path": "registry/default/blocks/uploadthing/uploadthing-avatar/components/elements/uploadthing-avatar.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Circular avatar uploader with camera icon overlay. Supports size variants (sm, md, lg, xl), fallback initials, and custom upload handlers.",
+  "categories": [
+    "uploadthing"
+  ]
+}

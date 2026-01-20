@@ -1,0 +1,66 @@
+---
+title: Polar License Key
+description: Styled license key display with copy functionality
+category: Monetization
+---
+
+<ComponentPreviewItem
+  componentKey="polar-license-key"
+  installUrl="@elements/polar-license-key"
+  category="Monetization"
+  name="Polar License Key"
+>
+  <PolarLicenseKeyDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A secure license key display component with masking, copy-to-clipboard, and status indicators. Perfect for customer portals and license delivery pages.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/polar-license-key"
+```
+
+## Usage
+
+```tsx
+import { PolarLicenseKey } from "@/components/elements/polar-license-key";
+
+export function LicenseSection() {
+  return (
+    <PolarLicenseKey
+      licenseKey="XXXX-ABCD-1234-EFGH-5678-WXYZ"
+      productName="Pro License"
+      status="active"
+      activations={{ current: 2, limit: 5 }}
+      expiresAt={new Date("2025-12-31")}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `licenseKey` | `string` | - | The license key to display |
+| `productName` | `string` | - | Product name label |
+| `status` | `"active" \| "expired" \| "revoked" \| "pending"` | `"active"` | License status |
+| `activations` | `{ current: number; limit: number }` | - | Activation count |
+| `expiresAt` | `Date \| string` | - | Expiration date |
+| `masked` | `boolean` | `true` | Initially mask the key |
+| `showCopyButton` | `boolean` | `true` | Show copy button |
+| `showStatus` | `boolean` | `true` | Show status badge |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Component size |
+| `onCopy` | `(key: string) => void` | - | Copy callback |
+
+## Features
+
+- Toggle key visibility (show/hide)
+- One-click copy to clipboard
+- Status badge with color coding
+- Activation count display
+- Expiration date formatting
+- Monospace font for key display

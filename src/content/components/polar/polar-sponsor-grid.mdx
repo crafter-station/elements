@@ -1,0 +1,82 @@
+---
+title: Polar Sponsor Grid
+description: Grid of sponsor avatars grouped by tier
+category: Monetization
+---
+
+<ComponentPreviewItem
+  componentKey="polar-sponsor-grid"
+  installUrl="@elements/polar-sponsor-grid"
+  category="Monetization"
+  name="Polar Sponsor Grid"
+>
+  <PolarSponsorGridDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+Display your sponsors in a beautiful tiered grid. Automatically groups sponsors by contribution amount with customizable tier labels and avatar sizes.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/polar-sponsor-grid"
+```
+
+## Usage
+
+```tsx
+import { PolarSponsorGrid } from "@/components/elements/polar-sponsor-grid";
+
+const sponsors = [
+  { id: "1", name: "Vercel", avatarUrl: "https://github.com/vercel.png", amount: 500 },
+  { id: "2", name: "Supabase", avatarUrl: "https://github.com/supabase.png", amount: 250 },
+  { id: "3", name: "Alice Smith", amount: 25 },
+];
+
+export function SponsorsSection() {
+  return <PolarSponsorGrid sponsors={sponsors} showTierLabels />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `sponsors` | `Sponsor[]` | - | Array of sponsor objects |
+| `tiers` | `SponsorTier[]` | Default tiers | Custom tier definitions |
+| `showTierLabels` | `boolean` | `true` | Show tier section labels |
+| `avatarSize` | `"sm" \| "md" \| "lg"` | Auto | Override avatar size |
+| `maxDisplay` | `number` | - | Limit displayed sponsors |
+
+### Sponsor Object
+
+```tsx
+interface Sponsor {
+  id: string;
+  name: string;
+  avatarUrl?: string;
+  profileUrl?: string;
+  tier?: string;
+  amount?: number;
+}
+```
+
+### Custom Tiers
+
+```tsx
+const customTiers = [
+  { name: "Diamond", minAmount: 1000, color: "#b9f2ff" },
+  { name: "Gold", minAmount: 100, color: "#FFD700" },
+  { name: "Silver", minAmount: 50, color: "#C0C0C0" },
+];
+```
+
+## Features
+
+- Automatic tier grouping by amount
+- Customizable tier colors and thresholds
+- Avatar fallback with initials
+- Profile link support
+- Hover scale animation
+- Empty state display

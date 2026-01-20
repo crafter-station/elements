@@ -2,11 +2,10 @@
 
 import * as React from "react";
 
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -52,15 +51,15 @@ const PROVIDERS: Record<
   Provider,
   { name: string; logo: React.ComponentType<{ className?: string }> }
 > = {
-  openai: { name: "OpenAI", logo: OpenAILogo },
-  anthropic: { name: "Anthropic", logo: AnthropicLogo },
-  google: { name: "Google", logo: GeminiLogo },
-  xai: { name: "xAI", logo: XAILogo },
-  deepseek: { name: "DeepSeek", logo: DeepSeekLogo },
-  mistral: { name: "Mistral", logo: MistralLogo },
-  groq: { name: "Groq", logo: GroqLogo },
-  cohere: { name: "Cohere", logo: CohereLogo },
-  meta: { name: "Meta", logo: MetaLogo },
+  openai: { name: "OPENAI", logo: OpenAILogo },
+  anthropic: { name: "ANTHROPIC", logo: AnthropicLogo },
+  google: { name: "GOOGLE", logo: GeminiLogo },
+  xai: { name: "XAI", logo: XAILogo },
+  deepseek: { name: "DEEPSEEK", logo: DeepSeekLogo },
+  mistral: { name: "MISTRAL", logo: MistralLogo },
+  groq: { name: "GROQ", logo: GroqLogo },
+  cohere: { name: "COHERE", logo: CohereLogo },
+  meta: { name: "META", logo: MetaLogo },
 };
 
 const DEFAULT_MODELS: Model[] = [
@@ -198,6 +197,8 @@ const DEFAULT_MODELS: Model[] = [
   },
 ];
 
+type SelectorSize = "default" | "compact";
+
 interface AiModelSelectorProps {
   value?: string;
   onValueChange?: (value: string) => void;
@@ -205,15 +206,17 @@ interface AiModelSelectorProps {
   placeholder?: string;
   className?: string;
   disabled?: boolean;
+  size?: SelectorSize;
 }
 
 export function AiModelSelector({
   value,
   onValueChange,
   models = DEFAULT_MODELS,
-  placeholder = "Select a model...",
+  placeholder = "SELECT MODEL",
   className,
   disabled = false,
+  size = "default",
 }: AiModelSelectorProps) {
   const [open, setOpen] = React.useState(false);
   const [internalValue, setInternalValue] = React.useState(value || "");
@@ -243,38 +246,63 @@ export function AiModelSelector({
     ? PROVIDERS[selectedModel.provider]?.logo
     : null;
 
+  const isCompact = size === "compact";
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          variant="outline"
+        <button
+          type="button"
           role="combobox"
           aria-expanded={open}
           disabled={disabled}
-          className={cn("w-[320px] justify-between", className)}
           data-slot="ai-model-selector"
+          className={cn(
+            "flex items-center justify-between border bg-background font-mono transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+            isCompact
+              ? "h-8 w-[200px] px-2 text-xs"
+              : "w-[280px] px-3 py-2 text-sm",
+            className
+          )}
         >
           <div className="flex items-center gap-2 truncate">
             {selectedModel && SelectedLogo ? (
               <>
-                <SelectedLogo className="size-4 shrink-0" />
-                <span className="truncate">{selectedModel.name}</span>
-                <span className="text-muted-foreground text-xs">
-                  ({PROVIDERS[selectedModel.provider].name})
+                <SelectedLogo className={cn("shrink-0", isCompact ? "size-3.5" : "size-4")} />
+                <span className="truncate font-medium">{selectedModel.name}</span>
+                <span className={cn(
+                  "uppercase tracking-wider text-muted-foreground",
+                  isCompact ? "text-[9px]" : "text-[10px]"
+                )}>
+                  {PROVIDERS[selectedModel.provider].name}
                 </span>
               </>
             ) : (
-              <span className="text-muted-foreground">{placeholder}</span>
+              <span className={cn(
+                "uppercase tracking-wider text-muted-foreground",
+                isCompact ? "text-[9px]" : "text-xs"
+              )}>
+                {placeholder}
+              </span>
             )}
           </div>
-          <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
-        </Button>
+          <ChevronDown className={cn("ml-2 shrink-0 text-muted-foreground", isCompact ? "size-3" : "size-3.5")} />
+        </button>
       </PopoverTrigger>
-      <PopoverContent className="w-[320px] p-0" align="start">
-        <Command>
-          <CommandInput placeholder="Search models..." />
-          <CommandList>
-            <CommandEmpty>No model found.</CommandEmpty>
+      <PopoverContent
+        className={cn("rounded-none border p-0", isCompact ? "w-[200px]" : "w-[280px]")}
+        align="end"
+        sideOffset={4}
+      >
+        <Command className="rounded-none">
+          <CommandInput
+            placeholder="Search models..."
+            className="rounded-none border-none font-mono text-xs"
+          />
+          <CommandList className="max-h-[300px]">
+            <CommandEmpty className="py-4 text-center font-mono text-xs uppercase tracking-wider text-muted-foreground">
+              No model found.
+            </CommandEmpty>
             {Array.from(modelsByProvider.entries()).map(
               ([provider, providerModels]) => {
                 const providerInfo = PROVIDERS[provider];
@@ -285,40 +313,41 @@ export function AiModelSelector({
                   <CommandGroup
                     key={provider}
                     heading={
-                      <div className="flex items-center gap-2">
-                        <ProviderLogo className="size-3.5" />
+                      <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest">
+                        <ProviderLogo className="size-3" />
                         <span>{providerInfo.name}</span>
                       </div>
                     }
+                    className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-2"
                   >
                     {providerModels.map((model) => (
                       <CommandItem
                         key={model.id}
                         value={model.id}
                         onSelect={() => handleSelect(model.id)}
-                        className="flex items-center justify-between"
+                        className="flex cursor-pointer items-center justify-between rounded-none px-3 py-2 font-mono"
                       >
-                        <div className="flex flex-col">
-                          <span>{model.name}</span>
+                        <div className="flex flex-col gap-0.5">
+                          <span className="text-sm">{model.name}</span>
                           {model.description && (
-                            <span className="text-muted-foreground text-xs">
+                            <span className="text-[10px] text-muted-foreground">
                               {model.description}
                             </span>
                           )}
                         </div>
                         <Check
                           className={cn(
-                            "size-4",
+                            "size-3.5 shrink-0",
                             currentValue === model.id
                               ? "opacity-100"
-                              : "opacity-0",
+                              : "opacity-0"
                           )}
                         />
                       </CommandItem>
                     ))}
                   </CommandGroup>
                 );
-              },
+              }
             )}
           </CommandList>
         </Command>
@@ -328,4 +357,4 @@ export function AiModelSelector({
 }
 
 export { DEFAULT_MODELS, PROVIDERS };
-export type { Model, Provider, AiModelSelectorProps };
+export type { Model, Provider, AiModelSelectorProps, SelectorSize };

@@ -1,0 +1,64 @@
+---
+title: Upstash Queue Card
+description: QStash message/task status card with retries and scheduling
+---
+
+<ComponentPreviewItem
+  componentKey="upstash-queue-card"
+  installUrl="@elements/upstash-queue-card"
+  category="Integration"
+  name="Upstash Queue Card"
+>
+  <UpstashQueueCard />
+</ComponentPreviewItem>
+
+## Overview
+
+Display QStash task status with visual badges for pending/processing/completed/failed/scheduled states. Shows retry count, scheduled time, payload preview, and error messages.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/upstash-queue-card
+```
+
+## Usage
+
+```tsx
+import { UpstashQueueCard } from "@/components/elements/upstash/upstash-queue-card";
+
+export function TaskStatus({ task }) {
+  return (
+    <UpstashQueueCard
+      id={task.messageId}
+      status="processing"
+      payload={JSON.stringify(task.body)}
+      scheduledAt={task.notBefore}
+      retries={task.retried}
+      maxRetries={3}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `id` | `string` | - | Message/task ID |
+| `status` | `"pending" \| "processing" \| "completed" \| "failed" \| "scheduled"` | - | Task status |
+| `payload` | `string` | - | Payload preview |
+| `scheduledAt` | `Date \| string` | - | Scheduled execution time |
+| `completedAt` | `Date \| string` | - | Completion time |
+| `retries` | `number` | `0` | Current retry count |
+| `maxRetries` | `number` | `3` | Maximum retries |
+| `error` | `string` | - | Error message (for failed status) |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Color-coded status badges
+- Payload preview with truncation
+- Retry counter display
+- Scheduled/completed time formatting
+- Error message display for failed tasks

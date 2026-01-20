@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-repo-card",
+  "type": "registry:block",
+  "title": "GitHub Repo Card",
+  "description": "A card component displaying GitHub repository information including name, description, stars, forks, and primary language.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/github/github-repo-card/components/elements/github-repo-card.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Fetches repository data from GitHub API. Pass owner and repo props to display any public repository. Supports static data for SSR/demos.",
+  "categories": [
+    "github"
+  ]
+}

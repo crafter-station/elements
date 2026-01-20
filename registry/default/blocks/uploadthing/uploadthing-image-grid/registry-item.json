@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uploadthing-image-grid",
+  "type": "registry:block",
+  "title": "UploadThing Image Grid",
+  "description": "A multi-image upload grid with preview thumbnails, remove buttons, and configurable columns.",
+  "registryDependencies": [],
+  "dependencies": ["@uploadthing/react", "uploadthing"],
+  "files": [
+    {
+      "path": "registry/default/blocks/uploadthing/uploadthing-image-grid/components/elements/uploadthing-image-grid.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Grid layout for multiple image uploads. Supports 2, 3, or 4 columns, max image limits, and hover-to-remove functionality.",
+  "categories": [
+    "uploadthing"
+  ]
+}

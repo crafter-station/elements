@@ -3,7 +3,9 @@
   "name": "og-image-explorer",
   "title": "OG Image Explorer",
   "description": "A dev tool to audit and preview Open Graph images from all routes in your app. Visual gallery with status indicators for broken images.",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [],
   "files": [
     {
@@ -35,6 +37,10 @@
     }
   ],
   "docs": "Configure the `routes` prop with your app's routes and OG image URLs. The component auto-groups by route category and shows green/red borders for loaded/broken images.",
-  "categories": ["media", "seo", "dev-tools"],
+  "categories": [
+    "media",
+    "seo",
+    "dev-tools"
+  ],
   "type": "registry:block"
 }

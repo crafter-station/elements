@@ -13,6 +13,12 @@
     }
   ],
   "docs": "pnpm logo component for the fast, disk space efficient package manager. Features the distinctive yellow and gray blocks design.",
-  "categories": ["Package Manager", "logo", "brand", "JavaScript", "Node.js"],
+  "categories": [
+    "Package Manager",
+    "logo",
+    "brand",
+    "JavaScript",
+    "Node.js"
+  ],
   "type": "registry:ui"
 }

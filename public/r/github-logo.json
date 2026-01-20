@@ -14,12 +14,24 @@
   ],
   "meta": {
     "hasVariants": true,
-    "variants": ["invertocat", "wordmark", "lockup"],
+    "variants": [
+      "invertocat",
+      "wordmark",
+      "lockup"
+    ],
     "variantTypes": {
-      "base": ["invertocat", "wordmark", "lockup"]
+      "base": [
+        "invertocat",
+        "wordmark",
+        "lockup"
+      ]
     }
   },
   "docs": "GitHub logo with 3 variants (invertocat, wordmark, lockup). Uses currentColor for automatic theme adaptation.",
-  "categories": ["Development", "logo", "brand"],
+  "categories": [
+    "Development",
+    "logo",
+    "brand"
+  ],
   "type": "registry:ui"
 }

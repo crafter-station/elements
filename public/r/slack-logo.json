@@ -13,6 +13,10 @@
     }
   ],
   "docs": "Slack logo component with official multi-color brand design.",
-  "categories": ["Communication", "logo", "brand"],
+  "categories": [
+    "Communication",
+    "logo",
+    "brand"
+  ],
   "type": "registry:ui"
 }

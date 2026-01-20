@@ -43,12 +43,21 @@ import CliOutputDemo from "@/registry/default/examples/cli-output-demo";
 import CodeDiffViewerDemo from "@/registry/default/examples/code-diff-viewer-demo";
 import EnvEditorDemo from "@/registry/default/examples/env-editor-demo";
 import ErrorBoundaryUiDemo from "@/registry/default/examples/error-boundary-ui-demo";
+import GitHubActivityCalendarDemo from "@/registry/default/examples/github-activity-calendar-demo";
 import GitHubContributionsDemo from "@/registry/default/examples/github-contributions-demo";
+import GitHubLanguagesDemo from "@/registry/default/examples/github-languages-demo";
+import GitHubProfileCardDemo from "@/registry/default/examples/github-profile-card-demo";
+import GitHubRepoCardDemo from "@/registry/default/examples/github-repo-card-demo";
+import GitHubStarButtonDemo from "@/registry/default/examples/github-star-button-demo";
 import GitHubStarsDemo from "@/registry/default/examples/github-stars-demo";
 import JsonViewerDemo from "@/registry/default/examples/json-viewer-demo";
 import OgImageExplorerDemo from "@/registry/default/examples/og-image-explorer-demo";
-// Direct imports from examples
-import PolarSponsorshipDemo from "@/registry/default/examples/polar-sponsorship-demo";
+// Polar
+import PolarPricingCardDemo from "@/registry/default/examples/polar-pricing-card-demo";
+import PolarSponsorGridDemo from "@/registry/default/examples/polar-sponsor-grid-demo";
+import PolarSubscriptionBadgeDemo from "@/registry/default/examples/polar-subscription-badge-demo";
+import PolarRevenueCardDemo from "@/registry/default/examples/polar-revenue-card-demo";
+import PolarLicenseKeyDemo from "@/registry/default/examples/polar-license-key-demo";
 import SchemaViewerDemo from "@/registry/default/examples/schema-viewer-demo";
 import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
 import ThemeSwitcherDemo from "@/registry/default/examples/theme-switcher-demo";
@@ -57,8 +66,18 @@ import ThemeSwitcherMultiButtonDemo from "@/registry/default/examples/theme-swit
 import ThemeSwitcherSwitchDemo from "@/registry/default/examples/theme-switcher-switch-demo";
 import ThemeSwitcherToggleDemo from "@/registry/default/examples/theme-switcher-toggle-demo";
 import TinteEditorDemo from "@/registry/default/examples/tinte-editor-demo";
+import UploadthingAvatarDemo from "@/registry/default/examples/uploadthing-avatar-demo";
 import UploadthingButtonDemo from "@/registry/default/examples/uploadthing-button-demo";
 import UploadthingDropzoneDemo from "@/registry/default/examples/uploadthing-dropzone-demo";
+import UploadthingFileCardDemo from "@/registry/default/examples/uploadthing-file-card-demo";
+import UploadthingImageGridDemo from "@/registry/default/examples/uploadthing-image-grid-demo";
+import UploadthingPasteDemo from "@/registry/default/examples/uploadthing-paste-demo";
+import UploadthingProgressDemo from "@/registry/default/examples/uploadthing-progress-demo";
+import UpstashCacheBadgeDemo from "@/registry/default/examples/upstash-cache-badge-demo";
+import UpstashCounterDemo from "@/registry/default/examples/upstash-counter-demo";
+import UpstashLeaderboardDemo from "@/registry/default/examples/upstash-leaderboard-demo";
+import UpstashQueueCardDemo from "@/registry/default/examples/upstash-queue-card-demo";
+import UpstashRatelimitDemo from "@/registry/default/examples/upstash-ratelimit-demo";
 import WebhookTesterDemo from "@/registry/default/examples/webhook-tester-demo";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -76,15 +95,35 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // Tinte Editor
     TinteEditor: TinteEditorDemo,
     // Polar
-    SponsorTiersPreview: PolarSponsorshipDemo,
+    PolarPricingCardDemo: PolarPricingCardDemo,
+    PolarSponsorGridDemo: PolarSponsorGridDemo,
+    PolarSubscriptionBadgeDemo: PolarSubscriptionBadgeDemo,
+    PolarRevenueCardDemo: PolarRevenueCardDemo,
+    PolarLicenseKeyDemo: PolarLicenseKeyDemo,
     // UploadThing
     UploadThingButton: UploadthingButtonDemo,
     UploadThingDropzone: UploadthingDropzoneDemo,
+    UploadThingAvatar: UploadthingAvatarDemo,
+    UploadThingImageGrid: UploadthingImageGridDemo,
+    UploadThingFileCard: UploadthingFileCardDemo,
+    UploadThingPaste: UploadthingPasteDemo,
+    UploadThingProgress: UploadthingProgressDemo,
     UploadButtonPreview: UploadthingButtonDemo, // Legacy alias
     UploadDropzonePreview: UploadthingDropzoneDemo, // Legacy alias
     // GitHub
     GitHubStars: GitHubStarsDemo,
     GitHubContributions: GitHubContributionsDemo,
+    GitHubRepoCard: GitHubRepoCardDemo,
+    GitHubLanguages: GitHubLanguagesDemo,
+    GitHubStarButton: GitHubStarButtonDemo,
+    GitHubProfileCard: GitHubProfileCardDemo,
+    GitHubActivityCalendar: GitHubActivityCalendarDemo,
+    // Upstash
+    UpstashRatelimit: UpstashRatelimitDemo,
+    UpstashCounter: UpstashCounterDemo,
+    UpstashQueueCard: UpstashQueueCardDemo,
+    UpstashLeaderboard: UpstashLeaderboardDemo,
+    UpstashCacheBadge: UpstashCacheBadgeDemo,
     // Dev Tools
     OgImageExplorer: OgImageExplorerDemo,
     JsonViewer: JsonViewerDemo,

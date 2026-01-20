@@ -3,7 +3,9 @@
   "name": "theme-switcher-multi-button",
   "title": "Theme Switcher Multi Button",
   "description": "Multi-button theme switcher with system/light/dark options",
-  "dependencies": ["next-themes"],
+  "dependencies": [
+    "next-themes"
+  ],
   "registryDependencies": [],
   "files": [
     {

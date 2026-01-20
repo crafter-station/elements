@@ -1,0 +1,85 @@
+---
+title: GitHub Star Button
+description: Interactive star button with live count
+---
+
+<ComponentPreviewItem
+  componentKey="github-star-button"
+  installUrl="@elements/github-star-button"
+  category="Integration"
+  name="GitHub Star Button"
+>
+  <GitHubStarButton />
+</ComponentPreviewItem>
+
+## Overview
+
+An interactive button component that displays a repository's star count and links to the GitHub repository. Perfect for call-to-action elements encouraging users to star your project.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/github-star-button
+```
+
+## Usage
+
+```tsx
+import { GitHubStarButton } from "@/components/elements/github/github-star-button";
+
+export function CallToAction() {
+  return (
+    <div className="flex gap-4">
+      <GitHubStarButton owner="shadcn-ui" repo="ui" />
+      <GitHubStarButton owner="vercel" repo="next.js" variant="outline" />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `owner` | `string` | - | GitHub repository owner |
+| `repo` | `string` | - | GitHub repository name |
+| `variant` | `"default" \| "outline"` | `"default"` | Button style variant |
+| `showCount` | `boolean` | `true` | Show the star count |
+| `staticCount` | `number` | - | Static star count (bypasses API) |
+| `className` | `string` | - | Additional CSS classes |
+
+## Variants
+
+### Default
+
+```tsx
+<GitHubStarButton owner="shadcn-ui" repo="ui" />
+```
+
+### Outline
+
+```tsx
+<GitHubStarButton owner="shadcn-ui" repo="ui" variant="outline" />
+```
+
+### Without Count
+
+```tsx
+<GitHubStarButton owner="shadcn-ui" repo="ui" showCount={false} />
+```
+
+## Environment Variables
+
+For higher API rate limits:
+
+```bash
+GITHUB_TOKEN=your_github_token
+```
+
+## Features
+
+- Fetches real-time star count from GitHub API
+- Opens repository in new tab on click
+- Hover animation on star icon
+- Two style variants: default and outline
+- Built-in loading state for count

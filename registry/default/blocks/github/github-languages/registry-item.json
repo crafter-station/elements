@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-languages",
+  "type": "registry:block",
+  "title": "GitHub Languages",
+  "description": "A visual language breakdown bar showing the programming languages used in a GitHub repository with percentage labels.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/github/github-languages/components/elements/github-languages.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Fetches language statistics from GitHub API. Shows a colored bar with language percentages. Supports hiding labels with showLabels={false}.",
+  "categories": [
+    "github"
+  ]
+}

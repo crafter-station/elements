@@ -1,0 +1,61 @@
+---
+title: Upstash Ratelimit
+description: Visual rate limit indicator with progress bar and reset timer
+---
+
+<ComponentPreviewItem
+  componentKey="upstash-ratelimit"
+  installUrl="@elements/upstash-ratelimit"
+  category="Integration"
+  name="Upstash Ratelimit"
+>
+  <UpstashRatelimit />
+</ComponentPreviewItem>
+
+## Overview
+
+Display @upstash/ratelimit responses with a visual progress bar, remaining count, and countdown timer until reset.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/upstash-ratelimit
+```
+
+## Usage
+
+```tsx
+import { UpstashRatelimit } from "@/components/elements/upstash/upstash-ratelimit";
+
+export function RateLimitStatus() {
+  const { success, limit, remaining, reset } = await ratelimit.limit("user_123");
+
+  return (
+    <UpstashRatelimit
+      limit={limit}
+      remaining={remaining}
+      reset={reset}
+      success={success}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `limit` | `number` | - | Maximum requests allowed |
+| `remaining` | `number` | - | Requests remaining |
+| `reset` | `number` | - | Unix timestamp (ms) when limit resets |
+| `success` | `boolean` | `true` | Whether request was allowed |
+| `showResetTimer` | `boolean` | `true` | Show countdown timer |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Component size |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Color-coded status (green/yellow/orange/red)
+- Live countdown to reset
+- Progress bar visualization
+- Multiple size variants

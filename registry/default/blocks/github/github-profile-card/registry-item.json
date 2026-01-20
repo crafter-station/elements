@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-profile-card",
+  "type": "registry:block",
+  "title": "GitHub Profile Card",
+  "description": "A comprehensive profile card displaying GitHub user information including avatar, bio, location, company, and follower stats.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/github/github-profile-card/components/elements/github-profile-card.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Fetches user profile from GitHub API. Shows avatar, name, bio, location, company, website, and Twitter. Toggle stats with showStats prop.",
+  "categories": [
+    "github"
+  ]
+}

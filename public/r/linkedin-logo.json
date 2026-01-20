@@ -21,11 +21,21 @@
       "wordmark-grayscale"
     ],
     "variantTypes": {
-      "base": ["icon", "wordmark"],
-      "colorSchemes": ["brand", "grayscale"]
+      "base": [
+        "icon",
+        "wordmark"
+      ],
+      "colorSchemes": [
+        "brand",
+        "grayscale"
+      ]
     }
   },
   "docs": "LinkedIn logo with 2 variants (icon, wordmark) and 2 color schemes (brand blue, grayscale). Grayscale uses currentColor for theme-awareness.",
-  "categories": ["Social", "logo", "brand"],
+  "categories": [
+    "Social",
+    "logo",
+    "brand"
+  ],
   "type": "registry:ui"
 }

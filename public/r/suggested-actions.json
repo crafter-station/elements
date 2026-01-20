@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "suggested-actions",
+  "title": "AI Suggested Actions",
+  "description": "Grid of suggestion buttons for quick chat prompts and actions",
+  "dependencies": [],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-suggested-actions/components/elements/ai-suggested-actions.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Suggestion {\n  label: string;\n  prompt: string;\n}\n\ninterface AiSuggestedActionsProps {\n  suggestions: Suggestion[];\n  onSelect?: (prompt: string) => void;\n  className?: string;\n}\n\nfunction AiSuggestedActions({\n  suggestions,\n  onSelect,\n  className,\n}: AiSuggestedActionsProps) {\n  return (\n    <div\n      data-slot=\"ai-suggested-actions\"\n      className={cn(\"grid gap-2 font-mono sm:grid-cols-2\", className)}\n    >\n      {suggestions.map((suggestion, index) => (\n        <button\n          type=\"button\"\n          key={suggestion.prompt}\n          onClick={() => onSelect?.(suggestion.prompt)}\n          className=\"border bg-background p-3 text-left text-xs transition-colors hover:bg-muted\"\n          style={{\n            animationDelay: `${index * 50}ms`,\n          }}\n        >\n          {suggestion.label}\n        </button>\n      ))}\n    </div>\n  );\n}\n\nexport { AiSuggestedActions };\nexport type { AiSuggestedActionsProps, Suggestion };\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Display suggested prompts as clickable buttons in a responsive grid. Perfect for onboarding users to chat capabilities.",
+  "categories": [
+    "ai"
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "messages",
+  "title": "AI Messages",
+  "description": "Scrollable message list with auto-scroll to bottom and scroll-to-bottom button",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-messages/components/elements/ai-messages.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { ArrowDown } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface AiMessagesProps {\n  children?: React.ReactNode;\n  className?: string;\n  autoScroll?: boolean;\n}\n\nfunction AiMessages({\n  children,\n  className,\n  autoScroll = true,\n}: AiMessagesProps) {\n  const containerRef = React.useRef<HTMLDivElement>(null);\n  const endRef = React.useRef<HTMLDivElement>(null);\n  const [isAtBottom, setIsAtBottom] = React.useState(true);\n\n  const scrollToBottom = React.useCallback(\n    (behavior: ScrollBehavior = \"smooth\") => {\n      endRef.current?.scrollIntoView({ behavior, block: \"end\" });\n    },\n    []\n  );\n\n  React.useEffect(() => {\n    const container = containerRef.current;\n    if (!container) return;\n\n    const handleScroll = () => {\n      const { scrollTop, scrollHeight, clientHeight } = container;\n      const threshold = 100;\n      setIsAtBottom(scrollHeight - scrollTop - clientHeight < threshold);\n    };\n\n    container.addEventListener(\"scroll\", handleScroll, { passive: true });\n    return () => container.removeEventListener(\"scroll\", handleScroll);\n  }, []);\n\n  React.useEffect(() => {\n    if (autoScroll && isAtBottom) {\n      scrollToBottom(\"instant\");\n    }\n  });\n\n  return (\n    <div\n      data-slot=\"ai-messages\"\n      className={cn(\"relative h-full font-mono\", className)}\n    >\n      <div\n        ref={containerRef}\n        className=\"absolute inset-0 touch-pan-y overflow-y-auto\"\n      >\n        <div className=\"mx-auto flex min-w-0 max-w-3xl flex-col gap-6 px-4 py-8\">\n          {children}\n          <div ref={endRef} className=\"min-h-6 shrink-0\" />\n        </div>\n      </div>\n\n      <button\n        type=\"button\"\n        onClick={() => scrollToBottom(\"smooth\")}\n        aria-label=\"Scroll to bottom\"\n        className={cn(\n          \"absolute bottom-4 left-1/2 z-10 flex size-8 -translate-x-1/2 items-center justify-center border bg-background transition-all hover:bg-muted\",\n          isAtBottom\n            ? \"pointer-events-none scale-0 opacity-0\"\n            : \"pointer-events-auto scale-100 opacity-100\"\n        )}\n      >\n        <ArrowDown className=\"size-4\" />\n      </button>\n    </div>\n  );\n}\n\nexport { AiMessages };\nexport type { AiMessagesProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Container for chat messages with automatic scroll management. Shows scroll-to-bottom button when not at bottom.",
+  "categories": [
+    "ai"
+  ],
+  "type": "registry:ui"
+}

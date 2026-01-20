@@ -3,34 +3,15 @@
   "name": "uploadthing-dropzone",
   "type": "registry:block",
   "title": "UploadThing Dropzone",
-  "description": "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
-  "registryDependencies": ["button", "card", "badge", "tabs"],
-  "dependencies": [
-    "uploadthing",
-    "@uploadthing/react",
-    "@vercel/analytics",
-    "sonner"
-  ],
+  "description": "Drag and drop file upload zone with progress tracking and file management. Self-contained component that works with any upload backend.",
+  "registryDependencies": [],
+  "dependencies": ["@uploadthing/react", "uploadthing"],
   "files": [
     {
-      "path": "registry/default/blocks/uploadthing/uploadthing-dropzone/lib/core.ts",
-      "type": "registry:lib",
-      "target": "app/api/uploadthing/core.ts"
-    },
-    {
-      "path": "registry/default/blocks/uploadthing/uploadthing-dropzone/route.ts",
-      "type": "registry:lib",
-      "target": "app/api/uploadthing/route.ts"
-    },
-    {
-      "path": "registry/default/blocks/uploadthing/uploadthing-dropzone/components/upload-dropzone.tsx",
-      "type": "registry:component",
-      "target": "components/elements/uploadthing/upload-dropzone.tsx"
+      "path": "registry/default/blocks/uploadthing/uploadthing-dropzone/components/elements/uploadthing-dropzone.tsx",
+      "type": "registry:component"
     }
   ],
-  "envVars": {
-    "UPLOADTHING_TOKEN": "ut_..."
-  },
-  "docs": "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token.",
-  "categories": ["upload", "file", "storage"]
+  "docs": "Drag and drop upload zone with visual feedback, progress indication, and uploaded file management. Wire up to any upload backend via the onUpload prop.",
+  "categories": ["uploadthing"]
 }

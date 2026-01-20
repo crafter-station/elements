@@ -128,7 +128,7 @@ export function getProvidersData(): Provider[] {
     },
     upstash: {
       providerLink: "https://upstash.com",
-      isEnabled: false,
+      isEnabled: true,
       displayName: "Upstash",
       description: "Serverless Redis, Kafka, and QStash for edge computing",
       category: "Database & Cache",

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "upstash-cache-badge",
+  "type": "registry:block",
+  "title": "Upstash Cache Badge",
+  "description": "Inline cache status indicator showing HIT/MISS/STALE/EXPIRED states with TTL countdown.",
+  "registryDependencies": [],
+  "dependencies": ["@upstash/redis"],
+  "files": [
+    {
+      "path": "registry/default/blocks/upstash/upstash-cache-badge/components/elements/upstash-cache-badge.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Display cache status with color-coded badges. Shows TTL countdown for hits and optional refresh button for misses. Great for debugging cache behavior.",
+  "categories": ["upstash"]
+}

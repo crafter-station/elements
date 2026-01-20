@@ -1,0 +1,79 @@
+---
+title: Upstash Leaderboard
+description: Ranked leaderboard for Redis sorted sets (ZSET)
+---
+
+<ComponentPreviewItem
+  componentKey="upstash-leaderboard"
+  installUrl="@elements/upstash-leaderboard"
+  category="Integration"
+  name="Upstash Leaderboard"
+>
+  <UpstashLeaderboard />
+</ComponentPreviewItem>
+
+## Overview
+
+Display Redis ZSET data as a ranked leaderboard. Features gold/silver/bronze styling for top 3, avatar support, and customizable score formatting.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/upstash-leaderboard
+```
+
+## Usage
+
+```tsx
+import { UpstashLeaderboard } from "@/components/elements/upstash/upstash-leaderboard";
+
+const entries = [
+  { id: "1", name: "Alice", score: 15847 },
+  { id: "2", name: "Bob", score: 14523 },
+  { id: "3", name: "Carol", score: 13891 },
+];
+
+export function GameLeaderboard() {
+  return (
+    <UpstashLeaderboard
+      entries={entries}
+      title="Top Players"
+      scoreLabel="Points"
+      maxEntries={10}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `entries` | `LeaderboardEntry[]` | - | Array of entries |
+| `title` | `string` | `"Leaderboard"` | Header title |
+| `showRank` | `boolean` | `true` | Show rank numbers |
+| `maxEntries` | `number` | `10` | Max entries to display |
+| `scoreLabel` | `string` | `"Score"` | Score column label |
+| `scoreFormat` | `(score: number) => string` | - | Custom score formatter |
+| `className` | `string` | - | Additional CSS classes |
+
+### LeaderboardEntry
+
+```tsx
+interface LeaderboardEntry {
+  id: string;
+  name: string;
+  score: number;
+  avatar?: string;
+  highlight?: boolean;
+}
+```
+
+## Features
+
+- Gold/silver/bronze styling for top 3
+- Crown icon for #1
+- Avatar support with fallback initials
+- Highlight current user
+- Custom score formatting
+- "+N more" indicator for overflow

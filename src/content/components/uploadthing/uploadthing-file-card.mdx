@@ -1,0 +1,63 @@
+---
+title: UploadThing File Card
+description: Display uploaded files with type icons, preview, and actions
+---
+
+<ComponentPreviewItem
+  componentKey="uploadthing-file-card"
+  installUrl="@elements/uploadthing-file-card"
+  category="Upload"
+  name="UploadThing File Card"
+>
+  <UploadThingFileCard />
+</ComponentPreviewItem>
+
+## Overview
+
+A file display card with type-specific icons, image preview, file size formatting, and action buttons for copy, download, and remove.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/uploadthing-file-card
+```
+
+## Usage
+
+```tsx
+import { UploadThingFileCard } from "@/components/elements/uploadthing/uploadthing-file-card";
+
+export function FileDisplay() {
+  return (
+    <UploadThingFileCard
+      name="document.pdf"
+      size={1024 * 1024 * 2.5}
+      type="application/pdf"
+      url="https://example.com/document.pdf"
+      onRemove={() => console.log("removed")}
+      onDownload={() => window.open(url)}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | - | File name |
+| `size` | `number` | - | File size in bytes |
+| `type` | `string` | - | MIME type |
+| `url` | `string` | - | File URL |
+| `onRemove` | `() => void` | - | Called when remove is clicked |
+| `onDownload` | `() => void` | - | Called when download is clicked |
+| `showPreview` | `boolean` | `true` | Show image preview for images |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Type-specific icons (image, video, audio, PDF, code, archive, text)
+- Image thumbnail preview
+- Human-readable file size
+- Copy URL to clipboard
+- Download and remove actions

@@ -1,0 +1,63 @@
+---
+title: Polar Revenue Card
+description: MRR/ARR metric card with trend sparkline
+category: Monetization
+---
+
+<ComponentPreviewItem
+  componentKey="polar-revenue-card"
+  installUrl="@elements/polar-revenue-card"
+  category="Monetization"
+  name="Polar Revenue Card"
+>
+  <PolarRevenueCardDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+Display revenue metrics with beautiful sparkline trends. Shows MRR, ARR, or custom metrics with percentage change indicators.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/polar-revenue-card"
+```
+
+## Usage
+
+```tsx
+import { PolarRevenueCard } from "@/components/elements/polar-revenue-card";
+
+export function Dashboard() {
+  return (
+    <PolarRevenueCard
+      value={12450}
+      previousValue={11200}
+      interval="mrr"
+      trend={[8200, 9100, 9800, 10500, 11200, 12450]}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | Auto from interval | Card title |
+| `value` | `number` | - | Current value |
+| `previousValue` | `number` | - | Previous period value |
+| `currency` | `string` | `"$"` | Currency symbol |
+| `interval` | `"mrr" \| "arr" \| "total"` | `"mrr"` | Metric type |
+| `trend` | `number[]` | - | Sparkline data points |
+| `showChange` | `boolean` | `true` | Show percentage change |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Card size |
+
+## Features
+
+- Automatic value formatting (K, M)
+- Percentage change with trending icons
+- SVG sparkline visualization
+- Green/red trend coloring
+- Multiple size variants
+- Custom metric support

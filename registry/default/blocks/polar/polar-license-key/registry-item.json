@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "polar-license-key",
+  "type": "registry:block",
+  "title": "Polar License Key",
+  "description": "Styled license key display with masking, copy functionality, and status indicators.",
+  "registryDependencies": [],
+  "dependencies": ["@polar-sh/sdk"],
+  "files": [
+    {
+      "path": "registry/default/blocks/polar/polar-license-key/components/elements/polar-license-key.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Secure license key display with toggle visibility, copy-to-clipboard, activation count, and expiration date.",
+  "categories": ["polar"]
+}

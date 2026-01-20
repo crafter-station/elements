@@ -24,6 +24,8 @@
       "target": "app/github-contributions/page.tsx"
     }
   ],
-  "categories": ["github"],
+  "categories": [
+    "github"
+  ],
   "type": "registry:block"
 }

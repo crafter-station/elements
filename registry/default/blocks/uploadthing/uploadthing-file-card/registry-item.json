@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uploadthing-file-card",
+  "type": "registry:block",
+  "title": "UploadThing File Card",
+  "description": "A beautiful file card displaying uploaded file info with copy URL, download, open, and remove actions.",
+  "registryDependencies": [],
+  "dependencies": ["@uploadthing/react", "uploadthing"],
+  "files": [
+    {
+      "path": "registry/default/blocks/uploadthing/uploadthing-file-card/components/elements/uploadthing-file-card.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Displays file name, size, type with appropriate icons. Image files show thumbnail preview. Includes copy URL, download, and remove actions.",
+  "categories": [
+    "uploadthing"
+  ]
+}

@@ -1,0 +1,59 @@
+---
+title: UploadThing Paste
+description: Upload files via clipboard paste for quick image uploads
+---
+
+<ComponentPreviewItem
+  componentKey="uploadthing-paste"
+  installUrl="@elements/uploadthing-paste"
+  category="Upload"
+  name="UploadThing Paste"
+>
+  <UploadThingPaste />
+</ComponentPreviewItem>
+
+## Overview
+
+A paste zone that accepts files from the clipboard. Click to focus, then paste with Cmd+V (or Ctrl+V). Great for quick screenshot uploads.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/uploadthing-paste
+```
+
+## Usage
+
+```tsx
+import { UploadThingPaste } from "@/components/elements/uploadthing/uploadthing-paste";
+
+export function PasteUploader() {
+  return (
+    <UploadThingPaste
+      onPaste={(files) => console.log("Pasted:", files)}
+      accept={["image/*"]}
+    >
+      <p>Click and paste an image (Cmd+V)</p>
+    </UploadThingPaste>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `onPaste` | `(files: File[]) => void` | - | Called when files are pasted |
+| `onUpload` | `(files: File[]) => void` | - | Called to trigger upload |
+| `accept` | `string[]` | `["image/*"]` | Accepted MIME types |
+| `disabled` | `boolean` | `false` | Disable paste |
+| `children` | `ReactNode` | - | Custom content |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Focus indicator ring
+- Keyboard shortcut hint (Cmd+V / Ctrl+V)
+- Custom content via children
+- MIME type filtering
+- Disabled state support

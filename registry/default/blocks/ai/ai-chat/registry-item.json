@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat",
+  "subcategory": "chat",
+  "type": "registry:ui",
+  "title": "AI Chat",
+  "description": "Main chat container with header, body, and footer sections for building AI chat interfaces",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-chat/components/elements/ai-chat.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Flexible chat layout with AiChatHeader, AiChatBody, and AiChatFooter slots. Supports status context for streaming states.",
+  "categories": ["ai"]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "polar-revenue-card",
+  "type": "registry:block",
+  "title": "Polar Revenue Card",
+  "description": "MRR/ARR metric card with trend sparkline and percentage change indicator.",
+  "registryDependencies": [],
+  "dependencies": ["@polar-sh/sdk"],
+  "files": [
+    {
+      "path": "registry/default/blocks/polar/polar-revenue-card/components/elements/polar-revenue-card.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Display revenue metrics with SVG sparkline trends. Shows MRR, ARR, or custom metrics with automatic value formatting.",
+  "categories": ["polar"]
+}

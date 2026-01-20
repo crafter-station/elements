@@ -6,26 +6,64 @@ import { Check, Copy, User } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { Button } from "@/components/ui/button";
+import { AnthropicLogo } from "@/components/ui/logos/anthropic";
+import { CohereLogo } from "@/components/ui/logos/cohere";
+import { DeepSeekLogo } from "@/components/ui/logos/deepseek";
+import { GeminiLogo } from "@/components/ui/logos/gemini";
+import { GroqLogo } from "@/components/ui/logos/groq";
+import { MetaLogo } from "@/components/ui/logos/meta";
+import { MistralLogo } from "@/components/ui/logos/mistral";
+import { OpenAILogo } from "@/components/ui/logos/openai";
+import { XAILogo } from "@/components/ui/logos/xai";
 
 type MessageRole = "user" | "assistant";
 
+type Provider =
+  | "openai"
+  | "anthropic"
+  | "google"
+  | "xai"
+  | "deepseek"
+  | "mistral"
+  | "groq"
+  | "cohere"
+  | "meta";
+
+const PROVIDER_LOGOS: Record<
+  Provider,
+  React.ComponentType<{ className?: string }>
+> = {
+  openai: OpenAILogo,
+  anthropic: AnthropicLogo,
+  google: GeminiLogo,
+  xai: XAILogo,
+  deepseek: DeepSeekLogo,
+  mistral: MistralLogo,
+  groq: GroqLogo,
+  cohere: CohereLogo,
+  meta: MetaLogo,
+};
+
 interface AiMessageBubbleProps {
   role: MessageRole;
-  content: string;
+  content?: string;
+  provider?: Provider;
   timestamp?: Date;
   avatar?: React.ReactNode;
   isStreaming?: boolean;
   className?: string;
+  children?: React.ReactNode;
 }
 
 export function AiMessageBubble({
   role,
   content,
+  provider,
   timestamp,
   avatar,
   isStreaming = false,
   className,
+  children,
 }: AiMessageBubbleProps) {
   const [copied, setCopied] = React.useState(false);
 
@@ -37,14 +75,20 @@ export function AiMessageBubble({
     setTimeout(() => setCopied(false), 2000);
   }, [content]);
 
+  const ProviderLogo = provider ? PROVIDER_LOGOS[provider] : null;
+
   const defaultAvatar = isUser ? (
-    <div className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-      <User className="size-4" />
+    <div className="flex size-7 items-center justify-center border bg-foreground text-background">
+      <User className="size-3.5" />
+    </div>
+  ) : ProviderLogo ? (
+    <div className="flex size-7 items-center justify-center border bg-background">
+      <ProviderLogo className="size-3.5" />
     </div>
   ) : (
-    <div className="flex size-8 items-center justify-center rounded-full bg-muted">
+    <div className="flex size-7 items-center justify-center border bg-background">
       <svg
-        className="size-4"
+        className="size-3.5"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -67,33 +111,36 @@ export function AiMessageBubble({
       role="article"
       aria-label={isUser ? "Your message" : "AI response"}
       className={cn(
-        "group flex gap-3",
+        "group flex gap-3 font-mono",
         isUser && "flex-row-reverse",
-        className,
+        className
       )}
     >
       <div className="shrink-0">{avatar || defaultAvatar}</div>
 
       <div
         className={cn(
-          "relative max-w-[80%] rounded-2xl px-4 py-3",
-          isUser
-            ? "bg-primary text-primary-foreground"
-            : "bg-muted text-foreground",
+          "relative max-w-[80%] px-3 py-2",
+          isUser ? "border bg-foreground text-background" : "text-foreground"
         )}
       >
-        <div
-          className="prose prose-sm dark:prose-invert max-w-none"
-          aria-live={isStreaming ? "polite" : undefined}
-        >
-          <p className="m-0 whitespace-pre-wrap">{content}</p>
+        <div aria-live={isStreaming ? "polite" : undefined}>
+          {children ? (
+            <div className="prose prose-xs dark:prose-invert max-w-none text-[13px] leading-relaxed [&_h1]:text-base [&_h2]:text-sm [&_h3]:text-[13px] [&_h4]:text-[13px] [&_p]:text-[13px] [&_li]:text-[13px] [&_code]:text-xs [&_pre]:text-xs">
+              {children}
+            </div>
+          ) : (
+            <p className="m-0 whitespace-pre-wrap text-[13px] leading-relaxed">
+              {content}
+            </p>
+          )}
           {isStreaming && (
-            <span className="ml-1 inline-block h-4 w-1 animate-pulse bg-current will-change-[opacity]" />
+            <span className="ml-1 inline-block h-3.5 w-[2px] animate-pulse bg-current" />
           )}
         </div>
 
         {timestamp && (
-          <time className="mt-1 block text-[10px] opacity-60">
+          <time className="mt-2 block text-[10px] uppercase tracking-wider opacity-60">
             {timestamp.toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
@@ -102,23 +149,22 @@ export function AiMessageBubble({
         )}
 
         {!isUser && !isStreaming && (
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute -right-10 top-1 size-7 opacity-0 transition-opacity group-hover:opacity-100"
+          <button
+            type="button"
+            className="absolute -right-8 top-0.5 flex size-6 items-center justify-center border bg-background opacity-0 transition-opacity hover:bg-muted group-hover:opacity-100"
             onClick={handleCopy}
           >
             {copied ? (
-              <Check className="size-3.5 text-green-500" />
+              <Check className="size-3" />
             ) : (
-              <Copy className="size-3.5" />
+              <Copy className="size-3" />
             )}
             <span className="sr-only">Copy message</span>
-          </Button>
+          </button>
         )}
       </div>
     </div>
   );
 }
 
-export type { AiMessageBubbleProps, MessageRole };
+export type { AiMessageBubbleProps, MessageRole, Provider };

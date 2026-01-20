@@ -1,0 +1,70 @@
+---
+title: UploadThing Progress
+description: Upload progress indicator with bar, ring, and minimal variants
+---
+
+<ComponentPreviewItem
+  componentKey="uploadthing-progress"
+  installUrl="@elements/uploadthing-progress"
+  category="Upload"
+  name="UploadThing Progress"
+>
+  <UploadThingProgress />
+</ComponentPreviewItem>
+
+## Overview
+
+A progress indicator with three variants: bar (linear), ring (circular), and minimal (percentage only). Configurable sizes and optional label.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/uploadthing-progress
+```
+
+## Usage
+
+```tsx
+import { UploadThingProgress } from "@/components/elements/uploadthing/uploadthing-progress";
+
+export function UploadStatus() {
+  const [progress, setProgress] = useState(0);
+
+  return (
+    <div className="space-y-4">
+      <UploadThingProgress progress={progress} variant="bar" />
+      <UploadThingProgress progress={progress} variant="ring" />
+      <UploadThingProgress progress={progress} variant="minimal" />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `progress` | `number` | - | Progress value (0-100) |
+| `variant` | `"bar" \| "ring" \| "minimal"` | `"bar"` | Display variant |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
+| `showLabel` | `boolean` | `true` | Show percentage label |
+| `className` | `string` | - | Additional CSS classes |
+
+## Variants
+
+### Bar
+Linear progress bar with animated fill and percentage label below.
+
+### Ring
+Circular SVG progress with percentage in center. Uses stroke-dasharray animation.
+
+### Minimal
+Text-only percentage display in muted styling.
+
+## Features
+
+- Three distinct variants
+- Three size options (sm/md/lg)
+- Optional percentage label
+- Smooth animations
+- Accessible progress semantics

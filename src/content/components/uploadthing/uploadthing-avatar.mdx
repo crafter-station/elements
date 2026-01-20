@@ -1,0 +1,62 @@
+---
+title: UploadThing Avatar
+description: Circular avatar uploader with preview and fallback initials
+---
+
+<ComponentPreviewItem
+  componentKey="uploadthing-avatar"
+  installUrl="@elements/uploadthing-avatar"
+  category="Upload"
+  name="UploadThing Avatar"
+>
+  <UploadThingAvatar />
+</ComponentPreviewItem>
+
+## Overview
+
+A circular avatar uploader with live preview, size variants, and fallback initials. Hover to reveal upload overlay.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/uploadthing-avatar
+```
+
+## Usage
+
+```tsx
+import { UploadThingAvatar } from "@/components/elements/uploadthing/uploadthing-avatar";
+
+export function ProfileAvatar() {
+  const [avatar, setAvatar] = useState<string | null>(null);
+
+  return (
+    <UploadThingAvatar
+      value={avatar}
+      onChange={setAvatar}
+      size="lg"
+      fallback="JD"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string \| null` | - | Current avatar URL |
+| `onChange` | `(url: string \| null) => void` | - | Called when avatar changes |
+| `onUpload` | `(file: File) => void` | - | Called when file is selected |
+| `size` | `"sm" \| "md" \| "lg" \| "xl"` | `"lg"` | Avatar size |
+| `fallback` | `string` | - | Initials to show when no image |
+| `disabled` | `boolean` | `false` | Disable upload |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Multiple size variants (sm/md/lg/xl)
+- Fallback initials support
+- Hover overlay with camera icon
+- Live preview after upload
+- Disabled state support

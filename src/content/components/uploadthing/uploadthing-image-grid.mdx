@@ -1,0 +1,63 @@
+---
+title: UploadThing Image Grid
+description: Multi-image grid uploader with configurable columns and max images
+---
+
+<ComponentPreviewItem
+  componentKey="uploadthing-image-grid"
+  installUrl="@elements/uploadthing-image-grid"
+  category="Upload"
+  name="UploadThing Image Grid"
+>
+  <UploadThingImageGrid />
+</ComponentPreviewItem>
+
+## Overview
+
+A grid-based multi-image uploader. Configure columns and max images. Hover to reveal remove buttons.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/uploadthing-image-grid
+```
+
+## Usage
+
+```tsx
+import { UploadThingImageGrid } from "@/components/elements/uploadthing/uploadthing-image-grid";
+
+export function GalleryUploader() {
+  const [images, setImages] = useState<string[]>([]);
+
+  return (
+    <UploadThingImageGrid
+      value={images}
+      onChange={setImages}
+      maxImages={9}
+      columns={3}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string[]` | `[]` | Current image URLs |
+| `onChange` | `(urls: string[]) => void` | - | Called when images change |
+| `onUpload` | `(files: File[]) => void` | - | Called when files are selected |
+| `onRemove` | `(url: string, index: number) => void` | - | Called when image is removed |
+| `maxImages` | `number` | `9` | Maximum number of images |
+| `columns` | `2 \| 3 \| 4` | `3` | Grid columns |
+| `disabled` | `boolean` | `false` | Disable upload |
+| `className` | `string` | - | Additional CSS classes |
+
+## Features
+
+- Configurable grid columns (2/3/4)
+- Max images limit with counter
+- Hover-to-remove on images
+- Add button when under limit
+- Responsive grid layout

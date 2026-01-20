@@ -1,0 +1,67 @@
+---
+title: Polar Subscription Badge
+description: Subscription tier badge with status indicator
+category: Monetization
+---
+
+<ComponentPreviewItem
+  componentKey="polar-subscription-badge"
+  installUrl="@elements/polar-subscription-badge"
+  category="Monetization"
+  name="Polar Subscription Badge"
+>
+  <PolarSubscriptionBadgeDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A compact badge component to display subscription tiers with optional status indicators. Perfect for user profiles, dashboards, and navigation.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/polar-subscription-badge"
+```
+
+## Usage
+
+```tsx
+import { PolarSubscriptionBadge } from "@/components/elements/polar-subscription-badge";
+
+export function UserProfile() {
+  return (
+    <div className="flex items-center gap-2">
+      <span>John Doe</span>
+      <PolarSubscriptionBadge tier="Pro" showStatus status="active" />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `tier` | `string` | - | Subscription tier name |
+| `status` | `"active" \| "trialing" \| "past_due" \| "canceled" \| "incomplete"` | `"active"` | Subscription status |
+| `showStatus` | `boolean` | `false` | Show status dot indicator |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Badge size |
+| `variant` | `"default" \| "outline" \| "solid"` | `"default"` | Visual variant |
+
+## Built-in Tier Colors
+
+| Tier | Color |
+|------|-------|
+| `free` | Slate |
+| `starter` | Blue |
+| `pro` | Violet |
+| `business` | Amber |
+| `enterprise` | Violet gradient |
+
+## Features
+
+- Automatic tier-based coloring
+- Premium tier icons (star/crown)
+- Status dot indicators
+- Multiple size variants
+- Outline variant for subtle display

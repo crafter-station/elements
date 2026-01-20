@@ -23,6 +23,11 @@
   ],
   "files": [],
   "docs": "Collection of AI service provider logos including major LLM providers, AI platforms, and machine learning services. Perfect for AI-powered applications and ML dashboards.",
-  "categories": ["logo", "brand", "AI", "collection"],
+  "categories": [
+    "logo",
+    "brand",
+    "AI",
+    "collection"
+  ],
   "type": "registry:block"
 }

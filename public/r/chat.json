@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat",
+  "title": "AI Chat",
+  "description": "Main chat container with header, body, and footer sections for building AI chat interfaces",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/ai/ai-chat/components/elements/ai-chat.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface AiChatContextValue {\n  status: \"ready\" | \"submitted\" | \"streaming\" | \"error\";\n}\n\nconst AiChatContext = React.createContext<AiChatContextValue | null>(null);\n\nfunction useChatContext() {\n  const context = React.useContext(AiChatContext);\n  if (!context) {\n    throw new Error(\"AiChat components must be used within <AiChat>\");\n  }\n  return context;\n}\n\ninterface AiChatProps {\n  status?: \"ready\" | \"submitted\" | \"streaming\" | \"error\";\n  children?: React.ReactNode;\n  className?: string;\n}\n\nfunction AiChat({ status = \"ready\", children, className }: AiChatProps) {\n  const contextValue = React.useMemo(() => ({ status }), [status]);\n\n  return (\n    <AiChatContext.Provider value={contextValue}>\n      <div\n        data-slot=\"ai-chat\"\n        className={cn(\"flex h-dvh flex-col bg-background font-mono\", className)}\n      >\n        {children}\n      </div>\n    </AiChatContext.Provider>\n  );\n}\n\ninterface AiChatHeaderProps {\n  children?: React.ReactNode;\n  className?: string;\n}\n\nfunction AiChatHeader({ children, className }: AiChatHeaderProps) {\n  return (\n    <div\n      data-slot=\"ai-chat-header\"\n      className={cn(\n        \"flex items-center justify-between border-b px-4 py-3\",\n        className\n      )}\n    >\n      {children}\n    </div>\n  );\n}\n\ninterface AiChatBodyProps {\n  children?: React.ReactNode;\n  className?: string;\n}\n\nfunction AiChatBody({ children, className }: AiChatBodyProps) {\n  return (\n    <div\n      data-slot=\"ai-chat-body\"\n      className={cn(\"relative flex-1 overflow-hidden\", className)}\n    >\n      {children}\n    </div>\n  );\n}\n\ninterface AiChatFooterProps {\n  children?: React.ReactNode;\n  className?: string;\n}\n\nfunction AiChatFooter({ children, className }: AiChatFooterProps) {\n  return (\n    <div\n      data-slot=\"ai-chat-footer\"\n      className={cn(\"border-t bg-background px-4 py-3\", className)}\n    >\n      {children}\n    </div>\n  );\n}\n\nexport { AiChat, AiChatHeader, AiChatBody, AiChatFooter, useChatContext };\nexport type { AiChatProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Flexible chat layout with AiChatHeader, AiChatBody, and AiChatFooter slots. Supports status context for streaming states.",
+  "categories": [
+    "ai"
+  ],
+  "type": "registry:ui"
+}

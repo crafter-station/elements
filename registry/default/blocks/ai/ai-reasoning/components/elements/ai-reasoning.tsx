@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
-import { Brain, ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,7 @@ interface AiReasoningContextValue {
 }
 
 const AiReasoningContext = React.createContext<AiReasoningContextValue | null>(
-  null,
+  null
 );
 
 function useReasoningContext() {
@@ -56,7 +56,7 @@ function AiReasoning({
       }
       onOpenChange?.(open);
     },
-    [isControlled, onOpenChange],
+    [isControlled, onOpenChange]
   );
 
   React.useEffect(() => {
@@ -67,7 +67,7 @@ function AiReasoning({
 
   const contextValue = React.useMemo(
     () => ({ isStreaming, isOpen, thinkingDuration }),
-    [isStreaming, isOpen, thinkingDuration],
+    [isStreaming, isOpen, thinkingDuration]
   );
 
   return (
@@ -78,11 +78,8 @@ function AiReasoning({
         open={isOpen}
         onOpenChange={handleOpenChange}
         className={cn(
-          "rounded-lg border bg-card text-card-foreground overflow-hidden transition-colors",
-          isStreaming
-            ? "border-purple-300 dark:border-purple-800"
-            : "border-border",
-          className,
+          "border bg-background font-mono text-foreground transition-colors",
+          className
         )}
       >
         {children}
@@ -109,39 +106,23 @@ function AiReasoningTrigger({ children, className }: AiReasoningTriggerProps) {
     <CollapsiblePrimitive.Trigger
       data-slot="ai-reasoning-trigger"
       className={cn(
-        "flex w-full items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        className,
+        "flex w-full items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+        className
       )}
     >
-      <div
-        className={cn(
-          "flex size-8 shrink-0 items-center justify-center rounded-md",
-          isStreaming
-            ? "bg-purple-100 dark:bg-purple-950 animate-pulse"
-            : "bg-muted",
-        )}
-      >
-        {isStreaming ? (
-          <Sparkles className="size-4 text-purple-600 dark:text-purple-400" />
-        ) : (
-          <Brain className="size-4 text-muted-foreground" />
-        )}
-      </div>
       <div className="flex flex-1 items-center gap-2 text-left">
-        <span className="font-medium">
-          {isStreaming ? "Thinking..." : "Reasoning"}
-        </span>
+        <span>{isStreaming ? "THINKING..." : "REASONING"}</span>
         {isStreaming && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-purple-100 dark:bg-purple-950 px-2 py-0.5 text-xs font-medium text-purple-700 dark:text-purple-300">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-purple-400 opacity-75" />
-              <span className="relative inline-flex size-2 rounded-full bg-purple-500" />
+          <span className="inline-flex items-center gap-1 border px-2 py-0.5 text-[10px] tracking-widest">
+            <span className="relative flex size-1.5">
+              <span className="absolute inline-flex size-full animate-ping bg-foreground opacity-75" />
+              <span className="relative inline-flex size-1.5 bg-foreground" />
             </span>
-            Streaming
+            STREAMING
           </span>
         )}
         {!isStreaming && formattedDuration && (
-          <span className="text-xs text-muted-foreground">
+          <span className="text-[10px] text-muted-foreground">
             {formattedDuration}
           </span>
         )}
@@ -149,8 +130,8 @@ function AiReasoningTrigger({ children, className }: AiReasoningTriggerProps) {
       {children}
       <ChevronDown
         className={cn(
-          "size-4 shrink-0 text-muted-foreground transition-transform duration-200",
-          isOpen && "rotate-180",
+          "size-3.5 shrink-0 text-muted-foreground transition-transform duration-200",
+          isOpen && "rotate-180"
         )}
       />
     </CollapsiblePrimitive.Trigger>
@@ -170,21 +151,18 @@ function AiReasoningContent({ children, className }: AiReasoningContentProps) {
       data-slot="ai-reasoning-content"
       className={cn(
         "border-t data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down",
-        isStreaming
-          ? "border-purple-200 dark:border-purple-900"
-          : "border-border",
-        className,
+        className
       )}
     >
       <div
         className={cn(
-          "p-4 text-sm text-muted-foreground prose prose-sm dark:prose-invert max-w-none",
-          isStreaming && "animate-pulse",
+          "p-4 text-xs text-muted-foreground",
+          isStreaming && "animate-pulse"
         )}
       >
         {children}
         {isStreaming && (
-          <span className="ml-1 inline-block h-4 w-1 animate-pulse bg-purple-500" />
+          <span className="ml-1 inline-block h-3 w-[2px] animate-pulse bg-foreground" />
         )}
       </div>
     </CollapsiblePrimitive.Content>
@@ -200,10 +178,7 @@ function AiReasoningText({ children, className }: AiReasoningTextProps) {
   return (
     <div
       data-slot="ai-reasoning-text"
-      className={cn(
-        "whitespace-pre-wrap font-mono text-xs leading-relaxed",
-        className,
-      )}
+      className={cn("whitespace-pre-wrap text-xs leading-relaxed", className)}
     >
       {children}
     </div>

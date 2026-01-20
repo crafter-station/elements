@@ -1,0 +1,70 @@
+---
+title: GitHub Repo Card
+description: Display repository information in a beautiful card format
+---
+
+<ComponentPreviewItem
+  componentKey="github-repo-card"
+  installUrl="@elements/github-repo-card"
+  category="Integration"
+  name="GitHub Repo Card"
+>
+  <GitHubRepoCard />
+</ComponentPreviewItem>
+
+## Overview
+
+A full-stack component that fetches repository information from GitHub and displays it in a clean, linkable card with name, description, stars, forks, and primary language.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/github-repo-card
+```
+
+## Usage
+
+```tsx
+import { GitHubRepoCard } from "@/components/elements/github/github-repo-card";
+
+export function ProjectShowcase() {
+  return <GitHubRepoCard owner="shadcn-ui" repo="ui" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `owner` | `string` | - | GitHub repository owner |
+| `repo` | `string` | - | GitHub repository name |
+| `staticData` | `object` | - | Static data object (bypasses API) |
+| `className` | `string` | - | Additional CSS classes |
+
+### Static Data Shape
+
+```tsx
+{
+  name: string;
+  description: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  language: string | null;
+}
+```
+
+## Environment Variables
+
+For higher API rate limits:
+
+```bash
+GITHUB_TOKEN=your_github_token
+```
+
+## Features
+
+- Fetches real-time repository data from GitHub API
+- Displays name, description, stars, forks, and language
+- Clickable card linking to the repository
+- Language indicator with official GitHub colors
+- Built-in loading and error states
