@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "programming-languages",
+  "title": "Programming Languages",
+  "description": "Popular programming language logos: TypeScript, JavaScript, Python, Rust, Go, and more",
+  "dependencies": [],
+  "registryDependencies": [
+    "@elements/javascript-logo",
+    "@elements/typescript-logo",
+    "@elements/python-logo",
+    "@elements/rust-logo",
+    "@elements/go-logo"
+  ],
+  "files": [],
+  "docs": "Collection of programming language logos. Perfect for showcasing tech stacks, documentation, and developer portfolios.",
+  "categories": ["logo", "brand", "programming", "languages", "collection"],
+  "type": "registry:block"
+}

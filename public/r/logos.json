@@ -49,13 +49,24 @@
     "@elements/bun-logo",
     "@elements/npm-logo",
     "@elements/pnpm-logo",
-    "@elements/yarn-logo"
+    "@elements/yarn-logo",
+    "@elements/tailwindcss-logo",
+    "@elements/nextjs-logo",
+    "@elements/react-logo",
+    "@elements/typescript-logo",
+    "@elements/nodejs-logo",
+    "@elements/prisma-logo",
+    "@elements/drizzle-logo",
+    "@elements/cloudflare-logo",
+    "@elements/figma-logo",
+    "@elements/neon-logo",
+    "@elements/javascript-logo",
+    "@elements/python-logo",
+    "@elements/rust-logo",
+    "@elements/go-logo"
   ],
   "files": [],
   "docs": "Complete collection of brand logos including tech companies, AI services, and platforms. All logos are theme-adaptive and optimized for web use.",
-  "categories": [
-    "logo",
-    "brand"
-  ],
+  "categories": ["logo", "brand"],
   "type": "registry:block"
 }

@@ -819,6 +819,30 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "go-logo",
+      "type": "registry:ui",
+      "title": "Go Logo",
+      "description": "Go programming language logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/go-logo/components/logos/go.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand", "programming"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "google-logo",
       "type": "registry:ui",
       "title": "Google Logo",
@@ -942,6 +966,30 @@
         "variants": ["icon", "brand"],
         "variantTypes": {
           "base": ["icon", "brand"]
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "javascript-logo",
+      "type": "registry:ui",
+      "title": "JavaScript Logo",
+      "description": "JavaScript programming language logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/javascript-logo/components/logos/javascript.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand", "programming"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
         }
       }
     },
@@ -1127,7 +1175,21 @@
         "@elements/bun-logo",
         "@elements/npm-logo",
         "@elements/pnpm-logo",
-        "@elements/yarn-logo"
+        "@elements/yarn-logo",
+        "@elements/tailwindcss-logo",
+        "@elements/nextjs-logo",
+        "@elements/react-logo",
+        "@elements/typescript-logo",
+        "@elements/nodejs-logo",
+        "@elements/prisma-logo",
+        "@elements/drizzle-logo",
+        "@elements/cloudflare-logo",
+        "@elements/figma-logo",
+        "@elements/neon-logo",
+        "@elements/javascript-logo",
+        "@elements/python-logo",
+        "@elements/rust-logo",
+        "@elements/go-logo"
       ],
       "dependencies": [],
       "files": [],
@@ -1707,6 +1769,24 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "programming-languages",
+      "type": "registry:block",
+      "title": "Programming Languages",
+      "description": "Popular programming language logos: TypeScript, JavaScript, Python, Rust, Go, and more",
+      "registryDependencies": [
+        "@elements/javascript-logo",
+        "@elements/typescript-logo",
+        "@elements/python-logo",
+        "@elements/rust-logo",
+        "@elements/go-logo"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Collection of programming language logos. Perfect for showcasing tech stacks, documentation, and developer portfolios.",
+      "categories": ["logo", "brand", "programming", "languages", "collection"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "prompt-diff",
       "subcategory": "devtools",
       "type": "registry:ui",
@@ -1722,6 +1802,30 @@
       ],
       "docs": "A compound component for comparing prompts. Supports unified and side-by-side diff views with LCS-based diff algorithm. Use AiPromptDiff as root with AiPromptDiffHeader, AiPromptDiffViewToggle, AiPromptDiffContent, and AiPromptDiffCopyButton sub-components.",
       "categories": ["ai"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "python-logo",
+      "type": "registry:ui",
+      "title": "Python Logo",
+      "description": "Python programming language logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/python-logo/components/logos/python.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand", "programming"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1852,6 +1956,30 @@
       ],
       "docs": "Compound component for routing visualization. Sub-components: AiRoutingIndicator, AiRoutingIndicatorHeader, AiRoutingIndicatorContent, AiRoutingInput, AiRoutingFlow, AiRoutingIndicatorEmpty, AiRoutingMatch. Supports animated routing state.",
       "categories": ["ai"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "rust-logo",
+      "type": "registry:ui",
+      "title": "Rust Logo",
+      "description": "Rust programming language logo component with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/rust-logo/components/logos/rust.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["DevTools", "logo", "brand", "programming"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
