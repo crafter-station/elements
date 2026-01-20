@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beincrypto-logo",
+  "type": "registry:ui",
+  "title": "BeInCrypto Logo",
+  "description": "BeInCrypto logo component with icon and wordmark variants",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/beincrypto-logo/components/logos/beincrypto.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "BeInCrypto logo with 2 variants (icon, wordmark) and 2 modes (dark, light). The icon shows the bracket shapes, wordmark includes full brand mark.",
+  "categories": ["Crypto", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  }
+}

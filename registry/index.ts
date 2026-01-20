@@ -185,6 +185,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "beincrypto-logo",
+      type: "registry:ui",
+      title: "BeInCrypto Logo",
+      description: "BeInCrypto logo component with icon and wordmark variants",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/beincrypto-logo/components/logos/beincrypto.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "BeInCrypto logo with 2 variants (icon, wordmark) and 2 modes (dark, light). The icon shows the bracket shapes, wordmark includes full brand mark.",
+      categories: ["Crypto", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "wordmark"],
+        variantTypes: {
+          base: ["icon", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "better-auth-logo",
       type: "registry:ui",
       title: "Better Auth Logo",
@@ -234,6 +259,25 @@ export const registry = {
         },
       ],
       docs: "Compound component with steps, search results, and image support. Each step has pending/active/complete states.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "chat",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Chat",
+      description:
+        "Main chat container with header, body, and footer sections for building AI chat interfaces",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-chat/components/elements/ai-chat.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Flexible chat layout with AiChatHeader, AiChatBody, and AiChatFooter slots. Supports status context for streaming states.",
       categories: ["ai"],
     },
     {
@@ -547,6 +591,24 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "github-activity-calendar",
+      type: "registry:block",
+      title: "GitHub Activity Calendar",
+      description:
+        "The iconic GitHub contribution calendar showing activity levels throughout the year with customizable color schemes.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/github/github-activity-calendar/components/elements/github-activity-calendar.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Displays a year's worth of contribution activity. Supports green, blue, purple, and orange color schemes. Pass year prop to show different years.",
+      categories: ["github"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "github-contributions",
       type: "registry:block",
       title: "GitHub Contributions",
@@ -573,6 +635,24 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "github-languages",
+      type: "registry:block",
+      title: "GitHub Languages",
+      description:
+        "A visual language breakdown bar showing the programming languages used in a GitHub repository with percentage labels.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/github/github-languages/components/elements/github-languages.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Fetches language statistics from GitHub API. Shows a colored bar with language percentages. Supports hiding labels with showLabels={false}.",
+      categories: ["github"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "github-logo",
       type: "registry:ui",
       title: "GitHub Logo",
@@ -594,6 +674,60 @@ export const registry = {
           base: ["invertocat", "wordmark", "lockup"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "github-profile-card",
+      type: "registry:block",
+      title: "GitHub Profile Card",
+      description:
+        "A comprehensive profile card displaying GitHub user information including avatar, bio, location, company, and follower stats.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/github/github-profile-card/components/elements/github-profile-card.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Fetches user profile from GitHub API. Shows avatar, name, bio, location, company, website, and Twitter. Toggle stats with showStats prop.",
+      categories: ["github"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "github-repo-card",
+      type: "registry:block",
+      title: "GitHub Repo Card",
+      description:
+        "A card component displaying GitHub repository information including name, description, stars, forks, and primary language.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/github/github-repo-card/components/elements/github-repo-card.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Fetches repository data from GitHub API. Pass owner and repo props to display any public repository. Supports static data for SSR/demos.",
+      categories: ["github"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "github-star-button",
+      type: "registry:block",
+      title: "GitHub Star Button",
+      description:
+        "An interactive star button with live star count that links to a GitHub repository. Perfect for call-to-action elements.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/github/github-star-button/components/elements/github-star-button.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Fetches star count from GitHub API. Supports 'default' and 'outline' variants. Opens repository in new tab on click.",
+      categories: ["github"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1019,6 +1153,25 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "messages",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Messages",
+      description:
+        "Scrollable message list with auto-scroll to bottom and scroll-to-bottom button",
+      registryDependencies: ["button"],
+      dependencies: ["lucide-react"],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-messages/components/elements/ai-messages.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Container for chat messages with automatic scroll management. Shows scroll-to-bottom button when not at bottom.",
+      categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "meta-logo",
       type: "registry:ui",
       title: "Meta Logo",
@@ -1314,6 +1467,24 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "polar-license-key",
+      type: "registry:block",
+      title: "Polar License Key",
+      description:
+        "Styled license key display with masking, copy functionality, and status indicators.",
+      registryDependencies: [],
+      dependencies: ["@polar-sh/sdk"],
+      files: [
+        {
+          path: "registry/default/blocks/polar/polar-license-key/components/elements/polar-license-key.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Secure license key display with toggle visibility, copy-to-clipboard, activation count, and expiration date.",
+      categories: ["polar"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "polar-logo",
       type: "registry:ui",
       title: "Polar Logo",
@@ -1331,47 +1502,75 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      name: "polar-sponsorship",
+      name: "polar-pricing-card",
       type: "registry:block",
-      title: "Polar Sponsorship Suite",
+      title: "Polar Pricing Card",
       description:
-        "Complete sponsorship integration with Polar.sh - sponsorship tiers, checkout flow, and API integration",
-      registryDependencies: ["button", "badge", "card", "@elements/polar-logo"],
-      dependencies: ["@polar-sh/nextjs"],
+        "Product pricing card with features list, price display, and checkout CTA. Supports monthly/yearly/one-time pricing.",
+      registryDependencies: [],
+      dependencies: ["@polar-sh/sdk"],
       files: [
         {
-          path: "registry/default/blocks/polar/polar-sponsorship/components/sponsor-tiers-preview.tsx",
+          path: "registry/default/blocks/polar/polar-pricing-card/components/elements/polar-pricing-card.tsx",
           type: "registry:component",
-          target: "app/sponsor-tiers-preview.tsx",
-        },
-        {
-          path: "registry/default/blocks/polar/polar-sponsorship/components/sponsor-tiers.tsx",
-          type: "registry:lib",
-          target: "app/sponsor-tiers.tsx",
-        },
-        {
-          path: "registry/default/blocks/polar/polar-sponsorship/checkout-route.ts",
-          type: "registry:lib",
-          target: "app/api/checkout/route.ts",
-        },
-        {
-          path: "registry/default/blocks/polar/polar-sponsorship/page.tsx",
-          type: "registry:page",
-          target: "app/sponsor/page.tsx",
-        },
-        {
-          path: "registry/default/blocks/polar/polar-sponsorship/success-page.tsx",
-          type: "registry:page",
-          target: "app/success/page.tsx",
         },
       ],
-      envVars: {
-        POLAR_ACCESS_TOKEN: "polar_oat_...",
-        POLAR_SUCCESS_URL:
-          "https://yourdomain.com/elements/polar/success?checkout_id={CHECKOUT_ID}",
-        POLAR_BASE_URL: "https://api.polar.sh",
-      },
-      docs: "Complete Polar.sh sponsorship suite with tiers, checkout, and sponsor display. Set up products in Polar dashboard, update POLAR_PRODUCT_IDS in lib/polar.ts with your product IDs, and configure environment variables. Includes API routes, sponsor components, and checkout integration.",
+      docs: "A beautiful pricing card component for displaying product tiers. Supports popular badge, highlighted variant, and disabled states.",
+      categories: ["polar"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "polar-revenue-card",
+      type: "registry:block",
+      title: "Polar Revenue Card",
+      description:
+        "MRR/ARR metric card with trend sparkline and percentage change indicator.",
+      registryDependencies: [],
+      dependencies: ["@polar-sh/sdk"],
+      files: [
+        {
+          path: "registry/default/blocks/polar/polar-revenue-card/components/elements/polar-revenue-card.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Display revenue metrics with SVG sparkline trends. Shows MRR, ARR, or custom metrics with automatic value formatting.",
+      categories: ["polar"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "polar-sponsor-grid",
+      type: "registry:block",
+      title: "Polar Sponsor Grid",
+      description:
+        "Grid of sponsor avatars grouped by tier with customizable colors and avatar sizes.",
+      registryDependencies: [],
+      dependencies: ["@polar-sh/sdk"],
+      files: [
+        {
+          path: "registry/default/blocks/polar/polar-sponsor-grid/components/elements/polar-sponsor-grid.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Automatically groups sponsors by contribution amount. Supports custom tiers, avatar fallbacks with initials, and profile links.",
+      categories: ["polar"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "polar-subscription-badge",
+      type: "registry:block",
+      title: "Polar Subscription Badge",
+      description:
+        "Subscription tier badge with status indicators and automatic tier-based coloring.",
+      registryDependencies: [],
+      dependencies: ["@polar-sh/sdk"],
+      files: [
+        {
+          path: "registry/default/blocks/polar/polar-subscription-badge/components/elements/polar-subscription-badge.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Compact badge for displaying subscription tiers. Supports status indicators, multiple sizes, and outline variant.",
+      categories: ["polar"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1645,6 +1844,25 @@ export const registry = {
       ],
       docs: "Stripe logo component with official brand purple color.",
       categories: ["Payments", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "suggested-actions",
+      subcategory: "chat",
+      type: "registry:ui",
+      title: "AI Suggested Actions",
+      description:
+        "Grid of suggestion buttons for quick chat prompts and actions",
+      registryDependencies: ["button"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/ai/ai-suggested-actions/components/elements/ai-suggested-actions.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Display suggested prompts as clickable buttons in a responsive grid. Perfect for onboarding users to chat capabilities.",
+      categories: ["ai"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2091,40 +2309,39 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      name: "uploadthing-button",
-      type: "registry:ui",
-      title: "UploadThing Button",
-      description: "Simple upload button with UploadThing integration",
+      name: "uploadthing-avatar",
+      type: "registry:block",
+      title: "UploadThing Avatar",
+      description:
+        "A circular avatar uploader with preview, hover state, and upload progress. Perfect for profile pictures.",
       registryDependencies: [],
-      dependencies: [
-        "uploadthing",
-        "@uploadthing/react",
-        "@vercel/analytics",
-        "sonner",
-      ],
+      dependencies: ["@uploadthing/react", "uploadthing"],
       files: [
         {
-          path: "registry/default/blocks/uploadthing/uploadthing-button/lib/core.ts",
-          type: "registry:lib",
-          target: "app/api/uploadthing/core.ts",
-        },
-        {
-          path: "registry/default/blocks/uploadthing/uploadthing-button/route.ts",
-          type: "registry:lib",
-          target: "app/api/uploadthing/route.ts",
-        },
-        {
-          path: "registry/default/blocks/uploadthing/uploadthing-button/components/upload-button.tsx",
+          path: "registry/default/blocks/uploadthing/uploadthing-avatar/components/elements/uploadthing-avatar.tsx",
           type: "registry:component",
-          target: "components/elements/uploadthing/upload-button.tsx",
         },
       ],
-      envVars: {
-        UPLOADTHING_TOKEN: "ut_...",
-        UPLOADTHING_APP_ID: "your_app_id",
-      },
-      docs: "Simple upload button component using UploadThing for basic file uploads with analytics tracking and error handling. Requires UploadThing account and API token.",
-      categories: ["upload", "file", "storage"],
+      docs: "Circular avatar uploader with camera icon overlay. Supports size variants (sm, md, lg, xl), fallback initials, and custom upload handlers.",
+      categories: ["uploadthing"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "uploadthing-button",
+      type: "registry:block",
+      title: "UploadThing Button",
+      description:
+        "A simple upload button with loading states and file validation. Self-contained component that works with any upload backend.",
+      registryDependencies: [],
+      dependencies: ["@uploadthing/react", "uploadthing"],
+      files: [
+        {
+          path: "registry/default/blocks/uploadthing/uploadthing-button/components/elements/uploadthing-button.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Self-contained upload button with progress indication, file validation, and customizable accept types. Wire up to any upload backend via the onUpload prop.",
+      categories: ["uploadthing"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2132,36 +2349,143 @@ export const registry = {
       type: "registry:block",
       title: "UploadThing Dropzone",
       description:
-        "Complete file upload solution with drag & drop interface, progress tracking, and cloud storage integration",
-      registryDependencies: ["button", "card", "badge", "tabs"],
-      dependencies: [
-        "uploadthing",
-        "@uploadthing/react",
-        "@vercel/analytics",
-        "sonner",
-      ],
+        "Drag and drop file upload zone with progress tracking and file management. Self-contained component that works with any upload backend.",
+      registryDependencies: [],
+      dependencies: ["@uploadthing/react", "uploadthing"],
       files: [
         {
-          path: "registry/default/blocks/uploadthing/uploadthing-dropzone/lib/core.ts",
-          type: "registry:lib",
-          target: "app/api/uploadthing/core.ts",
-        },
-        {
-          path: "registry/default/blocks/uploadthing/uploadthing-dropzone/route.ts",
-          type: "registry:lib",
-          target: "app/api/uploadthing/route.ts",
-        },
-        {
-          path: "registry/default/blocks/uploadthing/uploadthing-dropzone/components/upload-dropzone.tsx",
+          path: "registry/default/blocks/uploadthing/uploadthing-dropzone/components/elements/uploadthing-dropzone.tsx",
           type: "registry:component",
-          target: "components/elements/uploadthing/upload-dropzone.tsx",
         },
       ],
-      envVars: {
-        UPLOADTHING_TOKEN: "ut_...",
-      },
-      docs: "Complete UploadThing file upload suite with drag & drop dropzone interface, progress tracking, and file management. Includes multiple file route configurations (image, PDF, media, general files) with built-in validation, error handling, and analytics tracking. Requires UploadThing account and API token.",
-      categories: ["upload", "file", "storage"],
+      docs: "Drag and drop upload zone with visual feedback, progress indication, and uploaded file management. Wire up to any upload backend via the onUpload prop.",
+      categories: ["uploadthing"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "uploadthing-file-card",
+      type: "registry:block",
+      title: "UploadThing File Card",
+      description:
+        "A beautiful file card displaying uploaded file info with copy URL, download, open, and remove actions.",
+      registryDependencies: [],
+      dependencies: ["@uploadthing/react", "uploadthing"],
+      files: [
+        {
+          path: "registry/default/blocks/uploadthing/uploadthing-file-card/components/elements/uploadthing-file-card.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Displays file name, size, type with appropriate icons. Image files show thumbnail preview. Includes copy URL, download, and remove actions.",
+      categories: ["uploadthing"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "uploadthing-image-grid",
+      type: "registry:block",
+      title: "UploadThing Image Grid",
+      description:
+        "A multi-image upload grid with preview thumbnails, remove buttons, and configurable columns.",
+      registryDependencies: [],
+      dependencies: ["@uploadthing/react", "uploadthing"],
+      files: [
+        {
+          path: "registry/default/blocks/uploadthing/uploadthing-image-grid/components/elements/uploadthing-image-grid.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Grid layout for multiple image uploads. Supports 2, 3, or 4 columns, max image limits, and hover-to-remove functionality.",
+      categories: ["uploadthing"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "uploadthing-paste",
+      type: "registry:block",
+      title: "UploadThing Paste",
+      description:
+        "A clipboard paste zone that accepts pasted images and files. Perfect for quick screenshot uploads.",
+      registryDependencies: [],
+      dependencies: ["@uploadthing/react", "uploadthing"],
+      files: [
+        {
+          path: "registry/default/blocks/uploadthing/uploadthing-paste/components/elements/uploadthing-paste.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Focus the zone and paste (Cmd+V) to upload. Shows upload progress and success state. Supports file type filtering via accept prop.",
+      categories: ["uploadthing"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "uploadthing-progress",
+      type: "registry:block",
+      title: "UploadThing Progress",
+      description:
+        "A standalone upload progress indicator with bar, ring, and minimal variants.",
+      registryDependencies: [],
+      dependencies: ["@uploadthing/react", "uploadthing"],
+      files: [
+        {
+          path: "registry/default/blocks/uploadthing/uploadthing-progress/components/elements/uploadthing-progress.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Three variants: bar (horizontal), ring (circular), minimal (compact). Three sizes: sm, md, lg. Use with useUploadThing's onUploadProgress.",
+      categories: ["uploadthing"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "upstash-cache-badge",
+      type: "registry:block",
+      title: "Upstash Cache Badge",
+      description:
+        "Inline cache status indicator showing HIT/MISS/STALE/EXPIRED states with TTL countdown.",
+      registryDependencies: [],
+      dependencies: ["@upstash/redis"],
+      files: [
+        {
+          path: "registry/default/blocks/upstash/upstash-cache-badge/components/elements/upstash-cache-badge.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Display cache status with color-coded badges. Shows TTL countdown for hits and optional refresh button for misses. Great for debugging cache behavior.",
+      categories: ["upstash"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "upstash-counter",
+      type: "registry:block",
+      title: "Upstash Counter",
+      description:
+        "Animated counter display for Redis INCR patterns with optional increment/decrement controls.",
+      registryDependencies: [],
+      dependencies: ["@upstash/redis"],
+      files: [
+        {
+          path: "registry/default/blocks/upstash/upstash-counter/components/elements/upstash-counter.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Animated counter with smooth number transitions, compact formatting (1.2K), and optional +/- controls. Great for page views, likes, or any Redis counter.",
+      categories: ["upstash"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "upstash-leaderboard",
+      type: "registry:block",
+      title: "Upstash Leaderboard",
+      description:
+        "Ranked leaderboard display for Redis sorted sets (ZSET) with positions, scores, and avatars.",
+      registryDependencies: [],
+      dependencies: ["@upstash/redis"],
+      files: [
+        {
+          path: "registry/default/blocks/upstash/upstash-leaderboard/components/elements/upstash-leaderboard.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Display Redis ZSET data as a ranked leaderboard. Features gold/silver/bronze styling for top 3, avatar support, and score formatting.",
+      categories: ["upstash"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2179,6 +2503,42 @@ export const registry = {
       ],
       docs: "Upstash logo component with official brand green color.",
       categories: ["Database", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "upstash-queue-card",
+      type: "registry:block",
+      title: "Upstash Queue Card",
+      description:
+        "QStash message/task status card showing state, retries, scheduled time, and payload preview.",
+      registryDependencies: [],
+      dependencies: ["@upstash/qstash"],
+      files: [
+        {
+          path: "registry/default/blocks/upstash/upstash-queue-card/components/elements/upstash-queue-card.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Display QStash task status with visual badges for pending/processing/completed/failed states. Shows retry count, scheduled time, and error messages.",
+      categories: ["upstash"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "upstash-ratelimit",
+      type: "registry:block",
+      title: "Upstash Ratelimit",
+      description:
+        "Visual rate limit indicator with progress bar, remaining count, and reset timer. Perfect for displaying @upstash/ratelimit responses.",
+      registryDependencies: [],
+      dependencies: ["@upstash/ratelimit", "@upstash/redis"],
+      files: [
+        {
+          path: "registry/default/blocks/upstash/upstash-ratelimit/components/elements/upstash-ratelimit.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Self-contained rate limit indicator showing remaining requests, limit, and countdown to reset. Supports multiple sizes and automatic color states.",
+      categories: ["upstash"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
