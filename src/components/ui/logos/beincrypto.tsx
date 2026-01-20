@@ -11,7 +11,7 @@ const COLORS = {
 
 export function BeincryptoLogo({
   className,
-  variant = "wordmark",
+  variant = "icon",
   mode = "dark",
 }: LogoProps) {
   const color = COLORS[mode];
