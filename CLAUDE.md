@@ -1,6 +1,36 @@
-# Elements Documentation
+# Elements
 
-A comprehensive guide to using Elements - Full Stack Components by Crafter Station
+Full-stack shadcn/ui components. Registry-based architecture for AI-native and developer tool components.
+
+## Intent Layer
+
+**Before modifying code in a subdirectory, read its AGENTS.md first** to understand local patterns and invariants.
+
+| Area | Path | Tokens | Purpose |
+|------|------|--------|---------|
+| Registry | `registry/AGENTS.md` | ~282k | Component definitions, shadcn schema |
+| Components | `src/components/AGENTS.md` | ~129k | UI primitives, site components |
+| Content | `src/content/AGENTS.md` | ~48k | MDX docs, provider configs |
+
+### Global Invariants
+
+- All components follow shadcn/ui registry schema (`registry-item.json`)
+- Use OKLCH color system for theming (not hex/hsl)
+- Fumadocs with Vesper theme for documentation
+- Bun for package management (never npm)
+- Biome for linting/formatting (never ESLint/Prettier)
+
+### Component Architecture
+
+```
+registry/default/blocks/{category}/{component-name}/
+├── registry-item.json       # Schema, dependencies, metadata
+└── components/elements/     # TSX implementation
+
+src/components/ui/           # Base shadcn primitives
+src/components/elements/     # Site-specific elements
+src/content/components/      # MDX documentation
+```
 
 ## Project Structure
 
