@@ -1,0 +1,103 @@
+---
+title: AI Chat
+description: Main chat container with header, body, and footer sections for building AI chat interfaces
+---
+
+<ComponentPreviewItem
+  componentKey="chat"
+  installUrl="@elements/chat"
+  category="AI"
+  name="AI Chat"
+>
+  <AiChat />
+</ComponentPreviewItem>
+
+## Overview
+
+A flexible chat layout component with `AiChatHeader`, `AiChatBody`, and `AiChatFooter` slots. Provides a context for managing chat status across child components.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/chat
+```
+
+## Usage
+
+```tsx
+import {
+  AiChat,
+  AiChatHeader,
+  AiChatBody,
+  AiChatFooter,
+} from "@/components/elements/ai-elements/chat/ai-chat";
+
+export function ChatInterface() {
+  return (
+    <AiChat status="ready">
+      <AiChatHeader>
+        <h1>Chat Assistant</h1>
+      </AiChatHeader>
+      <AiChatBody>
+        {/* Messages component goes here */}
+      </AiChatBody>
+      <AiChatFooter>
+        {/* Input component goes here */}
+      </AiChatFooter>
+    </AiChat>
+  );
+}
+```
+
+## Props
+
+### AiChat
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `"ready" \| "submitted" \| "streaming" \| "error"` | `"ready"` | Current chat status |
+| `children` | `ReactNode` | - | Child components |
+| `className` | `string` | - | Additional CSS classes |
+
+### AiChatHeader
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | Header content |
+| `className` | `string` | - | Additional CSS classes |
+
+### AiChatBody
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | Body content (usually messages) |
+| `className` | `string` | - | Additional CSS classes |
+
+### AiChatFooter
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | Footer content (usually input) |
+| `className` | `string` | - | Additional CSS classes |
+
+## Context Hook
+
+Access the chat status from any child component:
+
+```tsx
+import { useChatContext } from "@/components/elements/ai-elements/chat/ai-chat";
+
+function StatusIndicator() {
+  const { status } = useChatContext();
+  return <span>Status: {status}</span>;
+}
+```
+
+## Features
+
+- Full-height chat layout with flex column
+- Header with border separator
+- Scrollable body section
+- Footer with border separator
+- Status context for streaming states
+- Composable slot-based architecture

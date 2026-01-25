@@ -1,0 +1,88 @@
+---
+title: AI Messages
+description: Scrollable message list with auto-scroll to bottom and scroll-to-bottom button
+---
+
+<ComponentPreviewItem
+  componentKey="messages"
+  installUrl="@elements/messages"
+  category="AI"
+  name="AI Messages"
+>
+  <AiMessages />
+</ComponentPreviewItem>
+
+## Overview
+
+A container for chat messages with automatic scroll management. Shows a scroll-to-bottom button when the user scrolls up from the bottom.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/messages
+```
+
+## Usage
+
+```tsx
+import { AiMessages } from "@/components/elements/ai-elements/chat/ai-messages";
+
+export function MessageList({ messages }) {
+  return (
+    <AiMessages>
+      {messages.map((message, index) => (
+        <div key={index} className="p-2">
+          {message.content}
+        </div>
+      ))}
+    </AiMessages>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | Message components |
+| `className` | `string` | - | Additional CSS classes |
+| `autoScroll` | `boolean` | `true` | Auto-scroll to bottom on new messages |
+
+## Auto-Scroll Behavior
+
+The component automatically scrolls to the bottom when:
+- `autoScroll` is `true` (default)
+- The user is already at or near the bottom
+
+When the user scrolls up, a button appears to jump back to the bottom.
+
+## With Message Bubble
+
+Combine with the Message Bubble component for styled messages:
+
+```tsx
+import { AiMessages } from "@/components/elements/ai-elements/chat/ai-messages";
+import { AiMessageBubble } from "@/components/elements/ai-elements/chat/ai-message-bubble";
+
+export function Chat({ messages }) {
+  return (
+    <AiMessages>
+      {messages.map((message, index) => (
+        <AiMessageBubble
+          key={index}
+          role={message.role}
+          content={message.content}
+        />
+      ))}
+    </AiMessages>
+  );
+}
+```
+
+## Features
+
+- Auto-scroll to bottom on new messages
+- Scroll-to-bottom button when scrolled up
+- Smooth scroll animations
+- Responsive max-width container
+- Touch-friendly scrolling

@@ -1,0 +1,102 @@
+---
+title: AI Suggested Actions
+description: Grid of suggestion buttons for quick chat prompts and actions
+---
+
+<ComponentPreviewItem
+  componentKey="suggested-actions"
+  installUrl="@elements/suggested-actions"
+  category="AI"
+  name="AI Suggested Actions"
+>
+  <AiSuggestedActions />
+</ComponentPreviewItem>
+
+## Overview
+
+Display suggested prompts as clickable buttons in a responsive grid. Perfect for onboarding users to chat capabilities or providing quick action shortcuts.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/suggested-actions
+```
+
+## Usage
+
+```tsx
+import { AiSuggestedActions } from "@/components/elements/ai-elements/chat/ai-suggested-actions";
+
+const suggestions = [
+  { label: "Explain this code", prompt: "Can you explain how this code works?" },
+  { label: "Fix the bug", prompt: "There's a bug in my code. Can you help?" },
+  { label: "Write tests", prompt: "Can you write unit tests for this?" },
+  { label: "Optimize", prompt: "How can I optimize this code?" },
+];
+
+export function ChatSuggestions() {
+  const handleSelect = (prompt: string) => {
+    console.log("Selected:", prompt);
+  };
+
+  return (
+    <AiSuggestedActions
+      suggestions={suggestions}
+      onSelect={handleSelect}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `suggestions` | `Suggestion[]` | - | Array of suggestion objects |
+| `onSelect` | `(prompt: string) => void` | - | Callback when suggestion is clicked |
+| `className` | `string` | - | Additional CSS classes |
+
+### Suggestion Object
+
+```tsx
+interface Suggestion {
+  label: string;   // Display text on the button
+  prompt: string;  // Full prompt to send when clicked
+}
+```
+
+## With Chat Input
+
+Combine with the chat input to pre-fill prompts:
+
+```tsx
+import { useState } from "react";
+import { AiSuggestedActions } from "@/components/elements/ai-elements/chat/ai-suggested-actions";
+import { AiChatInput } from "@/components/elements/ai-elements/chat/ai-chat-input";
+
+export function ChatWithSuggestions() {
+  const [input, setInput] = useState("");
+
+  return (
+    <div className="space-y-4">
+      <AiSuggestedActions
+        suggestions={suggestions}
+        onSelect={setInput}
+      />
+      <AiChatInput
+        value={input}
+        onChange={setInput}
+        onSubmit={handleSubmit}
+      />
+    </div>
+  );
+}
+```
+
+## Features
+
+- Responsive 2-column grid on larger screens
+- Staggered animation on mount
+- Hover and focus states
+- Accessible button elements
+- Minimal monospace styling

@@ -11,6 +11,7 @@ import AiAgentRosterDemo from "@/registry/default/examples/ai-agent-roster-demo"
 import AiAgentStatusDemo from "@/registry/default/examples/ai-agent-status-demo";
 import AiArtifactDemo from "@/registry/default/examples/ai-artifact-demo";
 import AiChainOfThoughtDemo from "@/registry/default/examples/ai-chain-of-thought-demo";
+import AiChatDemo from "@/registry/default/examples/ai-chat-demo";
 import AiChatInputDemo from "@/registry/default/examples/ai-chat-input-demo";
 import AiConfirmationDemo from "@/registry/default/examples/ai-confirmation-demo";
 import AiConversationTreeDemo from "@/registry/default/examples/ai-conversation-tree-demo";
@@ -19,6 +20,7 @@ import AiHandoffChainDemo from "@/registry/default/examples/ai-handoff-chain-dem
 import AiLatencyMeterDemo from "@/registry/default/examples/ai-latency-meter-demo";
 import AiMemoryViewerDemo from "@/registry/default/examples/ai-memory-viewer-demo";
 import AiMessageBubbleDemo from "@/registry/default/examples/ai-message-bubble-demo";
+import AiMessagesDemo from "@/registry/default/examples/ai-messages-demo";
 import AiModelInfoDemo from "@/registry/default/examples/ai-model-info-demo";
 import AiModelSelectorDemo from "@/registry/default/examples/ai-model-selector-demo";
 import AiPipelineDemo from "@/registry/default/examples/ai-pipeline-demo";
@@ -31,6 +33,7 @@ import AiRoutingIndicatorDemo from "@/registry/default/examples/ai-routing-indic
 import AiSourcesDemo from "@/registry/default/examples/ai-sources-demo";
 import AiStreamDebuggerDemo from "@/registry/default/examples/ai-stream-debugger-demo";
 import AiStreamingTextDemo from "@/registry/default/examples/ai-streaming-text-demo";
+import AiSuggestedActionsDemo from "@/registry/default/examples/ai-suggested-actions-demo";
 import AiTaskListDemo from "@/registry/default/examples/ai-task-list-demo";
 import AiTemperatureSliderDemo from "@/registry/default/examples/ai-temperature-slider-demo";
 import AiThinkingIndicatorDemo from "@/registry/default/examples/ai-thinking-indicator-demo";
@@ -52,12 +55,12 @@ import GitHubStarButtonDemo from "@/registry/default/examples/github-star-button
 import GitHubStarsDemo from "@/registry/default/examples/github-stars-demo";
 import JsonViewerDemo from "@/registry/default/examples/json-viewer-demo";
 import OgImageExplorerDemo from "@/registry/default/examples/og-image-explorer-demo";
+import PolarLicenseKeyDemo from "@/registry/default/examples/polar-license-key-demo";
 // Polar
 import PolarPricingCardDemo from "@/registry/default/examples/polar-pricing-card-demo";
+import PolarRevenueCardDemo from "@/registry/default/examples/polar-revenue-card-demo";
 import PolarSponsorGridDemo from "@/registry/default/examples/polar-sponsor-grid-demo";
 import PolarSubscriptionBadgeDemo from "@/registry/default/examples/polar-subscription-badge-demo";
-import PolarRevenueCardDemo from "@/registry/default/examples/polar-revenue-card-demo";
-import PolarLicenseKeyDemo from "@/registry/default/examples/polar-license-key-demo";
 import SchemaViewerDemo from "@/registry/default/examples/schema-viewer-demo";
 import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
 import ThemeSwitcherDemo from "@/registry/default/examples/theme-switcher-demo";
@@ -135,6 +138,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     SchemaViewer: SchemaViewerDemo,
     WebhookTester: WebhookTesterDemo,
     // AI Elements - Chat (new names without Ai prefix)
+    AiChat: AiChatDemo,
+    AiMessages: AiMessagesDemo,
+    AiSuggestedActions: AiSuggestedActionsDemo,
     ModelSelector: AiModelSelectorDemo,
     ChatInput: AiChatInputDemo,
     MessageBubble: AiMessageBubbleDemo,
