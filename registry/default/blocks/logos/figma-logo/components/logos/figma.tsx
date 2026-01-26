@@ -72,7 +72,7 @@ export function FigmaLogo({
     return (
       <svg
         role="img"
-        viewBox="185 225 660 200"
+        viewBox="180 250 665 165"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
       >
