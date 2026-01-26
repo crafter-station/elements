@@ -222,7 +222,7 @@ export function LogoContextMenu({
     <ContextMenu>
       <ContextMenuTrigger asChild>{children}</ContextMenuTrigger>
       <ContextMenuContent className="w-56">
-        {hasVariants && onViewVariants && (
+        {hasVariants && onViewVariants && variantsCount > 1 && (
           <>
             <ContextMenuItem onClick={onViewVariants}>
               <svg
