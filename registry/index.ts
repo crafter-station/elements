@@ -1952,19 +1952,32 @@ export const registry = {
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "resend-logo",
-      type: "registry:ui",
+      type: "registry:block",
       title: "Resend Logo",
-      description: "Resend logo component with theme-adaptive colors",
+      description: "Resend brand logo with icon and wordmark variants",
       registryDependencies: [],
       dependencies: [],
+      categories: ["logos"],
+      meta: {
+        hasVariants: true,
+        variants: [
+          "icon-dark",
+          "icon-light",
+          "wordmark-dark",
+          "wordmark-light",
+        ],
+        variantTypes: {
+          base: ["icon", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
       files: [
         {
           path: "registry/default/blocks/logos/resend-logo/components/logos/resend.tsx",
           type: "registry:component",
         },
       ],
-      docs: "Resend logo component that adapts to your theme. Uses currentColor to match your design system.",
-      categories: ["Email", "logo", "brand"],
+      docs: "Resend logo with 2 base variants (icon, wordmark) and 2 modes (dark, light) = 4 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

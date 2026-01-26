@@ -1001,8 +1001,8 @@ export function LogosClient({
                       `}
                         title="Right-click for options"
                       >
-                        {/* Variants badge - top left */}
-                        {logo.hasVariants && totalVariants > 0 && (
+                        {/* Variants badge - top left (only show if more than 1 variant) */}
+                        {logo.hasVariants && totalVariants > 1 && (
                           <div
                             className="absolute top-2 left-2 inline-flex items-center justify-center min-w-[18px] h-4 px-1.5 rounded text-[10px] font-medium bg-secondary/80 text-secondary-foreground border border-border/50"
                             title={`${totalVariants} variants`}

@@ -18,7 +18,7 @@ export function GoLogo({
   return (
     <svg
       role="img"
-      viewBox="0 0 24 24"
+      viewBox="-0.5 9 25 9.5"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
