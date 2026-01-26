@@ -601,26 +601,35 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "figma-logo",
-      "type": "registry:ui",
+      "type": "registry:block",
       "title": "Figma Logo",
-      "description": "Figma brand logo component with dark/light mode support",
+      "description": "Figma brand logo with icon, icon-mono, wordmark, and logo variants",
       "dependencies": [],
       "registryDependencies": [],
+      "categories": ["logos"],
+      "meta": {
+        "hasVariants": true,
+        "variants": [
+          "icon",
+          "icon-mono-dark",
+          "icon-mono-light",
+          "wordmark-dark",
+          "wordmark-light",
+          "logo-dark",
+          "logo-light"
+        ],
+        "variantTypes": {
+          "base": ["icon", "icon-mono", "wordmark", "logo"],
+          "modes": ["dark", "light"]
+        }
+      },
       "files": [
         {
           "path": "registry/default/blocks/logos/figma-logo/components/logos/figma.tsx",
           "type": "registry:component"
         }
       ],
-      "categories": ["DevTools", "logo", "brand"],
-      "meta": {
-        "hasVariants": true,
-        "variants": ["icon"],
-        "variantTypes": {
-          "base": ["icon"],
-          "modes": ["dark", "light"]
-        }
-      }
+      "docs": "Figma logo with 4 base variants (icon full-color, icon-mono, wordmark, logo) and dark/light modes = 7 total combinations. Icon variant is always full-color with official Figma colors."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
