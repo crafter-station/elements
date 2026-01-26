@@ -11,6 +11,11 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 import { Analytics } from "@vercel/analytics/next";
 
+import {
+  OrganizationSchema,
+  SoftwareApplicationSchema,
+  WebsiteSchema,
+} from "@/components/structured-data";
 import { Toaster } from "@/components/ui/sonner";
 
 const doto = Doto({
@@ -48,7 +53,7 @@ export const metadata: Metadata = {
   publisher: "Railly Hugo",
   applicationName: "Elements",
   alternates: {
-    canonical: "/",
+    canonical: "https://tryelements.dev",
   },
   openGraph: {
     type: "website",
@@ -96,6 +101,11 @@ export default function RootLayout({
       }}
     >
       <html lang="en" suppressHydrationWarning>
+        <head>
+          <WebsiteSchema />
+          <SoftwareApplicationSchema />
+          <OrganizationSchema />
+        </head>
         <body
           className={`${GeistSans.variable} ${GeistMono.variable} ${doto.variable} font-sans antialiased selection:bg-[#FFF4ED] selection:text-[#D97535] dark:selection:bg-[#2B1A0F] dark:selection:text-[#FFC79A]`}
         >
