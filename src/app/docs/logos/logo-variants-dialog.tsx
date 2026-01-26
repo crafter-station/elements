@@ -320,8 +320,9 @@ export function LogoVariantsDialog({
                             background={variantConfig.background}
                             className={
                               variantConfig.variant === "wordmark" ||
-                              variantConfig.variant === "lockup"
-                                ? "h-10 w-auto"
+                              variantConfig.variant === "lockup" ||
+                              variantConfig.variant === "logo"
+                                ? "h-10 w-auto max-w-full"
                                 : "w-12 h-12"
                             }
                           />
@@ -404,8 +405,9 @@ export function LogoVariantsDialog({
                       background={variantConfig.background}
                       className={
                         variantConfig.variant === "wordmark" ||
-                        variantConfig.variant === "lockup"
-                          ? "h-10 w-auto"
+                        variantConfig.variant === "lockup" ||
+                        variantConfig.variant === "logo"
+                          ? "h-10 w-auto max-w-full"
                           : "w-12 h-12"
                       }
                     />
