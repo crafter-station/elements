@@ -17,7 +17,7 @@
   },
   "files": [
     {
-      "path": "components/logos/resend.tsx",
+      "path": "registry/default/blocks/logos/resend-logo/components/logos/resend.tsx",
       "type": "registry:component"
     }
   ],

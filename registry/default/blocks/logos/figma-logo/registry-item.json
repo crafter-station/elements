@@ -25,7 +25,7 @@
   },
   "files": [
     {
-      "path": "components/logos/figma.tsx",
+      "path": "registry/default/blocks/logos/figma-logo/components/logos/figma.tsx",
       "type": "registry:component"
     }
   ],

@@ -105,6 +105,11 @@ export function getProviderFromName(name: string): string | null {
     return "ai-elements";
   }
 
+  // Special case: animation components go to "animations" provider
+  if (name === "text-shimmer") {
+    return "animations";
+  }
+
   // Extract first part of name (before first hyphen)
   const parts = name.split("-");
   return parts[0] || name;
@@ -258,6 +263,13 @@ export function getProviderMetadata(provider: string): {
       category: "AI",
       brandColor: "#8B5CF6",
       darkBrandColor: "#A78BFA",
+    },
+    animations: {
+      displayName: "Animations",
+      description: "Motion primitives and animated text effects",
+      category: "UI",
+      brandColor: "#EC4899",
+      darkBrandColor: "#F472B6",
     },
   };
 
