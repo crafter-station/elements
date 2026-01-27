@@ -3,7 +3,7 @@
  * Replaces hardcoded provider definitions
  */
 
-import { Sparkles } from "lucide-react";
+import { Sparkles, Wand2 } from "lucide-react";
 
 import { getProviderMetadata, getProviders } from "@/lib/registry-loader";
 
@@ -166,6 +166,13 @@ export function getProvidersData(): Provider[] {
       category: "Payments",
       brandColor: "#635bff",
     },
+    animations: {
+      isEnabled: true,
+      displayName: "Animations",
+      description: "Motion primitives and animated text effects",
+      category: "UI",
+      brandColor: "#EC4899",
+    },
   };
 
   // Get all provider names (registry + coming soon)
@@ -230,6 +237,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     tinte: <TinteLogo size={40} />,
     github: <GitHubIcon className="w-10 h-10" />,
     "ai-elements": <Sparkles className="w-10 h-10" />,
+    animations: <Wand2 className="w-10 h-10" />,
     devtools: (
       <svg
         className="w-10 h-10"
