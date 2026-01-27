@@ -62,6 +62,7 @@ import PolarRevenueCardDemo from "@/registry/default/examples/polar-revenue-card
 import PolarSponsorGridDemo from "@/registry/default/examples/polar-sponsor-grid-demo";
 import PolarSubscriptionBadgeDemo from "@/registry/default/examples/polar-subscription-badge-demo";
 import SchemaViewerDemo from "@/registry/default/examples/schema-viewer-demo";
+import TextShimmerDemo from "@/registry/default/examples/text-shimmer-demo";
 import ThemeSwitcherButtonDemo from "@/registry/default/examples/theme-switcher-button-demo";
 import ThemeSwitcherDemo from "@/registry/default/examples/theme-switcher-demo";
 import ThemeSwitcherDropdownDemo from "@/registry/default/examples/theme-switcher-dropdown-demo";
@@ -95,6 +96,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ThemeSwitcherMultiButton: ThemeSwitcherMultiButtonDemo,
     ThemeSwitcherSwitch: ThemeSwitcherSwitchDemo,
     ThemeSwitcherToggle: ThemeSwitcherToggleDemo,
+    // Animations
+    TextShimmer: TextShimmerDemo,
     // Tinte Editor
     TinteEditor: TinteEditorDemo,
     // Polar

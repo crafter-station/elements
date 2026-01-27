@@ -1,0 +1,83 @@
+---
+title: Animations
+description: Motion primitives and animated text effects
+category: UI
+brandColor: "#EC4899"
+---
+
+## Overview
+
+Animation components for adding motion and visual interest to your UI. Built with Motion (Framer Motion) for smooth, performant animations.
+
+## Components
+
+### Text Shimmer
+
+Animated shimmer effect that sweeps across text content.
+
+<ComponentPreviewItem
+  componentKey="text-shimmer"
+  installUrl="@elements/text-shimmer"
+  category="Animations"
+  name="Text Shimmer"
+>
+  <TextShimmer />
+</ComponentPreviewItem>
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/text-shimmer
+```
+
+## Setup
+
+Motion is installed automatically as a dependency. No additional setup required.
+
+## Usage
+
+```tsx
+import { TextShimmer } from "@/components/elements/text-shimmer";
+
+export default function Hero() {
+  return (
+    <TextShimmer as="h1" className="text-4xl font-bold">
+      Welcome to the future
+    </TextShimmer>
+  );
+}
+```
+
+## Use Cases
+
+| Component | Best For |
+|-----------|----------|
+| Text Shimmer | Loading states, hero text, call-to-action highlights |
+
+## Advanced
+
+### Custom Timing
+
+```tsx
+<TextShimmer 
+  duration={1.5}    // Faster animation
+  spread={3}        // Wider shimmer
+  repeatDelay={0.5} // Pause between loops
+>
+  Processing...
+</TextShimmer>
+```
+
+### Polymorphic Usage
+
+Render as any HTML element:
+
+```tsx
+<TextShimmer as="span" className="text-sm">
+  Inline shimmer text
+</TextShimmer>
+
+<TextShimmer as="h2" className="text-3xl font-semibold">
+  Section heading with shimmer
+</TextShimmer>
+```

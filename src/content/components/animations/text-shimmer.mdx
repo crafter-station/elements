@@ -1,0 +1,87 @@
+---
+title: Text Shimmer
+description: Animated shimmer effect for text with customizable timing
+---
+
+<ComponentPreviewItem
+  componentKey="text-shimmer"
+  installUrl="@elements/text-shimmer"
+  category="Animations"
+  name="Text Shimmer"
+>
+  <TextShimmer />
+</ComponentPreviewItem>
+
+## Overview
+
+A polymorphic text component that creates a beautiful shimmer/shine animation across text. Perfect for loading states, hero sections, or drawing attention to specific content.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/text-shimmer
+```
+
+## Usage
+
+```tsx
+import { TextShimmer } from "@/components/elements/text-shimmer";
+
+export function LoadingState() {
+  return (
+    <TextShimmer className="text-2xl font-medium">
+      Cooking...
+    </TextShimmer>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `string` | - | The text content to animate |
+| `as` | `React.ElementType` | `"p"` | HTML element to render |
+| `className` | `string` | - | Additional CSS classes |
+| `duration` | `number` | `2` | Animation duration in seconds |
+| `spread` | `number` | `2` | Shimmer spread multiplier |
+| `delay` | `number` | `0` | Initial delay before animation starts |
+| `repeatDelay` | `number` | `0` | Delay between animation loops |
+
+## Examples
+
+### Different Durations
+
+```tsx
+<TextShimmer duration={1}>Fast shimmer</TextShimmer>
+<TextShimmer duration={3}>Slow shimmer</TextShimmer>
+```
+
+### As Different Elements
+
+```tsx
+<TextShimmer as="h1" className="text-4xl font-bold">
+  Hero Title
+</TextShimmer>
+
+<TextShimmer as="span" className="text-sm">
+  Inline shimmer
+</TextShimmer>
+```
+
+### With Delay
+
+```tsx
+<TextShimmer delay={0.5} repeatDelay={1}>
+  Delayed animation
+</TextShimmer>
+```
+
+## Features
+
+- Polymorphic component (render as any HTML element)
+- Smooth CSS gradient animation
+- Light and dark mode support
+- Customizable timing and spread
+- Memoized for performance
+- Zero external animation dependencies beyond Motion
