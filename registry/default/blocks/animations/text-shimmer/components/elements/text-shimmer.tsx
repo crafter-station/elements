@@ -25,15 +25,17 @@ function TextShimmerBase({
   delay = 0,
   repeatDelay = 0,
 }: TextShimmerProps) {
+  const text = typeof children === "string" ? children : "";
+
   const MotionComponent = motion.create(
     Component as keyof JSX.IntrinsicElements,
   );
 
   const dynamicSpread = useMemo(() => {
-    return (children?.length ?? 0) * spread;
-  }, [children, spread]);
+    return text.length * spread;
+  }, [text, spread]);
 
-  if (!children) return null;
+  if (!text) return null;
 
   return (
     <MotionComponent
@@ -61,7 +63,7 @@ function TextShimmerBase({
         } as React.CSSProperties
       }
     >
-      {children}
+      {text}
     </MotionComponent>
   );
 }
