@@ -5,11 +5,21 @@
   "title": "Text Shimmer",
   "description": "Animated shimmer effect for text with customizable timing and spread",
   "registryDependencies": [],
-  "dependencies": ["motion"],
+  "dependencies": ["motion", "next-themes"],
   "files": [
     {
       "path": "registry/default/blocks/animations/text-shimmer/components/elements/text-shimmer.tsx",
       "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/animations/text-shimmer/routes/layout.tsx",
+      "type": "registry:page",
+      "target": "app/layout.tsx"
+    },
+    {
+      "path": "registry/default/blocks/animations/text-shimmer/routes/page.tsx",
+      "type": "registry:page",
+      "target": "app/text-shimmer/page.tsx"
     }
   ],
   "docs": "Polymorphic text component with animated shimmer effect. Supports light/dark mode, customizable duration, spread, delay, and repeatDelay props.",
