@@ -15,6 +15,7 @@ import { FileTreeViewer } from "@/components/file-tree-viewer";
 import { EyeIcon } from "@/components/icons/eye";
 import { EyeClosedIcon } from "@/components/icons/eye-closed";
 import { InstallCommand } from "@/components/install-command";
+import { OpenInCursorButton } from "@/components/open-in-cursor-button";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -135,6 +136,15 @@ export function ComponentPreviewItem({
                 componentKey={componentKey}
                 source="component_preview_item"
               />
+              {finalInstallUrl && (
+                <OpenInCursorButton
+                  installUrl={finalInstallUrl}
+                  componentKey={componentKey}
+                  componentName={name}
+                  category={category}
+                  source="component_preview_item"
+                />
+              )}
               <Button
                 variant="ghost"
                 size="sm"

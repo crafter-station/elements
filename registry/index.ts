@@ -2315,7 +2315,7 @@ export const registry = {
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "text-shimmer",
-      type: "registry:ui",
+      type: "registry:block",
       title: "Text Shimmer",
       description:
         "Animated shimmer effect for text with customizable timing and spread",
@@ -2325,6 +2325,16 @@ export const registry = {
         {
           path: "registry/default/blocks/animations/text-shimmer/components/elements/text-shimmer.tsx",
           type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/animations/text-shimmer/routes/layout.tsx",
+          type: "registry:page",
+          target: "app/layout.tsx",
+        },
+        {
+          path: "registry/default/blocks/animations/text-shimmer/routes/page.tsx",
+          type: "registry:page",
+          target: "app/text-shimmer/page.tsx",
         },
       ],
       docs: "Polymorphic text component with animated shimmer effect. Supports light/dark mode, customizable duration, spread, delay, and repeatDelay props.",
