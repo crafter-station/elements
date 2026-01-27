@@ -30,8 +30,10 @@ function TextShimmerBase({
   );
 
   const dynamicSpread = useMemo(() => {
-    return children.length * spread;
+    return (children?.length ?? 0) * spread;
   }, [children, spread]);
+
+  if (!children) return null;
 
   return (
     <MotionComponent
