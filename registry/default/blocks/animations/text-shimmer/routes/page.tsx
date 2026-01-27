@@ -1,6 +1,6 @@
 "use client";
 
-import { TextShimmer } from "@/registry/default/blocks/animations/text-shimmer/components/elements/text-shimmer";
+import { TextShimmer } from "@/components/elements/text-shimmer";
 
 export default function TextShimmerPage() {
   return (
