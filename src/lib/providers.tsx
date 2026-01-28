@@ -3,7 +3,7 @@
  * Replaces hardcoded provider definitions
  */
 
-import { Sparkles, Wand2 } from "lucide-react";
+import { BadgeCheck, Sparkles, Wand2 } from "lucide-react";
 
 import { getProviderMetadata, getProviders } from "@/lib/registry-loader";
 
@@ -173,6 +173,14 @@ export function getProvidersData(): Provider[] {
       category: "UI",
       brandColor: "#EC4899",
     },
+    badges: {
+      isEnabled: true,
+      displayName: "AI Badges",
+      description:
+        "3D badge components with AI avatar generation and export capabilities",
+      category: "Identity",
+      brandColor: "#00FF7F",
+    },
   };
 
   // Get all provider names (registry + coming soon)
@@ -238,6 +246,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     github: <GitHubIcon className="w-10 h-10" />,
     "ai-elements": <Sparkles className="w-10 h-10" />,
     animations: <Wand2 className="w-10 h-10" />,
+    badges: <BadgeCheck className="w-10 h-10" />,
     devtools: (
       <svg
         className="w-10 h-10"

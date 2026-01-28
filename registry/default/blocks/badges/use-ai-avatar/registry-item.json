@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-ai-avatar",
+  "type": "registry:ui",
+  "title": "Use AI Avatar",
+  "description": "React hook for generating AI avatars from photos with multiple style options",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/badges/use-ai-avatar/components/elements/use-ai-avatar.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Client-side hook for AI avatar generation. Supports pixel-art, anime, cartoon, realistic, and sketch styles. Requires a backend API endpoint (FAL AI recommended).",
+  "categories": ["badges"]
+}

@@ -110,6 +110,15 @@ export function getProviderFromName(name: string): string | null {
     return "animations";
   }
 
+  // Special case: badge components go to "badges" provider
+  if (
+    name === "ai-badge" ||
+    name === "generate-badge" ||
+    name === "use-ai-avatar"
+  ) {
+    return "badges";
+  }
+
   // Extract first part of name (before first hyphen)
   const parts = name.split("-");
   return parts[0] || name;
@@ -270,6 +279,14 @@ export function getProviderMetadata(provider: string): {
       category: "UI",
       brandColor: "#EC4899",
       darkBrandColor: "#F472B6",
+    },
+    badges: {
+      displayName: "AI Badges",
+      description:
+        "3D badge components with AI avatar generation and export capabilities",
+      category: "IDENTITY",
+      brandColor: "#00FF7F",
+      darkBrandColor: "#00FF7F",
     },
   };
 

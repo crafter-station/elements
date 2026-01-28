@@ -1,0 +1,221 @@
+---
+title: AI Badge
+description: Interactive 3D badge component with Atropos effect and customizable branding
+---
+
+<ComponentPreviewItem
+  componentKey="ai-badge"
+  installUrl="@elements/ai-badge"
+  category="Badges"
+  name="AI Badge"
+>
+  <AIBadge />
+</ComponentPreviewItem>
+
+## Overview
+
+The AI Badge is a visually stunning 3D badge component built with Atropos.js for interactive tilt effects. It features a professional badge design with profile picture, name, role, QR code, and fully customizable branding and backgrounds.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://tryelements.dev/r/ai-badge"
+```
+
+## Usage
+
+```tsx
+import { AIBadge } from "@/components/elements/ai-badge";
+
+export function MyBadge() {
+  return (
+    <AIBadge
+      profilePictureUrl="https://example.com/avatar.jpg"
+      badgeNumber="#001"
+      firstName="John"
+      lastName="Doe"
+      role="Developer"
+      branding={{
+        title: "100 DAYS",
+        subtitle: "OF SHIPPING",
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `profilePictureUrl` | `string \| null` | - | URL of the profile picture (can be AI-generated) |
+| `badgeNumber` | `string` | - | Badge/member number (e.g., "#001") |
+| `firstName` | `string` | - | First name displayed on badge |
+| `lastName` | `string` | `""` | Last name displayed on badge |
+| `role` | `string` | - | Role or title displayed on badge |
+| `qrCodeUrl` | `string` | - | Custom URL for QR code (defaults to current origin + /p/{number}) |
+| `colors` | `Partial<BadgeColors>` | - | Custom color palette |
+| `branding` | `BadgeBranding` | - | Custom branding (title, subtitle, logo) |
+| `background` | `BadgeBackground` | - | Custom background (pattern, image, gradient) |
+| `className` | `string` | - | Additional CSS classes |
+
+## Customization
+
+### Custom Colors
+
+```tsx
+<AIBadge
+  {...props}
+  colors={{
+    background: "#1a1a2e",
+    foreground: "#eaeaea",
+    primary: "#0f3460",
+    muted: "#666666",
+  }}
+/>
+```
+
+### Custom Branding
+
+```tsx
+<AIBadge
+  {...props}
+  branding={{
+    title: "TEAM MEMBER",
+    subtitle: "ENGINEERING",
+    organizationName: "ACME",
+    organizationSubtitle: "CORP",
+  }}
+/>
+```
+
+### Background Patterns
+
+Choose from 7 different background patterns:
+
+```tsx
+// No pattern
+<AIBadge {...props} background={{ pattern: "none" }} />
+
+// Radial (default) - Space Odyssey style with octagons
+<AIBadge {...props} background={{ pattern: "radial" }} />
+
+// Grid - Classic grid lines
+<AIBadge {...props} background={{ pattern: "grid" }} />
+
+// Dots - Polka dot pattern
+<AIBadge {...props} background={{ pattern: "dots" }} />
+
+// Waves - Flowing wave lines
+<AIBadge {...props} background={{ pattern: "waves" }} />
+
+// Hexagons - Honeycomb pattern
+<AIBadge {...props} background={{ pattern: "hexagons" }} />
+
+// Circuits - Tech/circuit board style
+<AIBadge {...props} background={{ pattern: "circuits" }} />
+```
+
+### Pattern Customization
+
+```tsx
+<AIBadge
+  {...props}
+  background={{
+    pattern: "grid",
+    patternOpacity: 0.15,      // 0-1, default: 0.08
+    patternColor: "#ff0000",   // defaults to foreground color
+  }}
+/>
+```
+
+### Custom Background Image
+
+```tsx
+<AIBadge
+  {...props}
+  background={{
+    imageUrl: "https://example.com/texture.jpg",
+    imageOpacity: 0.3,  // 0-1, default: 0.3
+    pattern: "none",    // optionally disable pattern
+  }}
+/>
+```
+
+### Gradient Background
+
+```tsx
+// Two-color gradient
+<AIBadge
+  {...props}
+  background={{
+    gradient: ["#667eea", "#764ba2"],
+    gradientAngle: 135,  // degrees, default: 135
+    pattern: "dots",     // pattern on top of gradient
+    patternOpacity: 0.1,
+  }}
+/>
+
+// Multi-color gradient
+<AIBadge
+  {...props}
+  background={{
+    gradient: ["#f093fb", "#f5576c", "#4facfe"],
+    gradientAngle: 45,
+  }}
+/>
+```
+
+### Combined Customization
+
+```tsx
+<AIBadge
+  profilePictureUrl="/avatar.jpg"
+  badgeNumber="#042"
+  firstName="Jane"
+  lastName="Smith"
+  role="Engineer"
+  colors={{
+    background: "#0f0f23",
+    foreground: "#ffffff",
+    primary: "#00d4ff",
+    muted: "#888888",
+  }}
+  branding={{
+    title: "HACKATHON",
+    subtitle: "2024 WINNER",
+    organizationName: "TECH",
+    organizationSubtitle: "CONF",
+  }}
+  background={{
+    gradient: ["#0f0f23", "#1a1a3e"],
+    pattern: "circuits",
+    patternOpacity: 0.12,
+    patternColor: "#00d4ff",
+  }}
+/>
+```
+
+## Background Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `pattern` | `BadgePatternType` | `"radial"` | Pattern type: none, radial, grid, dots, waves, hexagons, circuits |
+| `patternOpacity` | `number` | `0.08` | Pattern opacity (0-1) |
+| `patternColor` | `string` | foreground | Custom pattern color |
+| `imageUrl` | `string` | - | Custom background image URL |
+| `imageOpacity` | `number` | `0.3` | Background image opacity (0-1) |
+| `gradient` | `string[]` | - | Gradient color stops (min 2 colors) |
+| `gradientAngle` | `number` | `135` | Gradient direction in degrees |
+
+## Features
+
+- 3D tilt effect powered by Atropos.js
+- Grayscale photo filter for professional look
+- Auto-generated QR code for profile links
+- 7 built-in background patterns
+- Custom background image support
+- Gradient backgrounds with multiple stops
+- Corner accent decorations
+- Responsive sizing
+- Fully customizable colors, branding, and backgrounds

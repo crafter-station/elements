@@ -10,6 +10,8 @@ import AiAgentContextDemo from "@/registry/default/examples/ai-agent-context-dem
 import AiAgentRosterDemo from "@/registry/default/examples/ai-agent-roster-demo";
 import AiAgentStatusDemo from "@/registry/default/examples/ai-agent-status-demo";
 import AiArtifactDemo from "@/registry/default/examples/ai-artifact-demo";
+// Badges
+import AIBadgeDemo from "@/registry/default/examples/ai-badge-demo";
 import AiChainOfThoughtDemo from "@/registry/default/examples/ai-chain-of-thought-demo";
 import AiChatDemo from "@/registry/default/examples/ai-chat-demo";
 import AiChatInputDemo from "@/registry/default/examples/ai-chat-input-demo";
@@ -46,6 +48,7 @@ import CliOutputDemo from "@/registry/default/examples/cli-output-demo";
 import CodeDiffViewerDemo from "@/registry/default/examples/code-diff-viewer-demo";
 import EnvEditorDemo from "@/registry/default/examples/env-editor-demo";
 import ErrorBoundaryUiDemo from "@/registry/default/examples/error-boundary-ui-demo";
+import GenerateBadgeDemo from "@/registry/default/examples/generate-badge-demo";
 import GitHubActivityCalendarDemo from "@/registry/default/examples/github-activity-calendar-demo";
 import GitHubContributionsDemo from "@/registry/default/examples/github-contributions-demo";
 import GitHubLanguagesDemo from "@/registry/default/examples/github-languages-demo";
@@ -82,6 +85,7 @@ import UpstashCounterDemo from "@/registry/default/examples/upstash-counter-demo
 import UpstashLeaderboardDemo from "@/registry/default/examples/upstash-leaderboard-demo";
 import UpstashQueueCardDemo from "@/registry/default/examples/upstash-queue-card-demo";
 import UpstashRatelimitDemo from "@/registry/default/examples/upstash-ratelimit-demo";
+import UseAiAvatarDemo from "@/registry/default/examples/use-ai-avatar-demo";
 import WebhookTesterDemo from "@/registry/default/examples/webhook-tester-demo";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -212,6 +216,10 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AiGuardrails: AiGuardrailsDemo,
     AiAgentContext: AiAgentContextDemo,
     AiRoutingIndicator: AiRoutingIndicatorDemo,
+    // Badges
+    AIBadge: AIBadgeDemo,
+    GenerateBadge: GenerateBadgeDemo,
+    UseAiAvatar: UseAiAvatarDemo,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-badge",
+  "type": "registry:block",
+  "title": "AI Badge",
+  "description": "Interactive 3D badge component with Atropos effect, customizable branding, QR code, and AI avatar support",
+  "registryDependencies": [],
+  "dependencies": ["atropos", "qrcode"],
+  "devDependencies": ["@types/qrcode"],
+  "files": [
+    {
+      "path": "registry/default/blocks/badges/ai-badge/components/elements/ai-badge.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/badges/ai-badge/components/elements/badge-preview.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A 3D badge component with tilt effects powered by Atropos. Supports custom colors, branding, and AI-generated avatars. Perfect for conference badges, member cards, and achievement displays.",
+  "categories": ["badges"]
+}

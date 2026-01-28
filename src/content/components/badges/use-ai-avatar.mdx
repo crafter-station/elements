@@ -1,0 +1,136 @@
+---
+title: Use AI Avatar
+description: React hook for generating AI avatars from photos
+---
+
+<ComponentPreviewItem
+  componentKey="use-ai-avatar"
+  installUrl="@elements/use-ai-avatar"
+  category="Badges"
+  name="Use AI Avatar"
+>
+  <UseAiAvatar />
+</ComponentPreviewItem>
+
+## Overview
+
+The Use AI Avatar hook provides a client-side interface for generating AI-transformed avatars from photos. It supports multiple styles including pixel-art, anime, cartoon, realistic, and sketch.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://tryelements.dev/r/use-ai-avatar"
+```
+
+## Usage
+
+```tsx
+import { useAiAvatar } from "@/components/elements/use-ai-avatar";
+
+export function AvatarGenerator() {
+  const { generateAvatar, isGenerating, avatarUrl, progress, status } = useAiAvatar({
+    endpoint: "/api/generate-avatar",
+    style: "pixel-art",
+  });
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const url = await generateAvatar({ image: file });
+      if (url) {
+        console.log("Avatar generated:", url);
+      }
+    }
+  };
+
+  return (
+    <div>
+      <input type="file" accept="image/*" onChange={handleFileChange} />
+      {isGenerating && <p>{status} ({progress}%)</p>}
+      {avatarUrl && <img src={avatarUrl} alt="AI Avatar" />}
+    </div>
+  );
+}
+```
+
+## Hook Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `endpoint` | `string` | `"/api/generate-avatar"` | API endpoint for generation |
+| `style` | `AvatarStyle` | `"pixel-art"` | Style of avatar to generate |
+| `promptAdditions` | `string` | `""` | Custom prompt additions |
+| `grayscale` | `boolean` | `true` | Convert to grayscale |
+| `removeBackground` | `boolean` | `true` | Remove background |
+| `outputSize` | `object` | `{ width: 684, height: 577 }` | Output dimensions |
+
+## Available Styles
+
+| Style | Description |
+|-------|-------------|
+| `pixel-art` | 8-bit pixel art with flat grayscale shading |
+| `anime` | Clean anime style with soft coloring |
+| `cartoon` | Bold outlines with flat colors |
+| `realistic` | Photorealistic enhancement |
+| `sketch` | Hand-drawn pencil sketch style |
+
+## Return Values
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `generateAvatar` | `function` | Generate avatar from image |
+| `isGenerating` | `boolean` | Loading state |
+| `progress` | `number` | Progress percentage (0-100) |
+| `status` | `string \| null` | Current status message |
+| `error` | `Error \| null` | Error if generation failed |
+| `avatarUrl` | `string \| null` | Generated avatar URL |
+| `reset` | `function` | Reset hook state |
+
+## Backend Setup
+
+This hook requires a backend API endpoint. Here's an example using FAL AI:
+
+```ts
+// app/api/generate-avatar/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import * as fal from "@fal-ai/serverless-client";
+
+fal.config({
+  credentials: process.env.FAL_API_KEY,
+});
+
+export async function POST(req: NextRequest) {
+  const { imageUrl, prompt, grayscale, removeBackground, outputSize } = await req.json();
+
+  // Generate with FAL AI
+  const result = await fal.subscribe("fal-ai/qwen-image-edit", {
+    input: { prompt, image_url: imageUrl },
+  });
+
+  // Optional: Remove background
+  if (removeBackground) {
+    const bgResult = await fal.subscribe("fal-ai/birefnet/v2", {
+      input: { image_url: result.images[0].url },
+    });
+    // Process and return...
+  }
+
+  return NextResponse.json({ url: result.images[0].url });
+}
+```
+
+## Environment Variables
+
+```env
+FAL_API_KEY=your_fal_api_key
+```
+
+## Features
+
+- Multiple avatar styles (pixel-art, anime, cartoon, etc.)
+- Progress tracking with status messages
+- Error handling with detailed messages
+- Background removal support
+- Grayscale conversion
+- Custom output sizing
+- File and URL input support
