@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "generate-badge",
+  "type": "registry:ui",
+  "title": "Generate Badge",
+  "description": "Hook and utilities for generating badge images from SVG, with PNG/JPEG export support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/badges/generate-badge/components/elements/generate-badge.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Provides useGenerateBadge hook for converting SVG badges to downloadable PNG/JPEG images. Includes GenerateBadgeButton component for easy integration.",
+  "categories": ["badges"]
+}

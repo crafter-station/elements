@@ -4,8 +4,6 @@
  * Do not edit manually - run 'bun run scripts/generate-registry-index.ts' to regenerate
  */
 
-import type { RegistryItem } from "./utils";
-
 export const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
   name: "elements",
@@ -67,6 +65,29 @@ export const registry = {
       ],
       docs: "Compound component for agent status display. Variants: badge (compact) and card (detailed). States: idle, thinking, acting, waiting, done, handoff. Shows animated pulse when active and handoff indicator when transferring.",
       categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "ai-badge",
+      type: "registry:block",
+      title: "AI Badge",
+      description:
+        "Interactive 3D badge component with Atropos effect, customizable branding, QR code, and AI avatar support",
+      registryDependencies: [],
+      dependencies: ["atropos", "qrcode"],
+      devDependencies: ["@types/qrcode"],
+      files: [
+        {
+          path: "registry/default/blocks/badges/ai-badge/components/elements/ai-badge.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/badges/ai-badge/components/elements/badge-preview.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A 3D badge component with tilt effects powered by Atropos. Supports custom colors, branding, and AI-generated avatars. Perfect for conference badges, member cards, and achievement displays.",
+      categories: ["badges"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -672,6 +693,24 @@ export const registry = {
       ],
       docs: "Gemini logo component with official multi-color gradient brand design.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "generate-badge",
+      type: "registry:ui",
+      title: "Generate Badge",
+      description:
+        "Hook and utilities for generating badge images from SVG, with PNG/JPEG export support",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/badges/generate-badge/components/elements/generate-badge.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Provides useGenerateBadge hook for converting SVG badges to downloadable PNG/JPEG images. Includes GenerateBadgeButton component for easy integration.",
+      categories: ["badges"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2968,6 +3007,24 @@ export const registry = {
       ],
       docs: "Self-contained rate limit indicator showing remaining requests, limit, and countdown to reset. Supports multiple sizes and automatic color states.",
       categories: ["upstash"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "use-ai-avatar",
+      type: "registry:ui",
+      title: "Use AI Avatar",
+      description:
+        "React hook for generating AI avatars from photos with multiple style options",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/badges/use-ai-avatar/components/elements/use-ai-avatar.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Client-side hook for AI avatar generation. Supports pixel-art, anime, cartoon, realistic, and sketch styles. Requires a backend API endpoint (FAL AI recommended).",
+      categories: ["badges"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

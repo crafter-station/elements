@@ -1,0 +1,135 @@
+---
+title: Generate Badge
+description: Hook and utilities for generating badge images from SVG
+---
+
+<ComponentPreviewItem
+  componentKey="generate-badge"
+  installUrl="@elements/generate-badge"
+  category="Badges"
+  name="Generate Badge"
+>
+  <GenerateBadge />
+</ComponentPreviewItem>
+
+## Overview
+
+The Generate Badge component provides a React hook and button component for converting SVG badges into downloadable PNG/JPEG images. Perfect for letting users download their badges for sharing on social media.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://tryelements.dev/r/generate-badge"
+```
+
+## Usage
+
+```tsx
+import { AIBadge } from "@/components/elements/ai-badge";
+import { useGenerateBadge, GenerateBadgeButton } from "@/components/elements/generate-badge";
+
+export function DownloadableBadge() {
+  const badge = useGenerateBadge();
+
+  return (
+    <div className="flex flex-col gap-4">
+      <AIBadge
+        ref={badge.badgeRef}
+        profilePictureUrl="https://example.com/avatar.jpg"
+        badgeNumber="#001"
+        firstName="John"
+        lastName="Doe"
+        role="Developer"
+      />
+      <GenerateBadgeButton
+        badge={badge}
+        filename="my-badge"
+        options={{ scale: 2 }}
+      >
+        Download Badge
+      </GenerateBadgeButton>
+    </div>
+  );
+}
+```
+
+## Hook API
+
+### useGenerateBadge
+
+```tsx
+const {
+  badgeRef,          // Ref to attach to SVG element
+  generateAndDownload, // Download badge as image
+  generateBlob,      // Get badge as Blob
+  generateDataUrl,   // Get badge as data URL
+  isGenerating,      // Loading state
+  error,             // Error state
+} = useGenerateBadge();
+```
+
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `scale` | `number` | `1` | Scale factor for output image |
+| `format` | `"png" \| "jpeg"` | `"png"` | Output format |
+| `quality` | `number` | `0.9` | JPEG quality (0-1) |
+| `backgroundColor` | `string` | - | Background color for JPEG |
+
+## Button Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `badge` | `UseGenerateBadgeReturn` | - | The hook return value |
+| `filename` | `string` | `"badge"` | Filename for download |
+| `options` | `GenerateBadgeOptions` | - | Generation options |
+| `loadingContent` | `React.ReactNode` | `"Generating..."` | Loading state content |
+
+## Advanced Usage
+
+### Manual Download
+
+```tsx
+const badge = useGenerateBadge();
+
+const handleDownload = async () => {
+  await badge.generateAndDownload("my-badge", {
+    scale: 2,
+    format: "png",
+  });
+};
+```
+
+### Get as Blob (for Upload)
+
+```tsx
+const badge = useGenerateBadge();
+
+const handleUpload = async () => {
+  const blob = await badge.generateBlob({ scale: 2 });
+  if (blob) {
+    const formData = new FormData();
+    formData.append("badge", blob, "badge.png");
+    await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+  }
+};
+```
+
+### Get as Data URL
+
+```tsx
+const badge = useGenerateBadge();
+
+const handleShare = async () => {
+  const dataUrl = await badge.generateDataUrl({ scale: 2 });
+  if (dataUrl && navigator.share) {
+    await navigator.share({
+      files: [await fetch(dataUrl).then(r => r.blob())],
+    });
+  }
+};
+```
