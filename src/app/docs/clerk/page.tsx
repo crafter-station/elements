@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { ArrowUpRightIcon } from "lucide-react";
+import { ArrowRight, ArrowUpRightIcon } from "lucide-react";
 
 import { ClerkLogo } from "@/components/clerk-logo";
 import { Header } from "@/components/header";
@@ -10,6 +10,8 @@ import {
   ThemeAwareBrandText,
   ThemeAwarePattern,
 } from "@/components/theme-aware-brand";
+
+import ClerkDashboardDemo from "@/registry/default/examples/clerk-dashboard-demo";
 
 export const metadata: Metadata = {
   title: "Clerk - User Management Suite",
@@ -54,10 +56,41 @@ export default function ClerkPage() {
           </div>
         </div>
 
-        {/* Content Section */}
+        {/* Components Section */}
         <div className="border-t border-border border-dotted px-4 sm:px-6 md:px-8 py-8 md:py-12">
-          <div className="max-w-3xl mx-auto space-y-8">
-            {/* Notice */}
+          <div className="max-w-6xl mx-auto space-y-8">
+            {/* Clerk Dashboard Component */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="font-semibold text-xl">Clerk Dashboard</h2>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Production-ready dashboard with authentication, organization
+                    management, member roles, and invitations.
+                  </p>
+                </div>
+                <Link
+                  href="/docs/clerk/clerk-dashboard"
+                  className="group flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 hover:bg-accent/50 transition-colors"
+                >
+                  <span className="font-medium text-sm">View docs</span>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
+
+              <div className="rounded-lg border border-border overflow-hidden">
+                <ClerkDashboardDemo />
+              </div>
+
+              <div className="flex items-center gap-3">
+                <code className="text-xs bg-muted px-2 py-1 rounded font-mono">
+                  npx shadcn@latest add
+                  "https://tryelements.dev/r/clerk-dashboard.json"
+                </code>
+              </div>
+            </div>
+
+            {/* Coming Soon */}
             <div className="rounded-lg border border-border bg-card p-6 space-y-4">
               <div className="flex items-start gap-3">
                 <div
@@ -65,21 +98,21 @@ export default function ClerkPage() {
                   style={{ backgroundColor: BRAND_COLOR }}
                 />
                 <div className="space-y-3">
-                  <h2 className="font-semibold text-lg">Building Components</h2>
+                  <h2 className="font-semibold text-lg">
+                    More Components Coming
+                  </h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    A complete suite of authentication, organization management,
-                    and billing components built with Clerk's powerful React
-                    hooks. Featuring sign-in/up flows, user profiles,
-                    organization switchers, and seamless integration with your
-                    existing UI.
+                    We're building more Clerk components including sign-in/up
+                    forms, user profiles, organization switchers, and more. Stay
+                    tuned!
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* In the meantime */}
+            {/* Resources */}
             <div className="space-y-4">
-              <h3 className="font-semibold text-base">In the meantime</h3>
+              <h3 className="font-semibold text-base">Resources</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <Link
                   href="https://clerk.com/docs/components/overview"
