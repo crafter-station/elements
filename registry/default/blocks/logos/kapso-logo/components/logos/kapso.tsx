@@ -22,26 +22,17 @@ export function KapsoLogo({
 }) {
   const color = COLORS[colorScheme][mode];
 
-  // Simple icon - a messaging symbol
+  // Simple icon - letter K
   const icon = (
     <g>
-      <rect
-        x="8"
-        y="8"
-        width="48"
-        height="32"
-        rx="8"
+      <path
+        d="M20 12v40M20 32l24-20M20 32l24 20"
         stroke={color}
-        strokeWidth="4"
+        strokeWidth="6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         fill="none"
       />
-      <path
-        d="M20 20h24M20 28h16"
-        stroke={color}
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <circle cx="52" cy="40" r="4" fill={color} />
     </g>
   );
 

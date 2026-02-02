@@ -2889,13 +2889,18 @@
           "type": "registry:component"
         }
       ],
-      "docs": "UploadThing file upload service logo with wordmark variant, 2 color schemes (brand with red accent, grayscale), and 2 modes (light, dark) = 4 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      "docs": "UploadThing file upload service logo with icon and wordmark variants, 2 color schemes (brand with red accent, grayscale), and 2 modes (light, dark) = 8 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
       "categories": ["Files", "logo", "brand"],
       "meta": {
         "hasVariants": true,
-        "variants": ["wordmark-brand", "wordmark-grayscale"],
+        "variants": [
+          "icon-brand",
+          "icon-grayscale",
+          "wordmark-brand",
+          "wordmark-grayscale"
+        ],
         "variantTypes": {
-          "base": ["wordmark"],
+          "base": ["icon", "wordmark"],
           "colorSchemes": ["brand", "grayscale"],
           "modes": ["dark", "light"]
         }
