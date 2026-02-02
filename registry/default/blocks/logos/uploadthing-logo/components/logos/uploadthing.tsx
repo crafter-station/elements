@@ -43,7 +43,11 @@ export function UploadthingLogo({
 
   // Wordmark variant
   const uploadColor =
-    colorScheme === "brand" ? "#070000" : COLORS.grayscale[mode];
+    colorScheme === "brand"
+      ? mode === "light"
+        ? "#070000"
+        : "#FFFFFF"
+      : COLORS.grayscale[mode];
   const thingColor =
     colorScheme === "brand"
       ? mode === "light"
