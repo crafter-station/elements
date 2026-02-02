@@ -538,7 +538,8 @@
         "@elements/linear-logo",
         "@elements/notion-logo",
         "@elements/v0-logo",
-        "@elements/lovable-logo"
+        "@elements/lovable-logo",
+        "@elements/trigger-logo"
       ],
       "dependencies": [],
       "files": [],
@@ -2650,6 +2651,37 @@
       ],
       "docs": "A compound component for debugging AI tool calls. Features include tool name and description display, input/output JSON with copy functionality, execution time tracking, and status indicators (pending, running, success, error). Use AiToolInspector as the root with AiToolInspectorHeader, AiToolInspectorList, and AiToolInspectorItem sub-components.",
       "categories": ["ai"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "trigger-logo",
+      "type": "registry:ui",
+      "title": "Trigger.dev Logo",
+      "description": "Trigger.dev logo component with variants, color schemes, and modes",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/trigger-logo/components/logos/trigger.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Trigger.dev background jobs platform logo with 2 base variants (icon, wordmark), 2 color schemes (grayscale, colorful), and 2 modes (light, dark) = 8 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      "categories": ["DevOps", "logo", "brand", "background-jobs"],
+      "meta": {
+        "hasVariants": true,
+        "variants": [
+          "icon-grayscale",
+          "icon-colorful",
+          "wordmark-grayscale",
+          "wordmark-colorful"
+        ],
+        "variantTypes": {
+          "base": ["icon", "wordmark"],
+          "colorSchemes": ["grayscale", "colorful"],
+          "modes": ["dark", "light"]
+        }
+      }
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",

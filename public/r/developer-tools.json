@@ -11,16 +11,11 @@
     "@elements/linear-logo",
     "@elements/notion-logo",
     "@elements/v0-logo",
-    "@elements/lovable-logo"
+    "@elements/lovable-logo",
+    "@elements/trigger-logo"
   ],
   "files": [],
   "docs": "Collection of developer tools and platform logos. Ideal for showcasing integrations, tools used, and development workflows.",
-  "categories": [
-    "logo",
-    "brand",
-    "developer",
-    "tools",
-    "collection"
-  ],
+  "categories": ["logo", "brand", "developer", "tools", "collection"],
   "type": "registry:block"
 }
