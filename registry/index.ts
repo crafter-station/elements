@@ -4,6 +4,8 @@
  * Do not edit manually - run 'bun run scripts/generate-registry-index.ts' to regenerate
  */
 
+import type { RegistryItem } from "./utils";
+
 export const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
   name: "elements",
@@ -516,7 +518,8 @@ export const registry = {
       name: "crafter-station-logo",
       type: "registry:ui",
       title: "Crafter Station Logo",
-      description: "Crafter Station logo component with brand yellow",
+      description:
+        "Crafter Station logo component with icon, wordmark, and logo variants",
       registryDependencies: [],
       dependencies: [],
       files: [
@@ -525,8 +528,24 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      docs: "Crafter Station logo component with official brand yellow color.",
-      categories: ["Development", "logo", "brand"],
+      docs: "Crafter Station logo with 3 base variants (icon, wordmark, logo), 2 color schemes (gold, grayscale), and 2 modes (light, dark) = 12 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      categories: ["Community", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: [
+          "icon-gold",
+          "icon-grayscale",
+          "wordmark-gold",
+          "wordmark-grayscale",
+          "logo-gold",
+          "logo-grayscale",
+        ],
+        variantTypes: {
+          base: ["icon", "wordmark", "logo"],
+          colorSchemes: ["gold", "grayscale"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

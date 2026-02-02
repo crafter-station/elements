@@ -3,7 +3,7 @@
   "name": "crafter-station-logo",
   "type": "registry:ui",
   "title": "Crafter Station Logo",
-  "description": "Crafter Station logo component with brand yellow",
+  "description": "Crafter Station logo component with icon, wordmark, and logo variants",
   "registryDependencies": [],
   "dependencies": [],
   "files": [
@@ -12,6 +12,22 @@
       "type": "registry:component"
     }
   ],
-  "docs": "Crafter Station logo component with official brand yellow color.",
-  "categories": ["Development", "logo", "brand"]
+  "docs": "Crafter Station logo with 3 base variants (icon, wordmark, logo), 2 color schemes (gold, grayscale), and 2 modes (light, dark) = 12 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "categories": ["Community", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": [
+      "icon-gold",
+      "icon-grayscale",
+      "wordmark-gold",
+      "wordmark-grayscale",
+      "logo-gold",
+      "logo-grayscale"
+    ],
+    "variantTypes": {
+      "base": ["icon", "wordmark", "logo"],
+      "colorSchemes": ["gold", "grayscale"],
+      "modes": ["dark", "light"]
+    }
+  }
 }
