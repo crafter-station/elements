@@ -11,7 +11,8 @@
     "@elements/linear-logo",
     "@elements/notion-logo",
     "@elements/v0-logo",
-    "@elements/lovable-logo"
+    "@elements/lovable-logo",
+    "@elements/trigger-logo"
   ],
   "dependencies": [],
   "files": [],
