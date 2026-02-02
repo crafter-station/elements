@@ -1117,6 +1117,40 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "kapso-logo",
+      type: "registry:ui",
+      title: "Kapso Logo",
+      description:
+        "Kapso WhatsApp notifications platform logo with icon, wordmark, and logo variants",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/kapso-logo/components/logos/kapso.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Kapso WhatsApp Business API platform logo with 3 base variants (icon, wordmark, logo), 2 color schemes (brand green, grayscale), and 2 modes (light, dark) = 12 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      categories: ["Communications", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: [
+          "icon-brand",
+          "icon-grayscale",
+          "wordmark-brand",
+          "wordmark-grayscale",
+          "logo-brand",
+          "logo-grayscale",
+        ],
+        variantTypes: {
+          base: ["icon", "wordmark", "logo"],
+          colorSchemes: ["brand", "grayscale"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "kebo-logo",
       type: "registry:ui",
       title: "Kebo Logo",
@@ -2916,6 +2950,33 @@ export const registry = {
       ],
       docs: "Grid layout for multiple image uploads. Supports 2, 3, or 4 columns, max image limits, and hover-to-remove functionality.",
       categories: ["uploadthing"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "uploadthing-logo",
+      type: "registry:ui",
+      title: "UploadThing Logo",
+      description:
+        "UploadThing logo component with brand and grayscale color schemes",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/uploadthing-logo/components/logos/uploadthing.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "UploadThing file upload service logo with wordmark variant, 2 color schemes (brand with red accent, grayscale), and 2 modes (light, dark) = 4 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+      categories: ["Files", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["wordmark-brand", "wordmark-grayscale"],
+        variantTypes: {
+          base: ["wordmark"],
+          colorSchemes: ["brand", "grayscale"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

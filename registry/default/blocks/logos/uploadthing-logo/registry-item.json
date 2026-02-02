@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uploadthing-logo",
+  "type": "registry:ui",
+  "title": "UploadThing Logo",
+  "description": "UploadThing logo component with brand and grayscale color schemes",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/uploadthing-logo/components/logos/uploadthing.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "UploadThing file upload service logo with wordmark variant, 2 color schemes (brand with red accent, grayscale), and 2 modes (light, dark) = 4 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "categories": ["Files", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["wordmark-brand", "wordmark-grayscale"],
+    "variantTypes": {
+      "base": ["wordmark"],
+      "colorSchemes": ["brand", "grayscale"],
+      "modes": ["dark", "light"]
+    }
+  }
+}

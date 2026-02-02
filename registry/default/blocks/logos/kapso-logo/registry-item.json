@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kapso-logo",
+  "type": "registry:ui",
+  "title": "Kapso Logo",
+  "description": "Kapso WhatsApp notifications platform logo with icon, wordmark, and logo variants",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/kapso-logo/components/logos/kapso.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Kapso WhatsApp Business API platform logo with 3 base variants (icon, wordmark, logo), 2 color schemes (brand green, grayscale), and 2 modes (light, dark) = 12 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "categories": ["Communications", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": [
+      "icon-brand",
+      "icon-grayscale",
+      "wordmark-brand",
+      "wordmark-grayscale",
+      "logo-brand",
+      "logo-grayscale"
+    ],
+    "variantTypes": {
+      "base": ["icon", "wordmark", "logo"],
+      "colorSchemes": ["brand", "grayscale"],
+      "modes": ["dark", "light"]
+    }
+  }
+}
