@@ -1,0 +1,260 @@
+---
+title: Clerk Dashboard
+description: Production-ready dashboard with authentication, organization management, member roles, and invitations
+---
+
+<ComponentPreviewItem
+  componentKey="clerk-dashboard"
+  installUrl="@elements/clerk-dashboard"
+  category="Authentication"
+  name="Clerk Dashboard"
+>
+  <ClerkDashboard />
+</ComponentPreviewItem>
+
+## Overview
+
+A comprehensive dashboard template built on Clerk's organization features. Includes sidebar navigation, user menu, members management, invitations, and account info - all with role-based access control.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://tryelements.dev/r/clerk-dashboard.json"
+```
+
+## Setup
+
+### 1. Configure Clerk
+
+Add your Clerk keys to `.env.local`:
+
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
+CLERK_SECRET_KEY=sk_...
+```
+
+### 2. Enable Organizations
+
+In your [Clerk Dashboard](https://dashboard.clerk.com), enable Organizations under **Configure > Organizations**.
+
+### 3. Wrap with ClerkProvider
+
+```tsx
+import { ClerkProvider } from "@clerk/nextjs";
+
+export default function RootLayout({ children }) {
+  return (
+    <ClerkProvider>
+      {children}
+    </ClerkProvider>
+  );
+}
+```
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { ClerkDashboard } from "@/components/elements/clerk-dashboard";
+
+export default function DashboardPage() {
+  return (
+    <ClerkDashboard>
+      <main className="p-6">
+        <h1>Welcome to your dashboard</h1>
+      </main>
+    </ClerkDashboard>
+  );
+}
+```
+
+### With Custom Navigation
+
+```tsx
+import { ClerkDashboard, type NavItem } from "@/components/elements/clerk-dashboard";
+import { LayoutDashboard, Users, Settings, FileText } from "lucide-react";
+
+const navItems: NavItem[] = [
+  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard, isActive: true },
+  { title: "Documents", url: "/documents", icon: FileText },
+  { title: "Team", url: "/team", icon: Users },
+  { title: "Settings", url: "/settings", icon: Settings },
+];
+
+export default function DashboardPage() {
+  return (
+    <ClerkDashboard
+      navItems={navItems}
+      adminOnlyItems={["Team"]}
+    >
+      {/* Your content */}
+    </ClerkDashboard>
+  );
+}
+```
+
+### With Custom Logo
+
+```tsx
+import { ClerkDashboard } from "@/components/elements/clerk-dashboard";
+import { Building2 } from "lucide-react";
+
+function Logo() {
+  return (
+    <div className="flex h-8 items-center gap-2 px-2">
+      <Building2 className="h-5 w-5" />
+      <span className="font-semibold">Acme Inc</span>
+    </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <ClerkDashboard logo={<Logo />}>
+      {/* Your content */}
+    </ClerkDashboard>
+  );
+}
+```
+
+### Using Individual Components
+
+```tsx
+import {
+  MembersTable,
+  InvitationsTable,
+  InviteDialog,
+  AccountInfo,
+  useRole,
+} from "@/components/elements/clerk-dashboard";
+
+export default function TeamPage() {
+  const { isAdmin } = useRole();
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h1>Team Members</h1>
+        {isAdmin && <InviteDialog />}
+      </div>
+      <MembersTable />
+      {isAdmin && (
+        <>
+          <h2>Pending Invitations</h2>
+          <InvitationsTable />
+        </>
+      )}
+    </div>
+  );
+}
+```
+
+## Components Included
+
+| Component | Description |
+|-----------|-------------|
+| `ClerkDashboard` | Main orchestrator with sidebar and auth guards |
+| `DashboardSidebar` | Sidebar with role-based navigation |
+| `NavMain` | Collapsible navigation menu |
+| `NavUser` | User dropdown with avatar and sign-out |
+| `OrganizationBadge` | Displays current organization name |
+| `MembersTable` | Organization members list with actions |
+| `InvitationsTable` | Pending invitations list |
+| `InviteDialog` | Form to invite new members |
+| `RemoveMemberDialog` | Confirmation for member removal |
+| `RevokeInvitationDialog` | Confirmation for invite revocation |
+| `AccountInfo` | User account details table |
+
+## Props
+
+### ClerkDashboard
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `logo` | `ReactNode` | - | Custom logo for sidebar header |
+| `navItems` | `NavItem[]` | Default items | Navigation configuration |
+| `adminOnlyItems` | `string[]` | `["Members"]` | Nav items visible only to admins |
+| `settingsUrl` | `string` | `"/settings"` | URL for settings link |
+| `labels` | `object` | - | Custom labels for UI text |
+| `unauthenticatedContent` | `ReactNode` | Default message | Content when not signed in |
+| `children` | `ReactNode` | - | Dashboard content |
+
+### NavItem
+
+```tsx
+type NavItem = {
+  title: string;
+  url: string;
+  icon?: LucideIcon;
+  isActive?: boolean;
+  items?: { title: string; url: string }[];
+};
+```
+
+## Hooks
+
+### useRole
+
+```tsx
+import { useRole } from "@/components/elements/clerk-dashboard";
+
+function MyComponent() {
+  const { role, isAdmin } = useRole();
+
+  if (isAdmin) {
+    return <AdminPanel />;
+  }
+
+  return <MemberView />;
+}
+```
+
+## Role Constants
+
+```tsx
+import { ORG_ROLES, getRoleLabel } from "@/components/elements/clerk-dashboard";
+
+// ORG_ROLES.ADMIN = "org:admin"
+// ORG_ROLES.MEMBER = "org:member"
+
+// Get display label
+getRoleLabel("org:admin"); // "Admin"
+getRoleLabel("org:member"); // "Member"
+
+// Custom labels
+getRoleLabel("org:admin", { admin: "Administrator" }); // "Administrator"
+```
+
+## Customization
+
+### Custom Labels (i18n)
+
+All components support custom labels for internationalization:
+
+```tsx
+<MembersTable
+  labels={{
+    name: "Nombre",
+    email: "Correo",
+    role: "Rol",
+    joinDate: "Fecha de ingreso",
+    removeFromTeam: "Eliminar del equipo",
+  }}
+  roleLabels={{
+    admin: "Administrador",
+    member: "Miembro",
+  }}
+/>
+```
+
+## Features
+
+- Role-based navigation visibility
+- Admin-only member management
+- Invite members with role selection
+- Remove members with confirmation
+- Revoke pending invitations
+- Collapsible sidebar with keyboard shortcut (Cmd/Ctrl + B)
+- Mobile-responsive with sheet navigation
+- All text customizable via labels props

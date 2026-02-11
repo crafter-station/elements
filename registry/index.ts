@@ -341,6 +341,138 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "clerk-dashboard",
+      type: "registry:block",
+      title: "Clerk Dashboard",
+      description:
+        "Production-ready dashboard with authentication, organization management, member roles, and invitations. Includes sidebar navigation, user menu, members table, invitations management, and account info.",
+      registryDependencies: [
+        "button",
+        "avatar",
+        "badge",
+        "dialog",
+        "alert-dialog",
+        "dropdown-menu",
+        "table",
+        "tabs",
+        "input",
+        "label",
+        "select",
+        "form",
+        "separator",
+        "collapsible",
+        "tooltip",
+        "sheet",
+        "skeleton",
+      ],
+      dependencies: [
+        "@clerk/nextjs",
+        "@clerk/types",
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod",
+        "date-fns",
+        "lucide-react",
+        "sonner",
+        "class-variance-authority",
+        "@radix-ui/react-slot",
+      ],
+      files: [
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/routes/layout.tsx",
+          type: "registry:page",
+          target: "app/layout.tsx",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/routes/page.tsx",
+          type: "registry:page",
+          target: "app/dashboard/page.tsx",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/ui/sidebar.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/clerk-dashboard.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/dashboard-sidebar.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/app-logo.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/nav-main.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/nav-user.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/organization-badge.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/members-table.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/invitations-table.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/invite-dialog.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/remove-member-dialog.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/revoke-invitation-dialog.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/account-info.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/empty-state.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/page-header.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/components/elements/dashboard-breadcrumb.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/lib/constants.ts",
+          type: "registry:lib",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/lib/use-role.ts",
+          type: "registry:lib",
+        },
+        {
+          path: "registry/default/blocks/clerk/clerk-dashboard/lib/use-mobile.ts",
+          type: "registry:lib",
+        },
+      ],
+      categories: ["clerk", "dashboard", "authentication"],
+      envVars: {
+        NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: "pk_...",
+        CLERK_SECRET_KEY: "sk_...",
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "clerk-logo",
       type: "registry:ui",
       title: "Clerk Logo",

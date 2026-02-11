@@ -44,6 +44,8 @@ import AiTokenViewerDemo from "@/registry/default/examples/ai-token-viewer-demo"
 import AiToolCallDemo from "@/registry/default/examples/ai-tool-call-demo";
 import AiToolInspectorDemo from "@/registry/default/examples/ai-tool-inspector-demo";
 import ApiResponseViewerDemo from "@/registry/default/examples/api-response-viewer-demo";
+// Clerk
+import ClerkDashboardDemo from "@/registry/default/examples/clerk-dashboard-demo";
 import CliOutputDemo from "@/registry/default/examples/cli-output-demo";
 import CodeDiffViewerDemo from "@/registry/default/examples/code-diff-viewer-demo";
 import EnvEditorDemo from "@/registry/default/examples/env-editor-demo";
@@ -216,14 +218,18 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AiGuardrails: AiGuardrailsDemo,
     AiAgentContext: AiAgentContextDemo,
     AiRoutingIndicator: AiRoutingIndicatorDemo,
+    // Clerk
+    ClerkDashboard: ClerkDashboardDemo,
     // Badges
     AIBadge: AIBadgeDemo,
     GenerateBadge: GenerateBadgeDemo,
     UseAiAvatar: UseAiAvatarDemo,
+    // biome-ignore lint/suspicious/noExplicitAny: MDX component props are dynamic
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 
       // Extract raw code from children for copy functionality
+      // biome-ignore lint/suspicious/noExplicitAny: Recursive node traversal requires any
       const extractCode = (node: any): string => {
         if (typeof node === "string") return node;
         if (Array.isArray(node)) return node.map(extractCode).join("");
@@ -264,6 +270,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
         </div>
       );
     },
+    // biome-ignore lint/suspicious/noExplicitAny: MDX component props are dynamic
     code: ({ className, children, ...props }: any) => {
       const childArray = Children.toArray(children);
       const hasReactElements = childArray.some((child) =>
