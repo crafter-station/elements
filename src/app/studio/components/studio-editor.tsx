@@ -119,7 +119,7 @@ export function StudioEditor() {
   const hasPendingElements = pendingElements.length > 0;
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden">
+    <div className="flex h-[calc(100svh-1px)] overflow-hidden">
       <StudioSidebar />
 
       <div className="relative flex-1 bg-muted/30">

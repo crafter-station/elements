@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+
+import { StudioNav } from "./components/studio-nav";
+
 export const metadata: Metadata = {
-  title: "Elements Studio - Tailwind Rapid Prototyping",
+  title: "Registry Studio - Component Registry Builder",
   description:
-    "Type Tailwind classes, see instant preview. The fastest way to prototype UI.",
+    "Build, explore, and manage component registries with AI assistance.",
 };
 
 export default function StudioLayout({
@@ -11,5 +15,10 @@ export default function StudioLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="min-h-screen bg-background">{children}</div>;
+  return (
+    <SidebarProvider>
+      <StudioNav />
+      <SidebarInset>{children}</SidebarInset>
+    </SidebarProvider>
+  );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Doto } from "next/font/google";
 
 import { GeistMono } from "geist/font/mono";
+import { GeistPixelSquare } from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 
@@ -107,7 +108,7 @@ export default function RootLayout({
           <OrganizationSchema />
         </head>
         <body
-          className={`${GeistSans.variable} ${GeistMono.variable} ${doto.variable} font-sans antialiased selection:bg-[#FFF4ED] selection:text-[#D97535] dark:selection:bg-[#2B1A0F] dark:selection:text-[#FFC79A]`}
+          className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} ${doto.variable} font-sans antialiased selection:bg-[#FFF4ED] selection:text-[#D97535] dark:selection:bg-[#2B1A0F] dark:selection:text-[#FFC79A]`}
         >
           <ThemeProvider
             attribute="class"

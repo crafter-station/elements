@@ -164,36 +164,36 @@ export function StudioChat({ className }: StudioChatProps) {
         <div ref={messagesEndRef} />
       </div>
 
-      <form onSubmit={handleSubmit} className="p-4 border-t">
-        <div className="relative flex items-end gap-2">
-          <div className="flex-1 relative">
-            <textarea
-              ref={textareaRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Describe the UI you want to create..."
-              className="w-full resize-none rounded-lg border bg-background px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary min-h-[48px] max-h-[150px]"
-              rows={1}
-              disabled={isLoading}
-            />
+      <form onSubmit={handleSubmit} className="border-t p-3">
+        <div className="relative flex items-end gap-2 rounded-lg border bg-muted/30 p-1.5 focus-within:ring-1 focus-within:ring-ring">
+          <textarea
+            ref={textareaRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Describe the UI you want to create..."
+            className="flex-1 resize-none bg-transparent px-2.5 py-2 text-sm placeholder:text-muted-foreground focus:outline-none min-h-[40px] max-h-[120px]"
+            rows={1}
+            disabled={isLoading}
+          />
+          <div className="flex items-center gap-1.5 pb-1.5 pr-1">
+            <kbd className="hidden sm:inline-flex h-5 items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] text-muted-foreground">
+              <span className="text-xs">⌘</span>↵
+            </kbd>
+            <Button
+              type="submit"
+              size="icon"
+              className="size-7 shrink-0"
+              disabled={!input.trim() || isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="size-3.5 animate-spin" />
+              ) : (
+                <ArrowUp className="size-3.5" />
+              )}
+            </Button>
           </div>
-          <Button
-            type="submit"
-            size="icon"
-            className="h-10 w-10 shrink-0"
-            disabled={!input.trim() || isLoading}
-          >
-            {isLoading ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <ArrowUp className="h-4 w-4" />
-            )}
-          </Button>
         </div>
-        <p className="mt-2 text-xs text-muted-foreground text-center">
-          Press ⌘ + Enter to send
-        </p>
       </form>
     </div>
   );

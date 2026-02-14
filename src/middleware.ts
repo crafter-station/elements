@@ -9,7 +9,6 @@ const isPublicRoute = createRouteMatcher([
 export default clerkMiddleware(async (auth, req) => {
   const url = req.nextUrl;
 
-  // Intercept requests to /r/v0/{component_id}.json
   const v0Match = url.pathname.match(/^\/r\/v0\/([^/]+)\.json$/);
   if (v0Match) {
     const componentId = v0Match[1];
@@ -62,7 +61,6 @@ export const config = {
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
     // Always run for API routes
     "/(api|trpc)(.*)",
-    // Include /r/v0/ routes to handle JSON files specifically
     "/r/v0/(.*)",
   ],
 };
