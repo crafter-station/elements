@@ -1,0 +1,13 @@
+{
+  "name": "cursor-logo",
+  "type": "registry:block",
+  "title": "Cursor Logo",
+  "description": "Cursor - The AI Code Editor",
+  "categories": ["logos"],
+  "files": [
+    {
+      "path": "components/logos/cursor.tsx",
+      "type": "registry:component"
+    }
+  ]
+}
