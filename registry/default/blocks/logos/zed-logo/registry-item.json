@@ -1,0 +1,13 @@
+{
+  "name": "zed-logo",
+  "type": "registry:block",
+  "title": "Zed Logo",
+  "description": "Zed - The editor for what's next",
+  "categories": ["logos"],
+  "files": [
+    {
+      "path": "components/logos/zed.tsx",
+      "type": "registry:component"
+    }
+  ]
+}
