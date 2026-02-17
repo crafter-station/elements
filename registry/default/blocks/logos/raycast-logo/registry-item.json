@@ -1,0 +1,13 @@
+{
+  "name": "raycast-logo",
+  "type": "registry:block",
+  "title": "Raycast Logo",
+  "description": "Raycast - A blazingly fast, totally extendable launcher",
+  "categories": ["logos"],
+  "files": [
+    {
+      "path": "components/logos/raycast.tsx",
+      "type": "registry:component"
+    }
+  ]
+}
