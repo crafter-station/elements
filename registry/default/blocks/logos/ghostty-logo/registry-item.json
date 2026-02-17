@@ -1,0 +1,13 @@
+{
+  "name": "ghostty-logo",
+  "type": "registry:block",
+  "title": "Ghostty Logo",
+  "description": "Ghostty - A fast, feature-rich terminal emulator",
+  "categories": ["logos"],
+  "files": [
+    {
+      "path": "components/logos/ghostty.tsx",
+      "type": "registry:component"
+    }
+  ]
+}
