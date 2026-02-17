@@ -250,6 +250,23 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "biome-logo",
+      type: "registry:ui",
+      title: "Biome Logo",
+      description: "Biome logo component - one toolchain for your web project",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/biome-logo/components/logos/biome.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Biome logo component for the fast formatter and linter. Uses currentColor to match your design system.",
+      categories: ["DevTools", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "bun-logo",
       type: "registry:ui",
       title: "Bun Logo",
@@ -546,6 +563,23 @@ export const registry = {
           modes: ["dark", "light"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "cursor-logo",
+      type: "registry:ui",
+      title: "Cursor Logo",
+      description: "Cursor logo component - the AI code editor",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/cursor-logo/components/logos/cursor.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Cursor logo component for the AI-powered code editor. Uses currentColor to match your design system.",
+      categories: ["DevTools", "logo", "brand", "AI"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -940,6 +974,24 @@ export const registry = {
           modes: ["dark", "light"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "ghostty-logo",
+      type: "registry:ui",
+      title: "Ghostty Logo",
+      description:
+        "Ghostty logo component - fast, feature-rich terminal emulator",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/ghostty-logo/components/logos/ghostty.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Ghostty logo component for the fast terminal emulator. Uses currentColor to match your design system.",
+      categories: ["DevTools", "logo", "brand", "Terminal"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1639,6 +1691,24 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "obsidian-logo",
+      type: "registry:ui",
+      title: "Obsidian Logo",
+      description:
+        "Obsidian logo component - a knowledge base on local Markdown files",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/obsidian-logo/components/logos/obsidian.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Obsidian logo component for the local-first knowledge base. Uses currentColor to match your design system.",
+      categories: ["Productivity", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "og-image-explorer",
       type: "registry:block",
       title: "OG Image Explorer",
@@ -1989,6 +2059,24 @@ export const registry = {
       ],
       docs: "Qwen logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "raycast-logo",
+      type: "registry:ui",
+      title: "Raycast Logo",
+      description:
+        "Raycast logo component - blazingly fast, totally extendable launcher",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/raycast-logo/components/logos/raycast.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Raycast logo component for the extendable productivity launcher. Uses currentColor to match your design system.",
+      categories: ["Productivity", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3230,6 +3318,23 @@ export const registry = {
       ],
       docs: "Yarn logo component for the fast, reliable, and secure dependency management tool. Features the iconic blue cat design.",
       categories: ["Package Manager", "logo", "brand", "JavaScript", "Node.js"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "zed-logo",
+      type: "registry:ui",
+      title: "Zed Logo",
+      description: "Zed logo component - the editor for what's next",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/zed-logo/components/logos/zed.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Zed logo component for the high-performance code editor. Uses currentColor to match your design system.",
+      categories: ["DevTools", "logo", "brand"],
     },
   ],
 } as const;
