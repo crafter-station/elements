@@ -105,6 +105,15 @@ export const Index = {
     process.exit(1);
   }
 
+  // Step 5: Generate logos-index.json for @tryelements/cli
+  console.log("\n📋 Step 5: Generating logos-index.json...");
+  const logoNames = registry.items
+    .filter((item: any) => item.name.endsWith("-logo"))
+    .map((item: any) => item.name.replace(/-logo$/, ""));
+  const logosIndexPath = join(PUBLIC_REGISTRY_DIR, "logos-index.json");
+  writeFileSync(logosIndexPath, JSON.stringify(logoNames, null, 2));
+  console.log(`   ✓ Wrote ${logosIndexPath} (${logoNames.length} logos)`);
+
   console.log("\n✨ Registry build complete!");
   console.log(`   📁 Public registry: ${PUBLIC_REGISTRY_DIR}`);
   console.log(`   📁 Preview registry: ${REGISTRY_INDEX_DIR}`);
