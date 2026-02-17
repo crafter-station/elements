@@ -1,0 +1,13 @@
+{
+  "name": "obsidian-logo",
+  "type": "registry:block",
+  "title": "Obsidian Logo",
+  "description": "Obsidian - A knowledge base that works on local Markdown files",
+  "categories": ["logos"],
+  "files": [
+    {
+      "path": "components/logos/obsidian.tsx",
+      "type": "registry:component"
+    }
+  ]
+}
