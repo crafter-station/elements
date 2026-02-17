@@ -1,0 +1,13 @@
+{
+  "name": "biome-logo",
+  "type": "registry:block",
+  "title": "Biome Logo",
+  "description": "Biome - One toolchain for your web project",
+  "categories": ["logos"],
+  "files": [
+    {
+      "path": "components/logos/biome.tsx",
+      "type": "registry:component"
+    }
+  ]
+}
