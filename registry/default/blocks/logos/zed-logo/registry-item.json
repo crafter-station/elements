@@ -1,13 +1,17 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "zed-logo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Zed Logo",
   "description": "Zed - The editor for what's next",
-  "categories": ["logos"],
+  "registryDependencies": [],
+  "dependencies": [],
   "files": [
     {
-      "path": "components/logos/zed.tsx",
+      "path": "registry/default/blocks/logos/zed-logo/components/logos/zed.tsx",
       "type": "registry:component"
     }
-  ]
+  ],
+  "docs": "Zed logo component. Uses currentColor for theme adaptation.",
+  "categories": ["DevTools", "logo", "brand"]
 }

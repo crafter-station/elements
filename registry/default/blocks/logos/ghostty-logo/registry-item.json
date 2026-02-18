@@ -1,13 +1,17 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ghostty-logo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Ghostty Logo",
   "description": "Ghostty - A fast, feature-rich terminal emulator",
-  "categories": ["logos"],
+  "registryDependencies": [],
+  "dependencies": [],
   "files": [
     {
-      "path": "components/logos/ghostty.tsx",
+      "path": "registry/default/blocks/logos/ghostty-logo/components/logos/ghostty.tsx",
       "type": "registry:component"
     }
-  ]
+  ],
+  "docs": "Ghostty logo component. Uses currentColor for theme adaptation.",
+  "categories": ["DevTools", "logo", "brand"]
 }

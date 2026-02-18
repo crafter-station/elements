@@ -1,13 +1,17 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "biome-logo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Biome Logo",
   "description": "Biome - One toolchain for your web project",
-  "categories": ["logos"],
+  "registryDependencies": [],
+  "dependencies": [],
   "files": [
     {
-      "path": "components/logos/biome.tsx",
+      "path": "registry/default/blocks/logos/biome-logo/components/logos/biome.tsx",
       "type": "registry:component"
     }
-  ]
+  ],
+  "docs": "Biome logo component for the fast formatter and linter. Uses currentColor for theme adaptation.",
+  "categories": ["DevTools", "logo", "brand"]
 }

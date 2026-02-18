@@ -1,13 +1,17 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "obsidian-logo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Obsidian Logo",
   "description": "Obsidian - A knowledge base that works on local Markdown files",
-  "categories": ["logos"],
+  "registryDependencies": [],
+  "dependencies": [],
   "files": [
     {
-      "path": "components/logos/obsidian.tsx",
+      "path": "registry/default/blocks/logos/obsidian-logo/components/logos/obsidian.tsx",
       "type": "registry:component"
     }
-  ]
+  ],
+  "docs": "Obsidian logo component with brand purple gradient.",
+  "categories": ["DevTools", "logo", "brand"]
 }

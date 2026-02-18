@@ -1,13 +1,17 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "raycast-logo",
-  "type": "registry:block",
+  "type": "registry:ui",
   "title": "Raycast Logo",
   "description": "Raycast - A blazingly fast, totally extendable launcher",
-  "categories": ["logos"],
+  "registryDependencies": [],
+  "dependencies": [],
   "files": [
     {
-      "path": "components/logos/raycast.tsx",
+      "path": "registry/default/blocks/logos/raycast-logo/components/logos/raycast.tsx",
       "type": "registry:component"
     }
-  ]
+  ],
+  "docs": "Raycast logo component. Uses currentColor for theme adaptation.",
+  "categories": ["DevTools", "logo", "brand"]
 }
