@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "obsidian-logo",
   "title": "Obsidian Logo",
-  "description": "Obsidian logo component - a knowledge base on local Markdown files",
+  "description": "Obsidian - A knowledge base that works on local Markdown files",
   "dependencies": [],
   "registryDependencies": [],
   "files": [
@@ -12,7 +12,7 @@
       "type": "registry:component"
     }
   ],
-  "docs": "Obsidian logo component for the local-first knowledge base. Uses currentColor to match your design system.",
-  "categories": ["Productivity", "logo", "brand"],
+  "docs": "Obsidian logo component with brand purple gradient.",
+  "categories": ["DevTools", "logo", "brand"],
   "type": "registry:ui"
 }

@@ -59,6 +59,34 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "agentic-coding",
+      "type": "registry:block",
+      "title": "Agentic Coding",
+      "description": "AI coding agents, IDEs, and copilots",
+      "registryDependencies": [
+        "@elements/claude-logo",
+        "@elements/opencode-logo",
+        "@elements/cursor-logo",
+        "@elements/openai-logo",
+        "@elements/windsurf-logo",
+        "@elements/gemini-logo",
+        "@elements/cline-logo",
+        "@elements/roo-code-logo",
+        "@elements/continue-logo",
+        "@elements/github-copilot-logo",
+        "@elements/github-logo",
+        "@elements/openhands-logo",
+        "@elements/goose-logo",
+        "@elements/kilo-code-logo",
+        "@elements/trae-logo"
+      ],
+      "dependencies": [],
+      "files": [],
+      "docs": "Collection of agentic coding tool logos. Includes AI coding agents (Claude Code, Cline, Roo Code, OpenHands, Goose, Kilo Code, Continue, OpenCode), AI-powered IDEs (Cursor, Windsurf, Trae), and copilots (GitHub Copilot, Gemini). Perfect for AI tool comparison pages, developer dashboards, and landing pages.",
+      "categories": ["logo", "brand", "AI", "agentic", "coding", "collection"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "ai-badge",
       "type": "registry:block",
       "title": "AI Badge",
@@ -240,7 +268,7 @@
       "name": "biome-logo",
       "type": "registry:ui",
       "title": "Biome Logo",
-      "description": "Biome logo component - one toolchain for your web project",
+      "description": "Biome - One toolchain for your web project",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
@@ -249,7 +277,7 @@
           "type": "registry:component"
         }
       ],
-      "docs": "Biome logo component for the fast formatter and linter. Uses currentColor to match your design system.",
+      "docs": "Biome logo component for the fast formatter and linter. Uses currentColor for theme adaptation.",
       "categories": ["DevTools", "logo", "brand"]
     },
     {
@@ -395,6 +423,23 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "cline-logo",
+      "type": "registry:ui",
+      "title": "Cline Logo",
+      "description": "Cline autonomous coding agent logo",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/cline-logo/components/logos/cline.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Cline logo component. Uses currentColor for theme adaptation.",
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "cloud-infrastructure",
       "type": "registry:block",
       "title": "Cloud & Infrastructure",
@@ -492,6 +537,23 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "continue-logo",
+      "type": "registry:ui",
+      "title": "Continue Logo",
+      "description": "Continue open-source AI code agent logo",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/continue-logo/components/logos/continue.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Continue.dev logo component. Uses currentColor for theme adaptation.",
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "conversation-tree",
       "subcategory": "devtools",
       "type": "registry:ui",
@@ -546,7 +608,7 @@
       "name": "cursor-logo",
       "type": "registry:ui",
       "title": "Cursor Logo",
-      "description": "Cursor logo component - the AI code editor",
+      "description": "Cursor - The AI Code Editor",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
@@ -555,8 +617,8 @@
           "type": "registry:component"
         }
       ],
-      "docs": "Cursor logo component for the AI-powered code editor. Uses currentColor to match your design system.",
-      "categories": ["DevTools", "logo", "brand", "AI"]
+      "docs": "Cursor logo component. Uses currentColor for theme adaptation.",
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -740,6 +802,23 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "ghostty-logo",
+      "type": "registry:ui",
+      "title": "Ghostty Logo",
+      "description": "Ghostty - A fast, feature-rich terminal emulator",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/ghostty-logo/components/logos/ghostty.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Ghostty logo component. Uses currentColor for theme adaptation.",
+      "categories": ["DevTools", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "github-activity-calendar",
       "type": "registry:block",
       "title": "GitHub Activity Calendar",
@@ -780,6 +859,23 @@
         }
       ],
       "categories": ["github"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "github-copilot-logo",
+      "type": "registry:ui",
+      "title": "GitHub Copilot Logo",
+      "description": "GitHub Copilot AI coding assistant logo",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/github-copilot-logo/components/logos/github-copilot.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "GitHub Copilot logo component. Uses currentColor for theme adaptation.",
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -942,23 +1038,6 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "ghostty-logo",
-      "type": "registry:ui",
-      "title": "Ghostty Logo",
-      "description": "Ghostty logo component - fast, feature-rich terminal emulator",
-      "registryDependencies": [],
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/default/blocks/logos/ghostty-logo/components/logos/ghostty.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "docs": "Ghostty logo component for the fast terminal emulator. Uses currentColor to match your design system.",
-      "categories": ["DevTools", "logo", "brand", "Terminal"]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "google-logo",
       "type": "registry:ui",
       "title": "Google Logo",
@@ -973,6 +1052,23 @@
       ],
       "docs": "Google logo component with official four-color brand design.",
       "categories": ["Search", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "goose-logo",
+      "type": "registry:ui",
+      "title": "Goose Logo",
+      "description": "Goose by Block open-source AI agent logo",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/goose-logo/components/logos/goose.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Goose (by Block) logo component. Uses currentColor for theme adaptation.",
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1175,6 +1271,23 @@
       ],
       "docs": "Kebo logo component with official brand purple color.",
       "categories": ["Development", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "kilo-code-logo",
+      "type": "registry:ui",
+      "title": "Kilo Code Logo",
+      "description": "Kilo Code agentic coding platform logo with brand yellow",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/kilo-code-logo/components/logos/kilo-code.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Kilo Code logo component with brand yellow (#F8F674).",
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1650,7 +1763,7 @@
       "name": "obsidian-logo",
       "type": "registry:ui",
       "title": "Obsidian Logo",
-      "description": "Obsidian logo component - a knowledge base on local Markdown files",
+      "description": "Obsidian - A knowledge base that works on local Markdown files",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
@@ -1659,8 +1772,8 @@
           "type": "registry:component"
         }
       ],
-      "docs": "Obsidian logo component for the local-first knowledge base. Uses currentColor to match your design system.",
-      "categories": ["Productivity", "logo", "brand"]
+      "docs": "Obsidian logo component with brand purple gradient.",
+      "categories": ["DevTools", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1712,6 +1825,40 @@
         }
       ],
       "docs": "OpenAI logo component with official brand colors.",
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "opencode-logo",
+      "type": "registry:ui",
+      "title": "OpenCode Logo",
+      "description": "OpenCode terminal AI coding agent pixelated wordmark",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/opencode-logo/components/logos/opencode.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "OpenCode logo component. Pixelated wordmark style. Uses currentColor for theme adaptation.",
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "openhands-logo",
+      "type": "registry:ui",
+      "title": "OpenHands Logo",
+      "description": "OpenHands AI-driven development platform logo",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/openhands-logo/components/logos/openhands.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "OpenHands logo component. Uses currentColor for theme adaptation.",
       "categories": ["AI", "logo", "brand"]
     },
     {
@@ -2015,7 +2162,7 @@
       "name": "raycast-logo",
       "type": "registry:ui",
       "title": "Raycast Logo",
-      "description": "Raycast logo component - blazingly fast, totally extendable launcher",
+      "description": "Raycast - A blazingly fast, totally extendable launcher",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
@@ -2024,8 +2171,8 @@
           "type": "registry:component"
         }
       ],
-      "docs": "Raycast logo component for the extendable productivity launcher. Uses currentColor to match your design system.",
-      "categories": ["Productivity", "logo", "brand"]
+      "docs": "Raycast logo component. Uses currentColor for theme adaptation.",
+      "categories": ["DevTools", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2134,6 +2281,23 @@
       ],
       "docs": "Toolbar with copy, regenerate, feedback, and share actions. Supports compact mode.",
       "categories": ["ai"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "roo-code-logo",
+      "type": "registry:ui",
+      "title": "Roo Code Logo",
+      "description": "Roo Code AI dev team agent logo",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/roo-code-logo/components/logos/roo-code.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Roo Code logo component. Uses currentColor for theme adaptation.",
+      "categories": ["AI", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -2788,6 +2952,23 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "trae-logo",
+      "type": "registry:ui",
+      "title": "Trae Logo",
+      "description": "Trae AI IDE by ByteDance logo with brand green",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/trae-logo/components/logos/trae.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Trae logo component with brand green (#32F08C).",
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "trigger-logo",
       "type": "registry:ui",
       "title": "Trigger.dev Logo",
@@ -3197,6 +3378,23 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "windsurf-logo",
+      "type": "registry:ui",
+      "title": "Windsurf Logo",
+      "description": "Windsurf (Codeium) agentic IDE logo with brand turquoise",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/windsurf-logo/components/logos/windsurf.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Windsurf logo component with official brand turquoise (#34E8BB).",
+      "categories": ["AI", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "xai-logo",
       "type": "registry:ui",
       "title": "xAI Logo",
@@ -3240,7 +3438,7 @@
       "name": "zed-logo",
       "type": "registry:ui",
       "title": "Zed Logo",
-      "description": "Zed logo component - the editor for what's next",
+      "description": "Zed - The editor for what's next",
       "registryDependencies": [],
       "dependencies": [],
       "files": [
@@ -3249,7 +3447,7 @@
           "type": "registry:component"
         }
       ],
-      "docs": "Zed logo component for the high-performance code editor. Uses currentColor to match your design system.",
+      "docs": "Zed logo component. Uses currentColor for theme adaptation.",
       "categories": ["DevTools", "logo", "brand"]
     }
   ]

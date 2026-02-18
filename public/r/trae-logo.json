@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "trae-logo",
+  "title": "Trae Logo",
+  "description": "Trae AI IDE by ByteDance logo with brand green",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/trae-logo/components/logos/trae.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nexport interface TraeLogoProps extends React.SVGProps<SVGSVGElement> {}\n\nexport function TraeLogo({ className, ...props }: TraeLogoProps) {\n  return (\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"24\"\n      height=\"24\"\n      viewBox=\"0 0 24 24\"\n      className={cn(\"\", className)}\n      {...props}\n    >\n      <title>Trae</title>\n      <path\n        fill=\"#32F08C\"\n        d=\"M24 20.541H3.428v-3.426H0V3.4h24V20.54zM3.428 17.115h17.144V6.827H3.428v10.288zm8.573-5.196l-2.425 2.424-2.424-2.424 2.424-2.424 2.425 2.424zm6.857-.001l-2.424 2.423-2.425-2.423 2.425-2.425 2.424 2.425z\"\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Trae logo component with brand green (#32F08C).",
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
+}

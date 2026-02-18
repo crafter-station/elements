@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "cursor-logo",
   "title": "Cursor Logo",
-  "description": "Cursor logo component - the AI code editor",
+  "description": "Cursor - The AI Code Editor",
   "dependencies": [],
   "registryDependencies": [],
   "files": [
@@ -12,7 +12,7 @@
       "type": "registry:component"
     }
   ],
-  "docs": "Cursor logo component for the AI-powered code editor. Uses currentColor to match your design system.",
-  "categories": ["DevTools", "logo", "brand", "AI"],
+  "docs": "Cursor logo component. Uses currentColor for theme adaptation.",
+  "categories": ["AI", "logo", "brand"],
   "type": "registry:ui"
 }

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agentic-coding",
+  "title": "Agentic Coding",
+  "description": "AI coding agents, IDEs, and copilots",
+  "dependencies": [],
+  "registryDependencies": [
+    "@elements/claude-logo",
+    "@elements/opencode-logo",
+    "@elements/cursor-logo",
+    "@elements/openai-logo",
+    "@elements/windsurf-logo",
+    "@elements/gemini-logo",
+    "@elements/cline-logo",
+    "@elements/roo-code-logo",
+    "@elements/continue-logo",
+    "@elements/github-copilot-logo",
+    "@elements/github-logo",
+    "@elements/openhands-logo",
+    "@elements/goose-logo",
+    "@elements/kilo-code-logo",
+    "@elements/trae-logo"
+  ],
+  "files": [],
+  "docs": "Collection of agentic coding tool logos. Includes AI coding agents (Claude Code, Cline, Roo Code, OpenHands, Goose, Kilo Code, Continue, OpenCode), AI-powered IDEs (Cursor, Windsurf, Trae), and copilots (GitHub Copilot, Gemini). Perfect for AI tool comparison pages, developer dashboards, and landing pages.",
+  "categories": ["logo", "brand", "AI", "agentic", "coding", "collection"],
+  "type": "registry:block"
+}

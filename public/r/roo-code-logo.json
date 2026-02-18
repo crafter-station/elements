@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "roo-code-logo",
+  "title": "Roo Code Logo",
+  "description": "Roo Code AI dev team agent logo",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/roo-code-logo/components/logos/roo-code.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nexport interface RooCodeLogoProps extends React.SVGProps<SVGSVGElement> {}\n\nexport function RooCodeLogo({ className, ...props }: RooCodeLogoProps) {\n  return (\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      width=\"96\"\n      height=\"96\"\n      viewBox=\"0 0 96 96\"\n      className={cn(\"\", className)}\n      {...props}\n    >\n      <title>Roo Code</title>\n      <path\n        fill=\"currentColor\"\n        d=\"M78.99,21.9l-1.73,6.24c-.09.33-.44.52-.77.42l-28.11-8.71c-.19-.06-.41-.02-.56.11l-28.95,23.22c-.08.07-.18.11-.29.13l-17.25,2.66c-.31.05-.53.32-.52.63l.11,2.47c.01.31.26.56.57.58l20.08,1.23c.11,0,.22-.02.31-.06l14.64-7.4c.21-.11.46-.08.64.06l9.37,7.03c.16.12.25.3.24.49l-.09,11.65c0,.13.04.25.11.35l14.74,21.15c.11.16.3.26.5.26h5.03c.46,0,.76-.5.54-.9l-10.87-19.92c-.1-.18-.1-.4,0-.58l5.51-10.48c.06-.11.15-.2.26-.26l19.56-9.92c.2-.1.43-.09.62.04l5.6,3.73c.1.07.22.1.34.1h5.15c.48,0,.77-.52.52-.93l-14.2-23.52c-.28-.46-.97-.36-1.11.15Z\"\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Roo Code logo component. Uses currentColor for theme adaptation.",
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
+}
