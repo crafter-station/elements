@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "continue-logo",
+  "type": "registry:ui",
+  "title": "Continue Logo",
+  "description": "Continue open-source AI code agent logo",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/continue-logo/components/logos/continue.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Continue.dev logo component. Uses currentColor for theme adaptation.",
+  "categories": ["AI", "logo", "brand"]
+}

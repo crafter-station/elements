@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "windsurf-logo",
+  "type": "registry:ui",
+  "title": "Windsurf Logo",
+  "description": "Windsurf (Codeium) agentic IDE logo with brand turquoise",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/windsurf-logo/components/logos/windsurf.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Windsurf logo component with official brand turquoise (#34E8BB).",
+  "categories": ["AI", "logo", "brand"]
+}

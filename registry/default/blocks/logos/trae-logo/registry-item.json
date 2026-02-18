@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "trae-logo",
+  "type": "registry:ui",
+  "title": "Trae Logo",
+  "description": "Trae AI IDE by ByteDance logo with brand green",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/trae-logo/components/logos/trae.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Trae logo component with brand green (#32F08C).",
+  "categories": ["AI", "logo", "brand"]
+}

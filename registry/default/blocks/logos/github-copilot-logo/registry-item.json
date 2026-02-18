@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github-copilot-logo",
+  "type": "registry:ui",
+  "title": "GitHub Copilot Logo",
+  "description": "GitHub Copilot AI coding assistant logo",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/github-copilot-logo/components/logos/github-copilot.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "GitHub Copilot logo component. Uses currentColor for theme adaptation.",
+  "categories": ["AI", "logo", "brand"]
+}

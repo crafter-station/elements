@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "goose-logo",
+  "type": "registry:ui",
+  "title": "Goose Logo",
+  "description": "Goose by Block open-source AI agent logo",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/goose-logo/components/logos/goose.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Goose (by Block) logo component. Uses currentColor for theme adaptation.",
+  "categories": ["AI", "logo", "brand"]
+}

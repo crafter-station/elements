@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kilo-code-logo",
+  "type": "registry:ui",
+  "title": "Kilo Code Logo",
+  "description": "Kilo Code agentic coding platform logo with brand yellow",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/kilo-code-logo/components/logos/kilo-code.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Kilo Code logo component with brand yellow (#F8F674).",
+  "categories": ["AI", "logo", "brand"]
+}

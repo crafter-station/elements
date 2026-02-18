@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cline-logo",
+  "type": "registry:ui",
+  "title": "Cline Logo",
+  "description": "Cline autonomous coding agent logo",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/cline-logo/components/logos/cline.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Cline logo component. Uses currentColor for theme adaptation.",
+  "categories": ["AI", "logo", "brand"]
+}
