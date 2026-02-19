@@ -209,15 +209,15 @@
       "name": "astro-logo",
       "type": "registry:block",
       "title": "Astro Logo",
-      "description": "Astro web framework logo with dark/light mode support",
+      "description": "Astro web framework logo with icon and icon-mono variants",
       "dependencies": [],
       "registryDependencies": [],
       "categories": ["DevTools", "logo", "brand"],
       "meta": {
         "hasVariants": true,
-        "variants": ["icon"],
+        "variants": ["icon", "icon-mono-dark", "icon-mono-light"],
         "variantTypes": {
-          "base": ["icon"],
+          "base": ["icon", "icon-mono"],
           "modes": ["dark", "light"]
         }
       },
@@ -227,7 +227,7 @@
           "type": "registry:component"
         }
       ],
-      "docs": "Astro logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+      "docs": "Astro logo with 2 base variants (icon full-color with gradient, icon-mono) and dark/light modes = 3 total combinations. Icon variant uses official red-to-magenta gradient on the flame."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
