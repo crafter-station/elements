@@ -848,6 +848,32 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "elevenlabs-logo",
+      type: "registry:block",
+      title: "ElevenLabs Logo",
+      description:
+        "ElevenLabs AI voice platform logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/elevenlabs-logo/components/logos/elevenlabs.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "ElevenLabs logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: white on dark backgrounds, black on light backgrounds.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "env-editor",
       type: "registry:ui",
       title: "Env Editor",

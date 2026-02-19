@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "elevenlabs-logo",
+  "title": "ElevenLabs Logo",
+  "description": "ElevenLabs AI voice platform logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/elevenlabs-logo/components/logos/elevenlabs.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nexport function ElevenlabsLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>ElevenLabs</title>\n      <path fill={color} d=\"M4.6035 0v24h4.9317V0z\" />\n      <path fill={color} d=\"M9.8613 0v24h4.9317V0z\" />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "ElevenLabs logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: white on dark backgrounds, black on light backgrounds.",
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:block"
+}
