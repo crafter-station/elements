@@ -1,0 +1,64 @@
+---
+title: Swoosh SFX
+description: Quick light transition for fast scene cuts. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-swoosh"
+  installUrl="@elements/sfx-swoosh"
+  category="SFX"
+  name="Swoosh SFX"
+>
+  <SfxPlayer name="swoosh" src="/sfx/swoosh.mp3" duration="4.08" category="transition" />
+</ComponentPreviewItem>
+
+## Overview
+
+A quick, light swoosh for fast scene cuts in Code Drops and rapid-fire editing. Lighter and quicker than the standard whoosh. Duration: **4.08s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-swoosh
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/swoosh.mp3 https://tryelements.dev/sfx/swoosh.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { swooshSound } from "@/sfx/swoosh";
+
+export function QuickCut() {
+  const [play] = useSound(swooshSound, { volume: 0.3 });
+
+  return <button onClick={play}>Next</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function FastCut() {
+  return <Audio src={staticFile("sfx/swoosh.mp3")} volume={0.3} />;
+}
+```
+
+## Timing
+
+Play **50ms before** the cut for quick transitions.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

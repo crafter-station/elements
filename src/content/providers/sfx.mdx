@@ -41,6 +41,8 @@ curl -s https://tryelements.dev/r/sfx-index.json | jq '.sounds[].name'
 | Whoosh Alt 1 | 1.10s | `@elements/sfx-whoosh-alt1` |
 | Whoosh Alt 2 | 1.56s | `@elements/sfx-whoosh-alt2` |
 | Magic Reveal | 2.04s | `@elements/sfx-magic-reveal` |
+| Reverse Whoosh | 5.85s | `@elements/sfx-reverse-whoosh` |
+| Swoosh | 4.08s | `@elements/sfx-swoosh` |
 
 ### UI
 
@@ -48,6 +50,10 @@ curl -s https://tryelements.dev/r/sfx-index.json | jq '.sounds[].name'
 |-------|----------|---------|
 | Pop | 1.02s | `@elements/sfx-pop` |
 | Keyboard | 8.05s | `@elements/sfx-keyboard` |
+| Click | 1.03s | `@elements/sfx-click` |
+| Notification | 2.12s | `@elements/sfx-notification` |
+| Error | 0.53s | `@elements/sfx-error` |
+| Success | 2.54s | `@elements/sfx-success` |
 
 ### Cinematic
 
@@ -56,14 +62,16 @@ curl -s https://tryelements.dev/r/sfx-index.json | jq '.sounds[].name'
 | Riser | 4.03s | `@elements/sfx-riser` |
 | Shutter | 7.87s | `@elements/sfx-shutter` |
 | Glitch | 2.64s | `@elements/sfx-glitch` |
+| Boom | 4.30s | `@elements/sfx-boom` |
+| Drone | 6.82s | `@elements/sfx-drone` |
 
 ## Bundles
 
 ```bash
-npx shadcn@latest add @elements/sfx-transitions  # whoosh, whoosh-alt1, whoosh-alt2, magic-reveal
-npx shadcn@latest add @elements/sfx-ui            # pop, keyboard
-npx shadcn@latest add @elements/sfx-cinematic      # riser, shutter, glitch
-npx shadcn@latest add @elements/sfx-all            # all 9 sounds
+npx shadcn@latest add @elements/sfx-transitions  # whoosh, whoosh-alt1, whoosh-alt2, magic-reveal, reverse-whoosh, swoosh
+npx shadcn@latest add @elements/sfx-ui            # pop, keyboard, click, notification, error, success
+npx shadcn@latest add @elements/sfx-cinematic      # riser, shutter, glitch, boom, drone
+npx shadcn@latest add @elements/sfx-all            # all 17 sounds
 ```
 
 ## Usage
@@ -106,12 +114,18 @@ export function SfxLayer() {
 
 | Event | Sound | Timing |
 |-------|-------|--------|
-| Text appears | pop | 0ms (exact frame) |
-| Scene transition | whoosh | 100ms before cut |
+| Text appears | pop, click | 0ms (exact frame) |
+| Scene transition | whoosh, swoosh | 100ms before cut |
+| Fast cut | swoosh | 50ms before cut |
+| Rewind/undo | reverse-whoosh | 100ms before |
 | Zoom in | riser | 200ms before |
-| Dramatic reveal | magic-reveal | 50ms before |
+| Dramatic reveal | magic-reveal, boom | 50ms before |
 | Photo-style cut | shutter | exact cut frame |
-| Error state | glitch | at reveal |
+| Error state | error, glitch | at reveal |
+| Success/deploy | success | at reveal |
+| Build tension | drone | start of section |
+| Hook emphasis | boom | exact frame |
+| Notification | notification | at reveal |
 
 ## License
 

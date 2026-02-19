@@ -1,0 +1,64 @@
+---
+title: Reverse Whoosh SFX
+description: Reverse swoosh for rewind and undo moments. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-reverse-whoosh"
+  installUrl="@elements/sfx-reverse-whoosh"
+  category="SFX"
+  name="Reverse Whoosh SFX"
+>
+  <SfxPlayer name="reverse-whoosh" src="/sfx/reverse-whoosh.mp3" duration="5.85" category="transition" />
+</ComponentPreviewItem>
+
+## Overview
+
+A cinematic reverse swoosh for rewind effects, undo moments, and flashback transitions. Duration: **5.85s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-reverse-whoosh
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/reverse-whoosh.mp3 https://tryelements.dev/sfx/reverse-whoosh.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { reverseWhooshSound } from "@/sfx/reverse-whoosh";
+
+export function UndoButton() {
+  const [play] = useSound(reverseWhooshSound, { volume: 0.4 });
+
+  return <button onClick={play}>Undo</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function RewindTransition() {
+  return <Audio src={staticFile("sfx/reverse-whoosh.mp3")} volume={0.4} />;
+}
+```
+
+## Timing
+
+Play **100ms before** the rewind visual starts.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

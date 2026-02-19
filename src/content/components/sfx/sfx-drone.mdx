@@ -1,0 +1,64 @@
+---
+title: Drone SFX
+description: Low atmospheric hum for tension and ambient padding. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-drone"
+  installUrl="@elements/sfx-drone"
+  category="SFX"
+  name="Drone SFX"
+>
+  <SfxPlayer name="drone" src="/sfx/drone.mp3" duration="6.82" category="cinematic" />
+</ComponentPreviewItem>
+
+## Overview
+
+A deep, haunting drone for atmospheric tension, ambient padding under voice, and cinematic builds. Duration: **6.82s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-drone
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/drone.mp3 https://tryelements.dev/sfx/drone.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { droneSound } from "@/sfx/drone";
+
+export function AtmosphericLayer() {
+  const [play, { stop }] = useSound(droneSound, { volume: 0.15 });
+
+  return <button onClick={play}>Ambient</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function AmbientLayer() {
+  return <Audio src={staticFile("sfx/drone.mp3")} volume={0.1} />;
+}
+```
+
+## Timing
+
+Use as background layer throughout a section. Keep volume very low (0.1-0.15) to avoid overpowering voice.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

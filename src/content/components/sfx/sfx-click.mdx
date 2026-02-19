@@ -1,0 +1,64 @@
+---
+title: Click SFX
+description: Dry UI click for text overlays and button taps. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-click"
+  installUrl="@elements/sfx-click"
+  category="SFX"
+  name="Click SFX"
+>
+  <SfxPlayer name="click" src="/sfx/click.mp3" duration="1.03" category="ui" />
+</ComponentPreviewItem>
+
+## Overview
+
+A short, dry mechanical click for subtle UI interactions. Perfect for text overlays, menu taps, and button presses where `pop` is too prominent. Duration: **1.03s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-click
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/click.mp3 https://tryelements.dev/sfx/click.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { clickSound } from "@/sfx/click";
+
+export function MenuItem() {
+  const [play] = useSound(clickSound, { volume: 0.3 });
+
+  return <button onClick={play}>Settings</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function TextOverlaySfx() {
+  return <Audio src={staticFile("sfx/click.mp3")} volume={0.25} />;
+}
+```
+
+## Timing
+
+Play at **0ms (exact frame)** when text appears or a UI element is tapped.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

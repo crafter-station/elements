@@ -1,0 +1,69 @@
+---
+title: Success SFX
+description: Positive completion chime for deploys and achievements. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-success"
+  installUrl="@elements/sfx-success"
+  category="SFX"
+  name="Success SFX"
+>
+  <SfxPlayer name="success" src="/sfx/success.mp3" duration="2.54" category="ui" />
+</ComponentPreviewItem>
+
+## Overview
+
+A bright, positive glockenspiel chime for deploy completions, test passes, and achievement moments. Duration: **2.54s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-success
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/success.mp3 https://tryelements.dev/sfx/success.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { successSound } from "@/sfx/success";
+
+export function DeployButton() {
+  const [play] = useSound(successSound, { volume: 0.4 });
+
+  const handleDeploy = async () => {
+    await deploy();
+    play();
+  };
+
+  return <button onClick={handleDeploy}>Deploy</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function DeploySuccess() {
+  return <Audio src={staticFile("sfx/success.mp3")} volume={0.35} />;
+}
+```
+
+## Timing
+
+Play at **0ms** when the success state appears. Pairs well after a `riser` buildup.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

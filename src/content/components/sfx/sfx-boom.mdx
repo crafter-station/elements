@@ -1,0 +1,64 @@
+---
+title: Boom SFX
+description: Impact bass hit for dramatic hooks and reveals. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-boom"
+  installUrl="@elements/sfx-boom"
+  category="SFX"
+  name="Boom SFX"
+>
+  <SfxPlayer name="boom" src="/sfx/boom.mp3" duration="4.30" category="cinematic" />
+</ComponentPreviewItem>
+
+## Overview
+
+A dramatic impact/bass hit for hook emphasis, beat-synced moments, and CTA reveals. Duration: **4.30s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-boom
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/boom.mp3 https://tryelements.dev/sfx/boom.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { boomSound } from "@/sfx/boom";
+
+export function HookReveal() {
+  const [play] = useSound(boomSound, { volume: 0.5 });
+
+  return <button onClick={play}>Drop</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function HookImpact() {
+  return <Audio src={staticFile("sfx/boom.mp3")} volume={0.4} />;
+}
+```
+
+## Timing
+
+Play at the **exact frame** of a dramatic reveal or hook text appearance. Pairs well with a riser leading into it.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

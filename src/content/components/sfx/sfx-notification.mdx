@@ -1,0 +1,64 @@
+---
+title: Notification SFX
+description: Bell chime for system alerts and notifications. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-notification"
+  installUrl="@elements/sfx-notification"
+  category="SFX"
+  name="Notification SFX"
+>
+  <SfxPlayer name="notification" src="/sfx/notification.mp3" duration="2.12" category="ui" />
+</ComponentPreviewItem>
+
+## Overview
+
+A clean bell/chime notification sound for system alerts, terminal output, and deploy notifications. Duration: **2.12s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-notification
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/notification.mp3 https://tryelements.dev/sfx/notification.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { notificationSound } from "@/sfx/notification";
+
+export function AlertBanner() {
+  const [play] = useSound(notificationSound, { volume: 0.4 });
+
+  return <button onClick={play}>Notify</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function DeployAlert() {
+  return <Audio src={staticFile("sfx/notification.mp3")} volume={0.35} />;
+}
+```
+
+## Timing
+
+Play at **0ms** when the notification or alert appears on screen.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

@@ -1,0 +1,68 @@
+---
+title: Error SFX
+description: Short error beep for failed builds and terminal errors. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-error"
+  installUrl="@elements/sfx-error"
+  category="SFX"
+  name="Error SFX"
+>
+  <SfxPlayer name="error" src="/sfx/error.mp3" duration="0.53" category="ui" />
+</ComponentPreviewItem>
+
+## Overview
+
+A short error beep/buzz for failed builds, terminal errors, and invalid actions. Duration: **0.53s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-error
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/error.mp3 https://tryelements.dev/sfx/error.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { errorSound } from "@/sfx/error";
+
+export function SubmitForm() {
+  const [playError] = useSound(errorSound, { volume: 0.3 });
+
+  const handleSubmit = (valid: boolean) => {
+    if (!valid) playError();
+  };
+
+  return <button onClick={() => handleSubmit(false)}>Submit</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function BuildError() {
+  return <Audio src={staticFile("sfx/error.mp3")} volume={0.3} />;
+}
+```
+
+## Timing
+
+Play at **0ms** when the error state appears. Pair with `glitch` for more dramatic failures.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.
