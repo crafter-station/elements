@@ -20,7 +20,19 @@ import {
 
 import { ScrambleText } from "@/components/scramble-text";
 import { SfxCardPlayer } from "@/components/sfx-card-player";
+import { SkillBadge } from "@/components/skill-badge";
 import { BreadcrumbSchema } from "@/components/structured-data";
+
+const PROVIDER_SKILLS: Record<string, string> = {
+  "ai-elements": "ai-elements",
+  sfx: "sfx-elements",
+  devtools: "devtools-elements",
+  uploadthing: "uploadthing-elements",
+  github: "github-elements",
+  theme: "theme-elements",
+  polar: "polar-elements",
+  upstash: "upstash-elements",
+};
 
 // Generate static params for all providers
 export async function generateStaticParams() {
@@ -172,6 +184,10 @@ export default async function ProviderPage(props: ProviderPageProps) {
               <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
                 {metadata.description}
               </p>
+
+              {PROVIDER_SKILLS[provider] && (
+                <SkillBadge skill={PROVIDER_SKILLS[provider]} />
+              )}
             </div>
           </div>
         </div>
