@@ -236,6 +236,30 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "bash-logo",
+      type: "registry:ui",
+      title: "Bash Logo",
+      description: "Bash shell logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/bash-logo/components/logos/bash.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "beincrypto-logo",
       type: "registry:ui",
       title: "BeInCrypto Logo",
@@ -594,6 +618,30 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "cplusplus-logo",
+      type: "registry:ui",
+      title: "C++ Logo",
+      description: "C++ programming language logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/cplusplus-logo/components/logos/cplusplus.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "crafter-station-logo",
       type: "registry:ui",
       title: "Crafter Station Logo",
@@ -622,6 +670,30 @@ export const registry = {
         variantTypes: {
           base: ["icon", "wordmark", "logo"],
           colorSchemes: ["gold", "grayscale"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "css-logo",
+      type: "registry:ui",
+      title: "CSS Logo",
+      description: "CSS programming language logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/css-logo/components/logos/css.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
           modes: ["dark", "light"],
         },
       },
@@ -1179,6 +1251,30 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "html-logo",
+      type: "registry:ui",
+      title: "HTML Logo",
+      description: "HTML5 programming language logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/html-logo/components/logos/html.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "hugging-face-logo",
       type: "registry:ui",
       title: "Hugging Face Logo",
@@ -1221,6 +1317,30 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "java-logo",
+      type: "registry:ui",
+      title: "Java Logo",
+      description: "Java programming language logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/java-logo/components/logos/java.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "javascript-logo",
       type: "registry:ui",
       title: "JavaScript Logo",
@@ -1231,6 +1351,30 @@ export const registry = {
       files: [
         {
           path: "registry/default/blocks/logos/javascript-logo/components/logos/javascript.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "json-logo",
+      type: "registry:ui",
+      title: "JSON Logo",
+      description: "JSON data format logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/json-logo/components/logos/json.tsx",
           type: "registry:component",
         },
       ],
@@ -1346,6 +1490,30 @@ export const registry = {
       ],
       docs: "Kimi logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "kotlin-logo",
+      type: "registry:ui",
+      title: "Kotlin Logo",
+      description: "Kotlin programming language logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/kotlin-logo/components/logos/kotlin.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2372,6 +2540,30 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "ruby-logo",
+      type: "registry:ui",
+      title: "Ruby Logo",
+      description: "Ruby programming language logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/ruby-logo/components/logos/ruby.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "rust-logo",
       type: "registry:ui",
       title: "Rust Logo",
@@ -2415,6 +2607,216 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-all",
+      type: "registry:block",
+      title: "All SFX Bundle",
+      description:
+        "Complete sound effects collection: 9 CC0-licensed sounds for transitions, UI, and cinematic use.",
+      registryDependencies: [
+        "sfx-whoosh",
+        "sfx-whoosh-alt1",
+        "sfx-whoosh-alt2",
+        "sfx-pop",
+        "sfx-riser",
+        "sfx-shutter",
+        "sfx-glitch",
+        "sfx-magic-reveal",
+        "sfx-keyboard",
+      ],
+      dependencies: [],
+      files: [],
+      categories: ["sfx"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-cinematic",
+      type: "registry:block",
+      title: "Cinematic SFX Bundle",
+      description: "Cinematic sound effects: riser, shutter, glitch.",
+      registryDependencies: ["sfx-riser", "sfx-shutter", "sfx-glitch"],
+      dependencies: [],
+      files: [],
+      categories: ["sfx", "cinematic"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-glitch",
+      type: "registry:ui",
+      title: "Glitch SFX",
+      description:
+        "Digital glitch sound for tech aesthetic and error states. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/glitch/components/sfx/glitch.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "cinematic"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-keyboard",
+      type: "registry:ui",
+      title: "Keyboard SFX",
+      description:
+        "Keyboard typing sound for hook cards and outros. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/keyboard/components/sfx/keyboard.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "ui"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-magic-reveal",
+      type: "registry:ui",
+      title: "Magic Reveal SFX",
+      description:
+        "Dramatic reveal sound for before/after transitions. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/magic-reveal/components/sfx/magic-reveal.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "transition"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-pop",
+      type: "registry:ui",
+      title: "Pop SFX",
+      description:
+        "Quick pop sound for text reveals and UI element appearances. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/pop/components/sfx/pop.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "ui"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-riser",
+      type: "registry:ui",
+      title: "Riser SFX",
+      description: "Tension-building riser for dramatic reveals. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/riser/components/sfx/riser.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "cinematic"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-shutter",
+      type: "registry:ui",
+      title: "Camera Shutter SFX",
+      description:
+        "Camera shutter click for scene changes and photo-style cuts. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/shutter/components/sfx/shutter.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "cinematic"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-transitions",
+      type: "registry:block",
+      title: "Transition SFX Bundle",
+      description:
+        "All transition sound effects: whoosh, whoosh-alt1, whoosh-alt2, magic-reveal.",
+      registryDependencies: [
+        "sfx-whoosh",
+        "sfx-whoosh-alt1",
+        "sfx-whoosh-alt2",
+        "sfx-magic-reveal",
+      ],
+      dependencies: [],
+      files: [],
+      categories: ["sfx", "transition"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-ui",
+      type: "registry:block",
+      title: "UI SFX Bundle",
+      description: "UI interaction sound effects: pop, keyboard.",
+      registryDependencies: ["sfx-pop", "sfx-keyboard"],
+      dependencies: [],
+      files: [],
+      categories: ["sfx", "ui"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-whoosh",
+      type: "registry:ui",
+      title: "Whoosh SFX",
+      description: "Smooth transition whoosh sound effect. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/whoosh/components/sfx/whoosh.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "transition"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-whoosh-alt1",
+      type: "registry:ui",
+      title: "Whoosh Alt 1 SFX",
+      description: "Alternative whoosh transition sound effect. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/whoosh-alt1/components/sfx/whoosh-alt1.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "transition"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-whoosh-alt2",
+      type: "registry:ui",
+      title: "Whoosh Alt 2 SFX",
+      description: "Alternative whoosh transition sound effect. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/whoosh-alt2/components/sfx/whoosh-alt2.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "transition"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "slack-logo",
       type: "registry:ui",
       title: "Slack Logo",
@@ -2447,6 +2849,38 @@ export const registry = {
       files: [],
       docs: "Collection of social media and communication platform logos. Perfect for social sharing features, community sections, and integration showcases.",
       categories: ["logo", "brand", "social", "collection"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sound-engine",
+      type: "registry:lib",
+      title: "Sound Engine",
+      description: "Web Audio API engine for playing sound assets",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/_system/sound-engine/lib/sound-engine.ts",
+          type: "registry:lib",
+        },
+      ],
+      categories: ["sfx"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sound-types",
+      type: "registry:lib",
+      title: "Sound Types",
+      description: "TypeScript types for sound assets",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/_system/sound-types/lib/sound-types.ts",
+          type: "registry:lib",
+        },
+      ],
+      categories: ["sfx"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2483,6 +2917,30 @@ export const registry = {
       ],
       docs: "Spotify logo component with official brand green color.",
       categories: ["Entertainment", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sql-logo",
+      type: "registry:ui",
+      title: "SQL Logo",
+      description: "SQL database language logo component (SQLite icon)",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/sql-logo/components/logos/sql.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2574,6 +3032,30 @@ export const registry = {
       ],
       docs: "Supabase logo component with official brand green gradient colors.",
       categories: ["Database", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "swift-logo",
+      type: "registry:ui",
+      title: "Swift Logo",
+      description: "Swift programming language logo component",
+      dependencies: [],
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/swift-logo/components/logos/swift.tsx",
+          type: "registry:component",
+        },
+      ],
+      categories: ["DevTools", "logo", "brand", "programming"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3410,6 +3892,22 @@ export const registry = {
       ],
       docs: "Client-side hook for AI avatar generation. Supports pixel-art, anime, cartoon, realistic, and sketch styles. Requires a backend API endpoint (FAL AI recommended).",
       categories: ["badges"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "use-sound",
+      type: "registry:hook",
+      title: "useSound Hook",
+      description: "React hook for playing sound assets via Web Audio API",
+      registryDependencies: ["sound-engine", "sound-types"],
+      dependencies: ["react"],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/_system/use-sound/hooks/use-sound.ts",
+          type: "registry:hook",
+        },
+      ],
+      categories: ["sfx"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
