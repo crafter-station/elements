@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "redis-logo",
+  "type": "registry:block",
+  "title": "Redis Logo",
+  "description": "Redis in-memory data store logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["Cloud", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon-dark", "icon-light"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/redis-logo/components/logos/redis.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Redis logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sentry-logo",
+  "type": "registry:block",
+  "title": "Sentry Logo",
+  "description": "Sentry error monitoring and performance platform logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["DevTools", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon-dark", "icon-light"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/sentry-logo/components/logos/sentry.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Sentry logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}

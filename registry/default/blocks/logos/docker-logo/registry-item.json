@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "docker-logo",
+  "type": "registry:block",
+  "title": "Docker Logo",
+  "description": "Docker container platform logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["Cloud", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon-dark", "icon-light"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/docker-logo/components/logos/docker.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Docker logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "svelte-logo",
+  "type": "registry:block",
+  "title": "Svelte Logo",
+  "description": "Svelte reactive JavaScript framework logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["DevTools", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon-dark", "icon-light"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/svelte-logo/components/logos/svelte.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Svelte logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}

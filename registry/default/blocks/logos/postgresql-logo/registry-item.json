@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "postgresql-logo",
+  "type": "registry:block",
+  "title": "PostgreSQL Logo",
+  "description": "PostgreSQL database logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["Cloud", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon-dark", "icon-light"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/postgresql-logo/components/logos/postgresql.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "PostgreSQL logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}
