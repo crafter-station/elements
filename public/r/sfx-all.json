@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sfx-all",
   "title": "All SFX Bundle",
-  "description": "Complete sound effects collection: 9 CC0-licensed sounds for transitions, UI, and cinematic use.",
+  "description": "Complete sound effects collection: 17 CC0-licensed sounds for transitions, UI, and cinematic use.",
   "dependencies": [],
   "registryDependencies": [
     "sfx-whoosh",
@@ -13,7 +13,15 @@
     "sfx-shutter",
     "sfx-glitch",
     "sfx-magic-reveal",
-    "sfx-keyboard"
+    "sfx-keyboard",
+    "sfx-click",
+    "sfx-boom",
+    "sfx-notification",
+    "sfx-reverse-whoosh",
+    "sfx-drone",
+    "sfx-error",
+    "sfx-swoosh",
+    "sfx-success"
   ],
   "files": [],
   "categories": ["sfx"],

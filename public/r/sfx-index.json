@@ -1,7 +1,43 @@
 {
-  "generated": "2026-02-19T01:24:15.559Z",
-  "count": 9,
+  "generated": "2026-02-19T01:36:26.972Z",
+  "count": 17,
   "sounds": [
+    {
+      "name": "boom",
+      "category": "cinematic",
+      "duration": 4.296,
+      "sizeBytes": 34942,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/boom.mp3",
+      "registry": "https://tryelements.dev/r/sfx-boom.json"
+    },
+    {
+      "name": "click",
+      "category": "ui",
+      "duration": 1.032,
+      "sizeBytes": 33024,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/click.mp3",
+      "registry": "https://tryelements.dev/r/sfx-click.json"
+    },
+    {
+      "name": "drone",
+      "category": "cinematic",
+      "duration": 6.816,
+      "sizeBytes": 55004,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/drone.mp3",
+      "registry": "https://tryelements.dev/r/sfx-drone.json"
+    },
+    {
+      "name": "error",
+      "category": "ui",
+      "duration": 0.528,
+      "sizeBytes": 16896,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/error.mp3",
+      "registry": "https://tryelements.dev/r/sfx-error.json"
+    },
     {
       "name": "glitch",
       "category": "cinematic",
@@ -30,6 +66,15 @@
       "registry": "https://tryelements.dev/r/sfx-magic-reveal.json"
     },
     {
+      "name": "notification",
+      "category": "ui",
+      "duration": 2.116,
+      "sizeBytes": 67709,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/notification.mp3",
+      "registry": "https://tryelements.dev/r/sfx-notification.json"
+    },
+    {
       "name": "pop",
       "category": "ui",
       "duration": 1.019,
@@ -37,6 +82,15 @@
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/pop.mp3",
       "registry": "https://tryelements.dev/r/sfx-pop.json"
+    },
+    {
+      "name": "reverse-whoosh",
+      "category": "transition",
+      "duration": 5.851,
+      "sizeBytes": 47272,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/reverse-whoosh.mp3",
+      "registry": "https://tryelements.dev/r/sfx-reverse-whoosh.json"
     },
     {
       "name": "riser",
@@ -55,6 +109,24 @@
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/shutter.mp3",
       "registry": "https://tryelements.dev/r/sfx-shutter.json"
+    },
+    {
+      "name": "success",
+      "category": "ui",
+      "duration": 2.544,
+      "sizeBytes": 50880,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/success.mp3",
+      "registry": "https://tryelements.dev/r/sfx-success.json"
+    },
+    {
+      "name": "swoosh",
+      "category": "transition",
+      "duration": 4.08,
+      "sizeBytes": 33270,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/swoosh.mp3",
+      "registry": "https://tryelements.dev/r/sfx-swoosh.json"
     },
     {
       "name": "whoosh",
@@ -85,8 +157,15 @@
     }
   ],
   "bundles": {
-    "transitions": ["magic-reveal", "whoosh", "whoosh-alt1", "whoosh-alt2"],
-    "ui": ["keyboard", "pop"],
-    "cinematic": ["glitch", "riser", "shutter"]
+    "transitions": [
+      "magic-reveal",
+      "reverse-whoosh",
+      "swoosh",
+      "whoosh",
+      "whoosh-alt1",
+      "whoosh-alt2"
+    ],
+    "ui": ["click", "error", "keyboard", "notification", "pop", "success"],
+    "cinematic": ["boom", "drone", "glitch", "riser", "shutter"]
   }
 }

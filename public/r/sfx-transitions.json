@@ -2,13 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sfx-transitions",
   "title": "Transition SFX Bundle",
-  "description": "All transition sound effects: whoosh, whoosh-alt1, whoosh-alt2, magic-reveal.",
+  "description": "All transition sound effects: whoosh, whoosh-alt1, whoosh-alt2, magic-reveal, reverse-whoosh, swoosh.",
   "dependencies": [],
   "registryDependencies": [
     "sfx-whoosh",
     "sfx-whoosh-alt1",
     "sfx-whoosh-alt2",
-    "sfx-magic-reveal"
+    "sfx-magic-reveal",
+    "sfx-reverse-whoosh",
+    "sfx-swoosh"
   ],
   "files": [],
   "categories": ["sfx", "transition"],
