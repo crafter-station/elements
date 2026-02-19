@@ -1,0 +1,77 @@
+---
+title: Whoosh SFX
+description: Smooth transition whoosh sound effect. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-whoosh"
+  installUrl="@elements/sfx-whoosh"
+  category="SFX"
+  name="Whoosh SFX"
+>
+  <SfxPlayer name="whoosh" src="/sfx/whoosh.mp3" duration="0.57" category="transition" />
+</ComponentPreviewItem>
+
+## Overview
+
+A short, punchy whoosh sound perfect for scene transitions and slide animations. Duration: **0.57s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-whoosh
+```
+
+This installs the sound as a TypeScript module with inline base64 audio, plus the `useSound` hook and sound engine.
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/whoosh.mp3 https://tryelements.dev/sfx/whoosh.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { whooshSound } from "@/sfx/whoosh";
+
+export function TransitionButton() {
+  const [play] = useSound(whooshSound, { volume: 0.5 });
+
+  return <button onClick={play}>Transition</button>;
+}
+```
+
+### Imperative Playback
+
+```tsx
+import { playSound } from "@/lib/sound-engine";
+import { whooshSound } from "@/sfx/whoosh";
+
+async function handleTransition() {
+  await playSound(whooshSound.dataUri, { volume: 0.5 });
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function SfxLayer() {
+  return <Audio src={staticFile("sfx/whoosh.mp3")} volume={0.5} />;
+}
+```
+
+## Timing
+
+Best played **100ms before** the scene cut for a natural transition feel.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

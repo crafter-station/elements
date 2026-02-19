@@ -1,0 +1,64 @@
+---
+title: Riser SFX
+description: Cinematic tension riser for dramatic buildups. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-riser"
+  installUrl="@elements/sfx-riser"
+  category="SFX"
+  name="Riser SFX"
+>
+  <SfxPlayer name="riser" src="/sfx/riser.mp3" duration="4.03" category="cinematic" />
+</ComponentPreviewItem>
+
+## Overview
+
+A cinematic tension riser that builds anticipation before a reveal or key moment. Duration: **4.03s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-riser
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/riser.mp3 https://tryelements.dev/sfx/riser.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { riserSound } from "@/sfx/riser";
+
+export function CountdownReveal() {
+  const [play] = useSound(riserSound, { volume: 0.4 });
+
+  return <button onClick={play}>Build Tension</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function DramaticReveal() {
+  return <Audio src={staticFile("sfx/riser.mp3")} volume={0.35} />;
+}
+```
+
+## Timing
+
+Start **200ms before** the zoom-in or reveal begins. The riser peaks naturally toward the end.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

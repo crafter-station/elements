@@ -1,0 +1,67 @@
+---
+title: Sound Types
+description: TypeScript type definitions for the SFX sound system
+---
+
+## Overview
+
+Core type definitions for the SFX sound system. Installed automatically as a dependency when you add any sound.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/sound-types
+```
+
+Typically you don't need to install this directly - it's pulled in automatically by any `sfx-*` component.
+
+## Types
+
+### SoundAsset
+
+The main type representing a sound file with inline base64 audio data.
+
+```tsx
+interface SoundAsset {
+  name: string;
+  dataUri: string;
+  duration: number;
+  format: "mp3";
+  license: "CC0";
+  author: string;
+}
+```
+
+### UseSoundOptions
+
+Options for the `useSound` hook.
+
+```tsx
+interface UseSoundOptions {
+  volume?: number;
+  playbackRate?: number;
+  interrupt?: boolean;
+  onEnd?: () => void;
+}
+```
+
+### UseSoundReturn
+
+Return type of the `useSound` hook.
+
+```tsx
+type UseSoundReturn = [
+  PlayFunction,
+  {
+    stop: () => void;
+    pause: () => void;
+    isPlaying: boolean;
+    duration: number;
+    sound: SoundAsset;
+  },
+];
+```
+
+## License
+
+CC0 (public domain). No attribution required.

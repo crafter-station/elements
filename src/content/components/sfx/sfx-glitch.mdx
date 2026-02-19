@@ -1,0 +1,64 @@
+---
+title: Glitch SFX
+description: Digital glitch sound for tech aesthetic and error states. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-glitch"
+  installUrl="@elements/sfx-glitch"
+  category="SFX"
+  name="Glitch SFX"
+>
+  <SfxPlayer name="glitch" src="/sfx/glitch.mp3" duration="2.64" category="cinematic" />
+</ComponentPreviewItem>
+
+## Overview
+
+A digital glitch sound effect for error states, tech aesthetics, and cyberpunk vibes. Duration: **2.64s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-glitch
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/glitch.mp3 https://tryelements.dev/sfx/glitch.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { glitchSound } from "@/sfx/glitch";
+
+export function ErrorState() {
+  const [play] = useSound(glitchSound, { volume: 0.3 });
+
+  return <button onClick={play}>Trigger Glitch</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function GlitchTransition() {
+  return <Audio src={staticFile("sfx/glitch.mp3")} volume={0.3} />;
+}
+```
+
+## Timing
+
+Play **at the reveal** of the error state or glitch visual effect.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

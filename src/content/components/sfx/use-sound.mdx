@@ -1,0 +1,70 @@
+---
+title: useSound Hook
+description: React hook for playing sound effects with state management
+---
+
+## Overview
+
+A React hook that wraps the sound engine with state management for play/stop/pause and `isPlaying` tracking. Installed automatically when you add any sound.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/use-sound
+```
+
+Typically you don't need to install this directly - it's pulled in automatically by any `sfx-*` component.
+
+## Usage
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { popSound } from "@/sfx/pop";
+
+export function SoundButton() {
+  const [play, { stop, isPlaying }] = useSound(popSound, {
+    volume: 0.5,
+  });
+
+  return (
+    <button onClick={isPlaying ? stop : play}>
+      {isPlaying ? "Stop" : "Play"}
+    </button>
+  );
+}
+```
+
+## API
+
+### Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `sound` | `SoundAsset` | The sound asset to play |
+| `options` | `UseSoundOptions` | Optional playback configuration |
+
+### Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `volume` | `number` | `1` | Volume level (0-1) |
+| `playbackRate` | `number` | `1` | Playback speed |
+| `interrupt` | `boolean` | `true` | Stop previous playback on new play |
+| `onEnd` | `() => void` | - | Callback when playback finishes |
+
+### Return Value
+
+Returns a tuple `[play, controls]`:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `play` | `() => void` | Start playback |
+| `stop` | `() => void` | Stop playback |
+| `pause` | `() => void` | Pause playback |
+| `isPlaying` | `boolean` | Whether sound is currently playing |
+| `duration` | `number` | Sound duration in seconds |
+| `sound` | `SoundAsset` | The sound asset reference |
+
+## License
+
+CC0 (public domain). No attribution required.

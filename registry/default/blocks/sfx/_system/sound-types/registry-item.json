@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sound-types",
+  "type": "registry:lib",
+  "title": "Sound Types",
+  "description": "TypeScript types for sound assets",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/_system/sound-types/lib/sound-types.ts",
+      "type": "registry:lib"
+    }
+  ],
+  "categories": ["sfx"]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-glitch",
+  "type": "registry:ui",
+  "title": "Glitch SFX",
+  "description": "Digital glitch sound for tech aesthetic and error states. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/glitch/components/sfx/glitch.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "cinematic"]
+}

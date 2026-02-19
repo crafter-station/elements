@@ -1,0 +1,70 @@
+---
+title: Keyboard SFX
+description: Mechanical keyboard typing loop for code scenes. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-keyboard"
+  installUrl="@elements/sfx-keyboard"
+  category="SFX"
+  name="Keyboard SFX"
+>
+  <SfxPlayer name="keyboard" src="/sfx/keyboard.mp3" duration="8.05" category="ui" />
+</ComponentPreviewItem>
+
+## Overview
+
+A satisfying mechanical keyboard typing sound, perfect for coding scenes, terminal animations, and hacker aesthetics. Duration: **8.05s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-keyboard
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/keyboard.mp3 https://tryelements.dev/sfx/keyboard.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { keyboardSound } from "@/sfx/keyboard";
+
+export function TypingIndicator() {
+  const [play, { stop, isPlaying }] = useSound(keyboardSound, {
+    volume: 0.2,
+  });
+
+  return (
+    <button onClick={isPlaying ? stop : play}>
+      {isPlaying ? "Stop" : "Play Typing"}
+    </button>
+  );
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function CodeScene() {
+  return <Audio src={staticFile("sfx/keyboard.mp3")} volume={0.15} />;
+}
+```
+
+## Timing
+
+Use as background audio during code typing sequences. Keep volume low (0.1-0.2) to avoid overpowering narration.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

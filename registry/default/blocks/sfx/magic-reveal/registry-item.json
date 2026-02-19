@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-magic-reveal",
+  "type": "registry:ui",
+  "title": "Magic Reveal SFX",
+  "description": "Dramatic reveal sound for before/after transitions. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/magic-reveal/components/sfx/magic-reveal.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "transition"]
+}

@@ -1,0 +1,64 @@
+---
+title: Magic Reveal SFX
+description: Sparkle reveal sound for dramatic unveils. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-magic-reveal"
+  installUrl="@elements/sfx-magic-reveal"
+  category="SFX"
+  name="Magic Reveal SFX"
+>
+  <SfxPlayer name="magic-reveal" src="/sfx/magic-reveal.mp3" duration="2.04" category="transition" />
+</ComponentPreviewItem>
+
+## Overview
+
+A magical sparkle/reveal sound for dramatic unveils, feature reveals, and wow moments. Duration: **2.04s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-magic-reveal
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/magic-reveal.mp3 https://tryelements.dev/sfx/magic-reveal.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { magicRevealSound } from "@/sfx/magic-reveal";
+
+export function RevealButton() {
+  const [play] = useSound(magicRevealSound, { volume: 0.5 });
+
+  return <button onClick={play}>Reveal</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function MagicReveal() {
+  return <Audio src={staticFile("sfx/magic-reveal.mp3")} volume={0.45} />;
+}
+```
+
+## Timing
+
+Play **50ms before** the dramatic reveal for the best impact.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

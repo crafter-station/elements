@@ -1,0 +1,75 @@
+---
+title: Pop SFX
+description: Quick pop for UI feedback and text reveals. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-pop"
+  installUrl="@elements/sfx-pop"
+  category="SFX"
+  name="Pop SFX"
+>
+  <SfxPlayer name="pop" src="/sfx/pop.mp3" duration="1.02" category="ui" />
+</ComponentPreviewItem>
+
+## Overview
+
+A crisp pop sound for button clicks, text reveals, and general UI feedback. Duration: **1.02s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-pop
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/pop.mp3 https://tryelements.dev/sfx/pop.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { popSound } from "@/sfx/pop";
+
+export function LikeButton() {
+  const [play] = useSound(popSound, { volume: 0.3 });
+
+  return <button onClick={play}>Like</button>;
+}
+```
+
+### Imperative Playback
+
+```tsx
+import { playSound } from "@/lib/sound-engine";
+import { popSound } from "@/sfx/pop";
+
+async function handleClick() {
+  await playSound(popSound.dataUri, { volume: 0.3 });
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function TextRevealSfx() {
+  return <Audio src={staticFile("sfx/pop.mp3")} volume={0.3} />;
+}
+```
+
+## Timing
+
+Play at **0ms (exact frame)** when text appears or an element pops in.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

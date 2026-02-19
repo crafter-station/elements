@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-ui",
+  "type": "registry:block",
+  "title": "UI SFX Bundle",
+  "description": "UI interaction sound effects: pop, keyboard.",
+  "registryDependencies": ["sfx-pop", "sfx-keyboard"],
+  "dependencies": [],
+  "files": [],
+  "categories": ["sfx", "ui"]
+}

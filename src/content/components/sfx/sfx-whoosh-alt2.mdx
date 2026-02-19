@@ -1,0 +1,64 @@
+---
+title: Whoosh Alt 2 SFX
+description: Longer whoosh with a sweeping tail. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-whoosh-alt2"
+  installUrl="@elements/sfx-whoosh-alt2"
+  category="SFX"
+  name="Whoosh Alt 2 SFX"
+>
+  <SfxPlayer name="whoosh-alt2" src="/sfx/whoosh-alt2.mp3" duration="1.56" category="transition" />
+</ComponentPreviewItem>
+
+## Overview
+
+A longer whoosh variant with a sweeping tail, ideal for dramatic or cinematic transitions. Duration: **1.56s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-whoosh-alt2
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/whoosh-alt2.mp3 https://tryelements.dev/sfx/whoosh-alt2.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { whooshAlt2Sound } from "@/sfx/whoosh-alt2";
+
+export function CinematicTransition() {
+  const [play] = useSound(whooshAlt2Sound, { volume: 0.4 });
+
+  return <button onClick={play}>Dramatic Cut</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function TransitionLayer() {
+  return <Audio src={staticFile("sfx/whoosh-alt2.mp3")} volume={0.4} />;
+}
+```
+
+## Timing
+
+Best played **150ms before** the transition for maximum impact.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

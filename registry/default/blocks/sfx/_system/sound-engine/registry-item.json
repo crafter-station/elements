@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sound-engine",
+  "type": "registry:lib",
+  "title": "Sound Engine",
+  "description": "Web Audio API engine for playing sound assets",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/_system/sound-engine/lib/sound-engine.ts",
+      "type": "registry:lib"
+    }
+  ],
+  "categories": ["sfx"]
+}

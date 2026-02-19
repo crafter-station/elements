@@ -1,0 +1,64 @@
+---
+title: Whoosh Alt 1 SFX
+description: Alternative whoosh with more body. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-whoosh-alt1"
+  installUrl="@elements/sfx-whoosh-alt1"
+  category="SFX"
+  name="Whoosh Alt 1 SFX"
+>
+  <SfxPlayer name="whoosh-alt1" src="/sfx/whoosh-alt1.mp3" duration="1.10" category="transition" />
+</ComponentPreviewItem>
+
+## Overview
+
+A fuller whoosh variant with more body and presence. Great for larger or more dramatic transitions. Duration: **1.10s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-whoosh-alt1
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/whoosh-alt1.mp3 https://tryelements.dev/sfx/whoosh-alt1.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { whooshAlt1Sound } from "@/sfx/whoosh-alt1";
+
+export function SlideTransition() {
+  const [play] = useSound(whooshAlt1Sound, { volume: 0.4 });
+
+  return <button onClick={play}>Next Slide</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function TransitionLayer() {
+  return <Audio src={staticFile("sfx/whoosh-alt1.mp3")} volume={0.4} />;
+}
+```
+
+## Timing
+
+Best played **100ms before** the transition cut.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.

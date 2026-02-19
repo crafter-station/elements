@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-transitions",
+  "type": "registry:block",
+  "title": "Transition SFX Bundle",
+  "description": "All transition sound effects: whoosh, whoosh-alt1, whoosh-alt2, magic-reveal.",
+  "registryDependencies": [
+    "sfx-whoosh",
+    "sfx-whoosh-alt1",
+    "sfx-whoosh-alt2",
+    "sfx-magic-reveal"
+  ],
+  "dependencies": [],
+  "files": [],
+  "categories": ["sfx", "transition"]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-cinematic",
+  "type": "registry:block",
+  "title": "Cinematic SFX Bundle",
+  "description": "Cinematic sound effects: riser, shutter, glitch.",
+  "registryDependencies": ["sfx-riser", "sfx-shutter", "sfx-glitch"],
+  "dependencies": [],
+  "files": [],
+  "categories": ["sfx", "cinematic"]
+}

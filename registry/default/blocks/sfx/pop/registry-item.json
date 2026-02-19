@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-pop",
+  "type": "registry:ui",
+  "title": "Pop SFX",
+  "description": "Quick pop sound for text reveals and UI element appearances. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/pop/components/sfx/pop.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "ui"]
+}

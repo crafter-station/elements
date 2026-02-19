@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-whoosh-alt2",
+  "type": "registry:ui",
+  "title": "Whoosh Alt 2 SFX",
+  "description": "Alternative whoosh transition sound effect. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/whoosh-alt2/components/sfx/whoosh-alt2.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "transition"]
+}

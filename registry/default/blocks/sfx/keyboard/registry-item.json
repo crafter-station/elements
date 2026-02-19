@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-keyboard",
+  "type": "registry:ui",
+  "title": "Keyboard SFX",
+  "description": "Keyboard typing sound for hook cards and outros. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/keyboard/components/sfx/keyboard.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "ui"]
+}

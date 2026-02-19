@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-whoosh",
+  "type": "registry:ui",
+  "title": "Whoosh SFX",
+  "description": "Smooth transition whoosh sound effect. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/whoosh/components/sfx/whoosh.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "transition"]
+}

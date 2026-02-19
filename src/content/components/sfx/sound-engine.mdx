@@ -1,0 +1,58 @@
+---
+title: Sound Engine
+description: Web Audio API engine for playing sound assets
+---
+
+## Overview
+
+A lightweight Web Audio API wrapper that handles audio decoding, caching, and playback. Installed automatically as a dependency when you add any sound.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/sound-engine
+```
+
+Typically you don't need to install this directly - it's pulled in automatically by any `sfx-*` component.
+
+## API
+
+### playSound
+
+Play a sound from a base64 data URI with optional volume and playback rate.
+
+```tsx
+import { playSound } from "@/lib/sound-engine";
+import { whooshSound } from "@/sfx/whoosh";
+
+const { stop } = await playSound(whooshSound.dataUri, {
+  volume: 0.5,
+  playbackRate: 1.0,
+  onEnd: () => console.log("done"),
+});
+```
+
+### Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `volume` | `number` | `1` | Volume level (0-1) |
+| `playbackRate` | `number` | `1` | Playback speed (0.5 = half, 2 = double) |
+| `onEnd` | `() => void` | - | Callback when playback finishes |
+
+### Returns
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `stop` | `() => void` | Stop playback immediately |
+
+## Details
+
+- Uses a singleton `AudioContext` (created on first play)
+- Caches decoded audio buffers by data URI
+- Handles base64 decoding internally
+- Works in all modern browsers
+
+## License
+
+CC0 (public domain). No attribution required.

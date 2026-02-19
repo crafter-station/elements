@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-sound",
+  "type": "registry:hook",
+  "title": "useSound Hook",
+  "description": "React hook for playing sound assets via Web Audio API",
+  "registryDependencies": ["sound-engine", "sound-types"],
+  "dependencies": ["react"],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/_system/use-sound/hooks/use-sound.ts",
+      "type": "registry:hook"
+    }
+  ],
+  "categories": ["sfx"]
+}

@@ -1,0 +1,64 @@
+---
+title: Shutter SFX
+description: Camera shutter for photo-style cuts and snapshots. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-shutter"
+  installUrl="@elements/sfx-shutter"
+  category="SFX"
+  name="Shutter SFX"
+>
+  <SfxPlayer name="shutter" src="/sfx/shutter.mp3" duration="7.87" category="cinematic" />
+</ComponentPreviewItem>
+
+## Overview
+
+A camera shutter sound for photo-style scene cuts, screenshot moments, and snapshot aesthetics. Duration: **7.87s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-shutter
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/shutter.mp3 https://tryelements.dev/sfx/shutter.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { shutterSound } from "@/sfx/shutter";
+
+export function ScreenshotButton() {
+  const [play] = useSound(shutterSound, { volume: 0.5 });
+
+  return <button onClick={play}>Capture</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function PhotoCut() {
+  return <Audio src={staticFile("sfx/shutter.mp3")} volume={0.4} />;
+}
+```
+
+## Timing
+
+Play at the **exact cut frame** for a photo-style transition effect.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use.
