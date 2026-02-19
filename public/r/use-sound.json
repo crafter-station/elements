@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-sound",
+  "title": "useSound Hook",
+  "description": "React hook for playing sound assets via Web Audio API",
+  "dependencies": ["react"],
+  "registryDependencies": ["sound-engine", "sound-types"],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/_system/use-sound/hooks/use-sound.ts",
+      "content": "\"use client\";\n\nimport { useCallback, useEffect, useRef, useState } from \"react\";\nimport { getAudioContext, decodeAudioData } from \"@/lib/sound-engine\";\nimport type {\n  SoundAsset,\n  UseSoundOptions,\n  UseSoundReturn,\n} from \"@/lib/sound-types\";\n\nexport function useSound(\n  sound: SoundAsset,\n  options: UseSoundOptions = {}\n): UseSoundReturn {\n  const {\n    volume = 1,\n    playbackRate = 1,\n    interrupt = false,\n    soundEnabled = true,\n    onPlay,\n    onEnd,\n    onPause,\n    onStop,\n  } = options;\n\n  const [isPlaying, setIsPlaying] = useState(false);\n  const [duration, setDuration] = useState<number | null>(\n    sound.duration ?? null\n  );\n  const sourceRef = useRef<AudioBufferSourceNode | null>(null);\n  const gainRef = useRef<GainNode | null>(null);\n  const bufferRef = useRef<AudioBuffer | null>(null);\n\n  useEffect(() => {\n    let cancelled = false;\n    decodeAudioData(sound.dataUri).then((buffer) => {\n      if (!cancelled) {\n        bufferRef.current = buffer;\n        setDuration(buffer.duration);\n      }\n    });\n    return () => {\n      cancelled = true;\n    };\n  }, [sound.dataUri]);\n\n  const stop = useCallback(() => {\n    if (sourceRef.current) {\n      try {\n        sourceRef.current.stop();\n      } catch {\n        // Already stopped\n      }\n      sourceRef.current = null;\n    }\n    setIsPlaying(false);\n    onStop?.();\n  }, [onStop]);\n\n  const play = useCallback(\n    (overrides?: { volume?: number; playbackRate?: number }) => {\n      if (!soundEnabled || !bufferRef.current) return;\n\n      const ctx = getAudioContext();\n\n      if (ctx.state === \"suspended\") {\n        ctx.resume();\n      }\n\n      if (interrupt && sourceRef.current) {\n        stop();\n      }\n\n      const source = ctx.createBufferSource();\n      const gain = ctx.createGain();\n\n      source.buffer = bufferRef.current;\n      source.playbackRate.value = overrides?.playbackRate ?? playbackRate;\n      gain.gain.value = overrides?.volume ?? volume;\n\n      source.connect(gain);\n      gain.connect(ctx.destination);\n\n      source.onended = () => {\n        setIsPlaying(false);\n        onEnd?.();\n      };\n\n      source.start(0);\n      sourceRef.current = source;\n      gainRef.current = gain;\n      setIsPlaying(true);\n      onPlay?.();\n    },\n    [soundEnabled, playbackRate, volume, interrupt, stop, onPlay, onEnd]\n  );\n\n  const pause = useCallback(() => {\n    stop();\n    onPause?.();\n  }, [stop, onPause]);\n\n  useEffect(() => {\n    if (gainRef.current) {\n      gainRef.current.gain.value = volume;\n    }\n  }, [volume]);\n\n  useEffect(() => {\n    return () => {\n      if (sourceRef.current) {\n        try {\n          sourceRef.current.stop();\n        } catch {\n          // Already stopped\n        }\n      }\n    };\n  }, []);\n\n  return [play, { stop, pause, isPlaying, duration, sound }] as const;\n}\n",
+      "type": "registry:hook"
+    }
+  ],
+  "categories": ["sfx"],
+  "type": "registry:hook"
+}

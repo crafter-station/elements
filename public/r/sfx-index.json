@@ -1,0 +1,92 @@
+{
+  "generated": "2026-02-19T01:24:15.559Z",
+  "count": 9,
+  "sounds": [
+    {
+      "name": "glitch",
+      "category": "cinematic",
+      "duration": 2.638,
+      "sizeBytes": 84427,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/glitch.mp3",
+      "registry": "https://tryelements.dev/r/sfx-glitch.json"
+    },
+    {
+      "name": "keyboard",
+      "category": "ui",
+      "duration": 8.046,
+      "sizeBytes": 64826,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/keyboard.mp3",
+      "registry": "https://tryelements.dev/r/sfx-keyboard.json"
+    },
+    {
+      "name": "magic-reveal",
+      "category": "transition",
+      "duration": 2.038,
+      "sizeBytes": 65201,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/magic-reveal.mp3",
+      "registry": "https://tryelements.dev/r/sfx-magic-reveal.json"
+    },
+    {
+      "name": "pop",
+      "category": "ui",
+      "duration": 1.019,
+      "sizeBytes": 32600,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/pop.mp3",
+      "registry": "https://tryelements.dev/r/sfx-pop.json"
+    },
+    {
+      "name": "riser",
+      "category": "cinematic",
+      "duration": 4.032,
+      "sizeBytes": 32852,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/riser.mp3",
+      "registry": "https://tryelements.dev/r/sfx-riser.json"
+    },
+    {
+      "name": "shutter",
+      "category": "cinematic",
+      "duration": 7.872,
+      "sizeBytes": 63572,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/shutter.mp3",
+      "registry": "https://tryelements.dev/r/sfx-shutter.json"
+    },
+    {
+      "name": "whoosh",
+      "category": "transition",
+      "duration": 0.575,
+      "sizeBytes": 18390,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/whoosh.mp3",
+      "registry": "https://tryelements.dev/r/sfx-whoosh.json"
+    },
+    {
+      "name": "whoosh-alt1",
+      "category": "transition",
+      "duration": 1.104,
+      "sizeBytes": 35328,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/whoosh-alt1.mp3",
+      "registry": "https://tryelements.dev/r/sfx-whoosh-alt1.json"
+    },
+    {
+      "name": "whoosh-alt2",
+      "category": "transition",
+      "duration": 1.56,
+      "sizeBytes": 49920,
+      "license": "CC0",
+      "url": "https://tryelements.dev/sfx/whoosh-alt2.mp3",
+      "registry": "https://tryelements.dev/r/sfx-whoosh-alt2.json"
+    }
+  ],
+  "bundles": {
+    "transitions": ["magic-reveal", "whoosh", "whoosh-alt1", "whoosh-alt2"],
+    "ui": ["keyboard", "pop"],
+    "cinematic": ["glitch", "riser", "shutter"]
+  }
+}

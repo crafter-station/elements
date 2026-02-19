@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sound-types",
+  "title": "Sound Types",
+  "description": "TypeScript types for sound assets",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/_system/sound-types/lib/sound-types.ts",
+      "content": "export interface SoundAsset {\n  name: string;\n  dataUri: string;\n  duration: number;\n  format: \"mp3\" | \"wav\" | \"ogg\";\n  license: \"CC0\" | \"OGA-BY\" | \"MIT\";\n  author: string;\n}\n\nexport interface UseSoundOptions {\n  volume?: number;\n  playbackRate?: number;\n  interrupt?: boolean;\n  soundEnabled?: boolean;\n  onPlay?: () => void;\n  onEnd?: () => void;\n  onPause?: () => void;\n  onStop?: () => void;\n}\n\nexport type PlayFunction = (overrides?: {\n  volume?: number;\n  playbackRate?: number;\n}) => void;\n\nexport interface SoundControls {\n  stop: () => void;\n  pause: () => void;\n  isPlaying: boolean;\n  duration: number | null;\n  sound: SoundAsset;\n}\n\nexport type UseSoundReturn = readonly [PlayFunction, SoundControls];\n",
+      "type": "registry:lib"
+    }
+  ],
+  "categories": ["sfx"],
+  "type": "registry:lib"
+}
