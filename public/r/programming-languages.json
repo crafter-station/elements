@@ -9,7 +9,17 @@
     "@elements/typescript-logo",
     "@elements/python-logo",
     "@elements/rust-logo",
-    "@elements/go-logo"
+    "@elements/go-logo",
+    "@elements/html-logo",
+    "@elements/css-logo",
+    "@elements/json-logo",
+    "@elements/bash-logo",
+    "@elements/sql-logo",
+    "@elements/java-logo",
+    "@elements/cplusplus-logo",
+    "@elements/ruby-logo",
+    "@elements/swift-logo",
+    "@elements/kotlin-logo"
   ],
   "files": [],
   "docs": "Collection of programming language logos. Perfect for showcasing tech stacks, documentation, and developer portfolios.",

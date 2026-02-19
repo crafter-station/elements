@@ -2307,6 +2307,16 @@ export const registry = {
         "@elements/python-logo",
         "@elements/rust-logo",
         "@elements/go-logo",
+        "@elements/html-logo",
+        "@elements/css-logo",
+        "@elements/json-logo",
+        "@elements/bash-logo",
+        "@elements/sql-logo",
+        "@elements/java-logo",
+        "@elements/cplusplus-logo",
+        "@elements/ruby-logo",
+        "@elements/swift-logo",
+        "@elements/kotlin-logo",
       ],
       dependencies: [],
       files: [],
@@ -2611,7 +2621,7 @@ export const registry = {
       type: "registry:block",
       title: "All SFX Bundle",
       description:
-        "Complete sound effects collection: 9 CC0-licensed sounds for transitions, UI, and cinematic use.",
+        "Complete sound effects collection: 17 CC0-licensed sounds for transitions, UI, and cinematic use.",
       registryDependencies: [
         "sfx-whoosh",
         "sfx-whoosh-alt1",
@@ -2622,6 +2632,14 @@ export const registry = {
         "sfx-glitch",
         "sfx-magic-reveal",
         "sfx-keyboard",
+        "sfx-click",
+        "sfx-boom",
+        "sfx-notification",
+        "sfx-reverse-whoosh",
+        "sfx-drone",
+        "sfx-error",
+        "sfx-swoosh",
+        "sfx-success",
       ],
       dependencies: [],
       files: [],
@@ -2629,14 +2647,89 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-boom",
+      type: "registry:ui",
+      title: "Boom SFX",
+      description:
+        "Impact bass hit for dramatic hooks and reveals. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/boom/components/sfx/boom.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "cinematic"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "sfx-cinematic",
       type: "registry:block",
       title: "Cinematic SFX Bundle",
-      description: "Cinematic sound effects: riser, shutter, glitch.",
-      registryDependencies: ["sfx-riser", "sfx-shutter", "sfx-glitch"],
+      description:
+        "Cinematic sound effects: riser, shutter, glitch, boom, drone.",
+      registryDependencies: [
+        "sfx-riser",
+        "sfx-shutter",
+        "sfx-glitch",
+        "sfx-boom",
+        "sfx-drone",
+      ],
       dependencies: [],
       files: [],
       categories: ["sfx", "cinematic"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-click",
+      type: "registry:ui",
+      title: "Click SFX",
+      description:
+        "Dry UI click for text overlays and button taps. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/click/components/sfx/click.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "ui"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-drone",
+      type: "registry:ui",
+      title: "Drone SFX",
+      description:
+        "Low atmospheric hum for tension and ambient padding. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/drone/components/sfx/drone.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "cinematic"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-error",
+      type: "registry:ui",
+      title: "Error SFX",
+      description:
+        "Short error beep for failed builds and terminal errors. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/error/components/sfx/error.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "ui"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2691,6 +2784,23 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-notification",
+      type: "registry:ui",
+      title: "Notification SFX",
+      description:
+        "Bell chime for system alerts and notifications. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/notification/components/sfx/notification.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "ui"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "sfx-pop",
       type: "registry:ui",
       title: "Pop SFX",
@@ -2705,6 +2815,22 @@ export const registry = {
         },
       ],
       categories: ["sfx", "ui"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-reverse-whoosh",
+      type: "registry:ui",
+      title: "Reverse Whoosh SFX",
+      description: "Reverse swoosh for rewind and undo moments. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/reverse-whoosh/components/sfx/reverse-whoosh.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "transition"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2741,16 +2867,51 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-success",
+      type: "registry:ui",
+      title: "Success SFX",
+      description:
+        "Positive completion chime for deploys and achievements. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/success/components/sfx/success.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "ui"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sfx-swoosh",
+      type: "registry:ui",
+      title: "Swoosh SFX",
+      description: "Quick light transition for fast scene cuts. CC0 license.",
+      registryDependencies: ["sound-types"],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/sfx/swoosh/components/sfx/swoosh.ts",
+          type: "registry:component",
+        },
+      ],
+      categories: ["sfx", "transition"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "sfx-transitions",
       type: "registry:block",
       title: "Transition SFX Bundle",
       description:
-        "All transition sound effects: whoosh, whoosh-alt1, whoosh-alt2, magic-reveal.",
+        "All transition sound effects: whoosh, whoosh-alt1, whoosh-alt2, magic-reveal, reverse-whoosh, swoosh.",
       registryDependencies: [
         "sfx-whoosh",
         "sfx-whoosh-alt1",
         "sfx-whoosh-alt2",
         "sfx-magic-reveal",
+        "sfx-reverse-whoosh",
+        "sfx-swoosh",
       ],
       dependencies: [],
       files: [],
@@ -2761,8 +2922,16 @@ export const registry = {
       name: "sfx-ui",
       type: "registry:block",
       title: "UI SFX Bundle",
-      description: "UI interaction sound effects: pop, keyboard.",
-      registryDependencies: ["sfx-pop", "sfx-keyboard"],
+      description:
+        "UI interaction sound effects: pop, keyboard, click, notification, error, success.",
+      registryDependencies: [
+        "sfx-pop",
+        "sfx-keyboard",
+        "sfx-click",
+        "sfx-notification",
+        "sfx-error",
+        "sfx-success",
+      ],
       dependencies: [],
       files: [],
       categories: ["sfx", "ui"],
