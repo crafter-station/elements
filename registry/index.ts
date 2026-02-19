@@ -852,15 +852,15 @@ export const registry = {
       type: "registry:block",
       title: "ElevenLabs Logo",
       description:
-        "ElevenLabs AI voice platform logo with dark/light mode support",
+        "ElevenLabs AI voice platform logo with icon and wordmark variants",
       dependencies: [],
       registryDependencies: [],
       categories: ["AI", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon"],
+        variants: ["icon", "wordmark"],
         variantTypes: {
-          base: ["icon"],
+          base: ["icon", "wordmark"],
           modes: ["dark", "light"],
         },
       },
@@ -870,7 +870,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      docs: "ElevenLabs logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: white on dark backgrounds, black on light backgrounds.",
+      docs: "ElevenLabs logo with 2 base variants (icon symbol and full wordmark) and 2 modes (dark, light) = 4 total combinations. Uses official brand assets.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
