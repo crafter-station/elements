@@ -102,6 +102,7 @@ export function LogosClient({
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [logos, setLogos] = useState<LogoWithComponent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [variantsDialogOpen, setVariantsDialogOpen] = useState(false);
   const [selectedLogoForVariants, setSelectedLogoForVariants] =
@@ -219,6 +220,18 @@ export function LogosClient({
       }
     };
   }, [searchTerm, filteredLogos.length]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "f") {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const handleLogoToggle = (logoId: string) => {
     const logo = logos.find((l) => l.id === logoId);
@@ -781,6 +794,7 @@ export function LogosClient({
                   {/* Search - Show for both modes */}
                   <div className="relative flex-1">
                     <Input
+                      ref={searchInputRef}
                       type="text"
                       placeholder={
                         viewMode === "individual"
@@ -789,9 +803,16 @@ export function LogosClient({
                       }
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pr-10 h-9"
+                      className="pr-20 h-9"
                     />
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
+                      <kbd className="hidden sm:inline-flex h-5 items-center rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
+                        {typeof navigator !== "undefined" &&
+                        /Mac|iPhone/.test(navigator.platform || "")
+                          ? "⌘"
+                          : "Ctrl+"}
+                        F
+                      </kbd>
                       <SearchIcon className="size-4" />
                     </div>
                   </div>
