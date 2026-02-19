@@ -13,10 +13,6 @@
     }
   ],
   "docs": "Apple logo component that adapts to your theme. Uses currentColor to match your design system.",
-  "categories": [
-    "Hardware",
-    "logo",
-    "brand"
-  ],
+  "categories": ["Platform", "logo", "brand"],
   "type": "registry:ui"
 }

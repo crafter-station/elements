@@ -29,6 +29,6 @@
     }
   },
   "docs": "Figma logo with 4 base variants (icon full-color, icon-mono, wordmark, logo) and dark/light modes = 7 total combinations. Icon variant is always full-color with official Figma colors.",
-  "categories": ["logos"],
+  "categories": ["DevTools", "logo", "brand"],
   "type": "registry:block"
 }

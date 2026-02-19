@@ -13,10 +13,6 @@
     }
   ],
   "docs": "Polar logo component with official brand blue color.",
-  "categories": [
-    "Funding",
-    "logo",
-    "brand"
-  ],
+  "categories": ["Finance", "logo", "brand"],
   "type": "registry:ui"
 }

@@ -13,10 +13,6 @@
     }
   ],
   "docs": "Upstash logo component with official brand green color.",
-  "categories": [
-    "Database",
-    "logo",
-    "brand"
-  ],
+  "categories": ["Cloud", "logo", "brand"],
   "type": "registry:ui"
 }

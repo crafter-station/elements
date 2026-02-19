@@ -197,7 +197,7 @@ export const registry = {
         },
       ],
       docs: "Apple logo component that adapts to your theme. Uses currentColor to match your design system.",
-      categories: ["Hardware", "logo", "brand"],
+      categories: ["Platform", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -248,7 +248,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -273,7 +273,7 @@ export const registry = {
         },
       ],
       docs: "BeInCrypto logo with 2 variants (icon, wordmark) and 2 modes (dark, light). The icon shows the bracket shapes, wordmark includes full brand mark.",
-      categories: ["Crypto", "logo", "brand"],
+      categories: ["Finance", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon", "wordmark"],
@@ -630,7 +630,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -656,7 +656,7 @@ export const registry = {
         },
       ],
       docs: "Crafter Station logo with 3 base variants (icon, wordmark, logo), 2 color schemes (gold, grayscale), and 2 modes (light, dark) = 12 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-      categories: ["Community", "logo", "brand"],
+      categories: ["Social", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: [
@@ -688,7 +688,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -768,7 +768,7 @@ export const registry = {
         },
       ],
       docs: "Discord logo component with official brand blurple color.",
-      categories: ["Communication", "logo", "brand"],
+      categories: ["Social", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -840,7 +840,7 @@ export const registry = {
         "Figma brand logo with icon, icon-mono, wordmark, and logo variants",
       dependencies: [],
       registryDependencies: [],
-      categories: ["logos"],
+      categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: [
@@ -1011,7 +1011,7 @@ export const registry = {
         },
       ],
       docs: "GitHub logo with 3 variants (invertocat, wordmark, lockup). Uses currentColor for automatic theme adaptation.",
-      categories: ["Development", "logo", "brand"],
+      categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["invertocat", "wordmark", "lockup"],
@@ -1116,7 +1116,7 @@ export const registry = {
         },
       ],
       docs: "GitLab logo component with official tanuki mascot brand colors.",
-      categories: ["Development", "logo", "brand"],
+      categories: ["DevTools", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1133,7 +1133,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -1158,7 +1158,7 @@ export const registry = {
         },
       ],
       docs: "Google logo component with official four-color brand design.",
-      categories: ["Search", "logo", "brand"],
+      categories: ["Platform", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1263,7 +1263,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -1329,7 +1329,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -1354,7 +1354,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -1378,7 +1378,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -1422,7 +1422,7 @@ export const registry = {
         },
       ],
       docs: "Kapso WhatsApp Business API platform logo with 3 base variants (icon, wordmark, logo), 2 color schemes (brand green, grayscale), and 2 modes (light, dark) = 12 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-      categories: ["Communications", "logo", "brand"],
+      categories: ["Social", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: [
@@ -1455,7 +1455,7 @@ export const registry = {
         },
       ],
       docs: "Kebo logo component with official brand purple color.",
-      categories: ["Development", "logo", "brand"],
+      categories: ["DevTools", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1505,7 +1505,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -1543,7 +1543,7 @@ export const registry = {
         "Linear issue tracking and project management platform logo with multiple variants",
       registryDependencies: [],
       dependencies: [],
-      categories: ["Project Management"],
+      categories: ["Productivity", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: [
@@ -1775,7 +1775,7 @@ export const registry = {
         },
       ],
       docs: "Microsoft logo component with official four-square brand colors.",
-      categories: ["Software", "logo", "brand"],
+      categories: ["Platform", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1877,7 +1877,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -2196,7 +2196,7 @@ export const registry = {
         },
       ],
       docs: "Polar logo component with official brand blue color.",
-      categories: ["Funding", "logo", "brand"],
+      categories: ["Finance", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2357,7 +2357,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -2471,7 +2471,7 @@ export const registry = {
       description: "Resend brand logo with icon and wordmark variants",
       registryDependencies: [],
       dependencies: [],
-      categories: ["logos"],
+      categories: ["Productivity", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: [
@@ -2562,7 +2562,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -2587,7 +2587,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -2999,7 +2999,7 @@ export const registry = {
         },
       ],
       docs: "Slack logo component with official multi-color brand design.",
-      categories: ["Communication", "logo", "brand"],
+      categories: ["Social", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3085,7 +3085,7 @@ export const registry = {
         },
       ],
       docs: "Spotify logo component with official brand green color.",
-      categories: ["Entertainment", "logo", "brand"],
+      categories: ["Social", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3101,7 +3101,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -3164,7 +3164,7 @@ export const registry = {
         },
       ],
       docs: "Stripe logo component with official brand purple color.",
-      categories: ["Payments", "logo", "brand"],
+      categories: ["Finance", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3200,7 +3200,7 @@ export const registry = {
         },
       ],
       docs: "Supabase logo component with official brand green gradient colors.",
-      categories: ["Database", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3216,7 +3216,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand", "programming"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -3593,7 +3593,7 @@ export const registry = {
         },
       ],
       docs: "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
-      categories: ["Theme", "logo", "brand"],
+      categories: ["DevTools", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3704,7 +3704,7 @@ export const registry = {
         },
       ],
       docs: "Trigger.dev background jobs platform logo with 2 base variants (icon, wordmark), 2 color schemes (grayscale, colorful), and 2 modes (light, dark) = 8 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-      categories: ["DevOps", "logo", "brand", "background-jobs"],
+      categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: [
@@ -3735,7 +3735,7 @@ export const registry = {
         },
       ],
       docs: "Twitch logo component with official brand purple and white colors.",
-      categories: ["Entertainment", "logo", "brand"],
+      categories: ["Social", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3769,7 +3769,7 @@ export const registry = {
           type: "registry:component",
         },
       ],
-      categories: ["DevTools", "logo", "brand"],
+      categories: ["Programming", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: ["icon"],
@@ -3885,7 +3885,7 @@ export const registry = {
         },
       ],
       docs: "UploadThing file upload service logo with icon and wordmark variants, 2 color schemes (brand with red accent, grayscale), and 2 modes (light, dark) = 8 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-      categories: ["Files", "logo", "brand"],
+      categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
         variants: [
@@ -4006,7 +4006,7 @@ export const registry = {
         },
       ],
       docs: "Upstash logo component with official brand green color.",
-      categories: ["Database", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

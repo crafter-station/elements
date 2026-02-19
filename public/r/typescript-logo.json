@@ -20,6 +20,6 @@
       "modes": ["dark", "light"]
     }
   },
-  "categories": ["DevTools", "logo", "brand"],
+  "categories": ["Programming", "logo", "brand"],
   "type": "registry:ui"
 }

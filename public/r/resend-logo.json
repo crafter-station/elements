@@ -21,6 +21,6 @@
     }
   },
   "docs": "Resend logo with 2 base variants (icon, wordmark) and 2 modes (dark, light) = 4 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-  "categories": ["logos"],
+  "categories": ["Productivity", "logo", "brand"],
   "type": "registry:block"
 }

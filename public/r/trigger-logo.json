@@ -27,6 +27,6 @@
     }
   },
   "docs": "Trigger.dev background jobs platform logo with 2 base variants (icon, wordmark), 2 color schemes (grayscale, colorful), and 2 modes (light, dark) = 8 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-  "categories": ["DevOps", "logo", "brand", "background-jobs"],
+  "categories": ["DevTools", "logo", "brand"],
   "type": "registry:ui"
 }
