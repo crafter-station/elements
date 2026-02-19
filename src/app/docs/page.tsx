@@ -6,6 +6,7 @@ import { ComponentCard } from "@/components/component-card";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ScrambleText } from "@/components/scramble-text";
+import { SkillBadge } from "@/components/skill-badge";
 import { BreadcrumbSchema } from "@/components/structured-data";
 
 const trackingSource = "providers_overview" as const;
@@ -98,6 +99,7 @@ export default function ProvidersIndexPage() {
                     Explore our collection of production-ready components
                     organized by provider
                   </p>
+                  <SkillBadge skill="elements" />
                 </div>
               </div>
             </div>
