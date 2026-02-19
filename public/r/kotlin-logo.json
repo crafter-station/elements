@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kotlin-logo",
+  "title": "Kotlin Logo",
+  "description": "Kotlin programming language logo component",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/kotlin-logo/components/logos/kotlin.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nexport function KotlinLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Kotlin</title>\n      <defs>\n        <linearGradient\n          id=\"kotlin-grad\"\n          x1=\"14.65%\"\n          y1=\"85.09%\"\n          x2=\"85.35%\"\n          y2=\"14.91%\"\n        >\n          <stop offset=\"0%\" stopColor=\"#E44857\" />\n          <stop offset=\"46.88%\" stopColor=\"#C711E1\" />\n          <stop offset=\"100%\" stopColor=\"#7F52FF\" />\n        </linearGradient>\n      </defs>\n      <path fill=\"url(#kotlin-grad)\" d=\"M24 24H0V0h24L12 12Z\" />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "categories": ["DevTools", "logo", "brand", "programming"],
+  "type": "registry:ui"
+}
