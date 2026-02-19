@@ -3,8 +3,14 @@
   "name": "sfx-cinematic",
   "type": "registry:block",
   "title": "Cinematic SFX Bundle",
-  "description": "Cinematic sound effects: riser, shutter, glitch.",
-  "registryDependencies": ["sfx-riser", "sfx-shutter", "sfx-glitch"],
+  "description": "Cinematic sound effects: riser, shutter, glitch, boom, drone.",
+  "registryDependencies": [
+    "sfx-riser",
+    "sfx-shutter",
+    "sfx-glitch",
+    "sfx-boom",
+    "sfx-drone"
+  ],
   "dependencies": [],
   "files": [],
   "categories": ["sfx", "cinematic"]

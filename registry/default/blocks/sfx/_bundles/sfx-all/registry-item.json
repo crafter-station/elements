@@ -3,7 +3,7 @@
   "name": "sfx-all",
   "type": "registry:block",
   "title": "All SFX Bundle",
-  "description": "Complete sound effects collection: 9 CC0-licensed sounds for transitions, UI, and cinematic use.",
+  "description": "Complete sound effects collection: 17 CC0-licensed sounds for transitions, UI, and cinematic use.",
   "registryDependencies": [
     "sfx-whoosh",
     "sfx-whoosh-alt1",
@@ -13,7 +13,15 @@
     "sfx-shutter",
     "sfx-glitch",
     "sfx-magic-reveal",
-    "sfx-keyboard"
+    "sfx-keyboard",
+    "sfx-click",
+    "sfx-boom",
+    "sfx-notification",
+    "sfx-reverse-whoosh",
+    "sfx-drone",
+    "sfx-error",
+    "sfx-swoosh",
+    "sfx-success"
   ],
   "dependencies": [],
   "files": [],

@@ -3,8 +3,15 @@
   "name": "sfx-ui",
   "type": "registry:block",
   "title": "UI SFX Bundle",
-  "description": "UI interaction sound effects: pop, keyboard.",
-  "registryDependencies": ["sfx-pop", "sfx-keyboard"],
+  "description": "UI interaction sound effects: pop, keyboard, click, notification, error, success.",
+  "registryDependencies": [
+    "sfx-pop",
+    "sfx-keyboard",
+    "sfx-click",
+    "sfx-notification",
+    "sfx-error",
+    "sfx-success"
+  ],
   "dependencies": [],
   "files": [],
   "categories": ["sfx", "ui"]
