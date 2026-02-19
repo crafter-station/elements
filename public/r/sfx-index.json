@@ -1,11 +1,11 @@
 {
-  "generated": "2026-02-19T01:49:37.342Z",
+  "generated": "2026-02-19T02:16:30.595Z",
   "count": 17,
   "sounds": [
     {
       "name": "boom",
       "category": "cinematic",
-      "duration": 4.296,
+      "duration": 4.368,
       "sizeBytes": 34942,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/boom.mp3",
@@ -23,7 +23,7 @@
     {
       "name": "drone",
       "category": "cinematic",
-      "duration": 6.816,
+      "duration": 6.875,
       "sizeBytes": 55004,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/drone.mp3",
@@ -50,7 +50,7 @@
     {
       "name": "keyboard",
       "category": "ui",
-      "duration": 8.046,
+      "duration": 8.103,
       "sizeBytes": 64826,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/keyboard.mp3",
@@ -86,7 +86,7 @@
     {
       "name": "reverse-whoosh",
       "category": "transition",
-      "duration": 5.851,
+      "duration": 5.909,
       "sizeBytes": 47272,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/reverse-whoosh.mp3",
@@ -95,7 +95,7 @@
     {
       "name": "riser",
       "category": "cinematic",
-      "duration": 4.032,
+      "duration": 4.106,
       "sizeBytes": 32852,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/riser.mp3",
@@ -104,7 +104,7 @@
     {
       "name": "shutter",
       "category": "cinematic",
-      "duration": 7.872,
+      "duration": 7.947,
       "sizeBytes": 63572,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/shutter.mp3",
@@ -122,7 +122,7 @@
     {
       "name": "swoosh",
       "category": "transition",
-      "duration": 4.08,
+      "duration": 4.159,
       "sizeBytes": 33270,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/swoosh.mp3",

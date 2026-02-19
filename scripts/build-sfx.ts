@@ -13,6 +13,77 @@ import {
 } from "node:fs";
 import { join, resolve } from "node:path";
 
+function getMp3Duration(buffer: Buffer): number {
+  let offset = 0;
+
+  if (
+    buffer.length > 10 &&
+    buffer[0] === 0x49 &&
+    buffer[1] === 0x44 &&
+    buffer[2] === 0x33
+  ) {
+    const size =
+      (buffer[6] << 21) | (buffer[7] << 14) | (buffer[8] << 7) | buffer[9];
+    offset = 10 + size;
+  }
+
+  const MPEG1_BITRATES = [
+    0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, -1,
+  ];
+  const MPEG2_BITRATES = [
+    0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, -1,
+  ];
+  const MPEG1_SAMPLE_RATES = [44100, 48000, 32000, 0];
+  const MPEG2_SAMPLE_RATES = [22050, 24000, 16000, 0];
+  const MPEG25_SAMPLE_RATES = [11025, 12000, 8000, 0];
+
+  while (offset < buffer.length - 4) {
+    const header = buffer.readUInt32BE(offset);
+    if ((header & 0xffe00000) >>> 0 !== 0xffe00000) {
+      offset++;
+      continue;
+    }
+    const mpegVersion = (header >> 19) & 0x03;
+    const layer = (header >> 17) & 0x03;
+    const bitrateIndex = (header >> 12) & 0x0f;
+    const sampleRateIndex = (header >> 10) & 0x03;
+
+    if (layer !== 1 || mpegVersion === 1 || sampleRateIndex === 3) {
+      offset++;
+      continue;
+    }
+
+    let sampleRate: number;
+    if (mpegVersion === 3) sampleRate = MPEG1_SAMPLE_RATES[sampleRateIndex];
+    else if (mpegVersion === 2)
+      sampleRate = MPEG2_SAMPLE_RATES[sampleRateIndex];
+    else sampleRate = MPEG25_SAMPLE_RATES[sampleRateIndex];
+
+    const xingOffset = offset + 4 + (mpegVersion === 3 ? 32 : 17);
+    if (xingOffset + 12 < buffer.length) {
+      const tag = buffer.toString("ascii", xingOffset, xingOffset + 4);
+      if (tag === "Xing" || tag === "Info") {
+        const flags = buffer.readUInt32BE(xingOffset + 4);
+        if (flags & 0x01) {
+          const frames = buffer.readUInt32BE(xingOffset + 8);
+          const samplesPerFrame = mpegVersion === 3 ? 1152 : 576;
+          return (frames * samplesPerFrame) / sampleRate;
+        }
+      }
+    }
+
+    const bitrates = mpegVersion === 3 ? MPEG1_BITRATES : MPEG2_BITRATES;
+    const bitrate = bitrates[bitrateIndex] * 1000;
+    if (bitrate > 0) {
+      return (buffer.length * 8) / bitrate;
+    }
+
+    break;
+  }
+
+  return 0;
+}
+
 const ROOT = resolve(import.meta.dirname, "..");
 const SFX_REGISTRY_DIR = join(ROOT, "registry/default/blocks/sfx");
 const PUBLIC_SFX_DIR = join(ROOT, "public/sfx");
@@ -106,15 +177,7 @@ function main() {
     const mp3Buffer = readFileSync(mp3Path);
     const finalSizeKb = Math.round(mp3Buffer.length / 1024);
 
-    let duration = 0;
-    try {
-      duration = Number.parseFloat(
-        execSync(
-          `ffprobe -v error -show_entries format=duration -of csv=p=0 "${mp3Path}"`,
-          { encoding: "utf-8" },
-        ).trim(),
-      );
-    } catch {}
+    const duration = getMp3Duration(mp3Buffer);
 
     const base64 = mp3Buffer.toString("base64");
     const dataUri = `data:audio/mpeg;base64,${base64}`;

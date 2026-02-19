@@ -122,7 +122,11 @@ export function SfxCardPlayer({
             <span className="text-border">·</span>
             <span>{duration.toFixed(2)}s</span>
             <span className="text-border">·</span>
-            <span className="capitalize">{category}</span>
+            <span>
+              {category === "ui"
+                ? "UI"
+                : category.charAt(0).toUpperCase() + category.slice(1)}
+            </span>
           </div>
         </div>
       </Link>
