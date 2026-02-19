@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-boom",
+  "type": "registry:ui",
+  "title": "Boom SFX",
+  "description": "Impact bass hit for dramatic hooks and reveals. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/boom/components/sfx/boom.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "cinematic"]
+}

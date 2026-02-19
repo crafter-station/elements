@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-swoosh",
+  "type": "registry:ui",
+  "title": "Swoosh SFX",
+  "description": "Quick light transition for fast scene cuts. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/swoosh/components/sfx/swoosh.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "transition"]
+}

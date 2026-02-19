@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-drone",
+  "type": "registry:ui",
+  "title": "Drone SFX",
+  "description": "Low atmospheric hum for tension and ambient padding. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/drone/components/sfx/drone.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "cinematic"]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-reverse-whoosh",
+  "type": "registry:ui",
+  "title": "Reverse Whoosh SFX",
+  "description": "Reverse swoosh for rewind and undo moments. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/reverse-whoosh/components/sfx/reverse-whoosh.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "transition"]
+}

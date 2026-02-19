@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-error",
+  "type": "registry:ui",
+  "title": "Error SFX",
+  "description": "Short error beep for failed builds and terminal errors. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/error/components/sfx/error.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "ui"]
+}

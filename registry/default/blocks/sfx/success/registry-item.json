@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sfx-success",
+  "type": "registry:ui",
+  "title": "Success SFX",
+  "description": "Positive completion chime for deploys and achievements. CC0 license.",
+  "registryDependencies": ["sound-types"],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/sfx/success/components/sfx/success.ts",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["sfx", "ui"]
+}
