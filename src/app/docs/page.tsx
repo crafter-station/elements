@@ -99,7 +99,7 @@ export default function ProvidersIndexPage() {
                     Explore our collection of production-ready components
                     organized by provider
                   </p>
-                  <SkillBadge skill="elements" />
+                  <SkillBadge />
                 </div>
               </div>
             </div>

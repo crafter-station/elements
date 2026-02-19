@@ -4,9 +4,11 @@ import { useState } from "react";
 
 import { Check, Copy, Terminal } from "lucide-react";
 
-export function SkillBadge({ skill }: { skill: string }) {
+export function SkillBadge({ skill }: { skill?: string }) {
   const [copied, setCopied] = useState(false);
-  const command = `npx skills add crafter-station/elements --skill ${skill}`;
+  const command = skill
+    ? `npx skills add crafter-station/elements --skill ${skill}`
+    : "npx skills add crafter-station/elements";
 
   const handleCopy = async () => {
     try {
