@@ -7,11 +7,19 @@ description: Browse and install components from the Elements registry (tryelemen
 
 Install production-ready components from `tryelements.dev`.
 
-## Install Pattern
+## Install Components
 
 ```bash
 npx shadcn@latest add @elements/{name}
 ```
+
+## Install Skills (for AI coding tools)
+
+```bash
+npx skills add crafter-station/elements --skill {skill-name}
+```
+
+Available skills: `ai-elements`, `sfx-elements`, `devtools-elements`, `uploadthing-elements`, `github-elements`, `theme-elements`, `polar-elements`, `upstash-elements`, `tech-logos`
 
 ## Providers
 
@@ -19,7 +27,7 @@ npx shadcn@latest add @elements/{name}
 |----------|-------|----------|-------|------|
 | AI Elements | 35 | AI | `/ai-elements` | tryelements.dev/docs/ai-elements |
 | Brand Logos | 94+ | Brand | `/tech-logos` | tryelements.dev/docs/logos |
-| SFX | 17 | Audio | `/sfx-elements` | tryelements.dev/docs/sfx |
+| SFX | 17 | Audio (React + raw MP3) | `/sfx-elements` | tryelements.dev/docs/sfx |
 | Dev Tools | 8 | Dev Tools | `/devtools-elements` | tryelements.dev/docs/devtools |
 | UploadThing | 7 | Files | `/uploadthing-elements` | tryelements.dev/docs/uploadthing |
 | GitHub | 7 | Integration | `/github-elements` | tryelements.dev/docs/github |
