@@ -8,13 +8,13 @@
   "files": [
     {
       "path": "registry/default/blocks/logos/vite-logo/components/logos/vite.tsx",
-      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#646CFF\",\n  light: \"#646CFF\",\n};\n\nexport function ViteLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Vite</title>\n      <path\n        fill={color}\n        d=\"m8.286 10.578.512-8.657a.306.306 0 0 1 .247-.282L17.377.006a.306.306 0 0 1 .353.385l-1.558 5.403a.306.306 0 0 0 .352.385l2.388-.46a.306.306 0 0 1 .332.438l-6.46 13.056a.306.306 0 0 1-.582-.108l1.104-5.346a.306.306 0 0 0-.37-.36l-2.37.544a.306.306 0 0 1-.364-.427zm14.976-7.927L17.284 3.74a.61.61 0 0 0-.536.593l-.228 5.862a.61.61 0 0 0 .725.596l2.006-.461a.61.61 0 0 1 .665.876L14.724 21.22a.61.61 0 0 1-1.139-.326l1.13-5.476a.61.61 0 0 0-.74-.72l-2.443.562a.61.61 0 0 1-.727-.854L14.9.926a.61.61 0 0 1 .549-.394l7.508-.17a.61.61 0 0 1 .305 1.09z\"\n      />\n    </svg>\n  );\n}\n",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#646CFF\",\n  light: \"#646CFF\",\n};\n\nexport function ViteLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Vite</title>\n      <path\n        fill={color}\n        d=\"M13.056 23.238a.57.57 0 0 1-1.02-.355v-5.202c0-.63-.512-1.143-1.144-1.143H5.148a.57.57 0 0 1-.464-.903l3.777-5.29c.54-.753 0-1.804-.93-1.804H.57a.574.574 0 0 1-.543-.746.6.6 0 0 1 .08-.157L5.008.78a.57.57 0 0 1 .467-.24h14.589a.57.57 0 0 1 .466.903l-3.778 5.29c-.54.755 0 1.806.93 1.806h5.745c.238 0 .424.138.513.322a.56.56 0 0 1-.063.603z\"\n      />\n    </svg>\n  );\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
     "hasVariants": true,
-    "variants": ["icon-dark", "icon-light"],
+    "variants": ["icon"],
     "variantTypes": {
       "base": ["icon"],
       "modes": ["dark", "light"]

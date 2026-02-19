@@ -228,7 +228,7 @@ export const registry = {
       categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -807,7 +807,7 @@ export const registry = {
       categories: ["Cloud", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -1907,7 +1907,7 @@ export const registry = {
       categories: ["Cloud", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -2357,7 +2357,7 @@ export const registry = {
       categories: ["Cloud", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -2557,7 +2557,7 @@ export const registry = {
       categories: ["Cloud", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -2754,7 +2754,7 @@ export const registry = {
       categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -3276,7 +3276,7 @@ export const registry = {
       categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -3393,7 +3393,7 @@ export const registry = {
       categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -4328,7 +4328,7 @@ export const registry = {
       categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
@@ -4354,7 +4354,7 @@ export const registry = {
       categories: ["DevTools", "logo", "brand"],
       meta: {
         hasVariants: true,
-        variants: ["icon-dark", "icon-light"],
+        variants: ["icon"],
         variantTypes: {
           base: ["icon"],
           modes: ["dark", "light"],
