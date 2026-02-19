@@ -13,7 +13,7 @@
     }
   ],
   "docs": "BeInCrypto logo with 2 variants (icon, wordmark) and 2 modes (dark, light). The icon shows the bracket shapes, wordmark includes full brand mark.",
-  "categories": ["Crypto", "logo", "brand"],
+  "categories": ["Finance", "logo", "brand"],
   "meta": {
     "hasVariants": true,
     "variants": ["icon", "wordmark"],

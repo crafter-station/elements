@@ -12,7 +12,7 @@
       "type": "registry:component"
     }
   ],
-  "categories": ["DevTools", "logo", "brand"],
+  "categories": ["Cloud", "logo", "brand"],
   "meta": {
     "hasVariants": true,
     "variants": ["icon"],

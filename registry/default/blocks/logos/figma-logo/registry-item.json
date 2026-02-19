@@ -6,7 +6,7 @@
   "description": "Figma brand logo with icon, icon-mono, wordmark, and logo variants",
   "dependencies": [],
   "registryDependencies": [],
-  "categories": ["logos"],
+  "categories": ["DevTools", "logo", "brand"],
   "meta": {
     "hasVariants": true,
     "variants": [

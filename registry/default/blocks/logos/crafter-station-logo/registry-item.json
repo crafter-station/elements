@@ -13,7 +13,7 @@
     }
   ],
   "docs": "Crafter Station logo with 3 base variants (icon, wordmark, logo), 2 color schemes (gold, grayscale), and 2 modes (light, dark) = 12 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
-  "categories": ["Community", "logo", "brand"],
+  "categories": ["Social", "logo", "brand"],
   "meta": {
     "hasVariants": true,
     "variants": [

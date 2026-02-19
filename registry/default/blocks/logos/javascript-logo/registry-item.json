@@ -12,7 +12,7 @@
       "type": "registry:component"
     }
   ],
-  "categories": ["DevTools", "logo", "brand", "programming"],
+  "categories": ["Programming", "logo", "brand"],
   "meta": {
     "hasVariants": true,
     "variants": ["icon"],

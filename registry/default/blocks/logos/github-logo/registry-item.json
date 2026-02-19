@@ -13,7 +13,7 @@
     }
   ],
   "docs": "GitHub logo with 3 variants (invertocat, wordmark, lockup). Uses currentColor for automatic theme adaptation.",
-  "categories": ["Development", "logo", "brand"],
+  "categories": ["DevTools", "logo", "brand"],
   "meta": {
     "hasVariants": true,
     "variants": ["invertocat", "wordmark", "lockup"],

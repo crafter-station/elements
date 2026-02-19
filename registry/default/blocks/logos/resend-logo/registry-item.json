@@ -6,7 +6,7 @@
   "description": "Resend brand logo with icon and wordmark variants",
   "registryDependencies": [],
   "dependencies": [],
-  "categories": ["logos"],
+  "categories": ["Productivity", "logo", "brand"],
   "meta": {
     "hasVariants": true,
     "variants": ["icon-dark", "icon-light", "wordmark-dark", "wordmark-light"],
