@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bash-logo",
+  "type": "registry:ui",
+  "title": "Bash Logo",
+  "description": "Bash shell logo component",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/bash-logo/components/logos/bash.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["DevTools", "logo", "brand", "programming"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  }
+}

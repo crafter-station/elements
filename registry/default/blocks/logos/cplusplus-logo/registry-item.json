@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cplusplus-logo",
+  "type": "registry:ui",
+  "title": "C++ Logo",
+  "description": "C++ programming language logo component",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/cplusplus-logo/components/logos/cplusplus.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["DevTools", "logo", "brand", "programming"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "java-logo",
+  "type": "registry:ui",
+  "title": "Java Logo",
+  "description": "Java programming language logo component",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/java-logo/components/logos/java.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["DevTools", "logo", "brand", "programming"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sql-logo",
+  "type": "registry:ui",
+  "title": "SQL Logo",
+  "description": "SQL database language logo component (SQLite icon)",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/sql-logo/components/logos/sql.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["DevTools", "logo", "brand", "programming"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  }
+}
