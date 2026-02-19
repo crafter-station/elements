@@ -26,8 +26,28 @@ function ensureDir(path: string) {
 async function main() {
   console.log("🚀 Building Elements registry (Supabase pattern)...\n");
 
+  // Step 0: Build SFX assets (generate TS modules from MP3s before registry scan)
+  console.log("🔊 Step 0: Building SFX assets...");
+  try {
+    execSync("bun run scripts/build-sfx.ts", { stdio: "inherit" });
+  } catch (_error) {
+    console.error("\n❌ SFX build failed");
+    process.exit(1);
+  }
+
+  // Step 0.5: Regenerate registry/index.ts to pick up SFX items
+  console.log("\n📋 Step 0.5: Regenerating registry index...");
+  try {
+    execSync("bun run scripts/generate-registry-index.ts", {
+      stdio: "inherit",
+    });
+  } catch (_error) {
+    console.error("\n❌ Registry index generation failed");
+    process.exit(1);
+  }
+
   // Step 1: Import registry
-  console.log("📝 Step 1: Importing registry...");
+  console.log("\n📝 Step 1: Importing registry...");
 
   // Dynamic import to get the registry
   const registryModule = await import("../registry/index");

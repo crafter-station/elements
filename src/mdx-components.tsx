@@ -4,6 +4,7 @@ import type { MDXComponents } from "mdx/types";
 
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentPreviewItem } from "@/components/component-preview-item";
+import { SfxPlayer } from "@/components/sfx-player";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
 import AiAgentContextDemo from "@/registry/default/examples/ai-agent-context-demo";
@@ -220,6 +221,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AIBadge: AIBadgeDemo,
     GenerateBadge: GenerateBadgeDemo,
     UseAiAvatar: UseAiAvatarDemo,
+    // SFX
+    SfxPlayer,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

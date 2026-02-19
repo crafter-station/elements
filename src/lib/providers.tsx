@@ -3,7 +3,7 @@
  * Replaces hardcoded provider definitions
  */
 
-import { BadgeCheck, Sparkles, Wand2 } from "lucide-react";
+import { BadgeCheck, Sparkles, Volume2, Wand2 } from "lucide-react";
 
 import { getProviderMetadata, getProviders } from "@/lib/registry-loader";
 
@@ -181,6 +181,13 @@ export function getProvidersData(): Provider[] {
       category: "Identity",
       brandColor: "#00FF7F",
     },
+    sfx: {
+      isEnabled: true,
+      displayName: "SFX",
+      description: "CC0 sound effects for UI interactions and video production",
+      category: "Audio",
+      brandColor: "#F59E0B",
+    },
   };
 
   // Get all provider names (registry + coming soon)
@@ -247,6 +254,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     "ai-elements": <Sparkles className="w-10 h-10" />,
     animations: <Wand2 className="w-10 h-10" />,
     badges: <BadgeCheck className="w-10 h-10" />,
+    sfx: <Volume2 className="w-10 h-10" />,
     devtools: (
       <svg
         className="w-10 h-10"

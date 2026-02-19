@@ -52,3 +52,7 @@ next-env.d.ts
 # Turbo cache
 .turbo/
 .env*.local
+
+# SFX build artifacts (generated from MP3 assets by build-sfx.ts)
+registry/default/blocks/sfx/*/components/sfx/*.ts
+.tmp-sfx/

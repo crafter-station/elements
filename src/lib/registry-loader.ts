@@ -57,6 +57,16 @@ export function getProviderFromName(name: string): string | null {
     return "logos";
   }
 
+  // Special case: sfx sounds and system components
+  if (
+    name.startsWith("sfx-") ||
+    name === "sound-engine" ||
+    name === "sound-types" ||
+    name === "use-sound"
+  ) {
+    return "sfx";
+  }
+
   // Special case: theme-switcher variants
   if (name.startsWith("theme-switcher")) {
     return "theme";
@@ -287,6 +297,13 @@ export function getProviderMetadata(provider: string): {
       category: "IDENTITY",
       brandColor: "#00FF7F",
       darkBrandColor: "#00FF7F",
+    },
+    sfx: {
+      displayName: "SFX",
+      description: "CC0 sound effects for UI interactions and video production",
+      category: "AUDIO",
+      brandColor: "#F59E0B",
+      darkBrandColor: "#FBBF24",
     },
   };
 
