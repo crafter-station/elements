@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -16,6 +19,7 @@ import {
 } from "@/lib/registry-loader";
 
 import { ScrambleText } from "@/components/scramble-text";
+import { SfxCardPlayer } from "@/components/sfx-card-player";
 import { BreadcrumbSchema } from "@/components/structured-data";
 
 // Generate static params for all providers
@@ -117,6 +121,20 @@ export default async function ProviderPage(props: ProviderPageProps) {
     ? (Object.keys(AI_ELEMENTS_SUBCATEGORIES) as AIElementsSubcategory[])
     : [];
 
+  const sfxMap: Record<string, { duration: number; category: string }> = {};
+  if (provider === "sfx") {
+    try {
+      const indexPath = path.join(process.cwd(), "public/r/sfx-index.json");
+      const data = JSON.parse(fs.readFileSync(indexPath, "utf-8"));
+      for (const s of data.sounds) {
+        sfxMap[`sfx-${s.name}`] = {
+          duration: s.duration,
+          category: s.category,
+        };
+      }
+    } catch {}
+  }
+
   return (
     <>
       <BreadcrumbSchema
@@ -215,27 +233,44 @@ export default async function ProviderPage(props: ProviderPageProps) {
                 </div>
 
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-                  {components.map((component) => (
-                    <Link
-                      key={component.name}
-                      href={`/docs/${provider}/${component.name}`}
-                      aria-label={`View ${component.title}`}
-                      className="flex items-center justify-between gap-2 rounded-md border bg-card p-3 outline-none transition-colors hover:bg-accent focus-visible:bg-accent"
-                    >
-                      <div className="flex min-w-0 flex-col">
-                        <span className="truncate font-medium">
-                          {component.title}
-                        </span>
-                        <span className="text-muted-foreground text-xs">
-                          {component.name}
-                        </span>
-                      </div>
-                      <ArrowRight
-                        className="size-5 shrink-0 text-muted-foreground"
-                        aria-hidden="true"
-                      />
-                    </Link>
-                  ))}
+                  {components.map((component) => {
+                    const sfx = sfxMap[component.name];
+                    if (sfx) {
+                      const soundName = component.name.replace("sfx-", "");
+                      return (
+                        <SfxCardPlayer
+                          key={component.name}
+                          name={component.name}
+                          title={component.title}
+                          href={`/docs/${provider}/${component.name}`}
+                          src={`/sfx/${soundName}.mp3`}
+                          duration={sfx.duration}
+                          category={sfx.category}
+                        />
+                      );
+                    }
+                    return (
+                      <Link
+                        key={component.name}
+                        href={`/docs/${provider}/${component.name}`}
+                        aria-label={`View ${component.title}`}
+                        className="flex items-center justify-between gap-2 rounded-md border bg-card p-3 outline-none transition-colors hover:bg-accent focus-visible:bg-accent"
+                      >
+                        <div className="flex min-w-0 flex-col">
+                          <span className="truncate font-medium">
+                            {component.title}
+                          </span>
+                          <span className="text-muted-foreground text-xs">
+                            {component.name}
+                          </span>
+                        </div>
+                        <ArrowRight
+                          className="size-5 shrink-0 text-muted-foreground"
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    );
+                  })}
                 </div>
               </>
             )}
