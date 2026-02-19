@@ -15,11 +15,15 @@ npx shadcn@latest add @elements/sfx-{name}
 
 Installs the sound as a TypeScript module with inline base64 audio, plus `useSound` hook and sound engine.
 
-## Install (Video / Agents)
+## Install as raw MP3 (Video / Agents / CLI)
+
+No React needed. Download the MP3 directly:
 
 ```bash
-curl -o public/sfx/{name}.mp3 https://tryelements.dev/sfx/{name}.mp3
+curl -o {name}.mp3 https://tryelements.dev/sfx/{name}.mp3
 ```
+
+Works with ffmpeg, video editors, Python scripts, or any tool that plays audio files. All sounds served with `audio/mpeg` content-type.
 
 ## Sounds
 
