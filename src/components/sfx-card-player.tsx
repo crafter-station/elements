@@ -15,7 +15,7 @@ interface SfxCardPlayerProps {
   title: string;
   href: string;
   src: string;
-  duration: number;
+  duration: number | string;
   category: string;
 }
 
@@ -24,9 +24,13 @@ export function SfxCardPlayer({
   title,
   href,
   src,
-  duration,
+  duration: rawDuration,
   category,
 }: SfxCardPlayerProps) {
+  const duration =
+    typeof rawDuration === "number"
+      ? rawDuration
+      : parseFloat(String(rawDuration)) || 0;
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const rafRef = useRef<number>(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -118,7 +122,7 @@ export function SfxCardPlayer({
             <span className="text-border">·</span>
             <span>{duration.toFixed(2)}s</span>
             <span className="text-border">·</span>
-            <span className="uppercase tracking-wider">{category}</span>
+            <span className="capitalize">{category}</span>
           </div>
         </div>
       </Link>
