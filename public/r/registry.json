@@ -206,6 +206,31 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "astro-logo",
+      "type": "registry:block",
+      "title": "Astro Logo",
+      "description": "Astro web framework logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/astro-logo/components/logos/astro.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Astro logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "aws-logo",
       "type": "registry:ui",
       "title": "AWS Logo",
@@ -746,6 +771,31 @@
       ],
       "docs": "Discord logo component with official brand blurple color.",
       "categories": ["Social", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "docker-logo",
+      "type": "registry:block",
+      "title": "Docker Logo",
+      "description": "Docker container platform logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["Cloud", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/docker-logo/components/logos/docker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Docker logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1799,6 +1849,31 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "mongodb-logo",
+      "type": "registry:block",
+      "title": "MongoDB Logo",
+      "description": "MongoDB database logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["Cloud", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/mongodb-logo/components/logos/mongodb.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "MongoDB logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "moonshot-ai-logo",
       "type": "registry:ui",
       "title": "MoonshotAI Logo",
@@ -2226,6 +2301,31 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "postgresql-logo",
+      "type": "registry:block",
+      "title": "PostgreSQL Logo",
+      "description": "PostgreSQL database logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["Cloud", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/postgresql-logo/components/logos/postgresql.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "PostgreSQL logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "prisma-logo",
       "type": "registry:ui",
       "title": "Prisma Logo",
@@ -2396,6 +2496,31 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "redis-logo",
+      "type": "registry:block",
+      "title": "Redis Logo",
+      "description": "Redis in-memory data store logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["Cloud", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/redis-logo/components/logos/redis.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Redis logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "request-inspector",
       "subcategory": "devtools",
       "type": "registry:ui",
@@ -2559,6 +2684,31 @@
       ],
       "docs": "Collapsible tree view, type badges, required indicators, constraints display, example values.",
       "categories": ["devtools"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "sentry-logo",
+      "type": "registry:block",
+      "title": "Sentry Logo",
+      "description": "Sentry error monitoring and performance platform logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/sentry-logo/components/logos/sentry.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Sentry logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3042,6 +3192,31 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "storybook-logo",
+      "type": "registry:block",
+      "title": "Storybook Logo",
+      "description": "Storybook UI component development tool logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/storybook-logo/components/logos/storybook.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Storybook logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "stream-debugger",
       "subcategory": "devtools",
       "type": "registry:ui",
@@ -3127,6 +3302,31 @@
       ],
       "docs": "Supabase logo component with official brand green gradient colors.",
       "categories": ["Cloud", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "svelte-logo",
+      "type": "registry:block",
+      "title": "Svelte Logo",
+      "description": "Svelte reactive JavaScript framework logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/svelte-logo/components/logos/svelte.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Svelte logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -4010,6 +4210,56 @@
       ],
       "docs": "Vercel logo component that adapts to your theme. Uses currentColor to match your design system.",
       "categories": ["Cloud", "logo", "brand"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "vite-logo",
+      "type": "registry:block",
+      "title": "Vite Logo",
+      "description": "Vite build tool logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/vite-logo/components/logos/vite.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Vite logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "vuejs-logo",
+      "type": "registry:block",
+      "title": "Vue.js Logo",
+      "description": "Vue.js progressive JavaScript framework logo with dark/light mode support",
+      "dependencies": [],
+      "registryDependencies": [],
+      "categories": ["DevTools", "logo", "brand"],
+      "meta": {
+        "hasVariants": true,
+        "variants": ["icon-dark", "icon-light"],
+        "variantTypes": {
+          "base": ["icon"],
+          "modes": ["dark", "light"]
+        }
+      },
+      "files": [
+        {
+          "path": "registry/default/blocks/logos/vuejs-logo/components/logos/vuejs.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Vue.js logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",

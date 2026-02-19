@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "svelte-logo",
+  "title": "Svelte Logo",
+  "description": "Svelte reactive JavaScript framework logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/svelte-logo/components/logos/svelte.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FF3E00\",\n  light: \"#FF3E00\",\n};\n\nexport function SvelteLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Svelte</title>\n      <path\n        fill={color}\n        d=\"M20.68 3.17a6.18 6.18 0 0 0-8.37-1.73L7.06 4.87a5.43 5.43 0 0 0-2.47 3.34 5.1 5.1 0 0 0 .47 3.6 4.7 4.7 0 0 0-.76 1.87 5.48 5.48 0 0 0 .9 4.08 6.18 6.18 0 0 0 8.37 1.73l5.25-3.43a5.43 5.43 0 0 0 2.47-3.34 5.1 5.1 0 0 0-.47-3.6c.34-.55.57-1.18.67-1.87a5.48 5.48 0 0 0-.9-4.08ZM10.22 20.4a3.72 3.72 0 0 1-4-1.57 3.27 3.27 0 0 1-.55-2.44 2.2 2.2 0 0 1 .08-.4l.12-.37.34.22a6.43 6.43 0 0 0 1.95 1l.19.06-.02.19a.98.98 0 0 0 .19.68 1.12 1.12 0 0 0 1.2.47 1.2 1.2 0 0 0 .33-.13l5.24-3.43a1.06 1.06 0 0 0 .47-.65.98.98 0 0 0-.17-.74 1.12 1.12 0 0 0-1.2-.47 1.2 1.2 0 0 0-.33.13l-2 1.31a3.79 3.79 0 0 1-1.07.43 3.72 3.72 0 0 1-4-1.57 3.27 3.27 0 0 1-.55-2.44 3.49 3.49 0 0 1 1.54-2.15l5.24-3.43a3.79 3.79 0 0 1 1.07-.43 3.72 3.72 0 0 1 4 1.57 3.27 3.27 0 0 1 .55 2.44 2.2 2.2 0 0 1-.08.4l-.12.37-.34-.22a6.43 6.43 0 0 0-1.95-1l-.18-.06.01-.19a.98.98 0 0 0-.19-.68 1.12 1.12 0 0 0-1.2-.47 1.2 1.2 0 0 0-.33.13L10.1 9.4a1.06 1.06 0 0 0-.47.65.98.98 0 0 0 .17.74 1.12 1.12 0 0 0 1.2.47 1.2 1.2 0 0 0 .33-.13l2-1.31a3.79 3.79 0 0 1 1.07-.43 3.72 3.72 0 0 1 4 1.57 3.27 3.27 0 0 1 .55 2.44 3.49 3.49 0 0 1-1.54 2.15l-5.24 3.43a3.79 3.79 0 0 1-1.07.43Z\"\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon-dark", "icon-light"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Svelte logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "categories": ["DevTools", "logo", "brand"],
+  "type": "registry:block"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "redis-logo",
+  "title": "Redis Logo",
+  "description": "Redis in-memory data store logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/redis-logo/components/logos/redis.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FF4438\",\n  light: \"#FF4438\",\n};\n\nexport function RedisLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Redis</title>\n      <path\n        fill={color}\n        d=\"M10.5 2.661l.54.997-1.797.644 2.409.166.54.997-1.797.645 2.409.166.002.009L10.5 2.661zm-3.095 2.108c1.613 0 2.92.462 2.92 1.031 0 .57-1.307 1.032-2.92 1.032S4.485 6.37 4.485 5.8c0-.57 1.307-1.031 2.92-1.031zM23 6.262c0 .569-2.652 1.031-5.924 1.031S11.15 6.831 11.15 6.262c0-.57 2.652-1.032 5.924-1.032S23 5.692 23 6.262zM9.89 8.12l4.332-1.312 3.478 1.312-4.332 1.312L9.89 8.12zm-6.4 1.832l.54.997-1.797.644 2.409.166.54.997-1.797.644 2.409.166.002.009L3.49 9.952zM.39 11.64c1.613 0 2.92.461 2.92 1.031 0 .569-1.307 1.031-2.92 1.031S-2.53 13.24-2.53 12.671c0-.57 1.307-1.031 2.92-1.031zm6.562.751L24 15.969v3.54l-17.048-3.578v-3.54zm9.374 2.125l-.54.997 1.797-.644-2.409.166-.54.997 1.797-.644-2.409.166-.002-.009 2.306-1.029z\"\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon-dark", "icon-light"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Redis logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "categories": ["Cloud", "logo", "brand"],
+  "type": "registry:block"
+}
