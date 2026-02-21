@@ -14,12 +14,12 @@ function printHelp() {
   Install SVG logos from tryelements.dev
 
   Usage:
-    tryelements add <logos...> [options]
+    tryelements add-logo <logos...> [options]
     tryelements list [options]
 
   Commands:
-    add <logos...>    Install logo SVGs to your project
-    list              List all available logos
+    add-logo <logos...>  Install logo SVGs to your project
+    list                 List all available logos
 
   Options:
     -o, --output-dir  Output directory (default: public/)
@@ -29,8 +29,8 @@ function printHelp() {
     -v, --version     Show version
 
   Examples:
-    tryelements add apple clerk astro
-    tryelements add github --output-dir=src/assets
+    tryelements add-logo apple clerk astro
+    tryelements add-logo github --output-dir=src/assets
     tryelements list
 `);
 }
@@ -51,7 +51,7 @@ async function main() {
   const command = args[0];
   const rest = args.slice(1);
 
-  if (command === "add") {
+  if (command === "add-logo") {
     const logos: string[] = [];
     let outputDir = "public/";
     let overwrite = false;

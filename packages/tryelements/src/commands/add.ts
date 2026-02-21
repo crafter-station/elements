@@ -11,8 +11,10 @@ interface AddOptions {
 export async function addCommand(logos: string[], options: AddOptions) {
   if (!logos.length) {
     console.error("Error: No logos specified");
-    console.log("\nUsage: tryelements add <logos...> [--output-dir=public/]");
-    console.log("Example: tryelements add apple clerk astro");
+    console.log(
+      "\nUsage: tryelements add-logo <logos...> [--output-dir=public/]",
+    );
+    console.log("Example: tryelements add-logo apple clerk astro");
     process.exit(1);
   }
 

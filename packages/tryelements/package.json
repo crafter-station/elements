@@ -1,5 +1,5 @@
 {
-  "name": "tryelements",
+  "name": "@tryelements/cli",
   "version": "0.1.0",
   "description": "Install SVG logos from tryelements.dev",
   "type": "module",
