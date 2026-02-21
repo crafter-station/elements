@@ -1,0 +1,26 @@
+<svg
+viewBox="0 0 280 60"
+xmlns="http://www.w3.org/2000/svg"
+>
+<title>Kapso Logo</title>
+<g transform="translate(5, 10) scale(0.65)"><g>
+<path
+d="M20 12v40M20 32l24-20M20 32l24 20"
+stroke="#16A34A"
+stroke-width="6"
+stroke-linecap="round"
+stroke-linejoin="round"
+fill="none"
+/>
+</g></g>
+<text
+x="50"
+y="45"
+fontFamily="Inter, system-ui, sans-serif"
+fontSize="40"
+fontWeight="700"
+fill="#16A34A"
+>
+Kapso
+</text>
+</svg>

@@ -1,0 +1,414 @@
+[
+  {
+    "name": "polar-logo",
+    "file": "polar-logo.svg"
+  },
+  {
+    "name": "bun-logo",
+    "file": "bun-logo.svg"
+  },
+  {
+    "name": "claude-logo",
+    "file": "claude-logo.svg"
+  },
+  {
+    "name": "gemini-logo",
+    "file": "gemini-logo.svg"
+  },
+  {
+    "name": "neon-logo",
+    "file": "neon-logo.svg"
+  },
+  {
+    "name": "spotify-logo",
+    "file": "spotify-logo.svg"
+  },
+  {
+    "name": "html-logo",
+    "file": "html-logo.svg"
+  },
+  {
+    "name": "ruby-logo",
+    "file": "ruby-logo.svg"
+  },
+  {
+    "name": "roo-code-logo",
+    "file": "roo-code-logo.svg"
+  },
+  {
+    "name": "anthropic-logo",
+    "file": "anthropic-logo.svg"
+  },
+  {
+    "name": "github-logo",
+    "file": "github-logo.svg"
+  },
+  {
+    "name": "drizzle-logo",
+    "file": "drizzle-logo.svg"
+  },
+  {
+    "name": "raycast-logo",
+    "file": "raycast-logo.svg"
+  },
+  {
+    "name": "tailwindcss-logo",
+    "file": "tailwindcss-logo.svg"
+  },
+  {
+    "name": "openhands-logo",
+    "file": "openhands-logo.svg"
+  },
+  {
+    "name": "openai-logo",
+    "file": "openai-logo.svg"
+  },
+  {
+    "name": "xai-logo",
+    "file": "xai-logo.svg"
+  },
+  {
+    "name": "continue-logo",
+    "file": "continue-logo.svg"
+  },
+  {
+    "name": "cplusplus-logo",
+    "file": "cplusplus-logo.svg"
+  },
+  {
+    "name": "kotlin-logo",
+    "file": "kotlin-logo.svg"
+  },
+  {
+    "name": "vite-logo",
+    "file": "vite-logo.svg"
+  },
+  {
+    "name": "uploadthing-logo",
+    "file": "uploadthing-logo.svg"
+  },
+  {
+    "name": "perplexity-logo",
+    "file": "perplexity-logo.svg"
+  },
+  {
+    "name": "biome-logo",
+    "file": "biome-logo.svg"
+  },
+  {
+    "name": "figma-logo",
+    "file": "figma-logo.svg"
+  },
+  {
+    "name": "mongodb-logo",
+    "file": "mongodb-logo.svg"
+  },
+  {
+    "name": "swift-logo",
+    "file": "swift-logo.svg"
+  },
+  {
+    "name": "javascript-logo",
+    "file": "javascript-logo.svg"
+  },
+  {
+    "name": "rust-logo",
+    "file": "rust-logo.svg"
+  },
+  {
+    "name": "sentry-logo",
+    "file": "sentry-logo.svg"
+  },
+  {
+    "name": "supabase-logo",
+    "file": "supabase-logo.svg"
+  },
+  {
+    "name": "v0-logo",
+    "file": "v0-logo.svg"
+  },
+  {
+    "name": "clerk-logo",
+    "file": "clerk-logo.svg"
+  },
+  {
+    "name": "moonshot-ai-logo",
+    "file": "moonshot-ai-logo.svg"
+  },
+  {
+    "name": "docker-logo",
+    "file": "docker-logo.svg"
+  },
+  {
+    "name": "svelte-logo",
+    "file": "svelte-logo.svg"
+  },
+  {
+    "name": "discord-logo",
+    "file": "discord-logo.svg"
+  },
+  {
+    "name": "react-logo",
+    "file": "react-logo.svg"
+  },
+  {
+    "name": "windsurf-logo",
+    "file": "windsurf-logo.svg"
+  },
+  {
+    "name": "meta-logo",
+    "file": "meta-logo.svg"
+  },
+  {
+    "name": "instagram-logo",
+    "file": "instagram-logo.svg"
+  },
+  {
+    "name": "google-logo",
+    "file": "google-logo.svg"
+  },
+  {
+    "name": "redis-logo",
+    "file": "redis-logo.svg"
+  },
+  {
+    "name": "crafter-station-logo",
+    "file": "crafter-station-logo.svg"
+  },
+  {
+    "name": "linkedin-logo",
+    "file": "linkedin-logo.svg"
+  },
+  {
+    "name": "groq-logo",
+    "file": "groq-logo.svg"
+  },
+  {
+    "name": "opencode-logo",
+    "file": "opencode-logo.svg"
+  },
+  {
+    "name": "zed-logo",
+    "file": "zed-logo.svg"
+  },
+  {
+    "name": "slack-logo",
+    "file": "slack-logo.svg"
+  },
+  {
+    "name": "deepseek-logo",
+    "file": "deepseek-logo.svg"
+  },
+  {
+    "name": "postgresql-logo",
+    "file": "postgresql-logo.svg"
+  },
+  {
+    "name": "pnpm-logo",
+    "file": "pnpm-logo.svg"
+  },
+  {
+    "name": "lovable-logo",
+    "file": "lovable-logo.svg"
+  },
+  {
+    "name": "linear-logo",
+    "file": "linear-logo.svg"
+  },
+  {
+    "name": "goose-logo",
+    "file": "goose-logo.svg"
+  },
+  {
+    "name": "prisma-logo",
+    "file": "prisma-logo.svg"
+  },
+  {
+    "name": "twitch-logo",
+    "file": "twitch-logo.svg"
+  },
+  {
+    "name": "css-logo",
+    "file": "css-logo.svg"
+  },
+  {
+    "name": "nextjs-logo",
+    "file": "nextjs-logo.svg"
+  },
+  {
+    "name": "trae-logo",
+    "file": "trae-logo.svg"
+  },
+  {
+    "name": "typescript-logo",
+    "file": "typescript-logo.svg"
+  },
+  {
+    "name": "tinte-logo",
+    "file": "tinte-logo.svg"
+  },
+  {
+    "name": "stripe-logo",
+    "file": "stripe-logo.svg"
+  },
+  {
+    "name": "java-logo",
+    "file": "java-logo.svg"
+  },
+  {
+    "name": "python-logo",
+    "file": "python-logo.svg"
+  },
+  {
+    "name": "hugging-face-logo",
+    "file": "hugging-face-logo.svg"
+  },
+  {
+    "name": "notion-logo",
+    "file": "notion-logo.svg"
+  },
+  {
+    "name": "mistral-logo",
+    "file": "mistral-logo.svg"
+  },
+  {
+    "name": "microsoft-logo",
+    "file": "microsoft-logo.svg"
+  },
+  {
+    "name": "ghostty-logo",
+    "file": "ghostty-logo.svg"
+  },
+  {
+    "name": "obsidian-logo",
+    "file": "obsidian-logo.svg"
+  },
+  {
+    "name": "kebo-logo",
+    "file": "kebo-logo.svg"
+  },
+  {
+    "name": "bash-logo",
+    "file": "bash-logo.svg"
+  },
+  {
+    "name": "vuejs-logo",
+    "file": "vuejs-logo.svg"
+  },
+  {
+    "name": "go-logo",
+    "file": "go-logo.svg"
+  },
+  {
+    "name": "upstash-logo",
+    "file": "upstash-logo.svg"
+  },
+  {
+    "name": "resend-logo",
+    "file": "resend-logo.svg"
+  },
+  {
+    "name": "gitlab-logo",
+    "file": "gitlab-logo.svg"
+  },
+  {
+    "name": "aws-logo",
+    "file": "aws-logo.svg"
+  },
+  {
+    "name": "vercel-logo",
+    "file": "vercel-logo.svg"
+  },
+  {
+    "name": "better-auth-logo",
+    "file": "better-auth-logo.svg"
+  },
+  {
+    "name": "github-copilot-logo",
+    "file": "github-copilot-logo.svg"
+  },
+  {
+    "name": "nodejs-logo",
+    "file": "nodejs-logo.svg"
+  },
+  {
+    "name": "beincrypto-logo",
+    "file": "beincrypto-logo.svg"
+  },
+  {
+    "name": "astro-logo",
+    "file": "astro-logo.svg"
+  },
+  {
+    "name": "json-logo",
+    "file": "json-logo.svg"
+  },
+  {
+    "name": "cloudflare-logo",
+    "file": "cloudflare-logo.svg"
+  },
+  {
+    "name": "npm-logo",
+    "file": "npm-logo.svg"
+  },
+  {
+    "name": "trigger-logo",
+    "file": "trigger-logo.svg"
+  },
+  {
+    "name": "apple-logo",
+    "file": "apple-logo.svg"
+  },
+  {
+    "name": "qwen-logo",
+    "file": "qwen-logo.svg"
+  },
+  {
+    "name": "cline-logo",
+    "file": "cline-logo.svg"
+  },
+  {
+    "name": "kapso-logo",
+    "file": "kapso-logo.svg"
+  },
+  {
+    "name": "yarn-logo",
+    "file": "yarn-logo.svg"
+  },
+  {
+    "name": "kimi-logo",
+    "file": "kimi-logo.svg"
+  },
+  {
+    "name": "kilo-code-logo",
+    "file": "kilo-code-logo.svg"
+  },
+  {
+    "name": "twitter-logo",
+    "file": "twitter-logo.svg"
+  },
+  {
+    "name": "sql-logo",
+    "file": "sql-logo.svg"
+  },
+  {
+    "name": "cursor-logo",
+    "file": "cursor-logo.svg"
+  },
+  {
+    "name": "elevenlabs-logo",
+    "file": "elevenlabs-logo.svg"
+  },
+  {
+    "name": "storybook-logo",
+    "file": "storybook-logo.svg"
+  },
+  {
+    "name": "grok-logo",
+    "file": "grok-logo.svg"
+  },
+  {
+    "name": "cohere-logo",
+    "file": "cohere-logo.svg"
+  }
+]
