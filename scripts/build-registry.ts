@@ -134,6 +134,18 @@ export const Index = {
   writeFileSync(logosIndexPath, JSON.stringify(logoNames, null, 2));
   console.log(`   ✓ Wrote ${logosIndexPath} (${logoNames.length} logos)`);
 
+  // Step 6: Generate raw SVG files for @tryelements CLI
+  console.log("\n🖼️  Step 6: Generating raw SVG files...");
+  try {
+    const { generateSvgFiles } = await import("./generate-svg-files");
+    const svgResult = generateSvgFiles();
+    console.log(
+      `   ✓ ${svgResult.success} SVGs generated${svgResult.failed > 0 ? ` (${svgResult.failed} failed)` : ""}`,
+    );
+  } catch (_error) {
+    console.error("\n❌ SVG generation failed:", _error);
+  }
+
   console.log("\n✨ Registry build complete!");
   console.log(`   📁 Public registry: ${PUBLIC_REGISTRY_DIR}`);
   console.log(`   📁 Preview registry: ${REGISTRY_INDEX_DIR}`);
