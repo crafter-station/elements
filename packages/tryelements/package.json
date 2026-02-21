@@ -1,0 +1,36 @@
+{
+  "name": "tryelements",
+  "version": "0.1.0",
+  "description": "Install SVG logos from tryelements.dev",
+  "type": "module",
+  "bin": {
+    "tryelements": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target node --format esm",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": [
+    "cli",
+    "svg",
+    "logos",
+    "icons",
+    "tryelements",
+    "shadcn"
+  ],
+  "author": "Railly Hugo <the.crafter.station@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crafter-station/elements",
+    "directory": "packages/tryelements"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
