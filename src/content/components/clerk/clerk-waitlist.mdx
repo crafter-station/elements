@@ -1,0 +1,58 @@
+---
+title: Clerk Waitlist
+description: Waitlist signup form with animated success state and queue position
+category: Authentication
+---
+
+<ComponentPreviewItem
+  componentKey="clerk-waitlist"
+  installUrl="@elements/clerk-waitlist"
+  category="Authentication"
+  name="Clerk Waitlist"
+>
+  <ClerkWaitlistDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A clean waitlist signup form that transitions to a success state with queue position display. Built for Clerk Core 3's new `useWaitlist()` hook.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-waitlist"
+```
+
+## Usage
+
+```tsx
+import { ClerkWaitlist } from "@/components/elements/clerk-waitlist";
+
+export function WaitlistPage() {
+  return (
+    <ClerkWaitlist
+      onSubmit={(email) => {
+        // Wire up with Clerk's useWaitlist() hook
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `heading` | `string` | `"Get early access"` | Form heading |
+| `description` | `string` | `"Join the waitlist..."` | Description text |
+| `ctaText` | `string` | `"Join waitlist"` | Button text |
+| `successMessage` | `string` | `"You're on the list!"` | Success state message |
+| `onSubmit` | `(email: string) => void` | - | Submit handler |
+
+## Features
+
+- Clean email input with CTA
+- Animated transition to success state
+- Queue position display
+- Customizable copy
+- Built for Clerk Core 3's useWaitlist() hook

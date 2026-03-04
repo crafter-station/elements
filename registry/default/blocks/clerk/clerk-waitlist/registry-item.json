@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-waitlist",
+  "type": "registry:block",
+  "title": "Clerk Waitlist",
+  "description": "Waitlist signup form with email input, animated success state, and queue position display. Built for Clerk Core 3's useWaitlist() hook.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/clerk/clerk-waitlist/components/elements/clerk-waitlist.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A clean waitlist form that transitions to a success state with queue position. Designed for Clerk Core 3's new useWaitlist() hook. Customizable heading, description, and CTA.",
+  "categories": ["clerk"]
+}
