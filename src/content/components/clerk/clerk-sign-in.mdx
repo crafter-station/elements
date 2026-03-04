@@ -1,0 +1,58 @@
+---
+title: Clerk Sign In
+description: Multi-step sign-in form with email/password and social OAuth buttons
+category: Authentication
+---
+
+<ComponentPreviewItem
+  componentKey="clerk-sign-in"
+  installUrl="@elements/clerk-sign-in"
+  category="Authentication"
+  name="Clerk Sign In"
+>
+  <ClerkSignInDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A beautiful multi-step sign-in form with email/password authentication and optional social OAuth buttons. Features smooth step transitions between email input and password entry.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-sign-in"
+```
+
+## Usage
+
+```tsx
+import { ClerkSignIn } from "@/components/elements/clerk-sign-in";
+
+export function LoginPage() {
+  return (
+    <ClerkSignIn
+      onSubmit={({ email, password }) => {
+        // Wire up with Clerk's useSignIn() hook
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `heading` | `string` | `"Sign in"` | Form heading |
+| `subheading` | `string` | `"Welcome back"` | Subheading text |
+| `showOAuth` | `boolean` | `true` | Show social login buttons |
+| `showSeparator` | `boolean` | `true` | Show "or continue with" divider |
+| `onSubmit` | `(data: { email: string; password: string }) => void` | - | Submit handler |
+
+## Features
+
+- Multi-step form (email → password)
+- Social OAuth buttons (Google, GitHub, Apple)
+- Forgot password link
+- Smooth step transitions
+- Accessible form inputs with labels
