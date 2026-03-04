@@ -3,7 +3,7 @@
 import type * as React from "react";
 import { useState } from "react";
 
-import { useSignIn } from "@clerk/nextjs";
+import { useClerk, useSignIn } from "@clerk/nextjs";
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
@@ -159,8 +159,18 @@ export function ClerkOauthButtons({
   afterSSOUrl = "/sso-callback",
 }: ClerkOauthButtonsProps) {
   const { signIn, fetchStatus } = useSignIn();
+  const clerk = useClerk();
   const [loadingProvider, setLoadingProvider] = useState<Provider | null>(null);
   const sizeConfig = sizeClasses[size];
+
+  // biome-ignore lint/suspicious/noExplicitAny: accessing clerk environment internals for social provider detection
+  const socialStrategies: string[] | undefined = (clerk as any).clerkjs
+    ?.environment?.userSettings?.socialProviderStrategies;
+  const enabledProviders = socialStrategies
+    ? providers.filter((provider) =>
+        socialStrategies.includes(oauthStrategyMap[provider]),
+      )
+    : undefined;
 
   const handleOAuth = async (provider: Provider) => {
     setLoadingProvider(provider);
@@ -175,6 +185,37 @@ export function ClerkOauthButtons({
     }
   };
 
+  if (!enabledProviders) {
+    return (
+      <div
+        data-slot="clerk-oauth-buttons"
+        className={cn(
+          "flex w-full gap-2",
+          layout === "vertical" && "flex-col",
+          layout === "horizontal" &&
+            variant === "icon" &&
+            "flex-row justify-center",
+          layout === "horizontal" &&
+            variant !== "icon" &&
+            "flex-col sm:flex-row",
+          className,
+        )}
+      >
+        {providers.map((provider) => (
+          <div
+            key={provider}
+            className={cn(
+              "animate-pulse rounded-lg bg-muted",
+              variant === "icon" ? sizeConfig.iconOnly : "h-10 w-full",
+            )}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  if (enabledProviders.length === 0) return null;
+
   return (
     <div
       data-slot="clerk-oauth-buttons"
@@ -188,7 +229,7 @@ export function ClerkOauthButtons({
         className,
       )}
     >
-      {providers.map((provider) => {
+      {enabledProviders.map((provider) => {
         const config = providerConfig[provider];
         const Icon = config.icon;
         const isLoading = loadingProvider === provider;

@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import type * as React from "react";
 import { useCallback, useRef, useState } from "react";
 
-import { useSignUp } from "@clerk/nextjs";
+import { useClerk, useSignUp } from "@clerk/nextjs";
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
@@ -119,6 +120,57 @@ function GitHubIcon({ className }: { className?: string }) {
   );
 }
 
+function MicrosoftIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+    >
+      <rect x="2" y="2" width="9.5" height="9.5" fill="#F25022" />
+      <rect x="12.5" y="2" width="9.5" height="9.5" fill="#7FBA00" />
+      <rect x="2" y="12.5" width="9.5" height="9.5" fill="#00A4EF" />
+      <rect x="12.5" y="12.5" width="9.5" height="9.5" fill="#FFB900" />
+    </svg>
+  );
+}
+
+function AppleIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+    </svg>
+  );
+}
+
+const oauthIcons: Record<
+  string,
+  (props: { className?: string }) => React.ReactNode
+> = {
+  oauth_google: GoogleIcon,
+  oauth_github: GitHubIcon,
+  oauth_apple: AppleIcon,
+  oauth_microsoft: MicrosoftIcon,
+};
+
+const oauthLabels: Record<string, string> = {
+  oauth_google: "Google",
+  oauth_github: "GitHub",
+  oauth_apple: "Apple",
+  oauth_microsoft: "Microsoft",
+};
+
 function ArrowLeftIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -173,7 +225,15 @@ export function ClerkSignUp({
   afterSSOUrl = "/sso-callback",
 }: ClerkSignUpProps) {
   const { signUp, fetchStatus } = useSignUp();
+  const clerk = useClerk();
   const router = useRouter();
+
+  // biome-ignore lint/suspicious/noExplicitAny: accessing clerk environment internals for social provider detection
+  const socialStrategies: string[] | undefined = (clerk as any).clerkjs
+    ?.environment?.userSettings?.socialProviderStrategies;
+  const oauthProviders = socialStrategies
+    ? socialStrategies.map((s: string) => ({ strategy: s }))
+    : undefined;
 
   const [step, setStep] = useState<"form" | "verify">("form");
   const [firstName, setFirstName] = useState("");
@@ -196,29 +256,20 @@ export function ClerkSignUp({
 
   const isFetching = fetchStatus === "fetching";
 
-  const handleOAuthGoogle = useCallback(async () => {
-    setError(null);
-    const { error: ssoError } = await signUp.sso({
-      strategy: "oauth_google",
-      redirectUrl,
-      redirectCallbackUrl: afterSSOUrl,
-    });
-    if (ssoError) {
-      setError(ssoError.message ?? "OAuth failed. Please try again.");
-    }
-  }, [signUp, afterSSOUrl, redirectUrl]);
-
-  const handleOAuthGitHub = useCallback(async () => {
-    setError(null);
-    const { error: ssoError } = await signUp.sso({
-      strategy: "oauth_github",
-      redirectUrl,
-      redirectCallbackUrl: afterSSOUrl,
-    });
-    if (ssoError) {
-      setError(ssoError.message ?? "OAuth failed. Please try again.");
-    }
-  }, [signUp, afterSSOUrl, redirectUrl]);
+  const handleOAuth = useCallback(
+    async (strategy: string) => {
+      setError(null);
+      const { error: ssoError } = await signUp.sso({
+        strategy: strategy as "oauth_google",
+        redirectUrl,
+        redirectCallbackUrl: afterSSOUrl,
+      });
+      if (ssoError) {
+        setError(ssoError.message ?? "OAuth failed. Please try again.");
+      }
+    },
+    [signUp, afterSSOUrl, redirectUrl],
+  );
 
   const handleContinue = useCallback(async () => {
     if (!canContinue) return;
@@ -348,24 +399,31 @@ export function ClerkSignUp({
           {showOAuth && (
             <>
               <div data-slot="oauth-buttons" className="flex gap-2">
-                <button
-                  type="button"
-                  data-slot="oauth-google"
-                  onClick={handleOAuthGoogle}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border bg-card px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-                >
-                  <GoogleIcon />
-                  Google
-                </button>
-                <button
-                  type="button"
-                  data-slot="oauth-github"
-                  onClick={handleOAuthGitHub}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border bg-card px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-                >
-                  <GitHubIcon />
-                  GitHub
-                </button>
+                {!oauthProviders ? (
+                  <>
+                    <div className="h-10 flex-1 animate-pulse rounded-lg bg-muted" />
+                    <div className="h-10 flex-1 animate-pulse rounded-lg bg-muted" />
+                  </>
+                ) : (
+                  oauthProviders.map(({ strategy }) => {
+                    const Icon = oauthIcons[strategy];
+                    const label =
+                      oauthLabels[strategy] ?? strategy.replace("oauth_", "");
+                    if (!Icon) return null;
+                    return (
+                      <button
+                        key={strategy}
+                        type="button"
+                        data-slot={`oauth-${strategy.replace("oauth_", "")}`}
+                        onClick={() => handleOAuth(strategy)}
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border bg-card px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+                      >
+                        <Icon />
+                        {label}
+                      </button>
+                    );
+                  })
+                )}
               </div>
 
               <div data-slot="divider" className="my-6 flex items-center gap-3">

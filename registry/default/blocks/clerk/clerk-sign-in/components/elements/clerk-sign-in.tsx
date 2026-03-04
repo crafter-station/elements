@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import type * as React from "react";
 import { useCallback, useRef, useState } from "react";
 
-import { useSignIn } from "@clerk/nextjs";
+import { useClerk, useSignIn } from "@clerk/nextjs";
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
@@ -157,6 +158,41 @@ function EyeOffIcon({ className }: { className?: string }) {
   );
 }
 
+function MicrosoftIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+    >
+      <rect x="2" y="2" width="9.5" height="9.5" fill="#F25022" />
+      <rect x="12.5" y="2" width="9.5" height="9.5" fill="#7FBA00" />
+      <rect x="2" y="12.5" width="9.5" height="9.5" fill="#00A4EF" />
+      <rect x="12.5" y="12.5" width="9.5" height="9.5" fill="#FFB900" />
+    </svg>
+  );
+}
+
+const oauthIcons: Record<
+  string,
+  (props: { className?: string }) => React.ReactNode
+> = {
+  oauth_google: GoogleIcon,
+  oauth_github: GitHubIcon,
+  oauth_apple: AppleIcon,
+  oauth_microsoft: MicrosoftIcon,
+};
+
+const oauthLabels: Record<string, string> = {
+  oauth_google: "Google",
+  oauth_github: "GitHub",
+  oauth_apple: "Apple",
+  oauth_microsoft: "Microsoft",
+};
+
 function LoaderIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -199,6 +235,7 @@ export function ClerkSignIn({
   afterSSOUrl = "/sso-callback",
 }: ClerkSignInProps) {
   const { signIn, fetchStatus } = useSignIn();
+  const clerk = useClerk();
   const router = useRouter();
 
   const isLoading = fetchStatus === "fetching";
@@ -211,11 +248,18 @@ export function ClerkSignIn({
   const [direction, setDirection] = useState<"forward" | "backward">("forward");
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
+  // biome-ignore lint/suspicious/noExplicitAny: accessing clerk environment internals for social provider detection
+  const socialStrategies: string[] | undefined = (clerk as any).clerkjs
+    ?.environment?.userSettings?.socialProviderStrategies;
+  const oauthProviders = socialStrategies
+    ? socialStrategies.map((s: string) => ({ strategy: s }))
+    : undefined;
+
   const handleOAuth = useCallback(
-    async (strategy: "oauth_google" | "oauth_github" | "oauth_apple") => {
+    async (strategy: string) => {
       setError(null);
       const { error } = await signIn.sso({
-        strategy,
+        strategy: strategy as "oauth_google",
         redirectUrl,
         redirectCallbackUrl: afterSSOUrl,
       });
@@ -287,33 +331,31 @@ export function ClerkSignIn({
       <div data-slot="body" className="px-8 pb-8 pt-4">
         {showOAuth && step === "email" && (
           <div data-slot="oauth-providers" className="flex flex-col gap-2">
-            <button
-              type="button"
-              data-slot="oauth-button"
-              onClick={() => handleOAuth("oauth_google")}
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-            >
-              <GoogleIcon className="h-4 w-4" />
-              Continue with Google
-            </button>
-            <button
-              type="button"
-              data-slot="oauth-button"
-              onClick={() => handleOAuth("oauth_github")}
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-            >
-              <GitHubIcon className="h-4 w-4" />
-              Continue with GitHub
-            </button>
-            <button
-              type="button"
-              data-slot="oauth-button"
-              onClick={() => handleOAuth("oauth_apple")}
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-            >
-              <AppleIcon className="h-4 w-4" />
-              Continue with Apple
-            </button>
+            {!oauthProviders ? (
+              <>
+                <div className="h-10 w-full animate-pulse rounded-lg bg-muted" />
+                <div className="h-10 w-full animate-pulse rounded-lg bg-muted" />
+              </>
+            ) : (
+              oauthProviders.map(({ strategy }) => {
+                const Icon = oauthIcons[strategy];
+                const label =
+                  oauthLabels[strategy] ?? strategy.replace("oauth_", "");
+                if (!Icon) return null;
+                return (
+                  <button
+                    key={strategy}
+                    type="button"
+                    data-slot="oauth-button"
+                    onClick={() => handleOAuth(strategy)}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+                  >
+                    <Icon className="h-4 w-4" />
+                    Continue with {label}
+                  </button>
+                );
+              })
+            )}
           </div>
         )}
 
