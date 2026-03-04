@@ -1,0 +1,44 @@
+---
+title: Dot Matrix Loader
+description: A grid of dots with ripple, wave, and cascade animation effects
+---
+
+<ComponentPreviewItem
+  componentKey="loader-dot-matrix"
+  installUrl="@elements/loader-dot-matrix"
+  category="Loaders"
+  name="Dot Matrix"
+>
+  <LoaderDotMatrix />
+</ComponentPreviewItem>
+
+## Overview
+
+A grid of dots with configurable animation patterns including ripple, wave, and rain effects. CSS-only with computed stagger delays.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/loader-dot-matrix
+```
+
+## Usage
+
+```tsx
+import { LoaderDotMatrix } from "@/components/elements/loader-dot-matrix";
+
+export function Loading() {
+  return <LoaderDotMatrix rows={5} cols={7} pattern="ripple" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `rows` | `number` | `5` | Number of rows |
+| `cols` | `number` | `7` | Number of columns |
+| `pattern` | `"ripple" \| "wave" \| "rain"` | `"ripple"` | Animation pattern |
+| `speed` | `number` | `1.5` | Animation speed in seconds |
+| `dotSize` | `number` | `3` | Size of dots in pixels |
+| `className` | `string` | - | Additional CSS classes |

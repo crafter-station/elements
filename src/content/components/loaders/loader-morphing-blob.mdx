@@ -1,0 +1,41 @@
+---
+title: Morphing Blob Loader
+description: Organic amorphous shape with liquid mercury aesthetic
+---
+
+<ComponentPreviewItem
+  componentKey="loader-morphing-blob"
+  installUrl="@elements/loader-morphing-blob"
+  category="Loaders"
+  name="Morphing Blob"
+>
+  <LoaderMorphingBlob />
+</ComponentPreviewItem>
+
+## Overview
+
+Morphing blob loader with spring physics powered by Motion. Variants: mercury (reflective), aurora (gradient rotation), monochrome (solid). Sizes: sm, md, lg.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/loader-morphing-blob
+```
+
+## Usage
+
+```tsx
+import { LoaderMorphingBlob } from "@/components/elements/loader-morphing-blob";
+
+export function Loading() {
+  return <LoaderMorphingBlob variant="mercury" size="md" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size of the blob |
+| `variant` | `"mercury" \| "aurora" \| "monochrome"` | `"mercury"` | Visual style |
+| `className` | `string` | - | Additional CSS classes |

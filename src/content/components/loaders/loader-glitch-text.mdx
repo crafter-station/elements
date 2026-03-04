@@ -1,0 +1,41 @@
+---
+title: Glitch Text Loader
+description: Cyberpunk-style glitch text with channel split and character scramble
+---
+
+<ComponentPreviewItem
+  componentKey="loader-glitch-text"
+  installUrl="@elements/loader-glitch-text"
+  category="Loaders"
+  name="Glitch Text"
+>
+  <LoaderGlitchText />
+</ComponentPreviewItem>
+
+## Overview
+
+Cyberpunk-style glitch text loader with RGB channel splitting, clip-path distortion, and random character scrambling. Three intensity levels: subtle, medium, and heavy.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/loader-glitch-text
+```
+
+## Usage
+
+```tsx
+import { LoaderGlitchText } from "@/components/elements/loader-glitch-text";
+
+export function Loading() {
+  return <LoaderGlitchText text="LOADING" intensity="medium" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `text` | `string` | `"LOADING"` | Text to display |
+| `intensity` | `"subtle" \| "medium" \| "heavy"` | `"medium"` | Glitch intensity |
+| `className` | `string` | - | Additional CSS classes |

@@ -1,0 +1,42 @@
+---
+title: Signal Bars Loader
+description: Equalizer-style loading bars with configurable variants
+---
+
+<ComponentPreviewItem
+  componentKey="loader-signal-bars"
+  installUrl="@elements/loader-signal-bars"
+  category="Loaders"
+  name="Signal Bars"
+>
+  <LoaderSignalBars />
+</ComponentPreviewItem>
+
+## Overview
+
+Audio waveform / frequency spectrum bars that pulse rhythmically. Supports equalizer, waveform, and heartbeat animation patterns. CSS-only.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/loader-signal-bars
+```
+
+## Usage
+
+```tsx
+import { LoaderSignalBars } from "@/components/elements/loader-signal-bars";
+
+export function Loading() {
+  return <LoaderSignalBars variant="equalizer" size="md" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `bars` | `number` | `5` | Number of bars |
+| `variant` | `"equalizer" \| "waveform" \| "heartbeat"` | `"equalizer"` | Animation pattern |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size of the bars |
+| `className` | `string` | - | Additional CSS classes |

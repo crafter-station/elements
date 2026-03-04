@@ -1,0 +1,43 @@
+---
+title: Terminal Decode Loader
+description: Terminal-style text decoder with configurable charset
+---
+
+<ComponentPreviewItem
+  componentKey="loader-terminal-decode"
+  installUrl="@elements/loader-terminal-decode"
+  category="Loaders"
+  name="Terminal Decode"
+>
+  <LoaderTerminalDecode />
+</ComponentPreviewItem>
+
+## Overview
+
+Cipher-cracking text decoder that cycles through random characters before resolving the target text. Configurable charset (symbols, binary, hex), speed, and loop behavior. Monospace terminal aesthetic.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/loader-terminal-decode
+```
+
+## Usage
+
+```tsx
+import { LoaderTerminalDecode } from "@/components/elements/loader-terminal-decode";
+
+export function Loading() {
+  return <LoaderTerminalDecode text="DECRYPTING" charset="hex" />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `text` | `string` | `"LOADING"` | Text to decode |
+| `speed` | `number` | `50` | Speed in ms per character |
+| `charset` | `"symbols" \| "binary" \| "hex"` | `"symbols"` | Scramble character set |
+| `loop` | `boolean` | `true` | Whether to loop |
+| `className` | `string` | - | Additional CSS classes |

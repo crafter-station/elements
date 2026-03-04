@@ -1,0 +1,42 @@
+---
+title: Helix Loader
+description: DNA double-helix with sinusoidal dot paths
+---
+
+<ComponentPreviewItem
+  componentKey="loader-helix"
+  installUrl="@elements/loader-helix"
+  category="Loaders"
+  name="Helix"
+>
+  <LoaderHelix />
+</ComponentPreviewItem>
+
+## Overview
+
+DNA helix loader with interleaved sinusoidal dot paths. Variants include dna (two strands + rungs), ribbon (gradient), and minimal (dots only). CSS-only.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/loader-helix
+```
+
+## Usage
+
+```tsx
+import { LoaderHelix } from "@/components/elements/loader-helix";
+
+export function Loading() {
+  return <LoaderHelix variant="dna" dots={12} />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `dots` | `number` | `12` | Number of dots in the helix |
+| `speed` | `number` | `2` | Animation speed in seconds |
+| `variant` | `"dna" \| "ribbon" \| "minimal"` | `"dna"` | Visual variant |
+| `className` | `string` | - | Additional CSS classes |
