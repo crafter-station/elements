@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-sso-callback",
+  "title": "Clerk SSO Callback",
+  "description": "Handles OAuth/SSO redirect callbacks for Clerk authentication flows.",
+  "dependencies": ["@clerk/nextjs"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/clerk/clerk-sso-callback/components/elements/clerk-sso-callback.tsx",
+      "content": "\"use client\";\n\nimport { AuthenticateWithRedirectCallback } from \"@clerk/nextjs\";\n\nexport interface ClerkSSOCallbackProps {\n  signInFallbackRedirectUrl?: string;\n  signUpFallbackRedirectUrl?: string;\n}\n\nexport function ClerkSSOCallback({\n  signInFallbackRedirectUrl = \"/\",\n  signUpFallbackRedirectUrl = \"/\",\n}: ClerkSSOCallbackProps) {\n  return (\n    <AuthenticateWithRedirectCallback\n      signInFallbackRedirectUrl={signInFallbackRedirectUrl}\n      signUpFallbackRedirectUrl={signUpFallbackRedirectUrl}\n    />\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:block"
+}

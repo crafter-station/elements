@@ -478,7 +478,7 @@ export const registry = {
       description:
         "Social login button group with Google, GitHub, Apple, and Microsoft. Supports default, outline, and icon-only variants with horizontal/vertical layouts.",
       registryDependencies: [],
-      dependencies: [],
+      dependencies: ["@clerk/nextjs"],
       files: [
         {
           path: "registry/default/blocks/clerk/clerk-oauth-buttons/components/elements/clerk-oauth-buttons.tsx",
@@ -496,7 +496,7 @@ export const registry = {
       description:
         "Organization switcher dropdown with personal account, org list with role badges, and create organization option.",
       registryDependencies: [],
-      dependencies: [],
+      dependencies: ["@clerk/nextjs"],
       files: [
         {
           path: "registry/default/blocks/clerk/clerk-org-switcher/components/elements/clerk-org-switcher.tsx",
@@ -514,7 +514,7 @@ export const registry = {
       description:
         "Multi-step sign-in form with email/password and social OAuth buttons. Features step transitions, forgot password link, and clean Clerk aesthetic.",
       registryDependencies: [],
-      dependencies: [],
+      dependencies: ["@clerk/nextjs"],
       files: [
         {
           path: "registry/default/blocks/clerk/clerk-sign-in/components/elements/clerk-sign-in.tsx",
@@ -532,7 +532,7 @@ export const registry = {
       description:
         "Multi-step sign-up form with name, email, password and email verification via OTP input. Includes password strength indicator.",
       registryDependencies: [],
-      dependencies: [],
+      dependencies: ["@clerk/nextjs"],
       files: [
         {
           path: "registry/default/blocks/clerk/clerk-sign-up/components/elements/clerk-sign-up.tsx",
@@ -544,13 +544,29 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "clerk-sso-callback",
+      type: "registry:block",
+      title: "Clerk SSO Callback",
+      description:
+        "Handles OAuth/SSO redirect callbacks for Clerk authentication flows.",
+      registryDependencies: [],
+      dependencies: ["@clerk/nextjs"],
+      files: [
+        {
+          path: "registry/default/blocks/clerk/clerk-sso-callback/components/elements/clerk-sso-callback.tsx",
+          type: "registry:component",
+        },
+      ],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "clerk-user-button",
       type: "registry:block",
       title: "Clerk User Button",
       description:
         "User avatar with dropdown menu showing profile, settings, and sign-out options. Features initials fallback and click-outside-to-close.",
       registryDependencies: [],
-      dependencies: [],
+      dependencies: ["@clerk/nextjs"],
       files: [
         {
           path: "registry/default/blocks/clerk/clerk-user-button/components/elements/clerk-user-button.tsx",
@@ -568,7 +584,7 @@ export const registry = {
       description:
         "Waitlist signup form with email input, animated success state, and queue position display. Built for Clerk Core 3's useWaitlist() hook.",
       registryDependencies: [],
-      dependencies: [],
+      dependencies: ["@clerk/nextjs"],
       files: [
         {
           path: "registry/default/blocks/clerk/clerk-waitlist/components/elements/clerk-waitlist.tsx",
