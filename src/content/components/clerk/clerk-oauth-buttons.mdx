@@ -15,7 +15,7 @@ category: Authentication
 
 ## Overview
 
-Flexible social login buttons with brand-accurate SVG logos. Three visual variants and two layout options.
+Functional social login buttons using Clerk Core 3's `useSignIn()` hook. Brand-accurate SVG logos with three visual variants and two layout options.
 
 ## Installation
 
@@ -26,16 +26,13 @@ npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-oauth-buttons"
 ## Usage
 
 ```tsx
-import { ClerkOAuthButtons } from "@/components/elements/clerk-oauth-buttons";
+import { ClerkOauthButtons } from "@/components/elements/clerk-oauth-buttons";
 
 export function LoginPage() {
   return (
-    <ClerkOAuthButtons
+    <ClerkOauthButtons
       providers={["google", "github", "apple"]}
       variant="default"
-      onProviderClick={(provider) => {
-        // Wire up with Clerk's useSignIn() OAuth flow
-      }}
     />
   );
 }
@@ -49,11 +46,13 @@ export function LoginPage() {
 | `variant` | `"default" \| "outline" \| "icon"` | `"default"` | Visual style |
 | `layout` | `"horizontal" \| "vertical"` | `"vertical"` | Button layout |
 | `size` | `"sm" \| "default" \| "lg"` | `"default"` | Button size |
-| `onProviderClick` | `(provider: string) => void` | - | Click handler |
+| `redirectUrl` | `string` | `"/"` | Final redirect after auth |
+| `afterSSOUrl` | `string` | `"/sso-callback"` | OAuth callback page URL |
 
 ## Features
 
 - Brand-accurate SVG logos for each provider
 - Three variants: default (icon+text), outline, icon-only
 - Horizontal and vertical layouts
+- Loading state per provider
 - Customizable provider selection

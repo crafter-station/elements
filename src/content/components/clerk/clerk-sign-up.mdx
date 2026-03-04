@@ -15,7 +15,7 @@ category: Authentication
 
 ## Overview
 
-A complete sign-up form with two steps: registration (name, email, password) and email verification via 6-digit OTP input. Includes a live password requirements indicator.
+A complete sign-up form using Clerk Core 3's `useSignUp()` hook. Two steps: registration (name, email, password) and email verification via 6-digit OTP. Includes live password requirements and bot protection via captcha.
 
 ## Installation
 
@@ -28,17 +28,8 @@ npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-sign-up"
 ```tsx
 import { ClerkSignUp } from "@/components/elements/clerk-sign-up";
 
-export function RegisterPage() {
-  return (
-    <ClerkSignUp
-      onSubmit={(data) => {
-        // Wire up with Clerk's useSignUp() hook
-      }}
-      onVerify={(code) => {
-        // Verify email with code
-      }}
-    />
-  );
+export default function RegisterPage() {
+  return <ClerkSignUp redirectUrl="/dashboard" />;
 }
 ```
 
@@ -49,13 +40,15 @@ export function RegisterPage() {
 | `heading` | `string` | `"Create your account"` | Form heading |
 | `subheading` | `string` | `"Welcome! Please fill in the details to get started."` | Subheading |
 | `showOAuth` | `boolean` | `true` | Show social login buttons |
-| `onSubmit` | `(data: { firstName: string; lastName: string; email: string; password: string }) => void` | - | Registration handler |
-| `onVerify` | `(code: string) => void` | - | OTP verification handler |
+| `redirectUrl` | `string` | `"/"` | Where to redirect after sign up |
+| `signInUrl` | `string` | `"/sign-in"` | Link to sign in page |
+| `afterSSOUrl` | `string` | `"/sso-callback"` | OAuth callback page URL |
 
 ## Features
 
-- Multi-step form (registration → email verification)
-- 6-digit OTP input with auto-focus and backspace navigation
+- Multi-step form (registration -> email verification)
+- 6-digit OTP input with auto-focus and paste support
 - Live password requirements indicator
-- Social OAuth buttons
-- Resend verification code link
+- Social OAuth buttons (Google, GitHub)
+- Resend verification code
+- Bot protection via Clerk captcha

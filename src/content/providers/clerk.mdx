@@ -7,9 +7,7 @@ brandColor: "#6C47FF"
 
 ## Overview
 
-Custom authentication and user management components designed for [Clerk](https://clerk.com) Core 3. Built with the new redesigned hooks (`useSignIn()`, `useSignUp()`, `useWaitlist()`) that replace the deprecated Clerk Elements library.
-
-These components are presentation-ready UI blocks that you install via shadcn and wire up with Clerk's hooks for real authentication.
+Functional authentication and user management components built with [Clerk](https://clerk.com) Core 3 hooks. These components use `useSignIn()`, `useSignUp()`, `useWaitlist()`, `useUser()`, and `useOrganizationList()` directly — install via shadcn and they work out of the box.
 
 ## Components
 
@@ -91,6 +89,19 @@ Organization switcher dropdown with role badges and personal account option.
   <ClerkOrgSwitcherDemo />
 </ComponentPreviewItem>
 
+### SSO Callback
+
+Handles OAuth/SSO redirect callbacks. Required when using social login.
+
+<ComponentPreviewItem
+  componentKey="clerk-sso-callback"
+  installUrl="@elements/clerk-sso-callback"
+  category="Authentication"
+  name="Clerk SSO Callback"
+>
+  <ClerkSSOCallbackDemo />
+</ComponentPreviewItem>
+
 ## Setup
 
 ### 1. Install Clerk
@@ -108,24 +119,26 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
 CLERK_SECRET_KEY=sk_...
 ```
 
-### 3. Wire Up Hooks
+### 3. Use Components
 
-These components are presentation-ready. Connect them to Clerk's Core 3 hooks:
+Components are fully functional — just render them:
 
 ```tsx
-import { useSignIn } from "@clerk/nextjs";
 import { ClerkSignIn } from "@/components/elements/clerk-sign-in";
 
-export function LoginPage() {
-  const { signIn } = useSignIn();
+export default function LoginPage() {
+  return <ClerkSignIn redirectUrl="/dashboard" />;
+}
+```
 
-  return (
-    <ClerkSignIn
-      onSubmit={async ({ email, password }) => {
-        await signIn.password({ emailAddress: email, password });
-      }}
-    />
-  );
+For OAuth flows, add an SSO callback page:
+
+```tsx
+// app/sso-callback/page.tsx
+import { ClerkSSOCallback } from "@/components/elements/clerk-sso-callback";
+
+export default function SSOCallbackPage() {
+  return <ClerkSSOCallback />;
 }
 ```
 

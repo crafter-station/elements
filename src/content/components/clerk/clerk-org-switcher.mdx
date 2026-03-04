@@ -15,7 +15,7 @@ category: Authentication
 
 ## Overview
 
-A complete organization switcher with personal account option, organization list with role badges (Owner/Admin/Member), and create organization button.
+A functional organization switcher using `useOrganizationList()`, `useOrganization()`, and `useUser()` hooks. Shows the active organization with a dropdown to switch between orgs.
 
 ## Installation
 
@@ -29,17 +29,7 @@ npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-org-switcher"
 import { ClerkOrgSwitcher } from "@/components/elements/clerk-org-switcher";
 
 export function Sidebar() {
-  return (
-    <ClerkOrgSwitcher
-      organizations={[
-        { id: "1", name: "Acme Inc", role: "Owner" },
-        { id: "2", name: "Stark Industries", role: "Admin" },
-      ]}
-      onOrgChange={(orgId) => {
-        // Wire up with Clerk's useOrganizationList()
-      }}
-    />
-  );
+  return <ClerkOrgSwitcher />;
 }
 ```
 
@@ -47,17 +37,14 @@ export function Sidebar() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `organizations` | `{ id: string; name: string; imageUrl?: string; role?: string }[]` | Mock data | List of organizations |
-| `activeOrgId` | `string` | First org | Currently active organization |
-| `personalAccount` | `{ name: string; email: string; imageUrl?: string }` | Mock data | Personal account info |
+| `className` | `string` | - | Custom CSS classes |
 | `showPersonalAccount` | `boolean` | `true` | Show personal account option |
-| `onOrgChange` | `(orgId: string) => void` | - | Organization change handler |
-| `onCreateOrg` | `() => void` | - | Create organization handler |
 
 ## Features
 
-- Personal account and organization list
+- Personal account and organization list from hooks
 - Role badges (Owner/Admin/Member)
 - Active organization indicator
-- Create organization button
+- Switch orgs via `setActive()`
+- Loading skeleton while data loads
 - Click-outside-to-close behavior

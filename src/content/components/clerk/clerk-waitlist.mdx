@@ -1,6 +1,6 @@
 ---
 title: Clerk Waitlist
-description: Waitlist signup form with animated success state and queue position
+description: Waitlist signup form with animated success state
 category: Authentication
 ---
 
@@ -15,7 +15,7 @@ category: Authentication
 
 ## Overview
 
-A clean waitlist signup form that transitions to a success state with queue position display. Built for Clerk Core 3's new `useWaitlist()` hook.
+A functional waitlist signup form using Clerk Core 3's `useWaitlist()` hook. Transitions to a success state after joining.
 
 ## Installation
 
@@ -28,14 +28,8 @@ npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-waitlist"
 ```tsx
 import { ClerkWaitlist } from "@/components/elements/clerk-waitlist";
 
-export function WaitlistPage() {
-  return (
-    <ClerkWaitlist
-      onSubmit={(email) => {
-        // Wire up with Clerk's useWaitlist() hook
-      }}
-    />
-  );
+export default function WaitlistPage() {
+  return <ClerkWaitlist />;
 }
 ```
 
@@ -47,12 +41,11 @@ export function WaitlistPage() {
 | `description` | `string` | `"Join the waitlist..."` | Description text |
 | `ctaText` | `string` | `"Join waitlist"` | Button text |
 | `successMessage` | `string` | `"You're on the list!"` | Success state message |
-| `onSubmit` | `(email: string) => void` | - | Submit handler |
 
 ## Features
 
 - Clean email input with CTA
 - Animated transition to success state
-- Queue position display
+- Inline error display from Clerk API
+- Loading states via `fetchStatus`
 - Customizable copy
-- Built for Clerk Core 3's useWaitlist() hook

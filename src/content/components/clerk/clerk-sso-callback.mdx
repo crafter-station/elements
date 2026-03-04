@@ -1,0 +1,47 @@
+---
+title: Clerk SSO Callback
+description: Handles OAuth/SSO redirect callbacks for Clerk authentication flows
+category: Authentication
+---
+
+<ComponentPreviewItem
+  componentKey="clerk-sso-callback"
+  installUrl="@elements/clerk-sso-callback"
+  category="Authentication"
+  name="Clerk SSO Callback"
+>
+  <ClerkSSOCallbackDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A minimal component that wraps Clerk's `AuthenticateWithRedirectCallback` to handle OAuth/SSO redirect flows. Required when using social login buttons (`clerk-oauth-buttons`, `clerk-sign-in`, or `clerk-sign-up` with OAuth).
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-sso-callback"
+```
+
+## Usage
+
+Create a page at `/sso-callback` (or wherever your `afterSSOUrl` points):
+
+```tsx
+import { ClerkSSOCallback } from "@/components/elements/clerk-sso-callback";
+
+export default function SSOCallbackPage() {
+  return <ClerkSSOCallback />;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `signInFallbackRedirectUrl` | `string` | `"/"` | Redirect URL after sign-in completes |
+| `signUpFallbackRedirectUrl` | `string` | `"/"` | Redirect URL after sign-up completes |
+
+## Setup
+
+This component works with the OAuth buttons in `clerk-sign-in`, `clerk-sign-up`, and `clerk-oauth-buttons`. Make sure your `afterSSOUrl` prop matches the route where this component is rendered.
