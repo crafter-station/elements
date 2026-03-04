@@ -115,6 +115,11 @@ export function getProviderFromName(name: string): string | null {
     return "ai-elements";
   }
 
+  // Special case: loader components go to "loaders" provider
+  if (name.startsWith("loader-")) {
+    return "loaders";
+  }
+
   // Special case: animation components go to "animations" provider
   if (name === "text-shimmer") {
     return "animations";
@@ -304,6 +309,14 @@ export function getProviderMetadata(provider: string): {
       category: "AUDIO",
       brandColor: "#F59E0B",
       darkBrandColor: "#FBBF24",
+    },
+    loaders: {
+      displayName: "Loaders",
+      description:
+        "Production-grade loading indicators with unique visual identities",
+      category: "UI",
+      brandColor: "#8B5CF6",
+      darkBrandColor: "#A78BFA",
     },
   };
 

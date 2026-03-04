@@ -75,7 +75,7 @@ export async function generateStaticParams() {
   const params: { provider: string; slug: string[] }[] = [];
 
   for (const provider of providers) {
-    if (provider === "logos" || provider === "clerk") continue;
+    if (provider === "logos") continue;
 
     if (provider === "ai-elements") {
       const subcategories = Object.keys(

@@ -38,9 +38,9 @@ const PROVIDER_SKILLS: Record<string, string> = {
 export async function generateStaticParams() {
   const providers = getProviders();
 
-  // Filter out special pages (logos and clerk have their own dedicated pages)
+  // Filter out special pages (logos has its own dedicated page)
   return providers
-    .filter((p) => p !== "logos" && p !== "clerk")
+    .filter((p) => p !== "logos")
     .map((provider) => ({
       provider,
     }));
