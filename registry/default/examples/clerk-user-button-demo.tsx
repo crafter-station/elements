@@ -5,7 +5,7 @@ import { ClerkUserButton } from "@/registry/default/blocks/clerk/clerk-user-butt
 export default function ClerkUserButtonDemo() {
   return (
     <div className="flex items-center justify-center p-8">
-      <ClerkUserButton name="Hunter Hugo" email="hunter@crafterstation.com" />
+      <ClerkUserButton name="Railly Hugo" email="railly@crafterstation.com" />
     </div>
   );
 }

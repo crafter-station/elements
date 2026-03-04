@@ -1,63 +1,137 @@
 ---
 title: Clerk
-description: Authentication components - Coming soon with Clerk Elements
+description: Authentication and user management components built for Clerk Core 3
 category: Authentication
 brandColor: "#6C47FF"
 ---
 
-## Clerk Elements (Official - Beta)
+## Overview
 
-We're waiting for [Clerk Elements](https://clerk.com/docs/guides/customizing-clerk/elements/overview) to stabilize before providing our own custom implementations.
+Custom authentication and user management components designed for [Clerk](https://clerk.com) Core 3. Built with the new redesigned hooks (`useSignIn()`, `useSignUp()`, `useWaitlist()`) that replace the deprecated Clerk Elements library.
 
-### Why the wait?
+These components are presentation-ready UI blocks that you install via shadcn and wire up with Clerk's hooks for real authentication.
 
-Clerk Elements is Clerk's official library for building custom authentication UIs. It's currently in **beta** and not yet recommended for production use. Once it's stable, we'll provide fully customized, production-ready components built on top of Clerk Elements.
+## Components
 
-### What is Clerk Elements?
+### Sign In
 
-Clerk Elements is a library of **unstyled, composable components** that let you build custom UIs on top of Clerk APIs without managing the underlying authentication logic.
+Multi-step sign-in form with email/password and social OAuth buttons.
 
-**Key features:**
-- Component-first approach for easy custom UI development
-- Unstyled components with built-in accessibility
-- Full control over styling and layout
-- Works with Tailwind CSS and existing component libraries
-- Support for sign-in and sign-up flows (more coming soon)
+<ComponentPreviewItem
+  componentKey="clerk-sign-in"
+  installUrl="@elements/clerk-sign-in"
+  category="Authentication"
+  name="Clerk Sign In"
+>
+  <ClerkSignInDemo />
+</ComponentPreviewItem>
 
-### Getting started with Clerk Elements
+### Sign Up
 
-Currently supports **Next.js App Router** only. More framework support coming soon.
+Multi-step sign-up form with email verification via 6-digit OTP input.
 
-#### 1. Install Clerk Elements
+<ComponentPreviewItem
+  componentKey="clerk-sign-up"
+  installUrl="@elements/clerk-sign-up"
+  category="Authentication"
+  name="Clerk Sign Up"
+>
+  <ClerkSignUpDemo />
+</ComponentPreviewItem>
+
+### Waitlist
+
+Waitlist signup form with animated success state. Built for Clerk Core 3's new `useWaitlist()` hook.
+
+<ComponentPreviewItem
+  componentKey="clerk-waitlist"
+  installUrl="@elements/clerk-waitlist"
+  category="Authentication"
+  name="Clerk Waitlist"
+>
+  <ClerkWaitlistDemo />
+</ComponentPreviewItem>
+
+### OAuth Buttons
+
+Social login button group with Google, GitHub, Apple, and Microsoft.
+
+<ComponentPreviewItem
+  componentKey="clerk-oauth-buttons"
+  installUrl="@elements/clerk-oauth-buttons"
+  category="Authentication"
+  name="Clerk OAuth Buttons"
+>
+  <ClerkOAuthButtonsDemo />
+</ComponentPreviewItem>
+
+### User Button
+
+User avatar dropdown with profile, settings, and sign-out actions.
+
+<ComponentPreviewItem
+  componentKey="clerk-user-button"
+  installUrl="@elements/clerk-user-button"
+  category="Authentication"
+  name="Clerk User Button"
+>
+  <ClerkUserButtonDemo />
+</ComponentPreviewItem>
+
+### Organization Switcher
+
+Organization switcher dropdown with role badges and personal account option.
+
+<ComponentPreviewItem
+  componentKey="clerk-org-switcher"
+  installUrl="@elements/clerk-org-switcher"
+  category="Authentication"
+  name="Clerk Organization Switcher"
+>
+  <ClerkOrgSwitcherDemo />
+</ComponentPreviewItem>
+
+## Setup
+
+### 1. Install Clerk
 
 ```bash
-npm install @clerk/elements
+bun add @clerk/nextjs
 ```
 
-> Make sure your `tsconfig.json` has `moduleResolution` set to `bundler` for TypeScript support.
+### 2. Get API Keys
 
-#### 2. Build custom flows
+From [dashboard.clerk.com](https://dashboard.clerk.com):
 
-Explore Clerk's official guides:
-- [Build a sign-in flow](https://clerk.com/docs/guides/customizing-clerk/elements/guides/sign-in)
-- [Sign-in examples](https://clerk.com/docs/guides/customizing-clerk/elements/examples/sign-in)
-- [Sign-in components reference](https://clerk.com/docs/guides/customizing-clerk/elements/reference/sign-in)
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
+CLERK_SECRET_KEY=sk_...
+```
 
-### In the meantime
+### 3. Wire Up Hooks
 
-While Clerk Elements is in beta, you can use:
+These components are presentation-ready. Connect them to Clerk's Core 3 hooks:
 
-1. **Clerk's prebuilt components** - Fast setup with the `<SignIn />` and `<SignUp />` components
-2. **Custom implementations** - Build your own with Clerk's hooks and APIs
-3. **Appearance customization** - Use the [appearance prop](https://clerk.com/docs/guides/customizing-clerk/appearance-prop/overview) for styling prebuilt components
+```tsx
+import { useSignIn } from "@clerk/nextjs";
+import { ClerkSignIn } from "@/components/elements/clerk-sign-in";
+
+export function LoginPage() {
+  const { signIn } = useSignIn();
+
+  return (
+    <ClerkSignIn
+      onSubmit={async ({ email, password }) => {
+        await signIn.password({ emailAddress: email, password });
+      }}
+    />
+  );
+}
+```
 
 ## Resources
 
-- [Clerk Elements Documentation](https://clerk.com/docs/guides/customizing-clerk/elements/overview)
-- [Clerk Elements GitHub Discussion](https://github.com/orgs/clerk/discussions/3315)
-- [Clerk Dashboard](https://dashboard.clerk.com)
-- [General Clerk Documentation](https://clerk.com/docs)
-
-## Feedback
-
-Have feedback about Clerk Elements? Contact [beta-elements@clerk.dev](mailto:beta-elements@clerk.dev)
+- [Clerk Documentation](https://clerk.com/docs)
+- [Clerk Core 3 Upgrade Guide](https://clerk.com/docs/guides/development/upgrading/overview)
+- [Custom Flows Guide](https://clerk.com/docs/guides/development/custom-flows/overview)
+- [Dashboard](https://dashboard.clerk.com)

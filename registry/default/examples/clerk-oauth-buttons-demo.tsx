@@ -4,7 +4,7 @@ import { ClerkOauthButtons } from "@/registry/default/blocks/clerk/clerk-oauth-b
 
 export default function ClerkOauthButtonsDemo() {
   return (
-    <div className="flex items-center justify-center gap-8 p-4">
+    <div className="flex flex-col items-center justify-center gap-8 p-4">
       <ClerkOauthButtons variant="default" />
       <ClerkOauthButtons variant="icon" layout="horizontal" />
     </div>

@@ -45,6 +45,13 @@ import AiTokenViewerDemo from "@/registry/default/examples/ai-token-viewer-demo"
 import AiToolCallDemo from "@/registry/default/examples/ai-tool-call-demo";
 import AiToolInspectorDemo from "@/registry/default/examples/ai-tool-inspector-demo";
 import ApiResponseViewerDemo from "@/registry/default/examples/api-response-viewer-demo";
+import ClerkOauthButtonsDemo from "@/registry/default/examples/clerk-oauth-buttons-demo";
+import ClerkOrgSwitcherDemo from "@/registry/default/examples/clerk-org-switcher-demo";
+// Clerk
+import ClerkSignInDemo from "@/registry/default/examples/clerk-sign-in-demo";
+import ClerkSignUpDemo from "@/registry/default/examples/clerk-sign-up-demo";
+import ClerkUserButtonDemo from "@/registry/default/examples/clerk-user-button-demo";
+import ClerkWaitlistDemo from "@/registry/default/examples/clerk-waitlist-demo";
 import CliOutputDemo from "@/registry/default/examples/cli-output-demo";
 import CodeDiffViewerDemo from "@/registry/default/examples/code-diff-viewer-demo";
 import EnvEditorDemo from "@/registry/default/examples/env-editor-demo";
@@ -58,6 +65,12 @@ import GitHubRepoCardDemo from "@/registry/default/examples/github-repo-card-dem
 import GitHubStarButtonDemo from "@/registry/default/examples/github-star-button-demo";
 import GitHubStarsDemo from "@/registry/default/examples/github-stars-demo";
 import JsonViewerDemo from "@/registry/default/examples/json-viewer-demo";
+import LoaderDotMatrixDemo from "@/registry/default/examples/loader-dot-matrix-demo";
+import LoaderGlitchTextDemo from "@/registry/default/examples/loader-glitch-text-demo";
+import LoaderHelixDemo from "@/registry/default/examples/loader-helix-demo";
+import LoaderMorphingBlobDemo from "@/registry/default/examples/loader-morphing-blob-demo";
+import LoaderSignalBarsDemo from "@/registry/default/examples/loader-signal-bars-demo";
+import LoaderTerminalDecodeDemo from "@/registry/default/examples/loader-terminal-decode-demo";
 import OgImageExplorerDemo from "@/registry/default/examples/og-image-explorer-demo";
 import PolarLicenseKeyDemo from "@/registry/default/examples/polar-license-key-demo";
 // Polar
@@ -93,6 +106,13 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ComponentPreview,
     ComponentPreviewItem,
+    // Clerk
+    ClerkSignInDemo: ClerkSignInDemo,
+    ClerkSignUpDemo: ClerkSignUpDemo,
+    ClerkWaitlistDemo: ClerkWaitlistDemo,
+    ClerkOAuthButtonsDemo: ClerkOauthButtonsDemo,
+    ClerkUserButtonDemo: ClerkUserButtonDemo,
+    ClerkOrgSwitcherDemo: ClerkOrgSwitcherDemo,
     // Theme Components
     ThemeSwitcher: ThemeSwitcherDemo,
     ThemeSwitcherClassic: ThemeSwitcherDemo, // Alias for classic variant
@@ -221,6 +241,13 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AIBadge: AIBadgeDemo,
     GenerateBadge: GenerateBadgeDemo,
     UseAiAvatar: UseAiAvatarDemo,
+    // Loaders
+    LoaderDotMatrix: LoaderDotMatrixDemo,
+    LoaderGlitchText: LoaderGlitchTextDemo,
+    LoaderHelix: LoaderHelixDemo,
+    LoaderMorphingBlob: LoaderMorphingBlobDemo,
+    LoaderSignalBars: LoaderSignalBarsDemo,
+    LoaderTerminalDecode: LoaderTerminalDecodeDemo,
     // SFX
     SfxPlayer,
     pre: ({ children, ...props }: any) => {

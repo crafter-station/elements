@@ -3,7 +3,7 @@
  * Replaces hardcoded provider definitions
  */
 
-import { BadgeCheck, Sparkles, Volume2, Wand2 } from "lucide-react";
+import { BadgeCheck, Loader, Sparkles, Volume2, Wand2 } from "lucide-react";
 
 import { getProviderMetadata, getProviders } from "@/lib/registry-loader";
 
@@ -60,7 +60,6 @@ export function getProvidersData(): Provider[] {
     clerk: {
       providerLink: "https://clerk.com",
       isEnabled: true,
-      status: "building" as const,
       displayName: "Clerk",
       description:
         "Complete user management suite with auth, organizations, and billing components",
@@ -188,6 +187,14 @@ export function getProvidersData(): Provider[] {
       category: "Audio",
       brandColor: "#F59E0B",
     },
+    loaders: {
+      isEnabled: true,
+      displayName: "Loaders",
+      description:
+        "Production-grade loading indicators with unique visual identities",
+      category: "UI",
+      brandColor: "#8B5CF6",
+    },
   };
 
   // Get all provider names (registry + coming soon)
@@ -255,6 +262,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     animations: <Wand2 className="w-10 h-10" />,
     badges: <BadgeCheck className="w-10 h-10" />,
     sfx: <Volume2 className="w-10 h-10" />,
+    loaders: <Loader className="w-10 h-10" />,
     devtools: (
       <svg
         className="w-10 h-10"
