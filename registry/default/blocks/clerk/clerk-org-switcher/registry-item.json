@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-org-switcher",
+  "type": "registry:block",
+  "title": "Clerk Organization Switcher",
+  "description": "Organization switcher dropdown with personal account, org list with role badges, and create organization option.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/clerk/clerk-org-switcher/components/elements/clerk-org-switcher.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A complete organization switcher with personal account, org list with role badges (Owner/Admin/Member), active indicator, and create org button. Wire up with Clerk's useOrganizationList() hook.",
+  "categories": ["clerk"]
+}
