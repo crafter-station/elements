@@ -472,6 +472,114 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "clerk-oauth-buttons",
+      type: "registry:block",
+      title: "Clerk OAuth Buttons",
+      description:
+        "Social login button group with Google, GitHub, Apple, and Microsoft. Supports default, outline, and icon-only variants with horizontal/vertical layouts.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/clerk/clerk-oauth-buttons/components/elements/clerk-oauth-buttons.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Flexible social login buttons with brand-accurate SVG logos. Three variants (default, outline, icon-only) and two layouts. Wire up with Clerk's useSignIn() OAuth flow.",
+      categories: ["clerk"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "clerk-org-switcher",
+      type: "registry:block",
+      title: "Clerk Organization Switcher",
+      description:
+        "Organization switcher dropdown with personal account, org list with role badges, and create organization option.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/clerk/clerk-org-switcher/components/elements/clerk-org-switcher.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A complete organization switcher with personal account, org list with role badges (Owner/Admin/Member), active indicator, and create org button. Wire up with Clerk's useOrganizationList() hook.",
+      categories: ["clerk"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "clerk-sign-in",
+      type: "registry:block",
+      title: "Clerk Sign In",
+      description:
+        "Multi-step sign-in form with email/password and social OAuth buttons. Features step transitions, forgot password link, and clean Clerk aesthetic.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/clerk/clerk-sign-in/components/elements/clerk-sign-in.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A beautiful multi-step sign-in form. Step 1 collects email with optional OAuth buttons (Google, GitHub, Apple). Step 2 collects password. Wire up with Clerk's useSignIn() hook.",
+      categories: ["clerk"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "clerk-sign-up",
+      type: "registry:block",
+      title: "Clerk Sign Up",
+      description:
+        "Multi-step sign-up form with name, email, password and email verification via OTP input. Includes password strength indicator.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/clerk/clerk-sign-up/components/elements/clerk-sign-up.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A complete sign-up form with registration and email verification steps. Features 6-digit OTP input with auto-focus and password requirements indicator. Wire up with Clerk's useSignUp() hook.",
+      categories: ["clerk"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "clerk-user-button",
+      type: "registry:block",
+      title: "Clerk User Button",
+      description:
+        "User avatar with dropdown menu showing profile, settings, and sign-out options. Features initials fallback and click-outside-to-close.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/clerk/clerk-user-button/components/elements/clerk-user-button.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A polished user button with avatar (image or initials fallback) and dropdown menu. Customizable menu items and actions. Wire up with Clerk's useUser() and useClerk() hooks.",
+      categories: ["clerk"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "clerk-waitlist",
+      type: "registry:block",
+      title: "Clerk Waitlist",
+      description:
+        "Waitlist signup form with email input, animated success state, and queue position display. Built for Clerk Core 3's useWaitlist() hook.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/clerk/clerk-waitlist/components/elements/clerk-waitlist.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "A clean waitlist form that transitions to a success state with queue position. Designed for Clerk Core 3's new useWaitlist() hook. Customizable heading, description, and CTA.",
+      categories: ["clerk"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "cli-output",
       type: "registry:ui",
       title: "CLI Output",
@@ -1673,6 +1781,114 @@ export const registry = {
           colorSchemes: ["brand", "grayscale"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "loader-dot-matrix",
+      type: "registry:block",
+      title: "Dot Matrix Loader",
+      description:
+        "A grid of dots with ripple, wave, and cascade animation effects",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/loaders/loader-dot-matrix/components/elements/loader-dot-matrix.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Dot grid loader with configurable rows, columns, dot size, and animation patterns (ripple, wave, rain). CSS-only animations with computed stagger delays.",
+      categories: ["loaders"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "loader-glitch-text",
+      type: "registry:block",
+      title: "Glitch Text Loader",
+      description:
+        "Text with RGB channel splitting, clip-path distortion, and character scrambling",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/loaders/loader-glitch-text/components/elements/loader-glitch-text.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Cyberpunk-style glitch text loader with channel split, scan-line overlay, and random character scramble. Intensity levels: subtle, medium, heavy.",
+      categories: ["loaders"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "loader-helix",
+      type: "registry:block",
+      title: "Helix Loader",
+      description:
+        "DNA double-helix with dots traveling along sinusoidal paths creating a 3D illusion",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/loaders/loader-helix/components/elements/loader-helix.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "DNA helix loader with interleaved sinusoidal dot paths. Variants: dna (two strands + rungs), ribbon (gradient), minimal (dots only). CSS-only.",
+      categories: ["loaders"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "loader-morphing-blob",
+      type: "registry:block",
+      title: "Morphing Blob Loader",
+      description:
+        "Polished liquid sphere with subtle organic deformation and specular highlights",
+      registryDependencies: [],
+      dependencies: ["motion"],
+      files: [
+        {
+          path: "registry/default/blocks/loaders/loader-morphing-blob/components/elements/loader-morphing-blob.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Liquid sphere loader with smooth organic deformation, specular highlights, and depth shadows. Variants: mercury (metallic), aurora (iridescent), monochrome (themed). Sizes: sm/md/lg.",
+      categories: ["loaders"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "loader-signal-bars",
+      type: "registry:block",
+      title: "Signal Bars Loader",
+      description:
+        "Audio waveform / frequency spectrum bars that pulse rhythmically as a loading indicator",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/loaders/loader-signal-bars/components/elements/loader-signal-bars.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Equalizer-style loading bars with configurable count, variants (equalizer, waveform, heartbeat), and sizes. CSS-only animations.",
+      categories: ["loaders"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "loader-terminal-decode",
+      type: "registry:block",
+      title: "Terminal Decode Loader",
+      description:
+        "Terminal-style text decoder that cycles through random characters before resolving",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/loaders/loader-terminal-decode/components/elements/loader-terminal-decode.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Cipher-cracking text decoder with configurable charset (symbols, binary, hex), speed, and loop behavior. Monospace terminal aesthetic.",
+      categories: ["loaders"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
