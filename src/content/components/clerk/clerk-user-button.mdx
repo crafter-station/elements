@@ -1,0 +1,61 @@
+---
+title: Clerk User Button
+description: User avatar dropdown with profile, settings, and sign-out
+category: Authentication
+---
+
+<ComponentPreviewItem
+  componentKey="clerk-user-button"
+  installUrl="@elements/clerk-user-button"
+  category="Authentication"
+  name="Clerk User Button"
+>
+  <ClerkUserButtonDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A polished user button showing an avatar (with initials fallback) that opens a dropdown menu with profile, settings, and sign-out actions.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-user-button"
+```
+
+## Usage
+
+```tsx
+import { ClerkUserButton } from "@/components/elements/clerk-user-button";
+
+export function Header() {
+  return (
+    <ClerkUserButton
+      name="John Doe"
+      email="john@example.com"
+      onSignOut={() => {
+        // Wire up with Clerk's useClerk().signOut()
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | `"John Doe"` | User display name |
+| `email` | `string` | `"john@example.com"` | User email |
+| `imageUrl` | `string` | - | Avatar image URL (falls back to initials) |
+| `onSignOut` | `() => void` | - | Sign out handler |
+| `onProfileClick` | `() => void` | - | Profile click handler |
+| `onSettingsClick` | `() => void` | - | Settings click handler |
+
+## Features
+
+- Avatar with initials fallback
+- Dropdown menu with profile/settings/sign-out
+- Click-outside-to-close behavior
+- Smooth open/close transitions
+- Custom menu items support

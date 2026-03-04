@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-user-button",
+  "type": "registry:block",
+  "title": "Clerk User Button",
+  "description": "User avatar with dropdown menu showing profile, settings, and sign-out options. Features initials fallback and click-outside-to-close.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/clerk/clerk-user-button/components/elements/clerk-user-button.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A polished user button with avatar (image or initials fallback) and dropdown menu. Customizable menu items and actions. Wire up with Clerk's useUser() and useClerk() hooks.",
+  "categories": ["clerk"]
+}
