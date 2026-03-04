@@ -1,0 +1,61 @@
+---
+title: Clerk Sign Up
+description: Multi-step sign-up form with email verification via OTP input
+category: Authentication
+---
+
+<ComponentPreviewItem
+  componentKey="clerk-sign-up"
+  installUrl="@elements/clerk-sign-up"
+  category="Authentication"
+  name="Clerk Sign Up"
+>
+  <ClerkSignUpDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A complete sign-up form with two steps: registration (name, email, password) and email verification via 6-digit OTP input. Includes a live password requirements indicator.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-sign-up"
+```
+
+## Usage
+
+```tsx
+import { ClerkSignUp } from "@/components/elements/clerk-sign-up";
+
+export function RegisterPage() {
+  return (
+    <ClerkSignUp
+      onSubmit={(data) => {
+        // Wire up with Clerk's useSignUp() hook
+      }}
+      onVerify={(code) => {
+        // Verify email with code
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `heading` | `string` | `"Create your account"` | Form heading |
+| `subheading` | `string` | `"Welcome! Please fill in the details to get started."` | Subheading |
+| `showOAuth` | `boolean` | `true` | Show social login buttons |
+| `onSubmit` | `(data: { firstName: string; lastName: string; email: string; password: string }) => void` | - | Registration handler |
+| `onVerify` | `(code: string) => void` | - | OTP verification handler |
+
+## Features
+
+- Multi-step form (registration → email verification)
+- 6-digit OTP input with auto-focus and backspace navigation
+- Live password requirements indicator
+- Social OAuth buttons
+- Resend verification code link

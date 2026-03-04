@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-sign-up",
+  "type": "registry:block",
+  "title": "Clerk Sign Up",
+  "description": "Multi-step sign-up form with name, email, password and email verification via OTP input. Includes password strength indicator.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/clerk/clerk-sign-up/components/elements/clerk-sign-up.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "A complete sign-up form with registration and email verification steps. Features 6-digit OTP input with auto-focus and password requirements indicator. Wire up with Clerk's useSignUp() hook.",
+  "categories": ["clerk"]
+}
