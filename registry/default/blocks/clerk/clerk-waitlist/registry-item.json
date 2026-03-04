@@ -5,7 +5,7 @@
   "title": "Clerk Waitlist",
   "description": "Waitlist signup form with email input, animated success state, and queue position display. Built for Clerk Core 3's useWaitlist() hook.",
   "registryDependencies": [],
-  "dependencies": [],
+  "dependencies": ["@clerk/nextjs"],
   "files": [
     {
       "path": "registry/default/blocks/clerk/clerk-waitlist/components/elements/clerk-waitlist.tsx",

@@ -5,7 +5,7 @@
   "title": "Clerk Sign Up",
   "description": "Multi-step sign-up form with name, email, password and email verification via OTP input. Includes password strength indicator.",
   "registryDependencies": [],
-  "dependencies": [],
+  "dependencies": ["@clerk/nextjs"],
   "files": [
     {
       "path": "registry/default/blocks/clerk/clerk-sign-up/components/elements/clerk-sign-up.tsx",

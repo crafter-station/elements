@@ -5,7 +5,7 @@
   "title": "Clerk Sign In",
   "description": "Multi-step sign-in form with email/password and social OAuth buttons. Features step transitions, forgot password link, and clean Clerk aesthetic.",
   "registryDependencies": [],
-  "dependencies": [],
+  "dependencies": ["@clerk/nextjs"],
   "files": [
     {
       "path": "registry/default/blocks/clerk/clerk-sign-in/components/elements/clerk-sign-in.tsx",

@@ -5,7 +5,7 @@
   "title": "Clerk Organization Switcher",
   "description": "Organization switcher dropdown with personal account, org list with role badges, and create organization option.",
   "registryDependencies": [],
-  "dependencies": [],
+  "dependencies": ["@clerk/nextjs"],
   "files": [
     {
       "path": "registry/default/blocks/clerk/clerk-org-switcher/components/elements/clerk-org-switcher.tsx",

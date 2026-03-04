@@ -5,7 +5,7 @@
   "title": "Clerk OAuth Buttons",
   "description": "Social login button group with Google, GitHub, Apple, and Microsoft. Supports default, outline, and icon-only variants with horizontal/vertical layouts.",
   "registryDependencies": [],
-  "dependencies": [],
+  "dependencies": ["@clerk/nextjs"],
   "files": [
     {
       "path": "registry/default/blocks/clerk/clerk-oauth-buttons/components/elements/clerk-oauth-buttons.tsx",

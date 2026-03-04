@@ -5,7 +5,7 @@
   "title": "Clerk User Button",
   "description": "User avatar with dropdown menu showing profile, settings, and sign-out options. Features initials fallback and click-outside-to-close.",
   "registryDependencies": [],
-  "dependencies": [],
+  "dependencies": ["@clerk/nextjs"],
   "files": [
     {
       "path": "registry/default/blocks/clerk/clerk-user-button/components/elements/clerk-user-button.tsx",
