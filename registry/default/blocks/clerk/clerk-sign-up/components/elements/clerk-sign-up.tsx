@@ -1,6 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
+
+import { useSignUp } from "@clerk/nextjs";
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
@@ -140,15 +143,11 @@ function ArrowLeftIcon({ className }: { className?: string }) {
 export interface ClerkSignUpProps {
   className?: string;
   showOAuth?: boolean;
-  onSubmit?: (data: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-  }) => void;
-  onVerify?: (code: string) => void;
   heading?: string;
   subheading?: string;
+  redirectUrl?: string;
+  signInUrl?: string;
+  afterSSOUrl?: string;
 }
 
 type PasswordRequirement = {
@@ -167,18 +166,22 @@ function getPasswordRequirements(password: string): PasswordRequirement[] {
 export function ClerkSignUp({
   className,
   showOAuth = true,
-  onSubmit,
-  onVerify,
   heading = "Create your account",
   subheading = "Welcome! Please fill in the details to get started.",
+  redirectUrl = "/",
+  signInUrl = "/sign-in",
+  afterSSOUrl = "/sso-callback",
 }: ClerkSignUpProps) {
-  const [step, setStep] = useState<"form" | "verify">("form");
+  const { signUp, fetchStatus } = useSignUp();
+  const router = useRouter();
 
+  const [step, setStep] = useState<"form" | "verify">("form");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -191,11 +194,52 @@ export function ClerkSignUp({
     email.trim() !== "" &&
     allRequirementsMet;
 
-  const handleContinue = useCallback(() => {
+  const isFetching = fetchStatus === "fetching";
+
+  const handleOAuthGoogle = useCallback(async () => {
+    setError(null);
+    const { error: ssoError } = await signUp.sso({
+      strategy: "oauth_google",
+      redirectUrl,
+      redirectCallbackUrl: afterSSOUrl,
+    });
+    if (ssoError) {
+      setError(ssoError.message ?? "OAuth failed. Please try again.");
+    }
+  }, [signUp, afterSSOUrl, redirectUrl]);
+
+  const handleOAuthGitHub = useCallback(async () => {
+    setError(null);
+    const { error: ssoError } = await signUp.sso({
+      strategy: "oauth_github",
+      redirectUrl,
+      redirectCallbackUrl: afterSSOUrl,
+    });
+    if (ssoError) {
+      setError(ssoError.message ?? "OAuth failed. Please try again.");
+    }
+  }, [signUp, afterSSOUrl, redirectUrl]);
+
+  const handleContinue = useCallback(async () => {
     if (!canContinue) return;
-    onSubmit?.({ firstName, lastName, email, password });
+    setError(null);
+    const { error: pwError } = await signUp.password({
+      emailAddress: email,
+      password,
+      firstName,
+      lastName,
+    });
+    if (pwError) {
+      setError(pwError.message ?? "Sign up failed.");
+      return;
+    }
+    const { error: sendError } = await signUp.verifications.sendEmailCode();
+    if (sendError) {
+      setError(sendError.message ?? "Failed to send verification code.");
+      return;
+    }
     setStep("verify");
-  }, [canContinue, firstName, lastName, email, password, onSubmit]);
+  }, [canContinue, signUp, email, password, firstName, lastName]);
 
   const handleOtpChange = useCallback(
     (index: number, value: string) => {
@@ -236,15 +280,29 @@ export function ClerkSignUp({
   const otpCode = otp.join("");
   const canVerify = otpCode.length === 6;
 
-  const handleVerify = useCallback(() => {
+  const handleVerify = useCallback(async () => {
     if (!canVerify) return;
-    onVerify?.(otpCode);
-  }, [canVerify, otpCode, onVerify]);
+    setError(null);
+    const { error: verifyError } = await signUp.verifications.verifyEmailCode({
+      code: otpCode,
+    });
+    if (verifyError) {
+      setError(verifyError.message ?? "Verification failed.");
+      return;
+    }
+    const { error: finalizeError } = await signUp.finalize();
+    if (finalizeError) {
+      setError(finalizeError.message ?? "Failed to complete sign up.");
+      return;
+    }
+    router.push(redirectUrl);
+  }, [canVerify, signUp, otpCode, router, redirectUrl]);
 
-  const handleResend = useCallback(() => {
+  const handleResend = useCallback(async () => {
     setOtp(Array(6).fill(""));
     otpRefs.current[0]?.focus();
-  }, []);
+    await signUp.verifications.sendEmailCode();
+  }, [signUp]);
 
   return (
     <div
@@ -259,7 +317,10 @@ export function ClerkSignUp({
           <button
             type="button"
             data-slot="back-button"
-            onClick={() => setStep("form")}
+            onClick={() => {
+              setStep("form");
+              setError(null);
+            }}
             className="mb-4 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeftIcon className="h-4 w-4" />
@@ -290,6 +351,7 @@ export function ClerkSignUp({
                 <button
                   type="button"
                   data-slot="oauth-google"
+                  onClick={handleOAuthGoogle}
                   className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border bg-card px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
                 >
                   <GoogleIcon />
@@ -298,6 +360,7 @@ export function ClerkSignUp({
                 <button
                   type="button"
                   data-slot="oauth-github"
+                  onClick={handleOAuthGitHub}
                   className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border bg-card px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
                 >
                   <GitHubIcon />
@@ -431,19 +494,30 @@ export function ClerkSignUp({
             </div>
           </div>
 
+          <div id="clerk-captcha" />
+
+          {error && (
+            <p
+              data-slot="error"
+              className="mt-3 text-center text-sm text-destructive"
+            >
+              {error}
+            </p>
+          )}
+
           <button
             type="button"
             data-slot="continue-button"
-            disabled={!canContinue}
+            disabled={!canContinue || isFetching}
             onClick={handleContinue}
             className={cn(
               "mt-6 h-9 w-full rounded-lg text-sm font-medium transition-colors",
-              canContinue
+              canContinue && !isFetching
                 ? "bg-primary text-primary-foreground hover:bg-primary/90"
                 : "cursor-not-allowed bg-primary/50 text-primary-foreground/70",
             )}
           >
-            Continue
+            {isFetching ? "Creating account..." : "Continue"}
           </button>
 
           <p
@@ -453,6 +527,7 @@ export function ClerkSignUp({
             Already have an account?{" "}
             <button
               type="button"
+              onClick={() => router.push(signInUrl)}
               className="font-medium text-primary underline-offset-4 hover:underline"
             >
               Sign in
@@ -489,19 +564,28 @@ export function ClerkSignUp({
             ))}
           </div>
 
+          {error && (
+            <p
+              data-slot="error"
+              className="mt-3 text-center text-sm text-destructive"
+            >
+              {error}
+            </p>
+          )}
+
           <button
             type="button"
             data-slot="verify-button"
-            disabled={!canVerify}
+            disabled={!canVerify || isFetching}
             onClick={handleVerify}
             className={cn(
               "mt-6 h-9 w-full rounded-lg text-sm font-medium transition-colors",
-              canVerify
+              canVerify && !isFetching
                 ? "bg-primary text-primary-foreground hover:bg-primary/90"
                 : "cursor-not-allowed bg-primary/50 text-primary-foreground/70",
             )}
           >
-            Verify
+            {isFetching ? "Verifying..." : "Verify"}
           </button>
 
           <p

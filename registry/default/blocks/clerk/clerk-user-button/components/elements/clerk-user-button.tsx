@@ -2,6 +2,8 @@
 
 import * as React from "react";
 
+import { useClerk, useUser } from "@clerk/nextjs";
+
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -72,12 +74,6 @@ interface MenuItem {
 
 export interface ClerkUserButtonProps {
   className?: string;
-  name?: string;
-  email?: string;
-  imageUrl?: string;
-  onSignOut?: () => void;
-  onProfileClick?: () => void;
-  onSettingsClick?: () => void;
   menuItems?: MenuItem[];
 }
 
@@ -92,14 +88,10 @@ function getInitials(name: string): string {
 
 export function ClerkUserButton({
   className,
-  name = "John Doe",
-  email = "john@example.com",
-  imageUrl,
-  onSignOut,
-  onProfileClick,
-  onSettingsClick,
   menuItems,
 }: ClerkUserButtonProps) {
+  const { isLoaded, isSignedIn, user } = useUser();
+  const { signOut } = useClerk();
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -129,17 +121,29 @@ export function ClerkUserButton({
     };
   }, [open]);
 
-  const initials = getInitials(name);
+  if (!isLoaded) {
+    return (
+      <div
+        data-slot="clerk-user-button"
+        className={cn("relative inline-block", className)}
+      >
+        <div className="size-8 animate-pulse rounded-full bg-muted" />
+      </div>
+    );
+  }
+
+  const name = user?.fullName || "User";
+  const email = user?.primaryEmailAddress?.emailAddress || "";
+  const imageUrl = user?.imageUrl;
+  const initials = isSignedIn ? getInitials(name) : "?";
 
   const defaultItems: MenuItem[] = [
     {
       label: "Profile",
-      onClick: onProfileClick,
       icon: <UserIcon className="size-4" />,
     },
     {
       label: "Settings",
-      onClick: onSettingsClick,
       icon: <SettingsIcon className="size-4" />,
     },
   ];
@@ -232,7 +236,7 @@ export function ClerkUserButton({
               data-slot="clerk-user-button-sign-out"
               type="button"
               onClick={() => {
-                onSignOut?.();
+                signOut();
                 setOpen(false);
               }}
               className="flex w-full items-center gap-2.5 px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"

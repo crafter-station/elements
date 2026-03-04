@@ -2,6 +2,8 @@
 
 import * as React from "react";
 
+import { useWaitlist } from "@clerk/nextjs";
+
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -62,9 +64,26 @@ function MailIcon({ className }: { className?: string }) {
   );
 }
 
+function LoaderIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+  );
+}
+
 export interface ClerkWaitlistProps {
   className?: string;
-  onSubmit?: (email: string) => void;
   heading?: string;
   description?: string;
   ctaText?: string;
@@ -73,26 +92,32 @@ export interface ClerkWaitlistProps {
 
 export function ClerkWaitlist({
   className,
-  onSubmit,
   heading = "Get early access",
   description = "Join the waitlist to be the first to know when we launch.",
   ctaText = "Join waitlist",
   successMessage = "You're on the list!",
 }: ClerkWaitlistProps) {
+  const { waitlist, fetchStatus } = useWaitlist();
   const [email, setEmail] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
-  const [queuePosition] = React.useState(
-    () => Math.floor(Math.random() * 400) + 127,
-  );
+  const [error, setError] = React.useState<string | null>(null);
+
+  const isLoading = fetchStatus === "fetching";
 
   const handleSubmit = React.useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
       if (!email.trim()) return;
-      onSubmit?.(email);
+      setError(null);
+
+      const { error } = await waitlist.join({ emailAddress: email });
+      if (error) {
+        setError(error.message ?? "Something went wrong");
+        return;
+      }
       setSubmitted(true);
     },
-    [email, onSubmit],
+    [email, waitlist],
   );
 
   return (
@@ -112,25 +137,46 @@ export function ClerkWaitlist({
             <p className="text-sm text-muted-foreground">{description}</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-3">
-            <div className="relative">
-              <MailIcon className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <input
-                data-slot="clerk-waitlist-input"
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="h-10 w-full rounded-lg border border-border bg-background pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-              />
+            <div className="space-y-1.5">
+              <div className="relative">
+                <MailIcon className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  data-slot="clerk-waitlist-input"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (error) setError(null);
+                  }}
+                  required
+                  disabled={isLoading}
+                  className="h-10 w-full rounded-lg border border-border bg-background pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+              {error && (
+                <p
+                  data-slot="clerk-waitlist-error"
+                  className="text-xs text-destructive"
+                >
+                  {error}
+                </p>
+              )}
             </div>
             <button
               data-slot="clerk-waitlist-submit"
               type="submit"
-              className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              disabled={isLoading}
+              className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {ctaText}
-              <ArrowRightIcon className="size-4" />
+              {isLoading ? (
+                <LoaderIcon className="size-4 animate-spin" />
+              ) : (
+                <>
+                  {ctaText}
+                  <ArrowRightIcon className="size-4" />
+                </>
+              )}
             </button>
           </form>
         </div>
@@ -145,9 +191,6 @@ export function ClerkWaitlist({
           <div className="space-y-1">
             <p className="text-base font-semibold text-foreground">
               {successMessage}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              You are #{queuePosition} in line
             </p>
           </div>
           <div className="w-full rounded-lg bg-muted px-3 py-2">

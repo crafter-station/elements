@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { useOrganization, useOrganizationList, useUser } from "@clerk/nextjs";
+
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -116,60 +118,25 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-export interface Organization {
-  id: string;
-  name: string;
-  imageUrl?: string;
-  role?: string;
-}
-
-export interface PersonalAccount {
-  name: string;
-  email: string;
-  imageUrl?: string;
-}
-
-const DEFAULT_ORGANIZATIONS: Organization[] = [
-  { id: "org_acme", name: "Acme Inc", role: "Owner" },
-  { id: "org_stark", name: "Stark Industries", role: "Admin" },
-  { id: "org_wayne", name: "Wayne Enterprises", role: "Member" },
-];
-
-const DEFAULT_PERSONAL_ACCOUNT: PersonalAccount = {
-  name: "John Doe",
-  email: "john@example.com",
-};
-
 export interface ClerkOrgSwitcherProps {
   className?: string;
-  organizations?: Organization[];
-  activeOrgId?: string;
-  personalAccount?: PersonalAccount;
-  onOrgChange?: (orgId: string) => void;
-  onCreateOrg?: () => void;
   showPersonalAccount?: boolean;
 }
 
 export function ClerkOrgSwitcher({
   className,
-  organizations = DEFAULT_ORGANIZATIONS,
-  activeOrgId,
-  personalAccount = DEFAULT_PERSONAL_ACCOUNT,
-  onOrgChange,
-  onCreateOrg,
   showPersonalAccount = true,
 }: ClerkOrgSwitcherProps) {
-  const [open, setOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState(
-    activeOrgId ?? organizations[0]?.id ?? "personal",
-  );
-  const containerRef = useRef<HTMLDivElement>(null);
+  const {
+    isLoaded: isOrgListLoaded,
+    userMemberships,
+    setActive,
+  } = useOrganizationList({ userMemberships: true });
+  const { isLoaded: isOrgLoaded, organization } = useOrganization();
+  const { isLoaded: isUserLoaded, user } = useUser();
 
-  useEffect(() => {
-    if (activeOrgId !== undefined) {
-      setSelectedId(activeOrgId);
-    }
-  }, [activeOrgId]);
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -187,17 +154,44 @@ export function ClerkOrgSwitcher({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
-  const handleSelect = useCallback(
-    (id: string) => {
-      setSelectedId(id);
+  const handleSelectOrg = useCallback(
+    (orgId: string) => {
       setOpen(false);
-      onOrgChange?.(id);
+      setActive?.({ organization: orgId });
     },
-    [onOrgChange],
+    [setActive],
   );
 
-  const activeOrg = organizations.find((o) => o.id === selectedId);
-  const isPersonal = selectedId === "personal";
+  const handleSelectPersonal = useCallback(() => {
+    setOpen(false);
+    setActive?.({ organization: null });
+  }, [setActive]);
+
+  if (!isOrgListLoaded || !isOrgLoaded || !isUserLoaded) {
+    return (
+      <div
+        data-slot="clerk-org-switcher"
+        className={cn("relative inline-block text-sm", className)}
+      >
+        <div className="flex min-w-[220px] items-center gap-3 rounded-lg border border-border bg-card px-3 py-2">
+          <span className="h-7 w-7 shrink-0 animate-pulse rounded-full bg-muted" />
+          <span className="h-4 flex-1 animate-pulse rounded bg-muted" />
+          <span className="h-4 w-4 shrink-0 animate-pulse rounded bg-muted" />
+        </div>
+      </div>
+    );
+  }
+
+  const organizations =
+    userMemberships.data?.map((m) => ({
+      id: m.organization.id,
+      name: m.organization.name,
+      imageUrl: m.organization.imageUrl,
+      role: m.role,
+    })) ?? [];
+
+  const isPersonal = organization === null;
+  const activeOrg = organizations.find((o) => o.id === organization?.id);
 
   return (
     <div
@@ -271,7 +265,7 @@ export function ClerkOrgSwitcher({
             <button
               data-slot="personal-option"
               type="button"
-              onClick={() => handleSelect("personal")}
+              onClick={handleSelectPersonal}
               className={cn(
                 "flex w-full items-center gap-3 rounded-md px-2 py-2 text-left transition-colors",
                 "hover:bg-accent",
@@ -290,7 +284,7 @@ export function ClerkOrgSwitcher({
                   Personal account
                 </span>
                 <span className="truncate text-xs text-muted-foreground">
-                  {personalAccount.email}
+                  {user?.primaryEmailAddress?.emailAddress}
                 </span>
               </div>
 
@@ -305,14 +299,14 @@ export function ClerkOrgSwitcher({
 
         <div data-slot="org-list" className="flex flex-col">
           {organizations.map((org) => {
-            const isActive = org.id === selectedId;
+            const isActive = org.id === organization?.id;
 
             return (
               <button
                 key={org.id}
                 data-slot="org-option"
                 type="button"
-                onClick={() => handleSelect(org.id)}
+                onClick={() => handleSelectOrg(org.id)}
                 className={cn(
                   "flex w-full items-center gap-3 rounded-md px-2 py-2 text-left transition-colors",
                   "hover:bg-accent",
@@ -363,10 +357,7 @@ export function ClerkOrgSwitcher({
         <button
           data-slot="create-org"
           type="button"
-          onClick={() => {
-            setOpen(false);
-            onCreateOrg?.();
-          }}
+          onClick={() => setOpen(false)}
           className="flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
         >
           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-dashed border-border">

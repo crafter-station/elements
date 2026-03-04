@@ -1,9 +1,32 @@
 "use client";
 
 import type * as React from "react";
+import { useState } from "react";
+
+import { useSignIn } from "@clerk/nextjs";
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
+}
+
+function LoaderIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={cn("animate-spin", className)}
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+  );
 }
 
 function GoogleLogo({ className }: { className?: string }) {
@@ -92,6 +115,13 @@ const providerConfig: Record<
   microsoft: { label: "Microsoft", icon: MicrosoftLogo },
 };
 
+const oauthStrategyMap = {
+  google: "oauth_google",
+  github: "oauth_github",
+  apple: "oauth_apple",
+  microsoft: "oauth_microsoft",
+} as const;
+
 const sizeClasses: Record<
   Size,
   { button: string; icon: string; iconOnly: string }
@@ -114,8 +144,9 @@ export interface ClerkOauthButtonsProps {
   providers?: Provider[];
   variant?: Variant;
   layout?: "horizontal" | "vertical";
-  onProviderClick?: (provider: string) => void;
   size?: Size;
+  redirectUrl?: string;
+  afterSSOUrl?: string;
 }
 
 export function ClerkOauthButtons({
@@ -123,10 +154,26 @@ export function ClerkOauthButtons({
   providers = ["google", "github", "apple", "microsoft"],
   variant = "default",
   layout = "vertical",
-  onProviderClick,
   size = "default",
+  redirectUrl = "/",
+  afterSSOUrl = "/sso-callback",
 }: ClerkOauthButtonsProps) {
+  const { signIn, fetchStatus } = useSignIn();
+  const [loadingProvider, setLoadingProvider] = useState<Provider | null>(null);
   const sizeConfig = sizeClasses[size];
+
+  const handleOAuth = async (provider: Provider) => {
+    setLoadingProvider(provider);
+    const strategy = oauthStrategyMap[provider];
+    const { error } = await signIn.sso({
+      strategy,
+      redirectUrl,
+      redirectCallbackUrl: afterSSOUrl,
+    });
+    if (error) {
+      setLoadingProvider(null);
+    }
+  };
 
   return (
     <div
@@ -144,6 +191,8 @@ export function ClerkOauthButtons({
       {providers.map((provider) => {
         const config = providerConfig[provider];
         const Icon = config.icon;
+        const isLoading = loadingProvider === provider;
+        const isDisabled = loadingProvider !== null && !isLoading;
 
         if (variant === "icon") {
           return (
@@ -152,13 +201,18 @@ export function ClerkOauthButtons({
               data-slot="clerk-oauth-button"
               data-provider={provider}
               type="button"
-              onClick={() => onProviderClick?.(provider)}
+              disabled={isDisabled}
+              onClick={() => handleOAuth(provider)}
               className={cn(
-                "inline-flex items-center justify-center rounded-lg border border-border bg-card text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                "inline-flex items-center justify-center rounded-lg border border-border bg-card text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
                 sizeConfig.iconOnly,
               )}
             >
-              <Icon className={sizeConfig.icon} />
+              {isLoading ? (
+                <LoaderIcon className={sizeConfig.icon} />
+              ) : (
+                <Icon className={sizeConfig.icon} />
+              )}
             </button>
           );
         }
@@ -169,9 +223,10 @@ export function ClerkOauthButtons({
             data-slot="clerk-oauth-button"
             data-provider={provider}
             type="button"
-            onClick={() => onProviderClick?.(provider)}
+            disabled={isDisabled}
+            onClick={() => handleOAuth(provider)}
             className={cn(
-              "inline-flex w-full items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+              "inline-flex w-full items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
               sizeConfig.button,
               variant === "default" &&
                 "border border-border bg-card text-foreground hover:bg-accent",
@@ -179,7 +234,11 @@ export function ClerkOauthButtons({
                 "border-2 border-border bg-transparent text-foreground hover:bg-accent",
             )}
           >
-            <Icon className={sizeConfig.icon} />
+            {isLoading ? (
+              <LoaderIcon className={sizeConfig.icon} />
+            ) : (
+              <Icon className={sizeConfig.icon} />
+            )}
             Continue with {config.label}
           </button>
         );

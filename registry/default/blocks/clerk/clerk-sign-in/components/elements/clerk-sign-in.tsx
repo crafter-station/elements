@@ -1,6 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
+
+import { useSignIn } from "@clerk/nextjs";
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
@@ -178,31 +181,56 @@ export interface ClerkSignInProps {
   className?: string;
   showOAuth?: boolean;
   showSeparator?: boolean;
-  onSubmit?: (data: { email: string; password: string }) => void;
   heading?: string;
   subheading?: string;
+  redirectUrl?: string;
+  signUpUrl?: string;
+  afterSSOUrl?: string;
 }
 
 export function ClerkSignIn({
   className,
   showOAuth = true,
   showSeparator = true,
-  onSubmit,
   heading = "Sign in",
   subheading = "Welcome back",
+  redirectUrl = "/",
+  signUpUrl = "/sign-up",
+  afterSSOUrl = "/sso-callback",
 }: ClerkSignInProps) {
+  const { signIn, fetchStatus } = useSignIn();
+  const router = useRouter();
+
+  const isLoading = fetchStatus === "fetching";
+
   const [step, setStep] = useState<"email" | "password">("email");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [direction, setDirection] = useState<"forward" | "backward">("forward");
   const passwordInputRef = useRef<HTMLInputElement>(null);
+
+  const handleOAuth = useCallback(
+    async (strategy: "oauth_google" | "oauth_github" | "oauth_apple") => {
+      setError(null);
+      const { error } = await signIn.sso({
+        strategy,
+        redirectUrl,
+        redirectCallbackUrl: afterSSOUrl,
+      });
+      if (error) {
+        setError(error.message ?? "OAuth sign in failed.");
+      }
+    },
+    [signIn, afterSSOUrl, redirectUrl],
+  );
 
   const handleEmailSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
       if (!email.trim()) return;
+      setError(null);
       setDirection("forward");
       setStep("password");
       setTimeout(() => passwordInputRef.current?.focus(), 150);
@@ -211,14 +239,18 @@ export function ClerkSignIn({
   );
 
   const handlePasswordSubmit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
       if (!password.trim()) return;
-      setIsLoading(true);
-      onSubmit?.({ email, password });
-      setTimeout(() => setIsLoading(false), 1500);
+      setError(null);
+      const { error } = await signIn.password({ identifier: email, password });
+      if (error) {
+        setError(error.message ?? "Sign in failed. Please try again.");
+      } else {
+        router.push(redirectUrl);
+      }
     },
-    [email, password, onSubmit],
+    [email, password, signIn, router, redirectUrl],
   );
 
   const handleBack = useCallback(() => {
@@ -226,6 +258,7 @@ export function ClerkSignIn({
     setStep("email");
     setPassword("");
     setShowPassword(false);
+    setError(null);
   }, []);
 
   return (
@@ -257,6 +290,7 @@ export function ClerkSignIn({
             <button
               type="button"
               data-slot="oauth-button"
+              onClick={() => handleOAuth("oauth_google")}
               className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
             >
               <GoogleIcon className="h-4 w-4" />
@@ -265,6 +299,7 @@ export function ClerkSignIn({
             <button
               type="button"
               data-slot="oauth-button"
+              onClick={() => handleOAuth("oauth_github")}
               className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
             >
               <GitHubIcon className="h-4 w-4" />
@@ -273,6 +308,7 @@ export function ClerkSignIn({
             <button
               type="button"
               data-slot="oauth-button"
+              onClick={() => handleOAuth("oauth_apple")}
               className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
             >
               <AppleIcon className="h-4 w-4" />
@@ -288,6 +324,15 @@ export function ClerkSignIn({
               or
             </span>
             <div className="h-px flex-1 bg-border" />
+          </div>
+        )}
+
+        {error && (
+          <div
+            data-slot="error"
+            className="mb-4 rounded-lg border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+          >
+            {error}
           </div>
         )}
 
@@ -446,13 +491,13 @@ export function ClerkSignIn({
       <div data-slot="footer" className="border-t border-border px-8 py-4">
         <p className="text-center text-sm text-muted-foreground">
           Don&apos;t have an account?{" "}
-          <button
-            type="button"
+          <a
+            href={signUpUrl}
             data-slot="sign-up-link"
             className="font-medium text-primary transition-colors hover:text-primary/80"
           >
             Sign up
-          </button>
+          </a>
         </p>
       </div>
     </div>
