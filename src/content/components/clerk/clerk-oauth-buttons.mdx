@@ -1,0 +1,59 @@
+---
+title: Clerk OAuth Buttons
+description: Social login buttons with Google, GitHub, Apple, and Microsoft
+category: Authentication
+---
+
+<ComponentPreviewItem
+  componentKey="clerk-oauth-buttons"
+  installUrl="@elements/clerk-oauth-buttons"
+  category="Authentication"
+  name="Clerk OAuth Buttons"
+>
+  <ClerkOAuthButtonsDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+Flexible social login buttons with brand-accurate SVG logos. Three visual variants and two layout options.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://elements.crfrst.dev/r/clerk-oauth-buttons"
+```
+
+## Usage
+
+```tsx
+import { ClerkOAuthButtons } from "@/components/elements/clerk-oauth-buttons";
+
+export function LoginPage() {
+  return (
+    <ClerkOAuthButtons
+      providers={["google", "github", "apple"]}
+      variant="default"
+      onProviderClick={(provider) => {
+        // Wire up with Clerk's useSignIn() OAuth flow
+      }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `providers` | `("google" \| "github" \| "apple" \| "microsoft")[]` | All 4 | Providers to show |
+| `variant` | `"default" \| "outline" \| "icon"` | `"default"` | Visual style |
+| `layout` | `"horizontal" \| "vertical"` | `"vertical"` | Button layout |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Button size |
+| `onProviderClick` | `(provider: string) => void` | - | Click handler |
+
+## Features
+
+- Brand-accurate SVG logos for each provider
+- Three variants: default (icon+text), outline, icon-only
+- Horizontal and vertical layouts
+- Customizable provider selection

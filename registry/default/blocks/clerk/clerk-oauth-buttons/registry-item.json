@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clerk-oauth-buttons",
+  "type": "registry:block",
+  "title": "Clerk OAuth Buttons",
+  "description": "Social login button group with Google, GitHub, Apple, and Microsoft. Supports default, outline, and icon-only variants with horizontal/vertical layouts.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/clerk/clerk-oauth-buttons/components/elements/clerk-oauth-buttons.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Flexible social login buttons with brand-accurate SVG logos. Three variants (default, outline, icon-only) and two layouts. Wire up with Clerk's useSignIn() OAuth flow.",
+  "categories": ["clerk"]
+}
