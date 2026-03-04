@@ -50,7 +50,6 @@ import ClerkOrgSwitcherDemo from "@/registry/default/examples/clerk-org-switcher
 // Clerk
 import ClerkSignInDemo from "@/registry/default/examples/clerk-sign-in-demo";
 import ClerkSignUpDemo from "@/registry/default/examples/clerk-sign-up-demo";
-import ClerkSSOCallbackDemo from "@/registry/default/examples/clerk-sso-callback-demo";
 import ClerkUserButtonDemo from "@/registry/default/examples/clerk-user-button-demo";
 import ClerkWaitlistDemo from "@/registry/default/examples/clerk-waitlist-demo";
 import CliOutputDemo from "@/registry/default/examples/cli-output-demo";
@@ -114,7 +113,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ClerkOAuthButtonsDemo: ClerkOauthButtonsDemo,
     ClerkUserButtonDemo: ClerkUserButtonDemo,
     ClerkOrgSwitcherDemo: ClerkOrgSwitcherDemo,
-    ClerkSSOCallbackDemo: ClerkSSOCallbackDemo,
     // Theme Components
     ThemeSwitcher: ThemeSwitcherDemo,
     ThemeSwitcherClassic: ThemeSwitcherDemo, // Alias for classic variant

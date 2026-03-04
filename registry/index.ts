@@ -544,22 +544,6 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
-      name: "clerk-sso-callback",
-      type: "registry:block",
-      title: "Clerk SSO Callback",
-      description:
-        "Handles OAuth/SSO redirect callbacks for Clerk authentication flows.",
-      registryDependencies: [],
-      dependencies: ["@clerk/nextjs"],
-      files: [
-        {
-          path: "registry/default/blocks/clerk/clerk-sso-callback/components/elements/clerk-sso-callback.tsx",
-          type: "registry:component",
-        },
-      ],
-    },
-    {
-      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "clerk-user-button",
       type: "registry:block",
       title: "Clerk User Button",

@@ -89,19 +89,6 @@ Organization switcher dropdown with role badges and personal account option.
   <ClerkOrgSwitcherDemo />
 </ComponentPreviewItem>
 
-### SSO Callback
-
-Handles OAuth/SSO redirect callbacks. Required when using social login.
-
-<ComponentPreviewItem
-  componentKey="clerk-sso-callback"
-  installUrl="@elements/clerk-sso-callback"
-  category="Authentication"
-  name="Clerk SSO Callback"
->
-  <ClerkSSOCallbackDemo />
-</ComponentPreviewItem>
-
 ## Setup
 
 ### 1. Install Clerk
@@ -135,10 +122,10 @@ For OAuth flows, add an SSO callback page:
 
 ```tsx
 // app/sso-callback/page.tsx
-import { ClerkSSOCallback } from "@/components/elements/clerk-sso-callback";
+import { AuthenticateWithRedirectCallback } from "@clerk/nextjs";
 
 export default function SSOCallbackPage() {
-  return <ClerkSSOCallback />;
+  return <AuthenticateWithRedirectCallback />;
 }
 ```
 
