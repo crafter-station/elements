@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader-glitch-text",
+  "type": "registry:block",
+  "title": "Glitch Text Loader",
+  "description": "Text with RGB channel splitting, clip-path distortion, and character scrambling",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/loaders/loader-glitch-text/components/elements/loader-glitch-text.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Cyberpunk-style glitch text loader with channel split, scan-line overlay, and random character scramble. Intensity levels: subtle, medium, heavy.",
+  "categories": ["loaders"]
+}

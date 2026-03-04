@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader-morphing-blob",
+  "type": "registry:block",
+  "title": "Morphing Blob Loader",
+  "description": "Polished liquid sphere with subtle organic deformation and specular highlights",
+  "registryDependencies": [],
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/default/blocks/loaders/loader-morphing-blob/components/elements/loader-morphing-blob.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Liquid sphere loader with smooth organic deformation, specular highlights, and depth shadows. Variants: mercury (metallic), aurora (iridescent), monochrome (themed). Sizes: sm/md/lg.",
+  "categories": ["loaders"]
+}

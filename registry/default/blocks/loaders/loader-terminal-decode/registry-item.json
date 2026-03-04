@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader-terminal-decode",
+  "type": "registry:block",
+  "title": "Terminal Decode Loader",
+  "description": "Terminal-style text decoder that cycles through random characters before resolving",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/loaders/loader-terminal-decode/components/elements/loader-terminal-decode.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Cipher-cracking text decoder with configurable charset (symbols, binary, hex), speed, and loop behavior. Monospace terminal aesthetic.",
+  "categories": ["loaders"]
+}

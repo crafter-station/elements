@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader-signal-bars",
+  "type": "registry:block",
+  "title": "Signal Bars Loader",
+  "description": "Audio waveform / frequency spectrum bars that pulse rhythmically as a loading indicator",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/loaders/loader-signal-bars/components/elements/loader-signal-bars.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Equalizer-style loading bars with configurable count, variants (equalizer, waveform, heartbeat), and sizes. CSS-only animations.",
+  "categories": ["loaders"]
+}

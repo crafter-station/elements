@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader-helix",
+  "type": "registry:block",
+  "title": "Helix Loader",
+  "description": "DNA double-helix with dots traveling along sinusoidal paths creating a 3D illusion",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/loaders/loader-helix/components/elements/loader-helix.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "DNA helix loader with interleaved sinusoidal dot paths. Variants: dna (two strands + rungs), ribbon (gradient), minimal (dots only). CSS-only.",
+  "categories": ["loaders"]
+}

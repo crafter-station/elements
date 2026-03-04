@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader-dot-matrix",
+  "type": "registry:block",
+  "title": "Dot Matrix Loader",
+  "description": "A grid of dots with ripple, wave, and cascade animation effects",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/loaders/loader-dot-matrix/components/elements/loader-dot-matrix.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Dot grid loader with configurable rows, columns, dot size, and animation patterns (ripple, wave, rain). CSS-only animations with computed stagger delays.",
+  "categories": ["loaders"]
+}
