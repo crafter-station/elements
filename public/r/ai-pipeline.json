@@ -3,7 +3,7 @@
   "name": "ai-pipeline",
   "title": "AI Pipeline",
   "description": "Multi-stage workflow visualization with horizontal or vertical layout, stage status indicators, progress tracking, and expandable stage details.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

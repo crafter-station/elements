@@ -3,7 +3,7 @@
   "name": "ai-chain-of-thought",
   "title": "AI Chain of Thought",
   "description": "Visualize AI reasoning steps with search results and images for step-by-step thinking display.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

@@ -2411,6 +2411,42 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "pdf-utils",
+      type: "registry:ui",
+      title: "PDF Utils",
+      description:
+        "Utility functions for PDF manipulation: extract pages, screenshots, search text, and more",
+      registryDependencies: [],
+      dependencies: ["react-pdf", "pdfjs-dist", "pdf-lib"],
+      files: [
+        {
+          path: "registry/default/blocks/pdf/pdf-utils/components/elements/pdf-utils.ts",
+          type: "registry:component",
+        },
+      ],
+      docs: "Utility functions for working with PDFs: get document info, screenshot pages, extract text, search content, and generate thumbnails. Works with URLs or File objects.",
+      categories: ["pdf"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "pdf-viewer",
+      type: "registry:ui",
+      title: "PDF Viewer",
+      description:
+        "Multi-mode PDF viewer with single page, continuous scroll, and book layout modes",
+      registryDependencies: [],
+      dependencies: ["react-pdf", "pdfjs-dist"],
+      files: [
+        {
+          path: "registry/default/blocks/pdf/pdf-viewer/components/elements/pdf-viewer.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Display PDFs from URL or File with three viewing modes: single page navigation, continuous scroll, or book layout with smart cover handling. Includes zoom controls and page navigation.",
+      categories: ["pdf"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "perplexity-logo",
       type: "registry:ui",
       title: "Perplexity Logo",

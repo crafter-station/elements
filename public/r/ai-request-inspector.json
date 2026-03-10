@@ -3,7 +3,7 @@
   "name": "ai-request-inspector",
   "title": "AI Request Inspector",
   "description": "Display raw AI request/response data with collapsible sections, JSON syntax highlighting, copy buttons, and status code badges for debugging API calls.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

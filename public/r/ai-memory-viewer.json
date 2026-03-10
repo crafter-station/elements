@@ -3,7 +3,7 @@
   "name": "ai-memory-viewer",
   "title": "AI Memory Viewer",
   "description": "Display and manage working memory and conversation history with source badges, timestamps, search/filter, and add/remove functionality for agent memory systems.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

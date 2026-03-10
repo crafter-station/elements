@@ -3,7 +3,7 @@
   "name": "ai-task-list",
   "title": "AI Task List",
   "description": "Display AI workflow progress with task status indicators, file references, and progress tracking.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {
