@@ -3,7 +3,7 @@
   "name": "ai-guardrails",
   "title": "AI Guardrails",
   "description": "Display content moderation and safety check results with blocked/modified/approved states, before/after comparison, and override actions for AI safety workflows.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

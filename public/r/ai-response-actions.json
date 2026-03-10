@@ -4,7 +4,7 @@
   "title": "AI Response Actions",
   "description": "Action buttons for AI responses: copy, regenerate, thumbs up/down, share",
   "dependencies": ["lucide-react"],
-  "registryDependencies": ["button", "tooltip"],
+  "registryDependencies": ["button", "", "tooltip"],
   "files": [
     {
       "path": "registry/default/blocks/ai/ai-response-actions/components/elements/ai-response-actions.tsx",

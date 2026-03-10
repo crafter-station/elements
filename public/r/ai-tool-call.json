@@ -3,7 +3,7 @@
   "name": "ai-tool-call",
   "title": "AI Tool Call",
   "description": "Display AI tool/function invocations with status indicators, input/output visualization, and collapsible interface for MCP and function calling workflows.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

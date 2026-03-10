@@ -3,7 +3,7 @@
   "name": "ai-sources",
   "title": "AI Sources",
   "description": "Collapsible citations viewer with favicons, source links, and snippets for RAG/search results display.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

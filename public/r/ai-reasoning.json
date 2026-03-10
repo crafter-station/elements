@@ -3,7 +3,7 @@
   "name": "ai-reasoning",
   "title": "AI Reasoning",
   "description": "Collapsible reasoning content with streaming awareness for DeepSeek R1-style thinking visualization.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

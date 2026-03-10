@@ -3,7 +3,7 @@
   "name": "ai-agent-context",
   "title": "AI Agent Context",
   "description": "Display and optionally edit agent context data with type indicators, nested object support, and collapsible sections. Visualizes user/team context for AI agents.",
-  "dependencies": ["@radix-ui/react-collapsible", "lucide-react"],
+  "dependencies": ["@radix-ui/react-collapsible", "", "lucide-react"],
   "registryDependencies": [],
   "files": [
     {

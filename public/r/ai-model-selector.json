@@ -6,6 +6,7 @@
   "dependencies": ["lucide-react"],
   "registryDependencies": [
     "button",
+    "",
     "command",
     "popover",
     "openai-logo",
@@ -26,6 +27,6 @@
     }
   ],
   "docs": "Fully functional AI model selector with 22+ popular models from OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Cohere, and Meta. Supports custom models via the models prop. Returns provider/model-id format compatible with Vercel AI SDK.",
-  "categories": ["ai", "form", "selector"],
+  "categories": ["ai", "", "form", "selector"],
   "type": "registry:ui"
 }
