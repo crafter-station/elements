@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pdf-viewer",
+  "type": "registry:ui",
+  "title": "PDF Viewer",
+  "description": "Multi-mode PDF viewer with single page, continuous scroll, and book layout modes",
+  "registryDependencies": [],
+  "dependencies": ["react-pdf", "pdfjs-dist"],
+  "files": [
+    {
+      "path": "registry/default/blocks/pdf/pdf-viewer/components/elements/pdf-viewer.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Display PDFs from URL or File with three viewing modes: single page navigation, continuous scroll, or book layout with smart cover handling. Includes zoom controls and page navigation.",
+  "categories": ["pdf"]
+}

@@ -3,7 +3,14 @@
  * Replaces hardcoded provider definitions
  */
 
-import { BadgeCheck, Loader, Sparkles, Volume2, Wand2 } from "lucide-react";
+import {
+  BadgeCheck,
+  FileText,
+  Loader,
+  Sparkles,
+  Volume2,
+  Wand2,
+} from "lucide-react";
 
 import { getProviderMetadata, getProviders } from "@/lib/registry-loader";
 
@@ -98,6 +105,14 @@ export function getProvidersData(): Provider[] {
       description: "Developer utilities for auditing and debugging your app",
       category: "Dev Tools",
       status: "beta",
+    },
+    pdf: {
+      isEnabled: true,
+      displayName: "PDF",
+      description:
+        "PDF viewer and manipulation utilities for displaying and working with PDFs",
+      category: "Documents",
+      brandColor: "#DC2626",
     },
     "ai-elements": {
       isEnabled: true,
@@ -263,6 +278,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     badges: <BadgeCheck className="w-10 h-10" />,
     sfx: <Volume2 className="w-10 h-10" />,
     loaders: <Loader className="w-10 h-10" />,
+    pdf: <FileText className="w-10 h-10" />,
     devtools: (
       <svg
         className="w-10 h-10"

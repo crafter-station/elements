@@ -87,6 +87,11 @@ export function getProviderFromName(name: string): string | null {
     return "github";
   }
 
+  // Special case: pdf components
+  if (name === "pdf-viewer" || name === "pdf-utils") {
+    return "pdf";
+  }
+
   // Special case: devtools components
   if (
     name === "og-image-explorer" ||

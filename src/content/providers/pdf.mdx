@@ -1,0 +1,65 @@
+---
+title: PDF
+description: PDF viewer and manipulation utilities for displaying and working with PDFs
+category: Documents
+brandColor: "#DC2626"
+darkBrandColor: "#EF4444"
+---
+
+## Overview
+
+Components and utilities for working with PDF documents in React. Display PDFs with multiple viewing modes and manipulate them with powerful utility functions - all client-side.
+
+## Components
+
+### PDF Viewer
+
+Multi-mode PDF viewer with single page, continuous scroll, and book layout modes.
+
+<ComponentPreviewItem
+  componentKey="pdf-viewer"
+  installUrl="@elements/pdf-viewer"
+  category="Documents"
+  name="PDF Viewer"
+>
+  <PdfViewer />
+</ComponentPreviewItem>
+
+### PDF Utils
+
+Utility functions for PDF manipulation: extract pages, screenshots, search text, and more.
+
+Visit the [PDF Utils documentation](/docs/pdf/pdf-utils) for detailed API reference and examples.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/pdf-viewer
+bunx shadcn@latest add @elements/pdf-utils
+```
+
+## Features
+
+- **PDF Viewer** with three viewing modes:
+  - Single page navigation
+  - Continuous scroll
+  - Book layout (two pages side-by-side)
+- **Zoom controls** (0.5x to 2.0x)
+- **Page navigation** with prev/next and page number input
+- **Smart book mode** (cover page alone, then pairs)
+- **PDF Utilities** for:
+  - Document metadata extraction
+  - Page screenshots (high-quality PNG)
+  - Text extraction and search
+  - Thumbnail generation
+  - Page information (dimensions, rotation)
+
+## Use Cases
+
+- **Documentation viewers** - Display user manuals, guides, and documentation
+- **Report viewers** - Show generated reports and analytics PDFs
+- **Contract viewers** - Display legal documents and contracts
+- **Invoice viewers** - Show PDF invoices and receipts
+- **Preview generators** - Generate thumbnails for PDF management systems
+- **Search tools** - Build PDF search and indexing tools
+- **Page extractors** - Extract and save individual pages

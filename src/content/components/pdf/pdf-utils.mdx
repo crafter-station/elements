@@ -1,0 +1,398 @@
+---
+title: PDF Utils
+description: Utility functions for PDF manipulation and analysis
+---
+
+## Overview
+
+A collection of utility functions for working with PDFs in the browser. Extract information, generate screenshots, search text, and more - all client-side with no server required.
+
+<ComponentPreviewItem
+  componentKey="pdf-utils"
+  installUrl="@elements/pdf-utils"
+  category="PDF"
+  name="PDF Utils"
+>
+  <PdfUtils />
+</ComponentPreviewItem>
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/pdf-utils
+```
+
+## Usage
+
+### Fetch PDF from URL
+
+All PDF utility functions accept `File` objects. Use `fetchPdfAsFile()` to convert a URL to a File:
+
+```tsx
+import { fetchPdfAsFile } from "@/components/elements/pdf/pdf-utils";
+
+// Fetch from URL
+const pdfFile = await fetchPdfAsFile("https://example.com/document.pdf");
+
+// Or use a local file from input
+const localFile = event.target.files[0]; // Already a File object
+```
+
+### Get PDF Information
+
+```tsx
+import { fetchPdfAsFile, getPdfInfo } from "@/components/elements/pdf/pdf-utils";
+
+const pdfFile = await fetchPdfAsFile("https://example.com/document.pdf");
+const info = await getPdfInfo(pdfFile);
+
+console.log(info);
+// {
+//   numPages: 10,
+//   title: "My Document",
+//   author: "John Doe",
+//   creationDate: Date,
+//   ...
+// }
+```
+
+### Screenshot a Page
+
+```tsx
+import { fetchPdfAsFile, screenshotPage } from "@/components/elements/pdf/pdf-utils";
+
+const pdfFile = await fetchPdfAsFile("https://example.com/document.pdf");
+
+// Get high-quality screenshot (2x scale)
+const base64Image = await screenshotPage(
+  pdfFile,
+  1, // page number
+  2  // scale factor
+);
+
+// Use in an img tag
+<img src={base64Image} alt="Page 1" />
+```
+
+### Get Page Information
+
+```tsx
+import { getPageInfo } from "@/components/elements/pdf/pdf-utils";
+
+const pageInfo = await getPageInfo(pdfFile, 1);
+
+console.log(pageInfo);
+// {
+//   pageNumber: 1,
+//   width: 612,
+//   height: 792,
+//   rotation: 0
+// }
+```
+
+### Extract Text from Page
+
+```tsx
+import { getPageText } from "@/components/elements/pdf/pdf-utils";
+
+const text = await getPageText(pdfFile, 1);
+console.log(text); // "Full text content of page 1..."
+```
+
+### Search for Text
+
+```tsx
+import { searchText } from "@/components/elements/pdf/pdf-utils";
+
+const pages = await searchText(
+  pdfFile,
+  "search term",
+  false // case insensitive
+);
+
+console.log(pages); // [1, 3, 7] - pages containing the text
+```
+
+### Extract Single Page
+
+```tsx
+import { extractPage } from "@/components/elements/pdf/pdf-utils";
+
+const singlePageBlob = await extractPage(pdfFile, 5);
+
+// Convert to File for download or further processing
+const extractedFile = new File([singlePageBlob], "page-5.pdf", {
+  type: "application/pdf"
+});
+```
+
+### Extract Page Range
+
+```tsx
+import { extractPageRange } from "@/components/elements/pdf/pdf-utils";
+
+// Extract pages 3-7
+const rangeBlob = await extractPageRange(pdfFile, 3, 7);
+
+const extractedFile = new File([rangeBlob], "pages-3-7.pdf", {
+  type: "application/pdf"
+});
+```
+
+### Generate All Thumbnails
+
+```tsx
+import { getAllPageThumbnails } from "@/components/elements/pdf/pdf-utils";
+
+const thumbnails = await getAllPageThumbnails(
+  pdfFile,
+  0.5 // scale factor for thumbnails
+);
+
+// Array of base64 images for all pages
+thumbnails.forEach((thumb, index) => {
+  console.log(`Page ${index + 1}: ${thumb.slice(0, 50)}...`);
+});
+```
+
+## API Reference
+
+### `fetchPdfAsFile(url: string, filename?: string): Promise<File>`
+
+Fetch a PDF from a URL and convert it to a File object.
+
+**Parameters:**
+- `url`: URL to the PDF file
+- `filename`: Optional filename (defaults to extracted from URL or "document.pdf")
+
+**Returns:** File object containing the PDF data
+
+### `getPdfInfo(file: File): Promise<PdfDocumentInfo>`
+
+Get metadata and information about the PDF document.
+
+**Returns:**
+- `numPages`: Total number of pages
+- `title`: Document title
+- `author`: Document author
+- `subject`: Document subject
+- `keywords`: Document keywords
+- `creator`: Creator application
+- `producer`: PDF producer
+- `creationDate`: Creation date
+- `modificationDate`: Last modification date
+
+### `getPageInfo(file: File, pageNumber: number): Promise<PdfPageInfo>`
+
+Get information about a specific page.
+
+**Returns:**
+- `pageNumber`: Page number
+- `width`: Page width in points
+- `height`: Page height in points
+- `rotation`: Page rotation in degrees (0, 90, 180, 270)
+
+### `screenshotPage(file: File, pageNumber: number, scale?: number): Promise<string>`
+
+Render a page as a PNG image.
+
+**Parameters:**
+- `file`: PDF File object
+- `pageNumber`: Page to screenshot (1-indexed)
+- `scale`: Scale factor (default: 2 for high DPI)
+
+**Returns:** Base64-encoded PNG image
+
+### `getPageText(file: File, pageNumber: number): Promise<string>`
+
+Extract text content from a page.
+
+**Returns:** Plain text content of the page
+
+### `searchText(file: File, searchText: string, caseSensitive?: boolean): Promise<number[]>`
+
+Search for text across all pages.
+
+**Parameters:**
+- `file`: PDF File object
+- `searchText`: Text to search for
+- `caseSensitive`: Case-sensitive search (default: false)
+
+**Returns:** Array of page numbers where text was found
+
+### `extractPage(file: File, pageNumber: number): Promise<Blob>`
+
+Extract a single page as a new PDF.
+
+**Parameters:**
+- `file`: PDF File object
+- `pageNumber`: Page to extract (1-indexed)
+
+**Returns:** Blob containing single-page PDF
+
+### `extractPageRange(file: File, startPage: number, endPage: number): Promise<Blob>`
+
+Extract a range of pages as a new PDF.
+
+**Parameters:**
+- `file`: PDF File object
+- `startPage`: First page to extract (1-indexed, inclusive)
+- `endPage`: Last page to extract (1-indexed, inclusive)
+
+**Returns:** Blob containing extracted pages
+
+### `getAllPageThumbnails(file: File, scale?: number): Promise<string[]>`
+
+Generate thumbnails for all pages.
+
+**Parameters:**
+- `file`: PDF File object
+- `scale`: Scale factor for thumbnails (default: 0.5)
+
+**Returns:** Array of base64-encoded PNG images
+
+## Example: PDF Preview Component
+
+```tsx
+"use client";
+
+import { useState, useEffect } from "react";
+import {
+  fetchPdfAsFile,
+  getPdfInfo,
+  getAllPageThumbnails
+} from "@/components/elements/pdf/pdf-utils";
+
+export function PdfPreview({ url }: { url: string }) {
+  const [info, setInfo] = useState(null);
+  const [thumbnails, setThumbnails] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        // Convert URL to File
+        const pdfFile = await fetchPdfAsFile(url);
+
+        // Get PDF info
+        const pdfInfo = await getPdfInfo(pdfFile);
+        setInfo(pdfInfo);
+
+        // Generate thumbnails
+        const thumbs = await getAllPageThumbnails(pdfFile, 0.3);
+        setThumbnails(thumbs);
+      } catch (error) {
+        console.error("Failed to load PDF:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, [url]);
+
+  if (loading) return <div>Loading...</div>;
+  if (!info) return <div>Failed to load PDF</div>;
+
+  return (
+    <div>
+      <h2>{info.title || "Untitled"}</h2>
+      <p>{info.numPages} pages</p>
+
+      <div className="grid grid-cols-4 gap-2">
+        {thumbnails.map((thumb, i) => (
+          <img
+            key={i}
+            src={thumb}
+            alt={`Page ${i + 1}`}
+            className="border rounded"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+## Example: File Upload with PDF Analysis
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { getPdfInfo, searchText } from "@/components/elements/pdf/pdf-utils";
+
+export function PdfAnalyzer() {
+  const [file, setFile] = useState<File | null>(null);
+  const [results, setResults] = useState<number[]>([]);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile && selectedFile.type === "application/pdf") {
+      setFile(selectedFile);
+
+      // Analyze the PDF
+      const info = await getPdfInfo(selectedFile);
+      console.log("PDF has", info.numPages, "pages");
+    }
+  };
+
+  const handleSearch = async (term: string) => {
+    if (!file) return;
+    const pages = await searchText(file, term, false);
+    setResults(pages);
+  };
+
+  return (
+    <div>
+      <input
+        type="file"
+        accept="application/pdf"
+        onChange={handleFileChange}
+      />
+      {file && (
+        <div>
+          <input
+            type="text"
+            placeholder="Search PDF..."
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+          <p>Found on pages: {results.join(", ")}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Notes
+
+- **File Objects Only**: All functions accept File objects for better separation of concerns
+- **Use fetchPdfAsFile**: Convert URLs to Files using the provided helper function
+- **Client-Side**: All functions work entirely in the browser
+- **Page Numbers**: Page numbers are 1-indexed (first page = 1)
+- **Performance**: Large PDFs may take time to process
+- **Quality**: Screenshots use canvas rendering for high quality
+- **Text Extraction**: Preserves reading order from the PDF
+
+## TypeScript Types
+
+```tsx
+interface PdfDocumentInfo {
+  numPages: number;
+  title?: string;
+  author?: string;
+  subject?: string;
+  keywords?: string;
+  creator?: string;
+  producer?: string;
+  creationDate?: Date;
+  modificationDate?: Date;
+}
+
+interface PdfPageInfo {
+  pageNumber: number;
+  width: number;
+  height: number;
+  rotation: number;
+}
+```

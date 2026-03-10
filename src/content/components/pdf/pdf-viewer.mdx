@@ -1,0 +1,125 @@
+---
+title: PDF Viewer
+description: Multi-mode PDF viewer with single page, continuous scroll, and book layout
+---
+
+<ComponentPreviewItem
+  componentKey="pdf-viewer"
+  installUrl="@elements/pdf-viewer"
+  category="Dev Tools"
+  name="PDF Viewer"
+>
+  <PdfViewer />
+</ComponentPreviewItem>
+
+## Overview
+
+A versatile PDF viewer component with three distinct viewing modes: single page navigation, continuous scrolling, and book layout. Perfect for displaying documentation, reports, or any PDF content in your application.
+
+## Installation
+
+```bash
+bunx shadcn@latest add @elements/pdf-viewer
+```
+
+## Usage
+
+### From URL
+
+```tsx
+import { PdfViewer } from "@/components/elements/pdf/pdf-viewer";
+
+export function DocumentViewer() {
+  return (
+    <PdfViewer
+      file="https://example.com/document.pdf"
+      mode="book"
+      initialZoom={1.2}
+    />
+  );
+}
+```
+
+### From File Object
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { PdfViewer } from "@/components/elements/pdf/pdf-viewer";
+
+export function FileUploadViewer() {
+  const [file, setFile] = useState<File | null>(null);
+
+  return (
+    <div>
+      <input
+        type="file"
+        accept="application/pdf"
+        onChange={(e) => {
+          const selectedFile = e.target.files?.[0];
+          if (selectedFile) setFile(selectedFile);
+        }}
+      />
+      {file && <PdfViewer file={file} mode="scroll" />}
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `file` | `string \| File` | - | URL to PDF or File object |
+| `mode` | `"single" \| "scroll" \| "book"` | `"single"` | Viewing mode |
+| `initialZoom` | `number` | `1.0` | Initial zoom level (0.5 to 2.0) |
+| `className` | `string` | - | Additional CSS classes |
+
+## Viewing Modes
+
+### Single Page
+Navigate one page at a time using previous/next buttons or page number input.
+
+```tsx
+<PdfViewer file={pdfUrl} mode="single" />
+```
+
+### Continuous Scroll
+Scroll through all pages vertically in a single view.
+
+```tsx
+<PdfViewer file={pdfUrl} mode="scroll" />
+```
+
+### Book Layout
+Display pages side-by-side like an open book. The first page (cover) displays alone, then subsequent pages appear in pairs.
+
+```tsx
+<PdfViewer file={pdfUrl} mode="book" />
+```
+
+## Features
+
+- **Three viewing modes**: Single page, continuous scroll, book layout
+- **Smart book layout**: First page displays alone as cover, then pairs
+- **Zoom controls**: Zoom in/out (0.5x to 2.0x) and fit-to-width
+- **Page navigation**: Previous/next buttons and direct page input
+- **Mode switching**: Toggle between modes on the fly
+- **Loading states**: Graceful loading and error handling
+- **Responsive**: Adapts to container width
+- **Accessible**: Keyboard navigation support
+
+## Controls
+
+The toolbar includes:
+- **Mode switcher**: Toggle between Single, Scroll, and Book modes
+- **Page navigation**: Previous/next buttons and page number input (hidden in scroll mode)
+- **Zoom controls**: − button, current zoom percentage, + button, and Fit button
+
+## Notes
+
+- Requires network connection for PDF.js worker
+- Large PDFs may take time to load
+- File input works with local PDF files
+- Component uses react-pdf under the hood
