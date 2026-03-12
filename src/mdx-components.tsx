@@ -4,6 +4,7 @@ import type { MDXComponents } from "mdx/types";
 
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentPreviewItem } from "@/components/component-preview-item";
+import { PdfUtilsDemo, PdfViewerDemo } from "@/components/pdf-demos";
 import { SfxPlayer } from "@/components/sfx-player";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
 
@@ -72,8 +73,6 @@ import LoaderMorphingBlobDemo from "@/registry/default/examples/loader-morphing-
 import LoaderSignalBarsDemo from "@/registry/default/examples/loader-signal-bars-demo";
 import LoaderTerminalDecodeDemo from "@/registry/default/examples/loader-terminal-decode-demo";
 import OgImageExplorerDemo from "@/registry/default/examples/og-image-explorer-demo";
-import PdfUtilsDemo from "@/registry/default/examples/pdf-utils-demo";
-import PdfViewerDemo from "@/registry/default/examples/pdf-viewer-demo";
 import PolarLicenseKeyDemo from "@/registry/default/examples/polar-license-key-demo";
 // Polar
 import PolarPricingCardDemo from "@/registry/default/examples/polar-pricing-card-demo";
