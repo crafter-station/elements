@@ -34,6 +34,7 @@ export function ComponentInstallDockWrapper({
       componentInstallUrls={componentInstallUrls}
       category={category}
       name={providerName}
+      showExport={category === "BRAND"}
     />
   );
 }

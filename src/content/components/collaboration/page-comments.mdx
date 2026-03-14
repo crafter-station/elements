@@ -1,0 +1,191 @@
+---
+title: Page Comments
+description: Figma-style commenting overlay with text selection highlights, pin comments, keyboard navigation, and replies. Drop it on any page.
+category: Collaboration
+---
+
+<ComponentPreviewItem
+  componentKey="page-comments"
+  installUrl="@elements/page-comments"
+  category="Collaboration"
+  name="Page Comments"
+>
+  <PageCommentsDemo />
+</ComponentPreviewItem>
+
+## Overview
+
+A drop-in React component that adds Figma/Notion-style inline commenting to any page. Pin comments anywhere, select text for quote highlights, navigate with keyboard shortcuts, and plug in your own storage backend.
+
+**Included in the install:**
+- Core component + in-memory adapter (zero config)
+- Vercel KV adapter
+- Upstash Redis adapter
+- Supabase adapter
+- Generic Redis adapter (ioredis compatible)
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://tryelements.dev/r/page-comments.json"
+```
+
+## Quick Start
+
+```tsx
+import { PageComments } from "@/components/elements/page-comments";
+import { inMemoryAdapter } from "@/components/elements/page-comments-adapters";
+
+export default function BlogPost() {
+  return (
+    <div className="relative">
+      <article className="prose">
+        <h1>My Post</h1>
+        <p>Select this text to leave a comment...</p>
+      </article>
+
+      <PageComments
+        pageId="post-1"
+        adapter={inMemoryAdapter()}
+        contentSelector=".prose"
+        user={{ name: "Hunter", color: "#E5534B" }}
+      />
+    </div>
+  );
+}
+```
+
+## Adapters
+
+All adapters are included in a single install. Import the one that matches your stack:
+
+### In-Memory (default, zero config)
+
+```tsx
+import { inMemoryAdapter } from "@/components/elements/page-comments-adapters";
+
+<PageComments adapter={inMemoryAdapter()} ... />
+```
+
+### Vercel KV
+
+```tsx
+import { kvAdapter } from "@/components/elements/page-comments-kv";
+
+<PageComments
+  adapter={kvAdapter({
+    url: process.env.KV_REST_API_URL!,
+    token: process.env.KV_REST_API_TOKEN!,
+  })}
+  ...
+/>
+```
+
+### Upstash Redis
+
+```tsx
+import { upstashAdapter } from "@/components/elements/page-comments-upstash";
+
+<PageComments
+  adapter={upstashAdapter({
+    url: process.env.UPSTASH_REDIS_REST_URL!,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+  })}
+  ...
+/>
+```
+
+### Supabase
+
+```tsx
+import { supabaseAdapter } from "@/components/elements/page-comments-supabase";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!,
+);
+
+<PageComments
+  adapter={supabaseAdapter({ client: supabase, table: "page_comments" })}
+  ...
+/>
+```
+
+### Generic Redis (ioredis)
+
+```tsx
+import { redisAdapter } from "@/components/elements/page-comments-redis";
+import Redis from "ioredis";
+
+const redis = new Redis(process.env.REDIS_URL!);
+
+<PageComments adapter={redisAdapter({ client: redis })} ... />
+```
+
+### Custom Adapter
+
+```tsx
+import type { PageCommentsAdapter } from "@/components/elements/page-comments-adapters";
+
+const myAdapter: PageCommentsAdapter = {
+  getComments: async (pageId) => { /* ... */ },
+  addComment: async (pageId, comment) => { /* ... */ },
+  updateComment: async (pageId, commentId, data) => { /* ... */ },
+  deleteComment: async (pageId, commentId, name) => { /* ... */ },
+};
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pageId` | `string` | required | Unique identifier for the page |
+| `adapter` | `PageCommentsAdapter` | `inMemoryAdapter()` | Storage backend |
+| `contentSelector` | `string` | `".prose"` | CSS selector for highlightable content |
+| `user` | `{ name, avatar?, color? }` | required | Current user info |
+| `keyboard` | `boolean` | `true` | Enable keyboard shortcuts |
+| `highlightStyle` | `"notion" \| "minimal" \| "none"` | `"notion"` | Text highlight style |
+| `onComment` | `(comment) => void` | - | Callback on new comment |
+| `onResolve` | `(commentId) => void` | - | Callback on resolve |
+| `pollInterval` | `number` | `10000` | Polling interval in ms |
+
+## Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `C` | Toggle comment mode |
+| `Arrow Up/Down` | Navigate between comments |
+| `Escape` | Dismiss active comment or exit mode |
+
+## Features
+
+- Click-anywhere pin comments with colored avatar dots
+- Text selection quote comments with Notion-style highlights
+- Persistent highlights with hover/active state transitions (OKLCH)
+- Click a highlight to open its comment
+- Reply threads nested under parent
+- Resolve / unresolve comments
+- Delete own comments
+- Arrow up/down to cycle through comments
+- Auto-scroll to comment on navigation
+- Figma-style cursor in comment mode
+- Cross-DOM-node text highlighting via `window.find()`
+- CSS variable theming for highlight colors
+
+## Theming
+
+Override highlight colors with CSS variables on the parent element:
+
+```css
+[data-slot="page-comments"] {
+  --highlight-bg: oklch(0.85 0.15 85 / 0.1);
+  --highlight-bg-hover: oklch(0.85 0.15 85 / 0.18);
+  --highlight-bg-active: oklch(0.85 0.15 85 / 0.25);
+  --highlight-bg-active-hover: oklch(0.85 0.15 85 / 0.32);
+  --highlight-underline: oklch(0.75 0.15 85 / 0.25);
+  --highlight-underline-hover: oklch(0.75 0.15 85 / 0.45);
+  --highlight-underline-active: oklch(0.75 0.15 85 / 0.6);
+  --highlight-underline-active-hover: oklch(0.75 0.15 85 / 0.7);
+}
+```

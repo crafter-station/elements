@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-comments-supabase",
+  "title": "Page Comments — Supabase Adapter",
+  "description": "Supabase storage adapter for page-comments. Uses a Postgres table to persist comments.",
+  "dependencies": ["@supabase/supabase-js"],
+  "registryDependencies": ["page-comments"],
+  "files": [
+    {
+      "path": "registry/default/blocks/collaboration/page-comments-supabase/components/elements/page-comments-supabase.ts",
+      "content": "import type { PageCommentsAdapter, PageCommentsComment } from \"../../page-comments/components/elements/page-comments-adapters\";\n\ninterface SupabaseAdapterOptions {\n\tclient: {\n\t\tfrom: (table: string) => any;\n\t};\n\ttable?: string;\n}\n\nexport function supabaseAdapter({ client, table = \"page_comments\" }: SupabaseAdapterOptions): PageCommentsAdapter {\n\treturn {\n\t\tasync getComments(pageId) {\n\t\t\tconst { data } = await client\n\t\t\t\t.from(table)\n\t\t\t\t.select(\"data\")\n\t\t\t\t.eq(\"page_id\", pageId)\n\t\t\t\t.single();\n\t\t\treturn data?.data ?? [];\n\t\t},\n\t\tasync addComment(pageId, newComment) {\n\t\t\tconst comments = await this.getComments(pageId);\n\t\t\tconst comment: PageCommentsComment = {\n\t\t\t\tid: crypto.randomUUID().slice(0, 8),\n\t\t\t\tname: newComment.name,\n\t\t\t\ttext: newComment.text,\n\t\t\t\t...(newComment.quote ? { quote: newComment.quote } : {}),\n\t\t\t\tx: newComment.x,\n\t\t\t\ty: newComment.y,\n\t\t\t\ttimestamp: Date.now(),\n\t\t\t\tresolved: false,\n\t\t\t};\n\t\t\tconst updated = [...comments, comment];\n\t\t\tawait client\n\t\t\t\t.from(table)\n\t\t\t\t.upsert({ page_id: pageId, data: updated }, { onConflict: \"page_id\" });\n\t\t\treturn comment;\n\t\t},\n\t\tasync updateComment(pageId, commentId, data) {\n\t\t\tconst comments = await this.getComments(pageId);\n\t\t\tconst idx = comments.findIndex((c: PageCommentsComment) => c.id === commentId);\n\t\t\tif (idx === -1) return null;\n\n\t\t\tif (data.action === \"resolve\") {\n\t\t\t\tcomments[idx].resolved = !comments[idx].resolved;\n\t\t\t} else if (data.action === \"reply\") {\n\t\t\t\tif (!comments[idx].replies) comments[idx].replies = [];\n\t\t\t\tcomments[idx].replies!.push({\n\t\t\t\t\tid: crypto.randomUUID().slice(0, 8),\n\t\t\t\t\tname: data.name,\n\t\t\t\t\ttext: data.text,\n\t\t\t\t\ttimestamp: Date.now(),\n\t\t\t\t});\n\t\t\t}\n\t\t\tawait client\n\t\t\t\t.from(table)\n\t\t\t\t.upsert({ page_id: pageId, data: comments }, { onConflict: \"page_id\" });\n\t\t\treturn comments[idx];\n\t\t},\n\t\tasync deleteComment(pageId, commentId) {\n\t\t\tconst comments = await this.getComments(pageId);\n\t\t\tconst filtered = comments.filter((c: PageCommentsComment) => c.id !== commentId);\n\t\t\tawait client\n\t\t\t\t.from(table)\n\t\t\t\t.upsert({ page_id: pageId, data: filtered }, { onConflict: \"page_id\" });\n\t\t},\n\t};\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["collaboration"],
+  "type": "registry:block"
+}

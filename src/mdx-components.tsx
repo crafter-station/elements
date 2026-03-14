@@ -73,6 +73,7 @@ import LoaderMorphingBlobDemo from "@/registry/default/examples/loader-morphing-
 import LoaderSignalBarsDemo from "@/registry/default/examples/loader-signal-bars-demo";
 import LoaderTerminalDecodeDemo from "@/registry/default/examples/loader-terminal-decode-demo";
 import OgImageExplorerDemo from "@/registry/default/examples/og-image-explorer-demo";
+import PageCommentsDemo from "@/registry/default/examples/page-comments-demo";
 import PolarLicenseKeyDemo from "@/registry/default/examples/polar-license-key-demo";
 // Polar
 import PolarPricingCardDemo from "@/registry/default/examples/polar-pricing-card-demo";
@@ -254,6 +255,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // PDF
     PdfViewer: PdfViewerDemo,
     PdfUtils: PdfUtilsDemo,
+    // Collaboration
+    PageCommentsDemo: PageCommentsDemo,
     pre: ({ children, ...props }: any) => {
       const isShikiBlock = props.className?.includes("shiki") || props.style;
 

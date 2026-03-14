@@ -7,6 +7,7 @@ import {
   BadgeCheck,
   FileText,
   Loader,
+  MessageSquare,
   Sparkles,
   Volume2,
   Wand2,
@@ -210,6 +211,15 @@ export function getProvidersData(): Provider[] {
       category: "UI",
       brandColor: "#8B5CF6",
     },
+    collaboration: {
+      isEnabled: true,
+      displayName: "Collaboration",
+      description:
+        "Real-time collaboration primitives — comments, presence, cursors",
+      category: "Collaboration",
+      brandColor: "#E5534B",
+      status: "beta",
+    },
   };
 
   // Get all provider names (registry + coming soon)
@@ -278,6 +288,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     badges: <BadgeCheck className="w-10 h-10" />,
     sfx: <Volume2 className="w-10 h-10" />,
     loaders: <Loader className="w-10 h-10" />,
+    collaboration: <MessageSquare className="w-10 h-10" />,
     pdf: <FileText className="w-10 h-10" />,
     devtools: (
       <svg

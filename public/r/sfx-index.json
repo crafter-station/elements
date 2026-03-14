@@ -1,12 +1,12 @@
 {
-  "generated": "2026-03-10T18:26:46.705Z",
+  "generated": "2026-03-14T04:00:30.051Z",
   "count": 17,
   "sounds": [
     {
       "name": "boom",
       "category": "cinematic",
-      "duration": 4.296,
-      "sizeBytes": 137472,
+      "duration": 4.368,
+      "sizeBytes": 34942,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/boom.mp3",
       "registry": "https://tryelements.dev/r/sfx-boom.json"
@@ -23,8 +23,8 @@
     {
       "name": "drone",
       "category": "cinematic",
-      "duration": 6.816,
-      "sizeBytes": 218112,
+      "duration": 6.875,
+      "sizeBytes": 55004,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/drone.mp3",
       "registry": "https://tryelements.dev/r/sfx-drone.json"
@@ -50,8 +50,8 @@
     {
       "name": "keyboard",
       "category": "ui",
-      "duration": 8.046,
-      "sizeBytes": 257462,
+      "duration": 8.103,
+      "sizeBytes": 64826,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/keyboard.mp3",
       "registry": "https://tryelements.dev/r/sfx-keyboard.json"
@@ -86,8 +86,8 @@
     {
       "name": "reverse-whoosh",
       "category": "transition",
-      "duration": 5.851,
-      "sizeBytes": 187245,
+      "duration": 5.909,
+      "sizeBytes": 47272,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/reverse-whoosh.mp3",
       "registry": "https://tryelements.dev/r/sfx-reverse-whoosh.json"
@@ -95,8 +95,8 @@
     {
       "name": "riser",
       "category": "cinematic",
-      "duration": 4.032,
-      "sizeBytes": 129024,
+      "duration": 4.106,
+      "sizeBytes": 32852,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/riser.mp3",
       "registry": "https://tryelements.dev/r/sfx-riser.json"
@@ -104,8 +104,8 @@
     {
       "name": "shutter",
       "category": "cinematic",
-      "duration": 7.872,
-      "sizeBytes": 251904,
+      "duration": 7.947,
+      "sizeBytes": 63572,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/shutter.mp3",
       "registry": "https://tryelements.dev/r/sfx-shutter.json"
@@ -122,8 +122,8 @@
     {
       "name": "swoosh",
       "category": "transition",
-      "duration": 4.08,
-      "sizeBytes": 130560,
+      "duration": 4.159,
+      "sizeBytes": 33270,
       "license": "CC0",
       "url": "https://tryelements.dev/sfx/swoosh.mp3",
       "registry": "https://tryelements.dev/r/sfx-swoosh.json"

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-comments-upstash",
+  "title": "Page Comments — Upstash Redis Adapter",
+  "description": "Upstash Redis storage adapter for page-comments. Serverless-friendly, REST-based Redis.",
+  "dependencies": [],
+  "registryDependencies": ["page-comments"],
+  "files": [
+    {
+      "path": "registry/default/blocks/collaboration/page-comments-upstash/components/elements/page-comments-upstash.ts",
+      "content": "import type { PageCommentsAdapter, PageCommentsComment } from \"../../page-comments/components/elements/page-comments-adapters\";\n\ninterface UpstashAdapterOptions {\n\turl: string;\n\ttoken: string;\n\tprefix?: string;\n}\n\nexport function upstashAdapter({ url, token, prefix = \"page-comments\" }: UpstashAdapterOptions): PageCommentsAdapter {\n\tasync function redis(command: string, ...args: string[]) {\n\t\tconst res = await fetch(`${url}/${command}/${args.join(\"/\")}`, {\n\t\t\theaders: { Authorization: `Bearer ${token}` },\n\t\t});\n\t\tconst data = await res.json();\n\t\treturn data.result;\n\t}\n\n\tasync function getAll(pageId: string): Promise<PageCommentsComment[]> {\n\t\tconst result = await redis(\"get\", `${prefix}:${pageId}`);\n\t\tif (!result) return [];\n\t\treturn typeof result === \"string\" ? JSON.parse(result) : result;\n\t}\n\n\tasync function setAll(pageId: string, comments: PageCommentsComment[]) {\n\t\tawait redis(\"set\", `${prefix}:${pageId}`, JSON.stringify(comments));\n\t}\n\n\treturn {\n\t\tasync getComments(pageId) {\n\t\t\treturn getAll(pageId);\n\t\t},\n\t\tasync addComment(pageId, data) {\n\t\t\tconst comments = await getAll(pageId);\n\t\t\tconst comment: PageCommentsComment = {\n\t\t\t\tid: crypto.randomUUID().slice(0, 8),\n\t\t\t\tname: data.name,\n\t\t\t\ttext: data.text,\n\t\t\t\t...(data.quote ? { quote: data.quote } : {}),\n\t\t\t\tx: data.x,\n\t\t\t\ty: data.y,\n\t\t\t\ttimestamp: Date.now(),\n\t\t\t\tresolved: false,\n\t\t\t};\n\t\t\tcomments.push(comment);\n\t\t\tawait setAll(pageId, comments);\n\t\t\treturn comment;\n\t\t},\n\t\tasync updateComment(pageId, commentId, data) {\n\t\t\tconst comments = await getAll(pageId);\n\t\t\tconst idx = comments.findIndex((c) => c.id === commentId);\n\t\t\tif (idx === -1) return null;\n\n\t\t\tif (data.action === \"resolve\") {\n\t\t\t\tcomments[idx].resolved = !comments[idx].resolved;\n\t\t\t} else if (data.action === \"reply\") {\n\t\t\t\tif (!comments[idx].replies) comments[idx].replies = [];\n\t\t\t\tcomments[idx].replies!.push({\n\t\t\t\t\tid: crypto.randomUUID().slice(0, 8),\n\t\t\t\t\tname: data.name,\n\t\t\t\t\ttext: data.text,\n\t\t\t\t\ttimestamp: Date.now(),\n\t\t\t\t});\n\t\t\t}\n\t\t\tawait setAll(pageId, comments);\n\t\t\treturn comments[idx];\n\t\t},\n\t\tasync deleteComment(pageId, commentId) {\n\t\t\tconst comments = await getAll(pageId);\n\t\t\tawait setAll(\n\t\t\t\tpageId,\n\t\t\t\tcomments.filter((c) => c.id !== commentId),\n\t\t\t);\n\t\t},\n\t};\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["collaboration"],
+  "type": "registry:block"
+}

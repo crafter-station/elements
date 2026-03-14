@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-comments",
+  "type": "registry:block",
+  "title": "Page Comments",
+  "description": "Figma-style commenting overlay with text selection highlights, pin comments, keyboard navigation, and replies. Includes adapters for Vercel KV, Upstash, Supabase, and Redis.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["collaboration"],
+  "files": [
+    {
+      "path": "registry/default/blocks/collaboration/page-comments/components/elements/page-comments.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/collaboration/page-comments/components/elements/page-comments-adapters.ts",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/collaboration/page-comments/components/elements/page-comments-kv.ts",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/collaboration/page-comments/components/elements/page-comments-upstash.ts",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/collaboration/page-comments/components/elements/page-comments-supabase.ts",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/collaboration/page-comments/components/elements/page-comments-redis.ts",
+      "type": "registry:component"
+    }
+  ]
+}

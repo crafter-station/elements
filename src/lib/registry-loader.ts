@@ -57,6 +57,11 @@ export function getProviderFromName(name: string): string | null {
     return "logos";
   }
 
+  // Special case: collaboration components (page-comments and adapters)
+  if (name.startsWith("page-comments")) {
+    return "collaboration";
+  }
+
   // Special case: sfx sounds and system components
   if (
     name.startsWith("sfx-") ||
@@ -322,6 +327,14 @@ export function getProviderMetadata(provider: string): {
       category: "UI",
       brandColor: "#8B5CF6",
       darkBrandColor: "#A78BFA",
+    },
+    collaboration: {
+      displayName: "Collaboration",
+      description:
+        "Real-time collaboration primitives — comments, presence, cursors",
+      category: "COLLABORATION",
+      brandColor: "#E5534B",
+      darkBrandColor: "#F47067",
     },
   };
 
