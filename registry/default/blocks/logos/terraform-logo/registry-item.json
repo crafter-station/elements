@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "terraform-logo",
+  "type": "registry:ui",
+  "title": "Terraform Logo",
+  "description": "Terraform logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["Cloud", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/terraform-logo/components/logos/terraform.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Terraform logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}
