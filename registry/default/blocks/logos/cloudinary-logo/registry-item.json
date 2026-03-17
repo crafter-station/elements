@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cloudinary-logo",
+  "type": "registry:ui",
+  "title": "Cloudinary Logo",
+  "description": "Cloudinary logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["Cloud", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/cloudinary-logo/components/logos/cloudinary.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Cloudinary logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}

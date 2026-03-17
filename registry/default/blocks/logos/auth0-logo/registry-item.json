@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auth0-logo",
+  "type": "registry:ui",
+  "title": "Auth0 Logo",
+  "description": "Auth0 logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["Auth", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/auth0-logo/components/logos/auth0.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Auth0 logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}

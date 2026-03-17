@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "braintrust-logo",
+  "type": "registry:ui",
+  "title": "Braintrust Logo",
+  "description": "Braintrust logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/braintrust-logo/components/logos/braintrust.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Braintrust logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes."
+}
