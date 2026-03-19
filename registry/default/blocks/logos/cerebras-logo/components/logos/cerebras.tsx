@@ -21,6 +21,7 @@ export function CerebrasLogo({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
         clipRule="evenodd"
       >
@@ -61,6 +62,7 @@ export function CerebrasLogo({
         viewBox="0 0 95 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
         clipRule="evenodd"
       >

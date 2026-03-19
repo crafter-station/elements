@@ -21,6 +21,7 @@ export function N8nLogo({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
         clipRule="evenodd"
       >
@@ -58,6 +59,7 @@ export function N8nLogo({
       viewBox="0 0 60 24"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      fill={color}
       fillRule="evenodd"
     >
       <title>n8n</title>

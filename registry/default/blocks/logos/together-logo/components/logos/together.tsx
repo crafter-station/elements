@@ -21,6 +21,7 @@ export function TogetherLogo({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
       >
         <title>together.ai</title>
@@ -57,6 +58,7 @@ export function TogetherLogo({
       viewBox="0 0 116 24"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      fill={color}
       fillRule="evenodd"
     >
       <title>together.ai</title>

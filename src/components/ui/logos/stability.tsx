@@ -21,6 +21,7 @@ export function StabilityLogo({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
       >
         <title>Stability AI</title>
@@ -69,6 +70,7 @@ export function StabilityLogo({
       viewBox="0 0 202 24"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      fill={color}
       fillRule="evenodd"
     >
       <title>Stability AI</title>

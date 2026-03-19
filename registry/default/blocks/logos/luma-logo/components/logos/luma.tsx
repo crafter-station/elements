@@ -21,6 +21,7 @@ export function LumaLogo({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
       >
         <title>Luma</title>
@@ -54,17 +55,17 @@ export function LumaLogo({
         <path
           d="M2 5.999L12.392 0v24L2 18V5.999z"
           fill="url(#lobe-icons-luma-fill-2)"
-          style="mix-blend-mode:screen"
+          style={{ mixBlendMode: "screen" }}
         ></path>
         <path
           d="M12.392 24L2 18l10.392-6 10.393 6-10.393 6z"
           fill="url(#lobe-icons-luma-fill-3)"
-          style="mix-blend-mode:overlay"
+          style={{ mixBlendMode: "overlay" }}
         ></path>
         <path
           d="M2 5.999L12.392 0v24L2 18V5.999z"
           fill="url(#lobe-icons-luma-fill-4)"
-          style="mix-blend-mode:overlay"
+          style={{ mixBlendMode: "overlay" }}
         ></path>
         <defs>
           <linearGradient
@@ -133,6 +134,7 @@ export function LumaLogo({
       viewBox="0 0 111 24"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      fill={color}
       fillRule="evenodd"
     >
       <title>Luma</title>

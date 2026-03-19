@@ -21,6 +21,7 @@ export function LangchainLogo({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
         clipRule="evenodd"
       >
@@ -63,6 +64,7 @@ export function LangchainLogo({
       viewBox="0 0 117 24"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      fill={color}
       fillRule="evenodd"
       clipRule="evenodd"
     >

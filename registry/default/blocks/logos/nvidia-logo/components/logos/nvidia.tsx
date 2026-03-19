@@ -21,6 +21,7 @@ export function NvidiaLogo({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
       >
         <title>Nvidia</title>
@@ -53,6 +54,7 @@ export function NvidiaLogo({
       viewBox="0 0 111 24"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      fill={color}
       fillRule="evenodd"
     >
       <title>Nvidia</title>

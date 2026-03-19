@@ -21,6 +21,7 @@ export function RunwayLogo({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
+        fill={color}
         fillRule="evenodd"
       >
         <title>Runway</title>
@@ -35,6 +36,7 @@ export function RunwayLogo({
       viewBox="0 0 94 24"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      fill={color}
       fillRule="evenodd"
     >
       <title>Runway</title>
