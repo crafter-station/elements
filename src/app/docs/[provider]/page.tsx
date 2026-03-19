@@ -16,6 +16,8 @@ import {
   getProviderMetadata,
   getProviders,
   getSubcategoryMetadata,
+  HOOKS_SUBCATEGORIES,
+  type HooksSubcategory,
 } from "@/lib/registry-loader";
 
 import { ScrambleText } from "@/components/scramble-text";
@@ -128,9 +130,28 @@ export default async function ProviderPage(props: ProviderPageProps) {
     notFound();
   }
 
-  const isAIElements = provider === "ai-elements";
-  const subcategories = isAIElements
-    ? (Object.keys(AI_ELEMENTS_SUBCATEGORIES) as AIElementsSubcategory[])
+  const PROVIDERS_WITH_SUBCATEGORIES: Record<
+    string,
+    Record<
+      string,
+      {
+        displayName: string;
+        description: string;
+        order: number;
+        status: string | null;
+      }
+    >
+  > = {
+    "ai-elements": AI_ELEMENTS_SUBCATEGORIES,
+    "claude-code": HOOKS_SUBCATEGORIES,
+  };
+
+  const hasSubcategories = provider in PROVIDERS_WITH_SUBCATEGORIES;
+  const subcategories = hasSubcategories
+    ? (Object.keys(PROVIDERS_WITH_SUBCATEGORIES[provider]) as (
+        | AIElementsSubcategory
+        | HooksSubcategory
+      )[])
     : [];
 
   const sfxMap: Record<string, { duration: number; category: string }> = {};
@@ -194,7 +215,7 @@ export default async function ProviderPage(props: ProviderPageProps) {
 
         <div className="px-4 sm:px-6 md:px-8 py-8">
           <div className="max-w-6xl">
-            {isAIElements ? (
+            {hasSubcategories ? (
               <>
                 <div className="mb-6">
                   <h2 className="text-base font-medium mb-1">

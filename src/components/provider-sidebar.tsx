@@ -13,6 +13,8 @@ import {
   getComponentsByProvider,
   getComponentsBySubcategory,
   getSubcategoryMetadata,
+  HOOKS_SUBCATEGORIES,
+  type HooksSubcategory,
 } from "@/lib/registry-loader";
 import { cn } from "@/lib/utils";
 
@@ -46,6 +48,15 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
       const subcategory = pathParts[3];
       if (
         subcategory in AI_ELEMENTS_SUBCATEGORIES &&
+        !expandedSubcategories.has(subcategory)
+      ) {
+        setExpandedSubcategories((prev) => new Set(prev).add(subcategory));
+      }
+    }
+    if (currentProvider === "claude-code" && pathParts[3]) {
+      const subcategory = pathParts[3];
+      if (
+        subcategory in HOOKS_SUBCATEGORIES &&
         !expandedSubcategories.has(subcategory)
       ) {
         setExpandedSubcategories((prev) => new Set(prev).add(subcategory));
@@ -189,7 +200,9 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
                         className="h-5 px-1.5 text-[10px] font-normal border-[#6C47FF]/50 text-[#6C47FF]"
                         style={{
                           borderColor: isActive ? "#6C47FF" : "#6C47FF80",
-                          backgroundColor: isActive ? "#6C47FF20" : "transparent",
+                          backgroundColor: isActive
+                            ? "#6C47FF20"
+                            : "transparent",
                         }}
                       >
                         Building
@@ -201,7 +214,9 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
                         className="h-5 px-1.5 text-[10px] font-normal border-blue-500/50 text-blue-500"
                         style={{
                           borderColor: isActive ? "#3B82F6" : "#3B82F680",
-                          backgroundColor: isActive ? "#3B82F620" : "transparent",
+                          backgroundColor: isActive
+                            ? "#3B82F620"
+                            : "transparent",
                         }}
                       >
                         Beta
@@ -233,11 +248,14 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
 
               {isExpanded && hasComponents && (
                 <div className="ml-8 border-l border-dotted border-border">
-                  {providerSlug === "ai-elements"
+                  {providerSlug === "ai-elements" ||
+                  providerSlug === "claude-code"
                     ? (
                         Object.keys(
-                          AI_ELEMENTS_SUBCATEGORIES,
-                        ) as AIElementsSubcategory[]
+                          providerSlug === "ai-elements"
+                            ? AI_ELEMENTS_SUBCATEGORIES
+                            : HOOKS_SUBCATEGORIES,
+                        ) as (AIElementsSubcategory | HooksSubcategory)[]
                       ).map((subcategory) => {
                         const subMeta = getSubcategoryMetadata(subcategory);
                         const subComponents =
@@ -245,15 +263,15 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
                         const isSubExpanded =
                           expandedSubcategories.has(subcategory);
                         const isSubActive =
-                          pathname === `/docs/ai-elements/${subcategory}` ||
+                          pathname === `/docs/${providerSlug}/${subcategory}` ||
                           pathname.startsWith(
-                            `/docs/ai-elements/${subcategory}/`,
+                            `/docs/${providerSlug}/${subcategory}/`,
                           );
 
                         return (
                           <div key={subcategory}>
                             <Link
-                              href={`/docs/ai-elements/${subcategory}`}
+                              href={`/docs/${providerSlug}/${subcategory}`}
                               className={cn(
                                 "group flex items-center gap-2 pl-3 pr-2 py-1.5 text-xs transition-colors",
                                 isSubActive
@@ -270,8 +288,12 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
                                   variant="outline"
                                   className="h-4 px-1 text-[9px] font-normal border-blue-500/50 text-blue-500"
                                   style={{
-                                    borderColor: isSubActive ? "#3B82F6" : "#3B82F680",
-                                    backgroundColor: isSubActive ? "#3B82F620" : "transparent",
+                                    borderColor: isSubActive
+                                      ? "#3B82F6"
+                                      : "#3B82F680",
+                                    backgroundColor: isSubActive
+                                      ? "#3B82F620"
+                                      : "transparent",
                                   }}
                                 >
                                   Beta
@@ -295,7 +317,7 @@ function ProviderList({ onLinkClick }: { onLinkClick?: () => void }) {
                             {isSubExpanded && (
                               <div className="ml-4 border-l border-dotted border-border/50">
                                 {subComponents.map((component) => {
-                                  const componentPath = `/docs/ai-elements/${subcategory}/${component.name}`;
+                                  const componentPath = `/docs/${providerSlug}/${subcategory}/${component.name}`;
                                   const isComponentActive =
                                     pathname === componentPath;
 

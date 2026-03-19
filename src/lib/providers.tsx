@@ -25,6 +25,7 @@ import { UploadThingLogo } from "@/components/icons/upload-thing";
 import TinteLogo from "@/components/tinte-logo";
 // Import logo components from registry
 import { BetterAuthLogo } from "@/components/ui/logos/better-auth";
+import { ClaudeLogo } from "@/components/ui/logos/claude";
 import { PolarLogo } from "@/components/ui/logos/polar";
 import { ResendLogo } from "@/components/ui/logos/resend";
 import { StripeLogo } from "@/components/ui/logos/stripe";
@@ -220,6 +221,15 @@ export function getProvidersData(): Provider[] {
       brandColor: "#E5534B",
       status: "beta",
     },
+    "claude-code": {
+      isEnabled: true,
+      displayName: "Claude Code",
+      description:
+        "Installable automation hooks for Claude Code — notifications, safety guards, and DX improvements",
+      category: "Automation",
+      brandColor: "#00D4AA",
+      status: "beta",
+    },
   };
 
   // Get all provider names (registry + coming soon)
@@ -289,6 +299,7 @@ export function ProviderIcon({ provider }: { provider: string }) {
     sfx: <Volume2 className="w-10 h-10" />,
     loaders: <Loader className="w-10 h-10" />,
     collaboration: <MessageSquare className="w-10 h-10" />,
+    "claude-code": <ClaudeLogo className="w-10 h-10" />,
     pdf: <FileText className="w-10 h-10" />,
     devtools: (
       <svg

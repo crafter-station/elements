@@ -116,7 +116,7 @@ export function getProviderFromName(name: string): string | null {
   // Check by looking up the item to see if it has a subcategory
   const items = getRegistryItems();
   const item = items.find((i) => i.name === name);
-  if (item?.subcategory) {
+  if (item?.subcategory && !name.startsWith("hook-")) {
     return "ai-elements";
   }
 
@@ -142,6 +142,10 @@ export function getProviderFromName(name: string): string | null {
     name === "use-ai-avatar"
   ) {
     return "badges";
+  }
+
+  if (name.startsWith("hook-")) {
+    return "claude-code";
   }
 
   // Extract first part of name (before first hyphen)
@@ -336,6 +340,13 @@ export function getProviderMetadata(provider: string): {
       brandColor: "#E5534B",
       darkBrandColor: "#F47067",
     },
+    "claude-code": {
+      displayName: "Claude Code",
+      description: "Installable automation hooks for Claude Code",
+      category: "AUTOMATION",
+      brandColor: "#00D4AA",
+      darkBrandColor: "#00FFD1",
+    },
   };
 
   const info = metadata[provider] || {
@@ -523,6 +534,49 @@ export const AI_ELEMENTS_SUBCATEGORIES = {
   },
 } as const;
 
+export const HOOKS_SUBCATEGORIES = {
+  notifications: {
+    displayName: "Notifications",
+    description: "Get notified when Claude Code needs your attention",
+    order: 1,
+    status: null,
+  },
+  safety: {
+    displayName: "Safety Guards",
+    description: "Block dangerous or destructive actions before they happen",
+    order: 2,
+    status: null,
+  },
+  dx: {
+    displayName: "Developer Experience",
+    description: "Auto-format, context monitoring, and DX improvements",
+    order: 3,
+    status: null,
+  },
+  logging: {
+    displayName: "Logging",
+    description: "Session summaries and activity tracking",
+    order: 4,
+    status: null,
+  },
+  fun: {
+    displayName: "Fun",
+    description: "Just for fun",
+    order: 5,
+    status: null,
+  },
+} as const;
+
+export type HooksSubcategory = keyof typeof HOOKS_SUBCATEGORIES;
+
+export function getHooksSubcategories(): HooksSubcategory[] {
+  return Object.keys(HOOKS_SUBCATEGORIES).sort(
+    (a, b) =>
+      HOOKS_SUBCATEGORIES[a as HooksSubcategory].order -
+      HOOKS_SUBCATEGORIES[b as HooksSubcategory].order,
+  ) as HooksSubcategory[];
+}
+
 export type AIElementsSubcategory = keyof typeof AI_ELEMENTS_SUBCATEGORIES;
 
 export function getAIElementsSubcategories(): AIElementsSubcategory[] {
@@ -545,12 +599,16 @@ export function getSubcategoryMetadata(subcategory: string): {
   description: string;
   status?: "beta" | null;
 } {
-  const meta = AI_ELEMENTS_SUBCATEGORIES[subcategory as AIElementsSubcategory];
-  return (
-    meta || {
-      displayName: subcategory.charAt(0).toUpperCase() + subcategory.slice(1),
-      description: `${subcategory} components`,
-      status: null,
-    }
-  );
+  const aiMeta =
+    AI_ELEMENTS_SUBCATEGORIES[subcategory as AIElementsSubcategory];
+  if (aiMeta) return aiMeta;
+
+  const hooksMeta = HOOKS_SUBCATEGORIES[subcategory as HooksSubcategory];
+  if (hooksMeta) return hooksMeta;
+
+  return {
+    displayName: subcategory.charAt(0).toUpperCase() + subcategory.slice(1),
+    description: `${subcategory} components`,
+    status: null,
+  };
 }

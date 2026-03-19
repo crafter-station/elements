@@ -25,6 +25,8 @@ import {
   getProviderMetadata,
   getProviders,
   getSubcategoryMetadata,
+  HOOKS_SUBCATEGORIES,
+  type HooksSubcategory,
 } from "@/lib/registry-loader";
 
 import { ComponentInstallDockWrapper } from "@/components/component-page/install-dock-wrapper";
@@ -70,6 +72,22 @@ async function loadComponentMDX(
   }
 }
 
+const PROVIDERS_WITH_SUBCATEGORIES: Record<
+  string,
+  Record<
+    string,
+    {
+      displayName: string;
+      description: string;
+      order: number;
+      status: string | null;
+    }
+  >
+> = {
+  "ai-elements": AI_ELEMENTS_SUBCATEGORIES,
+  "claude-code": HOOKS_SUBCATEGORIES,
+};
+
 export async function generateStaticParams() {
   const providers = getProviders();
   const params: { provider: string; slug: string[] }[] = [];
@@ -77,10 +95,8 @@ export async function generateStaticParams() {
   for (const provider of providers) {
     if (provider === "logos") continue;
 
-    if (provider === "ai-elements") {
-      const subcategories = Object.keys(
-        AI_ELEMENTS_SUBCATEGORIES,
-      ) as AIElementsSubcategory[];
+    if (provider in PROVIDERS_WITH_SUBCATEGORIES) {
+      const subcategories = Object.keys(PROVIDERS_WITH_SUBCATEGORIES[provider]);
 
       for (const subcategory of subcategories) {
         params.push({
@@ -122,17 +138,18 @@ function parseSlug(
   subcategory?: string;
   component?: string;
 } | null {
-  if (provider === "ai-elements") {
+  if (provider in PROVIDERS_WITH_SUBCATEGORIES) {
+    const subcategories = PROVIDERS_WITH_SUBCATEGORIES[provider];
     if (slug.length === 1) {
       const subcategory = slug[0];
-      if (subcategory in AI_ELEMENTS_SUBCATEGORIES) {
+      if (subcategory in subcategories) {
         return { type: "subcategory", subcategory };
       }
       return null;
     }
     if (slug.length === 2) {
       const [subcategory, component] = slug;
-      if (subcategory in AI_ELEMENTS_SUBCATEGORIES) {
+      if (subcategory in subcategories) {
         return { type: "component", subcategory, component };
       }
       return null;
@@ -212,7 +229,7 @@ export async function generateMetadata(
 
   if (parsed.type === "component" && parsed.component) {
     const components =
-      provider === "ai-elements" && parsed.subcategory
+      provider in PROVIDERS_WITH_SUBCATEGORIES && parsed.subcategory
         ? getComponentsBySubcategory(parsed.subcategory)
         : getComponentsByProvider(provider);
 
@@ -221,7 +238,7 @@ export async function generateMetadata(
     if (!componentData) return {};
 
     const canonicalUrl =
-      provider === "ai-elements" && parsed.subcategory
+      provider in PROVIDERS_WITH_SUBCATEGORIES && parsed.subcategory
         ? `https://tryelements.dev/docs/${provider}/${parsed.subcategory}/${parsed.component}`
         : `https://tryelements.dev/docs/${provider}/${parsed.component}`;
 
@@ -390,7 +407,7 @@ async function ComponentPage({
   subcategory?: string;
 }) {
   const components =
-    provider === "ai-elements" && subcategory
+    provider in PROVIDERS_WITH_SUBCATEGORIES && subcategory
       ? getComponentsBySubcategory(subcategory)
       : getComponentsByProvider(provider);
 
@@ -407,17 +424,17 @@ async function ComponentPage({
     getAdjacentComponents(provider, component);
 
   const breadcrumbHref =
-    provider === "ai-elements" && subcategory
+    provider in PROVIDERS_WITH_SUBCATEGORIES && subcategory
       ? `/docs/${provider}/${subcategory}`
       : `/docs/${provider}`;
 
   const breadcrumbLabel =
-    provider === "ai-elements" && subcategory
+    provider in PROVIDERS_WITH_SUBCATEGORIES && subcategory
       ? `${providerMetadata.displayName} / ${getSubcategoryMetadata(subcategory).displayName}`
       : providerMetadata.displayName;
 
   const mdxPathSuffix =
-    provider === "ai-elements" && subcategory
+    provider in PROVIDERS_WITH_SUBCATEGORIES && subcategory
       ? `${provider}/${subcategory}/${component}.mdx`
       : `${provider}/${component}.mdx`;
 
@@ -425,8 +442,8 @@ async function ComponentPage({
     item: { provider: string; component: string } | null,
   ) => {
     if (!item) return undefined;
-    if (item.provider === "ai-elements") {
-      const comp = getComponentsByProvider("ai-elements").find(
+    if (item.provider in PROVIDERS_WITH_SUBCATEGORIES) {
+      const comp = getComponentsByProvider(item.provider).find(
         (c) => c.name === item.component,
       );
       if (comp?.subcategory) {
@@ -438,7 +455,7 @@ async function ComponentPage({
 
   // Build breadcrumb items for structured data
   const breadcrumbItems =
-    provider === "ai-elements" && subcategory
+    provider in PROVIDERS_WITH_SUBCATEGORIES && subcategory
       ? [
           { name: "Home", url: "https://tryelements.dev" },
           { name: "Docs", url: "https://tryelements.dev/docs" },
