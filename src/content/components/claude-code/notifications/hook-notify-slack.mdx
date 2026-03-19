@@ -1,0 +1,38 @@
+---
+title: Slack Notification
+description: Send a Slack notification when Claude Code needs input or finishes a task
+category: Automation
+---
+
+<HookPreview hook="hook-notify-slack" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook notify-slack
+```
+
+## Configuration
+
+Set your Slack incoming webhook URL:
+
+```bash
+export CLAUDE_HOOK_SLACK_WEBHOOK="https://hooks.slack.com/services/T.../B.../..."
+```
+
+If the variable is unset, the hook silently exits (no error).
+
+## Event
+
+**Notification** — fires when Claude needs human attention.
+
+## Message Format
+
+```
+*Claude Code* (project-name)
+event_name: notification message
+```
+
+## Platforms
+
+macOS, Linux (requires `curl`).

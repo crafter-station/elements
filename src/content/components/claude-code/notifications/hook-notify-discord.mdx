@@ -1,0 +1,31 @@
+---
+title: Discord Notification
+description: Send a Discord notification when Claude Code needs input or finishes a task
+category: Automation
+---
+
+<HookPreview hook="hook-notify-discord" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook notify-discord
+```
+
+## Configuration
+
+Set your Discord webhook URL:
+
+```bash
+export CLAUDE_HOOK_DISCORD_WEBHOOK="https://discord.com/api/webhooks/..."
+```
+
+If the variable is unset, the hook silently exits (no error).
+
+## Event
+
+**Notification** — fires when Claude needs human attention.
+
+## Platforms
+
+macOS, Linux (requires `curl`).

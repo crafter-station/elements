@@ -1,0 +1,30 @@
+---
+title: Session Summary
+description: Generate a summary of your Claude Code session when it ends
+category: Automation
+---
+
+<HookPreview hook="hook-session-summary" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook session-summary
+```
+
+## Event
+
+**Stop** — fires when Claude finishes responding and the session ends.
+
+## Output
+
+Creates markdown files in `~/.claude/session-summaries/{session_id}.md` with:
+- Session ID
+- Project name (from working directory)
+- End timestamp
+- Transcript size
+- Working directory path
+
+## Platforms
+
+macOS, Linux.

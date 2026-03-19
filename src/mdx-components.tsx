@@ -4,6 +4,7 @@ import type { MDXComponents } from "mdx/types";
 
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentPreviewItem } from "@/components/component-preview-item";
+import { HookPreview } from "@/components/hook-preview";
 import { PdfUtilsDemo, PdfViewerDemo } from "@/components/pdf-demos";
 import { SfxPlayer } from "@/components/sfx-player";
 import { CodeBlockCopyButton } from "@/components/ui/code-block-copy-button";
@@ -255,6 +256,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // PDF
     PdfViewer: PdfViewerDemo,
     PdfUtils: PdfUtilsDemo,
+    // Hooks
+    HookPreview,
     // Collaboration
     PageCommentsDemo: PageCommentsDemo,
     pre: ({ children, ...props }: any) => {

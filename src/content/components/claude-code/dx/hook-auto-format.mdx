@@ -1,0 +1,35 @@
+---
+title: Auto Format
+description: Automatically run your project formatter after Claude edits a file
+category: Automation
+---
+
+<HookPreview hook="hook-auto-format" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook auto-format
+```
+
+## Event
+
+**PostToolUse** with matcher `Edit` and `Write`. Runs after Claude modifies a file.
+
+## Formatter Detection
+
+Auto-detects your project's formatter by checking config files in the working directory:
+
+| Config File | Formatter |
+|------------|-----------|
+| `biome.json` / `biome.jsonc` | Biome |
+| `.prettierrc` / `prettier.config.*` | Prettier |
+| `*.py` files | ruff (preferred) or Black |
+| `*.rs` files | rustfmt |
+| `*.go` files | gofmt |
+
+Runs in background so it doesn't block Claude.
+
+## Platforms
+
+macOS, Linux.

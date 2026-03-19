@@ -1,0 +1,126 @@
+---
+title: Claude Code Hooks
+description: Installable automation hooks for Claude Code — notifications, safety guards, and DX improvements
+category: Automation
+brandColor: "#00D4AA"
+---
+
+## Overview
+
+Shell-based automation hooks that plug into Claude Code's lifecycle events. Install with a single command — scripts are downloaded and `~/.claude/settings.json` is auto-patched. Zero config.
+
+<HookPreview hook="install" />
+
+## Quick Start
+
+Install one or more hooks:
+
+```bash
+npx @tryelements/cli add-hook notify-macos guard-branch
+```
+
+Or install a bundle:
+
+```bash
+npx @tryelements/cli add-hook starter
+```
+
+### Manage Hooks
+
+```bash
+npx @tryelements/cli list-hooks          # Browse available hooks
+npx @tryelements/cli hooks-status        # See installed hooks
+npx @tryelements/cli remove-hook <name>  # Uninstall cleanly
+```
+
+## Hooks
+
+### Notifications
+
+| Hook | Event | Platforms | Install |
+|------|-------|-----------|---------|
+| macOS Notification | Notification | macOS | `add-hook notify-macos` |
+| Sound Alert | Notification | macOS, Linux | `add-hook notify-sound` |
+| Slack | Notification | All | `add-hook notify-slack` |
+| Discord | Notification | All | `add-hook notify-discord` |
+| Telegram | Notification | All | `add-hook notify-telegram` |
+
+### Safety Guards
+
+| Hook | Event | What It Blocks | Install |
+|------|-------|---------------|---------|
+| Branch Guard | PreToolUse | Push to main/master/production | `add-hook guard-branch` |
+| Secrets Guard | PreToolUse | Edits to .env, credentials | `add-hook guard-secrets` |
+| Destructive Guard | PreToolUse | rm -rf, reset --hard, DROP TABLE | `add-hook guard-destructive` |
+
+### Developer Experience
+
+| Hook | Event | What It Does | Install |
+|------|-------|-------------|---------|
+| Auto Format | PostToolUse | Runs Biome/Prettier/Black after edits | `add-hook auto-format` |
+| Context Monitor | PostToolUse | Warns at 40%/25%/15% context | `add-hook context-monitor` |
+
+### Logging
+
+| Hook | Event | What It Does | Install |
+|------|-------|-------------|---------|
+| Session Summary | Stop | Generates session report | `add-hook session-summary` |
+
+### Fun
+
+| Hook | Event | What It Does | Install |
+|------|-------|-------------|---------|
+| Cat Sounds | Notification | Meows when Claude needs attention | `add-hook cat-sounds` |
+
+## Bundles
+
+Pre-configured collections:
+
+```bash
+npx @tryelements/cli add-hook starter        # notify-macos + guard-branch + auto-format
+npx @tryelements/cli add-hook safety         # guard-branch + guard-secrets + guard-destructive
+npx @tryelements/cli add-hook notifications  # all 5 notification hooks
+```
+
+## How It Works
+
+Hooks are shell scripts that run at specific Claude Code lifecycle events. They receive JSON on stdin with session context and can:
+
+- **Exit 0**: Allow (success)
+- **Exit 2**: Block the action (with reason on stderr)
+- **Output JSON**: Inject context back into Claude
+
+Scripts are installed to `~/.claude/hooks/elements/` and registered in `~/.claude/settings.json`.
+
+## Writing Custom Hooks
+
+Any shell script works:
+
+```bash
+#!/usr/bin/env bash
+INPUT=$(cat)
+EVENT=$(echo "$INPUT" | python3 -c \
+  "import sys,json; print(json.load(sys.stdin).get('hook_event_name',''))" 2>/dev/null)
+
+# Your logic here
+
+# Exit 0 = allow, Exit 2 = block
+```
+
+Available events: `PreToolUse`, `PostToolUse`, `Stop`, `Notification`, `SessionStart`, `SessionEnd`, and [17 more](https://docs.anthropic.com/en/docs/claude-code/hooks).
+
+## Configuration
+
+Some hooks require environment variables. Set them in your shell profile:
+
+```bash
+# Slack
+export CLAUDE_HOOK_SLACK_WEBHOOK="https://hooks.slack.com/services/..."
+
+# Discord
+export CLAUDE_HOOK_DISCORD_WEBHOOK="https://discord.com/api/webhooks/..."
+
+# Telegram
+export CLAUDE_HOOK_TELEGRAM_TOKEN="bot123:ABC..."
+export CLAUDE_HOOK_TELEGRAM_CHAT_ID="123456789"
+```

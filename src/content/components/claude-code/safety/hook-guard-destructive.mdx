@@ -1,0 +1,30 @@
+---
+title: Destructive Guard
+description: Block dangerous commands like rm -rf, git reset --hard, and DROP TABLE
+category: Automation
+---
+
+<HookPreview hook="hook-guard-destructive" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook guard-destructive
+```
+
+## Event
+
+**PreToolUse** with matcher `Bash`. Intercepts shell commands and blocks patterns that are hard to reverse.
+
+## What It Blocks
+
+| Pattern | Reason |
+|---------|--------|
+| `rm -rf /`, `rm -rf ~`, `rm -rf ..` | Destructive removal of sensitive paths |
+| `git reset --hard` | Discards uncommitted work |
+| `DROP TABLE` / `DROP DATABASE` | Irreversible data loss |
+| `git clean -fd` | Removes untracked files permanently |
+
+## Platforms
+
+macOS, Linux.

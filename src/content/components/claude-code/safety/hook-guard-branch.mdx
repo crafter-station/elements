@@ -1,0 +1,49 @@
+---
+title: Branch Guard
+description: Block pushes to protected branches (main, master, production)
+category: Automation
+---
+
+<HookPreview hook="hook-guard-branch" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook guard-branch
+```
+
+## Event
+
+**PreToolUse** with matcher `Bash`. Runs before any shell command, checks if it targets a protected branch.
+
+## What It Blocks
+
+- `git push ... main` / `master` / `production`
+- `git push --force` (any branch)
+
+## How It Works
+
+Parses `tool_input.command` from the hook JSON on stdin. Uses regex to detect protected branch names and force push flags. Returns exit code 2 with a reason on stderr to block the action.
+
+## Platforms
+
+macOS, Linux.
+
+## Source
+
+```bash
+#!/usr/bin/env bash
+INPUT=$(cat)
+COMMAND=$(echo "$INPUT" | python3 -c \
+  "import sys,json; print(json.load(sys.stdin).get('tool_input',{}).get('command',''))" 2>/dev/null)
+
+if echo "$COMMAND" | grep -qE 'git\s+push.*\s+(main|master|production)\b'; then
+  echo "Blocked: direct push to protected branch" >&2
+  exit 2
+fi
+
+if echo "$COMMAND" | grep -qE 'git\s+push\s+--force'; then
+  echo "Blocked: force push detected" >&2
+  exit 2
+fi
+```

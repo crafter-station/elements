@@ -1,0 +1,30 @@
+---
+title: Sound Alert
+description: Play a system sound when Claude Code needs input or finishes a task
+category: Automation
+---
+
+<HookPreview hook="hook-notify-sound" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook notify-sound
+```
+
+## Event
+
+**Notification** — fires when Claude needs human attention.
+
+## How It Works
+
+Detects the OS and uses the appropriate audio player:
+- **macOS**: `afplay` with the system Ping sound
+- **Linux (PulseAudio)**: `paplay` with freedesktop complete sound
+- **Linux (ALSA)**: `aplay` with sound-icons trumpet
+
+Runs in background (`&`) so it doesn't block Claude.
+
+## Platforms
+
+macOS, Linux. No configuration needed.

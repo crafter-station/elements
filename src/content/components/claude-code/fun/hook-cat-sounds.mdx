@@ -1,0 +1,46 @@
+---
+title: Cat Sounds
+description: Play cat meow sounds when Claude Code needs your attention
+category: Automation
+---
+
+<HookPreview hook="hook-cat-sounds" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook cat-sounds
+```
+
+## Event
+
+**Notification** — fires when Claude needs human attention.
+
+## How It Works
+
+Downloads a real cat meow sound on first run (cached at `~/.cache/tryelements/`), then plays it with `afplay`. Falls back to `say` if download fails.
+
+## Platforms
+
+macOS only (uses `afplay` command).
+
+## Source
+
+```bash
+#!/usr/bin/env bash
+[[ "$(uname)" != "Darwin" ]] && exit 0
+
+CACHE_DIR="${HOME}/.cache/tryelements"
+MEOW_FILE="${CACHE_DIR}/cat-meow.mp3"
+
+if [[ ! -f "$MEOW_FILE" ]]; then
+  mkdir -p "$CACHE_DIR"
+  curl -sL "https://tryelements.dev/sfx/cat-meow.mp3" -o "$MEOW_FILE" 2>/dev/null
+fi
+
+if [[ -f "$MEOW_FILE" ]]; then
+  afplay "$MEOW_FILE" &
+else
+  say -v Samantha "meow" &
+fi
+```

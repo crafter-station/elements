@@ -1,0 +1,35 @@
+---
+title: Context Monitor
+description: Warn when Claude Code context window is running low
+category: Automation
+---
+
+<HookPreview hook="hook-context-monitor" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook context-monitor
+```
+
+## Event
+
+**PostToolUse** — monitors transcript file size after every tool invocation.
+
+## Alert Thresholds
+
+| Remaining | Level | Action |
+|-----------|-------|--------|
+| ~40% | INFO | Informational nudge |
+| ~25% | NOTICE | Suggest compacting soon |
+| ~15% | WARNING | Urgent — recommend `/compact` |
+
+Each threshold fires only once per session via state files in `/tmp/`.
+
+## How It Works
+
+Reads `transcript_path` from the hook JSON, checks the file size against a 600KB estimated max, and injects context warnings via `hookSpecificOutput.additionalContext` JSON output.
+
+## Platforms
+
+macOS, Linux.

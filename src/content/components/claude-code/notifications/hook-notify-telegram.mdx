@@ -1,0 +1,32 @@
+---
+title: Telegram Notification
+description: Send a Telegram notification when Claude Code needs input or finishes a task
+category: Automation
+---
+
+<HookPreview hook="hook-notify-telegram" />
+
+## Installation
+
+```bash
+npx @tryelements/cli add-hook notify-telegram
+```
+
+## Configuration
+
+Set your Telegram bot token and chat ID:
+
+```bash
+export CLAUDE_HOOK_TELEGRAM_TOKEN="bot123:ABC..."
+export CLAUDE_HOOK_TELEGRAM_CHAT_ID="123456789"
+```
+
+Both variables are required. If either is unset, the hook silently exits.
+
+## Event
+
+**Notification** — fires when Claude needs human attention.
+
+## Platforms
+
+macOS, Linux (requires `curl`).
