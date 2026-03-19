@@ -162,7 +162,10 @@ export function getProviders(): string[] {
 
   for (const item of items) {
     // Skip bundle items (they're meta-packages)
-    if (item.type === "registry:block" && item.files?.length === 0) {
+    if (
+      item.type === "registry:block" &&
+      (!item.files || item.files.length === 0)
+    ) {
       continue;
     }
 
@@ -183,7 +186,10 @@ export function getComponentsByProvider(provider: string): RegistryItem[] {
 
   return items.filter((item) => {
     // Skip bundle items (they're meta-packages)
-    if (item.type === "registry:block" && item.files?.length === 0) {
+    if (
+      item.type === "registry:block" &&
+      (!item.files || item.files.length === 0)
+    ) {
       return false;
     }
 
