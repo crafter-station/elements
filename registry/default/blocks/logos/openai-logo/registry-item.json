@@ -3,15 +3,23 @@
   "name": "openai-logo",
   "type": "registry:ui",
   "title": "OpenAI Logo",
-  "description": "OpenAI logo component with brand colors",
+  "description": "OpenAI logo with icon and wordmark variants",
   "registryDependencies": [],
   "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
   "files": [
     {
       "path": "registry/default/blocks/logos/openai-logo/components/logos/openai.tsx",
       "type": "registry:component"
     }
   ],
-  "docs": "OpenAI logo component with official brand colors.",
-  "categories": ["AI", "logo", "brand"]
+  "docs": "OpenAI logo with 2 base variants (icon monoblossom, wordmark) and 2 modes (dark, light) = 4 total combinations. Updated to 2025 branding."
 }

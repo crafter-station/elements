@@ -829,6 +829,32 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "codex-logo",
+      type: "registry:ui",
+      title: "Codex Logo",
+      description:
+        "OpenAI Codex coding agent logo with mono, color, and wordmark variants",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark", "logo", "logo-color"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark", "logo", "logo-color"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/codex-logo/components/logos/codex.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "OpenAI Codex logo with 5 base variants (icon mono, icon color with gradient, wordmark, logo combine, logo combine color) and 2 modes (dark, light) = 10 total combinations. Features purple-to-blue gradient for color variants.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "cohere-logo",
       type: "registry:ui",
       title: "Cohere Logo",
@@ -2974,17 +3000,25 @@ export const registry = {
       name: "openai-logo",
       type: "registry:ui",
       title: "OpenAI Logo",
-      description: "OpenAI logo component with brand colors",
+      description: "OpenAI logo with icon and wordmark variants",
       registryDependencies: [],
       dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "wordmark"],
+        variantTypes: {
+          base: ["icon", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
       files: [
         {
           path: "registry/default/blocks/logos/openai-logo/components/logos/openai.tsx",
           type: "registry:component",
         },
       ],
-      docs: "OpenAI logo component with official brand colors.",
-      categories: ["AI", "logo", "brand"],
+      docs: "OpenAI logo with 2 base variants (icon monoblossom, wordmark) and 2 modes (dark, light) = 4 total combinations. Updated to 2025 branding.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

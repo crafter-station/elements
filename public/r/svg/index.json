@@ -284,6 +284,10 @@
     "file": "goose-logo.svg"
   },
   {
+    "name": "codex-logo",
+    "file": "codex-logo.svg"
+  },
+  {
     "name": "render-logo",
     "file": "render-logo.svg"
   },

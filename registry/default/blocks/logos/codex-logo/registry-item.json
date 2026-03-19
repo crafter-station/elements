@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "codex-logo",
+  "type": "registry:ui",
+  "title": "Codex Logo",
+  "description": "OpenAI Codex coding agent logo with mono, color, and wordmark variants",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color", "wordmark", "logo", "logo-color"],
+    "variantTypes": {
+      "base": ["icon", "icon-color", "wordmark", "logo", "logo-color"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/codex-logo/components/logos/codex.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "OpenAI Codex logo with 5 base variants (icon mono, icon color with gradient, wordmark, logo combine, logo combine color) and 2 modes (dark, light) = 10 total combinations. Features purple-to-blue gradient for color variants."
+}

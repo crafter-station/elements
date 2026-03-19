@@ -1,0 +1,10 @@
+<svg
+viewBox="0 0 120 24"
+xmlns="http://www.w3.org/2000/svg"
+fill-rule="evenodd"
+clip-rule="evenodd"
+>
+<title>Codex</title>
+<path d={ICON_PATH} fill="#000000" />
+<path d={TEXT_PATH} fill="#000000" transform="translate(29, 0)" />
+</svg>

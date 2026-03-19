@@ -1,16 +1,7 @@
 {
-  "generated": "2026-03-19T02:30:43.115Z",
-  "count": 18,
+  "generated": "2026-03-19T04:46:52.907Z",
+  "count": 17,
   "sounds": [
-    {
-      "name": "cat-meow",
-      "category": "notification",
-      "duration": 0.77,
-      "sizeBytes": 13417,
-      "license": "CC0",
-      "url": "https://tryelements.dev/sfx/cat-meow.mp3",
-      "registry": "https://tryelements.dev/r/sfx-cat-meow.json"
-    },
     {
       "name": "boom",
       "category": "cinematic",

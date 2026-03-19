@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/blocks/hooks/cat-sounds/scripts/cat-sounds.sh",
-      "content": "#!/usr/bin/env bash\n[[ \"$(uname)\" != \"Darwin\" ]] && exit 0\n\nsay -v Samantha \"meow\" &\n",
+      "content": "#!/usr/bin/env bash\n[[ \"$(uname)\" != \"Darwin\" ]] && exit 0\n\nCACHE_DIR=\"${HOME}/.cache/tryelements\"\nMEOW_FILE=\"${CACHE_DIR}/cat-meow.mp3\"\n\nif [[ ! -f \"$MEOW_FILE\" ]]; then\n  mkdir -p \"$CACHE_DIR\"\n  curl -sL \"https://tryelements.dev/sfx/cat-meow.mp3\" -o \"$MEOW_FILE\" 2>/dev/null\nfi\n\nif [[ -f \"$MEOW_FILE\" ]]; then\n  afplay \"$MEOW_FILE\" &\nelse\n  say -v Samantha \"meow\" &\nfi\n",
       "type": "registry:component"
     }
   ],
