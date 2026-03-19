@@ -12,7 +12,9 @@
     "@elements/notion-logo",
     "@elements/v0-logo",
     "@elements/lovable-logo",
-    "@elements/trigger-logo"
+    "@elements/trigger-logo",
+    "@elements/n8n-logo",
+    "@elements/deepl-logo"
   ],
   "files": [],
   "docs": "Collection of developer tools and platform logos. Ideal for showcasing integrations, tools used, and development workflows.",

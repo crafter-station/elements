@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pika-logo",
+  "title": "Pika Logo",
+  "description": "Pika logo with variant support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/pika-logo/components/logos/pika.tsx",
+      "content": "const COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nexport function PikaLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: {\n  className?: string;\n  variant?: \"icon\" | \"wordmark\";\n  mode?: \"dark\" | \"light\";\n}) {\n  const color = COLORS[mode];\n\n  if (variant === \"icon\") {\n    return (\n      <svg\n        role=\"img\"\n        viewBox=\"0 0 24 24\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        className={className}\n        fillRule=\"evenodd\"\n      >\n        <title>Pika</title>\n        <path d=\"M.661 19.889h8.666c-.14-1.41-1.145-2.955-3.601-4.007v-.104c2.863.88 3.893 2.386 4.312 4.11H20.73l-1.72-1.476C20.017 15.244 24 13.747 24 13.747c-.141-2.541-1.441-4.909-5.787-6.827L8.326 3c.331 4.179 1.811 6.575 5.523 7.163v.102c-2.579-.064-4.368-1.216-5.275-3.588C.698 8.123-1.201 14.156.66 19.889z\"></path>\n      </svg>\n    );\n  }\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 67 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n      fillRule=\"evenodd\"\n    >\n      <title>Pika</title>\n      <path d=\"M23.26 2h3.009v3.26H23.26V2zm0 4.672h3.009v15.431H23.26V6.672zM28.843 2h3.009v10.68l10.385-8.337h4.168l-10.903 8.584L46.7 22.103h-4.366L31.85 13.618v8.485h-3.01V2h.002zM2 22.105V2h10.805c7.279 0 8.064 4.529 8.064 6.475 0 1.946-.785 6.476-8.066 6.476H5.009v7.155H2v-.002zm3.009-10.139h7.253c3.769 0 5.377-1.044 5.377-3.491s-1.608-3.491-5.377-3.491H5.009v6.982zm49.76 10.396c-2.67 0-4.797-.395-5.991-1.113-1.334-.802-1.982-2.043-1.982-3.796 0-4.466 4.502-5.05 11.96-6.015.995-.129 2.014-.26 3.086-.41 0-2.841-1.555-3.848-5.944-3.848-3.633 0-5.253 1.08-5.253 3.5H47.61c0-4.046 3.098-6.462 8.288-6.462 6.176 0 8.93 2.031 8.93 6.586v7.79c0 2.102.123 3.494.124 3.508h-2.736c0-.008-.078-.766 0-1.991-.858 1.345-3.85 2.25-7.446 2.25h-.002zm7.073-8.696c-4.499.521-7.666.959-9.55 1.526-1.749.526-2.461 1.174-2.461 2.235 0 2.178 2.736 2.503 4.366 2.503 2.662 0 4.459-.325 5.655-1.022 1.339-.78 1.99-2.083 1.99-3.982v-1.26z\"></path>\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Pika logo with 2 base variant(s) (icon, wordmark) and 2 modes (dark, light) = 4 total combinations.",
+  "categories": ["AI", "Media", "logo", "brand"],
+  "type": "registry:ui"
+}

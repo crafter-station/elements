@@ -12,16 +12,11 @@
     "@elements/resend-logo",
     "@elements/better-auth-logo",
     "@elements/clerk-logo",
-    "@elements/polar-logo"
+    "@elements/polar-logo",
+    "@elements/snowflake-logo"
   ],
   "files": [],
   "docs": "Collection of cloud services and infrastructure logos. Perfect for tech stack displays, service integrations, and infrastructure documentation.",
-  "categories": [
-    "logo",
-    "brand",
-    "cloud",
-    "infrastructure",
-    "collection"
-  ],
+  "categories": ["logo", "brand", "cloud", "infrastructure", "collection"],
   "type": "registry:block"
 }

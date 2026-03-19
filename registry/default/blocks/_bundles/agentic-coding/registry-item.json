@@ -19,7 +19,10 @@
     "@elements/openhands-logo",
     "@elements/goose-logo",
     "@elements/kilo-code-logo",
-    "@elements/trae-logo"
+    "@elements/trae-logo",
+    "@elements/claude-code-logo",
+    "@elements/codex-logo",
+    "@elements/replit-logo"
   ],
   "dependencies": [],
   "files": [],

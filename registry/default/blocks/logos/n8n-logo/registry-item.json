@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "n8n-logo",
+  "type": "registry:ui",
+  "title": "n8n Logo",
+  "description": "n8n logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "icon-color", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/n8n-logo/components/logos/n8n.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "n8n logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations."
+}

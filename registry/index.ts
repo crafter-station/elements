@@ -115,6 +115,9 @@ export const registry = {
         "@elements/goose-logo",
         "@elements/kilo-code-logo",
         "@elements/trae-logo",
+        "@elements/claude-code-logo",
+        "@elements/codex-logo",
+        "@elements/replit-logo",
       ],
       dependencies: [],
       files: [],
@@ -166,6 +169,19 @@ export const registry = {
         "@elements/perplexity-logo",
         "@elements/xai-logo",
         "@elements/kimi-logo",
+        "@elements/ollama-logo",
+        "@elements/replicate-logo",
+        "@elements/together-logo",
+        "@elements/fireworks-logo",
+        "@elements/cerebras-logo",
+        "@elements/sambanova-logo",
+        "@elements/stability-logo",
+        "@elements/langchain-logo",
+        "@elements/dify-logo",
+        "@elements/luma-logo",
+        "@elements/runway-logo",
+        "@elements/pika-logo",
+        "@elements/suno-logo",
       ],
       dependencies: [],
       files: [],
@@ -486,6 +502,56 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "bytedance-logo",
+      type: "registry:ui",
+      title: "ByteDance Logo",
+      description: "ByteDance logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["Tech", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/bytedance-logo/components/logos/bytedance.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "ByteDance logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "cerebras-logo",
+      type: "registry:ui",
+      title: "Cerebras Logo",
+      description: "Cerebras logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark", "logo"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark", "logo"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/cerebras-logo/components/logos/cerebras.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Cerebras logo with 4 base variant(s) (icon, icon-color, wordmark, logo) and 2 modes (dark, light) = 8 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "chain-of-thought",
       subcategory: "agentic",
       type: "registry:ui",
@@ -540,6 +606,31 @@ export const registry = {
       ],
       docs: "Auto-expanding textarea with Cmd+Enter to send. Supports file attachments and loading states.",
       categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "claude-code-logo",
+      type: "registry:ui",
+      title: "Claude Code Logo",
+      description: "Claude Code logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/claude-code-logo/components/logos/claude-code.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Claude Code logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -753,6 +844,7 @@ export const registry = {
         "@elements/better-auth-logo",
         "@elements/clerk-logo",
         "@elements/polar-logo",
+        "@elements/snowflake-logo",
       ],
       dependencies: [],
       files: [],
@@ -1076,6 +1168,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "deepl-logo",
+      type: "registry:ui",
+      title: "DeepL Logo",
+      description: "DeepL logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["Translation", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/deepl-logo/components/logos/deepl.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "DeepL logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "deepseek-logo",
       type: "registry:ui",
       title: "DeepSeek Logo",
@@ -1106,11 +1223,38 @@ export const registry = {
         "@elements/v0-logo",
         "@elements/lovable-logo",
         "@elements/trigger-logo",
+        "@elements/n8n-logo",
+        "@elements/deepl-logo",
       ],
       dependencies: [],
       files: [],
       docs: "Collection of developer tools and platform logos. Ideal for showcasing integrations, tools used, and development workflows.",
       categories: ["logo", "brand", "developer", "tools", "collection"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "dify-logo",
+      type: "registry:ui",
+      title: "Dify Logo",
+      description: "Dify logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark", "logo"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark", "logo"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/dify-logo/components/logos/dify.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Dify logo with 4 base variant(s) (icon, icon-color, wordmark, logo) and 2 modes (dark, light) = 8 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1350,6 +1494,31 @@ export const registry = {
         },
       ],
       docs: "Figma logo with 4 base variants (icon full-color, icon-mono, wordmark, logo) and dark/light modes = 7 total combinations. Icon variant is always full-color with official Figma colors.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "fireworks-logo",
+      type: "registry:ui",
+      title: "Fireworks Logo",
+      description: "Fireworks logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/fireworks-logo/components/logos/fireworks.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Fireworks logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2281,6 +2450,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "langchain-logo",
+      type: "registry:ui",
+      title: "LangChain Logo",
+      description: "LangChain logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/langchain-logo/components/logos/langchain.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "LangChain logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "langfuse-logo",
       type: "registry:ui",
       title: "Langfuse Logo",
@@ -2585,6 +2779,26 @@ export const registry = {
         "@elements/python-logo",
         "@elements/rust-logo",
         "@elements/go-logo",
+        "@elements/claude-code-logo",
+        "@elements/replicate-logo",
+        "@elements/together-logo",
+        "@elements/cerebras-logo",
+        "@elements/langchain-logo",
+        "@elements/nvidia-logo",
+        "@elements/snowflake-logo",
+        "@elements/fireworks-logo",
+        "@elements/deepl-logo",
+        "@elements/dify-logo",
+        "@elements/n8n-logo",
+        "@elements/replit-logo",
+        "@elements/ollama-logo",
+        "@elements/sambanova-logo",
+        "@elements/stability-logo",
+        "@elements/suno-logo",
+        "@elements/pika-logo",
+        "@elements/runway-logo",
+        "@elements/luma-logo",
+        "@elements/bytedance-logo",
       ],
       dependencies: [],
       files: [],
@@ -2607,6 +2821,31 @@ export const registry = {
       ],
       docs: "Lovable logo component with official multi-color gradient brand design.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "luma-logo",
+      type: "registry:ui",
+      title: "Luma Logo",
+      description: "Luma logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "Media", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/luma-logo/components/logos/luma.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Luma logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2836,6 +3075,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "n8n-logo",
+      type: "registry:ui",
+      title: "n8n Logo",
+      description: "n8n logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/n8n-logo/components/logos/n8n.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "n8n logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "neon-logo",
       type: "registry:ui",
       title: "Neon Logo",
@@ -2943,6 +3207,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "nvidia-logo",
+      type: "registry:ui",
+      title: "Nvidia Logo",
+      description: "Nvidia logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["Tech", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/nvidia-logo/components/logos/nvidia.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Nvidia logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "obsidian-logo",
       type: "registry:ui",
       title: "Obsidian Logo",
@@ -2994,6 +3283,31 @@ export const registry = {
       ],
       docs: "Configure the `routes` prop with your app's routes and OG image URLs. The component auto-groups by route category and shows green/red borders for loaded/broken images.",
       categories: ["media", "seo", "dev-tools"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "ollama-logo",
+      type: "registry:ui",
+      title: "Ollama Logo",
+      description: "Ollama logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "wordmark"],
+        variantTypes: {
+          base: ["icon", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/ollama-logo/components/logos/ollama.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Ollama logo with 2 base variant(s) (icon, wordmark) and 2 modes (dark, light) = 4 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3210,6 +3524,31 @@ export const registry = {
       ],
       docs: "Perplexity logo component with official brand teal color.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "pika-logo",
+      type: "registry:ui",
+      title: "Pika Logo",
+      description: "Pika logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "Media", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "wordmark"],
+        variantTypes: {
+          base: ["icon", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/pika-logo/components/logos/pika.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Pika logo with 2 base variant(s) (icon, wordmark) and 2 modes (dark, light) = 4 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3700,6 +4039,56 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "replicate-logo",
+      type: "registry:ui",
+      title: "Replicate Logo",
+      description: "Replicate logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/replicate-logo/components/logos/replicate.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Replicate logo with 1 base variant(s) (icon) and 2 modes (dark, light) = 2 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "replit-logo",
+      type: "registry:ui",
+      title: "Replit Logo",
+      description: "Replit logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/replit-logo/components/logos/replit.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Replit logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "request-inspector",
       subcategory: "devtools",
       type: "registry:ui",
@@ -3828,6 +4217,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "runway-logo",
+      type: "registry:ui",
+      title: "Runway Logo",
+      description: "Runway logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "Media", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "wordmark"],
+        variantTypes: {
+          base: ["icon", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/runway-logo/components/logos/runway.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Runway logo with 2 base variant(s) (icon, wordmark) and 2 modes (dark, light) = 4 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "rust-logo",
       type: "registry:ui",
       title: "Rust Logo",
@@ -3850,6 +4264,31 @@ export const registry = {
           modes: ["dark", "light"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sambanova-logo",
+      type: "registry:ui",
+      title: "SambaNova Logo",
+      description: "SambaNova logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/sambanova-logo/components/logos/sambanova.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "SambaNova logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -4308,6 +4747,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "snowflake-logo",
+      type: "registry:ui",
+      title: "Snowflake Logo",
+      description: "Snowflake logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["Tech", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/snowflake-logo/components/logos/snowflake.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Snowflake logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "social-media",
       type: "registry:block",
       title: "Social Media & Communication",
@@ -4418,6 +4882,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "stability-logo",
+      type: "registry:ui",
+      title: "Stability AI Logo",
+      description: "Stability AI logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "Media", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/stability-logo/components/logos/stability.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Stability AI logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "storybook-logo",
       type: "registry:block",
       title: "Storybook Logo",
@@ -4515,6 +5004,31 @@ export const registry = {
       ],
       docs: "Display suggested prompts as clickable buttons in a responsive grid. Perfect for onboarding users to chat capabilities.",
       categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "suno-logo",
+      type: "registry:ui",
+      title: "Suno Logo",
+      description: "Suno logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "Media", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "wordmark"],
+        variantTypes: {
+          base: ["icon", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/suno-logo/components/logos/suno.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Suno logo with 2 base variant(s) (icon, wordmark) and 2 modes (dark, light) = 4 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -4638,6 +5152,8 @@ export const registry = {
         "@elements/microsoft-logo",
         "@elements/google-logo",
         "@elements/meta-logo",
+        "@elements/nvidia-logo",
+        "@elements/bytedance-logo",
       ],
       dependencies: [],
       files: [],
@@ -4976,6 +5492,31 @@ export const registry = {
       ],
       docs: "Tinte logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["DevTools", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "together-logo",
+      type: "registry:ui",
+      title: "together.ai Logo",
+      description: "together.ai logo with variant support",
+      registryDependencies: [],
+      dependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "icon-color", "wordmark"],
+        variantTypes: {
+          base: ["icon", "icon-color", "wordmark"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/together-logo/components/logos/together.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "together.ai logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

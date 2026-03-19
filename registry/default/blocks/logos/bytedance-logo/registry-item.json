@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bytedance-logo",
+  "type": "registry:ui",
+  "title": "ByteDance Logo",
+  "description": "ByteDance logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["Tech", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "icon-color", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/bytedance-logo/components/logos/bytedance.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "ByteDance logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations."
+}

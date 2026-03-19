@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pika-logo",
+  "type": "registry:ui",
+  "title": "Pika Logo",
+  "description": "Pika logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "Media", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/pika-logo/components/logos/pika.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Pika logo with 2 base variant(s) (icon, wordmark) and 2 modes (dark, light) = 4 total combinations."
+}

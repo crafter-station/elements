@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "replicate-logo",
+  "type": "registry:ui",
+  "title": "Replicate Logo",
+  "description": "Replicate logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/replicate-logo/components/logos/replicate.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Replicate logo with 1 base variant(s) (icon) and 2 modes (dark, light) = 2 total combinations."
+}

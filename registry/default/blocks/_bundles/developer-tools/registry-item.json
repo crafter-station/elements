@@ -12,7 +12,9 @@
     "@elements/notion-logo",
     "@elements/v0-logo",
     "@elements/lovable-logo",
-    "@elements/trigger-logo"
+    "@elements/trigger-logo",
+    "@elements/n8n-logo",
+    "@elements/deepl-logo"
   ],
   "dependencies": [],
   "files": [],

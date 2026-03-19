@@ -12,7 +12,8 @@
     "@elements/resend-logo",
     "@elements/better-auth-logo",
     "@elements/clerk-logo",
-    "@elements/polar-logo"
+    "@elements/polar-logo",
+    "@elements/snowflake-logo"
   ],
   "dependencies": [],
   "files": [],

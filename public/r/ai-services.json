@@ -19,15 +19,23 @@
     "@elements/grok-logo",
     "@elements/perplexity-logo",
     "@elements/xai-logo",
-    "@elements/kimi-logo"
+    "@elements/kimi-logo",
+    "@elements/ollama-logo",
+    "@elements/replicate-logo",
+    "@elements/together-logo",
+    "@elements/fireworks-logo",
+    "@elements/cerebras-logo",
+    "@elements/sambanova-logo",
+    "@elements/stability-logo",
+    "@elements/langchain-logo",
+    "@elements/dify-logo",
+    "@elements/luma-logo",
+    "@elements/runway-logo",
+    "@elements/pika-logo",
+    "@elements/suno-logo"
   ],
   "files": [],
   "docs": "Collection of AI service provider logos including major LLM providers, AI platforms, and machine learning services. Perfect for AI-powered applications and ML dashboards.",
-  "categories": [
-    "logo",
-    "brand",
-    "AI",
-    "collection"
-  ],
+  "categories": ["logo", "brand", "AI", "collection"],
   "type": "registry:block"
 }

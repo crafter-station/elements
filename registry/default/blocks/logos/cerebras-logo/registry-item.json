@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cerebras-logo",
+  "type": "registry:ui",
+  "title": "Cerebras Logo",
+  "description": "Cerebras logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color", "wordmark", "logo"],
+    "variantTypes": {
+      "base": ["icon", "icon-color", "wordmark", "logo"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/cerebras-logo/components/logos/cerebras.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Cerebras logo with 4 base variant(s) (icon, icon-color, wordmark, logo) and 2 modes (dark, light) = 8 total combinations."
+}

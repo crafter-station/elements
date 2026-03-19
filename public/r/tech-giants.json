@@ -8,15 +8,12 @@
     "@elements/apple-logo",
     "@elements/microsoft-logo",
     "@elements/google-logo",
-    "@elements/meta-logo"
+    "@elements/meta-logo",
+    "@elements/nvidia-logo",
+    "@elements/bytedance-logo"
   ],
   "files": [],
   "docs": "Collection of major technology company logos. Essential for platform integrations, sign-in options, and enterprise partnerships.",
-  "categories": [
-    "logo",
-    "brand",
-    "enterprise",
-    "collection"
-  ],
+  "categories": ["logo", "brand", "enterprise", "collection"],
   "type": "registry:block"
 }

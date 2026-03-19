@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "deepl-logo",
+  "type": "registry:ui",
+  "title": "DeepL Logo",
+  "description": "DeepL logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["Translation", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "icon-color", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/deepl-logo/components/logos/deepl.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "DeepL logo with 3 base variant(s) (icon, icon-color, wordmark) and 2 modes (dark, light) = 6 total combinations."
+}

@@ -8,7 +8,9 @@
     "@elements/apple-logo",
     "@elements/microsoft-logo",
     "@elements/google-logo",
-    "@elements/meta-logo"
+    "@elements/meta-logo",
+    "@elements/nvidia-logo",
+    "@elements/bytedance-logo"
   ],
   "dependencies": [],
   "files": [],

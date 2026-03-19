@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "replicate-logo",
+  "title": "Replicate Logo",
+  "description": "Replicate logo with variant support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/replicate-logo/components/logos/replicate.tsx",
+      "content": "const COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nexport function ReplicateLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}) {\n  const color = COLORS[mode];\n\n  if (variant === \"icon\") {\n    return (\n      <svg\n        role=\"img\"\n        viewBox=\"0 0 24 24\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        className={className}\n        fillRule=\"evenodd\"\n      >\n        <title>Replicate</title>\n        <path d=\"M22 10.552v2.26h-7.932V22H11.54V10.552H22zM22 2v2.264H4.528V22H2V2h20zm0 4.276V8.54H9.296V22H6.768V6.276H22z\"></path>\n      </svg>\n    );\n  }\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Replicate</title>\n      <path d=\"M22 10.552v2.26h-7.932V22H11.54V10.552H22zM22 2v2.264H4.528V22H2V2h20zm0 4.276V8.54H9.296V22H6.768V6.276H22z\"></path>\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Replicate logo with 1 base variant(s) (icon) and 2 modes (dark, light) = 2 total combinations.",
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
+}

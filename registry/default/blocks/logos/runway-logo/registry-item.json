@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "runway-logo",
+  "type": "registry:ui",
+  "title": "Runway Logo",
+  "description": "Runway logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "Media", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/runway-logo/components/logos/runway.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Runway logo with 2 base variant(s) (icon, wordmark) and 2 modes (dark, light) = 4 total combinations."
+}

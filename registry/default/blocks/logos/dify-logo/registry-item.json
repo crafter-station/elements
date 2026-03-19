@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dify-logo",
+  "type": "registry:ui",
+  "title": "Dify Logo",
+  "description": "Dify logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color", "wordmark", "logo"],
+    "variantTypes": {
+      "base": ["icon", "icon-color", "wordmark", "logo"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/dify-logo/components/logos/dify.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Dify logo with 4 base variant(s) (icon, icon-color, wordmark, logo) and 2 modes (dark, light) = 8 total combinations."
+}

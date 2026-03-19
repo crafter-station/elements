@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ollama-logo",
+  "type": "registry:ui",
+  "title": "Ollama Logo",
+  "description": "Ollama logo with variant support",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/ollama-logo/components/logos/ollama.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Ollama logo with 2 base variant(s) (icon, wordmark) and 2 modes (dark, light) = 4 total combinations."
+}
