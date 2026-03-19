@@ -21,23 +21,13 @@
 
 ## Quick Start
 
-Add the Elements registry to your `components.json`:
-
-```json
-{
-  "registries": {
-    "@elements": "https://tryelements.dev/r/{name}.json"
-  }
-}
-```
-
-Install any element:
-
 ```bash
-bunx shadcn@latest add @elements/clerk-sign-in
-bunx shadcn@latest add @elements/logos
-bunx shadcn@latest add @elements/polar-pricing-card
+npx shadcn@latest add @elements/clerk-sign-in
+npx shadcn@latest add @elements/logos
+npx shadcn@latest add @elements/polar-pricing-card
 ```
+
+> Elements is a [trusted shadcn registry](https://ui.shadcn.com/docs/directory?q=elements) -- no manual config needed.
 
 ## What's Inside
 
