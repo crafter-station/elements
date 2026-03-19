@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useTheme } from "next-themes";
+import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { toast } from "sonner";
 
@@ -90,16 +91,24 @@ interface LogosClientProps {
   bundles: Bundle[];
 }
 
-type ViewMode = "individual" | "collections";
-
 export function LogosClient({
   logos: initialLogos,
   bundles,
 }: LogosClientProps) {
   const { resolvedTheme } = useTheme();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useQueryState(
+    "q",
+    parseAsString
+      .withDefault("")
+      .withOptions({ shallow: false, throttleMs: 300 }),
+  );
   const [selectedLogos, setSelectedLogos] = useState<Set<string>>(new Set());
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useQueryState(
+    "categories",
+    parseAsArrayOf(parseAsString, ",")
+      .withDefault([])
+      .withOptions({ shallow: false }),
+  );
   const [logos, setLogos] = useState<LogoWithComponent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -110,7 +119,10 @@ export function LogosClient({
   const [packageManager, setPackageManager] = useState("bunx");
   const [copied, setCopied] = useState(false);
   const [skillCopied, setSkillCopied] = useState(false);
-  const [viewMode, setViewMode] = useState<ViewMode>("individual");
+  const [viewMode, setViewMode] = useQueryState(
+    "view",
+    parseAsString.withDefault("individual").withOptions({ shallow: false }),
+  );
   const [selectedBundles, setSelectedBundles] = useState<Set<string>>(
     new Set(),
   );

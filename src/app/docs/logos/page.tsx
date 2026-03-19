@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 
+import type { SearchParams } from "nuqs/server";
+
 import { getLogoBundles, getLogoComponents } from "@/lib/registry-loader";
 
 import { LogosClient } from "./logos-client";
+import { loadSearchParams } from "./search-params";
 
 export const metadata: Metadata = {
   title: "Brand Logos - Elements",
@@ -53,8 +56,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TechLogosPage() {
-  // Server-side data loading - no useEffect needed!
+type PageProps = {
+  searchParams: Promise<SearchParams>;
+};
+
+export default async function TechLogosPage({ searchParams }: PageProps) {
+  await loadSearchParams(searchParams);
+
   const logoItems = getLogoComponents();
   const bundleItems = getLogoBundles();
 
