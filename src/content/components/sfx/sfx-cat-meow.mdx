@@ -1,0 +1,64 @@
+---
+title: Cat Meow SFX
+description: Real cat meow for notifications and fun UI interactions. CC0 license.
+---
+
+<ComponentPreviewItem
+  componentKey="sfx-cat-meow"
+  installUrl="@elements/sfx-cat-meow"
+  category="SFX"
+  name="Cat Meow SFX"
+>
+  <SfxPlayer name="cat-meow" src="/sfx/cat-meow.mp3" duration="0.77" category="notification" />
+</ComponentPreviewItem>
+
+## Overview
+
+A real cat meow recorded from a domestic cat. Perfect for playful notifications, attention hooks, and fun UI interactions. Duration: **0.77s**.
+
+## Installation
+
+### React / Web Audio
+
+```bash
+npx shadcn@latest add @elements/sfx-cat-meow
+```
+
+### Video Production / Agents
+
+```bash
+curl -o public/sfx/cat-meow.mp3 https://tryelements.dev/sfx/cat-meow.mp3
+```
+
+## Usage
+
+### React Hook
+
+```tsx
+import { useSound } from "@/hooks/use-sound";
+import { catMeowSound } from "@/sfx/cat-meow";
+
+export function NotificationAlert() {
+  const [play] = useSound(catMeowSound, { volume: 0.5 });
+
+  return <button onClick={play}>Meow!</button>;
+}
+```
+
+### Remotion
+
+```tsx
+import { Audio, staticFile } from "remotion";
+
+export function CatMeowSfx() {
+  return <Audio src={staticFile("sfx/cat-meow.mp3")} volume={0.4} />;
+}
+```
+
+## Timing
+
+Play on notification events, attention prompts, or as a fun easter egg interaction.
+
+## License
+
+CC0 (public domain). No attribution required. Free for commercial use. Source: Wikimedia Commons.

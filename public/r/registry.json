@@ -3073,6 +3073,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "sfx-cat-meow",
+      "type": "registry:ui",
+      "title": "Cat Meow SFX",
+      "description": "Real cat meow for notifications and fun UI interactions. CC0 license.",
+      "registryDependencies": ["sound-types"],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/sfx/cat-meow/components/sfx/cat-meow.ts",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["sfx", "notification"]
+    },
+    {
       "name": "sfx-click",
       "type": "registry:ui",
       "title": "Click SFX",
@@ -3779,7 +3794,7 @@
           "target": "app/theme-switcher-button/page.tsx"
         }
       ],
-      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Button-based theme switcher with rotating icons."
+      "docs": "\u26a0\ufe0f Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Button-based theme switcher with rotating icons."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3805,7 +3820,7 @@
           "target": "app/theme-switcher-classic/page.tsx"
         }
       ],
-      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."
+      "docs": "\u26a0\ufe0f Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3831,7 +3846,7 @@
           "target": "app/theme-switcher-dropdown/page.tsx"
         }
       ],
-      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Dropdown with light/dark/system options."
+      "docs": "\u26a0\ufe0f Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Dropdown with light/dark/system options."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3857,7 +3872,7 @@
           "target": "app/theme-switcher-multi-button/page.tsx"
         }
       ],
-      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Multi-button with system/light/dark options."
+      "docs": "\u26a0\ufe0f Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Multi-button with system/light/dark options."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3883,7 +3898,7 @@
           "target": "app/theme-switcher-switch/page.tsx"
         }
       ],
-      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."
+      "docs": "\u26a0\ufe0f Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Switch-based theme switcher with animated icons."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3909,7 +3924,7 @@
           "target": "app/theme-switcher-toggle/page.tsx"
         }
       ],
-      "docs": "⚠️ Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Custom toggle with sliding animation."
+      "docs": "\u26a0\ufe0f Requires ThemeProvider setup! Wrap your app with <ThemeProvider> and add suppressHydrationWarning to <html>. Custom toggle with sliding animation."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -4650,6 +4665,198 @@
       ],
       "docs": "Zed logo component. Uses currentColor for theme adaptation.",
       "categories": ["DevTools", "logo", "brand"]
+    },
+    {
+      "name": "hook-auto-format",
+      "type": "registry:ui",
+      "title": "Auto Format",
+      "description": "Automatically run your project formatter (Biome, Prettier, Black, rustfmt) after Claude edits a file.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/auto-format/scripts/auto-format.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "dx"],
+      "subcategory": "dx"
+    },
+    {
+      "name": "hook-cat-sounds",
+      "type": "registry:ui",
+      "title": "Cat Sounds",
+      "description": "Play cat meow sounds when Claude Code needs your attention. Fun personality hook.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/cat-sounds/scripts/cat-sounds.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "fun"],
+      "subcategory": "fun"
+    },
+    {
+      "name": "hook-context-monitor",
+      "type": "registry:ui",
+      "title": "Context Monitor",
+      "description": "Warn when Claude Code context window is running low. Alerts at 40%, 25%, and 15%.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/context-monitor/scripts/context-monitor.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "dx"],
+      "subcategory": "dx"
+    },
+    {
+      "name": "hook-guard-branch",
+      "type": "registry:ui",
+      "title": "Branch Guard",
+      "description": "Block pushes to protected branches (main, master, production).",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/guard-branch/scripts/guard-branch.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "safety"],
+      "subcategory": "safety"
+    },
+    {
+      "name": "hook-guard-destructive",
+      "type": "registry:ui",
+      "title": "Destructive Command Guard",
+      "description": "Block dangerous commands like rm -rf, git reset --hard, and DROP TABLE.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/guard-destructive/scripts/guard-destructive.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "safety"],
+      "subcategory": "safety"
+    },
+    {
+      "name": "hook-guard-secrets",
+      "type": "registry:ui",
+      "title": "Secrets Guard",
+      "description": "Block edits to .env files and credential files.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/guard-secrets/scripts/guard-secrets.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "safety"],
+      "subcategory": "safety"
+    },
+    {
+      "name": "hook-notify-discord",
+      "type": "registry:ui",
+      "title": "Discord Notification",
+      "description": "Send a Discord notification when Claude Code needs input or finishes a task.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/notify-discord/scripts/notify-discord.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "notification"],
+      "subcategory": "notifications"
+    },
+    {
+      "name": "hook-notify-macos",
+      "type": "registry:ui",
+      "title": "macOS Notification",
+      "description": "Native macOS notification when Claude Code needs input or finishes a task.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/notify-macos/scripts/notify-macos.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "notification"],
+      "subcategory": "notifications"
+    },
+    {
+      "name": "hook-notify-slack",
+      "type": "registry:ui",
+      "title": "Slack Notification",
+      "description": "Send a Slack notification when Claude Code needs input or finishes a task.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/notify-slack/scripts/notify-slack.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "notification"],
+      "subcategory": "notifications"
+    },
+    {
+      "name": "hook-notify-sound",
+      "type": "registry:ui",
+      "title": "Sound Notification",
+      "description": "Play a system sound when Claude Code needs input or finishes a task. Cross-platform.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/notify-sound/scripts/notify-sound.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "notification"],
+      "subcategory": "notifications"
+    },
+    {
+      "name": "hook-notify-telegram",
+      "type": "registry:ui",
+      "title": "Telegram Notification",
+      "description": "Send a Telegram notification when Claude Code needs input or finishes a task.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/notify-telegram/scripts/notify-telegram.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "notification"],
+      "subcategory": "notifications"
+    },
+    {
+      "name": "hook-session-summary",
+      "type": "registry:ui",
+      "title": "Session Summary",
+      "description": "Generate a summary of your Claude Code session when it ends.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/hooks/session-summary/scripts/session-summary.sh",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["hooks", "logging"],
+      "subcategory": "logging"
     }
   ]
 }
