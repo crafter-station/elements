@@ -33,19 +33,19 @@ npx shadcn@latest add @elements/polar-pricing-card
 
 | Category | Elements | Description |
 |----------|----------|-------------|
-| **Brand Logos** | 154 | Theme-adaptive logos for tech companies and AI services |
-| **Clerk** | 6 | Auth flows: sign-in, sign-up, org switcher, waitlist |
-| **AI Elements** | 37 | Chat, reasoning, tool calls, streaming for Vercel AI SDK |
-| **Claude Code** | 12 | Automation hooks: notifications, safety guards, DX |
-| **Polar** | 5 | Sponsorship badges, pricing cards, license keys |
-| **UploadThing** | 7 | File upload with drag & drop and progress |
-| **Upstash** | 5 | Rate limiting, caching, leaderboards |
-| **GitHub** | 7 | Stars, contributions, repo stats |
-| **Dev Tools** | 9 | JSON viewer, schema viewer, webhook tester |
-| **SFX** | 24 | CC0 sound effects for UI and video |
-| **Theme Switcher** | 6 | Dark/light mode toggles with variants |
-| **Loaders** | 6 | Animated loading indicators |
-| **PDF** | 2 | PDF viewer and utilities |
+| [**Brand Logos**](https://tryelements.dev/docs/logos) | 154 | Theme-adaptive logos for tech companies and AI services |
+| [**Clerk**](https://tryelements.dev/docs/clerk) | 6 | Auth flows: sign-in, sign-up, org switcher, waitlist |
+| [**AI Elements**](https://tryelements.dev/docs/ai-elements) | 37 | Chat, reasoning, tool calls, streaming for Vercel AI SDK |
+| [**Claude Code**](https://tryelements.dev/docs/claude-code) | 12 | Automation hooks: notifications, safety guards, DX |
+| [**Polar**](https://tryelements.dev/docs/polar) | 5 | Sponsorship badges, pricing cards, license keys |
+| [**UploadThing**](https://tryelements.dev/docs/uploadthing) | 7 | File upload with drag & drop and progress |
+| [**Upstash**](https://tryelements.dev/docs/upstash) | 5 | Rate limiting, caching, leaderboards |
+| [**GitHub**](https://tryelements.dev/docs/github) | 7 | Stars, contributions, repo stats |
+| [**Dev Tools**](https://tryelements.dev/docs/devtools) | 9 | JSON viewer, schema viewer, webhook tester |
+| [**SFX**](https://tryelements.dev/docs/sfx) | 24 | CC0 sound effects for UI and video |
+| [**Theme Switcher**](https://tryelements.dev/docs/theme) | 6 | Dark/light mode toggles with variants |
+| [**Loaders**](https://tryelements.dev/docs/loaders) | 6 | Animated loading indicators |
+| [**PDF**](https://tryelements.dev/docs/pdf) | 2 | PDF viewer and utilities |
 
 Browse all at [tryelements.dev](https://tryelements.dev).
 
