@@ -1,7 +1,7 @@
 {
   "name": "@tryelements/cli",
-  "version": "0.1.0",
-  "description": "Install SVG logos from tryelements.dev",
+  "version": "0.2.0",
+  "description": "Install components, logos, and Claude Code hooks from tryelements.dev",
   "type": "module",
   "bin": {
     "tryelements": "./dist/index.js"
@@ -21,7 +21,9 @@
     "logos",
     "icons",
     "tryelements",
-    "shadcn"
+    "shadcn",
+    "hooks",
+    "claude-code"
   ],
   "author": "Railly Hugo <the.crafter.station@gmail.com>",
   "license": "MIT",
