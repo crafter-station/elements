@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-notify-sound",
+  "type": "registry:ui",
+  "title": "Sound Notification",
+  "description": "Play a system sound when Claude Code needs input or finishes a task. Cross-platform.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/notify-sound/scripts/notify-sound.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "notification"]
+}

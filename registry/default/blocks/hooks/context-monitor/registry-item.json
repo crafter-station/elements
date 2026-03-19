@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-context-monitor",
+  "type": "registry:ui",
+  "title": "Context Monitor",
+  "description": "Warn when Claude Code context window is running low. Alerts at 40%, 25%, and 15%.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/context-monitor/scripts/context-monitor.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "dx"]
+}

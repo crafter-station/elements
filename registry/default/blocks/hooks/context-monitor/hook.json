@@ -1,0 +1,8 @@
+{
+  "event": "PostToolUse",
+  "type": "command",
+  "matcher": null,
+  "platforms": ["darwin", "linux"],
+  "configurable": {},
+  "tags": ["dx", "context"]
+}

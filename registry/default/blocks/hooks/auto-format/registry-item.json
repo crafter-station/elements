@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-auto-format",
+  "type": "registry:ui",
+  "title": "Auto Format",
+  "description": "Automatically run your project formatter (Biome, Prettier, Black, rustfmt) after Claude edits a file.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/auto-format/scripts/auto-format.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "dx"]
+}

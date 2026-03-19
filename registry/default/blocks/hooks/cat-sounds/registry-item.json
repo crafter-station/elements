@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-cat-sounds",
+  "type": "registry:ui",
+  "title": "Cat Sounds",
+  "description": "Play cat meow sounds when Claude Code needs your attention. Fun personality hook.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/cat-sounds/scripts/cat-sounds.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "fun"]
+}

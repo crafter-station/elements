@@ -1,0 +1,8 @@
+{
+  "event": "PostToolUse",
+  "type": "command",
+  "matcher": "Edit|Write",
+  "platforms": ["darwin", "linux"],
+  "configurable": {},
+  "tags": ["dx", "formatting"]
+}

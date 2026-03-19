@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-notify-macos",
+  "type": "registry:ui",
+  "title": "macOS Notification",
+  "description": "Native macOS notification when Claude Code needs input or finishes a task.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/notify-macos/scripts/notify-macos.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "notification"]
+}

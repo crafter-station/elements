@@ -1,0 +1,13 @@
+{
+  "event": "Notification",
+  "type": "command",
+  "matcher": null,
+  "platforms": ["darwin", "linux"],
+  "configurable": {
+    "CLAUDE_HOOK_DISCORD_WEBHOOK": {
+      "prompt": "Discord webhook URL",
+      "required": true
+    }
+  },
+  "tags": ["notification", "discord"]
+}

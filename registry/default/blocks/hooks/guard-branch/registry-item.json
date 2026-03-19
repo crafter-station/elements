@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-guard-branch",
+  "type": "registry:ui",
+  "title": "Branch Guard",
+  "description": "Block pushes to protected branches (main, master, production).",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/guard-branch/scripts/guard-branch.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "safety"]
+}

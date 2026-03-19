@@ -1,0 +1,8 @@
+{
+  "event": "PreToolUse",
+  "type": "command",
+  "matcher": "Bash",
+  "platforms": ["darwin", "linux"],
+  "configurable": {},
+  "tags": ["safety", "git"]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-guard-secrets",
+  "type": "registry:ui",
+  "title": "Secrets Guard",
+  "description": "Block edits to .env files and credential files.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/guard-secrets/scripts/guard-secrets.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "safety"]
+}

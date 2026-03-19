@@ -1,0 +1,17 @@
+{
+  "event": "Notification",
+  "type": "command",
+  "matcher": null,
+  "platforms": ["darwin", "linux"],
+  "configurable": {
+    "CLAUDE_HOOK_TELEGRAM_TOKEN": {
+      "prompt": "Telegram bot token",
+      "required": true
+    },
+    "CLAUDE_HOOK_TELEGRAM_CHAT_ID": {
+      "prompt": "Telegram chat ID",
+      "required": true
+    }
+  },
+  "tags": ["notification", "telegram"]
+}

@@ -1,0 +1,8 @@
+{
+  "event": "Notification",
+  "type": "command",
+  "matcher": null,
+  "platforms": ["darwin", "linux"],
+  "configurable": {},
+  "tags": ["notification", "sound"]
+}

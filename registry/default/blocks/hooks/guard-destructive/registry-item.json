@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-guard-destructive",
+  "type": "registry:ui",
+  "title": "Destructive Command Guard",
+  "description": "Block dangerous commands like rm -rf, git reset --hard, and DROP TABLE.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/guard-destructive/scripts/guard-destructive.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "safety"]
+}

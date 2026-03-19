@@ -1,0 +1,8 @@
+{
+  "event": "PreToolUse",
+  "type": "command",
+  "matcher": "Edit|Write",
+  "platforms": ["darwin", "linux"],
+  "configurable": {},
+  "tags": ["safety", "secrets"]
+}

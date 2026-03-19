@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-session-summary",
+  "type": "registry:ui",
+  "title": "Session Summary",
+  "description": "Generate a summary of your Claude Code session when it ends.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/session-summary/scripts/session-summary.sh",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "logging"]
+}
