@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-session-summary",
+  "title": "Session Summary",
+  "description": "Generate a summary of your Claude Code session when it ends.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/session-summary/scripts/session-summary.sh",
+      "content": "#!/usr/bin/env bash\nINPUT=$(cat)\n\nSTOP_HOOK_ACTIVE=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('stop_hook_active', False))\" 2>/dev/null)\n[[ \"$STOP_HOOK_ACTIVE\" == \"True\" ]] && exit 0\n\nSESSION_ID=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('session_id','unknown'))\" 2>/dev/null)\nTRANSCRIPT=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('transcript_path',''))\" 2>/dev/null)\nCWD=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('cwd',''))\" 2>/dev/null)\n\nLOG_DIR=\"$HOME/.claude/session-summaries\"\nmkdir -p \"$LOG_DIR\"\n\nTIMESTAMP=$(date +%Y-%m-%dT%H:%M:%S)\nPROJECT=$(basename \"$CWD\")\nTRANSCRIPT_SIZE=$(wc -c < \"$TRANSCRIPT\" 2>/dev/null | tr -d ' ')\n\ncat > \"$LOG_DIR/${SESSION_ID}.md\" << EOF\n# Session: ${SESSION_ID}\n- Project: ${PROJECT}\n- Ended: ${TIMESTAMP}\n- Transcript size: ${TRANSCRIPT_SIZE} bytes\n- Working directory: ${CWD}\nEOF\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "logging"],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-notify-slack",
+  "title": "Slack Notification",
+  "description": "Send a Slack notification when Claude Code needs input or finishes a task.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/notify-slack/scripts/notify-slack.sh",
+      "content": "#!/usr/bin/env bash\n[[ -z \"$CLAUDE_HOOK_SLACK_WEBHOOK\" ]] && exit 0\n\nINPUT=$(cat)\nEVENT=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('hook_event_name',''))\" 2>/dev/null)\nMESSAGE=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('notification_message','Needs attention'))\" 2>/dev/null)\nCWD=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('cwd',''))\" 2>/dev/null)\nPROJECT=$(basename \"$CWD\")\n\ncurl -s -X POST \"$CLAUDE_HOOK_SLACK_WEBHOOK\" \\\n  -H 'Content-Type: application/json' \\\n  -d \"{\\\"text\\\":\\\"*Claude Code* (${PROJECT})\\\\n${EVENT}: ${MESSAGE}\\\"}\" \\\n  >/dev/null 2>&1 &\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "notification"],
+  "type": "registry:ui"
+}

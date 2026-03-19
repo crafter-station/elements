@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-guard-destructive",
+  "title": "Destructive Command Guard",
+  "description": "Block dangerous commands like rm -rf, git reset --hard, and DROP TABLE.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/guard-destructive/scripts/guard-destructive.sh",
+      "content": "#!/usr/bin/env bash\nINPUT=$(cat)\nCOMMAND=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('tool_input',{}).get('command',''))\" 2>/dev/null)\n\nif echo \"$COMMAND\" | grep -qE 'rm\\s+(-rf|-fr)\\s+(/|~|\\$HOME|\\.\\.)'; then\n  echo \"Blocked: destructive rm command targeting sensitive path\" >&2\n  exit 2\nfi\n\nif echo \"$COMMAND\" | grep -qE 'git\\s+reset\\s+--hard'; then\n  echo \"Blocked: git reset --hard\" >&2\n  exit 2\nfi\n\nif echo \"$COMMAND\" | grep -qiE 'DROP\\s+(TABLE|DATABASE)'; then\n  echo \"Blocked: DROP TABLE/DATABASE\" >&2\n  exit 2\nfi\n\nif echo \"$COMMAND\" | grep -qE 'git\\s+clean\\s+-fd'; then\n  echo \"Blocked: git clean -fd\" >&2\n  exit 2\nfi\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "safety"],
+  "type": "registry:ui"
+}

@@ -13,6 +13,31 @@ export const registry = {
   items: [
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "ably-logo",
+      type: "registry:ui",
+      title: "Ably Logo",
+      description: "Ably logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/ably-logo/components/logos/ably.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Ably logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "agent-context",
       subcategory: "multi-agent",
       type: "registry:ui",
@@ -149,6 +174,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "algolia-logo",
+      type: "registry:ui",
+      title: "Algolia Logo",
+      description: "Algolia logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/algolia-logo/components/logos/algolia.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Algolia logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "anthropic-logo",
       type: "registry:ui",
       title: "Anthropic Logo",
@@ -244,6 +294,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "auth0-logo",
+      type: "registry:ui",
+      title: "Auth0 Logo",
+      description: "Auth0 logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Auth", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/auth0-logo/components/logos/auth0.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Auth0 logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "aws-logo",
       type: "registry:ui",
       title: "AWS Logo",
@@ -258,6 +333,31 @@ export const registry = {
       ],
       docs: "AWS logo component with official brand orange and white colors.",
       categories: ["Cloud", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "axiom-logo",
+      type: "registry:ui",
+      title: "Axiom Logo",
+      description: "Axiom logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/axiom-logo/components/logos/axiom.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Axiom logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -341,6 +441,31 @@ export const registry = {
       ],
       docs: "Biome logo component for the fast formatter and linter. Uses currentColor for theme adaptation.",
       categories: ["DevTools", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "braintrust-logo",
+      type: "registry:ui",
+      title: "Braintrust Logo",
+      description: "Braintrust logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/braintrust-logo/components/logos/braintrust.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Braintrust logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -661,6 +786,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "cloudinary-logo",
+      type: "registry:ui",
+      title: "Cloudinary Logo",
+      description: "Cloudinary logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/cloudinary-logo/components/logos/cloudinary.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Cloudinary logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "code-diff-viewer",
       type: "registry:ui",
       title: "Code Diff Viewer",
@@ -748,6 +898,31 @@ export const registry = {
       ],
       docs: "A compound component for visualizing conversation branches. Ideal for chat UIs with edit/regenerate features. Use AiConversationTree as root with AiConversationTreeHeader, AiConversationTreeContent, and AiConversationTreePreview sub-components. Supports controlled activeNodeId and onNodeSelect callback.",
       categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "convex-logo",
+      type: "registry:ui",
+      title: "Convex Logo",
+      description: "Convex logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/convex-logo/components/logos/convex.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Convex logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -847,6 +1022,31 @@ export const registry = {
       ],
       docs: "Cursor logo component. Uses currentColor for theme adaptation.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "datadog-logo",
+      type: "registry:ui",
+      title: "Datadog Logo",
+      description: "Datadog logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/datadog-logo/components/logos/datadog.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Datadog logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -956,6 +1156,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "e2b-logo",
+      type: "registry:ui",
+      title: "E2B Logo",
+      description: "E2B logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/e2b-logo/components/logos/e2b.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "E2B logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "elevenlabs-logo",
       type: "registry:block",
       title: "ElevenLabs Logo",
@@ -1018,6 +1243,56 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "expo-logo",
+      type: "registry:ui",
+      title: "Expo Logo",
+      description: "Expo logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Mobile", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/expo-logo/components/logos/expo.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Expo logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "fal-logo",
+      type: "registry:ui",
+      title: "fal Logo",
+      description: "fal logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["AI", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/fal-logo/components/logos/fal.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "fal logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "figma-logo",
       type: "registry:block",
       title: "Figma Logo",
@@ -1049,6 +1324,31 @@ export const registry = {
         },
       ],
       docs: "Figma logo with 4 base variants (icon full-color, icon-mono, wordmark, logo) and dark/light modes = 7 total combinations. Icon variant is always full-color with official Figma colors.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "flyio-logo",
+      type: "registry:ui",
+      title: "Fly.io Logo",
+      description: "Fly.io logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/flyio-logo/components/logos/flyio.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Fly.io logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1364,6 +1664,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "grafana-logo",
+      type: "registry:ui",
+      title: "Grafana Logo",
+      description: "Grafana logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/grafana-logo/components/logos/grafana.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Grafana logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "grok-logo",
       type: "registry:ui",
       title: "Grok Logo",
@@ -1436,6 +1761,209 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-auto-format",
+      type: "registry:ui",
+      title: "Auto Format",
+      description:
+        "Automatically run your project formatter (Biome, Prettier, Black, rustfmt) after Claude edits a file.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/auto-format/scripts/auto-format.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "dx"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-cat-sounds",
+      type: "registry:ui",
+      title: "Cat Sounds",
+      description:
+        "Play cat meow sounds when Claude Code needs your attention. Fun personality hook.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/cat-sounds/scripts/cat-sounds.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "fun"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-context-monitor",
+      type: "registry:ui",
+      title: "Context Monitor",
+      description:
+        "Warn when Claude Code context window is running low. Alerts at 40%, 25%, and 15%.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/context-monitor/scripts/context-monitor.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "dx"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-guard-branch",
+      type: "registry:ui",
+      title: "Branch Guard",
+      description:
+        "Block pushes to protected branches (main, master, production).",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/guard-branch/scripts/guard-branch.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "safety"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-guard-destructive",
+      type: "registry:ui",
+      title: "Destructive Command Guard",
+      description:
+        "Block dangerous commands like rm -rf, git reset --hard, and DROP TABLE.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/guard-destructive/scripts/guard-destructive.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "safety"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-guard-secrets",
+      type: "registry:ui",
+      title: "Secrets Guard",
+      description: "Block edits to .env files and credential files.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/guard-secrets/scripts/guard-secrets.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "safety"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-notify-discord",
+      type: "registry:ui",
+      title: "Discord Notification",
+      description:
+        "Send a Discord notification when Claude Code needs input or finishes a task.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/notify-discord/scripts/notify-discord.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "notification"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-notify-macos",
+      type: "registry:ui",
+      title: "macOS Notification",
+      description:
+        "Native macOS notification when Claude Code needs input or finishes a task.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/notify-macos/scripts/notify-macos.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "notification"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-notify-slack",
+      type: "registry:ui",
+      title: "Slack Notification",
+      description:
+        "Send a Slack notification when Claude Code needs input or finishes a task.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/notify-slack/scripts/notify-slack.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "notification"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-notify-sound",
+      type: "registry:ui",
+      title: "Sound Notification",
+      description:
+        "Play a system sound when Claude Code needs input or finishes a task. Cross-platform.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/notify-sound/scripts/notify-sound.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "notification"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-notify-telegram",
+      type: "registry:ui",
+      title: "Telegram Notification",
+      description:
+        "Send a Telegram notification when Claude Code needs input or finishes a task.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/notify-telegram/scripts/notify-telegram.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "notification"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "hook-session-summary",
+      type: "registry:ui",
+      title: "Session Summary",
+      description:
+        "Generate a summary of your Claude Code session when it ends.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/hooks/session-summary/scripts/session-summary.sh",
+          type: "registry:component",
+        },
+      ],
+      categories: ["hooks", "logging"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "html-logo",
       type: "registry:ui",
       title: "HTML Logo",
@@ -1474,6 +2002,31 @@ export const registry = {
       ],
       docs: "Hugging Face logo component with official multi-color brand design.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "inngest-logo",
+      type: "registry:ui",
+      title: "Inngest Logo",
+      description: "Inngest logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/inngest-logo/components/logos/inngest.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Inngest logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1702,6 +2255,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "langfuse-logo",
+      type: "registry:ui",
+      title: "Langfuse Logo",
+      description: "Langfuse logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/langfuse-logo/components/logos/langfuse.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Langfuse logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "latency-meter",
       subcategory: "devtools",
       type: "registry:ui",
@@ -1718,6 +2296,31 @@ export const registry = {
       ],
       docs: "Compound component for visualizing AI response latency. Performance levels: fast (<1s, green), moderate (<3s, yellow), slow (>3s, red). Shows TTFB (time to first byte) and total duration. Supports compact (inline badge) and expanded (full bar chart) variants with loading animation.",
       categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "launchdarkly-logo",
+      type: "registry:ui",
+      title: "LaunchDarkly Logo",
+      description: "LaunchDarkly logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/launchdarkly-logo/components/logos/launchdarkly.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "LaunchDarkly logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1978,6 +2581,31 @@ export const registry = {
       ],
       docs: "Lovable logo component with official multi-color gradient brand design.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "meilisearch-logo",
+      type: "registry:ui",
+      title: "Meilisearch Logo",
+      description: "Meilisearch logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/meilisearch-logo/components/logos/meilisearch.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Meilisearch logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2448,6 +3076,56 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "pagerduty-logo",
+      type: "registry:ui",
+      title: "PagerDuty Logo",
+      description: "PagerDuty logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/pagerduty-logo/components/logos/pagerduty.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "PagerDuty logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "payload-logo",
+      type: "registry:ui",
+      title: "Payload Logo",
+      description: "Payload logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/payload-logo/components/logos/payload.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Payload logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "pdf-utils",
       type: "registry:ui",
       title: "PDF Utils",
@@ -2535,6 +3213,31 @@ export const registry = {
       ],
       docs: "TODO: Add documentation",
       categories: ["ai"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "planetscale-logo",
+      type: "registry:ui",
+      title: "PlanetScale Logo",
+      description: "PlanetScale logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/planetscale-logo/components/logos/planetscale.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "PlanetScale logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -2688,6 +3391,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "posthog-logo",
+      type: "registry:ui",
+      title: "PostHog Logo",
+      description: "PostHog logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/posthog-logo/components/logos/posthog.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "PostHog logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "prisma-logo",
       type: "registry:ui",
       title: "Prisma Logo",
@@ -2802,6 +3530,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "railway-logo",
+      type: "registry:ui",
+      title: "Railway Logo",
+      description: "Railway logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/railway-logo/components/logos/railway.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Railway logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "raycast-logo",
       type: "registry:ui",
       title: "Raycast Logo",
@@ -2885,6 +3638,31 @@ export const registry = {
         },
       ],
       docs: "Redis logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "render-logo",
+      type: "registry:ui",
+      title: "Render Logo",
+      description: "Render logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/render-logo/components/logos/render.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Render logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3038,6 +3816,31 @@ export const registry = {
           modes: ["dark", "light"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "sanity-logo",
+      type: "registry:ui",
+      title: "Sanity Logo",
+      description: "Sanity logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/sanity-logo/components/logos/sanity.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Sanity logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3828,6 +4631,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "terraform-logo",
+      type: "registry:ui",
+      title: "Terraform Logo",
+      description: "Terraform logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/terraform-logo/components/logos/terraform.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Terraform logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "text-shimmer",
       type: "registry:block",
       title: "Text Shimmer",
@@ -4239,6 +5067,56 @@ export const registry = {
           modes: ["dark", "light"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "turso-logo",
+      type: "registry:ui",
+      title: "Turso Logo",
+      description: "Turso logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/turso-logo/components/logos/turso.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Turso logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "twilio-logo",
+      type: "registry:ui",
+      title: "Twilio Logo",
+      description: "Twilio logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/twilio-logo/components/logos/twilio.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Twilio logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -4720,6 +5598,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "workos-logo",
+      type: "registry:ui",
+      title: "WorkOS Logo",
+      description: "WorkOS logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/workos-logo/components/logos/workos.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "WorkOS logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "xai-logo",
       type: "registry:ui",
       title: "xAI Logo",
@@ -4734,6 +5637,31 @@ export const registry = {
       ],
       docs: "xAI logo component that adapts to your theme. Uses currentColor to match your design system.",
       categories: ["AI", "logo", "brand"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "xata-logo",
+      type: "registry:ui",
+      title: "Xata Logo",
+      description: "Xata logo with dark/light mode support",
+      dependencies: [],
+      registryDependencies: [],
+      categories: ["Cloud", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon"],
+        variantTypes: {
+          base: ["icon"],
+          modes: ["dark", "light"],
+        },
+      },
+      files: [
+        {
+          path: "registry/default/blocks/logos/xata-logo/components/logos/xata.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: "Xata logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",

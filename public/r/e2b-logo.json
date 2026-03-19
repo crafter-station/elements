@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "e2b-logo",
+  "title": "E2B Logo",
+  "description": "E2B logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/e2b-logo/components/logos/e2b.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FF8800\",\n  light: \"#FF8800\",\n};\n\nexport function E2BLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 24 24\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>E2B</title>\n      <path\n        fill={color}\n        d=\"M4.086 5.657A4.5 4.5 0 0 1 7.2 4.08h9.6a4.5 4.5 0 0 1 4.5 4.5v6.84a4.5 4.5 0 0 1-4.5 4.5H5.7a4.5 4.5 0 0 1-4.5-4.5V8.58a4.5 4.5 0 0 1 2.886-4.203ZM7.68 8.4a.72.72 0 0 0-.72.72v1.56h4.08a.72.72 0 1 1 0 1.44H6.96v1.56a.72.72 0 0 0 .72.72h3.36a.72.72 0 1 1 0 1.44H7.68a2.16 2.16 0 0 1-2.16-2.16V9.12A2.16 2.16 0 0 1 7.68 6.96h3.36a.72.72 0 1 1 0 1.44Zm5.76 6h1.2a1.56 1.56 0 0 0 0-3.12h-1.2a.72.72 0 1 1 0-1.44h1.2a3 3 0 0 1 0 6h-1.2a.72.72 0 1 1 0-1.44Zm0-4.56h1.2a1.56 1.56 0 0 0 0-3.12h-1.2a.72.72 0 1 1 0-1.44h1.2a3 3 0 0 1 0 6h-1.2a.72.72 0 1 1 0-1.44Z\"\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "E2B logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
+}

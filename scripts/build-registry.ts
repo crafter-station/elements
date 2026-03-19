@@ -11,7 +11,14 @@
  */
 
 import { execSync } from "node:child_process";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import { join } from "node:path";
 
 const PUBLIC_REGISTRY_DIR = join(process.cwd(), "public/r");
@@ -144,6 +151,83 @@ export const Index = {
     );
   } catch (_error) {
     console.error("\n❌ SVG generation failed:", _error);
+  }
+
+  // Step 7: Generate hooks-index.json and copy hook scripts
+  console.log("\n🪝 Step 7: Generating hooks-index.json...");
+  try {
+    const hooksDir = join(process.cwd(), "registry/default/blocks/hooks");
+    const publicHooksDir = join(process.cwd(), "public/hooks");
+    ensureDir(publicHooksDir);
+
+    const hookDirs = readdirSync(hooksDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory() && !d.name.startsWith("_"))
+      .map((d) => d.name);
+
+    const BUNDLES: Record<string, string[]> = {
+      starter: ["notify-macos", "guard-branch", "auto-format"],
+      safety: ["guard-branch", "guard-secrets", "guard-destructive"],
+      notifications: [
+        "notify-macos",
+        "notify-sound",
+        "notify-slack",
+        "notify-discord",
+        "notify-telegram",
+      ],
+    };
+
+    const hooks = hookDirs.map((name) => {
+      const hookDir = join(hooksDir, name);
+      const hookMeta = JSON.parse(
+        readFileSync(join(hookDir, "hook.json"), "utf-8"),
+      );
+      const registryItem = JSON.parse(
+        readFileSync(join(hookDir, "registry-item.json"), "utf-8"),
+      );
+
+      const scriptsDir = join(hookDir, "scripts");
+      if (existsSync(scriptsDir)) {
+        const scriptFiles = readdirSync(scriptsDir).filter((f) =>
+          f.endsWith(".sh"),
+        );
+        for (const scriptFile of scriptFiles) {
+          copyFileSync(
+            join(scriptsDir, scriptFile),
+            join(publicHooksDir, scriptFile),
+          );
+        }
+      }
+
+      return {
+        name,
+        event: hookMeta.event,
+        type: hookMeta.type,
+        matcher: hookMeta.matcher ?? null,
+        platforms: hookMeta.platforms ?? [],
+        tags: hookMeta.tags ?? [],
+        title: registryItem.title,
+        description: registryItem.description,
+        configurable: hookMeta.configurable ?? {},
+        registry: `https://tryelements.dev/r/${registryItem.name}.json`,
+        script: `https://tryelements.dev/hooks/${name}.sh`,
+      };
+    });
+
+    const hooksIndex = {
+      generated: new Date().toISOString(),
+      count: hooks.length,
+      hooks,
+      bundles: BUNDLES,
+    };
+
+    const hooksIndexPath = join(PUBLIC_REGISTRY_DIR, "hooks-index.json");
+    writeFileSync(hooksIndexPath, JSON.stringify(hooksIndex, null, 2));
+    console.log(`   ✓ Wrote ${hooksIndexPath} (${hooks.length} hooks)`);
+    console.log(
+      `   ✓ Copied ${hooks.length} hook scripts to ${publicHooksDir}`,
+    );
+  } catch (_error) {
+    console.error("\n❌ Hooks index generation failed:", _error);
   }
 
   console.log("\n✨ Registry build complete!");

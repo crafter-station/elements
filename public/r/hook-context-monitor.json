@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-context-monitor",
+  "title": "Context Monitor",
+  "description": "Warn when Claude Code context window is running low. Alerts at 40%, 25%, and 15%.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/context-monitor/scripts/context-monitor.sh",
+      "content": "#!/usr/bin/env bash\nINPUT=$(cat)\n\nTRANSCRIPT=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('transcript_path',''))\" 2>/dev/null)\n[[ -z \"$TRANSCRIPT\" || ! -f \"$TRANSCRIPT\" ]] && exit 0\n\nSIZE=$(wc -c < \"$TRANSCRIPT\" 2>/dev/null | tr -d ' ')\nMAX_BYTES=600000\n\nPERCENT=$(( (SIZE * 100) / MAX_BYTES ))\nREMAINING=$(( 100 - PERCENT ))\n\nSTATE_FILE=\"/tmp/claude-context-monitor-$$\"\n\nif [[ $REMAINING -le 15 ]]; then\n  [[ -f \"${STATE_FILE}-15\" ]] && exit 0\n  touch \"${STATE_FILE}-15\"\n  echo '{\"hookSpecificOutput\":{\"additionalContext\":\"WARNING: Context window critically low (~15% remaining). Consider compacting with /compact.\"}}'\nelif [[ $REMAINING -le 25 ]]; then\n  [[ -f \"${STATE_FILE}-25\" ]] && exit 0\n  touch \"${STATE_FILE}-25\"\n  echo '{\"hookSpecificOutput\":{\"additionalContext\":\"NOTICE: Context window getting low (~25% remaining). Consider wrapping up or compacting soon.\"}}'\nelif [[ $REMAINING -le 40 ]]; then\n  [[ -f \"${STATE_FILE}-40\" ]] && exit 0\n  touch \"${STATE_FILE}-40\"\n  echo '{\"hookSpecificOutput\":{\"additionalContext\":\"INFO: Context window at ~40% remaining.\"}}'\nfi\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "dx"],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-auto-format",
+  "title": "Auto Format",
+  "description": "Automatically run your project formatter (Biome, Prettier, Black, rustfmt) after Claude edits a file.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/auto-format/scripts/auto-format.sh",
+      "content": "#!/usr/bin/env bash\nINPUT=$(cat)\nFILE_PATH=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('tool_input',{}).get('file_path',''))\" 2>/dev/null)\n\n[[ -z \"$FILE_PATH\" || ! -f \"$FILE_PATH\" ]] && exit 0\n\nCWD=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('cwd','.'))\" 2>/dev/null)\n\nif [[ -f \"$CWD/biome.json\" || -f \"$CWD/biome.jsonc\" ]]; then\n  npx @biomejs/biome check --write \"$FILE_PATH\" 2>/dev/null &\nelif [[ -f \"$CWD/.prettierrc\" || -f \"$CWD/.prettierrc.json\" || -f \"$CWD/prettier.config.js\" || -f \"$CWD/prettier.config.mjs\" ]]; then\n  npx prettier --write \"$FILE_PATH\" 2>/dev/null &\nelif [[ \"$FILE_PATH\" == *.py ]]; then\n  if command -v ruff &>/dev/null; then\n    ruff format \"$FILE_PATH\" 2>/dev/null &\n  elif command -v black &>/dev/null; then\n    black \"$FILE_PATH\" 2>/dev/null &\n  fi\nelif [[ \"$FILE_PATH\" == *.rs ]]; then\n  rustfmt \"$FILE_PATH\" 2>/dev/null &\nelif [[ \"$FILE_PATH\" == *.go ]]; then\n  gofmt -w \"$FILE_PATH\" 2>/dev/null &\nfi\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "dx"],
+  "type": "registry:ui"
+}

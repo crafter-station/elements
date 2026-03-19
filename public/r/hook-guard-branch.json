@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-guard-branch",
+  "title": "Branch Guard",
+  "description": "Block pushes to protected branches (main, master, production).",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/guard-branch/scripts/guard-branch.sh",
+      "content": "#!/usr/bin/env bash\nINPUT=$(cat)\nCOMMAND=$(echo \"$INPUT\" | python3 -c \"import sys,json; print(json.load(sys.stdin).get('tool_input',{}).get('command',''))\" 2>/dev/null)\n\nif echo \"$COMMAND\" | grep -qE 'git\\s+push.*\\s+(main|master|production)\\b'; then\n  echo \"Blocked: direct push to protected branch\" >&2\n  exit 2\nfi\n\nif echo \"$COMMAND\" | grep -qE 'git\\s+push\\s+--force'; then\n  echo \"Blocked: force push detected\" >&2\n  exit 2\nfi\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "safety"],
+  "type": "registry:ui"
+}

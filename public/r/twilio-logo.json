@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "twilio-logo",
+  "title": "Twilio Logo",
+  "description": "Twilio logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/twilio-logo/components/logos/twilio.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#F22F46\",\n  light: \"#F22F46\",\n};\n\nexport function TwilioLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 68.3 68.3\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Twilio</title>\n      <path\n        fill={color}\n        d=\"M34.1 0C15.3 0 0 15.3 0 34.1s15.3 34.1 34.1 34.1C53 68.3 68.3 53 68.3 34.1S53 0 34.1 0zm0 59.3C20.3 59.3 9 48 9 34.1 9 20.3 20.3 9 34.1 9 48 9 59.3 20.3 59.3 34.1 59.3 48 48 59.3 34.1 59.3z\"\n      />\n      <circle fill={color} cx=\"42.6\" cy=\"25.6\" r=\"7.1\" />\n      <circle fill={color} cx=\"42.6\" cy=\"42.6\" r=\"7.1\" />\n      <circle fill={color} cx=\"25.6\" cy=\"42.6\" r=\"7.1\" />\n      <circle fill={color} cx=\"25.6\" cy=\"25.6\" r=\"7.1\" />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Twilio logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "categories": ["Cloud", "logo", "brand"],
+  "type": "registry:ui"
+}

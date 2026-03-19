@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fal-logo",
+  "title": "fal Logo",
+  "description": "fal logo with dark/light mode support",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/fal-logo/components/logos/fal.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nexport function FalLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 16 16\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>fal</title>\n      <path\n        fill={color}\n        d=\"M10.318 0c.277 0 .5.225.525.501A5.199 5.199 0 0115.5 5.157c.275.027.501.249.501.526v4.634a.542.542 0 01-.501.526 5.199 5.199 0 00-4.657 4.656.542.542 0 01-.525.501H5.683a.542.542 0 01-.526-.501 5.2 5.2 0 00-4.656-4.656.542.542 0 01-.501-.526V5.683c0-.277.225-.499.501-.526A5.2 5.2 0 005.157.501.543.543 0 015.684 0h4.634zM3.213 7.987v.002c0 2.642 2.173 4.816 4.815 4.818 2.642-.002 4.815-2.176 4.815-4.818v-.002a4.817 4.817 0 00-4.815-4.82c-2.643.001-4.817 2.177-4.815 4.82z\"\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "fal logo with 1 base variant (icon) and 2 modes (dark, light) = 2 total combinations. Theme-aware: automatically adapts colors when you switch themes.",
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
+}

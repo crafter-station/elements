@@ -12,8 +12,20 @@
     "file": "claude-logo.svg"
   },
   {
+    "name": "turso-logo",
+    "file": "turso-logo.svg"
+  },
+  {
+    "name": "launchdarkly-logo",
+    "file": "launchdarkly-logo.svg"
+  },
+  {
     "name": "gemini-logo",
     "file": "gemini-logo.svg"
+  },
+  {
+    "name": "ably-logo",
+    "file": "ably-logo.svg"
   },
   {
     "name": "neon-logo",
@@ -36,8 +48,16 @@
     "file": "roo-code-logo.svg"
   },
   {
+    "name": "cloudinary-logo",
+    "file": "cloudinary-logo.svg"
+  },
+  {
     "name": "anthropic-logo",
     "file": "anthropic-logo.svg"
+  },
+  {
+    "name": "axiom-logo",
+    "file": "axiom-logo.svg"
   },
   {
     "name": "github-logo",
@@ -72,12 +92,20 @@
     "file": "continue-logo.svg"
   },
   {
+    "name": "workos-logo",
+    "file": "workos-logo.svg"
+  },
+  {
     "name": "cplusplus-logo",
     "file": "cplusplus-logo.svg"
   },
   {
     "name": "kotlin-logo",
     "file": "kotlin-logo.svg"
+  },
+  {
+    "name": "meilisearch-logo",
+    "file": "meilisearch-logo.svg"
   },
   {
     "name": "vite-logo",
@@ -110,6 +138,14 @@
   {
     "name": "javascript-logo",
     "file": "javascript-logo.svg"
+  },
+  {
+    "name": "sanity-logo",
+    "file": "sanity-logo.svg"
+  },
+  {
+    "name": "posthog-logo",
+    "file": "posthog-logo.svg"
   },
   {
     "name": "rust-logo",
@@ -156,12 +192,28 @@
     "file": "windsurf-logo.svg"
   },
   {
+    "name": "flyio-logo",
+    "file": "flyio-logo.svg"
+  },
+  {
+    "name": "fal-logo",
+    "file": "fal-logo.svg"
+  },
+  {
     "name": "meta-logo",
     "file": "meta-logo.svg"
   },
   {
     "name": "instagram-logo",
     "file": "instagram-logo.svg"
+  },
+  {
+    "name": "langfuse-logo",
+    "file": "langfuse-logo.svg"
+  },
+  {
+    "name": "twilio-logo",
+    "file": "twilio-logo.svg"
   },
   {
     "name": "google-logo",
@@ -184,6 +236,10 @@
     "file": "groq-logo.svg"
   },
   {
+    "name": "datadog-logo",
+    "file": "datadog-logo.svg"
+  },
+  {
     "name": "opencode-logo",
     "file": "opencode-logo.svg"
   },
@@ -204,6 +260,14 @@
     "file": "postgresql-logo.svg"
   },
   {
+    "name": "expo-logo",
+    "file": "expo-logo.svg"
+  },
+  {
+    "name": "xata-logo",
+    "file": "xata-logo.svg"
+  },
+  {
     "name": "pnpm-logo",
     "file": "pnpm-logo.svg"
   },
@@ -220,6 +284,18 @@
     "file": "goose-logo.svg"
   },
   {
+    "name": "render-logo",
+    "file": "render-logo.svg"
+  },
+  {
+    "name": "convex-logo",
+    "file": "convex-logo.svg"
+  },
+  {
+    "name": "pagerduty-logo",
+    "file": "pagerduty-logo.svg"
+  },
+  {
     "name": "prisma-logo",
     "file": "prisma-logo.svg"
   },
@@ -232,6 +308,10 @@
     "file": "css-logo.svg"
   },
   {
+    "name": "grafana-logo",
+    "file": "grafana-logo.svg"
+  },
+  {
     "name": "nextjs-logo",
     "file": "nextjs-logo.svg"
   },
@@ -240,8 +320,16 @@
     "file": "trae-logo.svg"
   },
   {
+    "name": "auth0-logo",
+    "file": "auth0-logo.svg"
+  },
+  {
     "name": "typescript-logo",
     "file": "typescript-logo.svg"
+  },
+  {
+    "name": "planetscale-logo",
+    "file": "planetscale-logo.svg"
   },
   {
     "name": "tinte-logo",
@@ -256,12 +344,20 @@
     "file": "java-logo.svg"
   },
   {
+    "name": "braintrust-logo",
+    "file": "braintrust-logo.svg"
+  },
+  {
     "name": "python-logo",
     "file": "python-logo.svg"
   },
   {
     "name": "hugging-face-logo",
     "file": "hugging-face-logo.svg"
+  },
+  {
+    "name": "terraform-logo",
+    "file": "terraform-logo.svg"
   },
   {
     "name": "notion-logo",
@@ -296,6 +392,10 @@
     "file": "vuejs-logo.svg"
   },
   {
+    "name": "payload-logo",
+    "file": "payload-logo.svg"
+  },
+  {
     "name": "go-logo",
     "file": "go-logo.svg"
   },
@@ -316,8 +416,16 @@
     "file": "aws-logo.svg"
   },
   {
+    "name": "algolia-logo",
+    "file": "algolia-logo.svg"
+  },
+  {
     "name": "vercel-logo",
     "file": "vercel-logo.svg"
+  },
+  {
+    "name": "inngest-logo",
+    "file": "inngest-logo.svg"
   },
   {
     "name": "better-auth-logo",
@@ -326,6 +434,10 @@
   {
     "name": "github-copilot-logo",
     "file": "github-copilot-logo.svg"
+  },
+  {
+    "name": "e2b-logo",
+    "file": "e2b-logo.svg"
   },
   {
     "name": "nodejs-logo",
@@ -390,6 +502,10 @@
   {
     "name": "sql-logo",
     "file": "sql-logo.svg"
+  },
+  {
+    "name": "railway-logo",
+    "file": "railway-logo.svg"
   },
   {
     "name": "cursor-logo",

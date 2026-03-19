@@ -1,0 +1,192 @@
+{
+  "generated": "2026-03-19T02:21:52.529Z",
+  "count": 12,
+  "hooks": [
+    {
+      "name": "notify-discord",
+      "event": "Notification",
+      "type": "command",
+      "matcher": null,
+      "platforms": ["darwin", "linux"],
+      "tags": ["notification", "discord"],
+      "title": "Discord Notification",
+      "description": "Send a Discord notification when Claude Code needs input or finishes a task.",
+      "configurable": {
+        "CLAUDE_HOOK_DISCORD_WEBHOOK": {
+          "prompt": "Discord webhook URL",
+          "required": true
+        }
+      },
+      "registry": "https://tryelements.dev/r/hook-notify-discord.json",
+      "script": "https://tryelements.dev/hooks/notify-discord.sh"
+    },
+    {
+      "name": "session-summary",
+      "event": "Stop",
+      "type": "command",
+      "matcher": null,
+      "platforms": ["darwin", "linux"],
+      "tags": ["logging", "session"],
+      "title": "Session Summary",
+      "description": "Generate a summary of your Claude Code session when it ends.",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-session-summary.json",
+      "script": "https://tryelements.dev/hooks/session-summary.sh"
+    },
+    {
+      "name": "guard-destructive",
+      "event": "PreToolUse",
+      "type": "command",
+      "matcher": "Bash",
+      "platforms": ["darwin", "linux"],
+      "tags": ["safety", "destructive"],
+      "title": "Destructive Command Guard",
+      "description": "Block dangerous commands like rm -rf, git reset --hard, and DROP TABLE.",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-guard-destructive.json",
+      "script": "https://tryelements.dev/hooks/guard-destructive.sh"
+    },
+    {
+      "name": "notify-sound",
+      "event": "Notification",
+      "type": "command",
+      "matcher": null,
+      "platforms": ["darwin", "linux"],
+      "tags": ["notification", "sound"],
+      "title": "Sound Notification",
+      "description": "Play a system sound when Claude Code needs input or finishes a task. Cross-platform.",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-notify-sound.json",
+      "script": "https://tryelements.dev/hooks/notify-sound.sh"
+    },
+    {
+      "name": "notify-slack",
+      "event": "Notification",
+      "type": "command",
+      "matcher": null,
+      "platforms": ["darwin", "linux"],
+      "tags": ["notification", "slack"],
+      "title": "Slack Notification",
+      "description": "Send a Slack notification when Claude Code needs input or finishes a task.",
+      "configurable": {
+        "CLAUDE_HOOK_SLACK_WEBHOOK": {
+          "prompt": "Slack incoming webhook URL",
+          "required": true
+        }
+      },
+      "registry": "https://tryelements.dev/r/hook-notify-slack.json",
+      "script": "https://tryelements.dev/hooks/notify-slack.sh"
+    },
+    {
+      "name": "cat-sounds",
+      "event": "Notification",
+      "type": "command",
+      "matcher": null,
+      "platforms": ["darwin"],
+      "tags": ["fun", "sound", "cat"],
+      "title": "Cat Sounds",
+      "description": "Play cat meow sounds when Claude Code needs your attention. Fun personality hook.",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-cat-sounds.json",
+      "script": "https://tryelements.dev/hooks/cat-sounds.sh"
+    },
+    {
+      "name": "auto-format",
+      "event": "PostToolUse",
+      "type": "command",
+      "matcher": "Edit|Write",
+      "platforms": ["darwin", "linux"],
+      "tags": ["dx", "formatting"],
+      "title": "Auto Format",
+      "description": "Automatically run your project formatter (Biome, Prettier, Black, rustfmt) after Claude edits a file.",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-auto-format.json",
+      "script": "https://tryelements.dev/hooks/auto-format.sh"
+    },
+    {
+      "name": "context-monitor",
+      "event": "PostToolUse",
+      "type": "command",
+      "matcher": null,
+      "platforms": ["darwin", "linux"],
+      "tags": ["dx", "context"],
+      "title": "Context Monitor",
+      "description": "Warn when Claude Code context window is running low. Alerts at 40%, 25%, and 15%.",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-context-monitor.json",
+      "script": "https://tryelements.dev/hooks/context-monitor.sh"
+    },
+    {
+      "name": "notify-macos",
+      "event": "Notification",
+      "type": "command",
+      "matcher": null,
+      "platforms": ["darwin"],
+      "tags": ["notification", "macos"],
+      "title": "macOS Notification",
+      "description": "Native macOS notification when Claude Code needs input or finishes a task.",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-notify-macos.json",
+      "script": "https://tryelements.dev/hooks/notify-macos.sh"
+    },
+    {
+      "name": "guard-branch",
+      "event": "PreToolUse",
+      "type": "command",
+      "matcher": "Bash",
+      "platforms": ["darwin", "linux"],
+      "tags": ["safety", "git"],
+      "title": "Branch Guard",
+      "description": "Block pushes to protected branches (main, master, production).",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-guard-branch.json",
+      "script": "https://tryelements.dev/hooks/guard-branch.sh"
+    },
+    {
+      "name": "notify-telegram",
+      "event": "Notification",
+      "type": "command",
+      "matcher": null,
+      "platforms": ["darwin", "linux"],
+      "tags": ["notification", "telegram"],
+      "title": "Telegram Notification",
+      "description": "Send a Telegram notification when Claude Code needs input or finishes a task.",
+      "configurable": {
+        "CLAUDE_HOOK_TELEGRAM_TOKEN": {
+          "prompt": "Telegram bot token",
+          "required": true
+        },
+        "CLAUDE_HOOK_TELEGRAM_CHAT_ID": {
+          "prompt": "Telegram chat ID",
+          "required": true
+        }
+      },
+      "registry": "https://tryelements.dev/r/hook-notify-telegram.json",
+      "script": "https://tryelements.dev/hooks/notify-telegram.sh"
+    },
+    {
+      "name": "guard-secrets",
+      "event": "PreToolUse",
+      "type": "command",
+      "matcher": "Edit|Write",
+      "platforms": ["darwin", "linux"],
+      "tags": ["safety", "secrets"],
+      "title": "Secrets Guard",
+      "description": "Block edits to .env files and credential files.",
+      "configurable": {},
+      "registry": "https://tryelements.dev/r/hook-guard-secrets.json",
+      "script": "https://tryelements.dev/hooks/guard-secrets.sh"
+    }
+  ],
+  "bundles": {
+    "starter": ["notify-macos", "guard-branch", "auto-format"],
+    "safety": ["guard-branch", "guard-secrets", "guard-destructive"],
+    "notifications": [
+      "notify-macos",
+      "notify-sound",
+      "notify-slack",
+      "notify-discord",
+      "notify-telegram"
+    ]
+  }
+}

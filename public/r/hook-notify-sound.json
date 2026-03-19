@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-notify-sound",
+  "title": "Sound Notification",
+  "description": "Play a system sound when Claude Code needs input or finishes a task. Cross-platform.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/notify-sound/scripts/notify-sound.sh",
+      "content": "#!/usr/bin/env bash\nif [[ \"$(uname)\" == \"Darwin\" ]]; then\n  afplay /System/Library/Sounds/Ping.aiff &\nelif command -v paplay &>/dev/null; then\n  paplay /usr/share/sounds/freedesktop/stereo/complete.oga &\nelif command -v aplay &>/dev/null; then\n  aplay /usr/share/sounds/sound-icons/trumpet-12.wav &\nfi\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "notification"],
+  "type": "registry:ui"
+}

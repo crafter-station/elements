@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hook-notify-macos",
+  "title": "macOS Notification",
+  "description": "Native macOS notification when Claude Code needs input or finishes a task.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/hooks/notify-macos/scripts/notify-macos.sh",
+      "content": "#!/usr/bin/env bash\n[[ \"$(uname)\" != \"Darwin\" ]] && exit 0\n\nINPUT=$(cat)\nTITLE=$(echo \"$INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('hook_event_name','Claude Code'))\" 2>/dev/null || echo \"Claude Code\")\nMESSAGE=$(echo \"$INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('notification_message', d.get('hook_event_name','Needs attention')))\" 2>/dev/null || echo \"Needs attention\")\n\nosascript -e \"display notification \\\"$MESSAGE\\\" with title \\\"Claude Code\\\" subtitle \\\"$TITLE\\\" sound name \\\"Ping\\\"\"\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": ["hooks", "notification"],
+  "type": "registry:ui"
+}
