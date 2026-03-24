@@ -7,6 +7,8 @@ import { ThemeProvider } from "next-themes";
 
 import "./globals.css";
 
+import Script from "next/script";
+
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 import { Analytics } from "@vercel/analytics/next";
@@ -122,6 +124,11 @@ export default function RootLayout({
           </NuqsAdapter>
           <Analytics />
           <Toaster />
+          <Script
+            defer
+            src="https://counterscale.raillyhugo.workers.dev/tracker.js"
+            data-site-id="tryelements"
+          />
         </body>
       </html>
     </ClerkProvider>
