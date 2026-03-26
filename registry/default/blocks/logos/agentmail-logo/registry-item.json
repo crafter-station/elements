@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agentmail-logo",
+  "type": "registry:block",
+  "title": "AgentMail Logo",
+  "description": "AgentMail logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": { "base": ["icon"], "modes": ["dark", "light"] }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/agentmail-logo/components/logos/agentmail.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AgentMail logo with icon variant and dark/light modes. Uses official brand assets."
+}

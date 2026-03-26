@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "zep-logo",
+  "type": "registry:block",
+  "title": "Zep Logo",
+  "description": "Zep logo with icon and wordmark variants",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/zep-logo/components/logos/zep.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Zep logo with icon and wordmark variants and dark/light modes."
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sixtyfour-logo",
+  "type": "registry:block",
+  "title": "Sixtyfour Logo",
+  "description": "Sixtyfour logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": { "base": ["icon"], "modes": ["dark", "light"] }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/sixtyfour-logo/components/logos/sixtyfour.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Sixtyfour logo with icon variant and dark/light modes. Uses official brand assets."
+}

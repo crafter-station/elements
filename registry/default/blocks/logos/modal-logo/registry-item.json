@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "modal-logo",
+  "type": "registry:block",
+  "title": "Modal Logo",
+  "description": "Modal logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": { "base": ["icon"], "modes": ["dark", "light"] }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/modal-logo/components/logos/modal.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Modal logo with icon variant and dark/light modes. Uses official brand assets."
+}

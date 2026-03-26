@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stytch-logo",
+  "type": "registry:block",
+  "title": "Stytch Logo",
+  "description": "Stytch logo with icon and wordmark variants",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/stytch-logo/components/logos/stytch.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Stytch logo with icon and wordmark variants and dark/light modes."
+}

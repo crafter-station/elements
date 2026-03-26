@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "composio-logo",
+  "type": "registry:block",
+  "title": "Composio Logo",
+  "description": "Composio logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/composio-logo/components/logos/composio.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Composio logo with icon variant and dark/light modes. Uses official brand assets."
+}

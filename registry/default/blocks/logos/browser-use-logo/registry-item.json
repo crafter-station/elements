@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "browser-use-logo",
+  "type": "registry:block",
+  "title": "Browser Use Logo",
+  "description": "Browser Use logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/browser-use-logo/components/logos/browser-use.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Browser Use logo with icon variant and dark/light modes. Uses official brand assets."
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "daytona-logo",
+  "type": "registry:block",
+  "title": "Daytona Logo",
+  "description": "Daytona logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/daytona-logo/components/logos/daytona.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Daytona logo with icon variant and dark/light modes. Uses official brand assets."
+}

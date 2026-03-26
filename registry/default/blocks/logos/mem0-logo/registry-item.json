@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mem0-logo",
+  "type": "registry:block",
+  "title": "Mem0 Logo",
+  "description": "Mem0 logo with icon and wordmark variants",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/mem0-logo/components/logos/mem0.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Mem0 logo with icon and wordmark variants and dark/light modes."
+}

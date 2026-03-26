@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hyperbrowser-logo",
+  "type": "registry:block",
+  "title": "Hyperbrowser Logo",
+  "description": "Hyperbrowser logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/hyperbrowser-logo/components/logos/hyperbrowser.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Hyperbrowser logo with icon variant and dark/light modes. Uses official brand assets."
+}

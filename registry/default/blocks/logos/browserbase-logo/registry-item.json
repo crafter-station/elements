@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "browserbase-logo",
+  "type": "registry:block",
+  "title": "Browserbase Logo",
+  "description": "Browserbase logo with icon and wordmark variants",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/browserbase-logo/components/logos/browserbase.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Browserbase logo with icon and wordmark variants and dark/light modes."
+}

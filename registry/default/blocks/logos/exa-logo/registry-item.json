@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "exa-logo",
+  "type": "registry:block",
+  "title": "Exa Logo",
+  "description": "Exa logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/exa-logo/components/logos/exa.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Exa logo with icon variant and dark/light modes. Uses official brand assets."
+}

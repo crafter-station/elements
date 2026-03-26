@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vapi-logo",
+  "type": "registry:block",
+  "title": "Vapi Logo",
+  "description": "Vapi logo with icon and wordmark variants",
+  "dependencies": [],
+  "registryDependencies": [],
+  "categories": ["logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/vapi-logo/components/logos/vapi.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Vapi logo with icon and wordmark variants and dark/light modes."
+}
