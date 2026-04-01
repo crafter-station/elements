@@ -1,0 +1,25 @@
+<svg
+viewBox="0 0 64 64"
+fill="none"
+xmlns="http://www.w3.org/2000/svg"
+>
+<title>Sixtyfour</title>
+<path
+d="M32 4L56 18V46L32 60L8 46V18L32 4Z"
+stroke="#F2F1F0"
+stroke-width="2"
+fill="none"
+/>
+<path d="M32 4L32 60" stroke="#F2F1F0" stroke-width="1.5" opacity="0.4" />
+<path d="M8 18L56 18" stroke="#F2F1F0" stroke-width="1.5" opacity="0.4" />
+<path d="M8 46L56 46" stroke="#F2F1F0" stroke-width="1.5" opacity="0.4" />
+<path d="M32 4L8 18" stroke="#F2F1F0" stroke-width="2" opacity="0.6" />
+<path d="M32 4L56 18" stroke="#F2F1F0" stroke-width="2" opacity="0.6" />
+<path d="M8 18L8 46" stroke="#F2F1F0" stroke-width="2" />
+<path d="M56 18L56 46" stroke="#F2F1F0" stroke-width="2" />
+<path d="M8 46L32 60" stroke="#F2F1F0" stroke-width="2" />
+<path d="M56 46L32 60" stroke="#F2F1F0" stroke-width="2" />
+<path d="M20 11L20 53" stroke="#F2F1F0" stroke-width="1" opacity="0.25" />
+<path d="M44 11L44 53" stroke="#F2F1F0" stroke-width="1" opacity="0.25" />
+<path d="M8 32L56 32" stroke="#F2F1F0" stroke-width="1.5" opacity="0.4" />
+</svg>

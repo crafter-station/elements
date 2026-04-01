@@ -94,6 +94,7 @@ import logos_pnpm_logo from './default/blocks/logos/pnpm-logo/registry-item.json
 import logos_polar_logo from './default/blocks/logos/polar-logo/registry-item.json' with { type: 'json' }
 import logos_qwen_logo from './default/blocks/logos/qwen-logo/registry-item.json' with { type: 'json' }
 import logos_resend_logo from './default/blocks/logos/resend-logo/registry-item.json' with { type: 'json' }
+import logos_spring_boot_logo from './default/blocks/logos/spring-boot-logo/registry-item.json' with { type: 'json' }
 import logos_slack_logo from './default/blocks/logos/slack-logo/registry-item.json' with { type: 'json' }
 import logos_spotify_logo from './default/blocks/logos/spotify-logo/registry-item.json' with { type: 'json' }
 import logos_stripe_logo from './default/blocks/logos/stripe-logo/registry-item.json' with { type: 'json' }
@@ -226,6 +227,7 @@ export const blocks = [
   logos_polar_logo as RegistryItem,
   logos_qwen_logo as RegistryItem,
   logos_resend_logo as RegistryItem,
+  logos_spring_boot_logo as RegistryItem,
   logos_slack_logo as RegistryItem,
   logos_spotify_logo as RegistryItem,
   logos_stripe_logo as RegistryItem,

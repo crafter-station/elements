@@ -12,6 +12,14 @@
     "file": "claude-logo.svg"
   },
   {
+    "name": "daytona-logo",
+    "file": "daytona-logo.svg"
+  },
+  {
+    "name": "together-logo",
+    "file": "together-logo.svg"
+  },
+  {
     "name": "turso-logo",
     "file": "turso-logo.svg"
   },
@@ -32,12 +40,24 @@
     "file": "neon-logo.svg"
   },
   {
+    "name": "mem0-logo",
+    "file": "mem0-logo.svg"
+  },
+  {
     "name": "spotify-logo",
     "file": "spotify-logo.svg"
   },
   {
     "name": "html-logo",
     "file": "html-logo.svg"
+  },
+  {
+    "name": "langchain-logo",
+    "file": "langchain-logo.svg"
+  },
+  {
+    "name": "replicate-logo",
+    "file": "replicate-logo.svg"
   },
   {
     "name": "ruby-logo",
@@ -48,12 +68,20 @@
     "file": "roo-code-logo.svg"
   },
   {
+    "name": "fireworks-logo",
+    "file": "fireworks-logo.svg"
+  },
+  {
     "name": "cloudinary-logo",
     "file": "cloudinary-logo.svg"
   },
   {
     "name": "anthropic-logo",
     "file": "anthropic-logo.svg"
+  },
+  {
+    "name": "pika-logo",
+    "file": "pika-logo.svg"
   },
   {
     "name": "axiom-logo",
@@ -76,6 +104,14 @@
     "file": "tailwindcss-logo.svg"
   },
   {
+    "name": "modal-logo",
+    "file": "modal-logo.svg"
+  },
+  {
+    "name": "nvidia-logo",
+    "file": "nvidia-logo.svg"
+  },
+  {
     "name": "openhands-logo",
     "file": "openhands-logo.svg"
   },
@@ -84,12 +120,20 @@
     "file": "openai-logo.svg"
   },
   {
+    "name": "stytch-logo",
+    "file": "stytch-logo.svg"
+  },
+  {
     "name": "xai-logo",
     "file": "xai-logo.svg"
   },
   {
     "name": "continue-logo",
     "file": "continue-logo.svg"
+  },
+  {
+    "name": "n8n-logo",
+    "file": "n8n-logo.svg"
   },
   {
     "name": "workos-logo",
@@ -102,6 +146,14 @@
   {
     "name": "kotlin-logo",
     "file": "kotlin-logo.svg"
+  },
+  {
+    "name": "hyperbrowser-logo",
+    "file": "hyperbrowser-logo.svg"
+  },
+  {
+    "name": "zep-logo",
+    "file": "zep-logo.svg"
   },
   {
     "name": "meilisearch-logo",
@@ -148,12 +200,20 @@
     "file": "posthog-logo.svg"
   },
   {
+    "name": "suno-logo",
+    "file": "suno-logo.svg"
+  },
+  {
     "name": "rust-logo",
     "file": "rust-logo.svg"
   },
   {
     "name": "sentry-logo",
     "file": "sentry-logo.svg"
+  },
+  {
+    "name": "vapi-logo",
+    "file": "vapi-logo.svg"
   },
   {
     "name": "supabase-logo",
@@ -172,6 +232,10 @@
     "file": "moonshot-ai-logo.svg"
   },
   {
+    "name": "dify-logo",
+    "file": "dify-logo.svg"
+  },
+  {
     "name": "docker-logo",
     "file": "docker-logo.svg"
   },
@@ -182,6 +246,10 @@
   {
     "name": "discord-logo",
     "file": "discord-logo.svg"
+  },
+  {
+    "name": "browserbase-logo",
+    "file": "browserbase-logo.svg"
   },
   {
     "name": "react-logo",
@@ -204,6 +272,10 @@
     "file": "meta-logo.svg"
   },
   {
+    "name": "agentmail-logo",
+    "file": "agentmail-logo.svg"
+  },
+  {
     "name": "instagram-logo",
     "file": "instagram-logo.svg"
   },
@@ -224,12 +296,20 @@
     "file": "redis-logo.svg"
   },
   {
+    "name": "luma-logo",
+    "file": "luma-logo.svg"
+  },
+  {
     "name": "crafter-station-logo",
     "file": "crafter-station-logo.svg"
   },
   {
     "name": "linkedin-logo",
     "file": "linkedin-logo.svg"
+  },
+  {
+    "name": "claude-code-logo",
+    "file": "claude-code-logo.svg"
   },
   {
     "name": "groq-logo",
@@ -252,6 +332,10 @@
     "file": "slack-logo.svg"
   },
   {
+    "name": "stability-logo",
+    "file": "stability-logo.svg"
+  },
+  {
     "name": "deepseek-logo",
     "file": "deepseek-logo.svg"
   },
@@ -260,12 +344,20 @@
     "file": "postgresql-logo.svg"
   },
   {
+    "name": "exa-logo",
+    "file": "exa-logo.svg"
+  },
+  {
     "name": "expo-logo",
     "file": "expo-logo.svg"
   },
   {
     "name": "xata-logo",
     "file": "xata-logo.svg"
+  },
+  {
+    "name": "snowflake-logo",
+    "file": "snowflake-logo.svg"
   },
   {
     "name": "pnpm-logo",
@@ -284,6 +376,10 @@
     "file": "goose-logo.svg"
   },
   {
+    "name": "replit-logo",
+    "file": "replit-logo.svg"
+  },
+  {
     "name": "codex-logo",
     "file": "codex-logo.svg"
   },
@@ -298,6 +394,10 @@
   {
     "name": "pagerduty-logo",
     "file": "pagerduty-logo.svg"
+  },
+  {
+    "name": "sixtyfour-logo",
+    "file": "sixtyfour-logo.svg"
   },
   {
     "name": "prisma-logo",
@@ -332,6 +432,10 @@
     "file": "typescript-logo.svg"
   },
   {
+    "name": "composio-logo",
+    "file": "composio-logo.svg"
+  },
+  {
     "name": "planetscale-logo",
     "file": "planetscale-logo.svg"
   },
@@ -354,6 +458,10 @@
   {
     "name": "python-logo",
     "file": "python-logo.svg"
+  },
+  {
+    "name": "bytedance-logo",
+    "file": "bytedance-logo.svg"
   },
   {
     "name": "hugging-face-logo",
@@ -392,6 +500,10 @@
     "file": "bash-logo.svg"
   },
   {
+    "name": "cerebras-logo",
+    "file": "cerebras-logo.svg"
+  },
+  {
     "name": "vuejs-logo",
     "file": "vuejs-logo.svg"
   },
@@ -402,6 +514,10 @@
   {
     "name": "go-logo",
     "file": "go-logo.svg"
+  },
+  {
+    "name": "spring-boot-logo",
+    "file": "spring-boot-logo.svg"
   },
   {
     "name": "upstash-logo",
@@ -428,6 +544,10 @@
     "file": "vercel-logo.svg"
   },
   {
+    "name": "kite-logo",
+    "file": "kite-logo.svg"
+  },
+  {
     "name": "inngest-logo",
     "file": "inngest-logo.svg"
   },
@@ -440,8 +560,16 @@
     "file": "github-copilot-logo.svg"
   },
   {
+    "name": "sambanova-logo",
+    "file": "sambanova-logo.svg"
+  },
+  {
     "name": "e2b-logo",
     "file": "e2b-logo.svg"
+  },
+  {
+    "name": "ollama-logo",
+    "file": "ollama-logo.svg"
   },
   {
     "name": "nodejs-logo",
@@ -496,12 +624,20 @@
     "file": "kimi-logo.svg"
   },
   {
+    "name": "browser-use-logo",
+    "file": "browser-use-logo.svg"
+  },
+  {
     "name": "kilo-code-logo",
     "file": "kilo-code-logo.svg"
   },
   {
     "name": "twitter-logo",
     "file": "twitter-logo.svg"
+  },
+  {
+    "name": "runway-logo",
+    "file": "runway-logo.svg"
   },
   {
     "name": "sql-logo",
@@ -522,6 +658,10 @@
   {
     "name": "storybook-logo",
     "file": "storybook-logo.svg"
+  },
+  {
+    "name": "deepl-logo",
+    "file": "deepl-logo.svg"
   },
   {
     "name": "grok-logo",
