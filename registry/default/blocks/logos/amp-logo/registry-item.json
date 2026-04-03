@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "amp-logo",
+  "type": "registry:ui",
+  "title": "Amp Logo",
+  "description": "Amp (by Sourcegraph) coding agent logo with icon and wordmark variants",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "icon-color", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/amp-logo/components/logos/amp.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amp coding agent logo with 3 base variants (icon mono, icon color with brand red, wordmark) and 2 modes (dark, light) = 6 total combinations. Brand color: #F34E3F."
+}

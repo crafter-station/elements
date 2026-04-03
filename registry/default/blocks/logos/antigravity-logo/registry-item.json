@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "antigravity-logo",
+  "type": "registry:ui",
+  "title": "Antigravity Logo",
+  "description": "Google Antigravity agentic IDE logo with icon and color variants",
+  "registryDependencies": [],
+  "dependencies": [],
+  "categories": ["AI", "logo", "brand"],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color"],
+    "variantTypes": {
+      "base": ["icon", "icon-color"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/antigravity-logo/components/logos/antigravity.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Google Antigravity logo with 2 base variants (icon mono, icon color with Google gradient) and 2 modes (dark, light) = 4 total combinations. Features Google brand color gradient (green, yellow, red, blue)."
+}

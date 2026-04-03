@@ -83,7 +83,9 @@
     "@elements/pika-logo",
     "@elements/runway-logo",
     "@elements/luma-logo",
-    "@elements/bytedance-logo"
+    "@elements/bytedance-logo",
+    "@elements/amp-logo",
+    "@elements/antigravity-logo"
   ],
   "dependencies": [],
   "files": [],
