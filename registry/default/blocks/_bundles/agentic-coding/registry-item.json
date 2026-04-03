@@ -22,7 +22,9 @@
     "@elements/trae-logo",
     "@elements/claude-code-logo",
     "@elements/codex-logo",
-    "@elements/replit-logo"
+    "@elements/replit-logo",
+    "@elements/amp-logo",
+    "@elements/antigravity-logo"
   ],
   "dependencies": [],
   "files": [],
