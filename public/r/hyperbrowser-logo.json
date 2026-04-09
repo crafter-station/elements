@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hyperbrowser-logo",
+  "title": "Hyperbrowser Logo",
+  "description": "Hyperbrowser logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/hyperbrowser-logo/components/logos/hyperbrowser.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nexport function HyperbrowserLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 88 140\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Hyperbrowser</title>\n      <path\n        d=\"M64.4138 0.746582L0.727051 69.9314H35.2486C40.506 69.9314 45.1341 66.4632 46.6156 61.413L64.4138 0.746582Z\"\n        fill={color}\n      />\n      <path\n        d=\"M41.4342 78.4479L23.636 139.116L87.3227 69.9312H52.8011C47.5437 69.9312 42.9156 73.3994 41.4342 78.4496V78.4479Z\"\n        fill={color}\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Hyperbrowser logo with icon variant and dark/light modes. Uses official brand assets.",
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
+}

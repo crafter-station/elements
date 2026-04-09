@@ -1,0 +1,10 @@
+<svg
+viewBox="0 0 21 21"
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+>
+<title>Amp</title>
+{ICON_PATHS.map((d, i) => (
+<path key={i} d={d} fill={BRAND_COLOR} />
+))}
+</svg>

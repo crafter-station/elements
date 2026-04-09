@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kite-logo",
+  "title": "Kite Logo",
+  "description": "Kite logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/kite-logo/components/logos/kite.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nexport function KiteLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 35 35\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Kite</title>\n      <defs>\n        <linearGradient\n          id=\"kite-gradient\"\n          x1=\"7.20562\"\n          y1=\"23.7741\"\n          x2=\"28.9406\"\n          y2=\"-1.74094\"\n          gradientUnits=\"userSpaceOnUse\"\n        >\n          <stop stopColor=\"#9B8564\" />\n          <stop offset=\"1\" stopColor=\"#DBD5C7\" />\n        </linearGradient>\n      </defs>\n      <path\n        d=\"M29.5769 32.9288C30.6496 31.8094 31.3504 30.2903 31.5505 28.6508C31.5876 28.3462 31.6907 27.5081 31.8358 26.334C34.0872 8.07267 34.0872 7.86881 34.0872 7.58697C34.0872 7.51758 34.086 7.44574 34.0835 7.3739C34.0255 5.5711 33.1968 3.8604 31.8105 2.679C30.4025 1.47918 28.5401 0.919176 26.7 1.14207L5.71754 3.6897C3.07397 4.01084 0.859576 5.92724 0.206866 8.4589C0.0697788 8.99004 0 9.53898 0 10.0904C0 10.1604 0.00123502 10.2322 0.00370507 10.3065C0.080894 12.6515 1.46165 14.7693 3.60688 15.8334C6.02259 16.9651 10.8929 18.273 13.7866 21.1504C16.6802 24.0277 17.9881 28.8645 19.1262 31.266L19.1342 31.2813C20.2087 33.4347 22.3514 34.8224 24.7276 34.9023C24.803 34.9047 24.8783 34.906 24.953 34.906C26.7123 34.906 28.3543 34.2035 29.5763 32.9275L29.5769 32.9288Z\"\n        fill=\"url(#kite-gradient)\"\n      />\n      <circle cx=\"8\" cy=\"8\" r=\"2\" fill=\"white\" opacity=\"0.4\" />\n      <circle cx=\"14\" cy=\"5\" r=\"1.5\" fill=\"white\" opacity=\"0.4\" />\n      <circle cx=\"20\" cy=\"4\" r=\"1\" fill=\"white\" opacity=\"0.4\" />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Kite logo with icon variant and dark/light modes. Uses official brand assets.",
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
+}

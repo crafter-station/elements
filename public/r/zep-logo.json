@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "zep-logo",
+  "title": "Zep Logo",
+  "description": "Zep logo with icon and wordmark variants",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/zep-logo/components/logos/zep.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\" | \"wordmark\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst BRAND_COLOR = \"#4226AA\";\n\nexport function ZepLogo({ className, variant = \"icon\" }: LogoProps) {\n  if (variant === \"wordmark\") {\n    return (\n      <svg\n        role=\"img\"\n        viewBox=\"0 0 603.74 226.75\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        className={className}\n      >\n        <title>Zep</title>\n        <path\n          d=\"m231.34,108.7l-1.48-1.55h-10.26l3.59-75.86-14.8-.45-2.77,49.31c-59.6-3.24-119.33-3.24-178.92-.02l-1.73-64.96-14.8.45,2.5,91.53H2.16l-1.41,1.47c-1.55,16.23-.66,32.68,2.26,48.89h10.83l.18,1.27c.67,19.34,16.1,34.68,35.9,34.68s44.86-.92,66.12-.92,46.56.92,65.95.92,35.19-15.29,35.9-34.61l.16-1.34h11.02c2.91-16.19,3.81-32.61,2.26-48.81Zm-158.23,58.01c-17.27,0-30.25-13.78-30.25-29.78s12.99-29.78,30.25-29.78,29.62,13.94,29.62,29.94-12.35,29.62-29.62,29.62Zm86.51,0c-17.27,0-30.25-13.78-30.25-29.78s12.99-29.78,30.25-29.78,29.62,13.94,29.62,29.94-12.35,29.62-29.62,29.62Z\"\n          fill={BRAND_COLOR}\n        />\n        <path\n          d=\"m72.97,121.47c-8.67,0-15.73,6.93-15.73,15.46s7.06,15.46,15.73,15.46,15.37-6.75,15.37-15.37-6.75-15.55-15.37-15.55Z\"\n          fill={BRAND_COLOR}\n        />\n        <path\n          d=\"m159.48,121.47c-8.67,0-15.73,6.93-15.73,15.46s7.06,15.46,15.73,15.46,15.37-6.75,15.37-15.37-6.75-15.55-15.37-15.55Z\"\n          fill={BRAND_COLOR}\n        />\n        <path\n          d=\"m291.15,57.46h159.03l-159.26,112.05v57.24h226.75v-57.46h-157.58l159.26-112.27v-56.7h-228.2v57.14Z\"\n          fill={BRAND_COLOR}\n        />\n        <path\n          d=\"m494.83,226.75V.32h90.97c56.46,0,88.66,34.96,88.66,79.38s-32.2,80.29-88.66,80.29h-41.56v66.76h-49.41Zm49.41-113.23h41.56c23.39,0,39.25-14.48,39.25-33.82s-15.86-33.82-39.25-33.82h-41.56v67.64Z\"\n          fill={BRAND_COLOR}\n        />\n      </svg>\n    );\n  }\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 232 227\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Zep</title>\n      <path\n        d=\"m231.34,108.7l-1.48-1.55h-10.26l3.59-75.86-14.8-.45-2.77,49.31c-59.6-3.24-119.33-3.24-178.92-.02l-1.73-64.96-14.8.45,2.5,91.53H2.16l-1.41,1.47c-1.55,16.23-.66,32.68,2.26,48.89h10.83l.18,1.27c.67,19.34,16.1,34.68,35.9,34.68s44.86-.92,66.12-.92,46.56.92,65.95.92,35.19-15.29,35.9-34.61l.16-1.34h11.02c2.91-16.19,3.81-32.61,2.26-48.81Zm-158.23,58.01c-17.27,0-30.25-13.78-30.25-29.78s12.99-29.78,30.25-29.78,29.62,13.94,29.62,29.94-12.35,29.62-29.62,29.62Zm86.51,0c-17.27,0-30.25-13.78-30.25-29.78s12.99-29.78,30.25-29.78,29.62,13.94,29.62,29.94-12.35,29.62-29.62,29.62Z\"\n        fill={BRAND_COLOR}\n      />\n      <path\n        d=\"m72.97,121.47c-8.67,0-15.73,6.93-15.73,15.46s7.06,15.46,15.73,15.46,15.37-6.75,15.37-15.37-6.75-15.55-15.37-15.55Z\"\n        fill={BRAND_COLOR}\n      />\n      <path\n        d=\"m159.48,121.47c-8.67,0-15.73,6.93-15.73,15.46s7.06,15.46,15.73,15.46,15.37-6.75,15.37-15.37-6.75-15.55-15.37-15.55Z\"\n        fill={BRAND_COLOR}\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Zep logo with icon and wordmark variants and dark/light modes.",
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sixtyfour-logo",
+  "title": "Sixtyfour Logo",
+  "description": "Sixtyfour logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/sixtyfour-logo/components/logos/sixtyfour.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#F2F1F0\",\n  light: \"#0D0E10\",\n};\n\nexport function SixtyfourLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 64 64\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Sixtyfour</title>\n      <path\n        d=\"M32 4L56 18V46L32 60L8 46V18L32 4Z\"\n        stroke={color}\n        strokeWidth=\"2\"\n        fill=\"none\"\n      />\n      <path d=\"M32 4L32 60\" stroke={color} strokeWidth=\"1.5\" opacity=\"0.4\" />\n      <path d=\"M8 18L56 18\" stroke={color} strokeWidth=\"1.5\" opacity=\"0.4\" />\n      <path d=\"M8 46L56 46\" stroke={color} strokeWidth=\"1.5\" opacity=\"0.4\" />\n      <path d=\"M32 4L8 18\" stroke={color} strokeWidth=\"2\" opacity=\"0.6\" />\n      <path d=\"M32 4L56 18\" stroke={color} strokeWidth=\"2\" opacity=\"0.6\" />\n      <path d=\"M8 18L8 46\" stroke={color} strokeWidth=\"2\" />\n      <path d=\"M56 18L56 46\" stroke={color} strokeWidth=\"2\" />\n      <path d=\"M8 46L32 60\" stroke={color} strokeWidth=\"2\" />\n      <path d=\"M56 46L32 60\" stroke={color} strokeWidth=\"2\" />\n      <path d=\"M20 11L20 53\" stroke={color} strokeWidth=\"1\" opacity=\"0.25\" />\n      <path d=\"M44 11L44 53\" stroke={color} strokeWidth=\"1\" opacity=\"0.25\" />\n      <path d=\"M8 32L56 32\" stroke={color} strokeWidth=\"1.5\" opacity=\"0.4\" />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Sixtyfour logo with icon variant and dark/light modes. Uses official brand assets.",
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
+}

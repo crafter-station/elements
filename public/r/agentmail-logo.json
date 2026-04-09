@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agentmail-logo",
+  "title": "AgentMail Logo",
+  "description": "AgentMail logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/agentmail-logo/components/logos/agentmail.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nexport function AgentmailLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 350 363\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>AgentMail</title>\n      <path\n        d=\"M175 0L350 90V273L175 363L0 273V90L175 0Z\"\n        fill={color}\n        opacity=\"0.15\"\n      />\n      <path\n        d=\"M30 110L175 40L320 110V180L175 250L30 180V110Z\"\n        fill=\"none\"\n        stroke={color}\n        strokeWidth=\"18\"\n      />\n      <path\n        d=\"M30 110L175 185L320 110\"\n        fill=\"none\"\n        stroke={color}\n        strokeWidth=\"18\"\n      />\n      <path d=\"M175 185V250\" fill=\"none\" stroke={color} strokeWidth=\"18\" />\n      <path\n        d=\"M120 290L175 210L230 290\"\n        fill=\"none\"\n        stroke={color}\n        strokeWidth=\"18\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "AgentMail logo with icon variant and dark/light modes. Uses official brand assets.",
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
+}

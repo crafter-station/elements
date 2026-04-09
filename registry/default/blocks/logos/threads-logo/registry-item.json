@@ -16,10 +16,7 @@
   "categories": ["Social", "logo", "brand"],
   "meta": {
     "hasVariants": true,
-    "variants": [
-      "icon-brand",
-      "icon-grayscale"
-    ],
+    "variants": ["icon-brand", "icon-grayscale"],
     "variantTypes": {
       "colorSchemes": ["brand", "grayscale"]
     }

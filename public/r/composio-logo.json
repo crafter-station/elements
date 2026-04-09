@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "composio-logo",
+  "title": "Composio Logo",
+  "description": "Composio logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/composio-logo/components/logos/composio.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nexport function ComposioLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 77 89\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Composio</title>\n      <path\n        d=\"M75.2058 25.0205L25.1809 14.7895C21.9009 14.1161 18.8164 16.6358 18.8164 19.981V43.6794V44.9393V68.6375C18.8164 71.9827 21.9009 74.5028 25.1809 73.8292L75.2058 63.5983\"\n        stroke={color}\n        strokeWidth=\"2.53542\"\n        strokeMiterlimit=\"10\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n        fill=\"none\"\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Composio logo with icon variant and dark/light modes. Uses official brand assets.",
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
+}

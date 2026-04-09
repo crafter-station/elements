@@ -1,0 +1,9 @@
+<svg
+viewBox="0 0 112 112"
+xmlns="http://www.w3.org/2000/svg"
+fill="none"
+>
+<title>Antigravity</title>
+<GradientDef id="antigravity-gradient" />
+<path d={ICON_PATH} fill="url(#antigravity-gradient)" />
+</svg>

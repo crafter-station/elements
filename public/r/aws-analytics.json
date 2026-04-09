@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-analytics",
+  "title": "AWS Analytics",
+  "description": "AWS analytics service logos",
+  "dependencies": [],
+  "registryDependencies": [
+    "@elements/aws-kinesis",
+    "@elements/aws-glue",
+    "@elements/aws-athena",
+    "@elements/aws-redshift"
+  ],
+  "files": [],
+  "docs": "AWS analytics service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"],
+  "type": "registry:block"
+}

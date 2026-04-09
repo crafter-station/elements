@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "antigravity-logo",
+  "title": "Antigravity Logo",
+  "description": "Google Antigravity agentic IDE logo with icon and color variants",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/antigravity-logo/components/logos/antigravity.tsx",
+      "content": "const COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nconst ICON_PATH =\n  \"M89.7 93.7c4.667 3.5 11.667 1.167 5.25-5.25C75.7 69.778 79.783 18.445 55.866 18.445S36.033 69.778 16.783 88.445c-7 7-.417 8.75 4.25 5.25 18.083-12.25 16.916-33.834 33.833-33.834s16.834 21.584 34.834 33.834z\";\n\nfunction GradientDef({ id }: { id: string }) {\n  return (\n    <defs>\n      <linearGradient\n        gradientUnits=\"userSpaceOnUse\"\n        id={id}\n        x1=\"16\"\n        y1=\"18\"\n        x2=\"96\"\n        y2=\"18\"\n      >\n        <stop offset=\"0\" stopColor=\"#00B95C\" />\n        <stop offset=\"0.35\" stopColor=\"#FBBC04\" />\n        <stop offset=\"0.65\" stopColor=\"#FC413D\" />\n        <stop offset=\"1\" stopColor=\"#3186FF\" />\n      </linearGradient>\n    </defs>\n  );\n}\n\nexport function AntigravityLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: {\n  className?: string;\n  variant?: \"icon\" | \"icon-color\";\n  mode?: \"dark\" | \"light\";\n}) {\n  const color = COLORS[mode];\n\n  if (variant === \"icon\") {\n    return (\n      <svg\n        role=\"img\"\n        viewBox=\"0 0 112 112\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        className={className}\n        fill=\"none\"\n      >\n        <title>Antigravity</title>\n        <path d={ICON_PATH} fill={color} />\n      </svg>\n    );\n  }\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 112 112\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n      fill=\"none\"\n    >\n      <title>Antigravity</title>\n      <GradientDef id=\"antigravity-gradient\" />\n      <path d={ICON_PATH} fill=\"url(#antigravity-gradient)\" />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "icon-color"],
+    "variantTypes": {
+      "base": ["icon", "icon-color"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Google Antigravity logo with 2 base variants (icon mono, icon color with Google gradient) and 2 modes (dark, light) = 4 total combinations. Features Google brand color gradient (green, yellow, red, blue).",
+  "categories": ["AI", "logo", "brand"],
+  "type": "registry:ui"
+}

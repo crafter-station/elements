@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-networking",
+  "title": "AWS Networking",
+  "description": "AWS networking service logos",
+  "dependencies": [],
+  "registryDependencies": [
+    "@elements/aws-cloudfront",
+    "@elements/aws-route53",
+    "@elements/aws-vpc",
+    "@elements/aws-api-gateway"
+  ],
+  "files": [],
+  "docs": "AWS networking service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"],
+  "type": "registry:block"
+}

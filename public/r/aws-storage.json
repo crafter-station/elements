@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-storage",
+  "title": "AWS Storage",
+  "description": "AWS storage service logos",
+  "dependencies": [],
+  "registryDependencies": ["@elements/aws-s3"],
+  "files": [],
+  "docs": "AWS storage service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"],
+  "type": "registry:block"
+}

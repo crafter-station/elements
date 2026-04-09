@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vapi-logo",
+  "title": "Vapi Logo",
+  "description": "Vapi logo with icon and wordmark variants",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/vapi-logo/components/logos/vapi.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\" | \"wordmark\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#000000\",\n};\n\nexport function VapiLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  if (variant === \"wordmark\") {\n    return (\n      <svg\n        role=\"img\"\n        viewBox=\"0 0 57 16\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        className={className}\n      >\n        <title>Vapi</title>\n        <path\n          clipRule=\"evenodd\"\n          fillRule=\"evenodd\"\n          d=\"M1.70679 0.304638C3.21148 -0.425672 5.02331 0.202092 5.75362 1.70679L7.87228 6.07197L10.0253 1.69294C10.7632 0.191979 12.5782 -0.426556 14.0792 0.311402C15.5801 1.04936 16.1987 2.86436 15.4607 4.36532L10.5725 14.3077C10.0619 15.3462 9.0042 16.0029 7.84702 16C6.68985 15.997 5.63551 15.3349 5.13024 14.2939L0.304638 4.35147C-0.425672 2.84678 0.202092 1.03495 1.70679 0.304638ZM23.353 0.000699425C24.5102 0.00364403 25.5645 0.66575 26.0698 1.70679L30.8954 11.6492C31.3509 12.5878 31.2913 13.6947 30.7376 14.5789C30.1839 15.463 29.2141 16 28.1709 16H18.457C17.4111 16 16.4391 15.4602 15.8862 14.5723C15.3334 13.6844 15.2778 12.574 15.7393 11.6354L20.6276 1.69294C21.1381 0.654487 22.1958 -0.00224496 23.353 0.000699425ZM34.3992 3.02913C34.3992 1.35657 35.7551 0.000689616 37.4276 0.000689616H41.7132C41.7973 0.000689616 41.8813 0.0041931 41.9652 0.0111909L43.1697 0.111761C43.5314 0.141966 44.1717 0.228344 44.8453 0.584446C48.353 2.43887 48.353 7.50494 44.8453 9.35936C44.1717 9.71546 43.5314 9.80184 43.1697 9.83205L41.9652 9.93262C41.8813 9.93961 41.7973 9.94312 41.7132 9.94312H40.4561V12.9716C40.4561 14.6441 39.1002 16 37.4276 16C35.7551 16 34.3992 14.6441 34.3992 12.9716V3.02913ZM53.427 0.000689616C55.0995 0.000689616 56.4554 1.35657 56.4554 3.02913V12.9716C56.4554 14.6441 55.0995 16 53.427 16C51.7544 16 50.3985 14.6441 50.3985 12.9716V3.02913C50.3985 1.35657 51.7544 0.000689616 53.427 0.000689616ZM23.3207 9.94312H23.3347L23.3277 9.92871L23.3207 9.94312Z\"\n          fill={color}\n        />\n      </svg>\n    );\n  }\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"0 0 16 16\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Vapi</title>\n      <path\n        clipRule=\"evenodd\"\n        fillRule=\"evenodd\"\n        d=\"M1.70679 0.304638C3.21148 -0.425672 5.02331 0.202092 5.75362 1.70679L7.87228 6.07197L10.0253 1.69294C10.7632 0.191979 12.5782 -0.426556 14.0792 0.311402C15.5801 1.04936 16.1987 2.86436 15.4607 4.36532L10.5725 14.3077C10.0619 15.3462 9.0042 16.0029 7.84702 16C6.68985 15.997 5.63551 15.3349 5.13024 14.2939L0.304638 4.35147C-0.425672 2.84678 0.202092 1.03495 1.70679 0.304638Z\"\n        fill={color}\n      />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon", "wordmark"],
+    "variantTypes": {
+      "base": ["icon", "wordmark"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Vapi logo with icon and wordmark variants and dark/light modes.",
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "daytona-logo",
+  "title": "Daytona Logo",
+  "description": "Daytona logo with icon variant and dark/light modes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/daytona-logo/components/logos/daytona.tsx",
+      "content": "interface LogoProps {\n  className?: string;\n  variant?: \"icon\";\n  mode?: \"dark\" | \"light\";\n}\n\nconst COLORS = {\n  dark: \"#FFFFFF\",\n  light: \"#0A0A0A\",\n};\n\nexport function DaytonaLogo({\n  className,\n  variant = \"icon\",\n  mode = \"dark\",\n}: LogoProps) {\n  const color = COLORS[mode];\n\n  return (\n    <svg\n      role=\"img\"\n      viewBox=\"195 136 65 70\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={className}\n    >\n      <title>Daytona</title>\n      <path d=\"M195.994 172.235h24.929v8.547h-24.929z\" fill={color} />\n      <path d=\"M229.471 142.32h28.491v8.547h-28.491z\" fill={color} />\n      <path\n        d=\"M214.513 144.954l21.153-21.153 6.044 6.044-21.153 21.153z\"\n        fill={color}\n      />\n      <path\n        d=\"M214.644 166.322l-16.246-16.246-6.043 6.044 16.245 16.246z\"\n        fill={color}\n      />\n      <path\n        d=\"M236.012 178.279l-17.124 17.124-6.044-6.044 17.124-17.124z\"\n        fill={color}\n      />\n      <path\n        d=\"M235.881 156.911l19.139 19.139 6.043-6.044-19.138-19.139z\"\n        fill={color}\n      />\n      <path d=\"M214.513 135.909v20.656h-8.547v-20.656z\" fill={color} />\n      <path d=\"M244.428 165.825v25.642h-8.547v-25.642z\" fill={color} />\n    </svg>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "hasVariants": true,
+    "variants": ["icon"],
+    "variantTypes": {
+      "base": ["icon"],
+      "modes": ["dark", "light"]
+    }
+  },
+  "docs": "Daytona logo with icon variant and dark/light modes. Uses official brand assets.",
+  "categories": ["logo", "brand"],
+  "type": "registry:block"
+}

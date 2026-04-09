@@ -60,6 +60,10 @@
     "file": "replicate-logo.svg"
   },
   {
+    "name": "threads-logo",
+    "file": "threads-logo.svg"
+  },
+  {
     "name": "ruby-logo",
     "file": "ruby-logo.svg"
   },
@@ -174,6 +178,10 @@
   {
     "name": "biome-logo",
     "file": "biome-logo.svg"
+  },
+  {
+    "name": "antigravity-logo",
+    "file": "antigravity-logo.svg"
   },
   {
     "name": "figma-logo",
@@ -406,6 +414,10 @@
   {
     "name": "twitch-logo",
     "file": "twitch-logo.svg"
+  },
+  {
+    "name": "amp-logo",
+    "file": "amp-logo.svg"
   },
   {
     "name": "css-logo",
