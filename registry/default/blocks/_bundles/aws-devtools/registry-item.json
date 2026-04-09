@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-devtools",
+  "type": "registry:block",
+  "title": "AWS Developer Tools",
+  "description": "AWS developer tool logos",
+  "registryDependencies": [
+    "@elements/aws-codebuild",
+    "@elements/aws-codepipeline",
+    "@elements/aws-codecommit",
+    "@elements/aws-codedeploy",
+    "@elements/aws-cloudformation"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "AWS developer tool logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+}

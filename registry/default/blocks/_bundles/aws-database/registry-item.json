@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-database",
+  "type": "registry:block",
+  "title": "AWS Database",
+  "description": "AWS database service logos",
+  "registryDependencies": [
+    "@elements/aws-rds",
+    "@elements/aws-dynamodb",
+    "@elements/aws-redshift"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "AWS database service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+}

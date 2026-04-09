@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-serverless",
+  "type": "registry:block",
+  "title": "AWS Serverless",
+  "description": "AWS serverless service logos",
+  "registryDependencies": [
+    "@elements/aws-lambda",
+    "@elements/aws-step-functions",
+    "@elements/aws-appsync",
+    "@elements/aws-amplify"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "AWS serverless service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+}

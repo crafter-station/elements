@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-security",
+  "type": "registry:block",
+  "title": "AWS Security",
+  "description": "AWS security service logos",
+  "registryDependencies": [
+    "@elements/aws-iam",
+    "@elements/aws-cognito",
+    "@elements/aws-secrets-manager",
+    "@elements/aws-kms"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "AWS security service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+}

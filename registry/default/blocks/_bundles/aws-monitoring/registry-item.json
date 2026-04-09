@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-monitoring",
+  "type": "registry:block",
+  "title": "AWS Monitoring",
+  "description": "AWS monitoring service logos",
+  "registryDependencies": ["@elements/aws-cloudwatch"],
+  "dependencies": [],
+  "files": [],
+  "docs": "AWS monitoring service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+}

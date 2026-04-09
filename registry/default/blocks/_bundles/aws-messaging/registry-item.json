@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-messaging",
+  "type": "registry:block",
+  "title": "AWS Messaging",
+  "description": "AWS messaging service logos",
+  "registryDependencies": [
+    "@elements/aws-sqs",
+    "@elements/aws-sns",
+    "@elements/aws-eventbridge"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "AWS messaging service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+}

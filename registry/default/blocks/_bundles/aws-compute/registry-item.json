@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-compute",
+  "type": "registry:block",
+  "title": "AWS Compute",
+  "description": "AWS compute service logos",
+  "registryDependencies": [
+    "@elements/aws-ec2",
+    "@elements/aws-lambda",
+    "@elements/aws-ecs",
+    "@elements/aws-eks",
+    "@elements/aws-fargate",
+    "@elements/aws-elastic-beanstalk"
+  ],
+  "dependencies": [],
+  "files": [],
+  "docs": "AWS compute service logos",
+  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+}
