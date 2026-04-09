@@ -29,7 +29,17 @@ export async function loadLogoComponent(
     const module = await import(
       `@/registry/default/blocks/logos/${itemName}/components/logos/${logoName}`
     );
-    return module[getLogoExportName(itemName)] || module.default || null;
+    const expected = getLogoExportName(itemName);
+    if (module[expected]) return module[expected];
+    if (module.default) return module.default;
+    // Fallback: pick first export ending in "Logo" (handles irregular casings
+    // like AWSLambdaLogo, AWSEC2Logo, AWSDynamoDBLogo, etc.)
+    for (const key of Object.keys(module)) {
+      if (key.endsWith("Logo") && typeof module[key] === "function") {
+        return module[key];
+      }
+    }
+    return null;
   } catch (error) {
     console.error(`Failed to load logo: ${itemName}`, error);
     return null;

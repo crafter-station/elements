@@ -57,6 +57,16 @@ export function getProviderFromName(name: string): string | null {
     return "logos";
   }
 
+  // Special case: items tagged with "logo" category route to logos
+  // (covers multi-word brand logos like aws-lambda, aws-s3, etc.)
+  {
+    const items = getRegistryItems();
+    const item = items.find((i) => i.name === name);
+    if (item?.categories?.includes("logo")) {
+      return "logos";
+    }
+  }
+
   // Special case: collaboration components (page-comments and adapters)
   if (name.startsWith("page-comments")) {
     return "collaboration";
