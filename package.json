@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "bun@1.2.2",
   "scripts": {
-    "dev": "next dev",
+    "dev": "portless elements next dev",
     "prebuild": "bun run build:registry",
     "build": "next build",
     "start": "next start",
