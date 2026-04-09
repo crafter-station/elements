@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-sqs",
+  "type": "registry:ui",
+  "title": "Amazon SQS Logo",
+  "description": "Amazon SQS service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-sqs/components/logos/aws-sqs.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon SQS logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

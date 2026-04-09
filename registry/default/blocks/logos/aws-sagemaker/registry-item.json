@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-sagemaker",
+  "type": "registry:ui",
+  "title": "Amazon SageMaker Logo",
+  "description": "Amazon SageMaker service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-sagemaker/components/logos/aws-sagemaker.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon SageMaker logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

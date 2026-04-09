@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-codepipeline",
+  "type": "registry:ui",
+  "title": "AWS CodePipeline Logo",
+  "description": "AWS CodePipeline service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-codepipeline/components/logos/aws-codepipeline.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS CodePipeline logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

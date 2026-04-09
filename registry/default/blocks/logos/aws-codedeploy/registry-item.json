@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-codedeploy",
+  "type": "registry:ui",
+  "title": "AWS CodeDeploy Logo",
+  "description": "AWS CodeDeploy service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-codedeploy/components/logos/aws-codedeploy.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS CodeDeploy logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

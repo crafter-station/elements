@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-dynamodb",
+  "type": "registry:ui",
+  "title": "Amazon DynamoDB Logo",
+  "description": "Amazon DynamoDB service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-dynamodb/components/logos/aws-dynamodb.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon DynamoDB logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

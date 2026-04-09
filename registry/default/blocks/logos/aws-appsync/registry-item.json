@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-appsync",
+  "type": "registry:ui",
+  "title": "AWS AppSync Logo",
+  "description": "AWS AppSync service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-appsync/components/logos/aws-appsync.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS AppSync logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

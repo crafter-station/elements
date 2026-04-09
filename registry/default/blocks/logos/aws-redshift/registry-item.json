@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-redshift",
+  "type": "registry:ui",
+  "title": "Amazon Redshift Logo",
+  "description": "Amazon Redshift service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-redshift/components/logos/aws-redshift.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon Redshift logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

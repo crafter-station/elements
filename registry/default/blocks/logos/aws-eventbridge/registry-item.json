@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-eventbridge",
+  "type": "registry:ui",
+  "title": "Amazon EventBridge Logo",
+  "description": "Amazon EventBridge service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-eventbridge/components/logos/aws-eventbridge.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon EventBridge logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

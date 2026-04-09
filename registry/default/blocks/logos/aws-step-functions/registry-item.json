@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-step-functions",
+  "type": "registry:ui",
+  "title": "AWS Step Functions Logo",
+  "description": "AWS Step Functions service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-step-functions/components/logos/aws-step-functions.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS Step Functions logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

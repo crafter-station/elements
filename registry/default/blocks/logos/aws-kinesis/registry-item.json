@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-kinesis",
+  "type": "registry:ui",
+  "title": "Amazon Kinesis Logo",
+  "description": "Amazon Kinesis service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-kinesis/components/logos/aws-kinesis.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon Kinesis logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

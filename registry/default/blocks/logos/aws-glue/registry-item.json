@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-glue",
+  "type": "registry:ui",
+  "title": "AWS Glue Logo",
+  "description": "AWS Glue service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-glue/components/logos/aws-glue.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS Glue logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

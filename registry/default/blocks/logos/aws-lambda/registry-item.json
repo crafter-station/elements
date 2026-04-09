@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-lambda",
+  "type": "registry:ui",
+  "title": "AWS Lambda Logo",
+  "description": "AWS Lambda service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-lambda/components/logos/aws-lambda.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS Lambda logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

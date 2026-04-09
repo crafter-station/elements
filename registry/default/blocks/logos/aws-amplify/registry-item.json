@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-amplify",
+  "type": "registry:ui",
+  "title": "AWS Amplify Logo",
+  "description": "AWS Amplify service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-amplify/components/logos/aws-amplify.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS Amplify logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

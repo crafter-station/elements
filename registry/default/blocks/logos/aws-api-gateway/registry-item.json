@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-api-gateway",
+  "type": "registry:ui",
+  "title": "Amazon API Gateway Logo",
+  "description": "Amazon API Gateway service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-api-gateway/components/logos/aws-api-gateway.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon API Gateway logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

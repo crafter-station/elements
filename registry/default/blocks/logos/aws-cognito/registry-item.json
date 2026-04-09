@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-cognito",
+  "type": "registry:ui",
+  "title": "Amazon Cognito Logo",
+  "description": "Amazon Cognito service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-cognito/components/logos/aws-cognito.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon Cognito logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

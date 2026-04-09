@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-secrets-manager",
+  "type": "registry:ui",
+  "title": "AWS Secrets Manager Logo",
+  "description": "AWS Secrets Manager service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-secrets-manager/components/logos/aws-secrets-manager.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS Secrets Manager logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

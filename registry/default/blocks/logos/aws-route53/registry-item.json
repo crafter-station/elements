@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-route53",
+  "type": "registry:ui",
+  "title": "Amazon Route 53 Logo",
+  "description": "Amazon Route 53 service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-route53/components/logos/aws-route53.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon Route 53 logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

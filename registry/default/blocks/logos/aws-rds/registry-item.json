@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-rds",
+  "type": "registry:ui",
+  "title": "Amazon RDS Logo",
+  "description": "Amazon RDS service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-rds/components/logos/aws-rds.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon RDS logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

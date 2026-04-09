@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-s3",
+  "type": "registry:ui",
+  "title": "Amazon S3 Logo",
+  "description": "Amazon S3 service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-s3/components/logos/aws-s3.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon S3 logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

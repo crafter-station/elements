@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-cloudformation",
+  "type": "registry:ui",
+  "title": "AWS CloudFormation Logo",
+  "description": "AWS CloudFormation service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-cloudformation/components/logos/aws-cloudformation.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS CloudFormation logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

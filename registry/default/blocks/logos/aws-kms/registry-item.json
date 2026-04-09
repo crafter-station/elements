@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-kms",
+  "type": "registry:ui",
+  "title": "AWS KMS Logo",
+  "description": "AWS KMS service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-kms/components/logos/aws-kms.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS KMS logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

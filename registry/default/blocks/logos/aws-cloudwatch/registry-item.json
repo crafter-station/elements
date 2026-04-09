@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-cloudwatch",
+  "type": "registry:ui",
+  "title": "Amazon CloudWatch Logo",
+  "description": "Amazon CloudWatch service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-cloudwatch/components/logos/aws-cloudwatch.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon CloudWatch logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

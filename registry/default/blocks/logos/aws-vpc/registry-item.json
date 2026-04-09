@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-vpc",
+  "type": "registry:ui",
+  "title": "Amazon VPC Logo",
+  "description": "Amazon VPC service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-vpc/components/logos/aws-vpc.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon VPC logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

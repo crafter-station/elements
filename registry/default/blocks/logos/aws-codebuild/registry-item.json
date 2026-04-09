@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-codebuild",
+  "type": "registry:ui",
+  "title": "AWS CodeBuild Logo",
+  "description": "AWS CodeBuild service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-codebuild/components/logos/aws-codebuild.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS CodeBuild logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

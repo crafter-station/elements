@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-cloudfront",
+  "type": "registry:ui",
+  "title": "Amazon CloudFront Logo",
+  "description": "Amazon CloudFront service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-cloudfront/components/logos/aws-cloudfront.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon CloudFront logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

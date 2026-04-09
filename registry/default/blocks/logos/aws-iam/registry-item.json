@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-iam",
+  "type": "registry:ui",
+  "title": "AWS IAM Logo",
+  "description": "AWS IAM service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-iam/components/logos/aws-iam.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS IAM logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

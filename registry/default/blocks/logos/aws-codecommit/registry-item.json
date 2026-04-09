@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-codecommit",
+  "type": "registry:ui",
+  "title": "AWS CodeCommit Logo",
+  "description": "AWS CodeCommit service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-codecommit/components/logos/aws-codecommit.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "AWS CodeCommit logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

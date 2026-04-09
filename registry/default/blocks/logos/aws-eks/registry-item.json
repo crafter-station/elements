@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-eks",
+  "type": "registry:ui",
+  "title": "Amazon EKS Logo",
+  "description": "Amazon EKS service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-eks/components/logos/aws-eks.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon EKS logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

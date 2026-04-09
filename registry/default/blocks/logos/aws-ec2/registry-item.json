@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-ec2",
+  "type": "registry:ui",
+  "title": "Amazon EC2 Logo",
+  "description": "Amazon EC2 service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-ec2/components/logos/aws-ec2.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon EC2 logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

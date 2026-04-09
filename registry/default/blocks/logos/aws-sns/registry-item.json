@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-sns",
+  "type": "registry:ui",
+  "title": "Amazon SNS Logo",
+  "description": "Amazon SNS service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-sns/components/logos/aws-sns.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon SNS logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}

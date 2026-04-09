@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aws-bedrock",
+  "type": "registry:ui",
+  "title": "Amazon Bedrock Logo",
+  "description": "Amazon Bedrock service logo component with official brand colors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/aws-bedrock/components/logos/aws-bedrock.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Amazon Bedrock logo component with official AWS brand colors.",
+  "categories": ["Cloud", "AWS", "logo", "brand"]
+}
