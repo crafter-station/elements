@@ -7,6 +7,6 @@
   "registryDependencies": ["@elements/aws-cloudwatch"],
   "files": [],
   "docs": "AWS monitoring service logos",
-  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"],
+  "categories": ["Cloud", "logo", "brand", "bundle"],
   "type": "registry:block"
 }

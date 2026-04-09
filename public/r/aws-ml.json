@@ -7,6 +7,6 @@
   "registryDependencies": ["@elements/aws-sagemaker", "@elements/aws-bedrock"],
   "files": [],
   "docs": "AWS ML service logos",
-  "categories": ["Cloud", "AWS", "logo", "brand", "bundle"],
+  "categories": ["Cloud", "logo", "brand", "bundle"],
   "type": "registry:block"
 }

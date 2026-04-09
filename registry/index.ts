@@ -459,7 +459,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "Complete collection of AWS service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -477,7 +477,7 @@ export const registry = {
         },
       ],
       docs: "AWS Amplify logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -494,7 +494,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS analytics service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -512,7 +512,7 @@ export const registry = {
         },
       ],
       docs: "Amazon API Gateway logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -530,7 +530,7 @@ export const registry = {
         },
       ],
       docs: "AWS AppSync logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -548,7 +548,7 @@ export const registry = {
         },
       ],
       docs: "Amazon Athena logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -566,7 +566,7 @@ export const registry = {
         },
       ],
       docs: "Amazon Bedrock logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -584,7 +584,7 @@ export const registry = {
         },
       ],
       docs: "AWS CloudFormation logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -602,7 +602,7 @@ export const registry = {
         },
       ],
       docs: "Amazon CloudFront logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -620,7 +620,7 @@ export const registry = {
         },
       ],
       docs: "Amazon CloudWatch logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -638,7 +638,7 @@ export const registry = {
         },
       ],
       docs: "AWS CodeBuild logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -656,7 +656,7 @@ export const registry = {
         },
       ],
       docs: "AWS CodeCommit logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -674,7 +674,7 @@ export const registry = {
         },
       ],
       docs: "AWS CodeDeploy logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -692,7 +692,7 @@ export const registry = {
         },
       ],
       docs: "AWS CodePipeline logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -710,7 +710,7 @@ export const registry = {
         },
       ],
       docs: "Amazon Cognito logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -729,7 +729,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS compute service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -745,7 +745,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS database service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -763,7 +763,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS developer tool logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -781,7 +781,7 @@ export const registry = {
         },
       ],
       docs: "Amazon DynamoDB logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -799,7 +799,7 @@ export const registry = {
         },
       ],
       docs: "Amazon EC2 logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -817,7 +817,7 @@ export const registry = {
         },
       ],
       docs: "Amazon ECS logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -835,7 +835,7 @@ export const registry = {
         },
       ],
       docs: "Amazon EKS logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -853,7 +853,7 @@ export const registry = {
         },
       ],
       docs: "AWS Elastic Beanstalk logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -871,7 +871,7 @@ export const registry = {
         },
       ],
       docs: "Amazon EventBridge logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -889,7 +889,7 @@ export const registry = {
         },
       ],
       docs: "AWS Fargate logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -906,7 +906,7 @@ export const registry = {
         },
       ],
       docs: "AWS Glue logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -923,7 +923,7 @@ export const registry = {
         },
       ],
       docs: "AWS IAM logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -941,7 +941,7 @@ export const registry = {
         },
       ],
       docs: "Amazon Kinesis logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -958,7 +958,7 @@ export const registry = {
         },
       ],
       docs: "AWS KMS logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -976,7 +976,7 @@ export const registry = {
         },
       ],
       docs: "AWS Lambda logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1009,7 +1009,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS messaging service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1024,7 +1024,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS ML service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1036,7 +1036,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS monitoring service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1053,7 +1053,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS networking service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1071,7 +1071,7 @@ export const registry = {
         },
       ],
       docs: "Amazon RDS logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1089,7 +1089,7 @@ export const registry = {
         },
       ],
       docs: "Amazon Redshift logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1107,7 +1107,7 @@ export const registry = {
         },
       ],
       docs: "Amazon Route 53 logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1125,7 +1125,7 @@ export const registry = {
         },
       ],
       docs: "Amazon S3 logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1143,7 +1143,7 @@ export const registry = {
         },
       ],
       docs: "Amazon SageMaker logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1161,7 +1161,7 @@ export const registry = {
         },
       ],
       docs: "AWS Secrets Manager logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1178,7 +1178,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS security service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1195,7 +1195,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS serverless service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1213,7 +1213,7 @@ export const registry = {
         },
       ],
       docs: "Amazon SNS logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1231,7 +1231,7 @@ export const registry = {
         },
       ],
       docs: "Amazon SQS logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1249,7 +1249,7 @@ export const registry = {
         },
       ],
       docs: "AWS Step Functions logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1261,7 +1261,7 @@ export const registry = {
       dependencies: [],
       files: [],
       docs: "AWS storage service logos",
-      categories: ["Cloud", "AWS", "logo", "brand", "bundle"],
+      categories: ["Cloud", "logo", "brand", "bundle"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -1279,7 +1279,7 @@ export const registry = {
         },
       ],
       docs: "Amazon VPC logo component with official AWS brand colors.",
-      categories: ["Cloud", "AWS", "logo", "brand"],
+      categories: ["Cloud", "logo", "brand"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -3907,6 +3907,41 @@ export const registry = {
         "@elements/bytedance-logo",
         "@elements/amp-logo",
         "@elements/antigravity-logo",
+        "@elements/aws-ec2",
+        "@elements/aws-s3",
+        "@elements/aws-lambda",
+        "@elements/aws-rds",
+        "@elements/aws-dynamodb",
+        "@elements/aws-cloudfront",
+        "@elements/aws-route53",
+        "@elements/aws-iam",
+        "@elements/aws-vpc",
+        "@elements/aws-cloudwatch",
+        "@elements/aws-sqs",
+        "@elements/aws-sns",
+        "@elements/aws-api-gateway",
+        "@elements/aws-ecs",
+        "@elements/aws-eks",
+        "@elements/aws-fargate",
+        "@elements/aws-elastic-beanstalk",
+        "@elements/aws-amplify",
+        "@elements/aws-appsync",
+        "@elements/aws-cognito",
+        "@elements/aws-secrets-manager",
+        "@elements/aws-kms",
+        "@elements/aws-kinesis",
+        "@elements/aws-glue",
+        "@elements/aws-athena",
+        "@elements/aws-redshift",
+        "@elements/aws-sagemaker",
+        "@elements/aws-bedrock",
+        "@elements/aws-step-functions",
+        "@elements/aws-eventbridge",
+        "@elements/aws-cloudformation",
+        "@elements/aws-codebuild",
+        "@elements/aws-codepipeline",
+        "@elements/aws-codecommit",
+        "@elements/aws-codedeploy",
       ],
       dependencies: [],
       files: [],
