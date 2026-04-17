@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter",
+  "type": "registry:block",
+  "title": "Typewriter",
+  "description": "Framework-agnostic typewriter effect with multi-segment support, per-segment styling, viewport triggers, loops, and custom cursors",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/animations/typewriter/components/elements/typewriter.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/animations/typewriter/routes/layout.tsx",
+      "type": "registry:page",
+      "target": "app/layout.tsx"
+    },
+    {
+      "path": "registry/default/blocks/animations/typewriter/routes/page.tsx",
+      "type": "registry:page",
+      "target": "app/typewriter/page.tsx"
+    }
+  ],
+  "docs": "Polymorphic Typewriter component. Supports a single string or an array of segments (each with its own className, speed, and delay), viewport-triggered start, looping, blinking or hidden cursor, and an onComplete callback. Zero external animation dependencies — uses plain React state + timers so it works anywhere React runs.",
+  "categories": ["animations"]
+}

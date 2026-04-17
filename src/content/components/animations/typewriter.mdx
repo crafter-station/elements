@@ -1,0 +1,131 @@
+---
+title: Typewriter
+description: Typewriter effect with multi-segment styling, viewport triggers, and looping
+---
+
+<ComponentPreviewItem
+  componentKey="typewriter"
+  installUrl="@elements/typewriter"
+  category="Animations"
+  name="Typewriter"
+>
+  <Typewriter />
+</ComponentPreviewItem>
+
+## Overview
+
+A framework-agnostic typewriter component. Accepts a single string or an array of segments, each with its own styling and speed. Supports viewport-triggered start, looping, and a blinking cursor that disables itself when the animation completes (unless you're looping).
+
+Built with plain React state and timers — no external animation library needed.
+
+## Installation
+
+```bash
+npx shadcn@latest add @elements/typewriter
+```
+
+## Usage
+
+### Single line
+
+```tsx
+import { Typewriter } from "@/components/elements/typewriter";
+
+export function Intro() {
+  return (
+    <Typewriter
+      className="text-xl"
+      text="Hola, soy Andenar. Te voy a ayudar a entender tu situación tributaria."
+    />
+  );
+}
+```
+
+### Multi-segment with per-segment styling
+
+```tsx
+<Typewriter
+  text={[
+    { text: "Vamos a repasar " },
+    {
+      text: "6 temas clave",
+      className: "text-primary font-medium",
+      speed: 60,
+    },
+    { text: " para armar tu diagnóstico." },
+  ]}
+/>
+```
+
+Each segment can override `speed` (ms per character) and set a leading `delay`.
+
+### Trigger when the user scrolls to it
+
+```tsx
+<Typewriter
+  startOnView
+  text="This writes itself when it enters the viewport."
+/>
+```
+
+### Loop with a custom cursor
+
+```tsx
+<Typewriter
+  loop
+  loopDelay={1800}
+  cursorCharacter="▌"
+  text="streams · en · vivo"
+/>
+```
+
+### Polymorphic rendering
+
+```tsx
+<Typewriter as="h1" className="text-4xl font-bold" text="Hero heading" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `text` | `string \| TypewriterSegment \| TypewriterSegment[]` | — | The content to type. Strings are wrapped as single segments. |
+| `as` | `React.ElementType` | `"span"` | Element to render. |
+| `className` | `string` | — | Classes applied to the root element. |
+| `speed` | `number` | `30` | Milliseconds per character. Overridable per segment. |
+| `delay` | `number` | `0` | Leading delay before the first character (ms). |
+| `startOnView` | `boolean` | `false` | Defer until the element is in the viewport. |
+| `loop` | `boolean` | `false` | Restart after completing. |
+| `loopDelay` | `number` | `1500` | Delay between loop iterations (ms). |
+| `cursor` | `boolean` | `true` | Show a blinking cursor. |
+| `cursorCharacter` | `string` | `"\|"` | Character used as the cursor. |
+| `cursorClassName` | `string` | — | Classes applied to the cursor. |
+| `onComplete` | `() => void` | — | Called once when the animation finishes (per loop iteration). |
+
+### `TypewriterSegment`
+
+```ts
+type TypewriterSegment =
+  | string
+  | {
+      text: string;
+      className?: string; // applied to this segment only
+      delay?: number;     // ms to wait before typing this segment
+      speed?: number;     // overrides `speed` for this segment
+    };
+```
+
+## Accessibility
+
+- Root element carries `aria-live="polite"` so screen readers announce the text as it appears.
+- The cursor is marked `aria-hidden`.
+- Disable `cursor` or pass a stable fallback if your visual language prefers it.
+
+## Features
+
+- Zero external animation dependencies
+- Per-segment speed and styling
+- Viewport trigger via `IntersectionObserver`
+- Looping with configurable pause
+- Polymorphic rendering (`as` prop)
+- Works in server components (Next.js `"use client"` boundary only at the component)
