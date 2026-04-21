@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader-cli-spinner",
+  "type": "registry:block",
+  "title": "CLI Spinner Loader",
+  "description": "90 terminal-style text spinners in a single React component. Zero dependencies, keyboard-safe, tabular-nums for stable layout.",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/loaders/loader-cli-spinner/components/elements/loader-cli-spinner.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/default/blocks/loaders/loader-cli-spinner/components/elements/cli-spinner-data.ts",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Single component exposing 90 classic terminal spinner variants via a `variant` prop. Frames adapted from sindresorhus/cli-spinners (MIT). Use `speed` to scale the animation, `paused` to freeze, and `size` for font-sized scaling. The component renders as a single monospace glyph wrapped in `role=status` for a11y.",
+  "categories": ["loaders"]
+}

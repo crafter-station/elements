@@ -3713,6 +3713,28 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "loader-cli-spinner",
+      type: "registry:block",
+      title: "CLI Spinner Loader",
+      description:
+        "90 terminal-style text spinners in a single React component. Zero dependencies, keyboard-safe, tabular-nums for stable layout.",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/loaders/loader-cli-spinner/components/elements/loader-cli-spinner.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/loaders/loader-cli-spinner/components/elements/cli-spinner-data.ts",
+          type: "registry:component",
+        },
+      ],
+      docs: "Single component exposing 90 classic terminal spinner variants via a `variant` prop. Frames adapted from sindresorhus/cli-spinners (MIT). Use `speed` to scale the animation, `paused` to freeze, and `size` for font-sized scaling. The component renders as a single monospace glyph wrapped in `role=status` for a11y.",
+      categories: ["loaders"],
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "loader-dot-matrix",
       type: "registry:block",
       title: "Dot Matrix Loader",
@@ -7036,6 +7058,34 @@ export const registry = {
           modes: ["dark", "light"],
         },
       },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "typewriter",
+      type: "registry:block",
+      title: "Typewriter",
+      description:
+        "Framework-agnostic typewriter effect with multi-segment support, per-segment styling, viewport triggers, loops, and custom cursors",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/animations/typewriter/components/elements/typewriter.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "registry/default/blocks/animations/typewriter/routes/layout.tsx",
+          type: "registry:page",
+          target: "app/layout.tsx",
+        },
+        {
+          path: "registry/default/blocks/animations/typewriter/routes/page.tsx",
+          type: "registry:page",
+          target: "app/typewriter/page.tsx",
+        },
+      ],
+      docs: "Polymorphic Typewriter component. Supports a single string or an array of segments (each with its own className, speed, and delay), viewport-triggered start, looping, blinking or hidden cursor, and an onComplete callback. Zero external animation dependencies — uses plain React state + timers so it works anywhere React runs.",
+      categories: ["animations"],
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
