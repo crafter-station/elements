@@ -444,7 +444,7 @@
       "dependencies": [],
       "files": [],
       "docs": "Complete collection of AWS service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -461,7 +461,7 @@
         }
       ],
       "docs": "AWS Amplify logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -478,7 +478,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS analytics service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -495,7 +495,7 @@
         }
       ],
       "docs": "Amazon API Gateway logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -512,7 +512,7 @@
         }
       ],
       "docs": "AWS AppSync logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -529,7 +529,7 @@
         }
       ],
       "docs": "Amazon Athena logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -546,7 +546,7 @@
         }
       ],
       "docs": "Amazon Bedrock logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -563,7 +563,7 @@
         }
       ],
       "docs": "AWS CloudFormation logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -580,7 +580,7 @@
         }
       ],
       "docs": "Amazon CloudFront logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -597,7 +597,7 @@
         }
       ],
       "docs": "Amazon CloudWatch logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -614,7 +614,7 @@
         }
       ],
       "docs": "AWS CodeBuild logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -631,7 +631,7 @@
         }
       ],
       "docs": "AWS CodeCommit logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -648,7 +648,7 @@
         }
       ],
       "docs": "AWS CodeDeploy logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -665,7 +665,7 @@
         }
       ],
       "docs": "AWS CodePipeline logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -682,7 +682,7 @@
         }
       ],
       "docs": "Amazon Cognito logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -701,7 +701,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS compute service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -717,7 +717,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS database service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -735,7 +735,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS developer tool logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -752,7 +752,7 @@
         }
       ],
       "docs": "Amazon DynamoDB logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -769,7 +769,7 @@
         }
       ],
       "docs": "Amazon EC2 logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -786,7 +786,7 @@
         }
       ],
       "docs": "Amazon ECS logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -803,7 +803,7 @@
         }
       ],
       "docs": "Amazon EKS logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -820,7 +820,7 @@
         }
       ],
       "docs": "AWS Elastic Beanstalk logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -837,7 +837,7 @@
         }
       ],
       "docs": "Amazon EventBridge logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -854,7 +854,7 @@
         }
       ],
       "docs": "AWS Fargate logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -871,7 +871,7 @@
         }
       ],
       "docs": "AWS Glue logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -888,7 +888,7 @@
         }
       ],
       "docs": "AWS IAM logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -905,7 +905,7 @@
         }
       ],
       "docs": "Amazon Kinesis logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -922,7 +922,7 @@
         }
       ],
       "docs": "AWS KMS logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -939,7 +939,7 @@
         }
       ],
       "docs": "AWS Lambda logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -972,7 +972,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS messaging service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -987,7 +987,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS ML service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -999,7 +999,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS monitoring service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1016,7 +1016,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS networking service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1033,7 +1033,7 @@
         }
       ],
       "docs": "Amazon RDS logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1050,7 +1050,7 @@
         }
       ],
       "docs": "Amazon Redshift logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1067,7 +1067,7 @@
         }
       ],
       "docs": "Amazon Route 53 logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1084,7 +1084,7 @@
         }
       ],
       "docs": "Amazon S3 logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1101,7 +1101,7 @@
         }
       ],
       "docs": "Amazon SageMaker logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1118,7 +1118,7 @@
         }
       ],
       "docs": "AWS Secrets Manager logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1135,7 +1135,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS security service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1152,7 +1152,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS serverless service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1169,7 +1169,7 @@
         }
       ],
       "docs": "Amazon SNS logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1186,7 +1186,7 @@
         }
       ],
       "docs": "Amazon SQS logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1203,7 +1203,7 @@
         }
       ],
       "docs": "AWS Step Functions logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1215,7 +1215,7 @@
       "dependencies": [],
       "files": [],
       "docs": "AWS storage service logos",
-      "categories": ["Cloud", "AWS", "logo", "brand", "bundle"]
+      "categories": ["Cloud", "logo", "brand", "bundle"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1232,7 +1232,7 @@
         }
       ],
       "docs": "Amazon VPC logo component with official AWS brand colors.",
-      "categories": ["Cloud", "AWS", "logo", "brand"]
+      "categories": ["Cloud", "logo", "brand"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -3616,6 +3616,27 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "loader-cli-spinner",
+      "type": "registry:block",
+      "title": "CLI Spinner Loader",
+      "description": "90 terminal-style text spinners in a single React component. Zero dependencies, keyboard-safe, tabular-nums for stable layout.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/loaders/loader-cli-spinner/components/elements/loader-cli-spinner.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/blocks/loaders/loader-cli-spinner/components/elements/cli-spinner-data.ts",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "Single component exposing 90 classic terminal spinner variants via a `variant` prop. Frames adapted from sindresorhus/cli-spinners (MIT). Use `speed` to scale the animation, `paused` to freeze, and `size` for font-sized scaling. The component renders as a single monospace glyph wrapped in `role=status` for a11y.",
+      "categories": ["loaders"]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "loader-dot-matrix",
       "type": "registry:block",
       "title": "Dot Matrix Loader",
@@ -3803,7 +3824,42 @@
         "@elements/luma-logo",
         "@elements/bytedance-logo",
         "@elements/amp-logo",
-        "@elements/antigravity-logo"
+        "@elements/antigravity-logo",
+        "@elements/aws-ec2",
+        "@elements/aws-s3",
+        "@elements/aws-lambda",
+        "@elements/aws-rds",
+        "@elements/aws-dynamodb",
+        "@elements/aws-cloudfront",
+        "@elements/aws-route53",
+        "@elements/aws-iam",
+        "@elements/aws-vpc",
+        "@elements/aws-cloudwatch",
+        "@elements/aws-sqs",
+        "@elements/aws-sns",
+        "@elements/aws-api-gateway",
+        "@elements/aws-ecs",
+        "@elements/aws-eks",
+        "@elements/aws-fargate",
+        "@elements/aws-elastic-beanstalk",
+        "@elements/aws-amplify",
+        "@elements/aws-appsync",
+        "@elements/aws-cognito",
+        "@elements/aws-secrets-manager",
+        "@elements/aws-kms",
+        "@elements/aws-kinesis",
+        "@elements/aws-glue",
+        "@elements/aws-athena",
+        "@elements/aws-redshift",
+        "@elements/aws-sagemaker",
+        "@elements/aws-bedrock",
+        "@elements/aws-step-functions",
+        "@elements/aws-eventbridge",
+        "@elements/aws-cloudformation",
+        "@elements/aws-codebuild",
+        "@elements/aws-codepipeline",
+        "@elements/aws-codecommit",
+        "@elements/aws-codedeploy"
       ],
       "dependencies": [],
       "files": [],
@@ -6846,6 +6902,33 @@
           "modes": ["dark", "light"]
         }
       }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "typewriter",
+      "type": "registry:block",
+      "title": "Typewriter",
+      "description": "Framework-agnostic typewriter effect with multi-segment support, per-segment styling, viewport triggers, loops, and custom cursors",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/default/blocks/animations/typewriter/components/elements/typewriter.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/default/blocks/animations/typewriter/routes/layout.tsx",
+          "type": "registry:page",
+          "target": "app/layout.tsx"
+        },
+        {
+          "path": "registry/default/blocks/animations/typewriter/routes/page.tsx",
+          "type": "registry:page",
+          "target": "app/typewriter/page.tsx"
+        }
+      ],
+      "docs": "Polymorphic Typewriter component. Supports a single string or an array of segments (each with its own className, speed, and delay), viewport-triggered start, looping, blinking or hidden cursor, and an onComplete callback. Zero external animation dependencies — uses plain React state + timers so it works anywhere React runs.",
+      "categories": ["animations"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
