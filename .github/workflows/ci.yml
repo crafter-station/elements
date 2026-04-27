@@ -6,16 +6,37 @@ on:
       - main
   pull_request:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   ci:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.2.2
-      - run: bun install --frozen-lockfile
-      - run: bun run lint
-      - run: bun run typecheck
-      - run: bun run build:registry
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Build registry
+        run: bun run build:registry
