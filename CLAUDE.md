@@ -64,17 +64,10 @@ src/
 ## Development Commands
 
 ```bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Run linting
-npm run lint
-
-# Run type checking
-npm run typecheck
+bun dev
+bun run build
+bun run lint
+bun run typecheck
 ```
 
 ## Documentation Configuration

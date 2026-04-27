@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check .",
+    "typecheck": "tsc --noEmit",
     "format": "biome format --write",
     "prepare": "husky",
     "build:registry": "bun run scripts/build-registry.ts",
