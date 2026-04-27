@@ -50,7 +50,7 @@ function AiChatHeader({ children, className }: AiChatHeaderProps) {
       data-slot="ai-chat-header"
       className={cn(
         "flex items-center justify-between border-b px-4 py-3",
-        className
+        className,
       )}
     >
       {children}

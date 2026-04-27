@@ -18,7 +18,7 @@ export async function listCommand(options: ListOptions) {
     const cols = 4;
     for (let i = 0; i < logos.length; i += cols) {
       const row = logos.slice(i, i + cols);
-      console.log("  " + row.map((n) => n.padEnd(22)).join(""));
+      console.log(`  ${row.map((n) => n.padEnd(22)).join("")}`);
     }
 
     console.log(`\n  Install: tryelements add <name> [--output-dir=public/]`);

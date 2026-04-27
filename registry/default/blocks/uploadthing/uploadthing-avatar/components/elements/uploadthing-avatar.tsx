@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface UploadThingAvatarProps {
@@ -38,6 +39,7 @@ function CameraIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Camera</title>
       <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
       <circle cx="12" cy="13" r="3" />
     </svg>
@@ -55,6 +57,7 @@ function UserIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>User</title>
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
     </svg>
@@ -68,6 +71,7 @@ function LoadingSpinner({ className }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
     >
+      <title>Loading</title>
       <circle
         className="opacity-25"
         cx="12"
@@ -126,7 +130,7 @@ export function UploadThingAvatar({
 
       e.target.value = "";
     },
-    [onChange, onUpload]
+    [onChange, onUpload],
   );
 
   const displayUrl = previewUrl || value;
@@ -142,7 +146,7 @@ export function UploadThingAvatar({
           "transition-all duration-200",
           !disabled && "hover:border-primary/50 cursor-pointer",
           disabled && "opacity-50 cursor-not-allowed",
-          SIZE_CLASSES[size]
+          SIZE_CLASSES[size],
         )}
       >
         {displayUrl ? (
@@ -175,7 +179,7 @@ export function UploadThingAvatar({
           <div
             className={cn(
               "absolute inset-0 bg-black/50 flex items-center justify-center",
-              "opacity-0 hover:opacity-100 transition-opacity"
+              "opacity-0 hover:opacity-100 transition-opacity",
             )}
           >
             <CameraIcon className={cn("text-white", ICON_SIZES[size])} />

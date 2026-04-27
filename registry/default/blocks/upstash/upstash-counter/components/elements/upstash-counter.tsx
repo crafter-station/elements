@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface UpstashCounterProps {
@@ -26,6 +27,7 @@ function PlusIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Plus</title>
       <path d="M5 12h14" />
       <path d="M12 5v14" />
     </svg>
@@ -43,6 +45,7 @@ function MinusIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Minus</title>
       <path d="M5 12h14" />
     </svg>
   );
@@ -114,10 +117,7 @@ export function UpstashCounter({
   return (
     <div
       data-slot="upstash-counter"
-      className={cn(
-        "flex flex-col items-center gap-2",
-        className
-      )}
+      className={cn("flex flex-col items-center gap-2", className)}
     >
       <div className="flex items-center gap-4">
         {showControls && (
@@ -129,7 +129,7 @@ export function UpstashCounter({
               "rounded-full border border-border bg-muted/50",
               "hover:bg-muted transition-colors",
               "disabled:opacity-50 disabled:cursor-not-allowed",
-              sizes.button
+              sizes.button,
             )}
           >
             <MinusIcon className={sizes.icon} />
@@ -140,7 +140,7 @@ export function UpstashCounter({
           className={cn(
             "font-mono font-bold tabular-nums transition-transform",
             sizes.value,
-            isPulsing && "scale-110 text-primary"
+            isPulsing && "scale-110 text-primary",
           )}
         >
           {formatNumber(displayValue, format)}
@@ -155,7 +155,7 @@ export function UpstashCounter({
               "rounded-full border border-border bg-muted/50",
               "hover:bg-muted transition-colors",
               "disabled:opacity-50 disabled:cursor-not-allowed",
-              sizes.button
+              sizes.button,
             )}
           >
             <PlusIcon className={sizes.icon} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface UploadedFile {
@@ -32,6 +33,7 @@ function UploadCloudIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Upload Cloud</title>
       <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
       <path d="M12 12v9" />
       <path d="m16 16-4-4-4 4" />
@@ -50,6 +52,7 @@ function FileIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>File</title>
       <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
       <path d="M14 2v4a2 2 0 0 0 2 2h4" />
     </svg>
@@ -67,6 +70,7 @@ function CopyIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Copy</title>
       <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
       <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
     </svg>
@@ -84,6 +88,7 @@ function ExternalLinkIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>External Link</title>
       <path d="M15 3h6v6" />
       <path d="M10 14 21 3" />
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
@@ -102,6 +107,7 @@ function XIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>X</title>
       <path d="M18 6 6 18" />
       <path d="m6 6 12 12" />
     </svg>
@@ -113,7 +119,7 @@ function formatFileSize(bytes: number): string {
   const k = 1024;
   const sizes = ["B", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
+  return `${parseFloat((bytes / k ** i).toFixed(2))} ${sizes[i]}`;
 }
 
 export function UploadThingDropzone({
@@ -178,13 +184,16 @@ export function UploadThingDropzone({
         }
       }
     },
-    [maxFiles, maxSize, onSelect, onUpload, onProgress]
+    [maxFiles, maxSize, onSelect, onUpload, onProgress],
   );
 
-  const handleDragOver = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    if (!disabled) setIsDragOver(true);
-  }, [disabled]);
+  const handleDragOver = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      if (!disabled) setIsDragOver(true);
+    },
+    [disabled],
+  );
 
   const handleDragLeave = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -200,7 +209,7 @@ export function UploadThingDropzone({
       const files = Array.from(e.dataTransfer.files);
       handleFiles(files);
     },
-    [disabled, isUploading, handleFiles]
+    [disabled, isUploading, handleFiles],
   );
 
   const handleFileChange = useCallback(
@@ -209,7 +218,7 @@ export function UploadThingDropzone({
       handleFiles(files);
       e.target.value = "";
     },
-    [handleFiles]
+    [handleFiles],
   );
 
   const handleClick = () => {
@@ -218,8 +227,15 @@ export function UploadThingDropzone({
     }
   };
 
-  const removeFile = (index: number) => {
-    setUploadedFiles((prev) => prev.filter((_, i) => i !== index));
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
+  const removeFile = (url: string) => {
+    setUploadedFiles((prev) => prev.filter((file) => file.url !== url));
   };
 
   const copyUrl = (url: string) => {
@@ -227,28 +243,37 @@ export function UploadThingDropzone({
   };
 
   return (
-    <div data-slot="uploadthing-dropzone" className={cn("w-full space-y-4", className)}>
-      <div
+    <div
+      data-slot="uploadthing-dropzone"
+      className={cn("w-full space-y-4", className)}
+    >
+      <button
+        type="button"
         onClick={handleClick}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        onKeyDown={handleKeyDown}
+        disabled={disabled || isUploading}
         className={cn(
           "relative border-2 border-dashed rounded-lg p-8",
           "flex flex-col items-center justify-center gap-4",
           "transition-all duration-200 cursor-pointer",
           "hover:border-primary/50 hover:bg-muted/30",
           isDragOver && "border-primary bg-primary/5",
-          disabled && "opacity-50 cursor-not-allowed hover:border-border hover:bg-transparent",
-          isUploading && "pointer-events-none"
+          disabled &&
+            "opacity-50 cursor-not-allowed hover:border-border hover:bg-transparent",
+          isUploading && "pointer-events-none",
         )}
       >
         <div className="flex flex-col items-center gap-2 text-center">
-          <UploadCloudIcon className={cn(
-            "w-10 h-10 text-muted-foreground transition-colors",
-            isDragOver && "text-primary"
-          )} />
-          
+          <UploadCloudIcon
+            className={cn(
+              "w-10 h-10 text-muted-foreground transition-colors",
+              isDragOver && "text-primary",
+            )}
+          />
+
           {isUploading ? (
             <div className="w-48 space-y-2">
               <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
@@ -257,12 +282,16 @@ export function UploadThingDropzone({
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <p className="text-sm text-muted-foreground">{progress}% uploading...</p>
+              <p className="text-sm text-muted-foreground">
+                {progress}% uploading...
+              </p>
             </div>
           ) : (
             <>
               <p className="text-sm font-medium">
-                {isDragOver ? "Drop files here" : "Drop files here or click to browse"}
+                {isDragOver
+                  ? "Drop files here"
+                  : "Drop files here or click to browse"}
               </p>
               <p className="text-xs text-muted-foreground">
                 Max {maxFiles} files, up to {formatFileSize(maxSize)} each
@@ -281,11 +310,9 @@ export function UploadThingDropzone({
           className="sr-only"
           aria-label="Upload files"
         />
-      </div>
+      </button>
 
-      {error && (
-        <p className="text-sm text-destructive">{error}</p>
-      )}
+      {error && <p className="text-sm text-destructive">{error}</p>}
 
       {uploadedFiles.length > 0 && (
         <div className="space-y-2">
@@ -300,9 +327,9 @@ export function UploadThingDropzone({
             </button>
           </div>
           <div className="grid gap-2 max-h-48 overflow-y-auto">
-            {uploadedFiles.map((file, index) => (
+            {uploadedFiles.map((file) => (
               <div
-                key={`${file.name}-${index}`}
+                key={file.url}
                 className="flex items-center justify-between p-3 bg-muted/50 rounded-lg border border-border"
               >
                 <div className="flex items-center gap-3 min-w-0 flex-1">
@@ -334,7 +361,7 @@ export function UploadThingDropzone({
                   </a>
                   <button
                     type="button"
-                    onClick={() => removeFile(index)}
+                    onClick={() => removeFile(file.url)}
                     className="p-1.5 hover:bg-destructive/10 rounded text-muted-foreground hover:text-destructive transition-colors"
                     title="Remove"
                   >

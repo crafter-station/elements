@@ -53,9 +53,8 @@ export function AiThinkingIndicator({
   };
 
   return (
-    <div
+    <output
       data-slot="ai-thinking-indicator"
-      role="status"
       aria-live="polite"
       aria-label={message}
       className={cn(
@@ -70,7 +69,7 @@ export function AiThinkingIndicator({
           <span className="animate-pulse will-change-[opacity]">...</span>
         </span>
       )}
-    </div>
+    </output>
   );
 }
 

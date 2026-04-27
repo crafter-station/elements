@@ -161,6 +161,7 @@ function AiAgentCard({ agent, className }: AiAgentCardProps) {
   const { activeAgentId, onSelect } = useAgentRosterContext();
 
   const isActive = activeAgentId === agent.id;
+  const isSelectable = Boolean(onSelect && agent.status !== "offline");
 
   const statusConfig = React.useMemo(() => {
     const configs: Record<
@@ -201,40 +202,36 @@ function AiAgentCard({ agent, className }: AiAgentCardProps) {
   }, [agent.status]);
 
   const handleClick = React.useCallback(() => {
-    if (onSelect && agent.status !== "offline") {
+    if (isSelectable && onSelect) {
       onSelect(agent.id);
     }
-  }, [onSelect, agent.id, agent.status]);
+  }, [isSelectable, onSelect, agent.id]);
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent) => {
-      if (
-        (e.key === "Enter" || e.key === " ") &&
-        onSelect &&
-        agent.status !== "offline"
-      ) {
+      if ((e.key === "Enter" || e.key === " ") && isSelectable && onSelect) {
         e.preventDefault();
         onSelect(agent.id);
       }
     },
-    [onSelect, agent.id, agent.status],
+    [isSelectable, onSelect, agent.id],
   );
 
   return (
-    <div
+    <button
+      type="button"
       data-slot="ai-agent-card"
       data-status={agent.status}
       data-active={isActive}
-      role={onSelect ? "button" : undefined}
-      tabIndex={onSelect && agent.status !== "offline" ? 0 : undefined}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
+      onClick={isSelectable ? handleClick : undefined}
+      onKeyDown={isSelectable ? handleKeyDown : undefined}
+      disabled={!isSelectable}
       className={cn(
         "group relative flex flex-col gap-2 rounded-lg border bg-background p-3 transition-all",
         isActive
           ? "border-primary ring-2 ring-primary/20"
           : "border-border hover:border-muted-foreground/30",
-        onSelect && agent.status !== "offline" && "cursor-pointer",
+        isSelectable && "cursor-pointer",
         agent.status === "offline" && "opacity-60",
         className,
       )}
@@ -281,9 +278,9 @@ function AiAgentCard({ agent, className }: AiAgentCardProps) {
 
       {agent.matchOn && agent.matchOn.length > 0 && (
         <div className="flex flex-wrap gap-1">
-          {agent.matchOn.slice(0, 3).map((pattern, index) => (
+          {agent.matchOn.slice(0, 3).map((pattern) => (
             <span
-              key={index}
+              key={pattern}
               className="inline-flex items-center rounded-md bg-muted px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground"
             >
               {pattern}
@@ -297,7 +294,7 @@ function AiAgentCard({ agent, className }: AiAgentCardProps) {
         </div>
       )}
 
-      {onSelect && agent.status !== "offline" && (
+      {isSelectable && (
         <ChevronRight
           className={cn(
             "absolute right-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5",
@@ -305,7 +302,7 @@ function AiAgentCard({ agent, className }: AiAgentCardProps) {
           )}
         />
       )}
-    </div>
+    </button>
   );
 }
 

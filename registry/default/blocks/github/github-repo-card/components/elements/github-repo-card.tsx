@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface GitHubRepoCardProps extends React.HTMLAttributes<HTMLAnchorElement> {
@@ -112,7 +113,7 @@ export function GitHubRepoCard({
         setError(null);
 
         const response = await fetch(
-          `https://api.github.com/repos/${owner}/${repo}`
+          `https://api.github.com/repos/${owner}/${repo}`,
         );
 
         if (!response.ok) {
@@ -143,7 +144,7 @@ export function GitHubRepoCard({
         data-slot="github-repo-card"
         className={cn(
           "flex flex-col gap-3 p-4 border border-border rounded-lg bg-card",
-          className
+          className,
         )}
       >
         <div className="flex items-center gap-2">
@@ -166,7 +167,7 @@ export function GitHubRepoCard({
         data-slot="github-repo-card"
         className={cn(
           "flex flex-col gap-3 p-4 border border-destructive/50 rounded-lg bg-destructive/10",
-          className
+          className,
         )}
       >
         <p className="text-sm text-destructive">{error || "No data"}</p>
@@ -187,7 +188,7 @@ export function GitHubRepoCard({
       className={cn(
         "flex flex-col gap-3 p-4 border border-border rounded-lg bg-card",
         "transition-colors hover:border-foreground/20 hover:bg-accent/50",
-        className
+        className,
       )}
       {...props}
     >

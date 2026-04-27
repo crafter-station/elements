@@ -61,14 +61,15 @@ const ANSI_STYLES: Record<string, string> = {
   "9": "line-through",
 };
 
+const ANSI_REGEX = new RegExp(`${String.fromCharCode(0x1b)}\\[([0-9;]*)m`, "g");
+
 function parseAnsi(text: string): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
-  const regex = /\x1b\[([0-9;]*)m/g;
   let lastIndex = 0;
   let currentClasses: string[] = [];
-  let match: RegExpExecArray | null;
+  let match: RegExpExecArray | null = ANSI_REGEX.exec(text);
 
-  while ((match = regex.exec(text)) !== null) {
+  while (match !== null) {
     if (match.index > lastIndex) {
       const segment = text.slice(lastIndex, match.index);
       if (segment) {
@@ -96,6 +97,7 @@ function parseAnsi(text: string): React.ReactNode[] {
     }
 
     lastIndex = match.index + match[0].length;
+    match = ANSI_REGEX.exec(text);
   }
 
   if (lastIndex < text.length) {
@@ -142,12 +144,10 @@ export function CliOutput({
     if (autoScroll && scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [lines, autoScroll]);
+  }, [autoScroll]);
 
   const handleCopy = React.useCallback(async () => {
-    const text = lines
-      .map((l) => l.text.replace(/\x1b\[[0-9;]*m/g, ""))
-      .join("\n");
+    const text = lines.map((l) => l.text.replace(ANSI_REGEX, "")).join("\n");
     await navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);

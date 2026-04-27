@@ -11,8 +11,8 @@
  *   bun run .claude/skills/create-element/scripts/scaffold-element.ts clerk clerk-user-button
  */
 
-import { exists, mkdir, writeFile } from "fs/promises";
-import { join } from "path";
+import { exists, mkdir, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 
 const [category, name] = Bun.argv.slice(2);
 
@@ -64,7 +64,7 @@ const registryItem = {
 
 await writeFile(
   join(basePath, "registry-item.json"),
-  JSON.stringify(registryItem, null, 2) + "\n",
+  `${JSON.stringify(registryItem, null, 2)}\n`,
 );
 
 const componentTemplate = `import { cn } from "@/lib/utils";

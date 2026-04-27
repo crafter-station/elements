@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
@@ -34,7 +32,7 @@ function AiSuggestedActions({
           onClick={() => onSelect?.(suggestion.prompt)}
           className={cn(
             "h-auto whitespace-normal p-3 text-left justify-start",
-            "hover:bg-muted transition-colors"
+            "hover:bg-muted transition-colors",
           )}
           style={{
             animationDelay: `${index * 50}ms`,

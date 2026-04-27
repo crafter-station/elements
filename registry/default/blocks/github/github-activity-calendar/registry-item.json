@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Displays a year's worth of contribution activity. Supports green, blue, purple, and orange color schemes. Pass year prop to show different years.",
-  "categories": [
-    "github"
-  ]
+  "categories": ["github"]
 }

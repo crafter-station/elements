@@ -4,7 +4,7 @@ import type { ComponentType } from "react";
 import { useState } from "react";
 
 import { track } from "@vercel/analytics";
-import { Check, Code, Copy, Download } from "lucide-react";
+import { Check, Download } from "lucide-react";
 import { useTheme } from "next-themes";
 import { renderToStaticMarkup } from "react-dom/server";
 import { toast } from "sonner";

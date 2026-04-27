@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface ContributionDay {
@@ -90,9 +91,10 @@ function generateCalendarData(year: number): ContributionDay[] {
   return days;
 }
 
-function getWeeksWithMonths(
-  data: ContributionDay[]
-): { weeks: ContributionDay[][]; monthLabels: { month: string; col: number }[] } {
+function getWeeksWithMonths(data: ContributionDay[]): {
+  weeks: ContributionDay[][];
+  monthLabels: { month: string; col: number }[];
+} {
   const weeks: ContributionDay[][] = [];
   const monthLabels: { month: string; col: number }[] = [];
   let currentWeek: ContributionDay[] = [];
@@ -156,11 +158,11 @@ export function GitHubActivityCalendar({
     setData(generated);
     setTotalContributions(generated.reduce((sum, d) => sum + d.count, 0));
     setLoading(false);
-  }, [username, year, staticData]);
+  }, [year, staticData]);
 
   const { weeks, monthLabels } = useMemo(
     () => getWeeksWithMonths(data),
-    [data]
+    [data],
   );
 
   const colors = LEVEL_COLORS[colorScheme];
@@ -214,22 +216,29 @@ export function GitHubActivityCalendar({
             </div>
 
             <div className="flex gap-[3px]">
-              {weeks.map((week, weekIndex) => (
-                <div key={weekIndex} className="flex flex-col gap-[3px]">
-                  {week.map((day, dayIndex) => (
-                    <div
-                      key={`${weekIndex}-${dayIndex}`}
-                      className={cn(
-                        "w-[10px] h-[10px] rounded-sm",
-                        day.date ? colors[day.level] : "bg-transparent"
-                      )}
-                      title={
-                        day.date
-                          ? `${day.count} contributions on ${day.date}`
-                          : undefined
-                      }
-                    />
-                  ))}
+              {weeks.map((week) => (
+                <div
+                  key={week[0]?.date || "week"}
+                  className="flex flex-col gap-[3px]"
+                >
+                  {week.reduce<React.ReactNode[]>((nodes, day) => {
+                    const currentOffset = nodes.length;
+                    nodes.push(
+                      <div
+                        key={`${day.date || "empty"}-${currentOffset}`}
+                        className={cn(
+                          "w-[10px] h-[10px] rounded-sm",
+                          day.date ? colors[day.level] : "bg-transparent",
+                        )}
+                        title={
+                          day.date
+                            ? `${day.count} contributions on ${day.date}`
+                            : undefined
+                        }
+                      />,
+                    );
+                    return nodes;
+                  }, [])}
                 </div>
               ))}
             </div>
@@ -237,9 +246,9 @@ export function GitHubActivityCalendar({
 
           <div className="flex items-center gap-1 mt-2 text-[10px] text-muted-foreground justify-end">
             <span>Less</span>
-            {colors.map((color, i) => (
+            {colors.map((color) => (
               <div
-                key={i}
+                key={color}
                 className={cn("w-[10px] h-[10px] rounded-sm", color)}
               />
             ))}

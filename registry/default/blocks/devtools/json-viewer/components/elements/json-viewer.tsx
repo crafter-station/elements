@@ -146,7 +146,7 @@ function JsonNode({
 
   if (!isExpandable) {
     return (
-      <div className="group flex items-center gap-1 py-0.5" role="treeitem">
+      <div className="group flex items-center gap-1 py-0.5">
         {keyName !== undefined && (
           <>
             <span className="text-foreground">{keyName}</span>
@@ -194,7 +194,7 @@ function JsonNode({
   const brackets = type === "array" ? ["[", "]"] : ["{", "}"];
 
   return (
-    <div className="py-0.5" role="treeitem" aria-expanded={!isCollapsed}>
+    <div className="py-0.5">
       <div className="group flex items-center gap-1">
         <button
           type="button"
@@ -232,7 +232,7 @@ function JsonNode({
         )}
       </div>
       {!isCollapsed && (
-        <div className="ml-4 border-l border-border pl-2" role="group">
+        <div className="ml-4 border-l border-border pl-2">
           {entries.map(([k, v]) => (
             <JsonNode
               key={k}
@@ -264,9 +264,8 @@ export function JsonViewer({
   const [searchQuery, setSearchQuery] = React.useState("");
 
   return (
-    <div
+    <fieldset
       data-slot="json-viewer"
-      role="tree"
       aria-label="JSON data"
       className={cn("font-mono text-sm", className)}
     >
@@ -292,7 +291,7 @@ export function JsonViewer({
           searchQuery={searchQuery}
         />
       </div>
-    </div>
+    </fieldset>
   );
 }
 

@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Grid layout for multiple image uploads. Supports 2, 3, or 4 columns, max image limits, and hover-to-remove functionality.",
-  "categories": [
-    "uploadthing"
-  ]
+  "categories": ["uploadthing"]
 }

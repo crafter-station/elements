@@ -74,10 +74,16 @@ export default function AiArtifactDemo() {
           {showPreview ? (
             <AiArtifactPreview>
               <div className="flex gap-2">
-                <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md">
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-primary text-primary-foreground rounded-md"
+                >
                   Primary
                 </button>
-                <button className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md">
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md"
+                >
                   Secondary
                 </button>
               </div>

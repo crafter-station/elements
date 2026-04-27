@@ -262,35 +262,51 @@ export function AiModelSelector({
             isCompact
               ? "h-8 w-[200px] px-2 text-xs"
               : "w-[280px] px-3 py-2 text-sm",
-            className
+            className,
           )}
         >
           <div className="flex items-center gap-2 truncate">
             {selectedModel && SelectedLogo ? (
               <>
-                <SelectedLogo className={cn("shrink-0", isCompact ? "size-3.5" : "size-4")} />
-                <span className="truncate font-medium">{selectedModel.name}</span>
-                <span className={cn(
-                  "uppercase tracking-wider text-muted-foreground",
-                  isCompact ? "text-[9px]" : "text-[10px]"
-                )}>
+                <SelectedLogo
+                  className={cn("shrink-0", isCompact ? "size-3.5" : "size-4")}
+                />
+                <span className="truncate font-medium">
+                  {selectedModel.name}
+                </span>
+                <span
+                  className={cn(
+                    "uppercase tracking-wider text-muted-foreground",
+                    isCompact ? "text-[9px]" : "text-[10px]",
+                  )}
+                >
                   {PROVIDERS[selectedModel.provider].name}
                 </span>
               </>
             ) : (
-              <span className={cn(
-                "uppercase tracking-wider text-muted-foreground",
-                isCompact ? "text-[9px]" : "text-xs"
-              )}>
+              <span
+                className={cn(
+                  "uppercase tracking-wider text-muted-foreground",
+                  isCompact ? "text-[9px]" : "text-xs",
+                )}
+              >
                 {placeholder}
               </span>
             )}
           </div>
-          <ChevronDown className={cn("ml-2 shrink-0 text-muted-foreground", isCompact ? "size-3" : "size-3.5")} />
+          <ChevronDown
+            className={cn(
+              "ml-2 shrink-0 text-muted-foreground",
+              isCompact ? "size-3" : "size-3.5",
+            )}
+          />
         </button>
       </PopoverTrigger>
       <PopoverContent
-        className={cn("rounded-none border p-0", isCompact ? "w-[200px]" : "w-[280px]")}
+        className={cn(
+          "rounded-none border p-0",
+          isCompact ? "w-[200px]" : "w-[280px]",
+        )}
         align="end"
         sideOffset={4}
       >
@@ -340,14 +356,14 @@ export function AiModelSelector({
                             "size-3.5 shrink-0",
                             currentValue === model.id
                               ? "opacity-100"
-                              : "opacity-0"
+                              : "opacity-0",
                           )}
                         />
                       </CommandItem>
                     ))}
                   </CommandGroup>
                 );
-              }
+              },
             )}
           </CommandList>
         </Command>

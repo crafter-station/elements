@@ -234,22 +234,19 @@ export function PdfViewer({
             viewMode === "book" && "flex gap-4",
           )}
         >
-          {viewMode === "scroll" && (
-            <>
-              {Array.from(new Array(numPages), (_, index) => (
-                <div key={`page_${index + 1}`} className="flex justify-center">
-                  <Page
-                    pageNumber={index + 1}
-                    width={pageWidth}
-                    className="shadow-lg"
-                    loading={
-                      <div className="h-[800px] w-full bg-background animate-pulse rounded" />
-                    }
-                  />
-                </div>
-              ))}
-            </>
-          )}
+          {viewMode === "scroll" &&
+            Array.from(new Array(numPages), (_, index) => (
+              <div key={`page_${index + 1}`} className="flex justify-center">
+                <Page
+                  pageNumber={index + 1}
+                  width={pageWidth}
+                  className="shadow-lg"
+                  loading={
+                    <div className="h-[800px] w-full bg-background animate-pulse rounded" />
+                  }
+                />
+              </div>
+            ))}
 
           {viewMode === "single" && (
             <div className="flex justify-center">

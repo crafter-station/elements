@@ -2,10 +2,16 @@
 
 import * as React from "react";
 
-import { useChat, type UIMessage } from "@ai-sdk/react";
+import { type UIMessage, useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { Settings, Square } from "lucide-react";
 import { Streamdown } from "streamdown";
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 import {
   AiChat,
@@ -36,12 +42,6 @@ import {
 import { AiSuggestedActions } from "@/registry/default/blocks/ai/ai-suggested-actions/components/elements/ai-suggested-actions";
 import { AiTemperatureSlider } from "@/registry/default/blocks/ai/ai-temperature-slider/components/elements/ai-temperature-slider";
 import { AiTokenCounter } from "@/registry/default/blocks/ai/ai-token-counter/components/elements/ai-token-counter";
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 
 const DEMO_MODELS: Model[] = [
   {
@@ -93,7 +93,7 @@ function extractTextContent(message: UIMessage): string {
   if (!message.parts || message.parts.length === 0) return "";
   return message.parts
     .filter(
-      (part): part is { type: "text"; text: string } => part.type === "text"
+      (part): part is { type: "text"; text: string } => part.type === "text",
     )
     .map((part) => part.text)
     .join("");
@@ -103,7 +103,7 @@ function extractReasoningContent(message: UIMessage): string | null {
   if (!message.parts || message.parts.length === 0) return null;
   const reasoningParts = message.parts.filter(
     (part): part is { type: "reasoning"; text: string } =>
-      part.type === "reasoning"
+      part.type === "reasoning",
   );
   if (reasoningParts.length === 0) return null;
   return reasoningParts.map((part) => part.text).join("\n");
@@ -128,7 +128,7 @@ export function ChatDemo() {
       new DefaultChatTransport({
         api: "/api/chat",
       }),
-    []
+    [],
   );
 
   const { messages, sendMessage, status, stop } = useChat({ transport });
@@ -137,7 +137,11 @@ export function ChatDemo() {
   const isLoading = status === "submitted" || isStreaming;
 
   React.useEffect(() => {
-    if (status === "streaming" && !ttfbRecordedRef.current && requestStartRef.current) {
+    if (
+      status === "streaming" &&
+      !ttfbRecordedRef.current &&
+      requestStartRef.current
+    ) {
       const ttfb = Date.now() - requestStartRef.current;
       setLatency((prev) => ({ ...prev, ttfb }));
       ttfbRecordedRef.current = true;
@@ -163,7 +167,12 @@ export function ChatDemo() {
 
   const handleSubmit = (message: string) => {
     if (!message.trim() || isLoading) return;
-    console.log("[ChatDemo] Sending with model:", model, "temperature:", temperature);
+    console.log(
+      "[ChatDemo] Sending with model:",
+      model,
+      "temperature:",
+      temperature,
+    );
     requestStartRef.current = Date.now();
     ttfbRecordedRef.current = false;
     setLatency({});
@@ -252,49 +261,48 @@ export function ChatDemo() {
               />
             </div>
           ) : (
-            <>
-              {messages.map((message) => {
-                const textContent = extractTextContent(message);
-                const reasoningContent = extractReasoningContent(message);
-                const isUser = message.role === "user";
-                const isCurrentStreaming =
-                  isStreaming &&
-                  message.id === messages[messages.length - 1]?.id;
+            messages.map((message) => {
+              const textContent = extractTextContent(message);
+              const reasoningContent = extractReasoningContent(message);
+              const isUser = message.role === "user";
+              const isCurrentStreaming =
+                isStreaming && message.id === messages[messages.length - 1]?.id;
 
-                return (
-                  <div key={message.id} className="space-y-2">
-                    {reasoningContent && (
-                      <AiReasoning
-                        isStreaming={isCurrentStreaming && !textContent}
-                        defaultOpen={isCurrentStreaming}
-                      >
-                        <AiReasoningTrigger />
-                        <AiReasoningContent>
-                          <AiReasoningText>{reasoningContent}</AiReasoningText>
-                        </AiReasoningContent>
-                      </AiReasoning>
-                    )}
+              return (
+                <div key={message.id} className="space-y-2">
+                  {reasoningContent && (
+                    <AiReasoning
+                      isStreaming={isCurrentStreaming && !textContent}
+                      defaultOpen={isCurrentStreaming}
+                    >
+                      <AiReasoningTrigger />
+                      <AiReasoningContent>
+                        <AiReasoningText>{reasoningContent}</AiReasoningText>
+                      </AiReasoningContent>
+                    </AiReasoning>
+                  )}
 
-                    {textContent && (
-                      <AiMessageBubble
-                        role={isUser ? "user" : "assistant"}
-                        content={isUser ? textContent : undefined}
-                        provider={isUser ? undefined : getMessageProvider(message.id)}
-                        isStreaming={isCurrentStreaming && !reasoningContent}
-                      >
-                        {!isUser && (
-                          <Streamdown
-                            isAnimating={isCurrentStreaming && !reasoningContent}
-                          >
-                            {textContent}
-                          </Streamdown>
-                        )}
-                      </AiMessageBubble>
-                    )}
-                  </div>
-                );
-              })}
-            </>
+                  {textContent && (
+                    <AiMessageBubble
+                      role={isUser ? "user" : "assistant"}
+                      content={isUser ? textContent : undefined}
+                      provider={
+                        isUser ? undefined : getMessageProvider(message.id)
+                      }
+                      isStreaming={isCurrentStreaming && !reasoningContent}
+                    >
+                      {!isUser && (
+                        <Streamdown
+                          isAnimating={isCurrentStreaming && !reasoningContent}
+                        >
+                          {textContent}
+                        </Streamdown>
+                      )}
+                    </AiMessageBubble>
+                  )}
+                </div>
+              );
+            })
           )}
         </AiMessages>
       </AiChatBody>

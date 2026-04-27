@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 type CacheStatus = "hit" | "miss" | "stale" | "expired";
@@ -16,7 +17,16 @@ interface UpstashCacheBadgeProps {
 
 function ZapIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <title>Zap</title>
       <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
     </svg>
   );
@@ -24,7 +34,16 @@ function ZapIcon({ className }: { className?: string }) {
 
 function CloudOffIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <title>Cloud Off</title>
       <path d="m2 2 20 20" />
       <path d="M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193" />
       <path d="M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7 7 0 0 0 8 5.789" />
@@ -34,7 +53,16 @@ function CloudOffIcon({ className }: { className?: string }) {
 
 function ClockIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <title>Clock</title>
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
     </svg>
@@ -43,7 +71,16 @@ function ClockIcon({ className }: { className?: string }) {
 
 function RefreshIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <title>Refresh</title>
       <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
       <path d="M21 3v5h-5" />
       <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
@@ -54,7 +91,16 @@ function RefreshIcon({ className }: { className?: string }) {
 
 function AlertIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <title>Alert</title>
       <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
       <path d="M12 9v4" />
       <path d="M12 17h.01" />
@@ -62,16 +108,48 @@ function AlertIcon({ className }: { className?: string }) {
   );
 }
 
-const STATUS_CONFIG: Record<CacheStatus, { icon: React.ComponentType<{ className?: string }>; color: string; bg: string; label: string }> = {
-  hit: { icon: ZapIcon, color: "text-green-500", bg: "bg-green-500/10 border-green-500/20", label: "HIT" },
-  miss: { icon: CloudOffIcon, color: "text-orange-500", bg: "bg-orange-500/10 border-orange-500/20", label: "MISS" },
-  stale: { icon: ClockIcon, color: "text-yellow-500", bg: "bg-yellow-500/10 border-yellow-500/20", label: "STALE" },
-  expired: { icon: AlertIcon, color: "text-destructive", bg: "bg-destructive/10 border-destructive/20", label: "EXPIRED" },
+const STATUS_CONFIG: Record<
+  CacheStatus,
+  {
+    icon: React.ComponentType<{ className?: string }>;
+    color: string;
+    bg: string;
+    label: string;
+  }
+> = {
+  hit: {
+    icon: ZapIcon,
+    color: "text-green-500",
+    bg: "bg-green-500/10 border-green-500/20",
+    label: "HIT",
+  },
+  miss: {
+    icon: CloudOffIcon,
+    color: "text-orange-500",
+    bg: "bg-orange-500/10 border-orange-500/20",
+    label: "MISS",
+  },
+  stale: {
+    icon: ClockIcon,
+    color: "text-yellow-500",
+    bg: "bg-yellow-500/10 border-yellow-500/20",
+    label: "STALE",
+  },
+  expired: {
+    icon: AlertIcon,
+    color: "text-destructive",
+    bg: "bg-destructive/10 border-destructive/20",
+    label: "EXPIRED",
+  },
 };
 
 const SIZE_CLASSES = {
   sm: { badge: "px-2 h-6 text-xs gap-1", icon: "w-3 h-3", ttl: "text-[10px]" },
-  md: { badge: "px-2.5 h-8 text-sm gap-1.5", icon: "w-3.5 h-3.5", ttl: "text-xs" },
+  md: {
+    badge: "px-2.5 h-8 text-sm gap-1.5",
+    icon: "w-3.5 h-3.5",
+    ttl: "text-xs",
+  },
   lg: { badge: "px-3 h-10 text-base gap-2", icon: "w-4 h-4", ttl: "text-sm" },
 };
 
@@ -123,37 +201,41 @@ export function UpstashCacheBadge({
           "inline-flex items-center rounded-l-md border font-mono font-medium",
           sizes.badge,
           config.bg,
-          config.color
+          config.color,
         )}
       >
         <StatusIcon className={sizes.icon} />
         <span>{config.label}</span>
       </div>
 
-      {showTtl && remainingTtl !== undefined && remainingTtl > 0 && status === "hit" && (
-        <div
-          className={cn(
-            "inline-flex items-center border border-l-0 rounded-r-md bg-muted/50 text-muted-foreground font-mono",
-            sizes.badge
-          )}
-        >
-          <span className={sizes.ttl}>TTL: {formatTtl(remainingTtl)}</span>
-        </div>
-      )}
+      {showTtl &&
+        remainingTtl !== undefined &&
+        remainingTtl > 0 &&
+        status === "hit" && (
+          <div
+            className={cn(
+              "inline-flex items-center border border-l-0 rounded-r-md bg-muted/50 text-muted-foreground font-mono",
+              sizes.badge,
+            )}
+          >
+            <span className={sizes.ttl}>TTL: {formatTtl(remainingTtl)}</span>
+          </div>
+        )}
 
-      {onRefresh && (status === "miss" || status === "stale" || status === "expired") && (
-        <button
-          type="button"
-          onClick={onRefresh}
-          className={cn(
-            "inline-flex items-center border border-l-0 rounded-r-md",
-            "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors",
-            sizes.badge
-          )}
-        >
-          <RefreshIcon className={sizes.icon} />
-        </button>
-      )}
+      {onRefresh &&
+        (status === "miss" || status === "stale" || status === "expired") && (
+          <button
+            type="button"
+            onClick={onRefresh}
+            className={cn(
+              "inline-flex items-center border border-l-0 rounded-r-md",
+              "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors",
+              sizes.badge,
+            )}
+          >
+            <RefreshIcon className={sizes.icon} />
+          </button>
+        )}
     </div>
   );
 }

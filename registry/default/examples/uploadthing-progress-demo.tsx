@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { UploadThingProgress } from "@/registry/default/blocks/uploadthing/uploadthing-progress/components/elements/uploadthing-progress";
 
 export default function UploadThingProgressDemo() {

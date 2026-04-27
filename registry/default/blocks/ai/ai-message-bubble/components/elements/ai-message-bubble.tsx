@@ -106,14 +106,13 @@ export function AiMessageBubble({
   );
 
   return (
-    <div
+    <article
       data-slot="ai-message-bubble"
-      role="article"
       aria-label={isUser ? "Your message" : "AI response"}
       className={cn(
         "group flex gap-3 font-mono",
         isUser && "flex-row-reverse",
-        className
+        className,
       )}
     >
       <div className="shrink-0">{avatar || defaultAvatar}</div>
@@ -121,7 +120,7 @@ export function AiMessageBubble({
       <div
         className={cn(
           "relative max-w-[80%] px-3 py-2",
-          isUser ? "border bg-foreground text-background" : "text-foreground"
+          isUser ? "border bg-foreground text-background" : "text-foreground",
         )}
       >
         <div aria-live={isStreaming ? "polite" : undefined}>
@@ -163,7 +162,7 @@ export function AiMessageBubble({
           </button>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 

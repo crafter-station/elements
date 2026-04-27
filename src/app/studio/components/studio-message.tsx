@@ -30,7 +30,7 @@ export function StudioMessage({
 
   const textContent = useMemo(() => {
     let text = content;
-    for (const block of codeBlocks) {
+    for (const _block of codeBlocks) {
       text = text.replace(/```\w*\n[\s\S]*?```/, "").trim();
     }
     return text;
@@ -76,7 +76,7 @@ export function StudioMessage({
 
         {codeBlocks.map((block, index) => (
           <div
-            key={index}
+            key={`${block.language}-${block.code.slice(0, 32)}-${index}`}
             className="w-full rounded-lg border bg-muted/50 overflow-hidden"
           >
             <div className="flex items-center justify-between px-3 py-2 border-b bg-muted/80">

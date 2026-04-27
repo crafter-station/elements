@@ -17,7 +17,7 @@ const COLORS = {
 
 export function AblyLogo({
   className,
-  variant = "icon",
+  variant: _variant = "icon",
   mode = "dark",
 }: LogoProps) {
   const colors = COLORS[mode];

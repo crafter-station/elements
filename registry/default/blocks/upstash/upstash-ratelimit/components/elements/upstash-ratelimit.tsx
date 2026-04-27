@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface UpstashRatelimitProps {
@@ -24,6 +25,7 @@ function ShieldIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Shield</title>
       <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
     </svg>
   );
@@ -41,9 +43,19 @@ function formatTimeRemaining(ms: number): string {
 }
 
 const SIZE_CLASSES = {
-  sm: { container: "p-3 gap-2", icon: "w-4 h-4", text: "text-xs", bar: "h-1.5" },
+  sm: {
+    container: "p-3 gap-2",
+    icon: "w-4 h-4",
+    text: "text-xs",
+    bar: "h-1.5",
+  },
   md: { container: "p-4 gap-3", icon: "w-5 h-5", text: "text-sm", bar: "h-2" },
-  lg: { container: "p-5 gap-4", icon: "w-6 h-6", text: "text-base", bar: "h-2.5" },
+  lg: {
+    container: "p-5 gap-4",
+    icon: "w-6 h-6",
+    text: "text-base",
+    bar: "h-2.5",
+  },
 };
 
 export function UpstashRatelimit({
@@ -91,7 +103,7 @@ export function UpstashRatelimit({
         "rounded-lg border border-border bg-card",
         "flex flex-col",
         sizes.container,
-        className
+        className,
       )}
     >
       <div className="flex items-center justify-between">
@@ -104,11 +116,16 @@ export function UpstashRatelimit({
         </div>
       </div>
 
-      <div className={cn("w-full bg-muted rounded-full overflow-hidden", sizes.bar)}>
+      <div
+        className={cn(
+          "w-full bg-muted rounded-full overflow-hidden",
+          sizes.bar,
+        )}
+      >
         <div
           className={cn(
             "h-full rounded-full transition-all duration-500 ease-out",
-            getBarColor()
+            getBarColor(),
           )}
           style={{ width: `${Math.max(percentage, 0)}%` }}
         />

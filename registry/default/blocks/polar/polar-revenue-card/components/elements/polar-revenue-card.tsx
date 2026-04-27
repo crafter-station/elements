@@ -32,6 +32,7 @@ function TrendingUpIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Trending Up</title>
       <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
       <polyline points="16 7 22 7 22 13" />
     </svg>
@@ -52,13 +53,20 @@ function TrendingDownIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Trending Down</title>
       <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
       <polyline points="16 17 22 17 22 11" />
     </svg>
   );
 }
 
-function Sparkline({ data, className }: { data: number[]; className?: string }) {
+function Sparkline({
+  data,
+  className,
+}: {
+  data: number[];
+  className?: string;
+}) {
   if (!data || data.length < 2) return null;
 
   const min = Math.min(...data);
@@ -71,7 +79,8 @@ function Sparkline({ data, className }: { data: number[]; className?: string }) 
 
   const points = data.map((value, index) => {
     const x = padding + (index / (data.length - 1)) * (width - padding * 2);
-    const y = height - padding - ((value - min) / range) * (height - padding * 2);
+    const y =
+      height - padding - ((value - min) / range) * (height - padding * 2);
     return `${x},${y}`;
   });
 
@@ -84,6 +93,7 @@ function Sparkline({ data, className }: { data: number[]; className?: string }) 
       fill="none"
       preserveAspectRatio="none"
     >
+      <title>Sparkline</title>
       <polyline
         points={points.join(" ")}
         fill="none"
@@ -162,7 +172,7 @@ export function PolarRevenueCard({
       className={cn(
         "rounded-xl border border-border bg-card",
         sizes.container,
-        className
+        className,
       )}
     >
       <div className="flex items-start justify-between">
@@ -185,7 +195,9 @@ export function PolarRevenueCard({
               className={cn(
                 "flex items-center gap-1 mt-1",
                 sizes.change,
-                isPositive ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"
+                isPositive
+                  ? "text-green-600 dark:text-green-400"
+                  : "text-red-600 dark:text-red-400",
               )}
             >
               {isPositive ? (

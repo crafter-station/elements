@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface UploadThingPasteProps {
@@ -23,6 +24,7 @@ function ClipboardIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Clipboard</title>
       <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
       <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
     </svg>
@@ -40,6 +42,7 @@ function ImageIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Image</title>
       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
       <circle cx="9" cy="9" r="2" />
       <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
@@ -54,6 +57,7 @@ function LoadingSpinner({ className }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
     >
+      <title>Loading</title>
       <circle
         className="opacity-25"
         cx="12"
@@ -82,6 +86,7 @@ function CheckIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Check</title>
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -99,7 +104,7 @@ export function UploadThingPaste({
   const [isUploading, setIsUploading] = useState(false);
   const [lastPasted, setLastPasted] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLButtonElement>(null);
 
   const handlePaste = useCallback(
     async (e: ClipboardEvent) => {
@@ -149,7 +154,7 @@ export function UploadThingPaste({
         }
       }
     },
-    [accept, disabled, isUploading, onPaste, onUpload]
+    [accept, disabled, isUploading, onPaste, onUpload],
   );
 
   useEffect(() => {
@@ -157,7 +162,10 @@ export function UploadThingPaste({
     if (!container || !isFocused) return;
 
     const handleGlobalPaste = (e: ClipboardEvent) => {
-      if (document.activeElement === container || container.contains(document.activeElement)) {
+      if (
+        document.activeElement === container ||
+        container.contains(document.activeElement)
+      ) {
         handlePaste(e);
       }
     };
@@ -206,7 +214,11 @@ export function UploadThingPaste({
         <span className="text-sm text-muted-foreground">
           {isFocused ? (
             <span>
-              Press <kbd className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">⌘V</kbd> to paste
+              Press{" "}
+              <kbd className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">
+                ⌘V
+              </kbd>{" "}
+              to paste
             </span>
           ) : (
             "Click to focus, then paste"
@@ -218,40 +230,44 @@ export function UploadThingPaste({
 
   if (children) {
     return (
-      <div
+      <button
+        type="button"
         ref={containerRef}
         data-slot="uploadthing-paste"
-        tabIndex={disabled ? -1 : 0}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        disabled={disabled}
         className={cn(
           "outline-none",
           isFocused && "ring-2 ring-primary ring-offset-2 rounded-lg",
-          className
+          className,
         )}
       >
         {children}
-      </div>
+      </button>
     );
   }
 
   return (
-    <div
+    <button
+      type="button"
       ref={containerRef}
       data-slot="uploadthing-paste"
-      tabIndex={disabled ? -1 : 0}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
+      disabled={disabled}
       className={cn(
         "flex flex-col items-center justify-center gap-3 p-8",
         "border-2 border-dashed rounded-lg transition-all cursor-pointer",
         "outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-        isFocused ? "border-primary bg-primary/5" : "border-border hover:border-primary/50",
+        isFocused
+          ? "border-primary bg-primary/5"
+          : "border-border hover:border-primary/50",
         disabled && "opacity-50 cursor-not-allowed",
-        className
+        className,
       )}
     >
       {getStatusContent()}
-    </div>
+    </button>
   );
 }

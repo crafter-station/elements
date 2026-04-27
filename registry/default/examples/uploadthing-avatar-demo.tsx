@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { UploadThingAvatar } from "@/registry/default/blocks/uploadthing/uploadthing-avatar/components/elements/uploadthing-avatar";
 
 export default function UploadThingAvatarDemo() {

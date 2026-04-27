@@ -65,13 +65,11 @@ export function AiTokenCounter({
   return (
     <div
       data-slot="ai-token-counter"
-      role="meter"
-      aria-label="Token usage"
-      aria-valuenow={tokens}
-      aria-valuemin={0}
-      aria-valuemax={limit}
       className={cn("flex flex-col gap-1.5", className)}
     >
+      <meter className="sr-only" min={0} max={limit} value={tokens}>
+        Token usage
+      </meter>
       <div className="flex items-center justify-between text-sm">
         <span className={cn("font-mono tabular-nums", statusColor)}>
           {formatNumber(tokens)}

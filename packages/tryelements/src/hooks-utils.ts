@@ -72,7 +72,7 @@ export function writeSettings(settings: Record<string, unknown>): void {
     copyFileSync(SETTINGS_PATH, backupPath);
   }
 
-  writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2) + "\n");
+  writeFileSync(SETTINGS_PATH, `${JSON.stringify(settings, null, 2)}\n`);
 }
 
 export function getHooksDir(): string {

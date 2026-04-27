@@ -24,21 +24,14 @@ interface AiChatProps {
   className?: string;
 }
 
-function AiChat({
-  status = "ready",
-  children,
-  className,
-}: AiChatProps) {
+function AiChat({ status = "ready", children, className }: AiChatProps) {
   const contextValue = React.useMemo(() => ({ status }), [status]);
 
   return (
     <AiChatContext.Provider value={contextValue}>
       <div
         data-slot="ai-chat"
-        className={cn(
-          "flex h-dvh flex-col bg-background",
-          className
-        )}
+        className={cn("flex h-dvh flex-col bg-background", className)}
       >
         {children}
       </div>
@@ -57,7 +50,7 @@ function AiChatHeader({ children, className }: AiChatHeaderProps) {
       data-slot="ai-chat-header"
       className={cn(
         "flex items-center justify-between border-b px-4 py-3",
-        className
+        className,
       )}
     >
       {children}
@@ -92,7 +85,7 @@ function AiChatFooter({ children, className }: AiChatFooterProps) {
       data-slot="ai-chat-footer"
       className={cn(
         "sticky bottom-0 z-10 border-t bg-background px-4 py-3",
-        className
+        className,
       )}
     >
       {children}
@@ -100,11 +93,5 @@ function AiChatFooter({ children, className }: AiChatFooterProps) {
   );
 }
 
-export {
-  AiChat,
-  AiChatHeader,
-  AiChatBody,
-  AiChatFooter,
-  useChatContext,
-};
+export { AiChat, AiChatHeader, AiChatBody, AiChatFooter, useChatContext };
 export type { AiChatProps };

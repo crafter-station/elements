@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface GitHubStarButtonProps
@@ -56,7 +57,7 @@ export function GitHubStarButton({
       try {
         setLoading(true);
         const response = await fetch(
-          `https://api.github.com/repos/${owner}/${repo}`
+          `https://api.github.com/repos/${owner}/${repo}`,
         );
         if (response.ok) {
           const data = await response.json();
@@ -100,7 +101,7 @@ export function GitHubStarButton({
       <StarIcon
         className={cn(
           "w-4 h-4 transition-transform duration-200",
-          isHovered && "scale-110"
+          isHovered && "scale-110",
         )}
       />
       <span>Star</span>

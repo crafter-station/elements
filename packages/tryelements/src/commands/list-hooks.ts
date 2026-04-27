@@ -17,7 +17,7 @@ export async function listHooksCommand(options: ListHooksOptions) {
     let hooks = index.hooks;
     if (options.event) {
       hooks = hooks.filter(
-        (h) => h.event.toLowerCase() === options.event!.toLowerCase(),
+        (h) => h.event.toLowerCase() === options.event?.toLowerCase(),
       );
     }
 
@@ -34,7 +34,7 @@ export async function listHooksCommand(options: ListHooksOptions) {
     for (const hook of hooks) {
       const cat = hook.tags[0] || "other";
       if (!grouped.has(cat)) grouped.set(cat, []);
-      grouped.get(cat)!.push(hook);
+      grouped.get(cat)?.push(hook);
     }
 
     for (const [category, categoryHooks] of grouped) {

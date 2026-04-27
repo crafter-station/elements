@@ -14,7 +14,7 @@ interface AiReasoningContextValue {
 }
 
 const AiReasoningContext = React.createContext<AiReasoningContextValue | null>(
-  null
+  null,
 );
 
 function useReasoningContext() {
@@ -56,7 +56,7 @@ function AiReasoning({
       }
       onOpenChange?.(open);
     },
-    [isControlled, onOpenChange]
+    [isControlled, onOpenChange],
   );
 
   React.useEffect(() => {
@@ -67,7 +67,7 @@ function AiReasoning({
 
   const contextValue = React.useMemo(
     () => ({ isStreaming, isOpen, thinkingDuration }),
-    [isStreaming, isOpen, thinkingDuration]
+    [isStreaming, isOpen, thinkingDuration],
   );
 
   return (
@@ -79,7 +79,7 @@ function AiReasoning({
         onOpenChange={handleOpenChange}
         className={cn(
           "border bg-background font-mono text-foreground transition-colors",
-          className
+          className,
         )}
       >
         {children}
@@ -107,7 +107,7 @@ function AiReasoningTrigger({ children, className }: AiReasoningTriggerProps) {
       data-slot="ai-reasoning-trigger"
       className={cn(
         "flex w-full items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-        className
+        className,
       )}
     >
       <div className="flex flex-1 items-center gap-2 text-left">
@@ -131,7 +131,7 @@ function AiReasoningTrigger({ children, className }: AiReasoningTriggerProps) {
       <ChevronDown
         className={cn(
           "size-3.5 shrink-0 text-muted-foreground transition-transform duration-200",
-          isOpen && "rotate-180"
+          isOpen && "rotate-180",
         )}
       />
     </CollapsiblePrimitive.Trigger>
@@ -151,13 +151,13 @@ function AiReasoningContent({ children, className }: AiReasoningContentProps) {
       data-slot="ai-reasoning-content"
       className={cn(
         "border-t data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down",
-        className
+        className,
       )}
     >
       <div
         className={cn(
           "p-4 text-xs text-muted-foreground",
-          isStreaming && "animate-pulse"
+          isStreaming && "animate-pulse",
         )}
       >
         {children}

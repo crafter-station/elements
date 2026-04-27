@@ -4,8 +4,6 @@
  * Do not edit manually - run 'bun run scripts/generate-registry-index.ts' to regenerate
  */
 
-import type { RegistryItem } from "./utils";
-
 export const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
   name: "elements",

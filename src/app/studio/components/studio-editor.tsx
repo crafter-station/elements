@@ -24,6 +24,13 @@ function CodePreview({
   isSelected,
   onSelect,
 }: CodePreviewProps) {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onSelect();
+    }
+  };
+
   return (
     <div
       className="absolute"
@@ -32,7 +39,8 @@ function CodePreview({
         top: element.position.y,
       }}
     >
-      <div
+      <button
+        type="button"
         className={cn(
           "relative cursor-pointer rounded-lg border bg-background p-4 shadow-sm transition-all",
           isPending && "opacity-50 border-dashed border-primary",
@@ -40,6 +48,7 @@ function CodePreview({
             "ring-2 ring-primary ring-offset-2 ring-offset-background",
         )}
         onClick={onSelect}
+        onKeyDown={handleKeyDown}
       >
         <div className="absolute -top-6 left-0 font-mono text-xs text-muted-foreground">
           {element.id}
@@ -47,13 +56,13 @@ function CodePreview({
         <pre className="text-xs overflow-x-auto max-w-[400px] max-h-[300px]">
           <code className="text-muted-foreground">{element.code}</code>
         </pre>
-      </div>
+      </button>
     </div>
   );
 }
 
 export function StudioEditor() {
-  const canvasRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLButtonElement>(null);
   const [isPanning, setIsPanning] = useState(false);
   const [isSpacePressed, setIsSpacePressed] = useState(false);
   const [canvasOffset, setCanvasOffset] = useState({ x: 0, y: 0 });
@@ -123,7 +132,8 @@ export function StudioEditor() {
       <StudioSidebar />
 
       <div className="relative flex-1 bg-muted/30">
-        <div
+        <button
+          type="button"
           ref={canvasRef}
           className={cn(
             "absolute inset-0",
@@ -171,7 +181,7 @@ export function StudioEditor() {
               />
             ))}
           </div>
-        </div>
+        </button>
 
         {hasPendingElements && (
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">

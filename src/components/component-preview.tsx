@@ -16,9 +16,7 @@ import { EyeIcon } from "@/components/icons/eye";
 import { EyeClosedIcon } from "@/components/icons/eye-closed";
 import { InstallCommand } from "@/components/install-command";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -90,7 +88,7 @@ export function ComponentPreview({
       return false;
     });
 
-  const handleComponentToggle = (componentKey: string) => {
+  const _handleComponentToggle = (componentKey: string) => {
     const isCurrentlySelected = selectedComponents.has(componentKey);
 
     track("Component Selection", {

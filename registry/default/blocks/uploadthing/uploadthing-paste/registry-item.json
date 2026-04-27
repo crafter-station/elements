@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Focus the zone and paste (Cmd+V) to upload. Shows upload progress and success state. Supports file type filtering via accept prop.",
-  "categories": [
-    "uploadthing"
-  ]
+  "categories": ["uploadthing"]
 }

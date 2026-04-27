@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface ProfileData {
@@ -105,7 +106,7 @@ export function GitHubProfileCard({
         setError(null);
 
         const response = await fetch(
-          `https://api.github.com/users/${username}`
+          `https://api.github.com/users/${username}`,
         );
 
         if (!response.ok) {
@@ -130,7 +131,7 @@ export function GitHubProfileCard({
         data-slot="github-profile-card"
         className={cn(
           "flex flex-col gap-4 p-6 border border-border rounded-lg bg-card",
-          className
+          className,
         )}
         {...props}
       >
@@ -157,7 +158,7 @@ export function GitHubProfileCard({
         data-slot="github-profile-card"
         className={cn(
           "flex flex-col gap-4 p-6 border border-destructive/50 rounded-lg bg-destructive/10",
-          className
+          className,
         )}
         {...props}
       >
@@ -177,7 +178,7 @@ export function GitHubProfileCard({
       data-slot="github-profile-card"
       className={cn(
         "flex flex-col gap-4 p-6 border border-border rounded-lg bg-card",
-        className
+        className,
       )}
       {...props}
     >
@@ -206,9 +207,7 @@ export function GitHubProfileCard({
         </div>
       </div>
 
-      {data.bio && (
-        <p className="text-sm text-muted-foreground">{data.bio}</p>
-      )}
+      {data.bio && <p className="text-sm text-muted-foreground">{data.bio}</p>}
 
       <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
         {data.company && (
@@ -241,8 +240,7 @@ export function GitHubProfileCard({
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 hover:text-foreground transition-colors"
           >
-            <XIcon className="w-4 h-4" />
-            @{data.twitter_username}
+            <XIcon className="w-4 h-4" />@{data.twitter_username}
           </a>
         )}
       </div>

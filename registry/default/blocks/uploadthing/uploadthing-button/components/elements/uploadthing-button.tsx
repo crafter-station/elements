@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface UploadThingButtonProps {
@@ -26,6 +27,7 @@ function UploadIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Upload</title>
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
       <polyline points="17 8 12 3 7 8" />
       <line x1="12" x2="12" y1="3" y2="15" />
@@ -40,6 +42,7 @@ function LoadingSpinner({ className }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
     >
+      <title>Loading</title>
       <circle
         className="opacity-25"
         cx="12"
@@ -68,6 +71,7 @@ function CheckIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Check</title>
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -106,7 +110,9 @@ export function UploadThingButton({
 
       for (const file of files) {
         if (file.size > maxSize) {
-          setError(`File too large. Max size: ${Math.round(maxSize / 1024 / 1024)}MB`);
+          setError(
+            `File too large. Max size: ${Math.round(maxSize / 1024 / 1024)}MB`,
+          );
           e.target.value = "";
           return;
         }
@@ -129,11 +135,14 @@ export function UploadThingButton({
 
       e.target.value = "";
     },
-    [maxFiles, maxSize, onSelect, onUpload]
+    [maxFiles, maxSize, onSelect, onUpload],
   );
 
   return (
-    <div data-slot="uploadthing-button" className={cn("inline-flex flex-col items-start gap-1", className)}>
+    <div
+      data-slot="uploadthing-button"
+      className={cn("inline-flex flex-col items-start gap-1", className)}
+    >
       <button
         type="button"
         onClick={handleClick}
@@ -144,7 +153,7 @@ export function UploadThingButton({
           "transition-all duration-200",
           "hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           "disabled:opacity-50 disabled:pointer-events-none",
-          uploadComplete && "bg-green-600 hover:bg-green-600"
+          uploadComplete && "bg-green-600 hover:bg-green-600",
         )}
       >
         {isUploading ? (
@@ -176,9 +185,7 @@ export function UploadThingButton({
         aria-label="Upload file"
       />
 
-      {error && (
-        <p className="text-xs text-destructive">{error}</p>
-      )}
+      {error && <p className="text-xs text-destructive">{error}</p>}
     </div>
   );
 }

@@ -258,7 +258,7 @@ function AiChainOfThoughtSearchResults({
       <div className="space-y-2">
         {results.map((result, index) => (
           <a
-            key={index}
+            key={`${result.url}-${index}`}
             href={result.url}
             target="_blank"
             rel="noopener noreferrer"

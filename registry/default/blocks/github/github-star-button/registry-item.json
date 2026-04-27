@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Fetches star count from GitHub API. Supports 'default' and 'outline' variants. Opens repository in new tab on click.",
-  "categories": [
-    "github"
-  ]
+  "categories": ["github"]
 }

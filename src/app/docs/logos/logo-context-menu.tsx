@@ -12,7 +12,6 @@ import {
   canvasToBlob,
   cleanSvgMarkup,
   copyImageToClipboard,
-  copyTextToClipboard,
   downloadBlob,
   svgToCanvas,
 } from "@/lib/svg-utils";

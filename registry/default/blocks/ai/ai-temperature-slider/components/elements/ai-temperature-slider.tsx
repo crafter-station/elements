@@ -75,7 +75,7 @@ export function AiTemperatureSlider({
       className={cn("w-full space-y-4", className)}
     >
       <div className="flex items-center justify-between">
-        <label className="text-sm font-medium">Temperature</label>
+        <span className="text-sm font-medium">Temperature</span>
         <span className="font-mono text-sm tabular-nums text-muted-foreground">
           {currentValue.toFixed(1)}
         </span>
@@ -91,9 +91,8 @@ export function AiTemperatureSlider({
       />
 
       {showPresets && (
-        <div
+        <fieldset
           className="flex flex-wrap gap-2"
-          role="group"
           aria-label="Temperature presets"
         >
           {presets.map((preset) => {
@@ -116,7 +115,7 @@ export function AiTemperatureSlider({
               </button>
             );
           })}
-        </div>
+        </fieldset>
       )}
 
       {currentPreset && (

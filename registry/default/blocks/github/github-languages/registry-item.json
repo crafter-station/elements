@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Fetches language statistics from GitHub API. Shows a colored bar with language percentages. Supports hiding labels with showLabels={false}.",
-  "categories": [
-    "github"
-  ]
+  "categories": ["github"]
 }

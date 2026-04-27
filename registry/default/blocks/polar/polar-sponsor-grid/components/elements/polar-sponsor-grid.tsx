@@ -79,15 +79,17 @@ export function PolarSponsorGrid({
   className,
 }: PolarSponsorGridProps) {
   const groupedSponsors = useMemo(() => {
-    const sorted = [...sponsors].sort((a, b) => (b.amount ?? 0) - (a.amount ?? 0));
+    const sorted = [...sponsors].sort(
+      (a, b) => (b.amount ?? 0) - (a.amount ?? 0),
+    );
     const limited = maxDisplay ? sorted.slice(0, maxDisplay) : sorted;
 
     const groups: Record<string, Sponsor[]> = {};
 
     for (const sponsor of limited) {
-      const tier = tiers.find(
-        (t) => (sponsor.amount ?? 0) >= t.minAmount
-      ) ?? tiers[tiers.length - 1];
+      const tier =
+        tiers.find((t) => (sponsor.amount ?? 0) >= t.minAmount) ??
+        tiers[tiers.length - 1];
       const tierName = sponsor.tier || tier.name;
 
       if (!groups[tierName]) {
@@ -107,7 +109,7 @@ export function PolarSponsorGrid({
         data-slot="polar-sponsor-grid"
         className={cn(
           "flex flex-col items-center justify-center rounded-lg border border-dashed border-border p-8 text-center",
-          className
+          className,
         )}
       >
         <p className="text-sm text-muted-foreground">No sponsors yet</p>
@@ -119,10 +121,7 @@ export function PolarSponsorGrid({
   }
 
   return (
-    <div
-      data-slot="polar-sponsor-grid"
-      className={cn("space-y-6", className)}
-    >
+    <div data-slot="polar-sponsor-grid" className={cn("space-y-6", className)}>
       {orderedTiers.map((tier) => (
         <div key={tier.name} data-slot="tier-group">
           {showTierLabels && (
@@ -142,24 +141,24 @@ export function PolarSponsorGrid({
               </span>
             </div>
           )}
-          <div
-            data-slot="sponsor-list"
-            className="flex flex-wrap gap-2"
-          >
+          <div data-slot="sponsor-list" className="flex flex-wrap gap-2">
             {groupedSponsors[tier.name].map((sponsor) => {
               const size = avatarSize
                 ? AVATAR_SIZES[avatarSize]
-                : TIER_AVATAR_SIZES[tier.name as keyof typeof TIER_AVATAR_SIZES] ||
-                  AVATAR_SIZES.md;
+                : TIER_AVATAR_SIZES[
+                    tier.name as keyof typeof TIER_AVATAR_SIZES
+                  ] || AVATAR_SIZES.md;
 
               const avatar = (
                 <div
                   data-slot="sponsor-avatar"
                   className={cn(
                     "relative rounded-full ring-2 ring-offset-2 ring-offset-background transition-transform hover:scale-110",
-                    size
+                    size,
                   )}
-                  style={{ "--tw-ring-color": tier.color } as React.CSSProperties}
+                  style={
+                    { "--tw-ring-color": tier.color } as React.CSSProperties
+                  }
                   title={`${sponsor.name}${sponsor.amount ? ` - $${sponsor.amount}/mo` : ""}`}
                 >
                   {sponsor.avatarUrl ? (

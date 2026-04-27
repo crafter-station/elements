@@ -34,6 +34,7 @@ function CopyIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Copy</title>
       <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
       <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
     </svg>
@@ -54,6 +55,7 @@ function CheckIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Check</title>
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -73,6 +75,7 @@ function KeyIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Key</title>
       <path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4" />
     </svg>
   );
@@ -92,6 +95,7 @@ function EyeIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Eye</title>
       <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
       <circle cx="12" cy="12" r="3" />
     </svg>
@@ -112,6 +116,7 @@ function EyeOffIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Eye Off</title>
       <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
       <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
       <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
@@ -120,28 +125,29 @@ function EyeOffIcon({ className }: { className?: string }) {
   );
 }
 
-const STATUS_STYLES: Record<string, { bg: string; text: string; dot: string }> = {
-  active: {
-    bg: "bg-green-100 dark:bg-green-900/30",
-    text: "text-green-700 dark:text-green-300",
-    dot: "bg-green-500",
-  },
-  expired: {
-    bg: "bg-amber-100 dark:bg-amber-900/30",
-    text: "text-amber-700 dark:text-amber-300",
-    dot: "bg-amber-500",
-  },
-  revoked: {
-    bg: "bg-red-100 dark:bg-red-900/30",
-    text: "text-red-700 dark:text-red-300",
-    dot: "bg-red-500",
-  },
-  pending: {
-    bg: "bg-gray-100 dark:bg-gray-800",
-    text: "text-gray-700 dark:text-gray-300",
-    dot: "bg-gray-400",
-  },
-};
+const STATUS_STYLES: Record<string, { bg: string; text: string; dot: string }> =
+  {
+    active: {
+      bg: "bg-green-100 dark:bg-green-900/30",
+      text: "text-green-700 dark:text-green-300",
+      dot: "bg-green-500",
+    },
+    expired: {
+      bg: "bg-amber-100 dark:bg-amber-900/30",
+      text: "text-amber-700 dark:text-amber-300",
+      dot: "bg-amber-500",
+    },
+    revoked: {
+      bg: "bg-red-100 dark:bg-red-900/30",
+      text: "text-red-700 dark:text-red-300",
+      dot: "bg-red-500",
+    },
+    pending: {
+      bg: "bg-gray-100 dark:bg-gray-800",
+      text: "text-gray-700 dark:text-gray-300",
+      dot: "bg-gray-400",
+    },
+  };
 
 const SIZE_CLASSES = {
   sm: {
@@ -212,7 +218,7 @@ export function PolarLicenseKey({
       className={cn(
         "rounded-xl border border-border bg-card",
         sizes.container,
-        className
+        className,
       )}
     >
       {(productName || showStatus) && (
@@ -231,10 +237,12 @@ export function PolarLicenseKey({
               className={cn(
                 "inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium",
                 statusStyle.bg,
-                statusStyle.text
+                statusStyle.text,
               )}
             >
-              <span className={cn("h-1.5 w-1.5 rounded-full", statusStyle.dot)} />
+              <span
+                className={cn("h-1.5 w-1.5 rounded-full", statusStyle.dot)}
+              />
               {status.charAt(0).toUpperCase() + status.slice(1)}
             </span>
           )}
@@ -249,7 +257,7 @@ export function PolarLicenseKey({
           data-slot="key-value"
           className={cn(
             "flex-1 font-mono text-foreground select-all",
-            sizes.key
+            sizes.key,
           )}
         >
           {displayKey}
@@ -260,7 +268,7 @@ export function PolarLicenseKey({
             onClick={() => setMasked(!masked)}
             className={cn(
               "inline-flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors",
-              sizes.button
+              sizes.button,
             )}
             title={masked ? "Show license key" : "Hide license key"}
           >
@@ -279,7 +287,7 @@ export function PolarLicenseKey({
                 sizes.button,
                 copied
                   ? "text-green-600 dark:text-green-400"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted",
               )}
               title={copied ? "Copied!" : "Copy license key"}
             >
@@ -301,9 +309,7 @@ export function PolarLicenseKey({
             </span>
           )}
           {expiresAt && (
-            <span data-slot="expires">
-              Expires: {formatDate(expiresAt)}
-            </span>
+            <span data-slot="expires">Expires: {formatDate(expiresAt)}</span>
           )}
         </div>
       )}

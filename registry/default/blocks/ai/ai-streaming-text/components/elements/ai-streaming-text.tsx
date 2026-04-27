@@ -67,9 +67,8 @@ export function AiStreamingText({
   }, [text, speed, mode, onComplete]);
 
   return (
-    <div
+    <output
       data-slot="ai-streaming-text"
-      role="status"
       aria-live="polite"
       aria-label="AI response"
       className={cn("relative", className)}
@@ -78,7 +77,7 @@ export function AiStreamingText({
       {showCursor && !isComplete && (
         <span className="ml-0.5 inline-block h-[1.2em] w-[2px] animate-pulse bg-current align-middle will-change-[opacity]" />
       )}
-    </div>
+    </output>
   );
 }
 

@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Fetches user profile from GitHub API. Shows avatar, name, bio, location, company, website, and Twitter. Toggle stats with showStats prop.",
-  "categories": [
-    "github"
-  ]
+  "categories": ["github"]
 }

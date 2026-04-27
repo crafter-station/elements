@@ -172,19 +172,22 @@ function AiRoutingInput({
     try {
       const regex = new RegExp(`(${matchedPattern})`, "gi");
       const parts = input.split(regex);
+      let offset = 0;
 
-      return parts.map((part, index) => {
+      return parts.map((part) => {
+        const partOffset = offset;
+        offset += part.length;
         const isMatch = regex.test(part);
         regex.lastIndex = 0;
         return isMatch ? (
           <mark
-            key={index}
+            key={`${part}-${partOffset}`}
             className="bg-indigo-200 dark:bg-indigo-900 text-indigo-900 dark:text-indigo-100 rounded px-0.5"
           >
             {part}
           </mark>
         ) : (
-          <span key={index}>{part}</span>
+          <span key={`${part}-${partOffset}`}>{part}</span>
         );
       });
     } catch {

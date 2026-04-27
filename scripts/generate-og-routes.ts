@@ -1,4 +1,5 @@
 #!/usr/bin/env bun
+
 /**
  * Generate OG Image routes for the OG Image Explorer
  * Scans the app directory and content files to build a complete routes list
@@ -8,9 +9,9 @@
  *   bun run scripts/generate-og-routes.ts --base-url https://your-site.com
  */
 
+import { readFileSync } from "node:fs";
+import { basename, dirname } from "node:path";
 import { Glob } from "bun";
-import { readFileSync } from "fs";
-import { basename, dirname } from "path";
 
 interface OgRoute {
   path: string;

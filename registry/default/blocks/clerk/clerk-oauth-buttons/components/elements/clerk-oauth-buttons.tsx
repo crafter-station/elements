@@ -158,7 +158,7 @@ export function ClerkOauthButtons({
   redirectUrl = "/",
   afterSSOUrl = "/sso-callback",
 }: ClerkOauthButtonsProps) {
-  const { signIn, fetchStatus } = useSignIn();
+  const { signIn } = useSignIn();
   const clerk = useClerk();
   const [loadingProvider, setLoadingProvider] = useState<Provider | null>(null);
   const sizeConfig = sizeClasses[size];

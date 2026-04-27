@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+
 import {
-  UploadThingImageGrid,
   type ImageItem,
+  UploadThingImageGrid,
 } from "@/registry/default/blocks/uploadthing/uploadthing-image-grid/components/elements/uploadthing-image-grid";
 
 const DEMO_IMAGES: ImageItem[] = [

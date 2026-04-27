@@ -10,14 +10,15 @@ const IMPORT_REGEX =
 
 export function extractCodeBlocks(content: string): ParsedCodeBlock[] {
   const blocks: ParsedCodeBlock[] = [];
-  let match;
+  let match: RegExpExecArray | null = CODE_BLOCK_REGEX.exec(content);
 
-  while ((match = CODE_BLOCK_REGEX.exec(content)) !== null) {
+  while (match !== null) {
     const language = match[1] || "tsx";
     const code = match[2].trim();
     const imports = extractImports(code);
 
     blocks.push({ language, code, imports });
+    match = CODE_BLOCK_REGEX.exec(content);
   }
 
   return blocks;
@@ -25,11 +26,13 @@ export function extractCodeBlocks(content: string): ParsedCodeBlock[] {
 
 export function extractImports(code: string): string[] {
   const imports: string[] = [];
-  let match;
+  let match: RegExpExecArray | null;
 
   const importRegex = new RegExp(IMPORT_REGEX.source, "g");
-  while ((match = importRegex.exec(code)) !== null) {
+  match = importRegex.exec(code);
+  while (match !== null) {
     imports.push(match[1]);
+    match = importRegex.exec(code);
   }
 
   return imports;

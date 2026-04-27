@@ -22,7 +22,16 @@ interface UpstashLeaderboardProps {
 
 function TrophyIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <title>Trophy</title>
       <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
       <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
       <path d="M4 22h16" />
@@ -35,7 +44,16 @@ function TrophyIcon({ className }: { className?: string }) {
 
 function CrownIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <title>Crown</title>
       <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" />
       <path d="M5 21h14" />
     </svg>
@@ -74,7 +92,7 @@ export function UpstashLeaderboard({
       data-slot="upstash-leaderboard"
       className={cn(
         "rounded-lg border border-border bg-card overflow-hidden",
-        className
+        className,
       )}
     >
       <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-muted/30">
@@ -96,7 +114,7 @@ export function UpstashLeaderboard({
               className={cn(
                 "flex items-center gap-3 px-4 py-3 transition-colors",
                 entry.highlight && "bg-primary/5",
-                !entry.highlight && "hover:bg-muted/30"
+                !entry.highlight && "hover:bg-muted/30",
               )}
             >
               {showRank && (
@@ -104,14 +122,10 @@ export function UpstashLeaderboard({
                   className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold",
                     isTopThree ? RANK_BG[rank] : "bg-muted",
-                    isTopThree ? RANK_COLORS[rank] : "text-muted-foreground"
+                    isTopThree ? RANK_COLORS[rank] : "text-muted-foreground",
                   )}
                 >
-                  {rank === 1 ? (
-                    <CrownIcon className="w-4 h-4" />
-                  ) : (
-                    rank
-                  )}
+                  {rank === 1 ? <CrownIcon className="w-4 h-4" /> : rank}
                 </div>
               )}
 
@@ -127,17 +141,21 @@ export function UpstashLeaderboard({
                 </div>
               )}
 
-              <span className={cn(
-                "flex-1 font-medium truncate",
-                entry.highlight && "text-primary"
-              )}>
+              <span
+                className={cn(
+                  "flex-1 font-medium truncate",
+                  entry.highlight && "text-primary",
+                )}
+              >
                 {entry.name}
               </span>
 
-              <span className={cn(
-                "font-mono text-sm tabular-nums",
-                isTopThree ? RANK_COLORS[rank] : "text-muted-foreground"
-              )}>
+              <span
+                className={cn(
+                  "font-mono text-sm tabular-nums",
+                  isTopThree ? RANK_COLORS[rank] : "text-muted-foreground",
+                )}
+              >
                 {scoreFormat(entry.score)}
               </span>
             </div>

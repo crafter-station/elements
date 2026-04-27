@@ -146,7 +146,6 @@ export function WebhookTester({
     <div
       data-slot="webhook-tester"
       aria-busy={loading}
-      aria-label="Webhook tester"
       className={cn(
         "border border-border rounded-lg overflow-hidden",
         className,
@@ -197,7 +196,7 @@ export function WebhookTester({
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Headers</label>
+            <span className="text-sm font-medium">Headers</span>
             <button
               type="button"
               onClick={handleAddHeader}
@@ -210,7 +209,10 @@ export function WebhookTester({
           </div>
           <div className="space-y-1">
             {headers.map((header, index) => (
-              <div key={index} className="flex gap-2">
+              <div
+                key={`${header.key || "header"}-${index}`}
+                className="flex gap-2"
+              >
                 <input
                   type="text"
                   value={header.key}
@@ -246,7 +248,7 @@ export function WebhookTester({
 
         {method !== "GET" && (
           <div className="space-y-2">
-            <label className="text-sm font-medium">Body</label>
+            <span className="text-sm font-medium">Body</span>
             <textarea
               value={body}
               onChange={(e) => setBody(e.target.value)}

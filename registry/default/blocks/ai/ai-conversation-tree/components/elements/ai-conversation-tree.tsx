@@ -64,7 +64,9 @@ function findActivePath(
     const newPath = [...currentPath, node.id];
 
     if (node.id === targetId) {
-      newPath.forEach((id) => path.add(id));
+      newPath.forEach((id) => {
+        path.add(id);
+      });
       return true;
     }
 
@@ -79,7 +81,9 @@ function findActivePath(
     return false;
   };
 
-  nodes.forEach((node) => traverse(node, []));
+  nodes.forEach((node) => {
+    traverse(node, []);
+  });
   return path;
 }
 
@@ -280,6 +284,16 @@ function AiConversationTreeNode({
     onNodeSelect?.(node.id);
   }, [node.id, onNodeSelect]);
 
+  const handleKeyDown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        onNodeSelect?.(node.id);
+      }
+    },
+    [node.id, onNodeSelect],
+  );
+
   const handleToggle = React.useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
@@ -297,7 +311,7 @@ function AiConversationTreeNode({
     >
       <div
         className={cn(
-          "group flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors cursor-pointer",
+          "group flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors",
           isActive
             ? "bg-accent text-accent-foreground"
             : isInActivePath
@@ -306,7 +320,6 @@ function AiConversationTreeNode({
           depth > 0 && "ml-4",
         )}
         style={{ marginLeft: depth > 0 ? `${depth * 16}px` : undefined }}
-        onClick={handleClick}
       >
         {hasChildren ? (
           <button
@@ -324,20 +337,28 @@ function AiConversationTreeNode({
         ) : (
           <div className="size-5 shrink-0" />
         )}
-        <div
-          className={cn(
-            "flex size-6 shrink-0 items-center justify-center rounded",
-            nodeConfig.className,
-          )}
+        <button
+          type="button"
+          onClick={handleClick}
+          onKeyDown={onNodeSelect ? handleKeyDown : undefined}
+          disabled={!onNodeSelect}
+          className="flex flex-1 items-center gap-2 text-left"
         >
-          {nodeConfig.icon}
-        </div>
-        <span className="flex-1 truncate text-xs">{node.content}</span>
-        {hasChildren && (
-          <span className="text-xs text-muted-foreground shrink-0">
-            {node.children?.length}
-          </span>
-        )}
+          <div
+            className={cn(
+              "flex size-6 shrink-0 items-center justify-center rounded",
+              nodeConfig.className,
+            )}
+          >
+            {nodeConfig.icon}
+          </div>
+          <span className="flex-1 truncate text-xs">{node.content}</span>
+          {hasChildren && (
+            <span className="shrink-0 text-xs text-muted-foreground">
+              {node.children?.length}
+            </span>
+          )}
+        </button>
       </div>
       {hasChildren && isExpanded && (
         <div className="relative">

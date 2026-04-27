@@ -306,9 +306,9 @@ function AiPromptDiffContent({ className }: AiPromptDiffContentProps) {
     >
       <table className="w-full text-xs font-mono">
         <tbody>
-          {diffLines.map((line, idx) => (
+          {diffLines.map((line) => (
             <tr
-              key={idx}
+              key={`${line.lineNumber.before ?? "before"}-${line.lineNumber.after ?? "after"}-${line.content}`}
               className={cn(
                 line.type === "added" && "bg-green-50 dark:bg-green-950/30",
                 line.type === "removed" && "bg-red-50 dark:bg-red-950/30",
@@ -379,7 +379,7 @@ function AiPromptDiffSideBySide({
               const isRemoved = line !== afterLine && line !== undefined;
               return (
                 <tr
-                  key={idx}
+                  key={`${line ?? "empty"}-${idx + 1}-before`}
                   className={cn(isRemoved && "bg-red-50 dark:bg-red-950/30")}
                 >
                   <td className="w-10 select-none px-2 py-0.5 text-right text-muted-foreground border-r border-border">
@@ -412,7 +412,7 @@ function AiPromptDiffSideBySide({
               const isAdded = line !== beforeLine && line !== undefined;
               return (
                 <tr
-                  key={idx}
+                  key={`${line ?? "empty"}-${idx + 1}-after`}
                   className={cn(isAdded && "bg-green-50 dark:bg-green-950/30")}
                 >
                   <td className="w-10 select-none px-2 py-0.5 text-right text-muted-foreground border-r border-border">

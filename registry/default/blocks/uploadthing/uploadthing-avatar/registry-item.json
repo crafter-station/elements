@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Circular avatar uploader with camera icon overlay. Supports size variants (sm, md, lg, xl), fallback initials, and custom upload handlers.",
-  "categories": [
-    "uploadthing"
-  ]
+  "categories": ["uploadthing"]
 }

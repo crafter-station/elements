@@ -98,8 +98,6 @@ function SchemaNode({
   return (
     <div
       className={cn("text-sm", depth > 0 && "ml-4 border-l border-border pl-3")}
-      role="treeitem"
-      aria-expanded={hasChildren ? isExpanded : undefined}
     >
       <div className="flex items-start gap-2 py-1">
         {hasChildren && (
@@ -181,7 +179,7 @@ function SchemaNode({
       </div>
 
       {isExpanded && hasChildren && (
-        <div className="mt-1" role="group">
+        <div className="mt-1">
           {schema.properties &&
             Object.entries(schema.properties).map(([key, propSchema]) => (
               <SchemaNode
@@ -208,9 +206,9 @@ function SchemaNode({
               <span className="text-xs text-muted-foreground font-medium">
                 oneOf:
               </span>
-              {schema.oneOf.map((s, i) => (
+              {schema.oneOf.map((s) => (
                 <SchemaNode
-                  key={i}
+                  key={JSON.stringify(s)}
                   schema={s}
                   depth={depth + 1}
                   showExamples={showExamples}
@@ -224,9 +222,9 @@ function SchemaNode({
               <span className="text-xs text-muted-foreground font-medium">
                 anyOf:
               </span>
-              {schema.anyOf.map((s, i) => (
+              {schema.anyOf.map((s) => (
                 <SchemaNode
-                  key={i}
+                  key={JSON.stringify(s)}
                   schema={s}
                   depth={depth + 1}
                   showExamples={showExamples}
@@ -240,9 +238,9 @@ function SchemaNode({
               <span className="text-xs text-muted-foreground font-medium">
                 allOf:
               </span>
-              {schema.allOf.map((s, i) => (
+              {schema.allOf.map((s) => (
                 <SchemaNode
-                  key={i}
+                  key={JSON.stringify(s)}
                   schema={s}
                   depth={depth + 1}
                   showExamples={showExamples}
@@ -262,9 +260,8 @@ export function SchemaViewer({
   className,
 }: SchemaViewerProps) {
   return (
-    <div
+    <fieldset
       data-slot="schema-viewer"
-      role="tree"
       aria-label="JSON Schema"
       className={cn(
         "border border-border rounded-lg p-3 overflow-auto",
@@ -282,7 +279,7 @@ export function SchemaViewer({
         </div>
       )}
       <SchemaNode schema={schema} depth={0} showExamples={showExamples} />
-    </div>
+    </fieldset>
   );
 }
 

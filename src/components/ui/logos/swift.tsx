@@ -6,8 +6,8 @@ interface LogoProps {
 
 export function SwiftLogo({
   className,
-  variant = "icon",
-  mode = "dark",
+  variant: _variant = "icon",
+  mode: _mode = "dark",
 }: LogoProps) {
   return (
     <svg

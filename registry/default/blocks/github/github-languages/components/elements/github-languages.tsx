@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface LanguageData {
@@ -69,7 +70,7 @@ export function GitHubLanguages({
         setError(null);
 
         const response = await fetch(
-          `https://api.github.com/repos/${owner}/${repo}/languages`
+          `https://api.github.com/repos/${owner}/${repo}/languages`,
         );
 
         if (!response.ok) {
@@ -108,10 +109,7 @@ export function GitHubLanguages({
         <div className="h-2 w-full bg-muted rounded-full animate-pulse" />
         <div className="flex flex-wrap gap-x-4 gap-y-1">
           {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="h-4 w-20 bg-muted rounded animate-pulse"
-            />
+            <div key={i} className="h-4 w-20 bg-muted rounded animate-pulse" />
           ))}
         </div>
       </div>

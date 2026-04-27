@@ -27,7 +27,7 @@ function AiMessages({
     (behavior: ScrollBehavior = "smooth") => {
       endRef.current?.scrollIntoView({ behavior, block: "end" });
     },
-    []
+    [],
   );
 
   React.useEffect(() => {
@@ -71,7 +71,7 @@ function AiMessages({
           "absolute bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full shadow-lg transition-all",
           isAtBottom
             ? "pointer-events-none scale-0 opacity-0"
-            : "pointer-events-auto scale-100 opacity-100"
+            : "pointer-events-auto scale-100 opacity-100",
         )}
       >
         <ArrowDown className="size-4" />

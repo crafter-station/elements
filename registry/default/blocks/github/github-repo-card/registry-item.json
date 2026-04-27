@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Fetches repository data from GitHub API. Pass owner and repo props to display any public repository. Supports static data for SSR/demos.",
-  "categories": [
-    "github"
-  ]
+  "categories": ["github"]
 }

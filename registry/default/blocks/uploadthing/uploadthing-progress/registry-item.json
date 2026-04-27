@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Three variants: bar (horizontal), ring (circular), minimal (compact). Three sizes: sm, md, lg. Use with useUploadThing's onUploadProgress.",
-  "categories": [
-    "uploadthing"
-  ]
+  "categories": ["uploadthing"]
 }

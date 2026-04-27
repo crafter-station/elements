@@ -72,17 +72,26 @@ export function ComponentCard({
           </div>
           <Badge
             variant={
-              isBuilding || isBeta ? "outline" : isEnabled ? "default" : "secondary"
+              isBuilding || isBeta
+                ? "outline"
+                : isEnabled
+                  ? "default"
+                  : "secondary"
             }
             className={cn(
               "text-xs",
               isBuilding &&
                 "border-[#6C47FF]/50 text-[#6C47FF] bg-[#6C47FF]/10",
-              isBeta &&
-                "border-blue-500/50 text-blue-500 bg-blue-500/10",
+              isBeta && "border-blue-500/50 text-blue-500 bg-blue-500/10",
             )}
           >
-            {isBuilding ? "Building" : isBeta ? "Beta" : isEnabled ? "Available" : "Coming Soon"}
+            {isBuilding
+              ? "Building"
+              : isBeta
+                ? "Beta"
+                : isEnabled
+                  ? "Available"
+                  : "Coming Soon"}
           </Badge>
         </div>
 

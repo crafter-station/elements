@@ -31,11 +31,14 @@ export const Message = ({
           message.role === "user" ? "items-end" : "items-start",
         )}
       >
-        {message.parts?.map((part, index) => {
+        {message.parts?.map((part) => {
           // Handle text parts
           if (part.type === "text") {
             return (
-              <Streamdown className="not-prose" key={index}>
+              <Streamdown
+                className="not-prose"
+                key={`${part.type}-${part.text.slice(0, 32)}`}
+              >
                 {part.text}
               </Streamdown>
             );
@@ -52,7 +55,7 @@ export const Message = ({
 
                 return (
                   <div
-                    key={index}
+                    key={`${part.type}-${part.state}-${input?.title || "streaming-theme"}`}
                     className="rounded-lg border border-border bg-card p-3 w-full shadow-sm"
                   >
                     {/* Theme Header - Compact */}
@@ -155,7 +158,7 @@ export const Message = ({
 
                 return (
                   <div
-                    key={index}
+                    key={`${part.type}-${part.state}-${result.title}`}
                     className="rounded-lg border-2 border-primary/20 bg-card p-3 w-full shadow-md"
                   >
                     {/* Theme Header - Compact */}
@@ -246,7 +249,7 @@ export const Message = ({
               case "output-error":
                 return (
                   <div
-                    key={index}
+                    key={`${part.type}-${part.state}-${part.errorText}`}
                     className="rounded-lg border border-destructive bg-destructive/10 px-3 py-2 text-xs"
                   >
                     <div className="flex items-center gap-2">

@@ -13,7 +13,5 @@
     }
   ],
   "docs": "Displays file name, size, type with appropriate icons. Image files show thumbnail preview. Includes copy URL, download, and remove actions.",
-  "categories": [
-    "uploadthing"
-  ]
+  "categories": ["uploadthing"]
 }

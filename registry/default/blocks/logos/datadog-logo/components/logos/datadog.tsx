@@ -11,7 +11,7 @@ const COLORS = {
 
 export function DatadogLogo({
   className,
-  variant = "icon",
+  variant: _variant = "icon",
   mode = "dark",
 }: LogoProps) {
   const color = COLORS[mode];

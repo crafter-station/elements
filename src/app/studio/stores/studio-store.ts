@@ -27,7 +27,7 @@ interface StudioState {
 
 const createId = () => Math.random().toString(36).slice(2, 9);
 
-export const useStudioStore = create<StudioState>((set, get) => ({
+export const useStudioStore = create<StudioState>((set, _get) => ({
   elements: [],
   pendingElements: [],
   selectedId: null,

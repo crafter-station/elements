@@ -130,8 +130,8 @@ function AiSourcesContent({ children, className }: AiSourcesContentProps) {
       <div className="p-4">
         {children || (
           <div className="grid gap-2 sm:grid-cols-2">
-            {sources.map((source, index) => (
-              <AiSource key={index} source={source} />
+            {sources.map((source) => (
+              <AiSource key={source.url} source={source} />
             ))}
           </div>
         )}

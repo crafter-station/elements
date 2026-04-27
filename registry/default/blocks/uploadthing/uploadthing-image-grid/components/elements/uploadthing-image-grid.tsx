@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 interface ImageItem {
@@ -31,6 +32,7 @@ function PlusIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Plus</title>
       <path d="M12 5v14M5 12h14" />
     </svg>
   );
@@ -47,6 +49,7 @@ function XIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>X</title>
       <path d="M18 6 6 18M6 6l12 12" />
     </svg>
   );
@@ -59,6 +62,7 @@ function LoadingSpinner({ className }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
     >
+      <title>Loading</title>
       <circle
         className="opacity-25"
         cx="12"
@@ -105,7 +109,10 @@ export function UploadThingImageGrid({
       if (files.length === 0) return;
 
       const imageFiles = files.filter((f) => f.type.startsWith("image/"));
-      const allowedCount = Math.min(imageFiles.length, maxImages - value.length);
+      const allowedCount = Math.min(
+        imageFiles.length,
+        maxImages - value.length,
+      );
       const filesToUpload = imageFiles.slice(0, allowedCount);
 
       const previews = filesToUpload.map((f) => URL.createObjectURL(f));
@@ -121,13 +128,15 @@ export function UploadThingImageGrid({
         } finally {
           setIsUploading(false);
           setUploadingPreviews([]);
-          previews.forEach((p) => URL.revokeObjectURL(p));
+          previews.forEach((p) => {
+            URL.revokeObjectURL(p);
+          });
         }
       }
 
       e.target.value = "";
     },
-    [value, onChange, onUpload, maxImages]
+    [value, onChange, onUpload, maxImages],
   );
 
   const handleRemove = useCallback(
@@ -135,14 +144,11 @@ export function UploadThingImageGrid({
       onRemove?.(id);
       onChange?.(value.filter((img) => img.id !== id));
     },
-    [value, onChange, onRemove]
+    [value, onChange, onRemove],
   );
 
   return (
-    <div
-      data-slot="uploadthing-image-grid"
-      className={cn("w-full", className)}
-    >
+    <div data-slot="uploadthing-image-grid" className={cn("w-full", className)}>
       <div className={cn("grid gap-3", GRID_COLS[columns])}>
         {value.map((image) => (
           <div
@@ -161,7 +167,7 @@ export function UploadThingImageGrid({
                 className={cn(
                   "absolute top-2 right-2 p-1.5 rounded-full",
                   "bg-black/50 text-white hover:bg-black/70",
-                  "opacity-0 group-hover:opacity-100 transition-opacity"
+                  "opacity-0 group-hover:opacity-100 transition-opacity",
                 )}
                 aria-label={`Remove ${image.name || "image"}`}
               >
@@ -171,9 +177,9 @@ export function UploadThingImageGrid({
           </div>
         ))}
 
-        {uploadingPreviews.map((preview, index) => (
+        {uploadingPreviews.map((preview) => (
           <div
-            key={`uploading-${index}`}
+            key={preview}
             className="relative aspect-square rounded-lg overflow-hidden bg-muted border border-border"
           >
             <img
@@ -192,7 +198,7 @@ export function UploadThingImageGrid({
             className={cn(
               "relative aspect-square rounded-lg border-2 border-dashed border-border",
               "flex flex-col items-center justify-center gap-2 cursor-pointer",
-              "hover:border-primary/50 hover:bg-accent/50 transition-colors"
+              "hover:border-primary/50 hover:bg-accent/50 transition-colors",
             )}
           >
             <PlusIcon className="w-8 h-8 text-muted-foreground" />

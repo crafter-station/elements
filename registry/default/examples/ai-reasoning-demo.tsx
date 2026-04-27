@@ -16,6 +16,7 @@ export default function AiReasoningDemo() {
     <div className="w-full max-w-xl space-y-4 p-4">
       <div className="flex gap-2 mb-4">
         <button
+          type="button"
           onClick={() => setIsStreaming(!isStreaming)}
           className="px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-md"
         >

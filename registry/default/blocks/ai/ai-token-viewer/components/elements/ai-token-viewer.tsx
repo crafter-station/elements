@@ -294,7 +294,10 @@ function AiTokenViewerBreakdown({ className }: AiTokenViewerBreakdownProps) {
       </span>
       <div className="flex flex-wrap gap-0.5 font-mono text-xs">
         {tokens.map((token, index) => (
-          <AiTokenViewerToken key={index} token={token} index={index} />
+          <AiTokenViewerToken
+            key={`${token.id ?? token.text}-${index}`}
+            token={token}
+          />
         ))}
       </div>
     </div>
@@ -303,17 +306,10 @@ function AiTokenViewerBreakdown({ className }: AiTokenViewerBreakdownProps) {
 
 interface AiTokenViewerTokenProps {
   token: Token;
-  index: number;
   className?: string;
 }
 
-function AiTokenViewerToken({
-  token,
-  index,
-  className,
-}: AiTokenViewerTokenProps) {
-  const [isHovered, setIsHovered] = React.useState(false);
-
+function AiTokenViewerToken({ token, className }: AiTokenViewerTokenProps) {
   const typeConfig = React.useMemo(() => {
     const type = token.type ?? "text";
     const configs: Record<TokenType, { bg: string; border: string }> = {
@@ -345,18 +341,16 @@ function AiTokenViewerToken({
       data-slot="ai-token-viewer-token"
       data-type={token.type ?? "text"}
       className={cn(
-        "relative inline-flex items-center px-1 py-0.5 rounded border transition-colors cursor-default",
+        "group relative inline-flex items-center px-1 py-0.5 rounded border transition-colors cursor-default",
         typeConfig.bg,
         typeConfig.border,
-        isHovered && "ring-2 ring-primary ring-offset-1",
+        "hover:ring-2 hover:ring-primary hover:ring-offset-1",
         className,
       )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <span className="whitespace-pre">{displayText}</span>
-      {isHovered && (token.id !== undefined || token.type) && (
-        <span className="absolute -top-6 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-foreground text-background text-[10px] whitespace-nowrap z-10">
+      {(token.id !== undefined || token.type) && (
+        <span className="absolute -top-6 left-1/2 z-10 hidden -translate-x-1/2 whitespace-nowrap rounded bg-foreground px-1.5 py-0.5 text-[10px] text-background group-hover:inline-flex">
           {token.id !== undefined && `#${token.id}`}
           {token.id !== undefined && token.type && " - "}
           {token.type}

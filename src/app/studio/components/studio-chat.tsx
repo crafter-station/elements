@@ -53,7 +53,7 @@ export function StudioChat({ className }: StudioChatProps) {
     [model],
   );
 
-  const { messages, sendMessage, status, stop, setMessages } = useChat({
+  const { messages, sendMessage, status, setMessages } = useChat({
     transport,
     onFinish: ({ message }) => {
       const content = getMessageContent(message);
@@ -79,7 +79,7 @@ export function StudioChat({ className }: StudioChatProps) {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, scrollToBottom]);
+  }, [scrollToBottom]);
 
   const adjustTextareaHeight = useCallback(() => {
     const textarea = textareaRef.current;
@@ -90,7 +90,7 @@ export function StudioChat({ className }: StudioChatProps) {
 
   useEffect(() => {
     adjustTextareaHeight();
-  }, [input, adjustTextareaHeight]);
+  }, [adjustTextareaHeight]);
 
   const handleApplyCode = useCallback(
     (block: ParsedCodeBlock) => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 
 function cn(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ");
@@ -20,6 +20,7 @@ function CheckIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Check</title>
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -39,6 +40,7 @@ function SparklesIcon({ className }: { className?: string }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Sparkles</title>
       <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
       <path d="M5 3v4" />
       <path d="M19 17v4" />
@@ -84,8 +86,6 @@ export function PolarPricingCard({
   disabled = false,
   className,
 }: PolarPricingCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
   const handleClick = useCallback(() => {
     if (disabled) return;
     if (onCheckout) {
@@ -119,13 +119,11 @@ export function PolarPricingCard({
       data-slot="polar-pricing-card"
       className={cn(
         "relative flex flex-col rounded-2xl border bg-card p-6 shadow-sm transition-all duration-300",
-        highlighted && "border-primary bg-primary/5 shadow-lg shadow-primary/10",
-        !highlighted && "border-border hover:border-primary/50",
-        isHovered && !highlighted && "shadow-md",
-        className
+        highlighted &&
+          "border-primary bg-primary/5 shadow-lg shadow-primary/10",
+        !highlighted && "border-border hover:border-primary/50 hover:shadow-md",
+        className,
       )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {popular && (
         <div
@@ -140,10 +138,7 @@ export function PolarPricingCard({
       )}
 
       <div data-slot="header" className="mb-6">
-        <h3
-          data-slot="name"
-          className="text-lg font-semibold text-foreground"
-        >
+        <h3 data-slot="name" className="text-lg font-semibold text-foreground">
           {name}
         </h3>
         {description && (
@@ -164,24 +159,26 @@ export function PolarPricingCard({
       </div>
 
       <ul data-slot="features" className="mb-8 flex-1 space-y-3">
-        {features.map((feature, index) => {
+        {features.map((feature) => {
           const isString = typeof feature === "string";
           const text = isString ? feature : feature.text;
           const included = isString ? true : feature.included !== false;
 
           return (
             <li
-              key={index}
+              key={text}
               data-slot="feature"
               className={cn(
                 "flex items-start gap-2 text-sm",
-                included ? "text-foreground" : "text-muted-foreground line-through"
+                included
+                  ? "text-foreground"
+                  : "text-muted-foreground line-through",
               )}
             >
               <CheckIcon
                 className={cn(
                   "mt-0.5 h-4 w-4 shrink-0",
-                  included ? "text-primary" : "text-muted-foreground/50"
+                  included ? "text-primary" : "text-muted-foreground/50",
                 )}
               />
               {text}
@@ -200,7 +197,7 @@ export function PolarPricingCard({
           highlighted
             ? "bg-primary text-primary-foreground hover:bg-primary/90"
             : "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-          disabled && "cursor-not-allowed opacity-50"
+          disabled && "cursor-not-allowed opacity-50",
         )}
       >
         {ctaText}

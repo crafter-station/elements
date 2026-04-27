@@ -143,7 +143,7 @@ function UnifiedDiff({
     <div className="font-mono text-sm overflow-auto">
       {diff.map((line, idx) => (
         <div
-          key={idx}
+          key={`${line.oldLineNum ?? "old"}-${line.newLineNum ?? "new"}-${line.content}-${idx}`}
           className={cn(
             "flex",
             line.type === "added" && "bg-green-100 dark:bg-green-950/50",
@@ -171,6 +171,7 @@ function UnifiedDiff({
           </span>
           <span
             className="flex-1 px-2"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: Shiki-generated HTML for the current diff line is trusted syntax-highlighting output
             dangerouslySetInnerHTML={{
               __html: highlightedLines.get(idx) ?? line.content ?? "",
             }}
@@ -235,14 +236,14 @@ function SplitDiff({
       setHighlightedLines(results);
     }
     highlightAll();
-  }, [diff, language]);
+  }, [language]);
 
   return (
     <div className="font-mono text-sm overflow-auto flex">
       <div className="flex-1 border-r border-border">
         {leftLines.map((line, idx) => (
           <div
-            key={idx}
+            key={`${line.oldLineNum ?? "old"}-${line.content}-${idx}`}
             className={cn(
               "flex",
               line.type === "removed" && "bg-red-100 dark:bg-red-950/50",
@@ -263,6 +264,7 @@ function SplitDiff({
             </span>
             <span
               className="flex-1 px-2"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: Shiki-generated HTML for the current diff line is trusted syntax-highlighting output
               dangerouslySetInnerHTML={{
                 __html: highlightedLines.get(idx) ?? line.content ?? "",
               }}
@@ -273,7 +275,7 @@ function SplitDiff({
       <div className="flex-1">
         {rightLines.map((line, idx) => (
           <div
-            key={idx}
+            key={`${line.newLineNum ?? "new"}-${line.content}-${idx}`}
             className={cn(
               "flex",
               line.type === "added" && "bg-green-100 dark:bg-green-950/50",
@@ -294,6 +296,7 @@ function SplitDiff({
             </span>
             <span
               className="flex-1 px-2"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: Shiki-generated HTML for the current diff line is trusted syntax-highlighting output
               dangerouslySetInnerHTML={{
                 __html:
                   highlightedLines.get(leftLines.length + idx) ??
@@ -322,9 +325,8 @@ export function CodeDiffViewer({
   );
 
   return (
-    <div
+    <section
       data-slot="code-diff-viewer"
-      role="region"
       aria-label="Code diff"
       className={cn(
         "border border-border rounded-lg overflow-hidden",
@@ -344,7 +346,7 @@ export function CodeDiffViewer({
           showLineNumbers={showLineNumbers}
         />
       )}
-    </div>
+    </section>
   );
 }
 

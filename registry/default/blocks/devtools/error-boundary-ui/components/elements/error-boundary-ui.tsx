@@ -156,15 +156,11 @@ export function ErrorBoundaryUi({
             )}
           </button>
           {showStack && (
-            <div
-              id="stack-trace-content"
-              className="px-4 pb-4 overflow-auto"
-              aria-label="Error stack trace"
-            >
+            <div id="stack-trace-content" className="px-4 pb-4 overflow-auto">
               <div className="font-mono text-xs space-y-1">
-                {stackFrames.map((frame, idx) => (
+                {stackFrames.map((frame) => (
                   <div
-                    key={idx}
+                    key={`${frame.file}:${frame.line}:${frame.column}`}
                     className="flex gap-2 text-red-600 dark:text-red-400"
                   >
                     <span className="text-red-400 dark:text-red-600 shrink-0">
@@ -205,7 +201,6 @@ export function ErrorBoundaryUi({
             <div
               id="component-stack-content"
               className="px-4 pb-4 overflow-auto"
-              aria-label="Component stack trace"
             >
               <pre className="font-mono text-xs text-red-600 dark:text-red-400 whitespace-pre-wrap">
                 {componentStack}

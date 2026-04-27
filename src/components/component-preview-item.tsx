@@ -17,7 +17,6 @@ import { EyeClosedIcon } from "@/components/icons/eye-closed";
 import { InstallCommand } from "@/components/install-command";
 import { OpenInCursorButton } from "@/components/open-in-cursor-button";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 import registryData from "@/../public/r/registry.json";

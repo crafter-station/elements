@@ -29,7 +29,7 @@ interface ChatState {
 
 const createId = () => Math.random().toString(36).slice(2, 9);
 
-export const useChatStore = create<ChatState>((set, get) => ({
+export const useChatStore = create<ChatState>((set, _get) => ({
   messages: [],
   isGenerating: false,
   currentModel: "gpt-4o",

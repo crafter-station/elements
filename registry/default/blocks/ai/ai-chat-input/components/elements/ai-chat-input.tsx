@@ -41,7 +41,10 @@ export function AiChatInput({
     const lineHeight = 24;
     const minHeight = 72;
     const maxHeight = lineHeight * maxRows;
-    const newHeight = Math.max(minHeight, Math.min(textarea.scrollHeight, maxHeight));
+    const newHeight = Math.max(
+      minHeight,
+      Math.min(textarea.scrollHeight, maxHeight),
+    );
     textarea.style.height = `${newHeight}px`;
   }, [maxRows]);
 
@@ -68,7 +71,7 @@ export function AiChatInput({
         handleSubmit();
       }
     },
-    [handleSubmit]
+    [handleSubmit],
   );
 
   const handleFileChange = React.useCallback(
@@ -79,7 +82,7 @@ export function AiChatInput({
         fileInputRef.current.value = "";
       }
     },
-    []
+    [],
   );
 
   const removeAttachment = React.useCallback((index: number) => {
@@ -150,7 +153,7 @@ export function AiChatInput({
           aria-label="Chat message input"
           className={cn(
             "flex-1 resize-none bg-transparent text-sm outline-none placeholder:text-muted-foreground/50 disabled:cursor-not-allowed disabled:opacity-50",
-            "min-h-[72px] px-3 py-2.5"
+            "min-h-[72px] px-3 py-2.5",
           )}
         />
 

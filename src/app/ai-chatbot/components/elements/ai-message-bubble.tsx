@@ -62,9 +62,8 @@ export function AiMessageBubble({
   );
 
   return (
-    <div
+    <article
       data-slot="ai-message-bubble"
-      role="article"
       aria-label={isUser ? "Your message" : "AI response"}
       className={cn(
         "group flex gap-3",
@@ -117,7 +116,7 @@ export function AiMessageBubble({
           </Button>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 

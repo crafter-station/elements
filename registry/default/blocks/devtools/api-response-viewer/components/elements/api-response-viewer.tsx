@@ -59,13 +59,12 @@ function StatusBadge({
   };
 
   return (
-    <span
-      role="status"
+    <output
       aria-label={`HTTP status ${status}${statusText ? ` ${statusText}` : ""}`}
       className={cn("px-2 py-0.5 rounded text-sm font-mono", colors[type])}
     >
       {status} {statusText}
-    </span>
+    </output>
   );
 }
 
@@ -93,6 +92,7 @@ function JsonDisplay({ data }: { data: unknown }) {
     }
     if (Array.isArray(value)) {
       const isCollapsed = collapsed.has(path);
+      let itemOffset = 0;
       return (
         <span>
           <button
@@ -114,14 +114,18 @@ function JsonDisplay({ data }: { data: unknown }) {
             </span>
           ) : (
             <div className="ml-4">
-              {value.map((item, idx) => (
-                <div key={idx}>
-                  {renderValue(item, `${path}[${idx}]`, depth + 1)}
-                  {idx < value.length - 1 && (
-                    <span className="text-muted-foreground">,</span>
-                  )}
-                </div>
-              ))}
+              {value.map((item, idx) => {
+                const currentOffset = itemOffset;
+                itemOffset += 1;
+                return (
+                  <div key={`${path}-${currentOffset}-${JSON.stringify(item)}`}>
+                    {renderValue(item, `${path}[${currentOffset}]`, depth + 1)}
+                    {idx < value.length - 1 && (
+                      <span className="text-muted-foreground">,</span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
           <span className="text-muted-foreground">]</span>

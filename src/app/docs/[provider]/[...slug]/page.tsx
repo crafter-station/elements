@@ -18,7 +18,6 @@ import remarkGfm from "remark-gfm";
 
 import {
   AI_ELEMENTS_SUBCATEGORIES,
-  type AIElementsSubcategory,
   getAdjacentComponents,
   getComponentsByProvider,
   getComponentsBySubcategory,
@@ -26,7 +25,6 @@ import {
   getProviders,
   getSubcategoryMetadata,
   HOOKS_SUBCATEGORIES,
-  type HooksSubcategory,
 } from "@/lib/registry-loader";
 
 import { ComponentInstallDockWrapper } from "@/components/component-page/install-dock-wrapper";

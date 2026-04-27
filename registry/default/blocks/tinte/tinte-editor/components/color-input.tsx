@@ -122,7 +122,7 @@ const fromHex = (
 export function ColorInput({
   value,
   onChange,
-  label,
+  label: _label,
   disabled = false,
 }: ColorInputProps) {
   const [isOpen, setIsOpen] = useState(false);

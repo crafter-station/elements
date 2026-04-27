@@ -76,7 +76,7 @@ export function EnvEditor({
     }
   }, [value, defaultMasked]);
 
-  const updateVariables = React.useCallback(
+  const _updateVariables = React.useCallback(
     (newVars: EnvVariable[]) => {
       setVariables(newVars);
       onChange?.(newVars);
@@ -209,9 +209,8 @@ export function EnvEditor({
       <div className="divide-y divide-border">
         {variables.map((variable, index) => (
           <div
-            key={index}
+            key={`${variable.key || "variable"}-${index}`}
             className="flex items-center gap-2 px-3 py-2"
-            role="row"
           >
             <input
               type="text"

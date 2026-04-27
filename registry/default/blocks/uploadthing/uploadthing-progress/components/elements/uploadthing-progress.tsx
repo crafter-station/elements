@@ -41,10 +41,14 @@ function ProgressBar({
     <div className="w-full space-y-1">
       {showLabel && (
         <div className="flex justify-between items-center">
-          <span className={cn("text-muted-foreground", SIZE_CLASSES[size].text)}>
+          <span
+            className={cn("text-muted-foreground", SIZE_CLASSES[size].text)}
+          >
             Uploading...
           </span>
-          <span className={cn("font-medium tabular-nums", SIZE_CLASSES[size].text)}>
+          <span
+            className={cn("font-medium tabular-nums", SIZE_CLASSES[size].text)}
+          >
             {Math.round(progress)}%
           </span>
         </div>
@@ -52,7 +56,7 @@ function ProgressBar({
       <div
         className={cn(
           "w-full bg-muted rounded-full overflow-hidden",
-          SIZE_CLASSES[size].bar
+          SIZE_CLASSES[size].bar,
         )}
       >
         <div
@@ -86,6 +90,7 @@ function ProgressRing({
         className={cn("-rotate-90", SIZE_CLASSES[size].ring)}
         viewBox={`0 0 ${svgSize} ${svgSize}`}
       >
+        <title>Progress Ring</title>
         <circle
           cx={svgSize / 2}
           cy={svgSize / 2}
@@ -112,7 +117,7 @@ function ProgressRing({
         <span
           className={cn(
             "absolute font-medium tabular-nums",
-            SIZE_CLASSES[size].text
+            SIZE_CLASSES[size].text,
           )}
         >
           {Math.round(progress)}%
@@ -134,7 +139,7 @@ function ProgressMinimal({
       <div
         className={cn(
           "flex-1 bg-muted rounded-full overflow-hidden",
-          SIZE_CLASSES[size].bar
+          SIZE_CLASSES[size].bar,
         )}
       >
         <div
@@ -145,7 +150,7 @@ function ProgressMinimal({
       <span
         className={cn(
           "font-medium tabular-nums text-muted-foreground min-w-[3ch]",
-          SIZE_CLASSES[size].text
+          SIZE_CLASSES[size].text,
         )}
       >
         {Math.round(progress)}%
@@ -169,7 +174,7 @@ export function UploadThingProgress({
       className={cn(
         variant === "ring" && "inline-flex",
         variant !== "ring" && "w-full",
-        className
+        className,
       )}
       role="progressbar"
       aria-valuenow={clampedProgress}
@@ -177,10 +182,18 @@ export function UploadThingProgress({
       aria-valuemax={100}
     >
       {variant === "bar" && (
-        <ProgressBar progress={clampedProgress} size={size} showLabel={showLabel} />
+        <ProgressBar
+          progress={clampedProgress}
+          size={size}
+          showLabel={showLabel}
+        />
       )}
       {variant === "ring" && (
-        <ProgressRing progress={clampedProgress} size={size} showLabel={showLabel} />
+        <ProgressRing
+          progress={clampedProgress}
+          size={size}
+          showLabel={showLabel}
+        />
       )}
       {variant === "minimal" && (
         <ProgressMinimal progress={clampedProgress} size={size} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { UpstashCounter } from "@/registry/default/blocks/upstash/upstash-counter/components/elements/upstash-counter";
 
 export default function UpstashCounterDemo() {
@@ -16,8 +17,18 @@ export default function UpstashCounterDemo() {
         onDecrement={() => setCount((c) => Math.max(0, c - 1))}
       />
       <div className="flex gap-8">
-        <UpstashCounter value={15847} label="Users" format="compact" size="sm" />
-        <UpstashCounter value={2456789} label="Requests" format="compact" size="sm" />
+        <UpstashCounter
+          value={15847}
+          label="Users"
+          format="compact"
+          size="sm"
+        />
+        <UpstashCounter
+          value={2456789}
+          label="Requests"
+          format="compact"
+          size="sm"
+        />
       </div>
     </div>
   );

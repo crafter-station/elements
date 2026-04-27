@@ -11,7 +11,7 @@ const COLORS = {
 
 export function ComposioLogo({
   className,
-  variant = "icon",
+  variant: _variant = "icon",
   mode = "dark",
 }: LogoProps) {
   const color = COLORS[mode];

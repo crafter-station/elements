@@ -10,7 +10,12 @@ export default function PolarSubscriptionBadgeDemo() {
       <PolarSubscriptionBadge tier="Pro" showStatus status="active" />
       <PolarSubscriptionBadge tier="Business" showStatus status="trialing" />
       <PolarSubscriptionBadge tier="Enterprise" size="lg" />
-      <PolarSubscriptionBadge tier="Pro" variant="outline" showStatus status="past_due" />
+      <PolarSubscriptionBadge
+        tier="Pro"
+        variant="outline"
+        showStatus
+        status="past_due"
+      />
     </div>
   );
 }
