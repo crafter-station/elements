@@ -3,8 +3,8 @@
 import {
   existsSync,
   mkdirSync,
-  readdirSync,
   readFileSync,
+  rmSync,
   writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
@@ -308,6 +308,83 @@ function convertStyleObject(styleStr: string): string {
   return cssProps.join(";");
 }
 
+/**
+ * Module-level string constants, e.g. `const ICON_PATH = "M89.7 ...";`
+ * These are referenced from JSX as `d={ICON_PATH}` or `fill={BRAND_COLOR}`.
+ */
+function extractModuleConstants(source: string): Record<string, string> {
+  const constants: Record<string, string> = {};
+  const pattern = /const\s+([A-Z][A-Z0-9_]*)\s*=\s*\n?\s*"([^"]*)"\s*;/g;
+  for (const match of source.matchAll(pattern)) {
+    constants[match[1]] = match[2];
+  }
+  return constants;
+}
+
+/**
+ * Module-level arrays of strings, e.g. `const ICON_PATHS = ["M1 ...", "M2 ..."];`
+ * Rendered in JSX via `.map()`, which we expand into repeated elements.
+ */
+function extractModuleArrays(source: string): Record<string, string[]> {
+  const arrays: Record<string, string[]> = {};
+  const pattern = /const\s+([A-Z][A-Z0-9_]*)\s*=\s*\[([\s\S]*?)\]\s*;/g;
+  for (const match of source.matchAll(pattern)) {
+    const entries = [...match[2].matchAll(/"([^"]*)"/g)].map((m) => m[1]);
+    if (entries.length > 0) arrays[match[1]] = entries;
+  }
+  return arrays;
+}
+
+/**
+ * Inline sub-components that return static JSX, e.g. `<GradientDef id="x" />`.
+ * Their props are substituted into the returned markup.
+ */
+function inlineSubComponents(svg: string, source: string): string {
+  let result = svg;
+
+  const usagePattern = /<([A-Z]\w*)\s*([^>]*?)\/>/g;
+  for (const usage of [...result.matchAll(usagePattern)]) {
+    const [full, componentName, rawProps] = usage;
+
+    const defPattern = new RegExp(
+      `function\\s+${componentName}\\s*\\([\\s\\S]*?\\)\\s*\\{[\\s\\S]*?return\\s*\\(`,
+      "m",
+    );
+    const defMatch = source.match(defPattern);
+    if (!defMatch || defMatch.index === undefined) continue;
+
+    const parenStart = defMatch.index + defMatch[0].length - 1;
+    let depth = 0;
+    let body = "";
+    for (let i = parenStart; i < source.length; i++) {
+      if (source[i] === "(") depth++;
+      if (source[i] === ")") {
+        depth--;
+        if (depth === 0) {
+          body = source.slice(parenStart + 1, i).trim();
+          break;
+        }
+      }
+    }
+    if (!body) continue;
+
+    const props: Record<string, string> = {};
+    for (const prop of rawProps.matchAll(/(\w+)=(?:"([^"]*)"|\{([^}]*)\})/g)) {
+      props[prop[1]] = (prop[2] ?? prop[3] ?? "").trim();
+    }
+    for (const [key, value] of Object.entries(props)) {
+      // Substitute inside attribute position (`id={id}` -> `id="value"`) first so
+      // the resulting attribute keeps its quotes.
+      body = body.replace(new RegExp(`=\\{${key}\\}`, "g"), `="${value}"`);
+      body = body.replace(new RegExp(`\\{${key}\\}`, "g"), value);
+    }
+
+    result = result.replace(full, body);
+  }
+
+  return result;
+}
+
 function jsxToSvg(
   jsx: string,
   colors: Record<string, string>,
@@ -315,6 +392,34 @@ function jsxToSvg(
   source: string,
 ): string {
   let svg = jsx;
+
+  svg = inlineSubComponents(svg, source);
+
+  const moduleArrays = extractModuleArrays(source);
+  for (const [name, values] of Object.entries(moduleArrays)) {
+    // `{ICON_PATHS.map((d, i) => (<path key={i} d={d} .../>))}` -> repeated elements
+    const mapPattern = new RegExp(
+      `\\{\\s*${name}\\.map\\(\\([^)]*\\)\\s*=>\\s*\\(([\\s\\S]*?)\\)\\s*\\)\\s*\\}`,
+      "m",
+    );
+    const mapMatch = svg.match(mapPattern);
+    if (!mapMatch) continue;
+
+    const template = mapMatch[1];
+    const expanded = values
+      .map((value) =>
+        template
+          .replace(/\s*key=\{[^}]*\}/g, "")
+          .replace(/d=\{\w+\}/g, `d="${value}"`),
+      )
+      .join("\n");
+    svg = svg.replace(mapMatch[0], expanded);
+  }
+
+  const moduleConstants = extractModuleConstants(source);
+  for (const [name, value] of Object.entries(moduleConstants)) {
+    svg = svg.replace(new RegExp(`=\\{${name}\\}`, "g"), `="${value}"`);
+  }
 
   svg = svg.replace(/\s*className=\{[^}]*\}/g, "");
   svg = svg.replace(/\s*className="[^"]*"/g, "");
@@ -476,13 +581,22 @@ function processLogo(name: string, jsonPath: string): string | null {
 
     const svg = jsxToSvg(svgJsx, colors, localVars, content);
 
-    if (svg.match(/\{[a-zA-Z]/)) {
-      const remaining = svg.match(/\{[a-zA-Z][^}]*\}/g);
-      if (remaining) {
-        console.warn(
-          `  ⚠ ${name}: Unresolved expressions: ${remaining.join(", ")}`,
-        );
-      }
+    // Unresolved JSX expressions or uninlined components mean the output is not
+    // valid SVG. Reject it rather than writing a broken file.
+    const remaining = svg.match(/\{[a-zA-Z][^}]*\}/g);
+    if (remaining) {
+      console.warn(
+        `  ⚠ ${name}: Unresolved expressions: ${remaining.join(", ")}`,
+      );
+      return null;
+    }
+
+    const uninlined = svg.match(/<[A-Z]\w*[\s/>]/g);
+    if (uninlined) {
+      console.warn(
+        `  ⚠ ${name}: Uninlined components: ${uninlined.join(", ")}`,
+      );
+      return null;
     }
 
     return svg;
@@ -495,25 +609,51 @@ function processLogo(name: string, jsonPath: string): string | null {
 }
 
 export function generateSvgFiles() {
+  // Regenerate from scratch so renamed or removed logos don't leave stale files.
+  if (existsSync(SVG_DIR)) {
+    rmSync(SVG_DIR, { recursive: true });
+  }
   ensureDir(SVG_DIR);
 
-  const files = readdirSync(PUBLIC_R).filter((f) => f.endsWith("-logo.json"));
+  // Derive the logo list from logos-index.json so this stays in sync with the
+  // published index. Slugs there are unsuffixed, but registry files may be
+  // named either `<slug>.json` or `<slug>-logo.json`.
+  const slugs: string[] = JSON.parse(
+    readFileSync(join(PUBLIC_R, "logos-index.json"), "utf-8"),
+  );
 
-  console.log(`   Found ${files.length} logo registry files`);
+  console.log(`   Found ${slugs.length} logos in logos-index.json`);
 
   let success = 0;
   let failed = 0;
   const index: Array<{ name: string; file: string }> = [];
 
-  for (const file of files) {
-    const name = file.replace(".json", "");
+  for (const slug of slugs) {
+    const candidates = [`${slug}-logo.json`, `${slug}.json`];
+    const file = candidates.find((candidate) =>
+      existsSync(join(PUBLIC_R, candidate)),
+    );
+
+    if (!file) {
+      console.warn(`  ⚠ ${slug}: No registry JSON found`);
+      failed++;
+      continue;
+    }
+
     const jsonPath = join(PUBLIC_R, file);
-    const svg = processLogo(name, jsonPath);
+    const svg = processLogo(slug, jsonPath);
 
     if (svg) {
-      const svgPath = join(SVG_DIR, `${name}.svg`);
+      const svgPath = join(SVG_DIR, `${slug}.svg`);
       writeFileSync(svgPath, svg);
-      index.push({ name, file: `${name}.svg` });
+      index.push({ name: slug, file: `${slug}.svg` });
+
+      // Earlier builds published these as `<slug>-logo.svg`. Keep writing that
+      // name so already-shared URLs keep resolving.
+      if (existsSync(join(PUBLIC_R, `${slug}-logo.json`))) {
+        writeFileSync(join(SVG_DIR, `${slug}-logo.svg`), svg);
+      }
+
       success++;
     } else {
       failed++;
