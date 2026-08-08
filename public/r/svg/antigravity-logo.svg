@@ -4,6 +4,20 @@ xmlns="http://www.w3.org/2000/svg"
 fill="none"
 >
 <title>Antigravity</title>
-<GradientDef id="antigravity-gradient" />
-<path d={ICON_PATH} fill="url(#antigravity-gradient)" />
+<defs>
+<linearGradient
+gradientUnits="userSpaceOnUse"
+id="antigravity-gradient"
+x1="16"
+y1="18"
+x2="96"
+y2="18"
+>
+<stop offset="0" stop-color="#00B95C" />
+<stop offset="0.35" stop-color="#FBBC04" />
+<stop offset="0.65" stop-color="#FC413D" />
+<stop offset="1" stop-color="#3186FF" />
+</linearGradient>
+</defs>
+<path d="M89.7 93.7c4.667 3.5 11.667 1.167 5.25-5.25C75.7 69.778 79.783 18.445 55.866 18.445S36.033 69.778 16.783 88.445c-7 7-.417 8.75 4.25 5.25 18.083-12.25 16.916-33.834 33.833-33.834s16.834 21.584 34.834 33.834z" fill="url(#antigravity-gradient)" />
 </svg>

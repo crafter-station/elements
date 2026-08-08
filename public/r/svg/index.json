@@ -1,686 +1,826 @@
 [
   {
-    "name": "polar-logo",
-    "file": "polar-logo.svg"
+    "name": "ably",
+    "file": "ably.svg"
   },
   {
-    "name": "bun-logo",
-    "file": "bun-logo.svg"
+    "name": "agentmail",
+    "file": "agentmail.svg"
   },
   {
-    "name": "claude-logo",
-    "file": "claude-logo.svg"
+    "name": "algolia",
+    "file": "algolia.svg"
   },
   {
-    "name": "daytona-logo",
-    "file": "daytona-logo.svg"
+    "name": "amp",
+    "file": "amp.svg"
   },
   {
-    "name": "together-logo",
-    "file": "together-logo.svg"
+    "name": "anthropic",
+    "file": "anthropic.svg"
   },
   {
-    "name": "turso-logo",
-    "file": "turso-logo.svg"
+    "name": "antigravity",
+    "file": "antigravity.svg"
   },
   {
-    "name": "launchdarkly-logo",
-    "file": "launchdarkly-logo.svg"
+    "name": "apple",
+    "file": "apple.svg"
   },
   {
-    "name": "gemini-logo",
-    "file": "gemini-logo.svg"
+    "name": "astro",
+    "file": "astro.svg"
   },
   {
-    "name": "ably-logo",
-    "file": "ably-logo.svg"
+    "name": "auth0",
+    "file": "auth0.svg"
   },
   {
-    "name": "neon-logo",
-    "file": "neon-logo.svg"
+    "name": "aws-amplify",
+    "file": "aws-amplify.svg"
   },
   {
-    "name": "mem0-logo",
-    "file": "mem0-logo.svg"
+    "name": "aws-api-gateway",
+    "file": "aws-api-gateway.svg"
   },
   {
-    "name": "spotify-logo",
-    "file": "spotify-logo.svg"
+    "name": "aws-appsync",
+    "file": "aws-appsync.svg"
   },
   {
-    "name": "html-logo",
-    "file": "html-logo.svg"
+    "name": "aws-athena",
+    "file": "aws-athena.svg"
   },
   {
-    "name": "langchain-logo",
-    "file": "langchain-logo.svg"
+    "name": "aws-bedrock",
+    "file": "aws-bedrock.svg"
   },
   {
-    "name": "replicate-logo",
-    "file": "replicate-logo.svg"
+    "name": "aws-cloudformation",
+    "file": "aws-cloudformation.svg"
   },
   {
-    "name": "threads-logo",
-    "file": "threads-logo.svg"
+    "name": "aws-cloudfront",
+    "file": "aws-cloudfront.svg"
   },
   {
-    "name": "ruby-logo",
-    "file": "ruby-logo.svg"
+    "name": "aws-cloudwatch",
+    "file": "aws-cloudwatch.svg"
   },
   {
-    "name": "roo-code-logo",
-    "file": "roo-code-logo.svg"
+    "name": "aws-codebuild",
+    "file": "aws-codebuild.svg"
   },
   {
-    "name": "fireworks-logo",
-    "file": "fireworks-logo.svg"
+    "name": "aws-codecommit",
+    "file": "aws-codecommit.svg"
   },
   {
-    "name": "cloudinary-logo",
-    "file": "cloudinary-logo.svg"
+    "name": "aws-codedeploy",
+    "file": "aws-codedeploy.svg"
   },
   {
-    "name": "anthropic-logo",
-    "file": "anthropic-logo.svg"
+    "name": "aws-codepipeline",
+    "file": "aws-codepipeline.svg"
   },
   {
-    "name": "pika-logo",
-    "file": "pika-logo.svg"
+    "name": "aws-cognito",
+    "file": "aws-cognito.svg"
   },
   {
-    "name": "axiom-logo",
-    "file": "axiom-logo.svg"
+    "name": "aws-dynamodb",
+    "file": "aws-dynamodb.svg"
   },
   {
-    "name": "github-logo",
-    "file": "github-logo.svg"
+    "name": "aws-ec2",
+    "file": "aws-ec2.svg"
   },
   {
-    "name": "drizzle-logo",
-    "file": "drizzle-logo.svg"
+    "name": "aws-ecs",
+    "file": "aws-ecs.svg"
   },
   {
-    "name": "raycast-logo",
-    "file": "raycast-logo.svg"
+    "name": "aws-eks",
+    "file": "aws-eks.svg"
   },
   {
-    "name": "tailwindcss-logo",
-    "file": "tailwindcss-logo.svg"
+    "name": "aws-elastic-beanstalk",
+    "file": "aws-elastic-beanstalk.svg"
   },
   {
-    "name": "modal-logo",
-    "file": "modal-logo.svg"
+    "name": "aws-eventbridge",
+    "file": "aws-eventbridge.svg"
   },
   {
-    "name": "nvidia-logo",
-    "file": "nvidia-logo.svg"
+    "name": "aws-fargate",
+    "file": "aws-fargate.svg"
   },
   {
-    "name": "openhands-logo",
-    "file": "openhands-logo.svg"
+    "name": "aws-glue",
+    "file": "aws-glue.svg"
   },
   {
-    "name": "openai-logo",
-    "file": "openai-logo.svg"
+    "name": "aws-iam",
+    "file": "aws-iam.svg"
   },
   {
-    "name": "stytch-logo",
-    "file": "stytch-logo.svg"
+    "name": "aws-kinesis",
+    "file": "aws-kinesis.svg"
   },
   {
-    "name": "xai-logo",
-    "file": "xai-logo.svg"
+    "name": "aws-kms",
+    "file": "aws-kms.svg"
   },
   {
-    "name": "continue-logo",
-    "file": "continue-logo.svg"
+    "name": "aws-lambda",
+    "file": "aws-lambda.svg"
   },
   {
-    "name": "n8n-logo",
-    "file": "n8n-logo.svg"
+    "name": "aws",
+    "file": "aws.svg"
   },
   {
-    "name": "workos-logo",
-    "file": "workos-logo.svg"
+    "name": "aws-rds",
+    "file": "aws-rds.svg"
   },
   {
-    "name": "cplusplus-logo",
-    "file": "cplusplus-logo.svg"
+    "name": "aws-redshift",
+    "file": "aws-redshift.svg"
   },
   {
-    "name": "kotlin-logo",
-    "file": "kotlin-logo.svg"
+    "name": "aws-route53",
+    "file": "aws-route53.svg"
   },
   {
-    "name": "hyperbrowser-logo",
-    "file": "hyperbrowser-logo.svg"
+    "name": "aws-s3",
+    "file": "aws-s3.svg"
   },
   {
-    "name": "zep-logo",
-    "file": "zep-logo.svg"
+    "name": "aws-sagemaker",
+    "file": "aws-sagemaker.svg"
   },
   {
-    "name": "meilisearch-logo",
-    "file": "meilisearch-logo.svg"
+    "name": "aws-secrets-manager",
+    "file": "aws-secrets-manager.svg"
   },
   {
-    "name": "vite-logo",
-    "file": "vite-logo.svg"
+    "name": "aws-sns",
+    "file": "aws-sns.svg"
   },
   {
-    "name": "uploadthing-logo",
-    "file": "uploadthing-logo.svg"
+    "name": "aws-sqs",
+    "file": "aws-sqs.svg"
   },
   {
-    "name": "perplexity-logo",
-    "file": "perplexity-logo.svg"
+    "name": "aws-step-functions",
+    "file": "aws-step-functions.svg"
   },
   {
-    "name": "biome-logo",
-    "file": "biome-logo.svg"
+    "name": "aws-vpc",
+    "file": "aws-vpc.svg"
   },
   {
-    "name": "antigravity-logo",
-    "file": "antigravity-logo.svg"
+    "name": "axiom",
+    "file": "axiom.svg"
   },
   {
-    "name": "figma-logo",
-    "file": "figma-logo.svg"
+    "name": "bash",
+    "file": "bash.svg"
   },
   {
-    "name": "mongodb-logo",
-    "file": "mongodb-logo.svg"
+    "name": "beincrypto",
+    "file": "beincrypto.svg"
   },
   {
-    "name": "swift-logo",
-    "file": "swift-logo.svg"
+    "name": "better-auth",
+    "file": "better-auth.svg"
   },
   {
-    "name": "javascript-logo",
-    "file": "javascript-logo.svg"
+    "name": "biome",
+    "file": "biome.svg"
   },
   {
-    "name": "sanity-logo",
-    "file": "sanity-logo.svg"
+    "name": "braintrust",
+    "file": "braintrust.svg"
   },
   {
-    "name": "posthog-logo",
-    "file": "posthog-logo.svg"
+    "name": "browser-use",
+    "file": "browser-use.svg"
   },
   {
-    "name": "suno-logo",
-    "file": "suno-logo.svg"
+    "name": "browserbase",
+    "file": "browserbase.svg"
   },
   {
-    "name": "rust-logo",
-    "file": "rust-logo.svg"
+    "name": "bun",
+    "file": "bun.svg"
   },
   {
-    "name": "sentry-logo",
-    "file": "sentry-logo.svg"
+    "name": "bytedance",
+    "file": "bytedance.svg"
   },
   {
-    "name": "vapi-logo",
-    "file": "vapi-logo.svg"
+    "name": "cerebras",
+    "file": "cerebras.svg"
   },
   {
-    "name": "supabase-logo",
-    "file": "supabase-logo.svg"
+    "name": "claude-code",
+    "file": "claude-code.svg"
   },
   {
-    "name": "v0-logo",
-    "file": "v0-logo.svg"
+    "name": "claude",
+    "file": "claude.svg"
   },
   {
-    "name": "clerk-logo",
-    "file": "clerk-logo.svg"
+    "name": "clerk",
+    "file": "clerk.svg"
   },
   {
-    "name": "moonshot-ai-logo",
-    "file": "moonshot-ai-logo.svg"
+    "name": "cline",
+    "file": "cline.svg"
   },
   {
-    "name": "dify-logo",
-    "file": "dify-logo.svg"
+    "name": "cloudflare",
+    "file": "cloudflare.svg"
   },
   {
-    "name": "docker-logo",
-    "file": "docker-logo.svg"
+    "name": "cloudinary",
+    "file": "cloudinary.svg"
   },
   {
-    "name": "svelte-logo",
-    "file": "svelte-logo.svg"
+    "name": "codex",
+    "file": "codex.svg"
   },
   {
-    "name": "discord-logo",
-    "file": "discord-logo.svg"
+    "name": "cohere",
+    "file": "cohere.svg"
   },
   {
-    "name": "browserbase-logo",
-    "file": "browserbase-logo.svg"
+    "name": "composio",
+    "file": "composio.svg"
   },
   {
-    "name": "react-logo",
-    "file": "react-logo.svg"
+    "name": "continue",
+    "file": "continue.svg"
   },
   {
-    "name": "windsurf-logo",
-    "file": "windsurf-logo.svg"
+    "name": "convex",
+    "file": "convex.svg"
   },
   {
-    "name": "flyio-logo",
-    "file": "flyio-logo.svg"
+    "name": "cplusplus",
+    "file": "cplusplus.svg"
   },
   {
-    "name": "fal-logo",
-    "file": "fal-logo.svg"
+    "name": "crafter-station",
+    "file": "crafter-station.svg"
   },
   {
-    "name": "meta-logo",
-    "file": "meta-logo.svg"
+    "name": "css",
+    "file": "css.svg"
   },
   {
-    "name": "agentmail-logo",
-    "file": "agentmail-logo.svg"
+    "name": "cursor",
+    "file": "cursor.svg"
   },
   {
-    "name": "instagram-logo",
-    "file": "instagram-logo.svg"
+    "name": "datadog",
+    "file": "datadog.svg"
   },
   {
-    "name": "langfuse-logo",
-    "file": "langfuse-logo.svg"
+    "name": "daytona",
+    "file": "daytona.svg"
   },
   {
-    "name": "twilio-logo",
-    "file": "twilio-logo.svg"
+    "name": "deepl",
+    "file": "deepl.svg"
   },
   {
-    "name": "google-logo",
-    "file": "google-logo.svg"
+    "name": "deepseek",
+    "file": "deepseek.svg"
   },
   {
-    "name": "redis-logo",
-    "file": "redis-logo.svg"
+    "name": "dify",
+    "file": "dify.svg"
   },
   {
-    "name": "luma-logo",
-    "file": "luma-logo.svg"
+    "name": "discord",
+    "file": "discord.svg"
   },
   {
-    "name": "crafter-station-logo",
-    "file": "crafter-station-logo.svg"
+    "name": "docker",
+    "file": "docker.svg"
   },
   {
-    "name": "linkedin-logo",
-    "file": "linkedin-logo.svg"
+    "name": "drizzle",
+    "file": "drizzle.svg"
   },
   {
-    "name": "claude-code-logo",
-    "file": "claude-code-logo.svg"
+    "name": "e2b",
+    "file": "e2b.svg"
   },
   {
-    "name": "groq-logo",
-    "file": "groq-logo.svg"
+    "name": "elevenlabs",
+    "file": "elevenlabs.svg"
   },
   {
-    "name": "datadog-logo",
-    "file": "datadog-logo.svg"
+    "name": "exa",
+    "file": "exa.svg"
   },
   {
-    "name": "opencode-logo",
-    "file": "opencode-logo.svg"
+    "name": "expo",
+    "file": "expo.svg"
   },
   {
-    "name": "zed-logo",
-    "file": "zed-logo.svg"
+    "name": "fal",
+    "file": "fal.svg"
   },
   {
-    "name": "slack-logo",
-    "file": "slack-logo.svg"
+    "name": "figma",
+    "file": "figma.svg"
   },
   {
-    "name": "stability-logo",
-    "file": "stability-logo.svg"
+    "name": "fireworks",
+    "file": "fireworks.svg"
   },
   {
-    "name": "deepseek-logo",
-    "file": "deepseek-logo.svg"
+    "name": "flyio",
+    "file": "flyio.svg"
   },
   {
-    "name": "postgresql-logo",
-    "file": "postgresql-logo.svg"
+    "name": "gemini",
+    "file": "gemini.svg"
   },
   {
-    "name": "exa-logo",
-    "file": "exa-logo.svg"
+    "name": "ghostty",
+    "file": "ghostty.svg"
   },
   {
-    "name": "expo-logo",
-    "file": "expo-logo.svg"
+    "name": "github-copilot",
+    "file": "github-copilot.svg"
   },
   {
-    "name": "xata-logo",
-    "file": "xata-logo.svg"
+    "name": "github",
+    "file": "github.svg"
   },
   {
-    "name": "snowflake-logo",
-    "file": "snowflake-logo.svg"
+    "name": "gitlab",
+    "file": "gitlab.svg"
   },
   {
-    "name": "pnpm-logo",
-    "file": "pnpm-logo.svg"
+    "name": "go",
+    "file": "go.svg"
   },
   {
-    "name": "lovable-logo",
-    "file": "lovable-logo.svg"
+    "name": "google",
+    "file": "google.svg"
   },
   {
-    "name": "linear-logo",
-    "file": "linear-logo.svg"
+    "name": "goose",
+    "file": "goose.svg"
   },
   {
-    "name": "goose-logo",
-    "file": "goose-logo.svg"
+    "name": "grafana",
+    "file": "grafana.svg"
   },
   {
-    "name": "replit-logo",
-    "file": "replit-logo.svg"
+    "name": "grok",
+    "file": "grok.svg"
   },
   {
-    "name": "codex-logo",
-    "file": "codex-logo.svg"
+    "name": "groq",
+    "file": "groq.svg"
   },
   {
-    "name": "render-logo",
-    "file": "render-logo.svg"
+    "name": "html",
+    "file": "html.svg"
   },
   {
-    "name": "convex-logo",
-    "file": "convex-logo.svg"
+    "name": "hugging-face",
+    "file": "hugging-face.svg"
   },
   {
-    "name": "pagerduty-logo",
-    "file": "pagerduty-logo.svg"
+    "name": "hyperbrowser",
+    "file": "hyperbrowser.svg"
   },
   {
-    "name": "sixtyfour-logo",
-    "file": "sixtyfour-logo.svg"
+    "name": "inngest",
+    "file": "inngest.svg"
   },
   {
-    "name": "prisma-logo",
-    "file": "prisma-logo.svg"
+    "name": "instagram",
+    "file": "instagram.svg"
   },
   {
-    "name": "twitch-logo",
-    "file": "twitch-logo.svg"
+    "name": "java",
+    "file": "java.svg"
   },
   {
-    "name": "amp-logo",
-    "file": "amp-logo.svg"
+    "name": "javascript",
+    "file": "javascript.svg"
   },
   {
-    "name": "css-logo",
-    "file": "css-logo.svg"
+    "name": "json",
+    "file": "json.svg"
   },
   {
-    "name": "grafana-logo",
-    "file": "grafana-logo.svg"
+    "name": "kapso",
+    "file": "kapso.svg"
   },
   {
-    "name": "nextjs-logo",
-    "file": "nextjs-logo.svg"
+    "name": "kebo",
+    "file": "kebo.svg"
   },
   {
-    "name": "trae-logo",
-    "file": "trae-logo.svg"
+    "name": "kilo-code",
+    "file": "kilo-code.svg"
   },
   {
-    "name": "auth0-logo",
-    "file": "auth0-logo.svg"
+    "name": "kimi",
+    "file": "kimi.svg"
   },
   {
-    "name": "typescript-logo",
-    "file": "typescript-logo.svg"
+    "name": "kite",
+    "file": "kite.svg"
   },
   {
-    "name": "composio-logo",
-    "file": "composio-logo.svg"
+    "name": "kotlin",
+    "file": "kotlin.svg"
   },
   {
-    "name": "planetscale-logo",
-    "file": "planetscale-logo.svg"
+    "name": "langchain",
+    "file": "langchain.svg"
   },
   {
-    "name": "tinte-logo",
-    "file": "tinte-logo.svg"
+    "name": "langfuse",
+    "file": "langfuse.svg"
   },
   {
-    "name": "stripe-logo",
-    "file": "stripe-logo.svg"
+    "name": "launchdarkly",
+    "file": "launchdarkly.svg"
   },
   {
-    "name": "java-logo",
-    "file": "java-logo.svg"
+    "name": "linear",
+    "file": "linear.svg"
   },
   {
-    "name": "braintrust-logo",
-    "file": "braintrust-logo.svg"
+    "name": "linkedin",
+    "file": "linkedin.svg"
   },
   {
-    "name": "python-logo",
-    "file": "python-logo.svg"
+    "name": "lovable",
+    "file": "lovable.svg"
   },
   {
-    "name": "bytedance-logo",
-    "file": "bytedance-logo.svg"
+    "name": "luma",
+    "file": "luma.svg"
   },
   {
-    "name": "hugging-face-logo",
-    "file": "hugging-face-logo.svg"
+    "name": "meilisearch",
+    "file": "meilisearch.svg"
   },
   {
-    "name": "terraform-logo",
-    "file": "terraform-logo.svg"
+    "name": "mem0",
+    "file": "mem0.svg"
   },
   {
-    "name": "notion-logo",
-    "file": "notion-logo.svg"
+    "name": "meta",
+    "file": "meta.svg"
   },
   {
-    "name": "mistral-logo",
-    "file": "mistral-logo.svg"
+    "name": "microsoft",
+    "file": "microsoft.svg"
   },
   {
-    "name": "microsoft-logo",
-    "file": "microsoft-logo.svg"
+    "name": "mistral",
+    "file": "mistral.svg"
   },
   {
-    "name": "ghostty-logo",
-    "file": "ghostty-logo.svg"
+    "name": "modal",
+    "file": "modal.svg"
   },
   {
-    "name": "obsidian-logo",
-    "file": "obsidian-logo.svg"
+    "name": "mongodb",
+    "file": "mongodb.svg"
   },
   {
-    "name": "kebo-logo",
-    "file": "kebo-logo.svg"
+    "name": "moonshot-ai",
+    "file": "moonshot-ai.svg"
   },
   {
-    "name": "bash-logo",
-    "file": "bash-logo.svg"
+    "name": "n8n",
+    "file": "n8n.svg"
   },
   {
-    "name": "cerebras-logo",
-    "file": "cerebras-logo.svg"
+    "name": "neon",
+    "file": "neon.svg"
   },
   {
-    "name": "vuejs-logo",
-    "file": "vuejs-logo.svg"
+    "name": "nextjs",
+    "file": "nextjs.svg"
   },
   {
-    "name": "payload-logo",
-    "file": "payload-logo.svg"
+    "name": "nodejs",
+    "file": "nodejs.svg"
   },
   {
-    "name": "go-logo",
-    "file": "go-logo.svg"
+    "name": "notion",
+    "file": "notion.svg"
   },
   {
-    "name": "spring-boot-logo",
-    "file": "spring-boot-logo.svg"
+    "name": "npm",
+    "file": "npm.svg"
   },
   {
-    "name": "upstash-logo",
-    "file": "upstash-logo.svg"
+    "name": "nvidia",
+    "file": "nvidia.svg"
   },
   {
-    "name": "resend-logo",
-    "file": "resend-logo.svg"
+    "name": "obsidian",
+    "file": "obsidian.svg"
   },
   {
-    "name": "gitlab-logo",
-    "file": "gitlab-logo.svg"
+    "name": "ollama",
+    "file": "ollama.svg"
   },
   {
-    "name": "aws-logo",
-    "file": "aws-logo.svg"
+    "name": "openai",
+    "file": "openai.svg"
   },
   {
-    "name": "algolia-logo",
-    "file": "algolia-logo.svg"
+    "name": "opencode",
+    "file": "opencode.svg"
   },
   {
-    "name": "vercel-logo",
-    "file": "vercel-logo.svg"
+    "name": "openhands",
+    "file": "openhands.svg"
   },
   {
-    "name": "kite-logo",
-    "file": "kite-logo.svg"
+    "name": "pagerduty",
+    "file": "pagerduty.svg"
   },
   {
-    "name": "inngest-logo",
-    "file": "inngest-logo.svg"
+    "name": "payload",
+    "file": "payload.svg"
   },
   {
-    "name": "better-auth-logo",
-    "file": "better-auth-logo.svg"
+    "name": "perplexity",
+    "file": "perplexity.svg"
   },
   {
-    "name": "github-copilot-logo",
-    "file": "github-copilot-logo.svg"
+    "name": "pika",
+    "file": "pika.svg"
   },
   {
-    "name": "sambanova-logo",
-    "file": "sambanova-logo.svg"
+    "name": "planetscale",
+    "file": "planetscale.svg"
   },
   {
-    "name": "e2b-logo",
-    "file": "e2b-logo.svg"
+    "name": "pnpm",
+    "file": "pnpm.svg"
   },
   {
-    "name": "ollama-logo",
-    "file": "ollama-logo.svg"
+    "name": "polar",
+    "file": "polar.svg"
   },
   {
-    "name": "nodejs-logo",
-    "file": "nodejs-logo.svg"
+    "name": "postgresql",
+    "file": "postgresql.svg"
   },
   {
-    "name": "beincrypto-logo",
-    "file": "beincrypto-logo.svg"
+    "name": "posthog",
+    "file": "posthog.svg"
   },
   {
-    "name": "astro-logo",
-    "file": "astro-logo.svg"
+    "name": "prisma",
+    "file": "prisma.svg"
   },
   {
-    "name": "json-logo",
-    "file": "json-logo.svg"
+    "name": "python",
+    "file": "python.svg"
   },
   {
-    "name": "cloudflare-logo",
-    "file": "cloudflare-logo.svg"
+    "name": "qwen",
+    "file": "qwen.svg"
   },
   {
-    "name": "npm-logo",
-    "file": "npm-logo.svg"
+    "name": "railway",
+    "file": "railway.svg"
   },
   {
-    "name": "trigger-logo",
-    "file": "trigger-logo.svg"
+    "name": "raycast",
+    "file": "raycast.svg"
   },
   {
-    "name": "apple-logo",
-    "file": "apple-logo.svg"
+    "name": "react",
+    "file": "react.svg"
   },
   {
-    "name": "qwen-logo",
-    "file": "qwen-logo.svg"
+    "name": "redis",
+    "file": "redis.svg"
   },
   {
-    "name": "cline-logo",
-    "file": "cline-logo.svg"
+    "name": "render",
+    "file": "render.svg"
   },
   {
-    "name": "kapso-logo",
-    "file": "kapso-logo.svg"
+    "name": "replicate",
+    "file": "replicate.svg"
   },
   {
-    "name": "yarn-logo",
-    "file": "yarn-logo.svg"
+    "name": "replit",
+    "file": "replit.svg"
   },
   {
-    "name": "kimi-logo",
-    "file": "kimi-logo.svg"
+    "name": "resend",
+    "file": "resend.svg"
   },
   {
-    "name": "browser-use-logo",
-    "file": "browser-use-logo.svg"
+    "name": "roo-code",
+    "file": "roo-code.svg"
   },
   {
-    "name": "kilo-code-logo",
-    "file": "kilo-code-logo.svg"
+    "name": "ruby",
+    "file": "ruby.svg"
   },
   {
-    "name": "twitter-logo",
-    "file": "twitter-logo.svg"
+    "name": "runway",
+    "file": "runway.svg"
   },
   {
-    "name": "runway-logo",
-    "file": "runway-logo.svg"
+    "name": "rust",
+    "file": "rust.svg"
   },
   {
-    "name": "sql-logo",
-    "file": "sql-logo.svg"
+    "name": "sambanova",
+    "file": "sambanova.svg"
   },
   {
-    "name": "railway-logo",
-    "file": "railway-logo.svg"
+    "name": "sanity",
+    "file": "sanity.svg"
   },
   {
-    "name": "cursor-logo",
-    "file": "cursor-logo.svg"
+    "name": "sentry",
+    "file": "sentry.svg"
   },
   {
-    "name": "elevenlabs-logo",
-    "file": "elevenlabs-logo.svg"
+    "name": "sixtyfour",
+    "file": "sixtyfour.svg"
   },
   {
-    "name": "storybook-logo",
-    "file": "storybook-logo.svg"
+    "name": "slack",
+    "file": "slack.svg"
   },
   {
-    "name": "deepl-logo",
-    "file": "deepl-logo.svg"
+    "name": "snowflake",
+    "file": "snowflake.svg"
   },
   {
-    "name": "grok-logo",
-    "file": "grok-logo.svg"
+    "name": "spotify",
+    "file": "spotify.svg"
   },
   {
-    "name": "cohere-logo",
-    "file": "cohere-logo.svg"
+    "name": "spring-boot",
+    "file": "spring-boot.svg"
+  },
+  {
+    "name": "sql",
+    "file": "sql.svg"
+  },
+  {
+    "name": "stability",
+    "file": "stability.svg"
+  },
+  {
+    "name": "storybook",
+    "file": "storybook.svg"
+  },
+  {
+    "name": "stripe",
+    "file": "stripe.svg"
+  },
+  {
+    "name": "stytch",
+    "file": "stytch.svg"
+  },
+  {
+    "name": "suno",
+    "file": "suno.svg"
+  },
+  {
+    "name": "supabase",
+    "file": "supabase.svg"
+  },
+  {
+    "name": "svelte",
+    "file": "svelte.svg"
+  },
+  {
+    "name": "swift",
+    "file": "swift.svg"
+  },
+  {
+    "name": "tailwindcss",
+    "file": "tailwindcss.svg"
+  },
+  {
+    "name": "terraform",
+    "file": "terraform.svg"
+  },
+  {
+    "name": "threads",
+    "file": "threads.svg"
+  },
+  {
+    "name": "tinte",
+    "file": "tinte.svg"
+  },
+  {
+    "name": "together",
+    "file": "together.svg"
+  },
+  {
+    "name": "trae",
+    "file": "trae.svg"
+  },
+  {
+    "name": "trigger",
+    "file": "trigger.svg"
+  },
+  {
+    "name": "turso",
+    "file": "turso.svg"
+  },
+  {
+    "name": "twilio",
+    "file": "twilio.svg"
+  },
+  {
+    "name": "twitch",
+    "file": "twitch.svg"
+  },
+  {
+    "name": "twitter",
+    "file": "twitter.svg"
+  },
+  {
+    "name": "typescript",
+    "file": "typescript.svg"
+  },
+  {
+    "name": "uploadthing",
+    "file": "uploadthing.svg"
+  },
+  {
+    "name": "upstash",
+    "file": "upstash.svg"
+  },
+  {
+    "name": "v0",
+    "file": "v0.svg"
+  },
+  {
+    "name": "vapi",
+    "file": "vapi.svg"
+  },
+  {
+    "name": "vercel",
+    "file": "vercel.svg"
+  },
+  {
+    "name": "vite",
+    "file": "vite.svg"
+  },
+  {
+    "name": "vuejs",
+    "file": "vuejs.svg"
+  },
+  {
+    "name": "windsurf",
+    "file": "windsurf.svg"
+  },
+  {
+    "name": "workos",
+    "file": "workos.svg"
+  },
+  {
+    "name": "xai",
+    "file": "xai.svg"
+  },
+  {
+    "name": "xata",
+    "file": "xata.svg"
+  },
+  {
+    "name": "yarn",
+    "file": "yarn.svg"
+  },
+  {
+    "name": "zed",
+    "file": "zed.svg"
+  },
+  {
+    "name": "zep",
+    "file": "zep.svg"
   }
 ]
