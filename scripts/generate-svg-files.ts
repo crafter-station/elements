@@ -669,7 +669,53 @@ export function generateSvgFiles() {
   }
   console.log(`   ✓ Wrote ${indexPath}`);
 
+  writeCatalogs(index);
+
   return { success, failed };
+}
+
+function extractViewBox(svg: string): string | null {
+  return svg.match(/viewBox="([^"]+)"/)?.[1] ?? null;
+}
+
+function extractPaths(svg: string): string[] {
+  return [...svg.matchAll(/<path[^>]*\sd="([^"]+)"/g)].map((match) => match[1]);
+}
+
+/**
+ * A logo is monochrome when it carries no hardcoded colors, so a consumer can
+ * recolor it through `currentColor`.
+ */
+function isMonochrome(svg: string): boolean {
+  return !/(?:fill|stroke|stop-color)="(?!none|currentColor)[^"]+"/.test(svg);
+}
+
+/**
+ * Emit the bulk catalogs as plain files. They only change on a registry build,
+ * so serving them from the CDN keeps the whole catalog off the request path —
+ * no route handler re-reads 200+ files per request.
+ */
+function writeCatalogs(index: Array<{ name: string; file: string }>) {
+  const logos = index.map((entry) => {
+    const svg = readFileSync(join(SVG_DIR, entry.file), "utf-8");
+    return {
+      name: entry.name,
+      viewBox: extractViewBox(svg),
+      paths: extractPaths(svg),
+      monochrome: isMonochrome(svg),
+      svg,
+    };
+  });
+
+  const allPath = join(SVG_DIR, "all.json");
+  writeFileSync(allPath, JSON.stringify({ count: logos.length, logos }));
+
+  const mono = logos.filter((logo) => logo.monochrome);
+  const monoPath = join(SVG_DIR, "all-monochrome.json");
+  writeFileSync(monoPath, JSON.stringify({ count: mono.length, logos: mono }));
+
+  console.log(`   ✓ Wrote ${allPath} (${logos.length} logos)`);
+  console.log(`   ✓ Wrote ${monoPath} (${mono.length} logos)`);
 }
 
 if (import.meta.main) {

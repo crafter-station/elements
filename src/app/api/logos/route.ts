@@ -53,10 +53,21 @@ function isMonochrome(svg: string): boolean {
   return !/(?:fill|stroke|stop-color)="(?!none|currentColor)[^"]+"/.test(svg);
 }
 
+const FORMATS = new Set(["svg", "json", "dataurl"]);
+
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const name = searchParams.get("name");
   const format = searchParams.get("format") ?? (name ? "svg" : "json");
+
+  // Reject unknown formats before touching the filesystem, so a caller cannot
+  // spin up distinct cache keys with arbitrary `format` values.
+  if (!FORMATS.has(format)) {
+    return NextResponse.json(
+      { error: `Unsupported format "${format}". Use svg, json, or dataurl.` },
+      { status: 400, headers: CORS_HEADERS },
+    );
+  }
 
   // No name: return the catalog.
   if (!name) {
@@ -73,7 +84,12 @@ export async function GET(request: NextRequest) {
   if (!svg) {
     return NextResponse.json(
       { error: `Logo "${name}" not found` },
-      { status: 404, headers: CORS_HEADERS },
+      {
+        status: 404,
+        // Cache misses too, so repeated lookups for a name that does not exist
+        // are absorbed by the CDN instead of re-invoking this route.
+        headers: { ...CORS_HEADERS, "Cache-Control": "public, max-age=300" },
+      },
     );
   }
 
@@ -100,21 +116,14 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  if (format === "dataurl") {
-    const dataUrl = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
-    return new NextResponse(dataUrl, {
-      headers: {
-        "Content-Type": "text/plain; charset=utf-8",
-        ...CORS_HEADERS,
-        ...CACHE_HEADERS,
-      },
-    });
-  }
-
-  return NextResponse.json(
-    { error: `Unsupported format "${format}". Use svg, json, or dataurl.` },
-    { status: 400, headers: CORS_HEADERS },
-  );
+  const dataUrl = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+  return new NextResponse(dataUrl, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      ...CORS_HEADERS,
+      ...CACHE_HEADERS,
+    },
+  });
 }
 
 export function OPTIONS() {
