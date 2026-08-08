@@ -135,7 +135,12 @@ export const Index = {
   // Step 5: Generate logos-index.json for @tryelements/cli
   console.log("\n📋 Step 5: Generating logos-index.json...");
   const logoNames = registry.items
-    .filter((item: any) => item.name.endsWith("-logo"))
+    .filter(
+      (item: any) =>
+        item.categories?.includes("logo") &&
+        item.files?.length &&
+        !item.files.some((file: any) => file.path?.includes("/_bundles/")),
+    )
     .map((item: any) => item.name.replace(/-logo$/, ""));
   const logosIndexPath = join(PUBLIC_REGISTRY_DIR, "logos-index.json");
   writeFileSync(logosIndexPath, JSON.stringify(logoNames, null, 2));
