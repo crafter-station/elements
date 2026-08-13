@@ -14,7 +14,8 @@
     "@elements/lovable-logo",
     "@elements/trigger-logo",
     "@elements/n8n-logo",
-    "@elements/deepl-logo"
+    "@elements/deepl-logo",
+    "@elements/herdr-logo"
   ],
   "dependencies": [],
   "files": [],

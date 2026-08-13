@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "herdr-logo",
+  "type": "registry:ui",
+  "title": "Herdr Logo",
+  "description": "Herdr coding agent runtime logo",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/default/blocks/logos/herdr-logo/components/logos/herdr.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "docs": "Herdr logo component based on the official brand asset.",
+  "categories": ["DevTools", "AI", "agentic", "logo", "brand"]
+}

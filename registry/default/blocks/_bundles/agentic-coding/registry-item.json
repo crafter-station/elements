@@ -24,7 +24,8 @@
     "@elements/codex-logo",
     "@elements/replit-logo",
     "@elements/amp-logo",
-    "@elements/antigravity-logo"
+    "@elements/antigravity-logo",
+    "@elements/herdr-logo"
   ],
   "dependencies": [],
   "files": [],
