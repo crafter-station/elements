@@ -40,3 +40,6 @@ jobs:
 
       - name: Build registry
         run: bun run build:registry
+
+      - name: Test
+        run: bun run test:run
