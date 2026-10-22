@@ -822,5 +822,9 @@
   {
     "name": "zep",
     "file": "zep.svg"
+  },
+  {
+    "name": "stack-overflow",
+    "file": "stack-overflow.svg"
   }
 ]

@@ -6164,6 +6164,31 @@ export const registry = {
     },
     {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: "stack-overflow-logo",
+      type: "registry:ui",
+      title: "Stack Overflow Logo",
+      description:
+        "Stack Overflow logo with theme-aware icon, wordmark, and full logo variants",
+      registryDependencies: [],
+      dependencies: [],
+      files: [
+        {
+          path: "registry/default/blocks/logos/stack-overflow-logo/components/logos/stack-overflow.tsx",
+          type: "registry:component",
+        },
+      ],
+      docs: 'Official Stack Overflow artwork: https://stackoverflow.design/brand/logo/. Use variant="icon" (default), "wordmark", or "logo". All variants inherit currentColor for light and dark themes. Keep the artwork proportions and follow the brand usage guidelines.',
+      categories: ["Social", "logo", "brand"],
+      meta: {
+        hasVariants: true,
+        variants: ["icon", "wordmark", "logo"],
+        variantTypes: {
+          base: ["icon", "wordmark", "logo"],
+        },
+      },
+    },
+    {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: "storybook-logo",
       type: "registry:block",
       title: "Storybook Logo",
